@@ -1,0 +1,112 @@
+Lock 1 Doom
+{
+	Any { RedCard D3RedCard }
+	Message "You need a red card to open this door"
+	RemoteMessage "You need a red card to activate this object"
+	Mapcolor 255 0 0
+}
+
+Lock 2 Doom
+{
+	Any { BlueCard D3BlueCard }
+	Message "You need a blue card to open this door"
+	RemoteMessage "You need a blue card to activate this object"
+	Mapcolor 0 0 255
+}
+
+Lock 3 Doom
+{
+	Any { YellowCard D3YellowCard }
+	Message "You need a yellow card to open this door"
+	RemoteMessage "You need a yellow card to activate this object"
+	Mapcolor 255 255 0
+}
+
+Lock 7 Doom
+{
+	D3BlackCard
+	Message "You need a black card to open this door!"
+	RemoteMessage "You need a black card to activate this object!"
+	Mapcolor 32 32 32
+}
+
+Lock 8 Doom
+{
+	D3GreenCard
+	Message "You need a green card to open this door!"
+	RemoteMessage "You need a green card to activate this object!"
+	Mapcolor 0 255 0
+}
+
+
+Lock 9 Doom
+{
+	D3OrangeCard
+	Message "You need an orange card to open this door!"
+	RemoteMessage "You need an orange card to activate this object!"
+	Mapcolor 255 128 0
+}
+
+Lock 10 Doom
+{
+	D3WhiteCard
+	Message "You need a white card to open this door!"
+	RemoteMessage "You need a white card to activate this object!"
+	Mapcolor 255 255 255
+}
+
+Lock 11 Doom
+{
+	D3BrownCard
+	Message "You need a brown card to open this door!"
+	RemoteMessage "You need a brown card to activate this object!"
+	Mapcolor 150 75 0
+}
+
+Lock 12 Doom
+{
+	D3VioletCard
+	Message "You need a violet card to open this door!"
+	RemoteMessage "You need a violet card to activate this object!"
+	Mapcolor 159 0 255
+}
+
+Lock 200 Doom
+{
+	PrisonKey2
+	Message "You need a police access card to open this door!"
+	RemoteMessage "You need a police access card to activate this object!"
+	Mapcolor 0 0 255
+}
+
+Lock 135 Doom
+{
+	DPTKEYCARD
+	Message "You need a DPT KEY CARD to open this door!"
+	RemoteMessage "You need a DPT KEY CARD to activate this object!"
+	Mapcolor 0 128 255
+}
+
+Lock 136 Doom
+{
+	DPTNICKBOCKKEYCARD
+	Message "You need a DPT.NICKBOCK KEY CARD to open this door!"
+	RemoteMessage "You need a DPT.NICKBOCK KEY CARD to activate this object!"
+	Mapcolor 0 128 255
+}
+
+Lock 137 Doom
+{
+	SHITKEY
+	Message "You need a DPT.NICKBOCK KEY CARD to open this door!"
+	RemoteMessage "You need a DPT.NICKBOCK KEY CARD to activate this object!"
+	Mapcolor 0 128 255
+}
+
+Lock 228 Doom
+{
+	MilitaryBaseBunkerSpecialCard
+	Message "You need a special access card to open this door!"
+	RemoteMessage "You need a special access card to activate this object!"
+	Mapcolor 255 255 255
+}

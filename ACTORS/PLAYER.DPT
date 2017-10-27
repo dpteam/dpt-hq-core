@@ -1,0 +1,5728 @@
+ACTOR Guest : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "DPT.HQ Guest"
+	Player.SoundClass "guest"
+	Player.StartItem "RivetGun"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		ELIT A 1
+		ELIT A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		ELIT A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ELIT A 20
+		ELIT A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		ELIT A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ELIT A 1 A_SetPitch(-0.20)
+		ELIT A 1 A_SetPitch(0.20)
+		ELIT A 1 A_SetPitch(0.30)
+		ELIT A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		ELIT A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ELIT A 1 A_SetPitch(-0.30)
+		ELIT A 1 A_SetPitch(-0.30)
+		ELIT A 1 A_SetPitch(-0.30)
+		ELIT A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		ELIT A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ELIT A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ELIT A 1 A_SetPitch(0.30)
+		ELIT A 1 A_SetPitch(0.30)
+		ELIT A 1 A_SetPitch(0.30)
+		ELIT A 1 A_SetPitch(0.30)
+		ELIT A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        ELIT AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		ELIT CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        ELIT AB 4 A_SetPitch(-0.30)
+		ELIT CD 4 A_SetPitch(0.50)
+        ELIT AB 4 A_SetPitch(-0.20)
+		ELIT CD 4 A_SetPitch(0.25)
+		ELIT A 0 A_Jump(26, "Vomit")
+        ELIT AB 4 A_SetPitch(-0.90)
+		ELIT CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		ELIT GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		ELIT G 0 A_PlaySound("player/vomit", 2)
+		ELIT GGGGGGGGGG 1 A_Stop
+		ELIT G 0 A_SetPitch(-0.85)
+		ELIT GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		ELIT A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		ELIT GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		ELIT A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		ELIT E 12 
+		Goto Spawn
+	Missile_Drunk:
+		ELIT A 0 A_SetAngle(random(angle-12,angle+12))
+		ELIT EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		ELIT A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		ELIT F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		ELIT FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		ELIT A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		ELIT G 4 
+		ELIT G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		ELIT G 4 
+		ELIT G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		ELIT A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		ELIT G 4 A_SetPitch(0.75)
+		ELIT G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		ELIT H 0 A_PlayerSkinCheck("AltSkinDeath")
+	Death1:
+		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
+		ELIT H 10
+		ELIT I 10 A_PlayerScream
+		ELIT J 10 A_NoBlocking
+		ELIT KLM 10
+		ELIT N -1
+		Stop
+	XDeath:
+		ELIT O 0 A_PlayerSkinCheck("AltSkinXDeath")
+	XDeath1:
+		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
+		ELIT O 5
+		ELIT P 5 A_XScream
+		ELIT Q 5 A_NoBlocking
+		ELIT RSTUV 5
+		ELIT W -1
+		Stop
+	AltSkinDeath:
+		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
+		ELIT H 6
+		ELIT I 6 A_PlayerScream
+		ELIT JK 6
+		ELIT L 6 A_NoBlocking
+		ELIT MNO 6
+		ELIT P -1
+		Stop
+	AltSkinXDeath:
+		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
+		ELIT Q 5 A_PlayerScream
+		ELIT R 0 A_NoBlocking
+		ELIT R 5 A_SkullPop
+		ELIT STUVWX 5
+		ELIT Y -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR RebelClass : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Rebel"
+	Player.SoundClass "RebelClass"
+	Player.StartItem "RivetGun"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		STRM A 1
+		STRM A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		STRM A 0 A_JumpIf (momx > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momx < 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy < 0, "See_Drunk")
+		STRM A 20
+		STRM A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		STRM A 0 A_JumpIf (momx > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momx < 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy < 0, "See_Drunk")
+		STRM A 1 A_SetPitch(-0.20)
+		STRM A 1 A_SetPitch(0.20)
+		STRM A 1 A_SetPitch(0.30)
+		STRM A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		STRM A 0 A_JumpIf (momx > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momx < 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy < 0, "See_Drunk")
+		STRM A 1 A_SetPitch(-0.30)
+		STRM A 1 A_SetPitch(-0.30)
+		STRM A 1 A_SetPitch(-0.30)
+		STRM A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		STRM A 0 A_JumpIf (momx > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy > 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momx < 0, "See_Drunk")
+		STRM A 0 A_JumpIf (momy < 0, "See_Drunk")
+		STRM A 1 A_SetPitch(0.30)
+		STRM A 1 A_SetPitch(0.30)
+		STRM A 1 A_SetPitch(0.30)
+		STRM A 1 A_SetPitch(0.30)
+		STRM A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        STRM AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		STRM CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        STRM AB 4 A_SetPitch(-0.30)
+		STRM CD 4 A_SetPitch(0.50)
+        STRM AB 4 A_SetPitch(-0.20)
+		STRM CD 4 A_SetPitch(0.25)
+		STRM A 0 A_Jump(26, "Vomit")
+        STRM AB 4 A_SetPitch(-0.90)
+		STRM CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		STRM GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		STRM G 0 A_PlaySound("player/vomit", 2)
+		STRM GGGGGGGGGG 1 A_Stop
+		STRM G 0 A_SetPitch(-0.85)
+		STRM GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		STRM A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		STRM GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		STRM A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		STRM E 12 
+		Goto Spawn
+	Missile_Drunk:
+		STRM A 0 A_SetAngle(random(angle-12,angle+12))
+		STRM EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		STRM A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		STRM F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		STRM FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		STRM A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		STRM G 4 
+		STRM G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		STRM G 4 
+		STRM G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		STRM A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		STRM G 4 A_SetPitch(0.75)
+		STRM G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		STRM A 0 A_TakeInventory("DrunkLevel", 100)
+		STRM H 10
+		STRM I 10 A_PlayerScream
+		STRM J 10 A_NoBlocking
+		STRM KLM 10
+		STRM N -1
+		Stop
+	XDeath:
+		STRM A 0 A_TakeInventory("DrunkLevel", 100)
+		STRM O 5
+		STRM P 5 A_XScream
+		STRM Q 5 A_NoBlocking
+		STRM RSTUV 5
+		STRM W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Armyman : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Army"
+	Player.SoundClass "Armyman"
+	Player.StartItem "ArmymanSVD"
+	Player.StartItem "ArmymanRPG7"
+	Player.StartItem "ArmymanRPD"
+	Player.StartItem "ArmymanAK47"
+	Player.StartItem "ArmymanUnarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "RocketAmmo", 100
+	Player.StartItem "Clip", 400
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		OPFS A 1
+		OPFS A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		OPFS A 0 A_JumpIf (momx > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momx < 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy < 0, "See_Drunk")
+		OPFS A 20
+		OPFS A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		OPFS A 0 A_JumpIf (momx > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momx < 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy < 0, "See_Drunk")
+		OPFS A 1 A_SetPitch(-0.20)
+		OPFS A 1 A_SetPitch(0.20)
+		OPFS A 1 A_SetPitch(0.30)
+		OPFS A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		OPFS A 0 A_JumpIf (momx > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momx < 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy < 0, "See_Drunk")
+		OPFS A 1 A_SetPitch(-0.30)
+		OPFS A 1 A_SetPitch(-0.30)
+		OPFS A 1 A_SetPitch(-0.30)
+		OPFS A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		OPFS A 0 A_JumpIf (momx > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy > 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momx < 0, "See_Drunk")
+		OPFS A 0 A_JumpIf (momy < 0, "See_Drunk")
+		OPFS A 1 A_SetPitch(0.30)
+		OPFS A 1 A_SetPitch(0.30)
+		OPFS A 1 A_SetPitch(0.30)
+		OPFS A 1 A_SetPitch(0.30)
+		OPFS A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        OPFS AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		OPFS CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        OPFS AB 4 A_SetPitch(-0.30)
+		OPFS CD 4 A_SetPitch(0.50)
+        OPFS AB 4 A_SetPitch(-0.20)
+		OPFS CD 4 A_SetPitch(0.25)
+		OPFS A 0 A_Jump(26, "Vomit")
+        OPFS AB 4 A_SetPitch(-0.90)
+		OPFS CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		OPFS GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		OPFS G 0 A_PlaySound("player/vomit", 2)
+		OPFS GGGGGGGGGG 1 A_Stop
+		OPFS G 0 A_SetPitch(-0.85)
+		OPFS GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		OPFS A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		OPFS GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		OPFS A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		OPFS E 12 
+		Goto Spawn
+	Missile_Drunk:
+		OPFS A 0 A_SetAngle(random(angle-12,angle+12))
+		OPFS EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		OPFS A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		OPFS F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		OPFS FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		OPFS A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		OPFS G 4 
+		OPFS G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		OPFS G 4 
+		OPFS G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		OPFS A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		OPFS G 4 A_SetPitch(0.75)
+		OPFS G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		OPFS A 0 A_TakeInventory("DrunkLevel", 100)
+		OPFS H 10
+		OPFS I 10 A_PlayerScream
+		OPFS J 10 A_NoBlocking
+		OPFS KLM 10
+		OPFS N -1
+		Stop
+	XDeath:
+		OPFS A 0 A_TakeInventory("DrunkLevel", 100)
+		OPFS O 5
+		OPFS P 5 A_XScream
+		OPFS Q 5 A_NoBlocking
+		OPFS RSTUV 5
+		OPFS W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Pocik : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Pocik"
+	Player.SoundClass "Pocik"
+	Player.StartItem "PocikUnarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		POCK A 1
+		POCK A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		POCK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		POCK A 20
+		POCK A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		POCK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		POCK A 1 A_SetPitch(-0.20)
+		POCK A 1 A_SetPitch(0.20)
+		POCK A 1 A_SetPitch(0.30)
+		POCK A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		POCK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		POCK A 1 A_SetPitch(-0.30)
+		POCK A 1 A_SetPitch(-0.30)
+		POCK A 1 A_SetPitch(-0.30)
+		POCK A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		POCK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		POCK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		POCK A 1 A_SetPitch(0.30)
+		POCK A 1 A_SetPitch(0.30)
+		POCK A 1 A_SetPitch(0.30)
+		POCK A 1 A_SetPitch(0.30)
+		POCK A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        POCK AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		POCK CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        POCK AB 4 A_SetPitch(-0.30)
+		POCK CD 4 A_SetPitch(0.50)
+        POCK AB 4 A_SetPitch(-0.20)
+		POCK CD 4 A_SetPitch(0.25)
+		POCK A 0 A_Jump(26, "Vomit")
+        POCK AB 4 A_SetPitch(-0.90)
+		POCK CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		POCK GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		POCK G 0 A_PlaySound("player/vomit", 2)
+		POCK GGGGGGGGGG 1 A_Stop
+		POCK G 0 A_SetPitch(-0.85)
+		POCK GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		POCK A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		POCK GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		POCK A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		POCK E 12 
+		Goto Spawn
+	Missile_Drunk:
+		POCK A 0 A_SetAngle(random(angle-12,angle+12))
+		POCK EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		POCK A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		POCK F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		POCK FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		POCK A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		POCK G 4 
+		POCK G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		POCK G 4 
+		POCK G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		POCK A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		POCK G 4 A_SetPitch(0.75)
+		POCK G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		POCK A 0 A_TakeInventory("DrunkLevel", 100)
+		POCK H 10
+		POCK I 10 A_PlayerScream
+		POCK J 10 A_NoBlocking
+		POCK KLM 10
+		POCK N -1
+		Stop
+	XDeath:
+		POCK A 0 A_TakeInventory("DrunkLevel", 100)
+		POCK O 5
+		POCK P 5 A_XScream
+		POCK Q 5 A_NoBlocking
+		POCK RSTUV 5
+		POCK W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Cop : PlayerPawn
+{
+	DamageFactor "PrisonPower", 0.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	+NOSKIN
+	Player.DisplayName "DPT POLICE OFFICER"
+	Player.SoundClass "guest"
+	Player.StartItem "Tazer"
+	Player.StartItem "JailPistol"
+	Player.StartItem "PrisonKey2"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		FCOP A 1
+		FCOP A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		FCOP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FCOP A 20
+		FCOP A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		FCOP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FCOP A 1 A_SetPitch(-0.20)
+		FCOP A 1 A_SetPitch(0.20)
+		FCOP A 1 A_SetPitch(0.30)
+		FCOP A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		FCOP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FCOP A 1 A_SetPitch(-0.30)
+		FCOP A 1 A_SetPitch(-0.30)
+		FCOP A 1 A_SetPitch(-0.30)
+		FCOP A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		FCOP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FCOP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FCOP A 1 A_SetPitch(0.30)
+		FCOP A 1 A_SetPitch(0.30)
+		FCOP A 1 A_SetPitch(0.30)
+		FCOP A 1 A_SetPitch(0.30)
+		FCOP A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        FCOP BC 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FCOP DE 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        FCOP BC 4 A_SetPitch(-0.30)
+		FCOP DE 4 A_SetPitch(0.50)
+        FCOP BC 4 A_SetPitch(-0.20)
+		FCOP DE 4 A_SetPitch(0.25)
+		FCOP A 0 A_Jump(26, "Vomit")
+        FCOP BC 4 A_SetPitch(-0.90)
+		FCOP DE 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		FCOP NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 1 A_Stop
+		FCOP N 0 A_PlaySound("player/vomit", 2)
+		FCOP NNNNNNNNNN 1 A_Stop
+		FCOP N 0 A_SetPitch(-0.85)
+		FCOP NNNNNNNN 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		FCOP A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		FCOP NNNNNNNN 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		FCOP A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		FCOP KLM 12 BRIGHT
+		Goto Spawn
+	Missile_Drunk:
+		FCOP A 0 A_SetAngle(random(angle-12,angle+12))
+		FCOP KKKKKK 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		FCOP A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		FCOP E 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		FCOP EEEEEE 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Fire:
+		FCOP N 4 
+		FCOP N 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		FCOP N 4 
+		FCOP N 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		FCOP A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		FCOP N 4 A_SetPitch(0.75)
+		FCOP N 4 A_Pain
+		Goto Spawn_Drunk
+	XDeath:
+	Death:
+		FCOP A 0 A_TakeInventory("DrunkLevel", 100)
+		FCOP F 10 A_XScream
+		FCOP G 10 A_PlayerScream
+		FCOP H 10 A_NoBlocking
+		FCOP I 10
+		FCOP J -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Mingebag : PlayerPawn
+{
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "Mingebag"
+	Player.CrouchSprite "PLYC"
+	Player.StartItem "SandBox.MatterManipulator", 1
+	Player.StartItem "Sandbox-FRIENDS", 99
+	Player.StartItem "Sandbox-ArachnotronFriendSpawner", 64
+	Player.StartItem "Sandbox-ArchvileFriendSpawner", 64
+	Player.StartItem "Sandbox-BaronOfHellFriendSpawner", 64
+	Player.StartItem "Sandbox-HellKnightFriendSpawner", 64
+	Player.StartItem "Sandbox-CacodemonFriendSpawner", 64
+	Player.StartItem "Sandbox-CyberdemonFriendSpawner", 64
+	Player.StartItem "Sandbox-DemonFriendSpawner", 64
+	Player.StartItem "Sandbox-SpectreFriendSpawner", 64
+	Player.StartItem "Sandbox-ChaingunGuyFriendSpawner", 64
+	Player.StartItem "Sandbox-DoomImpFriendSpawner", 64
+	Player.StartItem "Sandbox-FatsoFriendSpawner", 64
+	Player.StartItem "Sandbox-LostSoulFriendSpawner", 64
+	Player.StartItem "Sandbox-PainElementalFriendSpawner", 64
+	Player.StartItem "Sandbox-RevenantFriendSpawner", 64
+	Player.StartItem "Sandbox-ShotgunGuyFriendSpawner", 64
+	Player.StartItem "Sandbox-SpiderMastermindFriendSpawner", 64
+	Player.StartItem "Sandbox-WolfensteinSSFriendSpawner", 64
+	Player.StartItem "Sandbox-ZombieManFriendSpawner", 64
+	Player.StartItem "Sandbox-ENEMIES", 99
+	Player.StartItem "Sandbox-ArachnotronEnemySpawner", 64
+	Player.StartItem "Sandbox-ArchvileEnemySpawner", 64
+	Player.StartItem "Sandbox-BaronOfHellEnemySpawner", 64
+	Player.StartItem "Sandbox-HellKnightEnemySpawner", 64
+	Player.StartItem "Sandbox-CacodemonEnemySpawner", 64
+	Player.StartItem "Sandbox-CyberdemonEnemySpawner", 64
+	Player.StartItem "Sandbox-DemonEnemySpawner", 64
+	Player.StartItem "Sandbox-SpectreEnemySpawner", 64
+	Player.StartItem "Sandbox-ChaingunGuyEnemySpawner", 64
+	Player.StartItem "Sandbox-DoomImpEnemySpawner", 64
+	Player.StartItem "Sandbox-FatsoEnemySpawner", 64
+	Player.StartItem "Sandbox-LostSoulEnemySpawner", 64
+	Player.StartItem "Sandbox-PainElementalEnemySpawner", 64
+	Player.StartItem "Sandbox-RevenantEnemySpawner", 64
+	Player.StartItem "Sandbox-ShotgunGuyEnemySpawner", 64
+	Player.StartItem "Sandbox-SpiderMastermindEnemySpawner", 64
+	Player.StartItem "Sandbox-WolfensteinSSEnemySpawner", 64
+	Player.StartItem "Sandbox-ZombieManEnemySpawner", 64
+	Player.StartItem "Sandbox-AMMUNATION", 99
+	Player.StartItem "Sandbox-BFG9000Giver", 64
+	Player.StartItem "Sandbox-ChaingunGiver", 64
+	Player.StartItem "Sandbox-ChainsawGiver", 64
+	Player.StartItem "Sandbox-FistGiver", 64
+	Player.StartItem "Sandbox-PistolGiver", 64
+	Player.StartItem "Sandbox-PlasmaRifleGiver", 64
+	Player.StartItem "Sandbox-RocketLauncherGiver", 64
+	Player.StartItem "Sandbox-ShotgunGiver", 64
+	Player.StartItem "Sandbox-SuperShotgunGiver", 64
+	Player.StartItem "Sandbox-BackpackGiver", 64
+	Player.StartItem "Sandbox-POWERUPS", 99
+	Player.StartItem "Sandbox-AllmapGiver", 64
+	Player.StartItem "Sandbox-ArmorBonusGiver", 64
+	Player.StartItem "Sandbox-BerserkGiver", 64
+	Player.StartItem "Sandbox-BlueArmorGiver", 64
+	Player.StartItem "Sandbox-BlurSphereGiver", 64
+	Player.StartItem "Sandbox-GreenArmorGiver", 64
+	Player.StartItem "Sandbox-HealthBonusGiver", 64
+	Player.StartItem "Sandbox-InfraredGiver", 64
+	Player.StartItem "Sandbox-InvulnerabilitySphereGiver", 64
+	Player.StartItem "Sandbox-MedikitGiver", 64
+	Player.StartItem "Sandbox-MegasphereGiver", 64
+	Player.StartItem "Sandbox-RadSuitGiver", 64
+	Player.StartItem "Sandbox-SoulsphereGiver", 64
+	Player.StartItem "Sandbox-StimpackGiver", 64
+	Player.StartItem "Sandbox-KEYS", 99
+	Player.StartItem "Sandbox-BlueCardGiver", 64
+	Player.StartItem "Sandbox-BlueSkullGiver", 64
+	Player.StartItem "Sandbox-RedCardGiver", 64
+	Player.StartItem "Sandbox-RedSkullGiver", 64
+	Player.StartItem "Sandbox-YellowCardGiver", 64
+	Player.StartItem "Sandbox-YellowSkullGiver", 64
+	Player.StartItem "Sandbox-PROPS", 99
+	Player.StartItem "Sandbox-ColumnSpawner", 64
+	Player.StartItem "Sandbox-BurningBarrelSpawner", 64
+	Player.StartItem "Sandbox-ExplosiveBarrelSpawner", 64
+	Player.StartItem "Sandbox-TechLampSpawner", 64
+	Player.StartItem "Sandbox-TechLamp2Spawner", 64
+	Player.StartItem "Sandbox-TechPillarSpawner", 64
+	Player.StartItem "Sandbox-BigTreeSpawner", 64
+	Player.StartItem "Sandbox-BlueTorchSpawner", 64
+	Player.StartItem "Sandbox-CandelabraSpawner", 64
+	Player.StartItem "Sandbox-CandlestickSpawner", 64
+	Player.StartItem "Sandbox-EvilEyeSpawner", 64
+	Player.StartItem "Sandbox-FloatingSkullSpawner", 64
+	Player.StartItem "Sandbox-GreenTorchSpawner", 64
+	Player.StartItem "Sandbox-HeadCandlesSpawner", 64
+	Player.StartItem "Sandbox-HeadOnAStickSpawner", 64
+	Player.StartItem "Sandbox-HeadsOnAStickSpawner", 64
+	Player.StartItem "Sandbox-HeartColumnSpawner", 64
+	Player.StartItem "Sandbox-RedTorchSpawner", 64
+	Player.StartItem "Sandbox-ShortBlueTorchSpawner", 64
+	Player.StartItem "Sandbox-ShortGreenColumnSpawner", 64
+	Player.StartItem "Sandbox-ShortGreenTorchSpawner", 64
+	Player.StartItem "Sandbox-ShortRedColumnSpawner", 64
+	Player.StartItem "Sandbox-ShortRedTorchSpawner", 64
+	Player.StartItem "Sandbox-SkullColumnSpawner", 64
+	Player.StartItem "Sandbox-StalagtiteSpawner", 64
+	Player.StartItem "Sandbox-TallGreenColumnSpawner", 64
+	Player.StartItem "Sandbox-TallRedColumnSpawner", 64
+	Player.StartItem "Sandbox-TorchTreeSpawner", 64
+	Player.StartItem "Sandbox-DeadCacodemonSpawner", 64
+	Player.StartItem "Sandbox-DeadDemonSpawner", 64
+	Player.StartItem "Sandbox-DeadDoomImpSpawner", 64
+	Player.StartItem "Sandbox-DeadMarineSpawner", 64
+	Player.StartItem "Sandbox-DeadShotgunGuySpawner", 64
+	Player.StartItem "Sandbox-DeadZombieManSpawner", 64
+	Player.StartItem "Sandbox-GibbedMarineSpawner", 64
+	Player.StartItem "Sandbox-BloodyTwitchSpawner", 64
+	Player.StartItem "Sandbox-BrainStemSpawner", 64
+	Player.StartItem "Sandbox-ColonGibsSpawner", 64
+	Player.StartItem "Sandbox-DeadStickSpawner", 64
+	Player.StartItem "Sandbox-HangBNoBrainSpawner", 64
+	Player.StartItem "Sandbox-HangNoGutsSpawner", 64
+	Player.StartItem "Sandbox-HangTLookingDownSpawner", 64
+	Player.StartItem "Sandbox-HangTLookingUpSpawner", 64
+	Player.StartItem "Sandbox-HangTNoBrainSpawner", 64
+	Player.StartItem "Sandbox-HangTSkullSpawner", 64
+	Player.StartItem "Sandbox-LiveStickSpawner", 64
+	Player.StartItem "Sandbox-Meat2Spawner", 64
+	Player.StartItem "Sandbox-Meat3Spawner", 64
+	Player.StartItem "Sandbox-Meat4Spawner", 64
+	Player.StartItem "Sandbox-Meat5Spawner", 64
+	Player.StartItem "Sandbox-SmallBloodPoolSpawner", 64
+	Player.StartItem "Dick"
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY H 0 A_PlayerSkinCheck("AltSkinDeath")
+	Death1:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY O 0 A_PlayerSkinCheck("AltSkinXDeath")
+	XDeath1:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	AltSkinDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 6
+		PLAY I 6 A_PlayerScream
+		PLAY JK 6
+		PLAY L 6 A_NoBlocking
+		PLAY MNO 6
+		PLAY P -1
+		Stop
+	AltSkinXDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY Q 5 A_PlayerScream
+		PLAY R 0 A_NoBlocking
+		PLAY R 5 A_SkullPop
+		PLAY STUVWX 5
+		PLAY Y -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Mage : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Health 100
+	ReactionTime 0
+	PainChance 255
+	Radius 16
+	Height 64
+	Speed 1
+	+NOSKIN
+	+NODAMAGETHRUST
+	+NOTHRUSTWHENINVUL
+	PainSound "PlayerMagePain"
+	RadiusDamageFactor 0.25
+	//Player.JumpZ 9
+	Player.Viewheight 48
+	Player.SpawnClass "Mage"
+	Player.DisplayName "Mag"
+	Player.SoundClass "mageslayer"
+	Player.ScoreIcon "MAGEFACE"
+	Player.InvulnerabilityMode "Reflective"
+	Player.HealRadiusType "Mana"
+	Player.HexenArmor 5, 5, 15, 10, 25
+	Player.StartItem "Dick"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "MWeapWand2"
+	Player.StartItem "MWeapFists"
+	Player.StartItem "MWeapShotgun"
+	Player.StartItem "Mana1", 200
+	Player.StartItem "Mana2", 200
+	Player.StartItem "Shell", 100
+	Player.StartItem "Artipoisonbag", 25
+	Player.ForwardMove 0.88, 0.92
+	Player.SideMove 0.875, 0.925
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		MAGE A 1
+		MAGE A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		MAGE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		MAGE A 20
+		MAGE A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		MAGE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		MAGE A 1 A_SetPitch(-0.20)
+		MAGE A 1 A_SetPitch(0.20)
+		MAGE A 1 A_SetPitch(0.30)
+		MAGE A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		MAGE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		MAGE A 1 A_SetPitch(-0.30)
+		MAGE A 1 A_SetPitch(-0.30)
+		MAGE A 1 A_SetPitch(-0.30)
+		MAGE A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		MAGE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		MAGE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		MAGE A 1 A_SetPitch(0.30)
+		MAGE A 1 A_SetPitch(0.30)
+		MAGE A 1 A_SetPitch(0.30)
+		MAGE A 1 A_SetPitch(0.30)
+		MAGE A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        MAGE AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		MAGE CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        MAGE AB 4 A_SetPitch(-0.30)
+		MAGE CD 4 A_SetPitch(0.50)
+        MAGE AB 4 A_SetPitch(-0.20)
+		MAGE CD 4 A_SetPitch(0.25)
+		MAGE A 0 A_Jump(26, "Vomit")
+        MAGE AB 4 A_SetPitch(-0.90)
+		MAGE CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		MAGE GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		MAGE G 0 A_PlaySound("player/vomit", 2)
+		MAGE GGGGGGGGGG 1 A_Stop
+		MAGE G 0 A_SetPitch(-0.85)
+		MAGE GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		MAGE A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		MAGE GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		MAGE A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		MAGE E 12 
+		Goto Spawn
+	Missile_Drunk:
+		MAGE A 0 A_SetAngle(random(angle-12,angle+12))
+		MAGE EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		MAGE A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		MAGE F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		MAGE FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		MAGE A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		MAGE G 4 
+		MAGE G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		MAGE G 4 
+		MAGE G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		MAGE A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		MAGE G 4 A_SetPitch(0.75)
+		MAGE G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		MAGE A 0 A_TakeInventory("DrunkLevel", 100)
+		MAGE H 6
+		MAGE I 6 A_PlayerScream
+		MAGE JK 6
+		MAGE L 6 A_NoBlocking
+		MAGE M 6
+		MAGE N -1
+		Stop     
+	XDeath:
+		MAGE A 0 A_TakeInventory("DrunkLevel", 100)
+		MAGE O 5 A_XScream
+		MAGE P 5
+		MAGE R 5 A_NoBlocking
+		MAGE STUVW 5
+		MAGE X -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Healer : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Medic"
+	Player.StartItem "Dick"
+	Player.StartItem "Curing_Cannon"
+	Player.StartItem "HealthPack"
+	Player.StartItem "HealthPacks", 10
+	Player.StartItem "Medic_HandGun"
+	Player.StartItem "AntiTechgrenade", 5
+	Player.StartItem "Unarmed"
+	Player.StartItem "Cell", 96
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	DamageFactor "Normal", 0.9
+	DamageFactor "Slime", 3
+	States
+	{
+	Spawn:
+		PBAK A 10
+		PBAK A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		PBAK A 140
+		PBAK A 0 A_JumpIf (z-floorz>0, "Spawn")
+		PBAK A 0 A_JumpIfInventory("Health", 100, "Spawn")
+		PBAK A 0 ACS_Execute(988,0)
+		Loop
+	Spawn_Drunk:
+		PBAK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PBAK A 20
+		PBAK A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PBAK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PBAK A 1 A_SetPitch(-0.20)
+		PBAK A 1 A_SetPitch(0.20)
+		PBAK A 1 A_SetPitch(0.30)
+		PBAK A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PBAK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PBAK A 1 A_SetPitch(-0.30)
+		PBAK A 1 A_SetPitch(-0.30)
+		PBAK A 1 A_SetPitch(-0.30)
+		PBAK A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PBAK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PBAK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PBAK A 1 A_SetPitch(0.30)
+		PBAK A 1 A_SetPitch(0.30)
+		PBAK A 1 A_SetPitch(0.30)
+		PBAK A 1 A_SetPitch(0.30)
+		PBAK A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PBAK AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PBAK CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PBAK AB 4 A_SetPitch(-0.30)
+		PBAK CD 4 A_SetPitch(0.50)
+        PBAK AB 4 A_SetPitch(-0.20)
+		PBAK CD 4 A_SetPitch(0.25)
+		PBAK A 0 A_Jump(26, "Vomit")
+        PBAK AB 4 A_SetPitch(-0.90)
+		PBAK CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PBAK GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PBAK G 0 A_PlaySound("player/vomit", 2)
+		PBAK GGGGGGGGGG 1 A_Stop
+		PBAK G 0 A_SetPitch(-0.85)
+		PBAK GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PBAK A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PBAK GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PBAK A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PBAK E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PBAK A 0 A_SetAngle(random(angle-12,angle+12))
+		PBAK EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PBAK A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PBAK F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PBAK FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PBAK A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PBAK G 4 
+		PBAK G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PBAK G 4 
+		PBAK G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PBAK A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PBAK G 4 A_SetPitch(0.75)
+		PBAK G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PBAK A 0 A_TakeInventory("DrunkLevel", 100)
+		PBAK H 10
+		PBAK I 10 A_PlayerScream
+		PBAK J 10 A_NoBlocking
+		PBAK KLM 10
+		PBAK N -1
+		Stop
+	XDeath:
+		PBAK A 0 A_TakeInventory("DrunkLevel", 100)
+		PBAK O 5
+		PBAK P 5 A_XScream
+		PBAK Q 5 A_NoBlocking
+		PBAK RSTUV 5
+		PBAK W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR ImbaPers : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Scale 0.8
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Imba Pers"
+	Player.SoundClass "ImbaPers"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		ENFO A 1
+		ENFO A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		ENFO A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ENFO A 20
+		ENFO A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		ENFO A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ENFO A 1 A_SetPitch(-0.20)
+		ENFO A 1 A_SetPitch(0.20)
+		ENFO A 1 A_SetPitch(0.30)
+		ENFO A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		ENFO A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ENFO A 1 A_SetPitch(-0.30)
+		ENFO A 1 A_SetPitch(-0.30)
+		ENFO A 1 A_SetPitch(-0.30)
+		ENFO A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		ENFO A 0 A_JumpIf (momx > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy > 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momx < 0, "See_Drunk")
+		ENFO A 0 A_JumpIf (momy < 0, "See_Drunk")
+		ENFO A 1 A_SetPitch(0.30)
+		ENFO A 1 A_SetPitch(0.30)
+		ENFO A 1 A_SetPitch(0.30)
+		ENFO A 1 A_SetPitch(0.30)
+		ENFO A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        ENFO AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		ENFO CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        ENFO AB 4 A_SetPitch(-0.30)
+		ENFO CD 4 A_SetPitch(0.50)
+        ENFO AB 4 A_SetPitch(-0.20)
+		ENFO CD 4 A_SetPitch(0.25)
+		ENFO A 0 A_Jump(26, "Vomit")
+        ENFO AB 4 A_SetPitch(-0.90)
+		ENFO CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		ENFO GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		ENFO G 0 A_PlaySound("player/vomit", 2)
+		ENFO GGGGGGGGGG 1 A_Stop
+		ENFO G 0 A_SetPitch(-0.85)
+		ENFO GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		ENFO A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		ENFO GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		ENFO A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		ENFO E 12 
+		Goto Spawn
+	Missile_Drunk:
+		ENFO A 0 A_SetAngle(random(angle-12,angle+12))
+		ENFO EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		ENFO A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		ENFO F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		ENFO FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		ENFO A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		ENFO G 4 
+		ENFO G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		ENFO G 4 
+		ENFO G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		ENFO A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		ENFO G 4 A_SetPitch(0.75)
+		ENFO G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		ENFO A 0 A_TakeInventory("DrunkLevel", 100)
+		ENFO H 10
+		ENFO I 10 A_PlayerScream
+		ENFO J 10 A_NoBlocking
+		ENFO KLM 10
+		ENFO N -1
+		Stop
+	XDeath:
+		ENFO A 0 A_TakeInventory("DrunkLevel", 100)
+		ENFO O 5
+		ENFO P 5 A_XScream
+		ENFO Q 5 A_NoBlocking
+		ENFO RSTUV 5
+		ENFO W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR CalebClass : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Caleb"
+	Player.SoundClass "Caleb"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		CALP A 1
+		CALP A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		CALP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CALP A 20
+		CALP A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		CALP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CALP A 1 A_SetPitch(-0.20)
+		CALP A 1 A_SetPitch(0.20)
+		CALP A 1 A_SetPitch(0.30)
+		CALP A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		CALP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CALP A 1 A_SetPitch(-0.30)
+		CALP A 1 A_SetPitch(-0.30)
+		CALP A 1 A_SetPitch(-0.30)
+		CALP A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		CALP A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CALP A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CALP A 1 A_SetPitch(0.30)
+		CALP A 1 A_SetPitch(0.30)
+		CALP A 1 A_SetPitch(0.30)
+		CALP A 1 A_SetPitch(0.30)
+		CALP A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        CALP AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CALP CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        CALP AB 4 A_SetPitch(-0.30)
+		CALP CD 4 A_SetPitch(0.50)
+        CALP AB 4 A_SetPitch(-0.20)
+		CALP CD 4 A_SetPitch(0.25)
+		CALP A 0 A_Jump(26, "Vomit")
+        CALP AB 4 A_SetPitch(-0.90)
+		CALP CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		CALP GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		CALP G 0 A_PlaySound("player/vomit", 2)
+		CALP GGGGGGGGGG 1 A_Stop
+		CALP G 0 A_SetPitch(-0.85)
+		CALP GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		CALP A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		CALP GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		CALP A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		CALP E 12 
+		Goto Spawn
+	Missile_Drunk:
+		CALP A 0 A_SetAngle(random(angle-12,angle+12))
+		CALP EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		CALP A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		CALP F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		CALP FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		CALP A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		CALP G 4 
+		CALP G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		CALP G 4 
+		CALP G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		CALP A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		CALP G 4 A_SetPitch(0.75)
+		CALP G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		CALP A 0 A_TakeInventory("DrunkLevel", 100)
+		CALP H 10
+		CALP I 10 A_PlayerScream
+		CALP J 10 A_NoBlocking
+		CALP KLM 10
+		CALP N -1
+		Stop
+	XDeath:
+		CALP A 0 A_TakeInventory("DrunkLevel", 100)
+		CALP O 5
+		CALP P 5 A_XScream
+		CALP Q 5 A_NoBlocking
+		CALP RSTUV 5
+		CALP W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Troll : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Troll"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		TROL A 1
+		TROL A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		TROL A 0 A_JumpIf (momx > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momx < 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy < 0, "See_Drunk")
+		TROL A 20
+		TROL A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		TROL A 0 A_JumpIf (momx > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momx < 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy < 0, "See_Drunk")
+		TROL A 1 A_SetPitch(-0.20)
+		TROL A 1 A_SetPitch(0.20)
+		TROL A 1 A_SetPitch(0.30)
+		TROL A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		TROL A 0 A_JumpIf (momx > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momx < 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy < 0, "See_Drunk")
+		TROL A 1 A_SetPitch(-0.30)
+		TROL A 1 A_SetPitch(-0.30)
+		TROL A 1 A_SetPitch(-0.30)
+		TROL A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		TROL A 0 A_JumpIf (momx > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy > 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momx < 0, "See_Drunk")
+		TROL A 0 A_JumpIf (momy < 0, "See_Drunk")
+		TROL A 1 A_SetPitch(0.30)
+		TROL A 1 A_SetPitch(0.30)
+		TROL A 1 A_SetPitch(0.30)
+		TROL A 1 A_SetPitch(0.30)
+		TROL A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        TROL AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		TROL CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        TROL AB 4 A_SetPitch(-0.30)
+		TROL CD 4 A_SetPitch(0.50)
+        TROL AB 4 A_SetPitch(-0.20)
+		TROL CD 4 A_SetPitch(0.25)
+		TROL A 0 A_Jump(26, "Vomit")
+        TROL AB 4 A_SetPitch(-0.90)
+		TROL CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		TROL GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		TROL G 0 A_PlaySound("player/vomit", 2)
+		TROL GGGGGGGGGG 1 A_Stop
+		TROL G 0 A_SetPitch(-0.85)
+		TROL GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		TROL A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		TROL GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		TROL A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		TROL E 12 
+		Goto Spawn
+	Missile_Drunk:
+		TROL A 0 A_SetAngle(random(angle-12,angle+12))
+		TROL EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		TROL A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		TROL F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		TROL FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		TROL A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		TROL G 4 
+		TROL G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		TROL G 4 
+		TROL G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		TROL A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		TROL G 4 A_SetPitch(0.75)
+		TROL G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		TROL A 0 A_TakeInventory("DrunkLevel", 100)
+		TROL H 10
+		TROL I 10 A_PlayerScream
+		TROL J 10 A_NoBlocking
+		TROL KLM 10
+		TROL N -1
+		Stop
+	XDeath:
+		TROL A 0 A_TakeInventory("DrunkLevel", 100)
+		TROL O 5
+		TROL P 5 A_XScream
+		TROL Q 5 A_NoBlocking
+		TROL RSTUV 5
+		TROL W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Ya_Zhe_MaTb : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Ya_Zhe_MaTb"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Brutal_Player : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Brutal_Player"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR DartPower : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 0.75
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	+NOSKIN
+	Player.DamageScreenColor "00 88 FF"
+	Player.DisplayName "SIMPSON-NEKEK"
+	Player.SoundClass "DartPower"
+	//Player.StartItem "IonRifle"
+	Player.StartItem "Icegun"
+	Player.StartItem "UACM360"
+	Player.StartItem "Gothic_Shotgun"
+	Player.StartItem "Golden_Eagle"
+	Player.StartItem "DartPowerFists"
+	Player.StartItem "Cell", 600
+	Player.StartItem "Clip", 400
+	Player.StartItem "Shell", 100
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Dick"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		CHUB A 1
+		CHUB A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		CHUB A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CHUB A 20
+		CHUB A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		CHUB A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CHUB A 1 A_SetPitch(-0.20)
+		CHUB A 1 A_SetPitch(0.20)
+		CHUB A 1 A_SetPitch(0.30)
+		CHUB A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		CHUB A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CHUB A 1 A_SetPitch(-0.30)
+		CHUB A 1 A_SetPitch(-0.30)
+		CHUB A 1 A_SetPitch(-0.30)
+		CHUB A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		CHUB A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CHUB A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CHUB A 1 A_SetPitch(0.30)
+		CHUB A 1 A_SetPitch(0.30)
+		CHUB A 1 A_SetPitch(0.30)
+		CHUB A 1 A_SetPitch(0.30)
+		CHUB A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        CHUB AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CHUB CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        CHUB AB 4 A_SetPitch(-0.30)
+		CHUB CD 4 A_SetPitch(0.50)
+        CHUB AB 4 A_SetPitch(-0.20)
+		CHUB CD 4 A_SetPitch(0.25)
+		CHUB A 0 A_Jump(26, "Vomit")
+        CHUB AB 4 A_SetPitch(-0.90)
+		CHUB CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		CHUB GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		CHUB G 0 A_PlaySound("player/vomit", 2)
+		CHUB GGGGGGGGGG 1 A_Stop
+		CHUB G 0 A_SetPitch(-0.85)
+		CHUB GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		CHUB A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		CHUB GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		CHUB A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		CHUB E 12 
+		Goto Spawn
+	Missile_Drunk:
+		CHUB A 0 A_SetAngle(random(angle-12,angle+12))
+		CHUB EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		CHUB A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		CHUB F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		CHUB FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		CHUB A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		CHUB G 4 
+		CHUB G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		CHUB G 4 
+		CHUB G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		CHUB A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		CHUB G 4 A_SetPitch(0.75)
+		CHUB G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		CHUB A 0 A_TakeInventory("DrunkLevel", 100)
+		CHUB H 10
+		CHUB I 10 A_PlayerScream
+		CHUB J 10 A_NoBlocking
+		CHUB KLM 10
+		CHUB N -1
+		Stop
+	XDeath:
+		CHUB A 0 A_TakeInventory("DrunkLevel", 100)
+		CHUB O 5
+		CHUB P 5 A_XScream
+		CHUB Q 5 A_NoBlocking
+		CHUB RSTUV 5
+		CHUB W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Ronikari : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Ronikari"
+	Player.SoundClass "Ronikari"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		RONI A 1
+		RONI A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		RONI A 0 A_JumpIf (momx > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momx < 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy < 0, "See_Drunk")
+		RONI A 20
+		RONI A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		RONI A 0 A_JumpIf (momx > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momx < 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy < 0, "See_Drunk")
+		RONI A 1 A_SetPitch(-0.20)
+		RONI A 1 A_SetPitch(0.20)
+		RONI A 1 A_SetPitch(0.30)
+		RONI A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		RONI A 0 A_JumpIf (momx > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momx < 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy < 0, "See_Drunk")
+		RONI A 1 A_SetPitch(-0.30)
+		RONI A 1 A_SetPitch(-0.30)
+		RONI A 1 A_SetPitch(-0.30)
+		RONI A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		RONI A 0 A_JumpIf (momx > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy > 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momx < 0, "See_Drunk")
+		RONI A 0 A_JumpIf (momy < 0, "See_Drunk")
+		RONI A 1 A_SetPitch(0.30)
+		RONI A 1 A_SetPitch(0.30)
+		RONI A 1 A_SetPitch(0.30)
+		RONI A 1 A_SetPitch(0.30)
+		RONI A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        RONI AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		RONI CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        RONI AB 4 A_SetPitch(-0.30)
+		RONI CD 4 A_SetPitch(0.50)
+        RONI AB 4 A_SetPitch(-0.20)
+		RONI CD 4 A_SetPitch(0.25)
+		RONI A 0 A_Jump(26, "Vomit")
+        RONI AB 4 A_SetPitch(-0.90)
+		RONI CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		RONI GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		RONI G 0 A_PlaySound("player/vomit", 2)
+		RONI GGGGGGGGGG 1 A_Stop
+		RONI G 0 A_SetPitch(-0.85)
+		RONI GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		RONI A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		RONI GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		RONI A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		RONI E 12 
+		Goto Spawn
+	Missile_Drunk:
+		RONI A 0 A_SetAngle(random(angle-12,angle+12))
+		RONI EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		RONI A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		RONI F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		RONI FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		RONI A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		RONI G 4 
+		RONI G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		RONI G 4 
+		RONI G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		RONI A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		RONI G 4 A_SetPitch(0.75)
+		RONI G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		RONI A 0 A_TakeInventory("DrunkLevel", 100)
+		RONI H 10
+		RONI I 10 A_PlayerScream
+		RONI J 10 A_NoBlocking
+		RONI KLM 10
+		RONI N -1
+		Stop
+	XDeath:
+		RONI A 0 A_TakeInventory("DrunkLevel", 100)
+		RONI O 5
+		RONI P 5 A_XScream
+		RONI Q 5 A_NoBlocking
+		RONI RSTUV 5
+		RONI W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR NickBock : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: NickBock"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Ovlab : PlayerPawn
+{
+	Scale 1.1
+	DamageFactor "PrisonPower", 100.0
+	Speed 0.65
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	+NOSKIN
+	Player.DamageScreenColor "FF 00 00"
+	Player.DisplayName "Ovlab"
+	Player.SoundClass "ovlab"
+	Player.StartItem "ScatterPistol"
+	Player.StartItem "Shredder"
+	Player.StartItem "Deviation"
+	Player.StartItem "BHGen"
+	Player.StartItem "MultiProjectileWeapon"
+	Player.StartItem "Karasawa"
+	Player.StartItem "Quadvolgue"
+	Player.StartItem "M16"
+	Player.StartItem "SMG"
+	Player.StartItem "DoubleSMG"
+	Player.StartItem "Rifle"
+	Player.StartItem "Unarmed"
+	Player.StartItem "RifleAmmo", 150
+	Player.StartItem "Cell", 600
+	Player.StartItem "Shell", 100
+	Player.StartItem "RocketAmmo", 100
+	Player.StartItem "AmmoCount", 300
+	Player.StartItem "Clip", 400
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Dick"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		WRIR A 1
+		WRIR A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		WRIR A 0 A_JumpIf (momx > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momx < 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy < 0, "See_Drunk")
+		WRIR A 20
+		WRIR A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		WRIR A 0 A_JumpIf (momx > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momx < 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy < 0, "See_Drunk")
+		WRIR A 1 A_SetPitch(-0.20)
+		WRIR A 1 A_SetPitch(0.20)
+		WRIR A 1 A_SetPitch(0.30)
+		WRIR A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		WRIR A 0 A_JumpIf (momx > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momx < 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy < 0, "See_Drunk")
+		WRIR A 1 A_SetPitch(-0.30)
+		WRIR A 1 A_SetPitch(-0.30)
+		WRIR A 1 A_SetPitch(-0.30)
+		WRIR A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		WRIR A 0 A_JumpIf (momx > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy > 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momx < 0, "See_Drunk")
+		WRIR A 0 A_JumpIf (momy < 0, "See_Drunk")
+		WRIR A 1 A_SetPitch(0.30)
+		WRIR A 1 A_SetPitch(0.30)
+		WRIR A 1 A_SetPitch(0.30)
+		WRIR A 1 A_SetPitch(0.30)
+		WRIR A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        WRIR AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		WRIR CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        WRIR AB 4 A_SetPitch(-0.30)
+		WRIR CD 4 A_SetPitch(0.50)
+        WRIR AB 4 A_SetPitch(-0.20)
+		WRIR CD 4 A_SetPitch(0.25)
+		WRIR A 0 A_Jump(26, "Vomit")
+        WRIR AB 4 A_SetPitch(-0.90)
+		WRIR CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		WRIR GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		WRIR G 0 A_PlaySound("player/vomit", 2)
+		WRIR GGGGGGGGGG 1 A_Stop
+		WRIR G 0 A_SetPitch(-0.85)
+		WRIR GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		WRIR A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		WRIR GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		WRIR A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		WRIR E 12 
+		Goto Spawn
+	Missile_Drunk:
+		WRIR A 0 A_SetAngle(random(angle-12,angle+12))
+		WRIR EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		WRIR A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		WRIR F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		WRIR FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		WRIR A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		WRIR G 4 
+		WRIR G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		WRIR G 4 
+		WRIR G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		WRIR A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		WRIR G 4 A_SetPitch(0.75)
+		WRIR G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		WRIR A 0 A_TakeInventory("DrunkLevel", 100)
+		WRIR H 10
+		WRIR I 10 A_PlayerScream
+		WRIR J 10 A_NoBlocking
+		WRIR KLM 10
+		WRIR N -1
+		Stop
+	XDeath:
+		WRIR A 0 A_TakeInventory("DrunkLevel", 100)
+		WRIR O 5
+		WRIR P 5 A_XScream
+		WRIR Q 5 A_NoBlocking
+		WRIR RSTUV 5
+		WRIR W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR LazyPanda : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 2.0 // над спросить // 2.0 или 2? WTF?
+	Health 100
+	Radius 16
+	Height 56 //151 // полтарашка же // шучу // UPD 2017: Не шучу, лол
+	Mass 41 // ну как-бы ээээ
+	PainChance 255
+	+NOSKIN
+	Player.DamageScreenColor "FF 00 FF"
+	Player.DisplayName "LazyPanda"
+	Player.SoundClass "lazypanda"
+	Player.StartItem "Chainsaw"
+	Player.StartItem "DOOM42k16SSG"
+	Player.StartItem "BFG10K"
+	Player.StartItem "Pussy"
+	Player.StartItem "Clip", 400
+	Player.StartItem "Shell", 100
+	Player.StartItem "RocketAmmo", 100
+	Player.StartItem "Cell", 600
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		FPL3 A 1
+		FPL3 A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		FPL3 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FPL3 A 20
+		FPL3 A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		FPL3 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FPL3 A 1 A_SetPitch(-0.20)
+		FPL3 A 1 A_SetPitch(0.20)
+		FPL3 A 1 A_SetPitch(0.30)
+		FPL3 A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		FPL3 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FPL3 A 1 A_SetPitch(-0.30)
+		FPL3 A 1 A_SetPitch(-0.30)
+		FPL3 A 1 A_SetPitch(-0.30)
+		FPL3 A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		FPL3 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FPL3 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FPL3 A 1 A_SetPitch(0.30)
+		FPL3 A 1 A_SetPitch(0.30)
+		FPL3 A 1 A_SetPitch(0.30)
+		FPL3 A 1 A_SetPitch(0.30)
+		FPL3 A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        FPL3 AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FPL3 CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        FPL3 AB 4 A_SetPitch(-0.30)
+		FPL3 CD 4 A_SetPitch(0.50)
+        FPL3 AB 4 A_SetPitch(-0.20)
+		FPL3 CD 4 A_SetPitch(0.25)
+		FPL3 A 0 A_Jump(26, "Vomit")
+        FPL3 AB 4 A_SetPitch(-0.90)
+		FPL3 CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		FPL3 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		FPL3 G 0 A_PlaySound("player/vomit", 2)
+		FPL3 GGGGGGGGGG 1 A_Stop
+		FPL3 G 0 A_SetPitch(-0.85)
+		FPL3 GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		FPL3 A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		FPL3 GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		FPL3 A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		FPL3 E 12 
+		Goto Spawn
+	Missile_Drunk:
+		FPL3 A 0 A_SetAngle(random(angle-12,angle+12))
+		FPL3 EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		FPL3 A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		FPL3 F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		FPL3 FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		FPL3 A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		FPL3 G 4 
+		FPL3 G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		FPL3 G 4 
+		FPL3 G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		FPL3 A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		FPL3 G 4 A_SetPitch(0.75)
+		FPL3 G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		FPL3 A 0 A_TakeInventory("DrunkLevel", 100)
+		FPL3 H 10
+		FPL3 I 10 A_PlayerScream
+		FPL3 J 10 A_NoBlocking
+		FPL3 KLM 10
+		FPL3 N -1
+		Stop
+	XDeath:
+		FPL3 A 0 A_TakeInventory("DrunkLevel", 100)
+		FPL3 O 5
+		FPL3 P 5 A_XScream
+		FPL3 Q 5 A_NoBlocking
+		FPL3 RSTUV 5
+		FPL3 W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR NighMare : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 0.75
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	+NOSKIN
+	Player.DamageScreenColor "00 00 FF"
+	Player.DisplayName "WIP: NighMare"
+	Player.SoundClass "NighMare"
+	Player.StartItem "MurderKnife"
+	Player.StartItem "NighMareKatana"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Clip", 400
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Dick"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		1337 A 1
+		1337 A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		1337 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		1337 A 20
+		1337 A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		1337 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		1337 A 1 A_SetPitch(-0.20)
+		1337 A 1 A_SetPitch(0.20)
+		1337 A 1 A_SetPitch(0.30)
+		1337 A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		1337 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		1337 A 1 A_SetPitch(-0.30)
+		1337 A 1 A_SetPitch(-0.30)
+		1337 A 1 A_SetPitch(-0.30)
+		1337 A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		1337 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		1337 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		1337 A 1 A_SetPitch(0.30)
+		1337 A 1 A_SetPitch(0.30)
+		1337 A 1 A_SetPitch(0.30)
+		1337 A 1 A_SetPitch(0.30)
+		1337 A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        1337 AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		1337 CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        1337 AB 4 A_SetPitch(-0.30)
+		1337 CD 4 A_SetPitch(0.50)
+        1337 AB 4 A_SetPitch(-0.20)
+		1337 CD 4 A_SetPitch(0.25)
+		1337 A 0 A_Jump(26, "Vomit")
+        1337 AB 4 A_SetPitch(-0.90)
+		1337 CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		1337 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		1337 G 0 A_PlaySound("player/vomit", 2)
+		1337 GGGGGGGGGG 1 A_Stop
+		1337 G 0 A_SetPitch(-0.85)
+		1337 GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		1337 A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		1337 GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		1337 A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		1337 E 12 
+		Goto Spawn
+	Missile_Drunk:
+		1337 A 0 A_SetAngle(random(angle-12,angle+12))
+		1337 EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		1337 A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		1337 F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		1337 FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		1337 A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		1337 G 4 
+		1337 G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		1337 G 4 
+		1337 G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		1337 A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		1337 G 4 A_SetPitch(0.75)
+		1337 G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		1337 A 0 A_TakeInventory("DrunkLevel", 100)
+		1337 H 10
+		1337 I 10 A_PlayerScream
+		1337 J 10 A_NoBlocking
+		1337 KLM 10
+		1337 N -1
+		Stop
+	XDeath:
+		1337 A 0 A_TakeInventory("DrunkLevel", 100)
+		1337 O 5
+		1337 P 5 A_XScream
+		1337 Q 5 A_NoBlocking
+		1337 RSTUV 5
+		1337 W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Velaron : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Velaron"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Benellus : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Scale 0.5
+	Speed 1.25
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 5
+	+NOSKIN
+	BloodColor White
+	//Player.JumpZ 2.5
+	Player.DamageScreenColor "FF FF FF"
+	Player.DisplayName "Benellus"
+	Player.SoundClass "benellus"
+	Player.StartItem "Unarmed"
+	Player.StartItem "DUMP3RevenantBox"
+	Player.StartItem "DUMP3Gibmaker"
+	//Player.StartItem "DUMP3DarkPulseCannon"
+	Player.StartItem "DUMP3SirusBusterCannon"
+	Player.StartItem "DUMP3Fusion_Gun"
+	Player.StartItem "DUMP3CactusPipe"
+	Player.StartItem "DUMP3DualModeRifle"
+	//Player.StartItem "DUMP3IronAnnihilator"
+	Player.StartItem "DUMP3Tyrant"
+	Player.StartItem "DUMP3Wingman"
+	Player.StartItem "DUMP3IA7"
+	Player.StartItem "DUMP3ShiningHeartHammer"
+	Player.StartItem "Cell", 600
+	Player.StartItem "Shell", 100
+	Player.StartItem "RocketAmmo", 100
+	Player.StartItem "AmmoCount", 300
+	Player.StartItem "Clip", 400
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Dick"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		BENE A 1
+		BENE A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		BENE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		BENE A 20
+		BENE A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		BENE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		BENE A 1 A_SetPitch(-0.20)
+		BENE A 1 A_SetPitch(0.20)
+		BENE A 1 A_SetPitch(0.30)
+		BENE A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		BENE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		BENE A 1 A_SetPitch(-0.30)
+		BENE A 1 A_SetPitch(-0.30)
+		BENE A 1 A_SetPitch(-0.30)
+		BENE A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		BENE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		BENE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		BENE A 1 A_SetPitch(0.30)
+		BENE A 1 A_SetPitch(0.30)
+		BENE A 1 A_SetPitch(0.30)
+		BENE A 1 A_SetPitch(0.30)
+		BENE A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        BENE B 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		BENE C 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        BENE B 4 A_SetPitch(-0.30)
+		BENE C 4 A_SetPitch(0.50)
+        BENE B 4 A_SetPitch(-0.20)
+		BENE C 4 A_SetPitch(0.25)
+		BENE A 0 A_Jump(26, "Vomit")
+        BENE B 4 A_SetPitch(-0.90)
+		BENE C 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		BENE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_Stop
+		BENE A 0 A_PlaySound("player/vomit", 2)
+		BENE AAAAAAAAAA 1 A_Stop
+		BENE A 0 A_SetPitch(-0.85)
+		BENE AAAAAAAA 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		BENE A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		BENE AAAAAAAA 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		BENE A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		BENE EFGHIJKL 12 
+		Goto Spawn
+	Missile_Drunk:
+		BENE A 0 A_SetAngle(random(angle-12,angle+12))
+		BENE EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		BENE A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		BENE F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		BENE FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		BENE A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		BENE A 4 
+		BENE A 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		BENE A 4 A_Mushroom("WhiteFatShot",16)
+		BENE A 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		BENE A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		BENE A 4 A_SetPitch(0.75)
+		BENE A 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		BENE A 0 A_TakeInventory("DrunkLevel", 100)
+		MISL B 5 A_Explode
+		MISL B 5 //A_Mushroom("ArchvileFireX",16)
+		MISL C 10 A_PlayerScream
+		MISL D 10 A_NoBlocking
+		NULL A 1
+		NULL A -1
+		Stop
+	XDeath:
+		BENE A 0 A_TakeInventory("DrunkLevel", 100)
+		BENE A 5 A_XScream
+		BENE A 5 A_NoBlocking
+		BENE A 5 A_FadeOut(0.1)
+		NULL A 1
+		NULL A -1
+		Stop
+	}
+}
+
+ACTOR WhiteFatShot : FatShot { Translation "176:191=80:95" }
+
+ACTOR Zero775 : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Zero775"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Oppressor1338 : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	+NOSKIN
+	Player.DamageScreenColor "00 00 00"
+	Player.DisplayName "WIP: Oppressor1338"
+	// Пока этот пиздюк не даст скин со звуками >:(
+	//Player.SoundClass "oppressor"
+	Player.SoundClass "player"
+	Player.StartItem "Powercube"
+	Player.StartItem "STFBFG9000"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Cell", 600
+	Player.StartItem "RocketAmmo", 100
+	Player.StartItem "Clip", 400
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Dick"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Zendos : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	+NOSKIN
+	Player.DamageScreenColor "00 FF 00"
+	Player.DisplayName "WIP: Zendos"
+	Player.SoundClass "player" // Нужны звуки ОФК
+	Player.StartItem "ImpalerXBow"
+	Player.StartItem "DOOM42k16SSG"
+	Player.StartItem "Unarmed"
+	Player.StartItem "ImpalerBolts", 80
+	Player.StartItem "Shell", 200
+	Player.StartItem "Clip", 400
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Dick"
+	Player.StartItem "DPTKEYCARD", 1
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	+NOSKIN
+	States
+	{
+	Spawn:
+		CYG2 A 1
+		CYG2 A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		CYG2 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CYG2 A 20
+		CYG2 A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		CYG2 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CYG2 A 1 A_SetPitch(-0.20)
+		CYG2 A 1 A_SetPitch(0.20)
+		CYG2 A 1 A_SetPitch(0.30)
+		CYG2 A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		CYG2 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CYG2 A 1 A_SetPitch(-0.30)
+		CYG2 A 1 A_SetPitch(-0.30)
+		CYG2 A 1 A_SetPitch(-0.30)
+		CYG2 A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		CYG2 A 0 A_JumpIf (momx > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy > 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momx < 0, "See_Drunk")
+		CYG2 A 0 A_JumpIf (momy < 0, "See_Drunk")
+		CYG2 A 1 A_SetPitch(0.30)
+		CYG2 A 1 A_SetPitch(0.30)
+		CYG2 A 1 A_SetPitch(0.30)
+		CYG2 A 1 A_SetPitch(0.30)
+		CYG2 A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        CYG2 AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CYG2 CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        CYG2 AB 4 A_SetPitch(-0.30)
+		CYG2 CD 4 A_SetPitch(0.50)
+        CYG2 AB 4 A_SetPitch(-0.20)
+		CYG2 CD 4 A_SetPitch(0.25)
+		CYG2 A 0 A_Jump(26, "Vomit")
+        CYG2 AB 4 A_SetPitch(-0.90)
+		CYG2 CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		CYG2 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		CYG2 G 0 A_PlaySound("player/vomit", 2)
+		CYG2 GGGGGGGGGG 1 A_Stop
+		CYG2 G 0 A_SetPitch(-0.85)
+		CYG2 GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		CYG2 A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		CYG2 GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		CYG2 A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		CYG2 E 12 
+		Goto Spawn
+	Missile_Drunk:
+		CYG2 A 0 A_SetAngle(random(angle-12,angle+12))
+		CYG2 EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		CYG2 A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		CYG2 F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		CYG2 FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		CYG2 A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		CYG2 G 4 
+		CYG2 G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		CYG2 G 4 
+		CYG2 G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		CYG2 A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		CYG2 G 4 A_SetPitch(0.75)
+		CYG2 G 4 A_Pain
+		Goto Spawn_Drunk
+	XDeath:
+	Death:
+		CYG2 A 0 A_TakeInventory("DrunkLevel", 100)
+		CYG2 H 10 A_XScream
+		CYG2 I 10 A_PlayerScream
+		CYG2 J 10 A_NoBlocking
+		CYG2 K 10
+		CYG2 L -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR Dean_Portman : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Dean_Portman"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR OVA : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: OVA"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR IDHLEB : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: IDHLEB"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR LXandro : PlayerPawn
+{
+	Player.ForwardMove 0.95, 0.925 
+	Player.SideMove 0.95, 0.925 
+	Player.JumpZ 10
+	Player.ViewHeight 54
+	Scale 0.754
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16//24
+	Height 56//62
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Leutenant Xandro"
+	Player.SoundClass "LXandro"
+	Player.StartItem "LXandroDevastator"
+	Player.StartItem "LXandroRPG"
+	Player.StartItem "LXandroChaingunCannon"
+	Player.StartItem "LXandroShotgun"
+	Player.StartItem "LXandroPistols"
+	Player.StartItem "LXandroPistol"
+	Player.StartItem "LXandroUnarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "RocketAmmo", 100
+	Player.StartItem "Shell", 200
+	Player.StartItem "Clip", 400
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		DUKE A 1
+		DUKE A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		DUKE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		DUKE A 20
+		DUKE A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		DUKE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		DUKE A 1 A_SetPitch(-0.20)
+		DUKE A 1 A_SetPitch(0.20)
+		DUKE A 1 A_SetPitch(0.30)
+		DUKE A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		DUKE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		DUKE A 1 A_SetPitch(-0.30)
+		DUKE A 1 A_SetPitch(-0.30)
+		DUKE A 1 A_SetPitch(-0.30)
+		DUKE A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		DUKE A 0 A_JumpIf (momx > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy > 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momx < 0, "See_Drunk")
+		DUKE A 0 A_JumpIf (momy < 0, "See_Drunk")
+		DUKE A 1 A_SetPitch(0.30)
+		DUKE A 1 A_SetPitch(0.30)
+		DUKE A 1 A_SetPitch(0.30)
+		DUKE A 1 A_SetPitch(0.30)
+		DUKE A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        DUKE AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		DUKE CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        DUKE AB 4 A_SetPitch(-0.30)
+		DUKE CD 4 A_SetPitch(0.50)
+        DUKE AB 4 A_SetPitch(-0.20)
+		DUKE CD 4 A_SetPitch(0.25)
+		DUKE A 0 A_Jump(26, "Vomit")
+        DUKE AB 4 A_SetPitch(-0.90)
+		DUKE CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		DUKE GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		DUKE G 0 A_PlaySound("player/vomit", 2)
+		DUKE GGGGGGGGGG 1 A_Stop
+		DUKE G 0 A_SetPitch(-0.85)
+		DUKE GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		DUKE A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		DUKE GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		DUKE A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		DUKE E 12 
+		Goto Spawn
+	Missile_Drunk:
+		DUKE A 0 A_SetAngle(random(angle-12,angle+12))
+		DUKE EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		DUKE A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		DUKE F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		DUKE FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		DUKE A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		DUKE G 4 
+		DUKE G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		DUKE G 4 
+		DUKE G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		DUKE A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		DUKE G 4 A_SetPitch(0.75)
+		DUKE G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		DUKE A 0 A_TakeInventory("DrunkLevel", 100)
+		DUKE H 10
+		DUKE I 10 A_PlayerScream
+		DUKE J 10 A_NoBlocking
+		DUKE KLM 10
+		DUKE N -1
+		Stop
+	XDeath:
+		DUKE A 0 A_TakeInventory("DrunkLevel", 100)
+		DUKE O 5
+		DUKE P 5 A_XScream
+		DUKE Q 5 A_NoBlocking
+		DUKE RSTUV 5
+		DUKE W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR GanGsteRinO999 : PlayerPawn
+{
+	DamageFactor "PrisonPower", 0.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: GanGsteRinO999"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+ACTOR DogClass : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Dog"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
+/*
+ACTOR TemplateClass : PlayerPawn
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "Template Class"
+	Player.SoundClass "player"
+	Player.StartItem "Unarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		PLAY A 1
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 20
+		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.20)
+		PLAY A 1 A_SetPitch(0.20)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		PLAY A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
+		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetPitch(0.30)
+		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		Loop
+	See_Drunk:
+        PLAY AB 4 A_SetPitch(-0.30)
+		PLAY CD 4 A_SetPitch(0.50)
+        PLAY AB 4 A_SetPitch(-0.20)
+		PLAY CD 4 A_SetPitch(0.25)
+		PLAY A 0 A_Jump(26, "Vomit")
+        PLAY AB 4 A_SetPitch(-0.90)
+		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_PlaySound("player/vomit", 2)
+		PLAY GGGGGGGGGG 1 A_Stop
+		PLAY G 0 A_SetPitch(-0.85)
+		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		PLAY GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		PLAY E 12 
+		Goto Spawn
+	Missile_Drunk:
+		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
+		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		PLAY F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		PLAY G 4 
+		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		PLAY G 4 
+		PLAY G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		PLAY G 4 A_SetPitch(0.75)
+		PLAY G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY H 10
+		PLAY I 10 A_PlayerScream
+		PLAY J 10 A_NoBlocking
+		PLAY KLM 10
+		PLAY N -1
+		Stop
+	XDeath:
+		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
+		PLAY O 5
+		PLAY P 5 A_XScream
+		PLAY Q 5 A_NoBlocking
+		PLAY RSTUV 5
+		PLAY W -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+*/
+// ETC
+
+ACTOR ZombieManClass : PlayerPawn
+{
+	Health 20
+	GibHealth 99999
+	Speed 0.5
+	Radius 20
+	Height 56
+	Mass 100
+	PainChance 200
+	Player.DisplayName "ZombieMan"
+	Player.StartItem "ZombieRifle"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.ViewHeight 41
+	Player.MaxHealth 20
+	Player.ViewHeight 41
+	Player.SoundClass Brainless
+	Player.JumpZ 10
+	+NOSKIN
+	+NOPAIN
+	-PICKUP
+	-FRIENDLY
+	+NOTARGET
+	+NOTRIGGER
+	states
+	{
+	Spawn:
+		POSS AB 10 
+		Loop
+	See:
+		POSS A 0 
+		POSS A 0 A_Jump (240,2)
+		POSS A 0 A_PlaySoundEx ("grunt/active","body")
+		POSS ABCD 4 
+		Loop
+	Missile:
+		POSS E 3
+		POSS F 6 bright
+		POSS E 6 
+		Goto spawn
+	Death:
+		POSS H 5 A_SpawnItemEx ("Clip",0,0,random(29,38),0,0,0,0,32,0)
+		POSS I 5 A_PlaySoundEx ("grunt/death","Body")
+		POSS J 5 A_NoBlocking
+		POSS K 5
+		POSS L -1
+		Stop
+	XDeath:
+		POSS M 0 A_SpawnItemEx ("Clip",0,0,random(29,38),0,0,0,0,32,0)
+		POSS M 4
+		POSS N 4 A_XScream
+		POSS O 4 A_NoBlocking
+		POSS PQRST 4
+		POSS U -1
+		Stop
+	}
+}
+
+ACTOR ShotgunGuyClass : PlayerPawn
+{
+	Health 30
+	gibhealth 99999
+	Radius 20
+	Height 56
+	Mass 100
+	Speed 0.5
+	PainChance 127
+	Player.MaxHealth 30  
+	Player.ViewHeight 41
+	Player.DisplayName "Sergeant"
+	Player.StartItem "ZombieShotGun"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.JumpZ 8
+	Player.DisplayName "Sergeant"
+	Player.SoundClass "Brainless"
+	+NOPAIN
+	+NOSKIN
+	-PICKUP
+	-FRIENDLY
+	+NOTARGET
+	+NOTRIGGER
+	states
+	{
+	Spawn:
+		SPOS AB 10 
+		loop
+	See:
+		SPOS A 0 A_Jump (240,2)
+		SPOS A 0 A_PlaySoundEx ("shotguy/active","body")
+		SPOS ABCD 4 
+		Loop
+	Missile:
+		SPOS E 1
+		SPOS F 10 bright
+		SPOS E 10
+		goto Spawn
+	Death:
+		SPOS H 5 A_SpawnItemEx ("ShotGun",0,0,random(29,38),0,0,0,0,32,0)
+		SPOS I 5 A_PlaySoundEx ("shotguy/death","Body")
+		SPOS J 5 A_NoBlocking
+		SPOS K 5
+		SPOS L -1
+		Stop
+	XDeath:
+		SPOS M 5 A_SpawnItemEx ("ShotGun",0,0,random(29,38),0,0,0,0,32,0)
+		SPOS N 5 A_XScream
+		SPOS O 5 A_NoBlocking
+		SPOS PQRST 5
+		SPOS U -1
+		Stop	
+	}
+}
+
+ACTOR ChainGunGuyClass : PlayerPawn
+{
+	Health 80
+	GibHealth 99999
+	Radius 20
+	Height 56
+	Mass 100
+	Speed 0.5
+	PainChance 170
+	Player.StartItem "ChainGuyGun"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.DisplayName "Chaingunner"
+	Player.MaxHealth 80
+	Player.ViewHeight 41
+	Player.SoundClass Brainless
+	Player.JumpZ 10
+	+NOPAIN
+	-PICKUP
+	+NOSKIN
+	-FRIENDLY
+	+NOTARGET
+	+NOTRIGGER
+	states
+	{
+	Spawn:
+		CPOS AB 10
+		loop
+	See:
+		CPOS A 0 
+		CPOS A 0 A_Jump (240,2)
+		CPOS A 0 A_PlaySoundEx ("chainguy/active","body")	
+		CPOS ABCD 4 
+		Loop
+	Missile:
+		CPOS A 0 A_JumpIfInventory ("FHeat",90,"CantShot")
+		CPOS E 2
+		CPOS F 3 bright
+		CPOS E 2
+		CPOS F 3 bright
+		CPOS E 7
+		Goto See
+	CantShot:
+		CPOS E 30
+		Goto See
+	Death:
+		CPOS I 5 A_PlaySoundEx ("chainguy/death","body")
+		CPOS J 5 A_NoBlocking
+		CPOS K 5
+		CPOS LM 5
+		CPOS M -1
+		Stop
+	XDeath:
+		CPOS P 5 A_XScream
+		CPOS Q 5 A_NoBlocking
+		CPOS Q 1
+		CPOS R 5
+		CPOS S -1
+		Stop
+	}
+}
+ACTOR FHeat : CustomInventory
+{
+	Inventory.Amount 0
+	Inventory.MaxAmount 100
+}
+ACTOR DooMImpClass : PlayerPawn
+{
+	Health 60
+	GibHealth 99999
+	radius 20
+	height 54
+	mass 80
+	speed 0.5
+	painchance 140
+	Player.MaxHealth 60
+	Player.JumpZ 7
+	Player.DisplayName "DoomImp"
+	Player.SoundClass "MImpale"
+	Player.ViewHeight 45
+	Player.StartItem "ImpBaller"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.DisplayName "DoomImp"
+	-FRIENDLY
+	+NOTARGET
+	+NOSKIN
+	+NOPAIN
+	-PICKUP
+	+LONGMELEERANGE
+	+NOTRIGGER
+	States
+	{
+	Spawn:
+		TROO A 10 
+		TROO B 10 
+		loop
+	See:
+		TROO A 0
+		TROO A 0 A_Jump (240,2)
+		TROO A 0 A_PlaySoundEx ("imp/active","body")
+		TROO ABCD 6 
+		Loop
+	Missile:
+		TROO EF 8
+		TROO G 6
+		goto Spawn
+	Melee:
+		TROO G 6
+		goto See
+	Death:
+		TROO I 8
+		TROO J 8 A_PlaySoundEx ("imp/death","Body")
+		TROO K 6
+		TROO L 6 A_NoBlocking
+		TROO M -1
+		Stop
+	XDeath:
+		TROO N 5
+		TROO O 5 A_XScream
+		TROO P 5
+		TROO Q 5 A_NoBlocking
+		TROO RST 5	
+		TROO O -1
+		Stop
+	}
+}
+
+ACTOR DemonClass : PlayerPawn
+{
+	Health 350
+	GibHealth 99999
+	painchance 180
+	speed 1.5
+	radius 30
+	height 56
+	mass 400
+	Player.DisplayName "Demon"
+	Player.StartItem "DemonMouth"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.MaxHealth 150
+	Player.SoundClass "Mdemon"
+	Player.JumpZ 15
+	Player.ViewHeight 30
+	-FRIENDLY
+	+NOTARGET
+	-PICKUP
+	+NOPAIN
+	+NOSKIN
+	+LONGMELEERANGE
+	+NOTRIGGER
+	states
+	{
+	Spawn:
+		SARG AB 10 
+		loop
+	See:
+		SARG A 0
+		SARG A 0 A_Jump (240,2)
+		SARG A 0 A_PlaySoundEx ("demon/active","body")
+		SARG ABCD 4
+		loop
+	Missile:
+		SARG EFG 8
+		goto Spawn
+	Death:
+		SARG I 8
+		SARG J 8 A_PlaySoundEx ("demon/death","body")
+		SARG K 4
+		SARG L 4 A_NoBlocking
+		SARG M 4
+		SARG N -1
+		Stop
+	}
+}
+
+ACTOR SpectreClass : DemonClass
+{
+	RenderStyle OptFuzzy
+	Alpha 0.5
+	-PICKUP
+	+NOSKIN
+	+SHADOW
+	+NOPAIN
+	-FRIENDLY
+	+NOTARGET
+	+LONGMELEERANGE
+	+NOTRIGGER
+	Player.DisplayName "Spectre"
+	Player.StartItem "SpectreMouth"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+}
+
+ACTOR LostSoulClass : PlayerPawn
+{
+	Health 100
+	GibHealth 99999
+	radius 14
+	height 44
+	mass 50
+	speed 0.6
+	painchance 128
+	Player.DisplayName "Lost Soul"
+	Player.MaxHealth 100
+	Player.SoundClass "MLostSoul"
+	Player.JumpZ 0
+	Player.ViewHeight 20
+	Player.AttackZOffset 5
+	RenderStyle SoulTrans
+	Player.StartItem "MLostSoulWeap"
+	Player.StartItem "Flighter"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	-PICKUP
+	+NOSKIN
+	+NOPAIN
+	-FRIENDLY
+	+NOTARGET
+	+DONTFALL
+	+NOTRIGGER
+	states
+	{
+	Spawn:
+		SKUL AB 10 bright 
+		loop
+	See:
+		SKUL A 0
+		SKUL A 0 A_Jump (240,2)
+		SKUL A 0 A_PlaySoundEx ("skull/active","body")
+		SKUL AB 6 bright
+		goto Spawn
+	Missile:
+		SKUL C 4 bright
+		SKUL D 4 bright
+		SKUL CCDD 2 bright
+		SKUL C 3
+		goto Spawn
+	Melee:
+		SKUL C 4 bright
+		SKUL D 4 bright
+		SKUL CCDD 2 bright
+		SKUL C 3
+		goto Spawn
+	Death:
+		SKUL F 6 bright A_NoGravity
+		SKUL G 6 bright A_PlaySoundEx ("skull/death","body")
+		SKUL H 6 bright
+		SKUL I 6 bright A_NoBlocking
+		SKUL JK 6 bright
+		TNT1 A 1 A_HideThing
+		TNT1 A -1
+		stop
+	}
+}
+
+ACTOR CacodemonClass : PlayerPawn
+{
+	Health 400
+	GibHealth 99999
+	Speed 0.50
+	Radius 31
+	Height 56
+	Mass 400
+	PainChance 128
+	Player.DisplayName "CacoDemon"
+	Player.MaxHealth 400
+	Player.ViewHeight 40
+	Player.SoundClass Cacodemon
+	Player.JumpZ 0
+	BloodColor "blue"
+	Player.StartItem "CacoBaller"
+	Player.StartItem "Flighter"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	BloodColor "blue"
+	-PICKUP
+	+NOSKIN
+	+NOPAIN
+	-FRIENDLY
+	+NOTARGET
+	+LONGMELEERANGE
+	+NOTRIGGER
+	States
+	{
+	Spawn:
+		HEAD A 5 
+		Loop
+	See:
+		HEAD A 0 
+		HEAD A 0 A_Jump (240,2)
+		HEAD A 0 A_PlaySoundEx ("caco/active","body")
+		HEAD A 15
+		Loop
+	Missile:
+		HEAD B 2 
+		HEAD C 6 BRIGHT
+		HEAD D 8 BRIGHT
+		HEAD C 6 BRIGHT
+		HEAD B 2
+		Goto See
+	Melee:
+		HEAD A 1
+		Goto Missile
+	Death:
+		HEAD G 8
+		HEAD H 8 A_PlaySoundEx ("caco/death","body")
+		HEAD I 8
+		HEAD J 8
+		HEAD K 8 A_NoBlocking
+		HEAD L -1
+		Stop
+	}
+}
+
+ACTOR PainElementalClass : PlayerPawn
+{
+	Speed 0.5
+	gibhealth 99999
+	Health 400
+	Radius 31
+	Height 56
+	Mass 400
+	PainChance 128
+	player.maxhealth 400
+	player.soundclass "PainElementalClass"
+	Player.DisplayName "Pain Elemental"
+	Player.StartItem "PainElementWeap"
+	Player.StartItem "Flighter"
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.JumpZ 0
+	-PICKUP
+	+NOSKIN
+	+NOPAIN
+	-FRIENDLY
+	+NOTARGET
+	+NOTRIGGER
+	States
+	{
+	Spawn:
+	    PAIN A 5
+		Loop
+	See:
+	    PAIN A 0 A_Jump (240,2)
+	    PAIN A 0 A_PlaySoundEx ("pain/active","body")
+		PAIN AABBCC 3 
+		Loop
+	Missile:
+		PAIN DEF 5 bright 
+		Goto Spawn
+	Death:
+		PAIN H 8 bright
+		PAIN I 8 bright A_PlaySoundEx ("pain/death","body")
+		PAIN J 8 bright
+		PAIN KL 8 bright 
+		PAIN M 8 bright A_PainDie
+		TNT1 A 1 A_HideThing
+		TNT1 A -1
+		stop
+	}
+}
+
+ACTOR RevenantClass : PlayerPawn
+{
+	Health 300
+	GibHealth 99999
+	radius 20
+	height 56
+	mass 500
+	speed 0.75
+	painchance 100
+	MaxStepHeight 36
+	Scale 0.85
+	Player.MaxHealth 300
+	Player.ViewHeight 58
+	Player.SoundClass "MSkeleton"
+	Player.JumpZ 7
+	Player.StartItem "RevenantGun"
+	Player.DisplayName "Revenant"
+	Player.ViewHeight 58
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	-PICKUP
+	+LONGMELEERANGE
+	+MISSILEMORE
+	+NOSKIN
+	+NOPAIN
+	-FRIENDLY
+	+NOTARGET
+	+NOTRIGGER
+	states
+	{
+	Spawn:
+		SKEL AB 10 
+		loop
+	See:
+		SKEL A 0
+		SKEL A 0 A_Jump (240,2)
+		SKEL A 0 A_PlaySoundEx ("Skeleton/active","body")
+		SKEL AABBCCDDEEFF 2 
+		loop
+	Missile:
+		SKEL A 6 
+		SKEL J 7  
+		SKEL K 7 bright 
+		SKEL K 7 
+		goto See
+	Punch:
+		SKEL G 5 
+		SKEL H 5 
+		SKEL I 4
+		goto See
+	Death:
+		SKEL L 7
+		SKEL M 7
+		SKEL N 7 A_PlaySoundEx ("skeleton/death","body")
+		SKEL O 7 A_NoBlocking
+		SKEL P 7
+		SKEL Q -1
+		Stop
+	}
+}
+
+// ETC ACTORS
+
+ACTOR PlayerVomit
+{
+	SpawnID 130
+	Mass 5
+	Projectile
+	Speed 12
+	Vspeed 16
+	Gravity 1.65
+	+NOBLOCKMAP
+	+NOTELEPORT
+	-NOGRAVITY
+	-MOVEWITHSECTOR
+	DeathSound "vomit/splat"
+	States
+	{
+	Spawn:
+		PUKE CBAA 4 A_CheckFloor ("Pool")
+		TNT1 A 0 A_Jump (256, "WaitForIt")
+		Loop
+	WaitForIt:
+		PUKE A 10 A_CheckFloor ("Pool")
+		PUKE B 4 A_CheckFloor ("Pool")
+		Loop
+	Death:
+	Pool:
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_ChangeFlag ("MOVEWITHSECTOR", TRUE)
+		PUKE D 3
+		PUKE EEEEEEEEEEEE 96
+		PUKE FFFFFFFF 96
+		PUKE GGGG 96
+		PUKE HH 48
+		PUKE I 48
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		PUKE I 3 A_FadeOut (0.10)
+		TNT1 A -1
+		Stop
+	}
+}

@@ -1,0 +1,1177 @@
+//------------------------------------------------------------------------------
+// Importing LIGHT Definition GlDefs LIBRARIES
+//------------------------------------------------------------------------------
+#include "SHADERS/HHDR/COLOR_WHITE.GL"
+#include "SHADERS/HHDR/COLOR_GREEN.GL"
+#include "SHADERS/HHDR/COLOR_RED.GL"
+#include "SHADERS/HHDR/COLOR_BLUE.GL"
+#include "SHADERS/HHDR/COLOR_CYAN.GL"
+#include "SHADERS/HHDR/COLOR_PURPLE.GL"
+#include "SHADERS/HHDR/COLOR_ORANGE.GL"
+#include "SHADERS/HHDR/COLOR_YELLOW.GL"
+//------------------------------------------------------------------------------
+// LIGHT ATTACHMENTS: Large, Medium & Small HDRLights
+//------------------------------------------------------------------------------
+object HDRLight_White_Small
+{
+	frame TNT1A { light Light100 }
+	frame TNT1B { light Light100 }
+	frame TNT1C { light Light98  }
+	frame TNT1D { light Light98  }
+	frame TNT1E { light Light96  }
+	frame TNT1F { light Light96  }
+	frame TNT1G { light Light94  }
+	frame TNT1H { light Light94  }
+	frame TNT1I { light Light92  }
+	frame TNT1J { light Light92  }
+	frame TNT1K { light Light90  }
+	frame TNT1L { light Light90  }
+	frame TNT1M { light Light88  }
+	frame TNT1N { light Light88  }
+	frame TNT1O { light Light86  }
+	frame TNT1P { light Light86  }
+	frame TNT1Q { light Light84  }
+	frame TNT1R { light Light84  }
+	frame TNT1S { light Light82  }
+	frame TNT1T { light Light82  }
+	frame TNT1U { light Light80  }
+	frame TNT1V { light Light104 }
+	frame TNT1W { light Light108 }
+	frame TNT1X { light Light112 }
+	frame TNT1Y { light Light116 }
+	frame TNT1Z { light Light120 }
+}
+object HDRLight_White_Medium
+{
+	frame TNT1A { light Light140 }
+	frame TNT1B { light Light138 }
+	frame TNT1C { light Light136 }
+	frame TNT1D { light Light134 }
+	frame TNT1E { light Light132 }
+	frame TNT1F { light Light130 }
+	frame TNT1G { light Light128 }
+	frame TNT1H { light Light126 }
+	frame TNT1I { light Light124 }
+	frame TNT1J { light Light122 }
+	frame TNT1K { light Light120 }
+	frame TNT1L { light Light118 }
+	frame TNT1M { light Light116 }
+	frame TNT1N { light Light114 }
+	frame TNT1O { light Light112 }
+	frame TNT1P { light Light110 }
+	frame TNT1Q { light Light108 }
+	frame TNT1R { light Light106 }
+	frame TNT1S { light Light104 }
+	frame TNT1T { light Light102 }
+	frame TNT1U { light Light100 }
+	frame TNT1V { light Light144 }
+	frame TNT1W { light Light146 }
+	frame TNT1X { light Light152 }
+	frame TNT1Y { light Light156 }
+	frame TNT1Z { light Light160 }
+}
+object HDRLight_White_Large
+{
+	frame TNT1A { light Light170 }
+	frame TNT1B { light Light168 }
+	frame TNT1C { light Light166 }
+	frame TNT1D { light Light164 }
+	frame TNT1E { light Light162 }
+	frame TNT1F { light Light160 }
+	frame TNT1G { light Light158 }
+	frame TNT1H { light Light156 }
+	frame TNT1I { light Light154 }
+	frame TNT1J { light Light152 }
+	frame TNT1K { light Light150 }
+	frame TNT1L { light Light148 }
+	frame TNT1M { light Light146 }
+	frame TNT1N { light Light142 }
+	frame TNT1O { light Light140 }
+	frame TNT1P { light Light138 }
+	frame TNT1Q { light Light136 }
+	frame TNT1R { light Light134 }
+	frame TNT1S { light Light134 }
+	frame TNT1T { light Light132 }
+	frame TNT1U { light Light130 }
+	frame TNT1V { light Light172 }
+	frame TNT1W { light Light174 }
+	frame TNT1X { light Light176 }
+	frame TNT1Y { light Light178 }
+	frame TNT1Z { light Light180 }
+}
+object HDRLight_Red_Small
+{
+	frame TNT1A { light RedLight100 }
+	frame TNT1B { light RedLight100 }
+	frame TNT1C { light RedLight98  }
+	frame TNT1D { light RedLight98  }
+	frame TNT1E { light RedLight96  }
+	frame TNT1F { light RedLight96  }
+	frame TNT1G { light RedLight94  }
+	frame TNT1H { light RedLight94  }
+	frame TNT1I { light RedLight92  }
+	frame TNT1J { light RedLight92  }
+	frame TNT1K { light RedLight90  }
+	frame TNT1L { light RedLight90  }
+	frame TNT1M { light RedLight88  }
+	frame TNT1N { light RedLight88  }
+	frame TNT1O { light RedLight86  }
+	frame TNT1P { light RedLight86  }
+	frame TNT1Q { light RedLight84  }
+	frame TNT1R { light RedLight84  }
+	frame TNT1S { light RedLight82  }
+	frame TNT1T { light RedLight82  }
+	frame TNT1U { light RedLight80  }
+	frame TNT1V { light RedLight104 }
+	frame TNT1W { light RedLight108 }
+	frame TNT1X { light RedLight112 }
+	frame TNT1Y { light RedLight116 }
+	frame TNT1Z { light RedLight120 }
+}
+object HDRLight_Red_Medium
+{
+	frame TNT1A { light RedLight140 }
+	frame TNT1B { light RedLight138 }
+	frame TNT1C { light RedLight136 }
+	frame TNT1D { light RedLight134 }
+	frame TNT1E { light RedLight132 }
+	frame TNT1F { light RedLight130 }
+	frame TNT1G { light RedLight128 }
+	frame TNT1H { light RedLight126 }
+	frame TNT1I { light RedLight124 }
+	frame TNT1J { light RedLight122 }
+	frame TNT1K { light RedLight120 }
+	frame TNT1L { light RedLight118 }
+	frame TNT1M { light RedLight116 }
+	frame TNT1N { light RedLight114 }
+	frame TNT1O { light RedLight112 }
+	frame TNT1P { light RedLight110 }
+	frame TNT1Q { light RedLight108 }
+	frame TNT1R { light RedLight106 }
+	frame TNT1S { light RedLight104 }
+	frame TNT1T { light RedLight102 }
+	frame TNT1U { light RedLight100 }
+	frame TNT1V { light RedLight144 }
+	frame TNT1W { light RedLight148 }
+	frame TNT1X { light RedLight152 }
+	frame TNT1Y { light RedLight156 }
+	frame TNT1Z { light RedLight160 }
+}
+object HDRLight_Red_Large
+{
+	frame TNT1A { light RedLight170 }
+	frame TNT1B { light RedLight168 }
+	frame TNT1C { light RedLight166 }
+	frame TNT1D { light RedLight164 }
+	frame TNT1E { light RedLight162 }
+	frame TNT1F { light RedLight160 }
+	frame TNT1G { light RedLight158 }
+	frame TNT1H { light RedLight156 }
+	frame TNT1I { light RedLight154 }
+	frame TNT1J { light RedLight152 }
+	frame TNT1K { light RedLight150 }
+	frame TNT1L { light RedLight148 }
+	frame TNT1M { light RedLight146 }
+	frame TNT1N { light RedLight142 }
+	frame TNT1O { light RedLight140 }
+	frame TNT1P { light RedLight138 }
+	frame TNT1Q { light RedLight136 }
+	frame TNT1R { light RedLight134 }
+	frame TNT1S { light RedLight134 }
+	frame TNT1T { light RedLight132 }
+	frame TNT1U { light RedLight130 }
+	frame TNT1V { light RedLight172 }
+	frame TNT1W { light RedLight174 }
+	frame TNT1X { light RedLight176 }
+	frame TNT1Y { light RedLight178 }
+	frame TNT1Z { light RedLight180 }
+}
+object HDRLight_Green_Small
+{
+	frame TNT1A { light GreenLight100 }
+	frame TNT1B { light GreenLight100 }
+	frame TNT1C { light GreenLight98  }
+	frame TNT1D { light GreenLight98  }
+	frame TNT1E { light GreenLight96  }
+	frame TNT1F { light GreenLight96  }
+	frame TNT1G { light GreenLight94  }
+	frame TNT1H { light GreenLight94  }
+	frame TNT1I { light GreenLight92  }
+	frame TNT1J { light GreenLight92  }
+	frame TNT1K { light GreenLight90  }
+	frame TNT1L { light GreenLight90  }
+	frame TNT1M { light GreenLight88  }
+	frame TNT1N { light GreenLight88  }
+	frame TNT1O { light GreenLight86  }
+	frame TNT1P { light GreenLight86  }
+	frame TNT1Q { light GreenLight84  }
+	frame TNT1R { light GreenLight84  }
+	frame TNT1S { light GreenLight82  }
+	frame TNT1T { light GreenLight82  }
+	frame TNT1U { light GreenLight80  }
+	frame TNT1V { light GreenLight104 }
+	frame TNT1W { light GreenLight108 }
+	frame TNT1X { light GreenLight112 }
+	frame TNT1Y { light GreenLight116 }
+	frame TNT1Z { light GreenLight120 }
+}
+object HDRLight_Green_Medium
+{
+	frame TNT1A { light GreenLight140 }
+	frame TNT1B { light GreenLight138 }
+	frame TNT1C { light GreenLight136 }
+	frame TNT1D { light GreenLight134 }
+	frame TNT1E { light GreenLight132 }
+	frame TNT1F { light GreenLight130 }
+	frame TNT1G { light GreenLight128 }
+	frame TNT1H { light GreenLight126 }
+	frame TNT1I { light GreenLight124 }
+	frame TNT1J { light GreenLight122 }
+	frame TNT1K { light GreenLight120 }
+	frame TNT1L { light GreenLight118 }
+	frame TNT1M { light GreenLight116 }
+	frame TNT1N { light GreenLight114 }
+	frame TNT1O { light GreenLight112 }
+	frame TNT1P { light GreenLight110 }
+	frame TNT1Q { light GreenLight108 }
+	frame TNT1R { light GreenLight106 }
+	frame TNT1S { light GreenLight104 }
+	frame TNT1T { light GreenLight102 }
+	frame TNT1U { light GreenLight100 }
+	frame TNT1V { light GreenLight144 }
+	frame TNT1W { light GreenLight148 }
+	frame TNT1X { light GreenLight152 }
+	frame TNT1Y { light GreenLight156 }
+	frame TNT1Z { light GreenLight160 }
+}
+object HDRLight_Green_Large
+{
+	frame TNT1A { light GreenLight170 }
+	frame TNT1B { light GreenLight168 }
+	frame TNT1C { light GreenLight166 }
+	frame TNT1D { light GreenLight164 }
+	frame TNT1E { light GreenLight162 }
+	frame TNT1F { light GreenLight160 }
+	frame TNT1G { light GreenLight158 }
+	frame TNT1H { light GreenLight156 }
+	frame TNT1I { light GreenLight154 }
+	frame TNT1J { light GreenLight152 }
+	frame TNT1K { light GreenLight150 }
+	frame TNT1L { light GreenLight148 }
+	frame TNT1M { light GreenLight146 }
+	frame TNT1N { light GreenLight142 }
+	frame TNT1O { light GreenLight140 }
+	frame TNT1P { light GreenLight138 }
+	frame TNT1Q { light GreenLight136 }
+	frame TNT1R { light GreenLight134 }
+	frame TNT1S { light GreenLight134 }
+	frame TNT1T { light GreenLight132 }
+	frame TNT1U { light GreenLight130 }
+	frame TNT1V { light GreenLight172 }
+	frame TNT1W { light GreenLight174 }
+	frame TNT1X { light GreenLight176 }
+	frame TNT1Y { light GreenLight178 }
+	frame TNT1Z { light GreenLight180 }
+}
+object HDRLight_Blue_Small
+{
+	frame TNT1A { light BlueLight100 }
+	frame TNT1B { light BlueLight100 }
+	frame TNT1C { light BlueLight98  }
+	frame TNT1D { light BlueLight98  }
+	frame TNT1E { light BlueLight96  }
+	frame TNT1F { light BlueLight96  }
+	frame TNT1G { light BlueLight94  }
+	frame TNT1H { light BlueLight94  }
+	frame TNT1I { light BlueLight92  }
+	frame TNT1J { light BlueLight92  }
+	frame TNT1K { light BlueLight90  }
+	frame TNT1L { light BlueLight90  }
+	frame TNT1M { light BlueLight88  }
+	frame TNT1N { light BlueLight88  }
+	frame TNT1O { light BlueLight86  }
+	frame TNT1P { light BlueLight86  }
+	frame TNT1Q { light BlueLight84  }
+	frame TNT1R { light BlueLight84  }
+	frame TNT1S { light BlueLight82  }
+	frame TNT1T { light BlueLight82  }
+	frame TNT1U { light BlueLight80  }
+	frame TNT1V { light BlueLight104 }
+	frame TNT1W { light BlueLight108 }
+	frame TNT1X { light BlueLight112 }
+	frame TNT1Y { light BlueLight116 }
+	frame TNT1Z { light BlueLight120 }
+}
+object HDRLight_Blue_Medium
+{
+	frame TNT1A { light BlueLight140 }
+	frame TNT1B { light BlueLight138 }
+	frame TNT1C { light BlueLight136 }
+	frame TNT1D { light BlueLight134 }
+	frame TNT1E { light BlueLight132 }
+	frame TNT1F { light BlueLight130 }
+	frame TNT1G { light BlueLight128 }
+	frame TNT1H { light BlueLight126 }
+	frame TNT1I { light BlueLight124 }
+	frame TNT1J { light BlueLight122 }
+	frame TNT1K { light BlueLight120 }
+	frame TNT1L { light BlueLight118 }
+	frame TNT1M { light BlueLight116 }
+	frame TNT1N { light BlueLight114 }
+	frame TNT1O { light BlueLight112 }
+	frame TNT1P { light BlueLight110 }
+	frame TNT1Q { light BlueLight108 }
+	frame TNT1R { light BlueLight106 }
+	frame TNT1S { light BlueLight104 }
+	frame TNT1T { light BlueLight102 }
+	frame TNT1U { light BlueLight100 }
+	frame TNT1V { light BlueLight144 }
+	frame TNT1W { light BlueLight146 }
+	frame TNT1X { light BlueLight152 }
+	frame TNT1Y { light BlueLight156 }
+	frame TNT1Z { light BlueLight160 }
+}
+object HDRLight_Blue_Large
+{
+	frame TNT1A { light BlueLight170 }
+	frame TNT1B { light BlueLight168 }
+	frame TNT1C { light BlueLight166 }
+	frame TNT1D { light BlueLight164 }
+	frame TNT1E { light BlueLight162 }
+	frame TNT1F { light BlueLight160 }
+	frame TNT1G { light BlueLight158 }
+	frame TNT1H { light BlueLight156 }
+	frame TNT1I { light BlueLight154 }
+	frame TNT1J { light BlueLight152 }
+	frame TNT1K { light BlueLight150 }
+	frame TNT1L { light BlueLight148 }
+	frame TNT1M { light BlueLight146 }
+	frame TNT1N { light BlueLight142 }
+	frame TNT1O { light BlueLight140 }
+	frame TNT1P { light BlueLight138 }
+	frame TNT1Q { light BlueLight136 }
+	frame TNT1R { light BlueLight134 }
+	frame TNT1S { light BlueLight134 }
+	frame TNT1T { light BlueLight132 }
+	frame TNT1U { light BlueLight130 }
+	frame TNT1V { light BlueLight172 }
+	frame TNT1W { light BlueLight174 }
+	frame TNT1X { light BlueLight176 }
+	frame TNT1Y { light BlueLight178 }
+	frame TNT1Z { light BlueLight180 }
+}
+object HDRLight_Cyan_Small
+{
+	frame TNT1A { light CyanLight100 }
+	frame TNT1B { light CyanLight100 }
+	frame TNT1C { light CyanLight98  }
+	frame TNT1D { light CyanLight98  }
+	frame TNT1E { light CyanLight96  }
+	frame TNT1F { light CyanLight96  }
+	frame TNT1G { light CyanLight94  }
+	frame TNT1H { light CyanLight94  }
+	frame TNT1I { light CyanLight92  }
+	frame TNT1J { light CyanLight92  }
+	frame TNT1K { light CyanLight90  }
+	frame TNT1L { light CyanLight90  }
+	frame TNT1M { light CyanLight88  }
+	frame TNT1N { light CyanLight88  }
+	frame TNT1O { light CyanLight86  }
+	frame TNT1P { light CyanLight86  }
+	frame TNT1Q { light CyanLight84  }
+	frame TNT1R { light CyanLight84  }
+	frame TNT1S { light CyanLight82  }
+	frame TNT1T { light CyanLight82  }
+	frame TNT1U { light CyanLight80  }
+	frame TNT1V { light CyanLight104 }
+	frame TNT1W { light CyanLight108 }
+	frame TNT1X { light CyanLight112 }
+	frame TNT1Y { light CyanLight116 }
+	frame TNT1Z { light CyanLight120 }
+}
+object HDRLight_Cyan_Medium
+{
+	frame TNT1A { light CyanLight140 }
+	frame TNT1B { light CyanLight138 }
+	frame TNT1C { light CyanLight136 }
+	frame TNT1D { light CyanLight134 }
+	frame TNT1E { light CyanLight132 }
+	frame TNT1F { light CyanLight130 }
+	frame TNT1G { light CyanLight128 }
+	frame TNT1H { light CyanLight126 }
+	frame TNT1I { light CyanLight124 }
+	frame TNT1J { light CyanLight122 }
+	frame TNT1K { light CyanLight120 }
+	frame TNT1L { light CyanLight118 }
+	frame TNT1M { light CyanLight116 }
+	frame TNT1N { light CyanLight114 }
+	frame TNT1O { light CyanLight112 }
+	frame TNT1P { light CyanLight110 }
+	frame TNT1Q { light CyanLight108 }
+	frame TNT1R { light CyanLight106 }
+	frame TNT1S { light CyanLight104 }
+	frame TNT1T { light CyanLight102 }
+	frame TNT1U { light CyanLight100 }
+	frame TNT1V { light CyanLight144 }
+	frame TNT1W { light CyanLight146 }
+	frame TNT1X { light CyanLight152 }
+	frame TNT1Y { light CyanLight156 }
+	frame TNT1Z { light CyanLight160 }
+}
+object HDRLight_Cyan_Large
+{
+	frame TNT1A { light CyanLight170 }
+	frame TNT1B { light CyanLight168 }
+	frame TNT1C { light CyanLight166 }
+	frame TNT1D { light CyanLight164 }
+	frame TNT1E { light CyanLight162 }
+	frame TNT1F { light CyanLight160 }
+	frame TNT1G { light CyanLight158 }
+	frame TNT1H { light CyanLight156 }
+	frame TNT1I { light CyanLight154 }
+	frame TNT1J { light CyanLight152 }
+	frame TNT1K { light CyanLight150 }
+	frame TNT1L { light CyanLight148 }
+	frame TNT1M { light CyanLight146 }
+	frame TNT1N { light CyanLight142 }
+	frame TNT1O { light CyanLight140 }
+	frame TNT1P { light CyanLight138 }
+	frame TNT1Q { light CyanLight136 }
+	frame TNT1R { light CyanLight134 }
+	frame TNT1S { light CyanLight134 }
+	frame TNT1T { light CyanLight132 }
+	frame TNT1U { light CyanLight130 }
+	frame TNT1V { light CyanLight172 }
+	frame TNT1W { light CyanLight174 }
+	frame TNT1X { light CyanLight176 }
+	frame TNT1Y { light CyanLight178 }
+	frame TNT1Z { light CyanLight180 }
+}
+object HDRLight_Purple_Small
+{
+	frame TNT1A { light PurpleLight100 }
+	frame TNT1B { light PurpleLight100 }
+	frame TNT1C { light PurpleLight98  }
+	frame TNT1D { light PurpleLight98  }
+	frame TNT1E { light PurpleLight96  }
+	frame TNT1F { light PurpleLight96  }
+	frame TNT1G { light PurpleLight94  }
+	frame TNT1H { light PurpleLight94  }
+	frame TNT1I { light PurpleLight92  }
+	frame TNT1J { light PurpleLight92  }
+	frame TNT1K { light PurpleLight90  }
+	frame TNT1L { light PurpleLight90  }
+	frame TNT1M { light PurpleLight88  }
+	frame TNT1N { light PurpleLight88  }
+	frame TNT1O { light PurpleLight86  }
+	frame TNT1P { light PurpleLight86  }
+	frame TNT1Q { light PurpleLight84  }
+	frame TNT1R { light PurpleLight84  }
+	frame TNT1S { light PurpleLight82  }
+	frame TNT1T { light PurpleLight82  }
+	frame TNT1U { light PurpleLight80  }
+	frame TNT1V { light PurpleLight104 }
+	frame TNT1W { light PurpleLight108 }
+	frame TNT1X { light PurpleLight112 }
+	frame TNT1Y { light PurpleLight116 }
+	frame TNT1Z { light PurpleLight120 }
+}
+object HDRLight_Purple_Medium
+{
+	frame TNT1A { light PurpleLight140 }
+	frame TNT1B { light PurpleLight138 }
+	frame TNT1C { light PurpleLight136 }
+	frame TNT1D { light PurpleLight134 }
+	frame TNT1E { light PurpleLight132 }
+	frame TNT1F { light PurpleLight130 }
+	frame TNT1G { light PurpleLight128 }
+	frame TNT1H { light PurpleLight126 }
+	frame TNT1I { light PurpleLight124 }
+	frame TNT1J { light PurpleLight122 }
+	frame TNT1K { light PurpleLight120 }
+	frame TNT1L { light PurpleLight118 }
+	frame TNT1M { light PurpleLight116 }
+	frame TNT1N { light PurpleLight114 }
+	frame TNT1O { light PurpleLight112 }
+	frame TNT1P { light PurpleLight110 }
+	frame TNT1Q { light PurpleLight108 }
+	frame TNT1R { light PurpleLight106 }
+	frame TNT1S { light PurpleLight104 }
+	frame TNT1T { light PurpleLight102 }
+	frame TNT1U { light PurpleLight100 }
+	frame TNT1V { light PurpleLight144 }
+	frame TNT1W { light PurpleLight146 }
+	frame TNT1X { light PurpleLight152 }
+	frame TNT1Y { light PurpleLight156 }
+	frame TNT1Z { light PurpleLight160 }
+}
+object HDRLight_Purple_Large
+{
+	frame TNT1A { light PurpleLight170 }
+	frame TNT1B { light PurpleLight168 }
+	frame TNT1C { light PurpleLight166 }
+	frame TNT1D { light PurpleLight164 }
+	frame TNT1E { light PurpleLight162 }
+	frame TNT1F { light PurpleLight160 }
+	frame TNT1G { light PurpleLight158 }
+	frame TNT1H { light PurpleLight156 }
+	frame TNT1I { light PurpleLight154 }
+	frame TNT1J { light PurpleLight152 }
+	frame TNT1K { light PurpleLight150 }
+	frame TNT1L { light PurpleLight148 }
+	frame TNT1M { light PurpleLight146 }
+	frame TNT1N { light PurpleLight142 }
+	frame TNT1O { light PurpleLight140 }
+	frame TNT1P { light PurpleLight138 }
+	frame TNT1Q { light PurpleLight136 }
+	frame TNT1R { light PurpleLight134 }
+	frame TNT1S { light PurpleLight134 }
+	frame TNT1T { light PurpleLight132 }
+	frame TNT1U { light PurpleLight130 }
+	frame TNT1V { light PurpleLight172 }
+	frame TNT1W { light PurpleLight174 }
+	frame TNT1X { light PurpleLight176 }
+	frame TNT1Y { light PurpleLight178 }
+	frame TNT1Z { light PurpleLight180 }
+}
+object HDRLight_Orange_Small
+{
+	frame TNT1A { light OrangeLight100 }
+	frame TNT1B { light OrangeLight100 }
+	frame TNT1C { light OrangeLight98  }
+	frame TNT1D { light OrangeLight98  }
+	frame TNT1E { light OrangeLight96  }
+	frame TNT1F { light OrangeLight96  }
+	frame TNT1G { light OrangeLight94  }
+	frame TNT1H { light OrangeLight94  }
+	frame TNT1I { light OrangeLight92  }
+	frame TNT1J { light OrangeLight92  }
+	frame TNT1K { light OrangeLight90  }
+	frame TNT1L { light OrangeLight90  }
+	frame TNT1M { light OrangeLight88  }
+	frame TNT1N { light OrangeLight88  }
+	frame TNT1O { light OrangeLight86  }
+	frame TNT1P { light OrangeLight86  }
+	frame TNT1Q { light OrangeLight84  }
+	frame TNT1R { light OrangeLight84  }
+	frame TNT1S { light OrangeLight82  }
+	frame TNT1T { light OrangeLight82  }
+	frame TNT1U { light OrangeLight80  }
+	frame TNT1V { light OrangeLight104 }
+	frame TNT1W { light OrangeLight108 }
+	frame TNT1X { light OrangeLight112 }
+	frame TNT1Y { light OrangeLight116 }
+	frame TNT1Z { light OrangeLight120 }
+}
+object HDRLight_Orange_Medium
+{
+	frame TNT1A { light OrangeLight140 }
+	frame TNT1B { light OrangeLight138 }
+	frame TNT1C { light OrangeLight136 }
+	frame TNT1D { light OrangeLight134 }
+	frame TNT1E { light OrangeLight132 }
+	frame TNT1F { light OrangeLight130 }
+	frame TNT1G { light OrangeLight128 }
+	frame TNT1H { light OrangeLight126 }
+	frame TNT1I { light OrangeLight124 }
+	frame TNT1J { light OrangeLight122 }
+	frame TNT1K { light OrangeLight120 }
+	frame TNT1L { light OrangeLight118 }
+	frame TNT1M { light OrangeLight116 }
+	frame TNT1N { light OrangeLight114 }
+	frame TNT1O { light OrangeLight112 }
+	frame TNT1P { light OrangeLight110 }
+	frame TNT1Q { light OrangeLight108 }
+	frame TNT1R { light OrangeLight106 }
+	frame TNT1S { light OrangeLight104 }
+	frame TNT1T { light OrangeLight102 }
+	frame TNT1U { light OrangeLight100 }
+	frame TNT1V { light OrangeLight144 }
+	frame TNT1W { light OrangeLight146 }
+	frame TNT1X { light OrangeLight152 }
+	frame TNT1Y { light OrangeLight156 }
+	frame TNT1Z { light OrangeLight160 }
+}
+object HDRLight_Orange_Large
+{
+	frame TNT1A { light OrangeLight170 }
+	frame TNT1B { light OrangeLight168 }
+	frame TNT1C { light OrangeLight166 }
+	frame TNT1D { light OrangeLight164 }
+	frame TNT1E { light OrangeLight162 }
+	frame TNT1F { light OrangeLight160 }
+	frame TNT1G { light OrangeLight158 }
+	frame TNT1H { light OrangeLight156 }
+	frame TNT1I { light OrangeLight154 }
+	frame TNT1J { light OrangeLight152 }
+	frame TNT1K { light OrangeLight150 }
+	frame TNT1L { light OrangeLight148 }
+	frame TNT1M { light OrangeLight146 }
+	frame TNT1N { light OrangeLight142 }
+	frame TNT1O { light OrangeLight140 }
+	frame TNT1P { light OrangeLight138 }
+	frame TNT1Q { light OrangeLight136 }
+	frame TNT1R { light OrangeLight134 }
+	frame TNT1S { light OrangeLight134 }
+	frame TNT1T { light OrangeLight132 }
+	frame TNT1U { light OrangeLight130 }
+	frame TNT1V { light OrangeLight172 }
+	frame TNT1W { light OrangeLight174 }
+	frame TNT1X { light OrangeLight176 }
+	frame TNT1Y { light OrangeLight178 }
+	frame TNT1Z { light OrangeLight180 }
+}
+object HDRLight_Yellow_Small
+{
+	frame TNT1A { light YellowLight100 }
+	frame TNT1B { light YellowLight100 }
+	frame TNT1C { light YellowLight98  }
+	frame TNT1D { light YellowLight98  }
+	frame TNT1E { light YellowLight96  }
+	frame TNT1F { light YellowLight96  }
+	frame TNT1G { light YellowLight94  }
+	frame TNT1H { light YellowLight94  }
+	frame TNT1I { light YellowLight92  }
+	frame TNT1J { light YellowLight92  }
+	frame TNT1K { light YellowLight90  }
+	frame TNT1L { light YellowLight90  }
+	frame TNT1M { light YellowLight88  }
+	frame TNT1N { light YellowLight88  }
+	frame TNT1O { light YellowLight86  }
+	frame TNT1P { light YellowLight86  }
+	frame TNT1Q { light YellowLight84  }
+	frame TNT1R { light YellowLight84  }
+	frame TNT1S { light YellowLight82  }
+	frame TNT1T { light YellowLight82  }
+	frame TNT1U { light YellowLight80  }
+	frame TNT1V { light YellowLight104 }
+	frame TNT1W { light YellowLight108 }
+	frame TNT1X { light YellowLight112 }
+	frame TNT1Y { light YellowLight116 }
+	frame TNT1Z { light YellowLight120 }
+}
+object HDRLight_Yellow_Medium
+{
+	frame TNT1A { light YellowLight140 }
+	frame TNT1B { light YellowLight138 }
+	frame TNT1C { light YellowLight136 }
+	frame TNT1D { light YellowLight134 }
+	frame TNT1E { light YellowLight132 }
+	frame TNT1F { light YellowLight130 }
+	frame TNT1G { light YellowLight128 }
+	frame TNT1H { light YellowLight126 }
+	frame TNT1I { light YellowLight124 }
+	frame TNT1J { light YellowLight122 }
+	frame TNT1K { light YellowLight120 }
+	frame TNT1L { light YellowLight118 }
+	frame TNT1M { light YellowLight116 }
+	frame TNT1N { light YellowLight114 }
+	frame TNT1O { light YellowLight112 }
+	frame TNT1P { light YellowLight110 }
+	frame TNT1Q { light YellowLight108 }
+	frame TNT1R { light YellowLight106 }
+	frame TNT1S { light YellowLight104 }
+	frame TNT1T { light YellowLight102 }
+	frame TNT1U { light YellowLight100 }
+	frame TNT1V { light YellowLight144 }
+	frame TNT1W { light YellowLight146 }
+	frame TNT1X { light YellowLight152 }
+	frame TNT1Y { light YellowLight156 }
+	frame TNT1Z { light YellowLight160 }
+}
+object HDRLight_Yellow_Large
+{
+	frame TNT1A { light YellowLight170 }
+	frame TNT1B { light YellowLight168 }
+	frame TNT1C { light YellowLight166 }
+	frame TNT1D { light YellowLight164 }
+	frame TNT1E { light YellowLight162 }
+	frame TNT1F { light YellowLight160 }
+	frame TNT1G { light YellowLight158 }
+	frame TNT1H { light YellowLight156 }
+	frame TNT1I { light YellowLight154 }
+	frame TNT1J { light YellowLight152 }
+	frame TNT1K { light YellowLight150 }
+	frame TNT1L { light YellowLight148 }
+	frame TNT1M { light YellowLight146 }
+	frame TNT1N { light YellowLight142 }
+	frame TNT1O { light YellowLight140 }
+	frame TNT1P { light YellowLight138 }
+	frame TNT1Q { light YellowLight136 }
+	frame TNT1R { light YellowLight134 }
+	frame TNT1S { light YellowLight134 }
+	frame TNT1T { light YellowLight132 }
+	frame TNT1U { light YellowLight130 }
+	frame TNT1V { light YellowLight172 }
+	frame TNT1W { light YellowLight174 }
+	frame TNT1X { light YellowLight176 }
+	frame TNT1Y { light YellowLight178 }
+	frame TNT1Z { light YellowLight180 }
+}
+//------------------------------------------------------------------------------
+// LIGHT ATTACHMENTS: Medium & Small -INVERSE- Lights
+//------------------------------------------------------------------------------
+object InverseLight_White_Small
+{
+	frame TNT1A { light Light90  }
+	frame TNT1B { light Light90  }
+	frame TNT1C { light Light92  }
+	frame TNT1D { light Light92  }
+	frame TNT1E { light Light94  }
+	frame TNT1F { light Light94  }
+	frame TNT1G { light Light96  }
+	frame TNT1H { light Light96  }
+	frame TNT1I { light Light98  }
+	frame TNT1J { light Light98  }
+	frame TNT1K { light Light100 }
+	frame TNT1L { light Light102 }
+	frame TNT1M { light Light104 }
+	frame TNT1N { light Light106 }
+	frame TNT1O { light Light108 }
+	frame TNT1P { light Light110 }
+	frame TNT1Q { light Light112 }
+	frame TNT1R { light Light114 }
+	frame TNT1S { light Light116 }
+	frame TNT1T { light Light118 }
+	frame TNT1U { light Light120 }
+	frame TNT1V { light Light88  }
+	frame TNT1W { light Light86  }
+	frame TNT1X { light Light84  }
+	frame TNT1Y { light Light82  }
+	frame TNT1Z { light Light80  }
+}
+object InverseLight_White_Medium
+{
+	frame TNT1A { light Light110 }
+	frame TNT1B { light Light110 }
+	frame TNT1C { light Light112 }
+	frame TNT1D { light Light112 }
+	frame TNT1E { light Light114 }
+	frame TNT1F { light Light114 }
+	frame TNT1G { light Light116 }
+	frame TNT1H { light Light116 }
+	frame TNT1I { light Light118 }
+	frame TNT1J { light Light118 }
+	frame TNT1K { light Light120 }
+	frame TNT1L { light Light122 }
+	frame TNT1M { light Light124 }
+	frame TNT1N { light Light126 }
+	frame TNT1O { light Light128 }
+	frame TNT1P { light Light130 }
+	frame TNT1Q { light Light132 }
+	frame TNT1R { light Light134 }
+	frame TNT1S { light Light136 }
+	frame TNT1T { light Light138 }
+	frame TNT1U { light Light140 }
+	frame TNT1V { light Light108 }
+	frame TNT1W { light Light106 }
+	frame TNT1X { light Light104 }
+	frame TNT1Y { light Light102 }
+	frame TNT1Z { light Light100 }
+}
+object InverseLight_Red_Small
+{
+	frame TNT1A { light RedLight90  }
+	frame TNT1B { light RedLight90  }
+	frame TNT1C { light RedLight92  }
+	frame TNT1D { light RedLight92  }
+	frame TNT1E { light RedLight94  }
+	frame TNT1F { light RedLight94  }
+	frame TNT1G { light RedLight96  }
+	frame TNT1H { light RedLight96  }
+	frame TNT1I { light RedLight98  }
+	frame TNT1J { light RedLight98  }
+	frame TNT1K { light RedLight100 }
+	frame TNT1L { light RedLight102 }
+	frame TNT1M { light RedLight104 }
+	frame TNT1N { light RedLight106 }
+	frame TNT1O { light RedLight108 }
+	frame TNT1P { light RedLight110 }
+	frame TNT1Q { light RedLight112 }
+	frame TNT1R { light RedLight114 }
+	frame TNT1S { light RedLight116 }
+	frame TNT1T { light RedLight118 }
+	frame TNT1U { light RedLight120 }
+	frame TNT1V { light RedLight88  }
+	frame TNT1W { light RedLight86  }
+	frame TNT1X { light RedLight84  }
+	frame TNT1Y { light RedLight82  }
+	frame TNT1Z { light RedLight80  }
+}
+object InverseLight_Red_Medium
+{
+	frame TNT1A { light RedLight110 }
+	frame TNT1B { light RedLight110 }
+	frame TNT1C { light RedLight112 }
+	frame TNT1D { light RedLight112 }
+	frame TNT1E { light RedLight114 }
+	frame TNT1F { light RedLight114 }
+	frame TNT1G { light RedLight116 }
+	frame TNT1H { light RedLight116 }
+	frame TNT1I { light RedLight118 }
+	frame TNT1J { light RedLight118 }
+	frame TNT1K { light RedLight120 }
+	frame TNT1L { light RedLight122 }
+	frame TNT1M { light RedLight124 }
+	frame TNT1N { light RedLight126 }
+	frame TNT1O { light RedLight128 }
+	frame TNT1P { light RedLight130 }
+	frame TNT1Q { light RedLight132 }
+	frame TNT1R { light RedLight134 }
+	frame TNT1S { light RedLight136 }
+	frame TNT1T { light RedLight138 }
+	frame TNT1U { light RedLight140 }
+	frame TNT1V { light RedLight108 }
+	frame TNT1W { light RedLight106 }
+	frame TNT1X { light RedLight104 }
+	frame TNT1Y { light RedLight102 }
+	frame TNT1Z { light RedLight100 }
+}
+object InverseLight_Green_Small
+{
+	frame TNT1A { light GreenLight90  }
+	frame TNT1B { light GreenLight90  }
+	frame TNT1C { light GreenLight92  }
+	frame TNT1D { light GreenLight92  }
+	frame TNT1E { light GreenLight94  }
+	frame TNT1F { light GreenLight94  }
+	frame TNT1G { light GreenLight96  }
+	frame TNT1H { light GreenLight96  }
+	frame TNT1I { light GreenLight98  }
+	frame TNT1J { light GreenLight98  }
+	frame TNT1K { light GreenLight100 }
+	frame TNT1L { light GreenLight102 }
+	frame TNT1M { light GreenLight104 }
+	frame TNT1N { light GreenLight106 }
+	frame TNT1O { light GreenLight108 }
+	frame TNT1P { light GreenLight110 }
+	frame TNT1Q { light GreenLight112 }
+	frame TNT1R { light GreenLight114 }
+	frame TNT1S { light GreenLight116 }
+	frame TNT1T { light GreenLight118 }
+	frame TNT1U { light GreenLight120 }
+	frame TNT1V { light GreenLight88  }
+	frame TNT1W { light GreenLight86  }
+	frame TNT1X { light GreenLight84  }
+	frame TNT1Y { light GreenLight82  }
+	frame TNT1Z { light GreenLight80  }
+}
+object InverseLight_Green_Medium
+{
+	frame TNT1A { light GreenLight110 }
+	frame TNT1B { light GreenLight110 }
+	frame TNT1C { light GreenLight112 }
+	frame TNT1D { light GreenLight112 }
+	frame TNT1E { light GreenLight114 }
+	frame TNT1F { light GreenLight114 }
+	frame TNT1G { light GreenLight116 }
+	frame TNT1H { light GreenLight116 }
+	frame TNT1I { light GreenLight118 }
+	frame TNT1J { light GreenLight118 }
+	frame TNT1K { light GreenLight120 }
+	frame TNT1L { light GreenLight122 }
+	frame TNT1M { light GreenLight124 }
+	frame TNT1N { light GreenLight126 }
+	frame TNT1O { light GreenLight128 }
+	frame TNT1P { light GreenLight130 }
+	frame TNT1Q { light GreenLight132 }
+	frame TNT1R { light GreenLight134 }
+	frame TNT1S { light GreenLight136 }
+	frame TNT1T { light GreenLight138 }
+	frame TNT1U { light GreenLight140 }
+	frame TNT1V { light GreenLight108 }
+	frame TNT1W { light GreenLight106 }
+	frame TNT1X { light GreenLight104 }
+	frame TNT1Y { light GreenLight102 }
+	frame TNT1Z { light GreenLight100 }
+}
+object InverseLight_Blue_Small
+{
+	frame TNT1A { light BlueLight90  }
+	frame TNT1B { light BlueLight90  }
+	frame TNT1C { light BlueLight92  }
+	frame TNT1D { light BlueLight92  }
+	frame TNT1E { light BlueLight94  }
+	frame TNT1F { light BlueLight94  }
+	frame TNT1G { light BlueLight96  }
+	frame TNT1H { light BlueLight96  }
+	frame TNT1I { light BlueLight98  }
+	frame TNT1J { light BlueLight98  }
+	frame TNT1K { light BlueLight100 }
+	frame TNT1L { light BlueLight102 }
+	frame TNT1M { light BlueLight104 }
+	frame TNT1N { light BlueLight106 }
+	frame TNT1O { light BlueLight108 }
+	frame TNT1P { light BlueLight110 }
+	frame TNT1Q { light BlueLight112 }
+	frame TNT1R { light BlueLight114 }
+	frame TNT1S { light BlueLight116 }
+	frame TNT1T { light BlueLight118 }
+	frame TNT1U { light BlueLight120 }
+	frame TNT1V { light BlueLight88  }
+	frame TNT1W { light BlueLight86  }
+	frame TNT1X { light BlueLight84  }
+	frame TNT1Y { light BlueLight82  }
+	frame TNT1Z { light BlueLight80  }
+}
+object InverseLight_Blue_Medium
+{
+	frame TNT1A { light BlueLight110 }
+	frame TNT1B { light BlueLight110 }
+	frame TNT1C { light BlueLight112 }
+	frame TNT1D { light BlueLight112 }
+	frame TNT1E { light BlueLight114 }
+	frame TNT1F { light BlueLight114 }
+	frame TNT1G { light BlueLight116 }
+	frame TNT1H { light BlueLight116 }
+	frame TNT1I { light BlueLight118 }
+	frame TNT1J { light BlueLight118 }
+	frame TNT1K { light BlueLight120 }
+	frame TNT1L { light BlueLight122 }
+	frame TNT1M { light BlueLight124 }
+	frame TNT1N { light BlueLight126 }
+	frame TNT1O { light BlueLight128 }
+	frame TNT1P { light BlueLight130 }
+	frame TNT1Q { light BlueLight132 }
+	frame TNT1R { light BlueLight134 }
+	frame TNT1S { light BlueLight136 }
+	frame TNT1T { light BlueLight138 }
+	frame TNT1U { light BlueLight140 }
+	frame TNT1V { light BlueLight108 }
+	frame TNT1W { light BlueLight106 }
+	frame TNT1X { light BlueLight104 }
+	frame TNT1Y { light BlueLight102 }
+	frame TNT1Z { light BlueLight100 }
+}
+object InverseLight_Cyan_Small
+{
+	frame TNT1A { light CyanLight90  }
+	frame TNT1B { light CyanLight90  }
+	frame TNT1C { light CyanLight92  }
+	frame TNT1D { light CyanLight92  }
+	frame TNT1E { light CyanLight94  }
+	frame TNT1F { light CyanLight94  }
+	frame TNT1G { light CyanLight96  }
+	frame TNT1H { light CyanLight96  }
+	frame TNT1I { light CyanLight98  }
+	frame TNT1J { light CyanLight98  }
+	frame TNT1K { light CyanLight100 }
+	frame TNT1L { light CyanLight102 }
+	frame TNT1M { light CyanLight104 }
+	frame TNT1N { light CyanLight106 }
+	frame TNT1O { light CyanLight108 }
+	frame TNT1P { light CyanLight110 }
+	frame TNT1Q { light CyanLight112 }
+	frame TNT1R { light CyanLight114 }
+	frame TNT1S { light CyanLight116 }
+	frame TNT1T { light CyanLight118 }
+	frame TNT1U { light CyanLight120 }
+	frame TNT1V { light CyanLight88  }
+	frame TNT1W { light CyanLight86  }
+	frame TNT1X { light CyanLight84  }
+	frame TNT1Y { light CyanLight82  }
+	frame TNT1Z { light CyanLight80  }
+}
+object InverseLight_Cyan_Medium
+{
+	frame TNT1A { light CyanLight110 }
+	frame TNT1B { light CyanLight110 }
+	frame TNT1C { light CyanLight112 }
+	frame TNT1D { light CyanLight112 }
+	frame TNT1E { light CyanLight114 }
+	frame TNT1F { light CyanLight114 }
+	frame TNT1G { light CyanLight116 }
+	frame TNT1H { light CyanLight116 }
+	frame TNT1I { light CyanLight118 }
+	frame TNT1J { light CyanLight118 }
+	frame TNT1K { light CyanLight120 }
+	frame TNT1L { light CyanLight122 }
+	frame TNT1M { light CyanLight124 }
+	frame TNT1N { light CyanLight126 }
+	frame TNT1O { light CyanLight128 }
+	frame TNT1P { light CyanLight130 }
+	frame TNT1Q { light CyanLight132 }
+	frame TNT1R { light CyanLight134 }
+	frame TNT1S { light CyanLight136 }
+	frame TNT1T { light CyanLight138 }
+	frame TNT1U { light CyanLight140 }
+	frame TNT1V { light CyanLight108 }
+	frame TNT1W { light CyanLight106 }
+	frame TNT1X { light CyanLight104 }
+	frame TNT1Y { light CyanLight102 }
+	frame TNT1Z { light CyanLight100 }
+}
+object InverseLight_Purple_Small
+{
+	frame TNT1A { light PurpleLight90  }
+	frame TNT1B { light PurpleLight90  }
+	frame TNT1C { light PurpleLight92  }
+	frame TNT1D { light PurpleLight92  }
+	frame TNT1E { light PurpleLight94  }
+	frame TNT1F { light PurpleLight94  }
+	frame TNT1G { light PurpleLight96  }
+	frame TNT1H { light PurpleLight96  }
+	frame TNT1I { light PurpleLight98  }
+	frame TNT1J { light PurpleLight98  }
+	frame TNT1K { light PurpleLight100 }
+	frame TNT1L { light PurpleLight102 }
+	frame TNT1M { light PurpleLight104 }
+	frame TNT1N { light PurpleLight106 }
+	frame TNT1O { light PurpleLight108 }
+	frame TNT1P { light PurpleLight110 }
+	frame TNT1Q { light PurpleLight112 }
+	frame TNT1R { light PurpleLight114 }
+	frame TNT1S { light PurpleLight116 }
+	frame TNT1T { light PurpleLight118 }
+	frame TNT1U { light PurpleLight120 }
+	frame TNT1V { light PurpleLight88  }
+	frame TNT1W { light PurpleLight86  }
+	frame TNT1X { light PurpleLight84  }
+	frame TNT1Y { light PurpleLight82  }
+	frame TNT1Z { light PurpleLight80  }
+}
+object InverseLight_Purple_Medium
+{
+	frame TNT1A { light PurpleLight110 }
+	frame TNT1B { light PurpleLight110 }
+	frame TNT1C { light PurpleLight112 }
+	frame TNT1D { light PurpleLight112 }
+	frame TNT1E { light PurpleLight114 }
+	frame TNT1F { light PurpleLight114 }
+	frame TNT1G { light PurpleLight116 }
+	frame TNT1H { light PurpleLight116 }
+	frame TNT1I { light PurpleLight118 }
+	frame TNT1J { light PurpleLight118 }
+	frame TNT1K { light PurpleLight120 }
+	frame TNT1L { light PurpleLight122 }
+	frame TNT1M { light PurpleLight124 }
+	frame TNT1N { light PurpleLight126 }
+	frame TNT1O { light PurpleLight128 }
+	frame TNT1P { light PurpleLight130 }
+	frame TNT1Q { light PurpleLight132 }
+	frame TNT1R { light PurpleLight134 }
+	frame TNT1S { light PurpleLight136 }
+	frame TNT1T { light PurpleLight138 }
+	frame TNT1U { light PurpleLight140 }
+	frame TNT1V { light PurpleLight108 }
+	frame TNT1W { light PurpleLight106 }
+	frame TNT1X { light PurpleLight104 }
+	frame TNT1Y { light PurpleLight102 }
+	frame TNT1Z { light PurpleLight100 }
+}
+object InverseLight_Orange_Small
+{
+	frame TNT1A { light OrangeLight90  }
+	frame TNT1B { light OrangeLight90  }
+	frame TNT1C { light OrangeLight92  }
+	frame TNT1D { light OrangeLight92  }
+	frame TNT1E { light OrangeLight94  }
+	frame TNT1F { light OrangeLight94  }
+	frame TNT1G { light OrangeLight96  }
+	frame TNT1H { light OrangeLight96  }
+	frame TNT1I { light OrangeLight98  }
+	frame TNT1J { light OrangeLight98  }
+	frame TNT1K { light OrangeLight100 }
+	frame TNT1L { light OrangeLight102 }
+	frame TNT1M { light OrangeLight104 }
+	frame TNT1N { light OrangeLight106 }
+	frame TNT1O { light OrangeLight108 }
+	frame TNT1P { light OrangeLight110 }
+	frame TNT1Q { light OrangeLight112 }
+	frame TNT1R { light OrangeLight114 }
+	frame TNT1S { light OrangeLight116 }
+	frame TNT1T { light OrangeLight118 }
+	frame TNT1U { light OrangeLight120 }
+	frame TNT1V { light OrangeLight88  }
+	frame TNT1W { light OrangeLight86  }
+	frame TNT1X { light OrangeLight84  }
+	frame TNT1Y { light OrangeLight82  }
+	frame TNT1Z { light OrangeLight80  }
+}
+object InverseLight_Orange_Medium
+{
+	frame TNT1A { light OrangeLight110 }
+	frame TNT1B { light OrangeLight110 }
+	frame TNT1C { light OrangeLight112 }
+	frame TNT1D { light OrangeLight112 }
+	frame TNT1E { light OrangeLight114 }
+	frame TNT1F { light OrangeLight114 }
+	frame TNT1G { light OrangeLight116 }
+	frame TNT1H { light OrangeLight116 }
+	frame TNT1I { light OrangeLight118 }
+	frame TNT1J { light OrangeLight118 }
+	frame TNT1K { light OrangeLight120 }
+	frame TNT1L { light OrangeLight122 }
+	frame TNT1M { light OrangeLight124 }
+	frame TNT1N { light OrangeLight126 }
+	frame TNT1O { light OrangeLight128 }
+	frame TNT1P { light OrangeLight130 }
+	frame TNT1Q { light OrangeLight132 }
+	frame TNT1R { light OrangeLight134 }
+	frame TNT1S { light OrangeLight136 }
+	frame TNT1T { light OrangeLight138 }
+	frame TNT1U { light OrangeLight140 }
+	frame TNT1V { light OrangeLight108 }
+	frame TNT1W { light OrangeLight106 }
+	frame TNT1X { light OrangeLight104 }
+	frame TNT1Y { light OrangeLight102 }
+	frame TNT1Z { light OrangeLight100 }
+}
+object InverseLight_Yellow_Small
+{
+	frame TNT1A { light YellowLight90  }
+	frame TNT1B { light YellowLight90  }
+	frame TNT1C { light YellowLight92  }
+	frame TNT1D { light YellowLight92  }
+	frame TNT1E { light YellowLight94  }
+	frame TNT1F { light YellowLight94  }
+	frame TNT1G { light YellowLight96  }
+	frame TNT1H { light YellowLight96  }
+	frame TNT1I { light YellowLight98  }
+	frame TNT1J { light YellowLight98  }
+	frame TNT1K { light YellowLight100 }
+	frame TNT1L { light YellowLight102 }
+	frame TNT1M { light YellowLight104 }
+	frame TNT1N { light YellowLight106 }
+	frame TNT1O { light YellowLight108 }
+	frame TNT1P { light YellowLight110 }
+	frame TNT1Q { light YellowLight112 }
+	frame TNT1R { light YellowLight114 }
+	frame TNT1S { light YellowLight116 }
+	frame TNT1T { light YellowLight118 }
+	frame TNT1U { light YellowLight120 }
+	frame TNT1V { light YellowLight88  }
+	frame TNT1W { light YellowLight86  }
+	frame TNT1X { light YellowLight84  }
+	frame TNT1Y { light YellowLight82  }
+	frame TNT1Z { light YellowLight80  }
+}
+object InverseLight_Yellow_Medium
+{
+	frame TNT1A { light YellowLight110 }
+	frame TNT1B { light YellowLight110 }
+	frame TNT1C { light YellowLight112 }
+	frame TNT1D { light YellowLight112 }
+	frame TNT1E { light YellowLight114 }
+	frame TNT1F { light YellowLight114 }
+	frame TNT1G { light YellowLight116 }
+	frame TNT1H { light YellowLight116 }
+	frame TNT1I { light YellowLight118 }
+	frame TNT1J { light YellowLight118 }
+	frame TNT1K { light YellowLight120 }
+	frame TNT1L { light YellowLight122 }
+	frame TNT1M { light YellowLight124 }
+	frame TNT1N { light YellowLight126 }
+	frame TNT1O { light YellowLight128 }
+	frame TNT1P { light YellowLight130 }
+	frame TNT1Q { light YellowLight132 }
+	frame TNT1R { light YellowLight134 }
+	frame TNT1S { light YellowLight136 }
+	frame TNT1T { light YellowLight138 }
+	frame TNT1U { light YellowLight140 }
+	frame TNT1V { light YellowLight108 }
+	frame TNT1W { light YellowLight106 }
+	frame TNT1X { light YellowLight104 }
+	frame TNT1Y { light YellowLight102 }
+	frame TNT1Z { light YellowLight100 }
+}

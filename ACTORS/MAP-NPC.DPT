@@ -1,0 +1,798 @@
+actor GBTWDoomImp : DoomImp Replaces DoomImp
+{
+	States
+	{
+	Disintegrate:
+		TROO A 0 A_PlaySound("MageLightningContinuous") 
+		IMPB ABC 7
+		IMPB BCBCBCBCBCBCBCBCBCBCCCCCCCC 1 A_PlaySound("imp/pain")
+		IMPB C 0 A_PlaySound("misc/gibbed")
+		IMPB CCCCCCCCCCCCCCCCCCCCCC 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0)
+		POL5 A 0 A_NoBlocking
+		POL5 A -1
+		stop
+	XDeath:
+		TROO N 5
+		TROO OOOOOOOOO 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0)
+		TROO O 5 A_XScream
+		TROO P 5
+		TROO Q 5 A_NoBlocking
+		TROO RST 5
+		TROO U -1
+		stop
+	}
+}
+actor Striker_FlyingBlood
+{
+	Scale 0.7
+	Health 1
+	Radius 4
+	Height 1
+	Mass 1
+	ReactionTime 160
+	RenderStyle Translucent
+	+CORPSE
+	+NOTELEPORT
+	+NOBLOCKMAP
+	+DONTSPLASH
+	+NOBLOCKMONST
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_CountDown
+		BLUD C 1 A_SpawnItemEX("Striker_FlyingBloodTrail", 0, 0, 0, 0, 0, 0, 0, 129, 0)
+		Loop
+	Crash:
+		TNT1 A 1 A_SpawnItemEX("Striker_BloodSpot", 0, 0, 0, 0, 0, 0, 0, 129, 0)
+		TNT1 A 0
+		Stop
+	}
+}
+actor Striker_FlyingBloodTrail
+{
+	Scale 0.7
+	Height 1
+	Radius 1
+	Mass 1
+	RenderStyle Translucent
+	-NOGRAVITY
+	+NOTELEPORT
+	+NOBLOCKMAP
+	+CORPSE
+	+DONTSPLASH
+	States
+	{
+	Spawn:
+		BLUD CBAA 4
+		Stop
+	Crash:
+		BLUD E 550
+		BLUD EEEE 1 A_FadeOut
+		stop
+	}
+}
+actor Striker_BloodSpot
+{
+	Radius 1
+	Height 1
+	Mass 1
+	Scale 0.7
+	RenderStyle Translucent
+	+NOTELEPORT
+	-NOBLOCKMAP
+	+CORPSE
+	+DONTSPLASH
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0
+		BLUD D 650
+		BLUD E 50
+		BLUD EEEE 1 A_FadeOut
+		Stop
+	}
+}
+actor GBTWZombieMan : ZombieMan Replaces ZombieMan
+{
+	States
+	{
+	Disintegrate:
+		POSS GGG 7
+		POSZ BCBCBCBCBCBCBCBCCBCBCDEDEDEDEDEDEDEEDEDE 1 A_PlaySound("grunt/pain")
+		POSZ EEEEEEEEEEEEEEEEEEEEEEE 1
+		POSZ C 0 A_PlaySound("misc/gibbed")
+		POSZ CCCCCCCCCCCCCCCCCCCCCC 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0)
+		POL5 A 0 A_NoBlocking
+		POL5 A -1
+		stop
+	XDeath:
+		POSS N 5
+		POSS OOOOOOOOO 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0)
+		POSS O 5 A_XScream
+		POSS P 5
+		POSS Q 5 A_NoBlocking
+		POSS RST 5
+		POSS U -1
+		stop
+	}
+}
+actor GBTWShotgunGuy: ShotgunGuy Replaces ShotgunGuy
+{
+	States
+	{
+	Disintegrate:
+		SPOS GGG 7
+		SPOS VVVWWXX 2
+		SPOZ BCBCBCBCBCBCBCBCCBCBCBCBCBCBCBCBCBC 1 A_PlaySound("grunt/pain")
+		SPOZ DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1
+		SPOZ C 0 A_PlaySound("misc/gibbed")
+		SPOZ CCCCCCCCCCCCCCCCCCCCCC 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0)
+		POL5 A 0 A_NoBlocking
+		POL5 A -1
+		stop
+	XDeath:
+		SPOS N 5
+		SPOS OOOOOOOOO 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0)
+		SPOS O 5 A_XScream
+		SPOS P 5
+		SPOS Q 5 A_NoBlocking
+		SPOS RST 5
+		SPOS U -1
+		stop
+	}
+}
+Actor MilitaryBaseCommander 10111
+{
+	Speed 10
+	Health 300
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	SeeSound "POSSSIT"
+	AttackSound "grunt/attack"
+	PainSound "POSSPN"
+	DeathSound "DSMADTH"
+	ActiveSound "POSSACT"
+	Monster
+	+FLOORCLIP
+	DropItem "Cash" 3 135
+	States
+	{
+	Spawn:
+		GRD1 AB 10 A_Look
+		Loop
+	See:
+		GRD1 AABBCCDD 4 A_Chase
+		Loop
+	Missile:
+		GRD1 E 10 A_FaceTarget
+		GRD1 F 8 A_PosAttack
+		GRD1 E 8
+		Goto See
+	Pain:
+		GRD1 G 3
+		GRD1 G 3 A_Pain
+		Goto See
+	Death:
+		GRD1 H 10
+		GRD1 I 10 A_Scream
+		GRD1 J 10 A_NoBlocking
+		GRD1 KLM 10
+		GRD1 N -1
+		Stop
+	XDeath:
+		GRD1 O 5
+		GRD1 P 5 A_XScream
+		GRD1 Q 5 A_NoBlocking
+		GRD1 RSTUV 5
+		GRD1 W -1
+		Stop
+	}
+}
+Actor MilitaryBaseCommander2 : MilitaryBaseCommander 11111
+{
+	DropItem "MilitaryBaseBunkerSpecialCard"
+	Health 6000
+	Speed 15
+	+MISSILEMORE
+	+MISSILEEVENMORE
+}
+Actor MilitaryBaseGuard 10112
+{
+	Speed 10
+	Health 300
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	SeeSound "POSSSIT"
+	AttackSound "grunt/attack"
+	PainSound "POSSPN"
+	DeathSound "DSMADTH"
+	ActiveSound "POSSACT"
+	Monster
+	+FLOORCLIP
+	DropItem "Cash" 3 135
+	States
+	{
+	Spawn:
+		DGRT AB 10 A_Look
+		Loop
+	See:
+		DGRT AABBCCDD 4 A_Chase
+		Loop
+	Missile:
+		DGRT E 2 A_FaceTarget
+		DGRT F 3 A_CPosAttack
+		DGRT E 4 A_CPosRefire
+		Goto Missile+1
+	Pain:
+		DGRT G 3
+		DGRT G 3 A_Pain
+		Goto See
+	Death:
+		DGRT H 10
+		DGRT I 10 A_Scream
+		DGRT J 10 A_NoBlocking
+		DGRT KLM 10
+		DGRT N -1
+		Stop
+	XDeath:
+		DGRT O 5
+		DGRT P 5 A_XScream
+		DGRT Q 5 A_NoBlocking
+		DGRT RSTUV 5
+		DGRT W -1
+		Stop
+	}
+}
+Actor MilitaryBaseOpposition 10113
+{
+	Speed 10
+	Health 300
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	SeeSound "POSSSIT"
+	AttackSound "grunt/attack"
+	PainSound "POSSPN"
+	DeathSound "DSMADTH"
+	ActiveSound "POSSACT"
+	Monster
+	+FLOORCLIP
+	DropItem "Cash" 3 135
+	States
+	{
+	Spawn:
+		OPFS AB 10 A_Look
+		Loop
+	See:
+		OPFS AABBCCDD 4 A_Chase
+		Loop
+	Missile:
+		OPFS E 2 A_FaceTarget
+		OPFS F 3 A_CPosAttack
+		OPFS E 4 A_CPosRefire
+		Goto Missile+1
+	Pain:
+		OPFS G 3
+		OPFS G 3 A_Pain
+		Goto See
+	Death:
+		OPFS H 10
+		OPFS I 10 A_Scream
+		OPFS J 10 A_NoBlocking
+		OPFS KLM 10
+		OPFS N -1
+		Stop
+	XDeath:
+		OPFS O 5
+		OPFS P 5 A_XScream
+		OPFS Q 5 A_NoBlocking
+		OPFS RSTUV 5
+		OPFS W -1
+		Stop
+	}
+}
+Actor MilitaryBaseSniperGuard 10114
+{
+	Speed 10
+	Health 300
+	Radius 16
+	Height 56
+	Mass 100
+	MaxTargetRange 250
+	PainChance 255
+	SeeSound "POSSSIT"
+	AttackSound "M40FIR1"
+	PainSound "POSSPN"
+	DeathSound "DSMADTH"
+	ActiveSound "POSSACT"
+	Monster
+	+FLOORCLIP
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	+LOOKALLAROUND
+	MinMissileChance 255
+	DropItem "Cash" 3 135
+	DropItem "M40RifleSpawner"
+	States
+	{
+	Spawn:
+		PSNP AB 10 A_Look
+		Loop
+	See:
+		PSNP AABBCCDD 4 A_Chase("Missile", "Missile")
+		Loop
+	Missile:
+		PSNP E 1 A_FaceTarget
+		PSNP F 1 A_CustomBulletAttack(2, 2, 1, 20)
+		PSNP E 10
+		Goto See
+	Pain:
+		PSNP G 3
+		PSNP G 3 A_Pain
+		Goto See
+	Death:
+		PSNP H 10
+		PSNP I 10 A_Scream
+		PSNP J 10 A_NoBlocking
+		PSNP KLM 10
+		PSNP N -1
+		Stop
+	XDeath:
+		PSNP O 5
+		PSNP P 5 A_XScream
+		PSNP Q 5 A_NoBlocking
+		PSNP RSTUV 5
+		PSNP W -1
+		Stop
+	}
+}
+Actor Terrorist 10115
+{
+	Speed 10
+	Health 300
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	SeeSound "POSSSIT"
+	AttackSound "grunt/attack"
+	PainSound "POSSPN"
+	DeathSound "DSMADTH"
+	ActiveSound "POSSACT"
+	Monster
+	+FLOORCLIP
+	DropItem "Cash" 3 135
+	States
+	{
+	Spawn:
+		TERR AB 10 A_Look
+		Loop
+	See:
+		TERR AABBCCDD 4 A_Chase
+		Loop
+	Missile:
+		TERR E 2 A_FaceTarget
+		TERR F 3 A_CPosAttack
+		TERR E 4 A_CPosRefire
+		Goto Missile+1
+	Pain:
+		TERR G 3
+		TERR G 3 A_Pain
+		Goto See
+	Death:
+		TERR H 10
+		TERR I 10 A_Scream
+		TERR J 10 A_NoBlocking
+		TERR KLM 10
+		TERR N -1
+		Stop
+	XDeath:
+		TERR O 5
+		TERR P 5 A_XScream
+		TERR Q 5 A_NoBlocking
+		TERR RSTUV 5
+		TERR W -1
+		Stop
+	}
+}
+ACTOR Jitterskull
+{
+	Scale 0.13
+	Height 70
+	Radius 15
+	Speed 23
+	Damage 255
+	Health 800
+	MONSTER
+	+NOBLOCKMONST
+	+DROPOFF
+	+LOOKALLAROUND
+	+QUICKTORETALIATE
+	Obituary "%o was eaten by the jitterskull"
+	painchance 0 
+	mass 9999999999
+	States
+	{
+	Spawn:
+		JSKL A 1 A_Look
+		Loop
+	See:
+		JSKL A 0 A_Stop
+		JSKL A 0 A_PlaySound("skullact")
+		JSKL D 0 A_Chase
+		JSKL ABCBABCBCBABABCBCBABABCBCBA 1 A_FaceTarget
+		JSKL A 0 A_JumpIfCloser(280, 21)
+		JSKL AAAAAAAAAAAAAAAAAAAA 0 A_Chase
+		Loop
+		JSKL D 0 A_FaceTarget
+		JSKL D 0 A_PlaySoundEx("skullattack", "Voice",0)
+		Goto Pain
+	Pain:
+		JSKL D 0 A_FaceTarget
+		JSKL D 1 A_SkullAttack
+		JSKL D 0 A_JumpIfCloser(280, 2)
+		JSKL D 1 A_Stop
+		Goto See
+		JSKL D 0
+		Loop
+	Death:
+		JSKL D 0 A_Playsound("skulldie")
+		JSKL DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_CustomMissile("ArchvileFirex2", 2, 0, random(0,360), 0)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_CustomMissile("ArchvileFirex2", 0, 0, random(0,360), 0)
+		TNT1 A 0 A_Fall
+		Stop
+	}
+}
+ACTOR RLAgitatingRevenant : Revenant 17756
+{
+	MeleeSound ""
+	PainSound "misc/aaaaaa"
+	Health 5000
+	Speed 20
+	PainChance 30
+	+DONTHARMCLASS
+	+DONTHARMSPECIES
+	+NOINFIGHTING
+	+THRUSPECIES
+	+LOOKALLAROUND
+	Obituary "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+	HitObituary "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+	Tag "Agitating Revenant"
+	Species "Authors"
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_Look
+		AGIT A 1 A_Wander
+		TNT1 A 0 A_Look
+		AGIT B 1 A_Wander
+		TNT1 A 0 A_Look
+		AGIT C 1 A_Wander
+		TNT1 A 0 A_Look
+		AGIT D 1 A_Wander
+		TNT1 A 0 A_Look
+		AGIT E 1 A_Wander
+		TNT1 A 0 A_Look
+		AGIT F 1 A_Wander
+		TNT1 A 0 A_Jump(90, "Dance")
+		Loop
+	Dance:
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		AGIT MMMNNN 1 A_Look
+		TNT1 A 0 A_Jump(15, "Spawn")
+		AGIT MMMNNN 1 A_Look
+		TNT1 A 0 A_Jump(15, "Spawn")
+		Loop
+	See:
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		AGIT ABCDEF 1 A_Chase ("Melee", "")
+		AGIT ABCDEF 1 A_Chase ("Melee", "")
+		Loop
+	Melee:
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		TNT1 A 0 A_PlaySound("skeleton/swing", CHAN_BODY)
+		TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0)
+		AGIT G 1 A_FaceTarget
+		TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0)
+		AGIT H 1 A_FaceTarget
+		TNT1 A 0 ThrustThing(angle*256/360, 1, 0, 0)
+		AGIT I 1 A_CustomMeleeAttack (1 * random(1, 5), "skeleton/melee", "", "Mysterious")
+		Goto See
+	Missile:
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		AGIT J 8 Bright A_FaceTarget
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("RLAgitatingRevenantMissile", 52, 14, frandom(25,-25), 0, frandom(10,-10))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("RLAgitatingRevenantMissile", 52, -14, frandom(25,-25), 0, frandom(10,-10))
+		AGIT J 2 Bright A_FaceTarget
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		AGIT K 20
+		Goto See
+	Pain:
+		AGIT LLLLL 1 A_SetAngle(15 + angle)
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 1)
+		AGIT LLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 1 A_SetAngle(15 + angle)
+		TNT1 A 0 A_ChangeFlag("NOPAIN", 0)
+		Goto Missile
+	Death:
+		TNT1 A 0 A_PlaySound("misc/aaaaaa", CHAN_VOICE, 1, 0, 0.2)
+		TNT1 A 0 A_SpawnItemEx ("ArchvileFire", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION) //RLResurrectionFire
+		AGIT MNMN 3 A_FadeTo (0, 0.02, 1)
+		Loop
+	Raise:
+		Stop
+	}
+}
+ACTOR RLAgitatingRevenantMissile : RevenantTracer
+{
+	+ROCKETTRAIL
+	+MTHRUSPECIES
+	Speed 40
+	Decal "RevenantScorch"
+	DamageType "Fire"
+	States
+	{
+	Spawn:
+		FATB AB 2 Bright A_SeekerMissile (1, 1,SMF_LOOK,128)
+		Loop
+	}
+}
+ACTOR PowerRLAgitationCheck : Powerup
+{
+	Powerup.Duration 15
+}
+ACTOR CREEPER_AND_RAVAGER_SPECIAL 15608
+{
+	OBITUARY "THE RAVAGER PLACED A CURSE UPON %o."
+	HITOBITUARY "%o SOUL WAS SUCKED OUT BY THE RAVAGER."
+	HEALTH 100
+	RADIUS 10
+	HEIGHT 38
+	MASS 100000000
+	SPEED 25
+	FLOATSPEED 25
+	PAINCHANCE 255
+	BLOODCOLOR WHITE
+	RENDERSTYLE TRANSLUCENT
+	ALPHA 0.75
+	ACTIVESOUND "RAVAGTAUNT"
+	MONSTER
+	+FLOORCLIP
+	+DONTBLAST
+	+FORCEXYBILLBOARD
+	+NOICEDEATH
+	+NOGRAVITY
+	+FLOAT
+	STATES
+	{
+	SPAWN:
+		SPIR AB 3 BRIGHT A_WANDER
+		SPIR A 0 A_LOOK
+		SPIR A 0 BRIGHT A_LOOPACTIVESOUND
+		LOOP
+	SEE:
+		SPIR AB 3 BRIGHT A_CHASE
+		SPIR A 0 BRIGHT A_LOOPACTIVESOUND
+		LOOP
+	MELEE:
+		SPIR A 5 BRIGHT A_GIVETOTARGET("CREEPERACTIVATE", 1)
+		SPIR A 0 BRIGHT A_CUSTOMMELEEATTACK(255,"NONE","NONE","NONE",1)
+		SPIR B 5 BRIGHT
+		GOTO SEE
+	MISSILE:
+		SPIR A 0 BRIGHT A_FACETARGET
+		SPIR A 0 BRIGHT A_SKULLATTACK
+		SPIR A 6 BRIGHT //A_CUSTOMMISSILE("RAVAGERBALL_SPC",0,0)
+		GOTO SEE
+	PAIN:
+		SPIR A 1 BRIGHT A_PLAYSOUND("RAVAGERPAIN")
+		GOTO SEE
+	DEATH:
+		SPIR E 2 BRIGHT A_PLAYSOUND("RAVAGERDIE")
+		SPIR F 2 BRIGHT
+		SPIR G 2 BRIGHT
+		SPIR H 2 BRIGHT
+		SPIR I 2 BRIGHT
+		SPIR J 2 BRIGHT
+		TNT1 A 0 BRIGHT A_BURST("ARCHVILEFIREX3")
+		STOP
+	XDEATH:
+		SPIR E 2 BRIGHT A_PLAYSOUND("RAVAGERDIE")
+		SPIR F 2 BRIGHT
+		SPIR G 2 BRIGHT
+		SPIR H 2 BRIGHT
+		SPIR I 2 BRIGHT
+		SPIR J 2 BRIGHT
+		TNT1 A 0 BRIGHT A_BURST("ARCHVILEFIREX3")
+		STOP
+	}
+}
+ACTOR RAVAGERBALL_SPC
+{
+	SPEED 28
+	DAMAGE 12
+	OBITUARY "THE RAVAGER PLACED A CURSE UPON %O."
+	HEIGHT 8
+	RADIUS 10
+	RENDERSTYLE ADD
+	SCALE 0.6
+	ALPHA 1.0
+	PROJECTILE
+	SEESOUND "RAVAGERBALL"
+	DEATHSOUND "RAVAGERBALLDEATH"
+	STATES
+	{
+	SPAWN:
+		SRBA ABCD 3 A_FADEOUT(0.06)
+		LOOP
+	DEATH:
+		SRBA EFGHIJ 3 BRIGHT A_SETTRANSLUCENT(1.0, 1)
+		STOP
+	}
+}
+ACTOR SHAR_SVIBORGA 26361
+{
+	OBITUARY "%o. Dismassed."
+	HITOBITUARY "%o. Dismassed."
+	HEALTH 100
+	RADIUS 10
+	HEIGHT 38
+	MASS 100000000
+	SPEED 25
+	FLOATSPEED 25
+	PAINCHANCE 255
+	BLOODCOLOR YELLOW
+	RENDERSTYLE ADD
+	//ALPHA 0.75
+	SEESOUND "SVBRG_SE"
+	ACTIVESOUND "SVBRG_AC"
+	MONSTER
+	+FLOORCLIP
+	+DONTBLAST
+	+FORCEXYBILLBOARD
+	+NOICEDEATH
+	STATES
+	{
+	SPAWN:
+		SHAR A 3 BRIGHT A_WANDER
+		SHAR A 0 A_LOOK
+		SHAR A 0 BRIGHT A_LOOPACTIVESOUND
+		LOOP
+	SEE:
+		SHAR A 3 BRIGHT A_CHASE
+		SHAR A 0 BRIGHT A_LOOPACTIVESOUND
+		LOOP
+	MELEE:
+		SHAR A 1 A_PlaySound("SVBRG_P")
+		SHAR A 0 BRIGHT A_CUSTOMMELEEATTACK(255,"NONE","NONE","NONE",1)
+		SHAR A 5 BRIGHT
+		GOTO SEE
+	MISSILE:
+		SHAR A 15 BRIGHT A_FACETARGET
+		SHAR A 1 A_PlaySound("SVBRG_CA")
+		SHAR AAAAAAAAAAAAAAAAA 1 BRIGHT A_SKULLATTACK
+		GOTO SEE
+	PAIN:
+		SHAR A 1 BRIGHT A_PLAYSOUND("SVBRG_PN")
+		GOTO SEE
+	XDEATH:
+	DEATH:
+		SHAR E 2 BRIGHT A_PLAYSOUND("SVBRG_DT")
+		TNT1 A 0 BRIGHT A_BURST("ARCHVILEFIREX3")
+		STOP
+	}
+}
+Actor JustinBieber 26362
+{
+	floatspeed 15
+	Speed 200
+	Scale 0.5
+	MONSTER
+	Health 1
+	Radius 10
+	Height 160
+	Mass 9999999999999
+	Painchance 255
+	+FLOAT
+	//+LOOKALLAROUND
+	+NOGRAVITY
+	+NOTELEOTHER
+	//-SOLID
+	bloodcolor "00 88 FF"
+	MeleeDamage 1
+	SEESOUND "JB_SEE"
+	ATTACKSOUND "JB_ATTACK"
+	DEATHSOUND "JB_DEATH"
+	ACTIVESOUND "JB_SEE"
+	States
+	{
+	Spawn:
+		PIDR A 1 A_Look
+		Loop
+	See:
+		PIDR AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_Chase
+		Loop
+	Melee:
+		PIDR A 5 A_FaceTarget
+		PIDR A 1 A_MeleeAttack
+		Goto See
+	Death:
+		PIDR A 5 A_FadeOut(0.1)
+		Stop
+	}
+}
+ACTOR ChainsawZombie 3204
+{
+	Scale 0.666
+    Health 30
+    Radius 20
+    Height 56
+    Speed 17
+    MeleeDamage 1
+    PainChance 200
+    MONSTER
+    +FLOORCLIP
+    Obituary "%o was sliced by a madman zombie with a chainsaw!"
+    SeeSound "BETONSI"
+    MeleeSound "weapons/sawhit"
+    PainSound "BETONPI1"
+    DeathSound "BETONDHT"
+    ActiveSound "BETONSI"
+    DropItem Chainsaw
+    States
+    {
+	Spawn:
+		CHAN A 4 A_Look
+		CHAN A 4 A_PlayWeaponSound("weapons/sawidle") 
+		CHAN A 4 A_Look 
+		CHAN B 4 A_PlayWeaponSound("weapons/sawidle") 
+		CHAN B 4 A_Look 
+		CHAN B 4 A_PlayWeaponSound("weapons/sawidle") 
+		Loop 
+	See: 
+		CHAN AAAA 4 A_Chase
+		CHAN AAAA 4 A_Chase
+		CHAN B 0 A_PlayWeaponSound("weapons/sawidle") 
+		CHAN BBBB 4 A_Chase
+		CHAN BBBB 4 A_Chase
+		CHAN C 0 A_PlayWeaponSound("weapons/sawidle") 
+		CHAN CCCC 4 A_Chase
+		CHAN CCCC 4 A_Chase
+		CHAN D 0 A_PlayWeaponSound("weapons/sawidle") 
+		CHAN DDDD 4 A_Chase
+		CHAN DDDD 4 A_Chase
+		CHAN A 0 A_PlayWeaponSound("weapons/sawidle") 
+		Loop 
+	Melee: 
+		CHAN E 1 A_FaceTarget 
+		CHAN F 3 A_MeleeAttack 
+		Goto See 
+	Pain: 
+		CHAN G 5 
+		CHAN G 3 A_Pain 
+		Goto See 
+	Death: 
+		CHAN H 5 
+		CHAN I 5 A_Scream 
+		CHAN J 5 A_Fall 
+		CHAN KLM 5 
+		CHAN N -1 
+		Stop 
+	XDeath:
+        CHAN O 5
+        CHAN P 5 A_XScream
+        CHAN Q 5 A_Fall
+        CHAN RSTUV 5
+        CHAN W -1
+        Stop
+	Raise: 
+        CHAN NMLKJIH 5 
+        Goto See 
+    } 
+}

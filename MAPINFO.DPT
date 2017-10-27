@@ -1,0 +1,213 @@
+//EPISODES
+clearepisodes
+episode HQ1
+{
+	name = "DPT HQ"
+	key = "1"
+}
+episode HQARENA
+{
+	name = "HQ SANDBOX"
+	key = "2"
+}
+episode HQ_2KC1
+{
+	name = "HQ DM"
+	key = "3"
+}
+//COMMON SKILLS
+clearskills
+skill baby
+{
+	textcolor = White
+	AutoUseHealth
+	AmmoFactor = 2
+	DamageFactor = 0.5
+	EasyBossBrain
+	SpawnFilter = Baby
+	Name = "Novice"
+	Key = "1"
+}
+skill easy
+{
+	textcolor = Green
+	EasyBossBrain
+	SpawnFilter = Easy
+	Name = "Apprentice"
+	Key = "2"
+}
+skill normal
+{
+	textcolor = Yellow
+	SpawnFilter = Normal
+	Name = "Adept"
+	Key = "3"
+}
+skill hard
+{
+	textcolor = Red
+	SpawnFilter = Hard
+	Name = "Expert"
+	Key = "4"
+}
+skill nightmare
+{
+	textcolor = Darkred
+	AmmoFactor = 2
+	FastMonsters
+	DisableCheats
+	RespawnTime = 12
+	SpawnFilter = Nightmare
+	Name = "Master"
+	MustConfirm = "I am your master! Agree?"
+	Key = "5"
+}
+//NEW SKILLS
+skill Hell_in_your_computer
+{
+	textcolor = Black
+	acsreturn = 5
+	AmmoFactor = 2
+	FastMonsters
+	Name = "Hell"
+	DisableCheats
+	DamageFactor = 1.5
+	SpawnFilter = Nightmare
+	MustConfirm = "Hell rush to your computer! Do you really want?"
+	ReplaceActor = "Medikit", "Stimpack"
+	ReplaceActor = "MegaSphere", "SoulSphere"
+	ReplaceActor = "HellKnight", "BaronOfHell"
+	ReplaceActor = "ZombieMan", "ShotgunGuy"
+	ReplaceActor = "ShotgunGuy", "ChaingunGuy"
+	ReplaceActor = "Demon", "Spectre"
+	ReplaceActor = "DoomImpBall", "CacodemonBall"
+	ReplaceActor = "CacodemonBall", "FatShot"
+	ReplaceActor = "ArachnotronPlasma", "Rocket"
+	Key = "6"
+}
+skill survival
+{
+	acsreturn = 6
+	textcolor = Blue
+	SpawnFilter = Hard
+	Name = "Survival"
+	DisableCheats
+	MustConfirm = "This type of game is designed for survival. In it you can not save the game and loaded. Also it work only in Gzdoom."
+	Key = "7"
+}
+skill dante
+{
+	damagefactor = 255
+	monsterhealth = 0.000001
+	spawnfilter = Nightmare
+	name = "instant gib"
+	textcolor = blue
+	mustconfirm = "One Hit. One Kill. Not works in Skulltag, only works in ZDOOM!"
+	Key = "8"
+}
+skill arcade
+{
+	textcolor = White
+	AutoUseHealth
+	AmmoFactor = 2
+	DamageFactor = 0.25
+	EasyBossBrain
+	SpawnFilter = Baby
+	Name = "Arcade"
+	ReplaceActor = "Stimpack", "Medikit"
+	ReplaceActor = "Medikit", "SoulSphere"
+	ReplaceActor = "SoulSphere", "MegaSphere"
+	ReplaceActor = "BaronOfHell", "HellKnight"
+	ReplaceActor = "Anomalyies", "ShotgunGuy"
+	ReplaceActor = "ShotgunGuy", "ZombieMan"
+	ReplaceActor = "Demon", "ChaingunGuy"
+	ReplaceActor = "CacodemonBall", "DoomImpBall"
+	ReplaceActor = "FatShot", "CacodemonBall"
+	ReplaceActor = "Rocket", "ArachnotronPlasma"
+	MustConfirm = "Аркадный режим создан специально для детей, тестов и отдыха. (И аутистов)"
+	Key = "9"
+}
+//CORE
+defaultmap
+{
+	allowrespawn
+}
+map TITLEMAP "TITLE"
+{
+	music = "TITLEMUS"
+}
+//HQ
+map HQ1 "DPT CITY"
+{
+	music = "SPACEDEB" // "HQ1"
+	SKY1 = "SKY1"
+	next = "HQ1"
+}
+//SANDBOX
+map HQARENA "Arena"
+{
+	SKY1 = "SKY1"
+	next = "HQPIANO"
+	music = "HQ2"
+}
+map HQPIANO "Piano"
+{
+	SKY1 = "SKY1"
+	next = "HQSNDBX1"
+	music = "NOMUS"
+}
+map HQSNDBX1 "gm_flatgrass"
+{
+	SKY1 = "SKY1"
+	next = "HQSNDBX3" // WORKER
+	music = "NOMUS"
+}
+map HQSNDBX2 "gm_construct" // WIP
+{
+	SKY1 = "SKY1"
+	next = "HQSNDBX3"
+	music = "NOMUS"
+}
+map HQSNDBX3 "Green Screen"
+{
+	SKY1 = "SKY1"
+	next = "HQSNDBX4"
+	music = "NOMUS"
+}
+map HQSNDBX4 "Randomly Colorful Map"
+{
+	SKY1 = "SKY1"
+	next = "HQARENA"
+	music = "DASMODEL" // D_RAIN
+}
+//DM & CTF
+map HQ_2KC1 "$2000$ Classic v1"
+{
+	SKY1 = "SKY1"
+	next = "HQ_2KC2"
+	music = "NOMUS"
+}
+map HQ_2KC2 "$2000$ Classic v2"
+{
+	SKY1 = "SKY1"
+	next = "HQ_2KM"
+	music = "NOMUS"
+}
+map HQ_2KM "$2000$ Modern"
+{
+	SKY1 = "SKY1"
+	next = "HQCTF1"
+	music = "NOMUS"
+}
+map HQCTF1 "de_aztec"
+{
+	SKY1 = "SKY1"
+	next = "HQCTF2"
+	music = "HALO"
+}
+map HQCTF2 "de_dust2x2"
+{
+	SKY1 = "SKY1"
+	next = "HQ1" // WORKER
+	music = "ORIONERO"
+}
