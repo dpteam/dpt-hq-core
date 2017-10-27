@@ -1,0 +1,16 @@
+*.o binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.bmp binary
+*.imgz binary
+*.wad binary
+*.pk3 binary
+*.zip binary
+*.exe binary
+*.md2 binary
+*.md3 binary
+*.wav binary
+*.ogg binary
+*.mp3 binary
+*.dat binary
