@@ -12,6 +12,6 @@ Also have GZDoom/Delta-Touch compatibility
 3. Drag & Drop pk7 to zandronum.exe
 4. Play
 
-## Post Scriptum
+## Important info
 
 CREDITS Currently Work in Progress, if im forgot some, please say it in issues.
