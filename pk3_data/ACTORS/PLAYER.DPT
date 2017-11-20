@@ -2392,6 +2392,7 @@ ACTOR Ronikari : PlayerPawn
 	PainChance 255
 	Player.DisplayName "WIP: Ronikari"
 	Player.SoundClass "Ronikari"
+	Player.StartItem "Auto9"
 	Player.StartItem "Unarmed"
 	Player.StartItem "Dick"
 	Player.StartItem "SatchelAmmo", 5
@@ -2400,7 +2401,7 @@ ACTOR Ronikari : PlayerPawn
 	Player.StartItem "RedSprayPaint"
 	Player.StartItem "GreenSprayPaint"
 	Player.StartItem "SprayPaint"
-	Player.StartItem "Rivets", 225
+	Player.StartItem "Clip", 400
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
