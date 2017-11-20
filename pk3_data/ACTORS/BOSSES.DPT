@@ -1,8 +1,7 @@
+//*** Boss #1: GluttonyApostle ***//
 
-actor GluttonyApostleFlakToken : Inventory {inventory.maxamount 10}
-
-actor GluttonyApostleVomitToken : Inventory {inventory.maxamount 20}
-
+ACTOR GluttonyApostleFlakToken : Inventory {inventory.maxamount 10}
+ACTOR GluttonyApostleVomitToken : Inventory {inventory.maxamount 20}
 ACTOR GluttonyApostle 26358
 {
 	health 16500
@@ -26,7 +25,7 @@ ACTOR GluttonyApostle 26358
 	PainSound "apostle/pain"
 	DeathSound "apostle/death"
 	ActiveSound "apostle/idle"
-	damagefactor "GluttonyApostle",0.0
+	damageFactor "GluttonyApostle",0.0
 	Obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!"
 	states
 	{
@@ -197,8 +196,7 @@ Death:
 		stop
 	}
 }
-
-actor GluttonyApostleMiniMissile
+ACTOR GluttonyApostleMiniMissile
 {
 	obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!"
 	radius 8
@@ -226,8 +224,7 @@ Death:
 		stop
 	}
 }
-
-actor GluttonyApostleMiniMissileTrail
+ACTOR GluttonyApostleMiniMissileTrail
 {
 	+NOINTERACTION
 	RenderStyle "Translucent"
@@ -239,8 +236,7 @@ Spawn:
 		Stop
 	}
 }
-
-actor GluttonyApostleFlakProjectile1
+ACTOR GluttonyApostleFlakProjectile1
 {
 	radius 5
 	height 5
@@ -268,8 +264,7 @@ XDeath:
 		stop
 	}
 }
-
-actor GluttonyApostleFlakProjectile2 : GluttonyApostleFlakProjectile1
+ACTOR GluttonyApostleFlakProjectile2 : GluttonyApostleFlakProjectile1
 {
 	states
 	{
@@ -281,8 +276,7 @@ Death:
 		stop
 	}
 }
-
-actor GluttonyApostleFlakProjectile3 : GluttonyApostleFlakProjectile1
+ACTOR GluttonyApostleFlakProjectile3 : GluttonyApostleFlakProjectile1
 {
 	states
 	{
@@ -294,8 +288,7 @@ Death:
 		stop
 	}
 }
-
-actor GluttonyApostleSpike
+ACTOR GluttonyApostleSpike
 {
 	radius 1
 	height 1
@@ -323,8 +316,7 @@ Spawn:
 		stop
 	}
 }
-
-actor GluttonyApostleSpikeChunk
+ACTOR GluttonyApostleSpikeChunk
 {
 	radius 5
 	height 5
@@ -375,8 +367,7 @@ XDeath:
 		stop
 	}
 }
-
-actor GluttonyApostleToxicBall
+ACTOR GluttonyApostleToxicBall
 {
 	obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!"
 	radius 18
@@ -402,8 +393,7 @@ Death:
 		stop
 	}
 }
-
-actor GluttonyApostleToxicFog
+ACTOR GluttonyApostleToxicFog
 {
 	radius 10
 	height 4
@@ -429,10 +419,8 @@ Spawn:
 		stop
 	}
 }
-
-actor GluttonyApostleParasiteVomitToken : Inventory {inventory.maxamount 25}
-
-actor GluttonyApostleParasite
+ACTOR GluttonyApostleParasiteVomitToken : Inventory {inventory.maxamount 25}
+ACTOR GluttonyApostleParasite
 {
 	monster
 	health 350
@@ -448,7 +436,7 @@ actor GluttonyApostleParasite
 	deathsound "apostle/parasite/death"
 	activeSound "none"
 	BloodColor "Green"
-	damagefactor "GluttonyApostle",0.0
+	damageFactor "GluttonyApostle",0.0
 	meleedamage 15
 	obituary "%o became worm food for one of the Gluttony Apostle's parasites"
 	states
@@ -544,8 +532,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib1
+ACTOR VomitedRedGib1
 {
 	radius 5
 	height 5
@@ -568,8 +555,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib2 : VomitedRedGib1
+ACTOR VomitedRedGib2 : VomitedRedGib1
 {
 	states
 	{
@@ -582,8 +568,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib3 : VomitedRedGib1
+ACTOR VomitedRedGib3 : VomitedRedGib1
 {
 	states
 	{
@@ -596,8 +581,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib4 : VomitedRedGib1
+ACTOR VomitedRedGib4 : VomitedRedGib1
 {
 	states
 	{
@@ -610,8 +594,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib5 : VomitedRedGib1
+ACTOR VomitedRedGib5 : VomitedRedGib1
 {
 	states
 	{
@@ -624,8 +607,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib6 : VomitedRedGib1
+ACTOR VomitedRedGib6 : VomitedRedGib1
 {
 	states
 	{
@@ -638,8 +620,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib7 : VomitedRedGib1
+ACTOR VomitedRedGib7 : VomitedRedGib1
 {
 	states
 	{
@@ -652,8 +633,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedRedGib8 : VomitedRedGib1
+ACTOR VomitedRedGib8 : VomitedRedGib1
 {
 	states
 	{
@@ -666,8 +646,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib1 : VomitedRedGib1
+ACTOR VomitedGreenGib1 : VomitedRedGib1
 {
 	states
 	{
@@ -680,8 +659,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib2 : VomitedRedGib1
+ACTOR VomitedGreenGib2 : VomitedRedGib1
 {
 	states
 	{
@@ -694,8 +672,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib3 : VomitedRedGib1
+ACTOR VomitedGreenGib3 : VomitedRedGib1
 {
 	states
 	{
@@ -708,8 +685,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib4 : VomitedRedGib1
+ACTOR VomitedGreenGib4 : VomitedRedGib1
 {
 	states
 	{
@@ -722,8 +698,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib5 : VomitedRedGib1
+ACTOR VomitedGreenGib5 : VomitedRedGib1
 {
 	states
 	{
@@ -736,8 +711,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib6 : VomitedRedGib1
+ACTOR VomitedGreenGib6 : VomitedRedGib1
 {
 	states
 	{
@@ -750,8 +724,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib7 : VomitedRedGib1
+ACTOR VomitedGreenGib7 : VomitedRedGib1
 {
 	states
 	{
@@ -764,8 +737,7 @@ Death:
 		stop
 	}
 }
-
-actor VomitedGreenGib8 : VomitedRedGib1
+ACTOR VomitedGreenGib8 : VomitedRedGib1
 {
 	states
 	{
@@ -778,8 +750,7 @@ Death:
 		stop
 	}
 }
-
-actor RedBloodTracer : FastProjectile
+ACTOR RedBloodTracer : FastProjectile
 {
 	projectile
 	damagetype "GluttonyApostle"
@@ -805,8 +776,7 @@ Death:
 		stop
 	}
 }
-
-actor RedBloodTracerTrail
+ACTOR RedBloodTracerTrail
 {
 	scale 0.09
 	damagetype "GluttonyApostle"
@@ -837,13 +807,11 @@ Death:
 		stop
 	}
 }
-
-actor GreenBloodTracer : RedBloodTracer
+ACTOR GreenBloodTracer : RedBloodTracer
 {
 	missiletype "GreenBloodTracerTrail"
 }
-
-actor GreenBloodTracerTrail : RedBloodTracerTrail
+ACTOR GreenBloodTracerTrail : RedBloodTracerTrail
 {
 	states
 	{
@@ -864,3 +832,452 @@ Spawn4:
 	}
 }
 
+//*** Boss #3: PatriarchFaithful ***//
+
+ACTOR PatriarchFaithful
+{
+	health 7500
+	Radius 33
+	Height 97
+	speed 9
+	scale 1.5
+	painchance 64
+	mass 1500
+	monster
+	+NOGRAVITY
+	+FLOAT
+	+BOSS
+	+DONTSQUASH
+	+DONTMORPH 
+	+DONTBLAST
+	+DONTGIB
+	+NOTELEOTHER
+	+DONTHURTSPECIES
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	damageFactor "PatriarchFaithful",0.0
+	SeeSound "monsters/patriarch/idle"
+	PainSound "monsters/patriarch/pain"
+	DeathSound "monsters/patriarch/death"
+	ActiveSound "monsters/patriarch/idle"
+	Obituary "The Patriarch Faithful completely shreded %o's soul into little pieces."
+	states
+	{
+Spawn:
+		BISH A 1 A_Look
+		loop
+See:
+		TNT1 A 0 ACS_ExecuteAlways(1228)
+Idle:
+		BISH AAABBB 1 A_Chase
+		loop
+Missile:
+		TNT1 A 0 A_TakeInventory("PenragramCooldown",2)
+		TNT1 A 0 A_JumpIfCloser(350,"FlameNovaLoop")
+		TNT1 A 0 A_JumpIfCloser(450,"FlamethrowerLoop")
+		TNT1 A 0 A_Jump(45,"SkullFire")
+		TNT1 A 0 A_Jump(15,"PentargamSummoning")
+Barrage:
+		BISH D 3 Bright A_FaceTarget
+BarrageLoop:
+		TNT1 A 0 A_JumpIfInventory("PatriarchBarrageToken",50,"BarrageEnd")
+		BISH E 1 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("BarrageMissile",52)
+		TNT1 A 0 A_GiveINventory("PatriarchBarrageToken",1)
+		loop
+BarrageEnd:
+		TNT1 A 0 A_TakeINventory("PatriarchBarrageToken",50)
+		BISH D 3 Bright
+		goto See
+Flamethrower:
+		TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+		BISH D 2 Bright A_FaceTarget
+FlamethrowerLoop:
+		BISH E 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("FlamethrowerProjectile",52)
+		TNT1 A 0 A_JumpIfCloser(350,"FlameNovaLoop")
+		TNT1 A 0 A_JumpIfCloser(450,"FlamethrowerLoop")
+FlamethrowerEnd:
+		TNT1 A 0 A_ChangeFlag("NOPAIN",0)
+		BISH D 2 Bright
+		goto See
+FlameNova:
+		TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+		BISH D 2 Bright A_FaceTarget
+FlameNovaLoop:
+		BISH E 3 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,30)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,60)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,90)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,120)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,150)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,180)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,210)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,240)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,270)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,300)
+		TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,330)
+		TNT1 A 0 A_JumpIfCloser(350,"FlameNovaLoop")
+		TNT1 A 0 A_JumpIfCloser(450,"FlamethrowerLoop")
+		goto FlamethrowerEnd
+SkullFire:
+		TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+		BISH G 5 Bright
+		TNT1 A 0 A_PlaySound("monsters/patriacrh/skull/fire",5,1.5,0,0)
+		BISH G 10 Bright
+		BISH H 3 Bright
+		BISH I 3 Bright
+		TNT1 A 0 A_SpawnItemEx("SkullFog",5,0,52,0,0,0,0,SXF_NOCHECKPOSITION)
+		BISH JJJJJJJJJJJJJJJJJJJJJJJJ 1 Bright A_CustomMissile("SkullBall",52,0,random(0,360),CMF_OFFSETPITCH,random(0,180))
+		BISH I 3 Bright
+		BISH H 3 Bright
+		BISH G 3 Bright
+		TNT1 A 0 A_ChangeFlag("NOPAIN",0)
+		goto See
+PentargamSummoning:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIf((ceilingz-z>300),1)
+		goto Barrage
+		TNT1 A 0 A_JumpIfInventory("PenragramCooldown",1,"Barrage")
+		TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+		TNT1 A 0 A_GiveInventory("PenragramCooldown",60)
+		TNT1 A 0 A_PlaySound("monsters/pentagram/cast",7,3.0,0,0)
+		BISH D 6 Bright
+		BISH E 8 Bright
+		BISH F 75 Bright
+		TNT1 A 0 A_SpawnItemEx("PatriarchPentagram",0,0,150,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER)
+		BISH F 25 Bright
+		BISH E 8 Bright
+		BISH D 6 Bright
+		TNT1 A 0 A_ChangeFlag("NOPAIN",1)
+		goto See
+Pain:
+		TNT1 A 0 A_TakeInventory("PenragramCooldown",5) //Don't rage him, he-he
+		BISH C 2
+		BISH C 2 A_Pain
+		TNT1 A 0 A_Jump(200,"FogFade")
+		goto See
+FogFade:
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("LustFog",0,0,52,random(-5,5),random(-5,5),random(-5,5),0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_UnSetShootable
+		TNT1 A 0 A_SetInvulnerable 
+		TNT1 A 0 A_ChangeFlag("FRIGHTENED",1)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_Chase(0,0)
+		TNT1 A 15
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_SetTRanslucent(0.1)
+		BISH AAAAAAAAAAAAAAAAAA 1 Bright A_FadeIn(0.5)
+		TNT1 A 0 A_ChangeFlag("FRIGHTENED",0)
+		TNT1 A 0 A_SetShootable
+		TNT1 A 0 A_UnSetInvulnerable
+		goto See
+Death:
+		TNT1 A 0
+		TNT1 A 0 ACS_ExecuteAlways(1229)
+		TNT1 A 0 A_PlaySound("monsters/patriarch/death",4,1.5,0,0)
+		TNT1 A 0 A_KillChildren
+		BISH G 15 Bright //A_Scream
+DeathLoop:
+		TNT1 A 0 A_JumpIfInventory("PatriarchDeathToken",325,"DeathEnd")
+		TNT1 A 0 A_CustomMissile("SkullBall",52,0,random(0,360),CMF_OFFSETPITCH,random(0,180))
+		TNT1 AA 0 A_CustomMissile("ServantLightning",52,0,random(0,360),CMF_OFFSETPITCH,random(0,360))
+		TNT1 A 0 A_SpawnItemEx("ArchvileFire",0,0,52,frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION)
+		TNT1 AA 0 A_SpawnItemEx("PentargamExplode",0,0,52,frandom(-6.0,6.0),frandom(-6.0,6.0),frandom(-6.0,6.0),0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_GiveInventory("PatriarchDeathToken",1)
+		BISH H 1 Bright
+		TNT1 A 0 A_CustomMissile("ServantLightning",52,0,random(0,360),CMF_OFFSETPITCH,random(0,360))
+		TNT1 A 0 A_SpawnItemEx("ArchvileFire",0,0,52,frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION)
+		TNT1 AA 0 A_SpawnItemEx("PentargamExplode",0,0,52,frandom(-6.0,6.0),frandom(-6.0,6.0),frandom(-6.0,6.0),0,SXF_NOCHECKPOSITION)
+		BISH H 1 Bright
+		TNT1 A 0 A_GiveInventory("PatriarchDeathToken",1)
+		loop
+DeathEnd:
+		TNT1 A 0 A_NoBlocking
+		BISH IJKLMNO 2 Bright
+		BISH P -1
+		stop
+	}
+}
+ACTOR PatriarchBarrageToken : Inventory { inventory.maxamount 50}
+ACTOR BarrageMissile
+{
+	projectile
+	damage 4
+	speed 21
+	radius 7
+	height 7
+	+NODAMAGETHRUST
+	SeeSound "imp/attack"
+	DeathSound "imp/shotx"
+	renderstyle add
+	damagetype "PatriarchFaithful"
+	alpha 0.7
+	states
+	{
+Spawn:
+		BPFX BC 2 Bright A_Weave(6,6,1.5,1.5)
+		loop
+Death:
+		BPFX DEFGH 3 bright
+		stop
+	}
+}
+ACTOR LustFog
+{
+	radius 20
+	height 12
+	damage 5
+	+RIPPER 
+	speed 8
+	Obituary "The Patriarch Faithful completely shreded %o's soul into little pieces."
+	+NOGRAVITY
+	-BLOODSPLATTER
+	+BLOODLESSIMPACT
+	BounceType Hexen
+	renderstyle add
+	alpha 0.9
+	projectile
+	damagetype "PatriarchFaithful"
+	BounceFactor 1.0
+	BounceCount 10
+	states 
+	{
+Spawn:
+		FOGP ABCDEABCDEABCDEABCDE 3 Bright
+		FOGP ABCDEABCDE 3 Bright A_FadeOut(0.1,1)
+		stop
+	}
+}
+ACTOR FlamethrowerProjectile 
+{
+	radius 5
+	height 5
+	damage 3
+	+RIPPER
+	speed 40
+	Obituary "The Patriarch Faithful completely shreded %o's soul into little pieces."
+	+NOGRAVITY
+	-BLOODSPLATTER
+	+BLOODLESSIMPACT
+	projectile
+	damagetype "PatriarchFaithful"
+	states
+	{
+Spawn:
+		TNT1 A 0 A_JumpIfInventory("PatriarchFlameFlyToken",15,"Death")
+		TNT1 A 0 A_SpawnItemEx("ArchvileFire",random(-4,4),random(-4,4),random(-4,4),frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode(10,50)
+		TNT1 A 0 A_GiveInventory("PatriarchFlameFlyToken",1)
+		loop
+Death:
+		TNT1 A 0
+		stop
+	}
+}
+ACTOR PatriarchFlameFlyToken : Inventory {inventory.maxamount 50}
+ACTOR NovaFlamethrowerProjectile : FlamethrowerProjectile
+{
+	damage 2
+	states
+	{
+Spawn:
+		TNT1 A 0 A_JumpIfInventory("PatriarchFlameFlyToken",10,"Death")
+		TNT1 A 0 A_SpawnItemEx("ArchvileFire",random(-4,4),random(-4,4),random(-4,4),frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION)
+		TNT1 A 1 A_Explode(5,50)
+		TNT1 A 0 A_GiveInventory("PatriarchFlameFlyToken",1)
+		loop
+	}
+}
+ACTOR SkullFog
+{
+	radius 0
+	height 0
+	scale 1.5
+	+NOINTERACTION
+	renderstyle add
+	states
+	{
+Spawn:
+		SRV3 ABCDEFGHI 3 Bright
+		stop
+	}
+}
+ACTOR SkullBall
+{
+	projectile
+	radius 3
+	height 3
+	speed 15
+	damage 2
+	SeeSound "imp/attack"
+	DeathSound "imp/shotx"
+	renderstyle add
+	damagetype "PatriarchFaithful"
+	+SEEKERMISSILE
+	alpha 0.9
+	states
+	{
+Spawn:
+		SRV1 K 1 bright A_SeekerMissile(0, 2, SMF_LOOK|SMF_CURSPEED)
+		loop
+Death:
+		SRV1 DEFHIJ 3 Bright
+		stop
+	}
+}
+ACTOR PatriarchPentagram
+{
+	monster
+	radius 85
+	height 225
+	+NOGRAVITY
+	+DONTFALL
+	-FLOORCLIP
+	+NOBLOOD
+	-PUSHABLE
+	-SOLID
+	+SHOOTABLE
+	renderstyle translucent
+	alpha 0.1
+	mass 100000
+	health 2500
+	damageFactor "PatriarchFaithful",0.0
+	scale 2.0
+	states
+	{
+Spawn:
+		TNT1 A 0 
+		TNT1 A 0 A_PlaySound("monsters/pentagram/spawn",6,1.0,0,0)
+		QPEI AAAAAAAAAAAAAAAAAA 1 Bright A_FadeIn(0.05)
+		TNT1 A 0 A_PlaySound("monsters/pentagram/loop",7,1.0,1,0)
+Idle:
+		TNT1 AAAAA 0 A_SpawnItemEx("PatriarchServantSpawner",random(-3000,3000),0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER)
+		QPEI ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPABCDEFGHIJKLMNOP 1 Bright
+		loop
+Death:
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInventory("PentagramDeathToken",15,"DeathStop")
+		QPEI ABCDEFGHIJKLMNOP 1 Bright A_SpawnItemEx("PentargamExplode",random(-75,75),random(-75,75),random(0,150),0,0,0,0,SXF_NOCHECKPOSITION)
+		TNT1 A 0 A_GiveInventory("PentagramDeathToken",1)
+		loop
+DeathStop:
+		TNT1 A 0 
+		TNT1 A 0 A_PlaySound("monsters/pentagram/death",7,1.5,0,0)
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PentargamExplode",0,0,0,random(-15,15),random(-15,15),random(-15,15),0,SXF_NOCHECKPOSITION)
+		stop
+	}
+}
+ACTOR PentargamExplode
+{
+	radius 0
+	height 0
+	+NOINTERACTION
+	renderstyle add
+	alpha 0.9
+	scale 1.5
+	states
+	{
+Spawn:
+		TNT1 A 0
+		//TNT1 A 0 A_PlaySound("monsters/pentagram/explode")
+		EXP2 ABCDEFGHIJKLMN 1 Bright
+		stop
+	}
+}
+ACTOR PentagramDeathToken : Inventory {inventory.maxamount 50}
+ACTOR PatriarchServantSpawner
+{
+	radius 0
+	height 0
+	+FLOORHUGGER
+	+FLOORCLIP
+	states
+	{
+Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("TeleportFog",0,0,30)
+		TNT1 A 0 A_SpawnItemEx("PatriarchServant",0,0,0,0,0,0,0,SXF_SETMASTER)
+		stop
+	}
+}
+ACTOR PatriarchServant
+{
+	height 84
+	radius 24
+	mass 300
+	health 115
+	monster
+	speed 8
+	painchance 150
+	damageFactor "PatriarchFaithful",0.0
+	+FLOORCLIP
+	+LOOKALLAROUND
+	seesound "monsters/servant/idle"
+	painsound "monsters/servant/pain"
+	deathsound "monsters/servant/death"
+	activesound "monsters/servant/idle"
+	obituary "%o is now charged with dark energy, thanks to Patriacrh Faithful's servants"
+	hitobituary "The Patriarch Fatithful's servants enjoyed eating %o's inners"
+	states
+	{
+Spawn:
+		COUN A 1 A_Look
+		loop
+See:
+		COUN ABCD 5 A_Chase
+		loop
+Missile:
+		TNT1 A 0 A_PlaySound("monsters/servant/attack",4)
+		COUN E 3 A_FaceTarget
+		COUN F 6 Bright A_FaceTarget
+		TNT1 A 0 A_CustomMissile("ServantLightning",82,-9)
+		COUN G 4 Bright
+		COUN F 5 Bright
+		COUN E 3
+		goto See
+Melee:
+		TNT1 A 0 A_PlaySound("monsters/servant/attack",4)
+		COUN I 4 A_FaceTarget
+		TNT1 A 0 A_CustomMeleeAttack(7,"baron/melee")
+		COUN J 2
+		COUN K 12
+		goto See
+Pain:
+		COUN L 3
+		COUN L 3 A_Pain
+		goto See
+Death:
+		COUN M 4 A_Scream
+		COUN N 4
+		COUN O 4 A_NoBlocking
+		COUN P 4
+		COUN Q -1
+		stop
+	}
+}
+ACTOR ServantLightning
+{
+	radius 6
+	height 4
+	projectile
+	damage 3
+	speed 27
+	scale 0.5
+	damagetype "PatriarchFaithful"
+	renderstyle translucent 
+	alpha 0.7
+	seesound "monsters/servant/lightning/fire"
+	deathsound "monsters/servant/lightning/hit"
+	states
+	{
+Spawn:
+		HYD1 XYZ 3 bright
+		loop
+Death:
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR PenragramCooldown : Inventory {inventory.maxamount 100}
+ACTOR PatriarchDeathToken : Inventory {inventory.maxamount 325}

@@ -10,3 +10,13 @@ script 1338 (void) NET
 {
 SetMusic("*",0);
 }
+
+script 1228 (void) NET
+{
+SetMusic("D_PAT",0);
+}
+
+script 1229 (void) NET
+{
+SetMusic("*",0);
+}

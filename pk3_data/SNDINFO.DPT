@@ -1305,6 +1305,57 @@ apostle/parasite/slime PARSLM
 apostle/parasite/vomit PARVOM
 apostle/parasite/pain PARPAN
 
+//Patriarch
+monsters/patriarch/death PATDTH
+monsters/patriarch/idle1 PATID1
+monsters/patriarch/idle2 PATID2
+monsters/patriarch/idle3 PATID3
+monsters/patriarch/idle4 PATID4
+monsters/patriarch/idle5 PATID5
+$random monsters/patriarch/idle { monsters/patriarch/idle1 monsters/patriarch/idle2 monsters/patriarch/idle3 monsters/patriarch/idle4 monsters/patriarch/idle5 }
+monsters/patriarch/pain1 PATPN1
+monsters/patriarch/pain2 PATPN2
+monsters/patriarch/pain3 PATPN3
+monsters/patriarch/pain4 PATPN4
+monsters/patriarch/pain5 PATPN5
+monsters/patriarch/pain6 PATPN6
+$random monsters/patriarch/pain { monsters/patriarch/pain1 monsters/patriarch/pain2 monsters/patriarch/pain3 monsters/patriarch/pain4 monsters/patriarch/pain5 monsters/patriarch/pain6 }
+monsters/patriarch/see PATSEE
+
+monsters/patriacrh/skull/fire SKLFIR
+
+//Servants
+monsters/servant/idle1 SERIDL1
+monsters/servant/idle2 SERIDL2
+monsters/servant/idle3 SERIDL3
+monsters/servant/idle4 SERIDL4
+$Random monsters/servant/idle { monsters/servant/idle1 monsters/servant/idle2 monsters/servant/idle3 monsters/servant/idle4 }
+monsters/servant/attack1 SERATK1
+monsters/servant/attack2 SERATK2
+monsters/servant/attack3 SERATK3
+monsters/servant/attack4 SERATK4
+$Random monsters/servant/attack { monsters/servant/attack1 monsters/servant/attack2 monsters/servant/attack3 monsters/servant/attack4 }
+monsters/servant/death1 SERDTH1
+monsters/servant/death2 SERDTH2
+monsters/servant/death3 SERDTH3
+monsters/servant/death4 SERDTH4
+$Random monsters/servant/death { monsters/servant/death1 monsters/servant/death2 monsters/servant/death3 monsters/servant/death4 }
+monsters/servant/pain1 SERPAN1
+monsters/servant/pain2 SERPAN2
+monsters/servant/pain3 SERPAN3
+monsters/servant/pain4 SERPAN4
+$Random monsters/servant/pain { monsters/servant/pain1 monsters/servant/pain2 monsters/servant/pain4 monsters/servant/pain4 }
+
+monsters/servant/lightning/fire LIGFIR
+monsters/servant/lightning/hit LIGHIT
+
+//Pentagram
+monsters/pentagram/loop PENLOP
+monsters/pentagram/spawn PENSPN
+monsters/pentagram/explode PENEXP
+monsters/pentagram/cast PENCAS
+monsters/pentagram/death PENDTH
+
 // BENELLUS WEPS
 
 $random weapons/pistolfire { pistol/fire1 pistol/fire2 pistol/fire3 } // Mixed from FEAR and Killing Floor
