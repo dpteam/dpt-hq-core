@@ -1,3 +1,11 @@
+//GAMEINFO
+gameinfo
+{
+	titlepage = "winerpic"
+	creditpage = "winerpic"
+	titlemusic = "HQ_TITLE"
+	intermissionmusic = "HQ_INTER"
+}
 //EPISODES
 clearepisodes
 episode HQ1
@@ -134,7 +142,7 @@ defaultmap
 }
 map TITLEMAP "TITLE"
 {
-	music = "TITLEMUS"
+	music = "HQ_TITLE"
 }
 //HQ
 map HQ1 "DPT CITY"

@@ -8,3 +8,5 @@ $RECYCLE.BIN/
 *.bak[0-9]
 *.backup
 *.backup[0-9]
+*.pk3
+*.pk7
