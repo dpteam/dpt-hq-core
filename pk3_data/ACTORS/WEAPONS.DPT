@@ -4,7 +4,7 @@
 // NEED TO ADD
 // WTF
 
-// NEXT : 26399
+// NEXT : 26401
 
 // Predefines
 
@@ -1899,7 +1899,7 @@ ACTOR Coachgun : DoomWeapon 26220
 ACTOR EgoSmasher : Weapon 26339
 {
 	//$Category Weapons
-	decal bulletchip
+	decal BulletChip
 	radius 20
 	height 16
 	scale 0.6
@@ -4837,8 +4837,8 @@ ACTOR Gothic_Shotgun : Weapon 10407
 	Inventory.PickupMessage "$GOTSHOTGUN"
 	Obituary "$OB_MPSHOTGUN"
 	Attacksound "weapons/shotgf"
-	Tag "Gothic Shotgun"
-	Decal bulletchip
+	Tag "DPT Shotgun"
+	Decal BulletChip
 	States
 	{
 	Ready:
@@ -4880,7 +4880,6 @@ ACTOR Gothic_Shotgun : Weapon 10407
 		loop		
 	Fire:
 		GHSG A 3
-		//GHSG A 5 A_FireShotgun
 		GHSG A 0 A_FireBullets (5.6, 3.7, 10, 5, "BulletPuff")
 		GHSG A 5 A_GunFlash
 		GHSG B 2
@@ -6597,7 +6596,7 @@ ACTOR MWeapShotgun : Weapon 26218
 	Weapon.AmmoGive 10
 	Weapon.AmmoUse 1
 	inventory.pickupsound "misc/w_pkup"
-	decal Bulletchip
+	decal BulletChip
 	Attacksound "HSGH"
 	Scale 0.5
 	weapon.kickback 1500
@@ -8342,7 +8341,7 @@ ACTOR Benelluss : SuperShotgun
   +WEAPON.AMMO_OPTIONAL
   +WEAPON.DONTBOB
   -WEAPON.NOAUTOFIRE
-  decal bulletchip
+  decal BulletChip
   States
   {
   SSG1start:
@@ -9753,7 +9752,7 @@ ACTOR SMG : weapon
 {
 	//$Category Weapons
 	Scale 0.4
-	decal Bulletchip
+	decal BulletChip
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got a SMG!!"
 	Weapon.AmmoType "Clip"
@@ -9788,7 +9787,7 @@ ACTOR DoubleSMG : weapon
 {
 	//$Category Weapons
 	Scale 0.4
-	decal Bulletchip
+	decal BulletChip
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got a SMG!!"
 	Weapon.AmmoType "Clip"
@@ -12200,7 +12199,7 @@ ACTOR DUMP3Spikes1
 	SeeSound "pop/popit"
 	DeathSound "pop/popit"
 	Scale 0.5
-	Decal bulletchip
+	Decal BulletChip
 	States
 	{
 Spawn:
@@ -12226,7 +12225,7 @@ ACTOR DUMP3Spikes3
 	SeeSound "pop/popit"
 	DeathSound "pop/popit"
 	Scale 0.75
-	Decal bulletchip
+	Decal BulletChip
 	States
 	{
 Spawn:
@@ -12259,7 +12258,7 @@ ACTOR DUMP3Spikes2
 	DeathSound  "weapons/rocklx"
 	Bouncesound "pop/bounce"
 	Scale 1.25
-	Decal bulletchip
+	Decal BulletChip
 	States
 	{
 Spawn:
@@ -15174,7 +15173,7 @@ ACTOR LXandroRPG : Weapon 26396
 		DNRP A 1 A_Raise
 		loop 
 	Fire: 
-		DNRP B 0 A_PlayWeaponSound("PLT027")
+		DNRP B 0 A_PlayWeaponSound("RPGFIRE")
 		TNT1 A 0 A_Recoil(7)
 		DNRP B 1 A_FireCustomMissile("LXandroRPGRocket")
 		TNT1 A 0 A_ZoomFactor(0.98)

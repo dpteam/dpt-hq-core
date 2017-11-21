@@ -10,9 +10,7 @@ ACTOR FiredLightTankMainGun {}
 ACTOR CrashLightTankIntotheGround1 {}
 ACTOR CrashLightTankIntotheGround2 {}
 ACTOR LightTankZoom {}
-ACTOR Brutal_Blood {}
 ACTOR ShrinkEffect {}
-ACTOR Brutal_FlyingBlood {}
 ACTOR DukeGibs1 {}
 ACTOR DukeGibs2 {}
 ACTOR DukeGibs3 {}
@@ -249,7 +247,7 @@ ACTOR BasicParticle
 	+CLIENTSIDEONLY
 	+THRUACTORS
 }
-Actor Flare_General
+ACTOR Flare_General
 {
 	+NOINTERACTION
 	+NOGRAVITY
@@ -287,7 +285,7 @@ ACTOR TRACER: FASTPROJECTILE
 	}
 }
 // GRASS
-actor GRASS 10128
+ACTOR GRASS 10128
 {
 	Radius 1
 	Height 5
@@ -314,7 +312,7 @@ actor GRASS 10128
 	}
 }
 // SPLASHES
-Actor WaterParticleX
+ACTOR WaterParticleX
 {
 	Height 0
 	Radius 0
@@ -350,14 +348,14 @@ Actor WaterParticleX
 		Stop
 	}
 }
-Actor WaterParticleXFAster: WaterParticleX
+ACTOR WaterParticleXFAster: WaterParticleX
 {
 	Speed 4
 }
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //********** Splashes **********
-actor WaterSplashBase2
+ACTOR WaterSplashBase2
 {
 	Radius 1
 	Height 1
@@ -376,7 +374,7 @@ actor WaterSplashBase2
 		Stop
 	}
 }
-actor WaterSplashBaseSmall
+ACTOR WaterSplashBaseSmall
 {
 	Radius 1
 	Height 1
@@ -396,7 +394,7 @@ actor WaterSplashBaseSmall
 	}
 }
 ////////////////////////Blood
-Actor BloodParticleX
+ACTOR BloodParticleX
 {
 	Height 0
 	Radius 0
@@ -432,11 +430,11 @@ Actor BloodParticleX
 		Stop
 	}
 }
-Actor BloodParticleXFAster: BloodParticleX
+ACTOR BloodParticleXFAster: BloodParticleX
 {
 	Speed 4
 }
-actor BloodSplashBase2
+ACTOR BloodSplashBase2
 {
 	Radius 1
 	Height 1
@@ -456,7 +454,7 @@ actor BloodSplashBase2
 		Stop
 	}
 }
-actor BloodSplashBaseSmall : BloodSplashBase2
+ACTOR BloodSplashBaseSmall : BloodSplashBase2
 {
 	Scale 0.5
 	States
@@ -470,7 +468,7 @@ actor BloodSplashBaseSmall : BloodSplashBase2
 	}
 }
 /////////////////// Nukage
-Actor nukageParticleX
+ACTOR nukageParticleX
 {
 	Height 0
 	Radius 0
@@ -506,11 +504,11 @@ Actor nukageParticleX
 		Stop
 	}
 }
-Actor nukageParticleXFAster: nukageParticleX
+ACTOR nukageParticleXFAster: nukageParticleX
 {
 	Speed 4
 }
-actor nukageSplashBase
+ACTOR nukageSplashBase
 {
 	Radius 1
 	Height 1
@@ -529,7 +527,7 @@ actor nukageSplashBase
 		Stop
 	}
 }
-actor NukageSplashBaseSmall : nukageSplashBase
+ACTOR NukageSplashBaseSmall : nukageSplashBase
 {
 	Scale 0.5
 	States
@@ -543,7 +541,7 @@ actor NukageSplashBaseSmall : nukageSplashBase
 	}
 }
 /////////////////// Slime
-Actor slimeParticleX
+ACTOR slimeParticleX
 {
 	Height 0
 	Radius 0
@@ -579,11 +577,11 @@ Actor slimeParticleX
 		Stop
 	}
 }
-Actor slimeParticleXFAster: slimeParticleX
+ACTOR slimeParticleXFAster: slimeParticleX
 {
 	Speed 4
 }
-actor slimeSplashBase
+ACTOR slimeSplashBase
 {
 	Radius 1
 	Height 1
@@ -602,7 +600,7 @@ actor slimeSplashBase
 		Stop
 	}
 }
-actor slimeSplashBaseSmall : slimeSplashBase
+ACTOR slimeSplashBaseSmall : slimeSplashBase
 {
 	Scale 0.5
 	States
@@ -613,4 +611,15 @@ actor slimeSplashBaseSmall : slimeSplashBase
 		SLIM EFGHIJKJKJK 6
 		Stop
 	}
+}
+ACTOR Footstep
+{
+   +NOTDMATCH
+   States
+   {
+   Spawn:
+   Death:
+      TNT1 A 3
+      Stop
+   }
 }

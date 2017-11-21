@@ -369,7 +369,7 @@ XDeath:
 }
 ACTOR GluttonyApostleToxicBall
 {
-	obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!"
+	obituary "%o was turned into a steamy Bile mass, and then devoured by the Gluttony Apostle!" // OLD: flesh mass
 	radius 18
 	height 9
 	speed 30
@@ -400,7 +400,7 @@ ACTOR GluttonyApostleToxicFog
 	damage 1
 	+RIPPER 
 	speed 3
-	obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!"
+	obituary "%o was turned into a steamy Bile mass, and then devoured by the Gluttony Apostle!" // OLD: flesh mass
 	+NOGRAVITY
 	-BLOODSPLATTER
 	+BLOODLESSIMPACT
@@ -438,7 +438,7 @@ ACTOR GluttonyApostleParasite
 	BloodColor "Green"
 	damageFactor "GluttonyApostle",0.0
 	meleedamage 15
-	obituary "%o became worm food for one of the Gluttony Apostle's parasites"
+	obituary "%o became worm food for one of the Gluttony Apostle's worms" // old: parasites
 	states
 	{
 Spawn:

@@ -5096,18 +5096,4 @@ Spawn:
 		Stop
 	}
 }
-/*
-ACTOR Cacodemon2 : Cacodemon replaces Cacodemon
-{
-	Bloodcolor "12 2 F0"
-}
-*/
-ACTOR BaronOfHell2 : BaronOfHell replaces BaronOfHell
-{
-	BloodColor "00 88 00"
-}
-ACTOR HellKnight2 : HellKnight replaces HellKnight
-{
-	BloodColor "00 88 00"
-}
 //====================================================================================================

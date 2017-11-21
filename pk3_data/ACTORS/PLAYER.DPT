@@ -71,7 +71,9 @@ ACTOR Guest : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         ELIT AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		ELIT A 0 A_SpawnItem("Footstep",30,0.001)
 		ELIT CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		ELIT A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         ELIT AB 4 A_SetPitch(-0.30)
@@ -123,8 +125,6 @@ ACTOR Guest : PlayerPawn
 		ELIT G 4 A_Pain
 		Goto Spawn_Drunk
 	Death:
-		ELIT H 0 A_PlayerSkinCheck("AltSkinDeath")
-	Death1:
 		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
 		ELIT H 10
 		ELIT I 10 A_PlayerScream
@@ -133,31 +133,13 @@ ACTOR Guest : PlayerPawn
 		ELIT N -1
 		Stop
 	XDeath:
-		ELIT O 0 A_PlayerSkinCheck("AltSkinXDeath")
-	XDeath1:
+		ELIT A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
 		ELIT O 5
 		ELIT P 5 A_XScream
 		ELIT Q 5 A_NoBlocking
 		ELIT RSTUV 5
 		ELIT W -1
-		Stop
-	AltSkinDeath:
-		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
-		ELIT H 6
-		ELIT I 6 A_PlayerScream
-		ELIT JK 6
-		ELIT L 6 A_NoBlocking
-		ELIT MNO 6
-		ELIT P -1
-		Stop
-	AltSkinXDeath:
-		ELIT A 0 A_TakeInventory("DrunkLevel", 100)
-		ELIT Q 5 A_PlayerScream
-		ELIT R 0 A_NoBlocking
-		ELIT R 5 A_SkullPop
-		ELIT STUVWX 5
-		ELIT Y -1
 		Stop
 	Burn:
 		BURN A 0 A_TakeInventory("DrunkLevel", 100)
@@ -251,7 +233,9 @@ ACTOR RebelClass : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         STRM AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		STRM A 0 A_SpawnItem("Footstep",30,0.001)
 		STRM CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		STRM A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         STRM AB 4 A_SetPitch(-0.30)
@@ -346,6 +330,7 @@ ACTOR Armyman : PlayerPawn
 	Height 56
 	Mass 100
 	PainChance 255
+	-FRIENDLY // Experimental
 	Player.DisplayName "WIP: Army"
 	Player.SoundClass "Armyman"
 	Player.StartItem "ArmymanSVD"
@@ -415,7 +400,9 @@ ACTOR Armyman : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         OPFS AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		OPFS A 0 A_SpawnItem("Footstep",30,0.001)
 		OPFS CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		OPFS A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         OPFS AB 4 A_SetPitch(-0.30)
@@ -573,7 +560,9 @@ ACTOR Pocik : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         POCK AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		POCK A 0 A_SpawnItem("Footstep",30,0.001)
 		POCK CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		POCK A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         POCK AB 4 A_SetPitch(-0.30)
@@ -728,7 +717,9 @@ ACTOR Cop : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         FCOP BC 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FCOP A 0 A_SpawnItem("Footstep",30,0.001)
 		FCOP DE 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FCOP A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         FCOP BC 4 A_SetPitch(-0.30)
@@ -988,7 +979,9 @@ ACTOR Mingebag : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -1177,7 +1170,9 @@ ACTOR Mage : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         MAGE AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		MAGE A 0 A_SpawnItem("Footstep",30,0.001)
 		MAGE CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		MAGE A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         MAGE AB 4 A_SetPitch(-0.30)
@@ -1337,7 +1332,9 @@ ACTOR Healer : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PBAK AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PBAK A 0 A_SpawnItem("Footstep",30,0.001)
 		PBAK CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PBAK A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PBAK AB 4 A_SetPitch(-0.30)
@@ -1397,6 +1394,7 @@ ACTOR Healer : PlayerPawn
 		PBAK N -1
 		Stop
 	XDeath:
+		PBAK A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PBAK A 0 A_TakeInventory("DrunkLevel", 100)
 		PBAK O 5
 		PBAK P 5 A_XScream
@@ -1496,7 +1494,9 @@ ACTOR ImbaPers : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         ENFO AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		ENFO A 0 A_SpawnItem("Footstep",30,0.001)
 		ENFO CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		ENFO A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         ENFO AB 4 A_SetPitch(-0.30)
@@ -1654,7 +1654,9 @@ ACTOR CalebClass : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         CALP AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CALP A 0 A_SpawnItem("Footstep",30,0.001)
 		CALP CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CALP A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         CALP AB 4 A_SetPitch(-0.30)
@@ -1812,7 +1814,9 @@ ACTOR Troll : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         TROL AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		TROL A 0 A_SpawnItem("Footstep",30,0.001)
 		TROL CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		TROL A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         TROL AB 4 A_SetPitch(-0.30)
@@ -1970,7 +1974,9 @@ ACTOR Ya_Zhe_MaTb : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -2030,6 +2036,7 @@ ACTOR Ya_Zhe_MaTb : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -2128,7 +2135,9 @@ ACTOR Brutal_Player : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -2188,6 +2197,7 @@ ACTOR Brutal_Player : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -2295,7 +2305,9 @@ ACTOR DartPower : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         CHUB AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CHUB A 0 A_SpawnItem("Footstep",30,0.001)
 		CHUB CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CHUB A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         CHUB AB 4 A_SetPitch(-0.30)
@@ -2355,6 +2367,7 @@ ACTOR DartPower : PlayerPawn
 		CHUB N -1
 		Stop
 	XDeath:
+		CHUB A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		CHUB A 0 A_TakeInventory("DrunkLevel", 100)
 		CHUB O 5
 		CHUB P 5 A_XScream
@@ -2454,7 +2467,9 @@ ACTOR Ronikari : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         RONI AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		RONI A 0 A_SpawnItem("Footstep",30,0.001)
 		RONI CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		RONI A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         RONI AB 4 A_SetPitch(-0.30)
@@ -2612,7 +2627,9 @@ ACTOR NickBock : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -2672,6 +2689,7 @@ ACTOR NickBock : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -2789,7 +2807,9 @@ ACTOR Ovlab : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         WRIR AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		WRIR A 0 A_SpawnItem("Footstep",30,0.001)
 		WRIR CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		WRIR A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         WRIR AB 4 A_SetPitch(-0.30)
@@ -2954,7 +2974,9 @@ ACTOR LazyPanda : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         FPL3 AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FPL3 A 0 A_SpawnItem("Footstep",30,0.001)
 		FPL3 CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FPL3 A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         FPL3 AB 4 A_SetPitch(-0.30)
@@ -3014,6 +3036,7 @@ ACTOR LazyPanda : PlayerPawn
 		FPL3 N -1
 		Stop
 	XDeath:
+		FPL3 A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		FPL3 A 0 A_TakeInventory("DrunkLevel", 100)
 		FPL3 O 5
 		FPL3 P 5 A_XScream
@@ -3116,7 +3139,9 @@ ACTOR NighMare : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         1337 AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		1337 A 0 A_SpawnItem("Footstep",30,0.001)
 		1337 CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		1337 A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         1337 AB 4 A_SetPitch(-0.30)
@@ -3274,7 +3299,9 @@ ACTOR Velaron : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -3334,6 +3361,7 @@ ACTOR Velaron : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -3598,7 +3626,9 @@ ACTOR Zero775 : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -3764,7 +3794,9 @@ ACTOR Oppressor1338 : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -3824,6 +3856,7 @@ ACTOR Oppressor1338 : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -3928,7 +3961,9 @@ ACTOR Zendos : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         CYG2 AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CYG2 A 0 A_SpawnItem("Footstep",30,0.001)
 		CYG2 CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		CYG2 A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         CYG2 AB 4 A_SetPitch(-0.30)
@@ -4079,7 +4114,9 @@ ACTOR Dean_Portman : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -4139,6 +4176,7 @@ ACTOR Dean_Portman : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -4237,7 +4275,9 @@ ACTOR OVA : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -4297,6 +4337,7 @@ ACTOR OVA : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -4395,7 +4436,9 @@ ACTOR IDHLEB : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -4455,6 +4498,7 @@ ACTOR IDHLEB : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -4567,7 +4611,9 @@ ACTOR LXandro : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         DUKE AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		DUKE A 0 A_SpawnItem("Footstep",30,0.001)
 		DUKE CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		DUKE A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         DUKE AB 4 A_SetPitch(-0.30)
@@ -4725,7 +4771,9 @@ ACTOR GanGsteRinO999 : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -4785,6 +4833,7 @@ ACTOR GanGsteRinO999 : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -4883,7 +4932,9 @@ ACTOR DogClass : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -5042,7 +5093,9 @@ ACTOR TemplateClass : PlayerPawn
 		Goto Spawn_Drunk
 	See:
         PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
         PLAY AB 4 A_SetPitch(-0.30)
@@ -5102,6 +5155,7 @@ ACTOR TemplateClass : PlayerPawn
 		PLAY N -1
 		Stop
 	XDeath:
+		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
 		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
 		PLAY O 5
 		PLAY P 5 A_XScream
@@ -5164,7 +5218,10 @@ ACTOR ZombieManClass : PlayerPawn
 		POSS A 0 
 		POSS A 0 A_Jump (240,2)
 		POSS A 0 A_PlaySoundEx ("grunt/active","body")
-		POSS ABCD 4 
+		POSS A 0 A_SpawnItem("Footstep",30,0.001)
+		POSS AB 4
+		POSS A 0 A_SpawnItem("Footstep",30,0.001)
+		POSS CD 4
 		Loop
 	Missile:
 		POSS E 3
@@ -5222,7 +5279,10 @@ ACTOR ShotgunGuyClass : PlayerPawn
 	See:
 		SPOS A 0 A_Jump (240,2)
 		SPOS A 0 A_PlaySoundEx ("shotguy/active","body")
-		SPOS ABCD 4 
+		SPOS A 0 A_SpawnItem("Footstep",30,0.001)
+		SPOS AB 4
+		SPOS A 0 A_SpawnItem("Footstep",30,0.001)
+		SPOS CD 4
 		Loop
 	Missile:
 		SPOS E 1
@@ -5279,7 +5339,10 @@ ACTOR ChainGunGuyClass : PlayerPawn
 		CPOS A 0 
 		CPOS A 0 A_Jump (240,2)
 		CPOS A 0 A_PlaySoundEx ("chainguy/active","body")	
-		CPOS ABCD 4 
+		CPOS A 0 A_SpawnItem("Footstep",30,0.001)
+		CPOS AB 4
+		CPOS A 0 A_SpawnItem("Footstep",30,0.001)
+		CPOS CD 4
 		Loop
 	Missile:
 		CPOS A 0 A_JumpIfInventory ("FHeat",90,"CantShot")
@@ -5349,7 +5412,10 @@ ACTOR DooMImpClass : PlayerPawn
 		TROO A 0
 		TROO A 0 A_Jump (240,2)
 		TROO A 0 A_PlaySoundEx ("imp/active","body")
-		TROO ABCD 6 
+		TROO A 0 A_SpawnItem("Footstep",30,0.001)
+		TROO AB 4
+		TROO A 0 A_SpawnItem("Footstep",30,0.001)
+		TROO CD 4
 		Loop
 	Missile:
 		TROO EF 8
@@ -5410,7 +5476,10 @@ ACTOR DemonClass : PlayerPawn
 		SARG A 0
 		SARG A 0 A_Jump (240,2)
 		SARG A 0 A_PlaySoundEx ("demon/active","body")
-		SARG ABCD 4
+		SARG A 0 A_SpawnItem("Footstep",30,0.001)
+		SARG AB 4
+		SARG A 0 A_SpawnItem("Footstep",30,0.001)
+		SARG CD 4
 		loop
 	Missile:
 		SARG EFG 8
@@ -5655,7 +5724,10 @@ ACTOR RevenantClass : PlayerPawn
 		SKEL A 0
 		SKEL A 0 A_Jump (240,2)
 		SKEL A 0 A_PlaySoundEx ("Skeleton/active","body")
-		SKEL AABBCCDDEEFF 2 
+		SKEL A 0 A_SpawnItem("Footstep",30,0.001)
+		SKEL AABBCC 2
+		SKEL A 0 A_SpawnItem("Footstep",30,0.001)
+		SKEL DDEEFF 2
 		loop
 	Missile:
 		SKEL A 6 
