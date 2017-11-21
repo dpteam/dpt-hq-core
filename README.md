@@ -7,10 +7,11 @@ Also have GZDoom/Delta-Touch compatibility
 
 ## How to compile (Windows)
 
-1. Click on build.bat
-2. Wait
-3. Drag & Drop pk7 to zandronum.exe
-4. Play
+1. Download or clone repo
+2. Click on build.bat
+3. Wait
+4. Drag & Drop pk7 to zandronum.exe
+5. Play
 
 ## Important info
 
