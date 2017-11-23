@@ -1,3 +1,107 @@
+Actor ZoneDog : Thamara 11889 { -FRIENDLY }
+ACTOR SpecOpsAK47X : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1000000
+}
+ACTOR SpecOpsAK47Y : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1000000
+}
+ACTOR SpecOpsAK47Z : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1000000
+}
+ACTOR SpecOpsAK47PainReload : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+ACTOR SpecOpsAK47Reload : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 30	
+}
+ACTOR SpecOps 13800
+{
+	Health 100
+	Radius 20
+	Height 56
+	Speed 10
+	PainChance 255
+	+ISMONSTER
+	+SHOOTABLE
+	+COUNTKILL
+	+FLOORCLIP
+	+SOLID
+	SeeSound "*taunt"
+	AttackSound "AK47/Fire"
+	PainSound "*pain"
+	DeathSound "*death"
+	ActiveSound "*taunt"
+	Obituary "$k > AK1337 > $o"
+	DropItem "Clip"
+	DropItem "AK1337"
+	States
+	{
+	Spawn:
+		PCBN A 0
+		PCBN A 0 A_GiveInventory("SpecOpsAK47Reload",30)
+	SpawnLoop:
+		PCBN AB 10 A_Look
+		Loop
+	See:
+		PCBN AA 4 A_Chase
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47PainReload",1,"Reload")
+		PCBN BB 4 A_Chase
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47PainReload",1,"Reload")
+		PCBN CC 4 A_Chase
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47PainReload",1,"Reload")
+		PCBN DD 4 A_Chase
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47PainReload",1,"Reload")
+		Loop
+	Missile:
+		PCBN E 7
+		PCBN E 3 A_FaceTarget
+		PCBN F 3 A_CustomBulletAttack(2.6,0,1,7,"BulletPuff")
+		PCBN F 0 A_TakeInventory("SpecOpsAK47Reload",1)
+		PCBN F 0 A_JumpIfInventory("SpecOpsAK47Reload",1,1)
+		Goto Reload
+		PCBN E 1 A_SpidRefire
+		Goto Missile+2
+	Reload:
+		PCBN A 0
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47Reload",24,22)
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47Reload",18,15)
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47Reload",12,9)
+		PCBN A 0 A_JumpIfInventory("SpecOpsAK47Reload",6,4)
+		PCBN AA 4 A_Chase
+		PCBN A 0 A_GiveInventory("SpecOpsAK47Reload",6)
+		PCBN BB 4 A_Chase
+		PCBN A 0 A_GiveInventory("SpecOpsAK47Reload",6)
+		PCBN CC 4 A_Chase
+		PCBN A 0 A_GiveInventory("SpecOpsAK47Reload",6)
+		PCBN DD 4 A_Chase
+		PCBN A 0 A_GiveInventory("SpecOpsAK47Reload",6)
+		PCBN AA 4 A_Chase
+		PCBN A 0 A_GiveInventory("SpecOpsAK47Reload",6)
+		PCBN A 0 A_TakeInventory("SpecOpsAK47PainReload",1)
+		Goto See
+	Pain:
+		PCBN G 3
+		PCBN G 3 A_Pain
+		Goto See
+	Death:
+		PCBN H 5
+		PCBN I 5 A_Scream
+		PCBN J 5 A_NoBlocking
+		PCBN K 5
+		PCBN L -1
+		Stop
+	}
+}
 Actor MilitaryBaseCommander 10111
 {
 	//$Category "Military"
@@ -664,7 +768,6 @@ ACTOR ChainsawZombie 3204
         Goto See 
     } 
 }
-
 ACTOR Prikolist 26399
 {
 	//$Category "SpecialNPC"
