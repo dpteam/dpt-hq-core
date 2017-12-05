@@ -1,0 +1,413 @@
+define STARS 200 120
+//ETC
+define GRASS 64 64
+define LEAVES2 128 64
+define BARK 64 128
+define LOG 64 64
+define SLIME 64 64
+define DIRT 64 64
+define BUSHES 64 64
+define SKYB_N 512 512
+define SKYB_E 512 512
+define SKYB_S 512 512
+define SKYB_W 512 512
+define SKYB_T 512 512
+define SKYB_B 512 512
+define i_back 512 512
+define i_front 512 512
+define i_left 512 512
+define i_right 512 512
+define i_top 512 512
+define m_back 512 512
+define m_front 512 512
+define m_left 512 512
+define m_right 512 512
+define m_top 512 512
+define n_back 512 512
+define n_front 512 512
+define n_left 512 512
+define n_right 512 512
+define n_top 512 512
+define M64PCHBK 256 64
+define M64PCHUP 64 64
+define M64PCHDN 64 64
+Texture "MAR3FLR", 32, 32
+{
+	Patch "MAR3FLR", 0, 0
+}
+Texture "MARBRG", 32, 32
+{
+	Patch "MARBRG", 0, 0
+}
+Texture "MARBRIK", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARBRIK", 0, 0
+}
+Texture "MARBWAL", 64, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARBWAL", 0, 0
+}
+Texture "MARCAST", 64, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARCAST", 0, 0
+}
+Texture "MARCOBL", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARCOBL", 0, 0
+}
+Texture "MARDIRT2", 32, 64
+{
+	XScale 0.250
+	YScale 0.250
+	Patch "MARDIRT2", 0, 0
+}
+Texture "MARDIRT", 32, 32
+{
+	XScale 0.125
+	YScale 0.125
+	Patch "MARDIRT", 0, 0
+}
+Texture "MARDR2", 32, 53
+{
+	XScale 0.750
+	YScale 0.875
+	Patch "MARDR2", 0, 0
+}
+Texture "MARFNC", 32, 59
+{
+	XScale 1.250
+	YScale 1.250
+	Patch "MARFNC", 0, 0
+}
+Texture "MARGRAS", 32, 32
+{
+	XScale 0.250
+	YScale 0.250
+	Patch "MARGRAS", 0, 0
+}
+Texture "MARGRS2", 32, 32
+{
+	XScale 0.250
+	YScale 0.125
+	Patch "MARGRS2", 0, 0
+}
+Texture "MARGRT", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARGRT", 0, 0
+}
+Texture "MARLIG", 32, 32
+{
+	XScale 0.125
+	Patch "MARLIG", 0, 0
+}
+Texture "MARPILR", 64, 32
+{
+	XScale 0.875
+	YScale 0.875
+	Patch "MARPILR", 0, 0
+}
+Texture "MARPRIN", 60, 61
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARPRIN", 0, 0
+}
+Texture "MARPST", 32, 32
+{
+	XScale 0.875
+	YScale 0.125
+	Patch "MARPST", 0, 0
+}
+Texture "MARRED", 32, 64
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARRED", 0, 0
+}
+Texture "MARROF", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARROF", 0, 0
+}
+Texture "MARSAND", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARSAND", 0, 0
+}
+Texture "MARWTR", 32, 32
+{
+	XScale 0.125
+	YScale 0.125
+	Patch "MARWTR", 0, 0
+}
+Texture "MARYEL", 32, 32
+{
+	XScale 0.250
+	YScale 0.250
+	Patch "MARYEL", 0, 0
+}
+Texture "MARWTR1", 32, 32
+{
+	YScale 0.125
+	Patch "MARWTR", 0, 0
+}
+Texture "MARPRIN1", 60, 61
+{
+	Patch "MARPRIN", 0, 0
+}
+Texture "MARBAN", 32, 32
+{
+	XScale 1.250
+	YScale 1.250
+	Patch "MARBAN", 0, 0
+}
+Texture "MARBOB", 64, 64
+{
+	XScale 0.625
+	YScale 0.625
+	Patch "MARBOB", 0, 0
+}
+Texture "MARBOWS", 64, 64
+{
+	XScale 0.625
+	YScale 0.625
+	Patch "MARBOWS", 0, 0
+}
+Texture "MARBRK2", 32, 32
+{
+	Patch "MARBRK2", 0, 0
+}
+Texture "MARBRK3", 32, 32
+{
+	Patch "MARBRK3", 0, 0
+}
+Texture "MARCWAL", 64, 64
+{
+	XScale 0.125
+	YScale 0.125
+	Patch "MARCWAL", 0, 0
+}
+Texture "MARDR", 64, 64
+{
+	XScale 0.750
+	YScale 0.875
+	Patch "MARDR", 0, 0
+}
+Texture "MARGND", 32, 64
+{
+	XScale 0.375
+	YScale 0.375
+	Patch "MARGND", 0, 0
+}
+Texture "MARPLR2", 32, 64
+{
+	XScale 0.500
+	YScale 0.375
+	Patch "MARPLR2", 0, 0
+}
+Texture "MARRED", 32, 64
+{
+	Patch "MARRED", 0, 0
+}
+Texture "MARSHP", 64, 64
+{
+	XScale 0.625
+	YScale 0.625
+	Patch "MARSHP", 0, 0
+}
+Texture "MARSUNCE", 32, 32
+{
+	XScale 0.125
+	YScale 0.125
+	Patch "MARSUNCE", 0, 0
+}
+Texture "MARSUNFL", 64, 64
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARTILE", 0, 0
+	Patch "MARTILE", 32, 0
+	Patch "MARTILE", 0, 32
+	Patch "MARTILE", 64, 0
+	Patch "MARTILE", 32, 32
+	Patch "MARTILE", 64, 32
+	Patch "MARSUNFL", -32, 32
+	Patch "MARSUNFL", 32, 32
+	Patch "MARSUNFL", -32, -32
+	Patch "MARSUNFL", 32, -32
+}
+Texture "MARTILE", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARTILE", 0, 0
+}
+Texture "MARPRN2", 64, 64
+{
+	XScale 0.625
+	YScale 0.625
+	Patch "MARPRN2", 0, 0
+}
+Texture "MARSUNC1", 8, 8
+{
+	XScale 0.250
+	YScale 0.250
+	Patch "MARSUNCE", 0, 0
+}
+Texture "MARCAST1", 256, 256
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARCAST", 0, 0
+	Patch "MARCAST", 64, 0
+	Patch "MARCAST", 128, 0
+	Patch "MARCAST", 192, 0
+	Patch "MARCAST", 0, 32
+	Patch "MARCAST", 64, 32
+	Patch "MARCAST", 128, 32
+	Patch "MARCAST", 192, 32
+	Patch "MARCAST", 0, 64
+	Patch "MARCAST", 64, 64
+	Patch "MARCAST", 128, 64
+	Patch "MARCAST", 192, 64
+	Patch "MARBRG", 0, 96
+	Patch "MARBRG", 32, 96
+	Patch "MARBRG", 64, 96
+	Patch "MARBRG", 96, 96
+	Patch "MARBRG", 128, 96
+	Patch "MARBRG", 160, 96
+	Patch "MARBRG", 192, 96
+	Patch "MARBRG", 224, 96
+	Patch "MARWND", 50, 8
+	Patch "MARWND", 50, 58
+	Patch "MARWND", 133, 58
+	Patch "MARWND", 133, 8
+	Patch "MARCAST", 0, 128
+	Patch "MARCAST", 64, 128
+	Patch "MARCAST", 128, 128
+	Patch "MARCAST", 192, 128
+	Patch "MARCAST", 0, 160
+	Patch "MARCAST", 64, 160
+	Patch "MARCAST", 128, 160
+	Patch "MARCAST", 192, 160
+	Patch "MARCAST", 0, 192
+	Patch "MARCAST", 64, 192
+	Patch "MARCAST", 128, 192
+	Patch "MARCAST", 192, 192
+	Patch "MARBRG", 0, 224
+	Patch "MARBRG", 32, 224
+	Patch "MARBRG", 64, 224
+	Patch "MARBRG", 96, 224
+	Patch "MARBRG", 128, 224
+	Patch "MARBRG", 160, 224
+	Patch "MARBRG", 192, 224
+	Patch "MARBRG", 224, 224
+}
+Texture "MARCARP", 32, 32
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARCARP", 0, 0
+}
+Texture "MARCAST2", 256, 128
+{
+	XScale 0.500
+	YScale 0.500
+	Patch "MARCAST", 0, 0
+	Patch "MARCAST", 64, 0
+	Patch "MARCAST", 128, 0
+	Patch "MARCAST", 192, 0
+	Patch "MARCAST", 0, 32
+	Patch "MARCAST", 64, 32
+	Patch "MARCAST", 128, 32
+	Patch "MARCAST", 192, 32
+	Patch "MARCAST", 0, 64
+	Patch "MARCAST", 64, 64
+	Patch "MARCAST", 128, 64
+	Patch "MARCAST", 192, 64
+	Patch "MARBRG", 0, 96
+	Patch "MARBRG", 32, 96
+	Patch "MARBRG", 64, 96
+	Patch "MARBRG", 96, 96
+	Patch "MARBRG", 128, 96
+	Patch "MARBRG", 160, 96
+	Patch "MARBRG", 192, 96
+	Patch "MARBRG", 224, 96
+	Patch "MARCAST", 0, 128
+	Patch "MARCAST", 64, 128
+	Patch "MARCAST", 128, 128
+	Patch "MARCAST", 192, 128
+	Patch "MARCAST", 0, 160
+	Patch "MARCAST", 64, 160
+	Patch "MARCAST", 128, 160
+	Patch "MARCAST", 192, 160
+	Patch "MARCAST", 0, 192
+	Patch "MARCAST", 64, 192
+	Patch "MARCAST", 128, 192
+	Patch "MARCAST", 192, 192
+	Patch "MARBRG", 0, 224
+	Patch "MARBRG", 32, 224
+	Patch "MARBRG", 64, 224
+	Patch "MARBRG", 96, 224
+	Patch "MARBRG", 128, 224
+	Patch "MARBRG", 160, 224
+	Patch "MARBRG", 192, 224
+	Patch "MARBRG", 224, 224
+}
+Texture "MARBOB1", 64, 64
+{
+	XScale 0.625
+	YScale 0.625
+	Patch "MARBOB", 0, 0
+}
+Texture "MARSHP1", 64, 64
+{
+	XScale 0.625
+	YScale 0.625
+	Patch "MARSHP", 0, 0
+}
+Texture "FISHTEX", 256, 128
+{
+	Patch "MFISA0", 22, 6
+	Patch "MFISA0", 53, 16
+	Patch "MFISA0", 83, 3
+	Patch "MFISA0", 116, 4
+	Patch "MFISA0", 150, 17
+	Patch "MFISA0", 138, 43
+	Patch "MFISA0", 94, 53
+	Patch "MFISA0", 174, 34
+	Patch "MFISA0", 31, 35
+	Patch "MFISA0", 70, 34
+	Patch "MFISA0", 82, 20
+	Patch "MFISA0", 108, 29
+	Patch "MFISA0", 133, 22
+	Patch "MFISA0", 183, 3
+	Patch "MFISA0", 191, 30
+	Patch "MFISA0", 213, 14
+	Patch "MFISA0", 39, 54
+	Patch "MFISA0", 207, 51
+	Patch "MFISA0", 9, 52
+}
+// FIX
+Texture "STARTAN1", 64, 128
+{
+	Patch "SW12_4", 0, 0
+	Patch "SW12_5", 32, 0
+}
+Texture "BRNPOIS1", 64, 128
+{
+	Patch "WALL62_2", 0, 0
+	Patch "PS20A0", 1, 60
+}

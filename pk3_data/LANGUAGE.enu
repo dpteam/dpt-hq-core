@@ -1,0 +1,113 @@
+[enu default]
+//Weapons
+//minigun
+PICKUP_MINIGUN = "You got the minigun!";
+OB_MINIGUN = "%o was drilled by %k's minigun.";
+OB_MINIGUN_2 = "%o was pelted by %k's minigun.";
+
+//grenade launcher
+PICKUP_GRENADELAUNCHER = "You got the grenade launcher!";
+
+//railgun
+PICKUP_RAILGUN = "You got the railgun!";
+
+//bfg10k
+PICKUP_BFG10K = "You got the BFG10000!  Hell, yes!";
+OB_BFG10K = "%o was blasted by %k's BFG10K.";
+OB_BFG10K_RARE = "%o got a blast in the ass from %k's BFG10K.";
+OB_BFG10K_SELF = "%o got reckless with %p BFG10K.";
+
+
+//Monsters
+//obituaries
+OB_CACODEMON_MELEE_RARE = "%o tried to get friendly with a cacodemon.";
+OB_BARON_MELEE_RARE = "%o was bitchslapped by a Baron of Hell.";
+OB_DARKIMP_MELEE = "%o was slashed by a dark imp.";
+OB_DARKIMP = "%o was burned by a dark imp.";
+OB_BLOODDEMON_MELEE = "%o was chomped on by a blood demon.";
+OB_SSGGUY = "%o was jacked by a super shotgun guy.";
+OB_BELPHEGOR_MELEE = "%o was slain by a Belphegor.";
+OB_BELPHEGOR = "%o was slain by a Belphegor.";
+OB_CACOLANTERN_MELEE = "%o got too close to a cacolantern.";
+OB_CACOLANTERN = "%o was smitten by a cacolantern.";
+OB_ABADDON_MELEE = "%o became food for an abaddon.";
+OB_ABADDON = "%o was smitten by an abaddon.";
+OB_HECTEBUS = "%o was cremated by a hectebus.";
+
+//cast call
+CC_SSGGUY = "SUPER SHOTGUN GUY";
+CC_DARKIMP = "DARK IMP";
+CC_BLOODDEMON = "BLOOD DEMON";
+CC_CACOLANTERN = "CACOLANTERN";
+CC_HECTEBUS = "HECTEBUS";
+
+
+//Items
+PICKUP_REDARMOR = "Picked up the red armor!";
+
+
+//Episodes
+//cluster strings.
+DM1TEXT =
+		"CONGRATULATIONS, YOU'VE FOUND WHAT NO\n"
+		"ONE PROBABLY WOULD HAVE EVER SUSPECTED:\n"
+		"THE SECRET DEATHMATCH LEVEL! PAT YOURSELF\n"
+		"ON THE BACK AND GET READY... IT'S FIGHTIN'\n"
+		"TIME!";
+DM2TEXT =
+		"THE GREATEST EVIL THE WORLD HAS EVER\n"
+		"KNOWN HAS FINALLY BEEN SLAIN. LINGUICA,\n"
+		"THE \"SAUSAGE OF DEATH\", WILL HOLD PLUSH\n"
+		"CACODEMONS CAPTIVE NO LONGER. YOU WATCH\n"
+		"FROM AFAR AS LINGUICA'S LAIR, WHICH SERVED\n"
+		"AS HISSY'S PRISON, CRUMBLES TO THE GROUND.\n"
+		"\n"
+		"HISSY IS FREE! YOU WATCH WITH DELIGHT\n"
+		"AS THE PLUSH CACODEMON KNOWN AS HISSY\n"
+		"EMERGES FROM THE RUBBLE, GIVES YOU A\n"
+		"\"HISS\" GOODBYE, AND FLOATS AWAY HAPPILY.\n"
+		"YOU BREATHE A SIGH OF RELIEF, KNOWING THAT\n"
+		"HISSY, AND ALL OTHER PLUSH CACODEMONS,\n"
+		"CAN ROAM FREE ONCE AGAIN.";
+
+//	{ str_notchanged, "STSTR_HISSYON", "Fearless Rage Mode ON", NULL },
+//	{ str_notchanged, "STSTR_HISSYOFF", "Fearless Rage Mode OFF", NULL },
+
+// Level names.
+LEVEL_SP_PRE_1 = "level 1";
+LEVEL_SP_PRE_2 = "level 2";
+LEVEL_SP_PRE_3 = "level 3";
+LEVEL_SP_PRE_4 = "level 4";
+LEVEL_SP_PRE_5 = "level 5";
+LEVEL_SP_PRE_6 = "level 6";
+LEVEL_SP_PRE_7 = "level 7";
+LEVEL_SP_PRE_8 = "level 8";
+LEVEL_SP_PRE_9 = "level 9";
+LEVEL_SP_PRE_10 = "level 10";
+LEVEL_SP_PRE_11 = "level 11";
+LEVEL_SP_PRE_12 = "level 12";
+LEVEL_SP_PRE_13 = "level 13";
+LEVEL_SP_PRE_14 = "level 14";
+LEVEL_SP_PRE_15 = "level 15";
+LEVEL_SP_PRE_16 = "level 16";
+LEVEL_SP_PRE_17 = "level 17";
+LEVEL_SP_PRE_18 = "level 18";
+LEVEL_SP_PRE_19 = "level 19";
+LEVEL_SP_PRE_20 = "level 20";
+LEVEL_SP_PRE_21 = "level 21";
+LEVEL_SP_PRE_22 = "level 22";
+LEVEL_SP_PRE_23 = "level 23";
+LEVEL_SP_PRE_24 = "level 24";
+LEVEL_SP_PRE_25 = "level 25";
+LEVEL_SP_PRE_26 = "level 26";
+LEVEL_SP_PRE_27 = "level 27";
+LEVEL_SP_PRE_28 = "level 28";
+LEVEL_SP_PRE_29 = "level 29";
+LEVEL_SP_PRE_30 = "level 30";
+LEVEL_SP_PRE_31 = "level 31";
+LEVEL_SP_PRE_32 = "level 32";
+
+// DEATHES
+OB_CRUSH = "%o.rar";
+OB_SUICIDE = "%o successful win the blue whale game";
+OB_EXIT = "%o DONT PLAY";

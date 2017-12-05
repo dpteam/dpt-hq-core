@@ -1,0 +1,21 @@
+/*
+
+DECORATE, ACS & Other Code simple rule reference:
+{
+	Common rules:
+	{
+		1. Codepage must be UTF-8 without BOM.
+		2. All code grammar errors must be fixed. (Check picture-files "npp_code_grammar_correcting_reference_info.png" and "npp_code_grammar_correcting_reference_process.png" [after installing the "TextFX Characters" addon you need to use only 3-4 ways] in "pics" folder)
+	}
+	Other rules:
+	{
+		1. Recomended to use Notepad++ (or Atom & etc - like Vim) for editing.
+	}
+}
+
+Reference bugs:
+{
+	1. Currently this have only a russian text layer.
+}
+
+*/
