@@ -1,0 +1,26 @@
+/*
+
+Mapping simple rule reference:
+{
+	Common rules:
+	{
+		1. Map must be in UDMF format.
+		2. All map errors must be fixed. (Check picture-file "map_fixing_reference.png" in "pics" folder)
+	}
+	Other rules:
+	{
+		1. You may use any style of map.
+		2. Recomended to use this wad resources (any [in-style] objects and/or textures)
+	}
+	Map files rules:
+	{
+		1. MAPINFO must be in ZDoom Format (ZMAPINFO, and filename must be "MAPINFO")
+		2. MAPINFO must contain:
+		{
+			1. Map name (if cant invent - use: "PLACEHOLDER")
+			2. Music (must be in MIDI [if available MUS, must be converted to MIDI] format, and OGG [HD] replacement if available)
+		}
+	}
+}
+
+*/

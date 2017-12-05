@@ -1,4 +1,0 @@
-// CVARINFO
-server noarchive int sv_ggun_maxweight = 200;
-server noarchive int sv_ggun_strength = 1;
-server noarchive int sv_ggun_forcegrab = 0;
