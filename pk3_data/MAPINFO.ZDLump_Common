@@ -13,16 +13,6 @@ episode HQ1
 	name = "DPT HQ"
 	key = "1"
 }
-episode HQARENA
-{
-	name = "HQ SANDBOX"
-	key = "2"
-}
-episode HQ_2KC1
-{
-	name = "HQ DM"
-	key = "3"
-}
 //COMMON SKILLS
 clearskills
 skill baby
@@ -150,72 +140,4 @@ map HQ1 "DPT CITY"
 	music = "SPACEDEB" // "HQ1"
 	SKY1 = "SKY1"
 	next = "HQ1"
-}
-//SANDBOX
-map HQARENA "Arena"
-{
-	SKY1 = "SKY1"
-	next = "HQPIANO"
-	music = "HQ2"
-}
-map HQPIANO "Piano"
-{
-	SKY1 = "SKY1"
-	next = "HQSNDBX1"
-	music = "NOMUS"
-}
-map HQSNDBX1 "gm_flatgrass"
-{
-	SKY1 = "SKY1"
-	next = "HQSNDBX3" // WORKER
-	music = "NOMUS"
-}
-map HQSNDBX2 "gm_construct" // WIP
-{
-	SKY1 = "SKY1"
-	next = "HQSNDBX3"
-	music = "NOMUS"
-}
-map HQSNDBX3 "Green Screen"
-{
-	SKY1 = "SKY1"
-	next = "HQSNDBX4"
-	music = "NOMUS"
-}
-map HQSNDBX4 "Randomly Colorful Map"
-{
-	SKY1 = "SKY1"
-	next = "HQARENA"
-	music = "DASMODEL" // D_RAIN
-}
-//DM & CTF
-map HQ_2KC1 "$2000$ Classic v1"
-{
-	SKY1 = "SKY1"
-	next = "HQ_2KC2"
-	music = "NOMUS"
-}
-map HQ_2KC2 "$2000$ Classic v2"
-{
-	SKY1 = "SKY1"
-	next = "HQ_2KM"
-	music = "NOMUS"
-}
-map HQ_2KM "$2000$ Modern"
-{
-	SKY1 = "SKY1"
-	next = "HQCTF1"
-	music = "NOMUS"
-}
-map HQCTF1 "de_aztec"
-{
-	SKY1 = "SKY1"
-	next = "HQCTF2"
-	music = "HALO"
-}
-map HQCTF2 "de_dust2x2"
-{
-	SKY1 = "SKY1"
-	next = "HQ1" // WORKER
-	music = "ORIONERO"
 }
