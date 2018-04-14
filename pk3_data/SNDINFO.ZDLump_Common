@@ -2,7 +2,7 @@ NULL NULL
 dsblank dsmt
 dsnull dsnull
 
-$limit KICK 0
+$limit KICKPIAN 0 // KINGDIAN XD
 $limit SNARE 0
 $limit HAT 0
 $limit CRASH 0
@@ -512,7 +512,7 @@ TomA TomA
 TomB TomB
 Snare Snare
 Ride Ride
-Kick Kick
+Kick KICKPIAN // Fix
 Hat Hat
 Crash Crash
 
@@ -1922,17 +1922,17 @@ fist/wall4 DSFISTW4
 
 $random fist/hit
 { 
- fist/hit1
- fist/hit2
- fist/hit3
+	fist/hit1
+	fist/hit2
+	fist/hit3
 }
 
 $random fist/wall
 { 
- fist/wall1
- fist/wall2
- fist/wall3
- fist/wall4
+	fist/wall1
+	fist/wall2
+	fist/wall3
+	fist/wall4
 }
 
 deserteagle/fire DSP45KF
@@ -1974,9 +1974,9 @@ minigun/bolt  DSMCROB
 
 $random minigun/fire
 { 
- minigun/fire1
- minigun/fire2
- minigun/fire3
+	minigun/fire1
+	minigun/fire2
+	minigun/fire3
 }
 
 RL DSRLCR
@@ -1996,21 +1996,21 @@ rocket/explode9 DSRCKTE9
 
 $random rocket/explode
 { 
- rocket/explode1
- rocket/explode2
- rocket/explode3
- rocket/explode4
- rocket/explode5
- rocket/explode6
- rocket/explode7
- rocket/explode8
- rocket/explode9
+	rocket/explode1
+	rocket/explode2
+	rocket/explode3
+	rocket/explode4
+	rocket/explode5
+	rocket/explode6
+	rocket/explode7
+	rocket/explode8
+	rocket/explode9
 }
 
 $random RL/launch
 { 
- RL/launch1
- RL/launch2
+	RL/launch1
+	RL/launch2
 }
 
 plasmagun DSPRFL
@@ -2027,16 +2027,16 @@ plasmaball/hit3 DSPLSBH3
 
 $random plasmagun/fire 
 { 
- plasmagun/fire1
- plasmagun/fire2
- plasmagun/fire3 
+	plasmagun/fire1
+	plasmagun/fire2
+	plasmagun/fire3 
 }
 
 $random plasmaball/hit
 { 
- plasmaball/hit1
- plasmaball/hit2
- plasmaball/hit3
+	plasmaball/hit1
+	plasmaball/hit2
+	plasmaball/hit3
 }
 
 bfg DSBFG
@@ -2057,10 +2057,10 @@ bfglite/hit DSBFGLH
 
 $random bfgball/explode
 { 
- bfgball/explode1
- bfgball/explode2
- bfgball/explode3
- bfgball/explode4
+	bfgball/explode1
+	bfgball/explode2
+	bfgball/explode3
+	bfgball/explode4
 }
 
 weapons/emptymag/drop DSEMAGD
@@ -2071,9 +2071,9 @@ weapons/casing3 DSCASIN3
 
 $random weapons/pistolcasings 
 { 
- weapons/casing1 
- weapons/casing2
- weapons/casing3
+	weapons/casing1 
+	weapons/casing2
+	weapons/casing3
 }
 
 weapons/shell4 DSSHELL4
@@ -2082,9 +2082,9 @@ weapons/shell6 DSSHELL6
 
 $random weapons/shotgunshells 
 { 
- weapons/shell4
- weapons/shell5
- weapons/shell6
+	weapons/shell4
+	weapons/shell5
+	weapons/shell6
 }
 
 weapons/casing4 DSCASIN4
@@ -2093,9 +2093,9 @@ weapons/casing6 DSCASIN6
 
 $random weapons/riflecasings 
 { 
- weapons/casing4 
- weapons/casing5
- weapons/casing6
+	weapons/casing4 
+	weapons/casing5
+	weapons/casing6
 }
 
 world/watersplash dssplash
@@ -2640,43 +2640,43 @@ Deaths/Male06/09 M6Dth09
 Deaths/Male06/10 M6Dth10
 // Male 07
 $random Sights/Male07 {
- Sights/Male07/01
- Sights/Male07/02
- Sights/Male07/03
- Sights/Male07/04
- Sights/Male07/05
- Sights/Male07/06
- Sights/Male07/07
- Sights/Male07/08
- Sights/Male07/09
- Sights/Male07/10
- Sights/Male07/11
- Sights/Male07/12
- Sights/Male07/13
- Sights/Male07/14
- Sights/Male07/15
- Sights/Male07/16
- Sights/Male07/17
- Sights/Male07/18
- Sights/Male07/19
- Sights/Male07/20
- Sights/Male07/21
- Sights/Male07/22
- Sights/Male07/23
- Sights/Male07/24
- Sights/Male07/25
- Sights/Male07/26
- Sights/Male07/27
- Sights/Male07/28
- Sights/Male07/29
- Sights/Male07/30
- Sights/Male07/31
- Sights/Male07/32
- Sights/Male07/33
- Sights/Male07/34
- Sights/Male07/35
- Sights/Male07/36
- Sights/Male07/37 }
+	Sights/Male07/01
+	Sights/Male07/02
+	Sights/Male07/03
+	Sights/Male07/04
+	Sights/Male07/05
+	Sights/Male07/06
+	Sights/Male07/07
+	Sights/Male07/08
+	Sights/Male07/09
+	Sights/Male07/10
+	Sights/Male07/11
+	Sights/Male07/12
+	Sights/Male07/13
+	Sights/Male07/14
+	Sights/Male07/15
+	Sights/Male07/16
+	Sights/Male07/17
+	Sights/Male07/18
+	Sights/Male07/19
+	Sights/Male07/20
+	Sights/Male07/21
+	Sights/Male07/22
+	Sights/Male07/23
+	Sights/Male07/24
+	Sights/Male07/25
+	Sights/Male07/26
+	Sights/Male07/27
+	Sights/Male07/28
+	Sights/Male07/29
+	Sights/Male07/30
+	Sights/Male07/31
+	Sights/Male07/32
+	Sights/Male07/33
+	Sights/Male07/34
+	Sights/Male07/35
+	Sights/Male07/36
+	Sights/Male07/37 }
 Sights/Male07/01 M7Sit01
 Sights/Male07/02 M7Sit02
 Sights/Male07/03 M7Sit03
@@ -2732,23 +2732,23 @@ Deaths/Male07/06 M7Dth06
 Deaths/Male07/07 M7Dth07
 // Male 08
 $random Sights/Male08 {
- Sights/Male08/01
- Sights/Male08/02
- Sights/Male08/03
- Sights/Male08/04
- Sights/Male08/05
- Sights/Male08/06
- Sights/Male08/07
- Sights/Male08/08
- Sights/Male08/09
- Sights/Male08/10
- Sights/Male08/11
- Sights/Male08/12
- Sights/Male08/13
- Sights/Male08/14
- Sights/Male08/15
- Sights/Male08/16
- Sights/Male08/17 }
+	Sights/Male08/01
+	Sights/Male08/02
+	Sights/Male08/03
+	Sights/Male08/04
+	Sights/Male08/05
+	Sights/Male08/06
+	Sights/Male08/07
+	Sights/Male08/08
+	Sights/Male08/09
+	Sights/Male08/10
+	Sights/Male08/11
+	Sights/Male08/12
+	Sights/Male08/13
+	Sights/Male08/14
+	Sights/Male08/15
+	Sights/Male08/16
+	Sights/Male08/17 }
 Sights/Male08/01 M8Sit01
 Sights/Male08/02 M8Sit02
 Sights/Male08/03 M8Sit03
@@ -2767,15 +2767,15 @@ Sights/Male08/15 M8Sit15
 Sights/Male08/16 M8Sit16
 Sights/Male08/17 M8Sit17
 $random Pains/Male08 {
- Pains/Male08/01
- Pains/Male08/02
- Pains/Male08/03
- Pains/Male08/04
- Pains/Male08/05
- Pains/Male08/06
- Pains/Male08/07
- Pains/Male08/08
- Pains/Male08/09 }
+	Pains/Male08/01
+	Pains/Male08/02
+	Pains/Male08/03
+	Pains/Male08/04
+	Pains/Male08/05
+	Pains/Male08/06
+	Pains/Male08/07
+	Pains/Male08/08
+	Pains/Male08/09 }
 Pains/Male08/01 M8Hit01
 Pains/Male08/02 M8Hit02
 Pains/Male08/03 M8Hit03
@@ -2789,11 +2789,11 @@ $random Throws/Male08 { Throws/Male08/01 Throws/Male08/02 }
 Throws/Male08/01 m8thr01
 Throws/Male08/02 m8thr02
 $random Deaths/Male08 {
- Deaths/Male08/01
- Deaths/Male08/02
- Deaths/Male08/03
- Deaths/Male08/04
- Deaths/Male08/05 }
+	Deaths/Male08/01
+	Deaths/Male08/02
+	Deaths/Male08/03
+	Deaths/Male08/04
+	Deaths/Male08/05 }
 Deaths/Male08/01 m8dth01
 Deaths/Male08/02 m8dth02
 Deaths/Male08/03 m8dth03
@@ -2801,19 +2801,19 @@ Deaths/Male08/04 m8dth04
 Deaths/Male08/05 m8dth05
 // Male 09
 $random Sights/Male09 {
- Sights/Male09/01
- Sights/Male09/02
- Sights/Male09/03
- Sights/Male09/04
- Sights/Male09/05
- Sights/Male09/06
- Sights/Male09/07
- Sights/Male09/08
- Sights/Male09/09
- Sights/Male09/10
- Sights/Male09/11
- Sights/Male09/12
- Sights/Male09/13 }
+	Sights/Male09/01
+	Sights/Male09/02
+	Sights/Male09/03
+	Sights/Male09/04
+	Sights/Male09/05
+	Sights/Male09/06
+	Sights/Male09/07
+	Sights/Male09/08
+	Sights/Male09/09
+	Sights/Male09/10
+	Sights/Male09/11
+	Sights/Male09/12
+	Sights/Male09/13 }
 Sights/Male09/01 M9Sit01
 Sights/Male09/02 M9Sit02
 Sights/Male09/03 M9Sit03
@@ -2828,11 +2828,11 @@ Sights/Male09/11 M9Sit11
 Sights/Male09/12 M9Sit12
 Sights/Male09/13 M9Sit13
 $random Pains/Male09 {
- Pains/Male09/01
- Pains/Male09/02
- Pains/Male09/03
- Pains/Male09/04
- Pains/Male09/05 }
+	Pains/Male09/01
+	Pains/Male09/02
+	Pains/Male09/03
+	Pains/Male09/04
+	Pains/Male09/05 }
 Pains/Male09/01 M9Hit01
 Pains/Male09/02 M9Hit02
 Pains/Male09/03 M9Hit03
@@ -2841,11 +2841,11 @@ Pains/Male09/05 M9Hit05
 $random Throws/Male09 { Throws/Male09/01 nul }
 Throws/Male09/01 M9thr01
 $random Deaths/Male09 {
- Deaths/Male09/01
- Deaths/Male09/02
- Deaths/Male09/03
- Deaths/Male09/04
- Deaths/Male09/05 }
+	Deaths/Male09/01
+	Deaths/Male09/02
+	Deaths/Male09/03
+	Deaths/Male09/04
+	Deaths/Male09/05 }
 Deaths/Male09/01 M9dth01
 Deaths/Male09/02 M9dth02
 Deaths/Male09/03 M9dth03
@@ -2853,29 +2853,29 @@ Deaths/Male09/04 M9dth04
 Deaths/Male09/05 M9dth05
 // Male 10
 $random Sights/Male10 {
- Sights/Male10/01
- Sights/Male10/02
- Sights/Male10/03
- Sights/Male10/04
- Sights/Male10/05
- Sights/Male10/06
- Sights/Male10/07
- Sights/Male10/08
- Sights/Male10/09
- Sights/Male10/10
- Sights/Male10/11
- Sights/Male10/12
- Sights/Male10/13
- Sights/Male10/14
- Sights/Male10/15
- Sights/Male10/16
- Sights/Male10/17
- Sights/Male10/18
- Sights/Male10/19
- Sights/Male10/20
- Sights/Male10/21
- Sights/Male10/22
- Sights/Male10/23 }
+	Sights/Male10/01
+	Sights/Male10/02
+	Sights/Male10/03
+	Sights/Male10/04
+	Sights/Male10/05
+	Sights/Male10/06
+	Sights/Male10/07
+	Sights/Male10/08
+	Sights/Male10/09
+	Sights/Male10/10
+	Sights/Male10/11
+	Sights/Male10/12
+	Sights/Male10/13
+	Sights/Male10/14
+	Sights/Male10/15
+	Sights/Male10/16
+	Sights/Male10/17
+	Sights/Male10/18
+	Sights/Male10/19
+	Sights/Male10/20
+	Sights/Male10/21
+	Sights/Male10/22
+	Sights/Male10/23 }
 Sights/Male10/01 MaSit01
 Sights/Male10/02 MaSit02
 Sights/Male10/03 MaSit03
@@ -2901,46 +2901,46 @@ Sights/Male10/22 MaSit22
 Sights/Male10/23 MaSit23
 // MALE 11
 $random Sights/Male11 { 
- Sights/Male11/01
- Sights/Male11/02
- Sights/Male11/03
- Sights/Male11/04
- Sights/Male11/05
- Sights/Male11/06
- Sights/Male11/07
- Sights/Male11/08
- Sights/Male11/09
- Sights/Male11/10
- Sights/Male11/11
- Sights/Male11/12
- Sights/Male11/13
- Sights/Male11/14
- Sights/Male11/15
- Sights/Male11/16
- Sights/Male11/17
- Sights/Male11/18
- Sights/Male11/19
- Sights/Male11/20
- Sights/Male11/21
- Sights/Male11/22
- Sights/Male11/23
- Sights/Male11/24
- Sights/Male11/25
- Sights/Male11/26
- Sights/Male11/27
- Sights/Male11/28
- Sights/Male11/29
- Sights/Male11/30
- Sights/Male11/31
- Sights/Male11/32
- Sights/Male11/33
- Sights/Male11/34
- Sights/Male11/35
- Sights/Male11/36
- Sights/Male11/37
- Sights/Male11/38
- Sights/Male11/39
- Sights/Male11/40 }
+	Sights/Male11/01
+	Sights/Male11/02
+	Sights/Male11/03
+	Sights/Male11/04
+	Sights/Male11/05
+	Sights/Male11/06
+	Sights/Male11/07
+	Sights/Male11/08
+	Sights/Male11/09
+	Sights/Male11/10
+	Sights/Male11/11
+	Sights/Male11/12
+	Sights/Male11/13
+	Sights/Male11/14
+	Sights/Male11/15
+	Sights/Male11/16
+	Sights/Male11/17
+	Sights/Male11/18
+	Sights/Male11/19
+	Sights/Male11/20
+	Sights/Male11/21
+	Sights/Male11/22
+	Sights/Male11/23
+	Sights/Male11/24
+	Sights/Male11/25
+	Sights/Male11/26
+	Sights/Male11/27
+	Sights/Male11/28
+	Sights/Male11/29
+	Sights/Male11/30
+	Sights/Male11/31
+	Sights/Male11/32
+	Sights/Male11/33
+	Sights/Male11/34
+	Sights/Male11/35
+	Sights/Male11/36
+	Sights/Male11/37
+	Sights/Male11/38
+	Sights/Male11/39
+	Sights/Male11/40 }
 Sights/Male11/01 mbsit01
 Sights/Male11/02 mbsit02
 Sights/Male11/03 mbsit03
@@ -3029,36 +3029,36 @@ Deaths/Female01/06 F1Dth06
 Deaths/Female01/07 F1Dth07
 // Female 02
 $random Sights/Female02 {
- Sights/Female02/01
- Sights/Female02/02
- Sights/Female02/03
- Sights/Female02/04
- Sights/Female02/05
- Sights/Female02/06
- Sights/Female02/07
- Sights/Female02/08
- Sights/Female02/09
- Sights/Female02/10
- Sights/Female02/11
- Sights/Female02/12
- Sights/Female02/13
- Sights/Female02/14
- Sights/Female02/15
- Sights/Female02/16
- Sights/Female02/17
- Sights/Female02/18
- Sights/Female02/19
- Sights/Female02/20
- Sights/Female02/21
- Sights/Female02/22
- Sights/Female02/23
- Sights/Female02/24
- Sights/Female02/25
- Sights/Female02/26
- Sights/Female02/27
- Sights/Female02/28
- Sights/Female02/29
- Sights/Female02/30 }
+	Sights/Female02/01
+	Sights/Female02/02
+	Sights/Female02/03
+	Sights/Female02/04
+	Sights/Female02/05
+	Sights/Female02/06
+	Sights/Female02/07
+	Sights/Female02/08
+	Sights/Female02/09
+	Sights/Female02/10
+	Sights/Female02/11
+	Sights/Female02/12
+	Sights/Female02/13
+	Sights/Female02/14
+	Sights/Female02/15
+	Sights/Female02/16
+	Sights/Female02/17
+	Sights/Female02/18
+	Sights/Female02/19
+	Sights/Female02/20
+	Sights/Female02/21
+	Sights/Female02/22
+	Sights/Female02/23
+	Sights/Female02/24
+	Sights/Female02/25
+	Sights/Female02/26
+	Sights/Female02/27
+	Sights/Female02/28
+	Sights/Female02/29
+	Sights/Female02/30 }
 Sights/Female02/01 F2Sit01
 Sights/Female02/02 F2Sit02
 Sights/Female02/03 F2Sit03
@@ -3109,31 +3109,31 @@ Deaths/Female02/09 F2Dth09
 Deaths/Female02/10 F2Dth10
 // Female 02
 $random Sights/Female03 {
- Sights/Female03/01
- Sights/Female03/02
- Sights/Female03/03
- Sights/Female03/04
- Sights/Female03/05
- Sights/Female03/06
- Sights/Female03/07
- Sights/Female03/08
- Sights/Female03/09
- Sights/Female03/10
- Sights/Female03/11
- Sights/Female03/12
- Sights/Female03/13
- Sights/Female03/14
- Sights/Female03/15
- Sights/Female03/16
- Sights/Female03/17
- Sights/Female03/18
- Sights/Female03/19
- Sights/Female03/20
- Sights/Female03/21
- Sights/Female03/22
- Sights/Female03/23
- Sights/Female03/24
- Sights/Female03/25 }
+	Sights/Female03/01
+	Sights/Female03/02
+	Sights/Female03/03
+	Sights/Female03/04
+	Sights/Female03/05
+	Sights/Female03/06
+	Sights/Female03/07
+	Sights/Female03/08
+	Sights/Female03/09
+	Sights/Female03/10
+	Sights/Female03/11
+	Sights/Female03/12
+	Sights/Female03/13
+	Sights/Female03/14
+	Sights/Female03/15
+	Sights/Female03/16
+	Sights/Female03/17
+	Sights/Female03/18
+	Sights/Female03/19
+	Sights/Female03/20
+	Sights/Female03/21
+	Sights/Female03/22
+	Sights/Female03/23
+	Sights/Female03/24
+	Sights/Female03/25 }
 Sights/Female03/01 F3Sit01
 Sights/Female03/02 F3Sit02
 Sights/Female03/03 F3Sit03
@@ -3230,15 +3230,15 @@ Deaths/Wesker08 WESKDE8
 Deaths/Wesker09 WESKDE9
 // Mr. Falcon (Yippie-ki-yay.)
 $random Sights/MrFalcon { 
- Sights/MrFalcon/01
- Sights/MrFalcon/02
- Sights/MrFalcon/03
- Sights/MrFalcon/04
- Sights/MrFalcon/05
- Sights/MrFalcon/06
- Sights/MrFalcon/07
- Sights/MrFalcon/08
- RareSights/MrFalcon }
+	Sights/MrFalcon/01
+	Sights/MrFalcon/02
+	Sights/MrFalcon/03
+	Sights/MrFalcon/04
+	Sights/MrFalcon/05
+	Sights/MrFalcon/06
+	Sights/MrFalcon/07
+	Sights/MrFalcon/08
+	RareSights/MrFalcon }
 Sights/MrFalcon/01 Mfsit01
 Sights/MrFalcon/02 Mfsit02
 Sights/MrFalcon/03 Mfsit03
@@ -3248,13 +3248,13 @@ Sights/MrFalcon/06 Mfsit06
 Sights/MrFalcon/07 Mfsit07
 Sights/MrFalcon/08 Mfsit08
 $random RareSights/MrFalcon {
- RareSights/MrFalcon/01
- RareSights/MrFalcon/02
- RareSights/MrFalcon/03
- RareSights/MrFalcon/04
- RareSights/MrFalcon/05
- RareSights/MrFalcon/06
- RareSights/MrFalcon/07 }
+	RareSights/MrFalcon/01
+	RareSights/MrFalcon/02
+	RareSights/MrFalcon/03
+	RareSights/MrFalcon/04
+	RareSights/MrFalcon/05
+	RareSights/MrFalcon/06
+	RareSights/MrFalcon/07 }
 RareSights/MrFalcon/01 Mfrsit01
 RareSights/MrFalcon/02 Mfrsit02
 RareSights/MrFalcon/03 Mfrsit03
@@ -3263,21 +3263,21 @@ RareSights/MrFalcon/05 Mfrsit05
 RareSights/MrFalcon/06 Mfrsit06
 RareSights/MrFalcon/07 Mfrsit07
 $random Pains/MrFalcon {
- Pains/MrFalcon/01 
- Pains/MrFalcon/02 
- Pains/MrFalcon/03 
- Pains/MrFalcon/04 
- Pains/MrFalcon/05 
- Pains/MrFalcon/06 
- Pains/MrFalcon/07 
- Pains/MrFalcon/08 
- Pains/MrFalcon/09 
- Pains/MrFalcon/10 
- Pains/MrFalcon/11 
- Pains/MrFalcon/12 
- Pains/MrFalcon/13 
- Pains/MrFalcon/14 
- Pains/MrFalcon/15 }
+	Pains/MrFalcon/01 
+	Pains/MrFalcon/02 
+	Pains/MrFalcon/03 
+	Pains/MrFalcon/04 
+	Pains/MrFalcon/05 
+	Pains/MrFalcon/06 
+	Pains/MrFalcon/07 
+	Pains/MrFalcon/08 
+	Pains/MrFalcon/09 
+	Pains/MrFalcon/10 
+	Pains/MrFalcon/11 
+	Pains/MrFalcon/12 
+	Pains/MrFalcon/13 
+	Pains/MrFalcon/14 
+	Pains/MrFalcon/15 }
 Pains/MrFalcon/01 Mfhit01
 Pains/MrFalcon/02 Mfhit02
 Pains/MrFalcon/03 Mfhit03
@@ -3294,12 +3294,12 @@ Pains/MrFalcon/13 Mfhit13
 Pains/MrFalcon/14 Mfhit14
 Pains/MrFalcon/15 Mfhit15
 $random HeavyPains/MrFalcon {
- HeavyPains/MrFalcon/01
- HeavyPains/MrFalcon/02
- HeavyPains/MrFalcon/03
- HeavyPains/MrFalcon/04
- HeavyPains/MrFalcon/05
- HeavyPains/MrFalcon/06 }
+	HeavyPains/MrFalcon/01
+	HeavyPains/MrFalcon/02
+	HeavyPains/MrFalcon/03
+	HeavyPains/MrFalcon/04
+	HeavyPains/MrFalcon/05
+	HeavyPains/MrFalcon/06 }
 HeavyPains/MrFalcon/01 mfphit01
 HeavyPains/MrFalcon/02 mfphit02
 HeavyPains/MrFalcon/03 mfphit03
@@ -3307,15 +3307,15 @@ HeavyPains/MrFalcon/04 mfphit04
 HeavyPains/MrFalcon/05 mfphit05
 HeavyPains/MrFalcon/06 mfphit06
 $random Firing/MrFalcon {
- Firing/MrFalcon/01
- Firing/MrFalcon/02
- Firing/MrFalcon/03
- Firing/MrFalcon/04
- Firing/MrFalcon/05
- Firing/MrFalcon/06
- Firing/MrFalcon/07 
- empty
- empty }
+	Firing/MrFalcon/01
+	Firing/MrFalcon/02
+	Firing/MrFalcon/03
+	Firing/MrFalcon/04
+	Firing/MrFalcon/05
+	Firing/MrFalcon/06
+	Firing/MrFalcon/07 
+	empty
+	empty }
 Firing/MrFalcon/01 mffir01
 Firing/MrFalcon/02 mffir02
 Firing/MrFalcon/03 mffir03
@@ -3324,13 +3324,13 @@ Firing/MrFalcon/05 mffir05
 Firing/MrFalcon/06 mffir06
 Firing/MrFalcon/07 mffir07
 $random Reloading/MrFalcon {
- Reloading/MrFalcon/01
- Reloading/MrFalcon/02
- Reloading/MrFalcon/03
- Reloading/MrFalcon/04
- Reloading/MrFalcon/05
- Reloading/MrFalcon/06
- Reloading/MrFalcon/07 }
+	Reloading/MrFalcon/01
+	Reloading/MrFalcon/02
+	Reloading/MrFalcon/03
+	Reloading/MrFalcon/04
+	Reloading/MrFalcon/05
+	Reloading/MrFalcon/06
+	Reloading/MrFalcon/07 }
 Reloading/MrFalcon/01 mfload01
 Reloading/MrFalcon/02 mfload02
 Reloading/MrFalcon/03 mfload03
@@ -3339,10 +3339,10 @@ Reloading/MrFalcon/05 mfload05
 Reloading/MrFalcon/06 mfload06
 Reloading/MrFalcon/07 mfload07
 $random UberDeaths/MrFalcon {
- UberDeaths/MrFalcon/01
- UberDeaths/MrFalcon/02
- UberDeaths/MrFalcon/03
- UberDeaths/MrFalcon/04 }
+	UberDeaths/MrFalcon/01
+	UberDeaths/MrFalcon/02
+	UberDeaths/MrFalcon/03
+	UberDeaths/MrFalcon/04 }
 UberDeaths/MrFalcon/01 mfdth01
 UberDeaths/MrFalcon/02 mfdth02
 UberDeaths/MrFalcon/03 mfdth03
@@ -4827,10 +4827,10 @@ MM/launch3 pclnch3
 MM/launch4 pclnch4
 $random MM/launch
 {
- MM/launch1
- MM/launch2
- MM/launch3
- MM/launch4
+	MM/launch1
+	MM/launch2
+	MM/launch3
+	MM/launch4
 }
 
 SMGFIRE SMGFIRE

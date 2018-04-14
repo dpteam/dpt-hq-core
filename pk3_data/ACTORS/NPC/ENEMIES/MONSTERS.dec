@@ -1049,10 +1049,10 @@ actor CycloidEmperor 26379
   damagefactor "CycloidEmperor", 0.0
   damagefactor "Explosion", 0.5
   +QUICKTORETALIATE
-  +BOSS
+  //+BOSS
   +MISSILEMORE
   +MISSILEEVENMORE
-  +FULLVOLACTIVE
+  //+FULLVOLACTIVE
   +NOICEDEATH
   minmissilechance 1
   states

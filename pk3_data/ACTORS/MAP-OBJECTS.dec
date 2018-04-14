@@ -600,21 +600,7 @@ ACTOR RUSSIA 10410
 	States
 	{
 Spawn:
-		RUSS A  2
-		RUSS B  2
-		RUSS C  2
-		RUSS D  2
-		RUSS E  2
-		RUSS F  2
-		RUSS G  2
-		RUSS H  2
-		RUSS I  2
-		RUSS J  2
-		RUSS K  2
-		RUSS L  2
-		RUSS M  2
-		RUSS N  2
-		RUSS O  2
+		RUSS ABCDEFGHIJKLMNO  2
 		Loop
 	}
 }
@@ -630,7 +616,7 @@ ACTOR FLEXIT 26370
 	States
 	{
 	Spawn:
-		PLYC ABCD 1
+		PLYC ABCD 2
 		Loop
 	}
 }

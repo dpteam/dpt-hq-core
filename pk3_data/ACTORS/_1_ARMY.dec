@@ -6347,7 +6347,9 @@ Spawn:
 		MECH A 8
 		Stop
 	}}
-ACTOR Mech: SwitchableDecoration 7263
+// WORKER
+ACTOR MechPlaceholderReplacer 7263 {}
+ACTOR Mech: SwitchableDecoration //7263
 {
 	var int user_stationedMechbasedirection;
 	Scale 1.3
