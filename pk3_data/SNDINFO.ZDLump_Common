@@ -1700,6 +1700,7 @@ weapons/magnumWhip2 dspswhp2
 $random weapons/magnumWhip { weapons/magnumWhip1 weapons/magnumWhip2 }
 
 Weapons/Kick dskick
+weapons/foothit dskicked
 
 switches/gate BLCKRR
 Doors/SOP SUMNOP

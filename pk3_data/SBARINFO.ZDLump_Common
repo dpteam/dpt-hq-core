@@ -4,7 +4,7 @@ base Doom;
 Height 32;
 MonospaceFonts True, "0";
 
-Statusbar FullScreen, ForceScaled
+StatusBar FullScreen, ForceScaled // DPT.HQ HUD
 {
 	DrawImage "HQHUD5", 0, 0;
 	DrawBar "HEALFUL", "HEALNUL", Health, horizontal, 48,2;
@@ -18,7 +18,7 @@ Statusbar FullScreen, ForceScaled
 	DrawKeyBar 2, vertical, 16, 48, 36;
 }
 
-statusbar normal // Standard Doom Status bar
+StatusBar Normal, ForceScaled // Standard Doom Status bar
 {
 	drawimage "STBAR", 0, 168;
 	drawimage "STTPRCNT", 90, 171;
@@ -67,11 +67,11 @@ statusbar normal // Standard Doom Status bar
 
 //statusbar automap {}
 
-statusbar inventory // Standard bar overlay (ZDoom Addition)
+StatusBar Inventory, ForceScaled // Standard bar overlay (ZDoom Addition)
 {
-	drawinventorybar Doom, 7, INDEXFONT, 50, 170;
+	DrawInventoryBar Doom, 7, INDEXFONT, 50, 170;
 }
-statusbar inventoryfullscreen // ZDoom HUD overlay.
+StatusBar InventoryFullScreen, ForceScaled // ZDoom HUD overlay.
 {
-	drawinventorybar Doom, translucent, 7, INDEXFONT, 50, 170;
+	DrawInventoryBar Doom, Translucent, 7, INDEXFONT, 50, 170;
 }
