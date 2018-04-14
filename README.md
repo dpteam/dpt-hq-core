@@ -16,6 +16,16 @@ Also have GZDoom/Delta-Touch compatibility
 ## Important info
 
 CREDITS Currently Work in Progress, if im forgot some, please say it in issues.
+Link to issue: https://github.com/dpteam/dpt-hq-core/issues/7
+
+## Contribution info
+
+If you want to help the project, you can check the folder named "docs".
+
+Also you can donate: (Currently only russian services, but you can donate with $ or €)
+http://www.donationalerts.ru/r/dartpower
+Or here:
+https://qiwi.me/dartpower
 
 ## Social & Statistics
 
