@@ -38,7 +38,7 @@ ACTOR PistolThugFemale1
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		PGRL I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		PGRL I 3 A_Pain
 		Goto See

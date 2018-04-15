@@ -48,7 +48,7 @@ ACTOR ShotgunThug
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		GTHG I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		GTHG I 3 A_Pain
 		Goto See

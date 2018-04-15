@@ -71,7 +71,7 @@ ACTOR ARThug
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		ATHG I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		ATHG I 3 A_Pain
 		Goto See

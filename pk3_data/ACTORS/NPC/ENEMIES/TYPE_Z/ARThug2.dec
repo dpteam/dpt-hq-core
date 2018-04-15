@@ -70,7 +70,7 @@ ACTOR ARThug2
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		KTHG I 0
-		Goto Tased
+		Goto Pain
 	Death:
 		KTHG J 3 A_Scream
 		KTHG KL 3

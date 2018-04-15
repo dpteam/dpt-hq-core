@@ -76,7 +76,7 @@ ACTOR DeadHostage6 26385 //replaces DeadCacodemon
 	}
 }
 
-ACTOR DeadCop1 26386 //replaces GibbedMarine
+ACTOR DeadCop1 26401 //replaces GibbedMarine
 {
 	//$Category "Dead NPCs"
 	YScale 0.45
@@ -89,7 +89,7 @@ ACTOR DeadCop1 26386 //replaces GibbedMarine
 	}
 }
 
-ACTOR DeadCop2 26387 //replaces GibbedMarineExtra
+ACTOR DeadCop2 26402 //replaces GibbedMarineExtra
 {
 	//$Category "Dead NPCs"
 	YScale 0.35

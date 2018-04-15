@@ -44,7 +44,7 @@ ACTOR CopTaser
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		COP2 I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		COP2 I 3 A_Pain
 		Goto See

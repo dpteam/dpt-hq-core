@@ -34,7 +34,7 @@ ACTOR Punchy
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		PUNK A 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		PUNK A 3 A_Pain
 		Goto See

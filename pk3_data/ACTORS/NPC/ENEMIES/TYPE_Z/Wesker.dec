@@ -70,7 +70,7 @@ ACTOR Wesker
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		WESK I 0 A_TakeInventory("WeskerTauntSeq", 40)
-		Goto Tased
+		Goto Pain
 	Pain:
 		WESK I 4 A_Pain
 		WESK A 2 A_TakeInventory("WeskerTauntSeq", 40)

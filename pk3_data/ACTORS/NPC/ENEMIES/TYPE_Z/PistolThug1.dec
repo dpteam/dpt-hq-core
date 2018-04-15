@@ -43,7 +43,7 @@ ACTOR PistolThug1
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		PTHG I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		PTHG I 3 A_Pain
 		Goto See

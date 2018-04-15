@@ -76,7 +76,7 @@ ACTOR Caleb
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		CALB H 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		CALB H 3 A_Pain
 		Goto See

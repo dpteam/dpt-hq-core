@@ -60,7 +60,7 @@ ACTOR SMGThug
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		STHG H 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		STHG H 3 A_Pain
 		Goto See

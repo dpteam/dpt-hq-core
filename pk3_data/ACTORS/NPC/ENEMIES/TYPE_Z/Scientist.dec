@@ -33,7 +33,7 @@ ACTOR WWTScientist
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		WSCI I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		WSCI I 3 A_Pain
 		Goto See

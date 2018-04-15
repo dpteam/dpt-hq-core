@@ -46,7 +46,7 @@ ACTOR Bomber1
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		BOM1 I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		BOM1 I 3 A_Pain
 		Goto See

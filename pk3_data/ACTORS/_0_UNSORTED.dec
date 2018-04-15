@@ -1,15 +1,22 @@
-// PLACEHOLDER REPLACERS
-ACTOR HeavyMachinegunHUD {}
-ACTOR attackhelicopterBaseDirection {}
-ACTOR attackhelicopterReady {}
-ACTOR MechBaseDirection {}
+// PLACEHOLDER REPLACERS // WORKER
+ACTOR Firing : Inventory {}
+ACTOR Tourettes_BulletPuff : BulletPuff {}
+ACTOR XDeathGibs {}
+ACTOR GrowingBloodPool {}
+ACTOR XDeathOrgan1 {}
+ACTOR XDeathOrgan2 {}
+ACTOR Bloodmist {}
+ACTOR HeavyMachinegunHUD : Inventory {}
+ACTOR attackhelicopterBaseDirection : Inventory {}
+ACTOR attackhelicopterReady : Inventory {}
+ACTOR MechBaseDirection : Inventory {}
 ACTOR MachinegunFlash {}
 ACTOR LeftBikeHit {}
 ACTOR RightBikeHit {}
-ACTOR FiredLightTankMainGun {}
+ACTOR FiredLightTankMainGun : Inventory {}
 ACTOR CrashLightTankIntotheGround1 {}
 ACTOR CrashLightTankIntotheGround2 {}
-ACTOR LightTankZoom {}
+ACTOR LightTankZoom : Inventory {}
 ACTOR ShrinkEffect {}
 ACTOR DukeGibs1 {}
 ACTOR DukeGibs2 {}
@@ -18,7 +25,7 @@ ACTOR DukeGibs4 {}
 ACTOR DukeGibs5 {}
 ACTOR DukeGibs6 {}
 ACTOR BrutalExplosion {}
-ACTOR EnemySquishItem {}
+ACTOR EnemySquishItem : Inventory {}
 ACTOR MuzzleFlashMedium {}
 ACTOR Rocket2 {}
 ACTOR LavaSmoke1 {}
@@ -26,30 +33,30 @@ ACTOR Doomcenter_JunkGenerator {}
 ACTOR Tire2 {}
 ACTOR TankFire {}
 ACTOR ShockPuff : BulletPuff {}
-ACTOR AuraON {}
+ACTOR AuraON : Inventory {}
 ACTOR FBulletPuff : BulletPuff {}
-ACTOR PM_AltFireX {}
-ACTOR PM_AltFireY {}
+ACTOR PM_AltFireX : Inventory {}
+ACTOR PM_AltFireY : Inventory {}
 ACTOR PCybRocket3 {}
 ACTOR DUMP3GunSmokeSpawner {}
 ACTOR DUMP39mmCasingSpawner2 {}
 ACTOR DUMP3BulletPuff : BulletPuff {}
-ACTOR DUMP3ChaingunReroll {}
+ACTOR DUMP3ChaingunReroll : Inventory {}
 ACTOR DUMP3ShellCasingSpawner3 {}
-ACTOR DUMP3ShotgunSlotFilled {}
-ACTOR DUMP3ShotgunReroll {}
-ACTOR DUMP3SuperShotgunSlotFilled {}
-ACTOR DUMP3SuperShotgunReroll {}
-ACTOR DUMP3RocketLauncherSlotFilled {}
-ACTOR DUMP3RocketLauncherReroll {}
-ACTOR DUMP3PlasmaRifleSlotFilled {}
-ACTOR DUMP3PlasmaRifleReroll {}
+ACTOR DUMP3ShotgunSlotFilled : Inventory {}
+ACTOR DUMP3ShotgunReroll : Inventory {}
+ACTOR DUMP3SuperShotgunSlotFilled : Inventory {}
+ACTOR DUMP3SuperShotgunReroll : Inventory {}
+ACTOR DUMP3RocketLauncherSlotFilled : Inventory {}
+ACTOR DUMP3RocketLauncherReroll : Inventory {}
+ACTOR DUMP3PlasmaRifleSlotFilled : Inventory {}
+ACTOR DUMP3PlasmaRifleReroll : Inventory {}
 ACTOR DUMP3556mmCasingSpawner {}
 ACTOR DUMP3556mmCasingSpawner2 {}
-ACTOR DUMP3BFG9000SlotFilled {}
-ACTOR DUMP3BFG9000Reroll {}
+ACTOR DUMP3BFG9000SlotFilled : Inventory {}
+ACTOR DUMP3BFG9000Reroll : Inventory {}
 ACTOR DUMP3ShellCasingSpawner {}
-ACTOR DUMP3ChaingunSlotFilled {}
+ACTOR DUMP3ChaingunSlotFilled : Inventory {}
 ACTOR RocketSmoke {}
 
 ACTOR CR 15116
@@ -143,7 +150,7 @@ ACTOR BurningEmberParticlesSpawner
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 AAA 1 A_SpawnItemEx("BurningEmberParticlesFloating",frandom(1.5,-1.5),random(1.5,-1.5),31,0,0,frandom(0.1,0.2),0,SXF_CLIENTSIDE,0)
+		TNT1 AAA 1 A_SpawnItemEx("BurningEmberParticlesFloating",frandom(1.5,-1.5),frandom(1.5,-1.5),31,0,0,frandom(0.1,0.2),0,SXF_CLIENTSIDE,0)
 		TNT1 A 11
 		Loop
 	}
@@ -208,7 +215,7 @@ ACTOR BlueParticlesSpawner
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 AAA 1 A_SpawnItemEx("BlueParticlesFloating",frandom(1.5,-1.5),random(1.5,-1.5),31,0,0,frandom(0.1,0.2),0,SXF_CLIENTSIDE,0)
+		TNT1 AAA 1 A_SpawnItemEx("BlueParticlesFloating",frandom(1.5,-1.5),frandom(1.5,-1.5),31,0,0,frandom(0.1,0.2),0,SXF_CLIENTSIDE,0)
 		TNT1 A 11
 		Loop
 	}
@@ -229,12 +236,11 @@ ACTOR DETECTCEILXDEATH3 {}
 ACTOR DETECTCEILXDEATH2 {}
 ACTOR DETECTCEILCRATER {}
 ACTOR DETECTFLOORCRATER {}
-ACTOR ErasusCasing {}
+ACTOR ErasusCasing : Inventory {}
 ACTOR MultiPuff : BulletPuff {}
 ACTOR QuadPuff : BulletPuff {}
 ACTOR QuadUpgrade {}
 ACTOR RailDecalThing {}
-//ACTOR AuraON {} // WORKER
 //ACTOR ShockPuff {} // WORKER
 ACTOR BasicParticle
 {

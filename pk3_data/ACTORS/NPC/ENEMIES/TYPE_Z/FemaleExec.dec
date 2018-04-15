@@ -49,7 +49,7 @@ ACTOR FemaleExec
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		FXEC J 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		FXEC J 3 A_Pain
 		Goto See

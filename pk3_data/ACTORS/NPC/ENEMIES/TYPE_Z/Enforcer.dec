@@ -63,7 +63,7 @@ ACTOR WWTEnforcer
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		UTHG R 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		UTHG R 3 A_Pain
 		Goto See

@@ -89,7 +89,7 @@ ACTOR MrFalcon
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		LTHG H 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		LTHG H 0 A_JumpIfHealthLower(200,"HeavyPain")
 		LTHG H 3 A_Pain

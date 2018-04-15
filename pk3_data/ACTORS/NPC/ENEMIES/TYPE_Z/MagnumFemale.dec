@@ -74,7 +74,7 @@ ACTOR MagnumFemale
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		PGR2 I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		PGR2 I 3 A_Pain
 		Goto See

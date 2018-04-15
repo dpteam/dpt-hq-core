@@ -58,7 +58,7 @@ ACTOR Bomber2
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		BMB2 I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		BMB2 I 3 A_Pain
 		Goto See

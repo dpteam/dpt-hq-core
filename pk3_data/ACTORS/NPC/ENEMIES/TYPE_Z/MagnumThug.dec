@@ -49,7 +49,7 @@ ACTOR MagnumThug
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		MTHG I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		MTHG I 3 A_Pain
 		Goto See

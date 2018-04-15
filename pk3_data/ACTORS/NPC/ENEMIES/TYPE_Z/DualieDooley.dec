@@ -89,7 +89,7 @@ ACTOR DualieDooley
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		DTHG I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		DTHG I 3 A_Pain
 		Goto See

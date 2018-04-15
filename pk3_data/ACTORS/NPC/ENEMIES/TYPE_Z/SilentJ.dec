@@ -45,7 +45,7 @@ ACTOR SilentJ
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		ORAN I 0
-		Goto Tased
+		Goto Pain
 	Pain.PlayerPistol:
 	Pain.PlayerUzi:
 		ORAN IIIIIIIIII 0 A_SpawnItemEx("BulletIneffectiveSpark",0,0,32,random(-2,2),random(-2,2),random(3,6),random(0.0,360),SXF_NOCHECKPOSITION)

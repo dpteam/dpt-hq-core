@@ -45,7 +45,7 @@ ACTOR TaserFemale
 	Pain.PlayerTaser:
 	Pain.EnemyTaser:
 		FTAS I 0
-		Goto Tased
+		Goto Pain
 	Pain:
 		FTAS I 3 A_Pain
 		Goto See
