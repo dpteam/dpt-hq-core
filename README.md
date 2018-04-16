@@ -3,6 +3,7 @@
 ## Core component
 
 Funny cooperative+deathmatch entertaining modification for DOOM II. Created for Zandronum 3.0 port.
+
 Also have GZDoom/Delta-Touch compatibility
 
 ## How to compile (Windows)
@@ -16,22 +17,33 @@ Also have GZDoom/Delta-Touch compatibility
 ## Current important info
 
 CREDITS Currently Work in Progress, if im forgot some, please say it in issues.
+
 Issue #7
 
+
 Also info for paranoics:
+
 7z console archiver here from official 32-bit release 18.01
+
 You can check 3 hash types (CRC32, MD5 & SHA1) in "7z.*.hash" files,
+
 open with your archiver the exe of installer and extract files,
+
 and compare hashes with official installed files. (Or extracted from original installer)
+
 Link to original installer: https://www.7-zip.org/a/7z1801.exe
 
 ## Contribution info
 
 If you want to help the project, you can check the folder named "docs".
 
+
 Also you can donate: (Currently only russian services, but you can donate with $ or €)
+
 http://www.donationalerts.ru/r/dartpower
+
 Or here:
+
 https://qiwi.me/dartpower
 
 ## Social & Statistics

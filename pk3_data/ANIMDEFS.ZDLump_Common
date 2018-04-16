@@ -4,8 +4,8 @@ switch VPEREDD off sound Switch2 pic VPEREDD tics 0
 switch MONON on sound switches/Mnon pic MONOF tics 0
 switch MONOF off sound switches/Mnof pic MONOF tics 0
 
-switch SWDPTS1 on sound DPTSWON pic SWDPTS0 tics 0
-switch SWDPTS0 off sound DPTSWOFF pic SWDPTS0 tics 0
+switch SWDPTS1 on sound Switch1 pic SWDPTS0 tics 0
+switch SWDPTS0 off sound Switch2 pic SWDPTS0 tics 0
 
 texture WATFALL1
 pic 1 tics 5

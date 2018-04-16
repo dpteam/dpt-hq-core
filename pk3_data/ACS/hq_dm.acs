@@ -6,7 +6,9 @@ script 557 ENTER
 	int player = PlayerNumber();
 	delay(10);
 	SetActivatorToTarget(0);
-	if(GetCvar("Deathmatch")>0 || GetCvar("TeamPlay")>0 || GetCvar("Terminator")>0 || GetCvar("Possession")>0 || GetCvar("TeamPossession")>0 || GetCvar("LastManStanding")>0 || GetCvar("TeamLMS")>0 || GetCvar("CTF")>0 || GetCvar("OneFlagCTF")>0 || GetCvar("SkullTag")>0 || GetCvar("Duel")>0 || GetCvar("TeamGame")>0 || GetCvar("Domination")>0)
+	//if(GetCvar("Deathmatch")>0 || GetCvar("TeamPlay")>0 || GetCvar("Terminator")>0 || GetCvar("Possession")>0 || GetCvar("TeamPossession")>0 || GetCvar("LastManStanding")>0 || GetCvar("TeamLMS")>0 || GetCvar("CTF")>0 || GetCvar("OneFlagCTF")>0 || GetCvar("SkullTag")>0 || GetCvar("Duel")>0 || GetCvar("TeamGame")>0 || GetCvar("Domination")>0)
+	//if(GetCvar("Deathmatch")==1 || GetCvar("TeamPlay")==1 || GetCvar("Terminator")==1 || GetCvar("Possession")==1 || GetCvar("TeamPossession")==1 || GetCvar("LastManStanding")==1 || GetCvar("TeamLMS")==1 || GetCvar("CTF")==1 || GetCvar("OneFlagCTF")==1 || GetCvar("SkullTag")==1 || GetCvar("Duel")==1 || GetCvar("TeamGame")==1 || GetCvar("Domination")==1)
+	if(GameType()==GAME_NET_DEATHMATCH)
 	{
 		if(PlayerClass(PlayerNumber()) == 5) // Mingebag
 		{

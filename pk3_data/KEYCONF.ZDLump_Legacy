@@ -64,6 +64,8 @@ AddMenuKey "Use Pussy (For Genderfluid Classes)" UsePussy
 Alias UseDick "use Pussy"
 DefaultBind O UsePussy
 
+alias HESOYAM "give money 250000; give health 200; give armor 200"
+
 //
 //Список на покупку:
 //171//Pillow
