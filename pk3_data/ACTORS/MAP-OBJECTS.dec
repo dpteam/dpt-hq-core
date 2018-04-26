@@ -3327,6 +3327,22 @@ Spawn:
 	}
 }
 
+ACTOR Bashkir 26403
+{
+	//$Category Objects
+	Tag "Bashkir"
+	+FloorClip
+	+Solid
+	Height 30
+	Radius 10
+	States
+	{
+Spawn:
+		KUTA K -1
+		Stop
+	}
+}
+
 ACTOR TR3FB0 : BigTree 26258
 {
 	//$Category Vegetation
