@@ -24,7 +24,6 @@ ACTOR DukeGibs3 {}
 ACTOR DukeGibs4 {}
 ACTOR DukeGibs5 {}
 ACTOR DukeGibs6 {}
-ACTOR BrutalExplosion {}
 ACTOR EnemySquishItem : Inventory {}
 ACTOR MuzzleFlashMedium {}
 ACTOR Rocket2 {}
