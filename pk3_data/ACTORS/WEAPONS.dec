@@ -28,18 +28,15 @@ ACTOR DUMP3Cooldown : Powerup
 }
 
 actor DUMP3ChainsawSlotFilled : DUMP3Boolean { -INVENTORY.UNDROPPABLE /*+INVENTORY.UNTOSSABLE*/ }
-actor DUMP3Weapon : Weapon
+actor "DPT.HQ-Weapon" : DoomWeapon
 {
-	/*Weapon.BobStyle Alpha
-	Weapon.BobSpeed 2.5
-	Weapon.BobRangeX 0.2
-	Weapon.BobRangeY 0.5*/
-	//    +INVENTORY.UNDROPPABLE
-	//+INVENTORY.UNTOSSABLE
-	+WEAPON.AMMO_OPTIONAL
-	+WEAPON.ALT_AMMO_OPTIONAL
-	+WEAPON.NOALERT
-	//	+CHEATNOTWEAPON
+	Weapon.BobStyle InverseSmooth
+	Weapon.BobSpeed 1.6
+	Weapon.BobRangeY 0.6
+	Weapon.BobRangeX 1.0
+	//Weapon.UpSound "misc/w_pkup"
+	//Decal "BulletChip"
+	//+WEAPON.CHEATNOTWEAPON
 	States
 	{
 	Ready:
@@ -56,12 +53,26 @@ actor DUMP3Weapon : Weapon
 	Fire:
 		TNT1 A 1
 		goto Ready
+	}
+}
+ACTOR DUMP3Weapon : "DPT.HQ-Weapon"
+{
+	+CLIENTSIDEONLY
+	Weapon.BobStyle Alpha
+	Weapon.BobSpeed 2.5
+	Weapon.BobRangeX 0.2
+	Weapon.BobRangeY 0.5
+	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.ALT_AMMO_OPTIONAL
+	+WEAPON.NOALERT
+	States
+	{
 	Zoom:
 		"####" "#" 1 A_WeaponReady (WRF_NOFIRE)
 		"####" "#" 0 A_JumpIfInventory("DUMP3WeaponDropCooldown",1,"Ready")
 		"####" "#" 0 A_GiveInventory("DUMP3WeaponDropCounter",1)
 		"####" "#" 0 A_JumpIfInventory("DUMP3WeaponDropCounter",0,"DropGun")
-		"####" "#" 1 A_WeaponReady (WRF_NOFIRE /*| WRF_ALLOWZOOM*/)
+		"####" "#" 1 A_WeaponReady (WRF_NOFIRE | WRF_ALLOWZOOM)
 		"####" "#" 0 A_TakeInventory("DUMP3WeaponDropCounter",999)
 		"####" "#" 0 A_Jump(256, "Ready")
 		Goto Ready
@@ -96,7 +107,7 @@ ACTOR DUMP3WeaponDropCooldown : DUMP3Cooldown
 
 // Weapons
 
-ACTOR Unarmed : Weapon
+ACTOR Unarmed : "DPT.HQ-Weapon"
 {
 	AttackSound "fist/hit"
 	//$Category Weapons
@@ -170,7 +181,7 @@ ACTOR Unarmed : Weapon
 		Goto RealReady
 	}
 }
-ACTOR PocikUnarmed : Weapon
+ACTOR PocikUnarmed : "DPT.HQ-Weapon"
 {
 	AttackSound "fist/hit"
 	//$Category Weapons
@@ -269,7 +280,7 @@ ACTOR FistPuff
 		Stop
 	}
 }
-ACTOR SSG : Weapon 26208
+ACTOR SSG : "DPT.HQ-Weapon" 26208
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -309,7 +320,7 @@ ACTOR SSG : Weapon 26208
 		Stop
 	}
 }
-ACTOR Topor : weapon 26222 //2005
+ACTOR Topor : "DPT.HQ-Weapon" 26222 //2005
 {
 	Inventory.PickupMessage "Picked up a RaskolnicOFF. Where is a granny!?.."
 	Inventory.PickupSound "misc/w_pkup"
@@ -355,7 +366,7 @@ ACTOR Topor : weapon 26222 //2005
 		Goto Ready
 	}
 }
-ACTOR Axe : Weapon 26223 //replaces Chainsaw
+ACTOR Axe : "DPT.HQ-Weapon" 26223 //replaces Chainsaw
 {
 	+WEAPON.MELEEWEAPON
 	+WEAPON.NOALERT
@@ -419,7 +430,7 @@ ACTOR AxeHitPuff : BulletPuff
 		Stop
 	}
 }  
-ACTOR RivetGun : Weapon 26332
+ACTOR RivetGun : "DPT.HQ-Weapon" 26332
 {
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got the Rivet Gun!"
@@ -787,7 +798,7 @@ ACTOR RivetBoltReboundFX
 		Goto Death+1
 	}
 }
-ACTOR M40Rifle : Weapon 26333 // WORKER
+ACTOR M40Rifle : "DPT.HQ-Weapon" 26333 // WORKER
 {
 	//$Category Weapons
 	Obituary "%o was sniped out by %k's M40"
@@ -920,7 +931,7 @@ ACTOR M40762AmmoBox : Ammo 26225
 		Stop
 	}
 }
-ACTOR SpawnerModule_Weapon : Weapon 25018 //WORKER // NEED USE ONLY TO SUMONNER CLASS
+ACTOR SpawnerModule_Weapon : "DPT.HQ-Weapon" 25018 //WORKER // NEED USE ONLY TO SUMONNER CLASS
 {
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got a Spawner Module!"
@@ -961,7 +972,7 @@ ACTOR SpawnerModule_Weapon : Weapon 25018 //WORKER // NEED USE ONLY TO SUMONNER 
 		Goto Ready
 	}
 }
-ACTOR SpawnerModule_Detonator : Weapon //WORKER // NEED USE ONLY TO SUMONNER CLASS
+ACTOR SpawnerModule_Detonator : "DPT.HQ-Weapon" //WORKER // NEED USE ONLY TO SUMONNER CLASS
 {
 	Inventory.PickupSound "misc/w_pkup"
 	Weapon.AmmoType "SpawnerModules"
@@ -1295,7 +1306,7 @@ ACTOR SpawnerModulesBox : CustomInventory 26227
 		Stop
 	}
 }
-ACTOR UberMinigun : Weapon 26334
+ACTOR UberMinigun : "DPT.HQ-Weapon" 26334
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You got the UberMinigun!"
@@ -1351,7 +1362,7 @@ ACTOR UberMinigun : Weapon 26334
 		Goto Ready
 	}
 }
-ACTOR Satcheler : Weapon 25020
+ACTOR Satcheler : "DPT.HQ-Weapon" 25020
 {
 	//$Category Weapons
 	Inventory.PickupSound "misc/w_pkup"
@@ -1514,7 +1525,7 @@ ACTOR SatchelBlaster
 		Stop
 	}
 }
-ACTOR FlameThrower2 : Weapon 26335
+ACTOR FlameThrower2 : "DPT.HQ-Weapon" 26335
 {
 	//$Category Weapons
 	Inventory.PickupSound "misc/w_pkup"
@@ -1663,7 +1674,7 @@ ACTOR BigGas : Ammo 26231
 		Loop
 	}
 }
-ACTOR Machinegun : Weapon 26336
+ACTOR Machinegun : "DPT.HQ-Weapon" 26336
 {
 	//$Category Weapons
 	Obituary "%o was gunned down by %k's machinegun."
@@ -1705,7 +1716,7 @@ ACTOR Machinegun : Weapon 26336
 		stop
 	}
 }
-ACTOR NailGunMG : Weapon 26337
+ACTOR NailGunMG : "DPT.HQ-Weapon" 26337
 {
 	//$Category Weapons
 	Weapon.AmmoUse 1
@@ -1844,7 +1855,7 @@ ACTOR AlternativeDoom3SSG : SuperShotgun 26338 //Replaces SuperShotgun
 		Stop
 	}
 }
-ACTOR Coachgun : DoomWeapon 26220
+ACTOR Coachgun : "DPT.HQ-Weapon" 26220
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -1896,7 +1907,7 @@ ACTOR Coachgun : DoomWeapon 26220
 		Stop
 	}
 }
-ACTOR EgoSmasher : Weapon 26339
+ACTOR EgoSmasher : "DPT.HQ-Weapon" 26339
 {
 	//$Category Weapons
 	decal BulletChip
@@ -1935,7 +1946,7 @@ ACTOR EgoSmasher : Weapon 26339
 		goto Ready
 	}
 }
-ACTOR SidebySide : DoomWeapon 26221
+ACTOR SidebySide : "DPT.HQ-Weapon" 26221
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -1988,7 +1999,7 @@ ACTOR SidebySide : DoomWeapon 26221
 		Stop
 	}
 }
-ACTOR Pussy : Weapon 
+ACTOR Pussy : "DPT.HQ-Weapon" 
 {
 	//$Category Weapons
 	States
@@ -2039,7 +2050,7 @@ ACTOR mocha
 		Stop
 	}
 }
-ACTOR Dick : DoomWeapon
+ACTOR Dick : "DPT.HQ-Weapon"
 {
 	SpawnID 29
 	+WEAPON.NOAUTOFIRE
@@ -2119,7 +2130,7 @@ ACTOR Cum
 		stop
 	}
 }
-ACTOR Doom3SSG : Weapon 20206
+ACTOR Doom3SSG : "DPT.HQ-Weapon" 20206
 {
 	//$Category Weapons
 	decal "BulletChip"
@@ -2169,7 +2180,7 @@ ACTOR Doom3SSG : Weapon 20206
 		stop
 	}
 }
-ACTOR BlueSprayPaint : Weapon 26202
+ACTOR BlueSprayPaint : "DPT.HQ-Weapon" 26202
 {
 	//$Category Weapons
 	Weapon.UpSound "DSSPRYSH"
@@ -2274,7 +2285,7 @@ ACTOR GreenPaintSpray : PaintSpray
 	decal GreenSprayPaint
 }
 // New
-ACTOR SprayPaint : Weapon 26205
+ACTOR SprayPaint : "DPT.HQ-Weapon" 26205
 {
 	//$Category Weapons
 	Scale .75
@@ -3045,7 +3056,7 @@ Spawn:
    Wait
  }
 }
-ACTOR IonRifle : Weapon 31212
+ACTOR IonRifle : "DPT.HQ-Weapon" 31212
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You got the Ion Attack Rifle!"
@@ -3468,7 +3479,7 @@ ACTOR NukeHyperSmokering : Nuke
    Stop
  }
 }
-ACTOR Explosive1 : Weapon 26340
+ACTOR Explosive1 : "DPT.HQ-Weapon" 26340
 {
 	//$Category Weapons
   Weapon.AmmoUse 1
@@ -4036,7 +4047,7 @@ ACTOR FlameThrowerFireRemains
     stop
   }
 }
-ACTOR HAAX : DoomWeapon 26341
+ACTOR HAAX : "DPT.HQ-Weapon" 26341
 {
 	//$Category Weapons
   SpawnID 1
@@ -4101,7 +4112,7 @@ ACTOR FlyingPC
     stop
   }
 }
-ACTOR AK1337 : Weapon 19006
+ACTOR AK1337 : "DPT.HQ-Weapon" 19006
 {
 //$Category Weapons
   inventory.pickupmessage "You got the AK-47!"
@@ -4279,7 +4290,7 @@ ACTOR AK47ClipCasing
     Stop
   }
 }
-ACTOR MinesWeap : Weapon 26207
+ACTOR MinesWeap : "DPT.HQ-Weapon" 26207
 {
 	//$Category Weapons
 	Weapon.AmmoType "MineAmmo1337"
@@ -4422,7 +4433,7 @@ ACTOR Mine1337
 		Stop
   }
 }
-ACTOR Pillow : Weapon 20003
+ACTOR Pillow : "DPT.HQ-Weapon" 20003
 {
 	//$Category Weapons
 	Inventory.PickupSound ""
@@ -4480,7 +4491,7 @@ ACTOR PillowFeather
 			Stop
 	}
 }
-ACTOR Spartanleg : DoomWeapon 20082
+ACTOR Spartanleg : "DPT.HQ-Weapon" 20082
 {
 	//$Category Weapons
   SpawnID 32
@@ -4828,7 +4839,7 @@ ACTOR ShotgunCasing22 : 9mmCasing
 		stop
 	}
 }
-ACTOR Gothic_Shotgun : Weapon 10407
+ACTOR Gothic_Shotgun : "DPT.HQ-Weapon" 10407
 {
 	//$Category Weapons
 	Weapon.AmmoUse 1
@@ -4902,7 +4913,7 @@ ACTOR Gothic_Shotgun : Weapon 10407
 // Scripts and sprites taken from Action Doom 2
 // Additional sprites and scripting by TheCamaleonMaligno
 // AAAAND with some sprites more + no autofire by Samuzero15tlh
-ACTOR Katana : DoomWeapon 10498 // Secret
+ACTOR Katana : "DPT.HQ-Weapon" 10498 // Secret
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You found the Shion's Katana!!"
@@ -5037,7 +5048,7 @@ ACTOR Fakedeflect
 		Stop
 	}
 }
-ACTOR UACM360 : Weapon 12461
+ACTOR UACM360 : "DPT.HQ-Weapon" 12461
 {
 	//$Category Weapons
   weapon.kickback 200
@@ -5135,7 +5146,7 @@ ACTOR M4Cache : Ammo
 {
    Inventory.MaxAmount 92
 }
-ACTOR Golden_Eagle : Weapon 32761
+ACTOR Golden_Eagle : "DPT.HQ-Weapon" 32761
 {
 	//$Category Weapons
 	Weapon.AmmoType "clip"
@@ -5224,8 +5235,8 @@ ACTOR PistolClipHolder : Ammo
   -inventory.invbar
 }
 ACTOR IGparticles {} // NEED TO ADD
-ACTOR Icegun : Weapon 26209
-{ 
+ACTOR Icegun : "DPT.HQ-Weapon" 26209
+{
 	//$Category Weapons
 	Weapon.AmmoType "Cell" 
 	Weapon.AmmoType2 "Cell"
@@ -5252,12 +5263,12 @@ ACTOR Icegun : Weapon 26209
 		ICEG A 1 A_Raise 
 		Loop 
 	Fire: 
-		ICEG A 2 
+		ICEG A 1 // 2
 		ICEG B 0 A_GunFlash
 		ICEG B 1 A_FireCustomMissile("IcePlasmaBall_", 0, 1, 0, 0)
-		ICEG C 2
-		ICEG B 3 
-		ICEG A 2 A_ReFire
+		ICEG C 1 // 2
+		ICEG B 3
+		ICEG A 1 A_ReFire // 2
 		goto Ready 
 	AltFire:
 		ICEG A 1
@@ -5275,7 +5286,7 @@ ACTOR IcePlasmaBall_
 {
 	Radius 10
 	Height 8
-	Speed 25
+	Speed 35 // 25
 	Damage 10
 	Scale 0.5
 	Projectile
@@ -5318,7 +5329,7 @@ ACTOR IceFlames
 	}
 }
 // NighMare
-ACTOR NighMareKatana : Weapon 26210
+ACTOR NighMareKatana : "DPT.HQ-Weapon" 26210
 {
 	//$Category Weapons
   scale 0.1
@@ -5424,7 +5435,7 @@ ACTOR KatanaPuff
   }
 }
 
-ACTOR MurderKnife : Weapon 26212
+ACTOR MurderKnife : "DPT.HQ-Weapon" 26212
 {
 	//$Category Weapons
   Weapon.Kickback 100
@@ -5562,7 +5573,7 @@ ACTOR JailPuff : BulletPuff
 {
     DamageType "Jail"
 }
-ACTOR JailPistol : Weapon
+ACTOR JailPistol : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	+CHEATNOTWEAPON
@@ -5590,7 +5601,7 @@ ACTOR JailPistol : Weapon
 		Stop
 	}
 }
-ACTOR Tazer : Weapon 25025
+ACTOR Tazer : "DPT.HQ-Weapon" 25025
 {
 	//$Category Weapons
    Inventory.PickupMessage "You got a tazer!"
@@ -5626,7 +5637,7 @@ ACTOR Tazer : Weapon 25025
    }
 }
 // Mage
-ACTOR MWeapWand2 : Weapon 26213
+ACTOR MWeapWand2 : "DPT.HQ-Weapon" 26213
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You've found the Jade Wand!"
@@ -5768,7 +5779,7 @@ ACTOR JadePuff
 		stop
 	}
 }
-ACTOR MWeapFrost2 : Weapon 26214
+ACTOR MWeapFrost2 : "DPT.HQ-Weapon" 26214
 {
 	//$Category Weapons
   Obituary "%o was chilled by %k's Frost Fang"
@@ -5973,7 +5984,7 @@ ACTOR EverIceHefty : Ammo replaces BlasterHefty
     Loop
   }
 }
-ACTOR MWeapLightning2 : Weapon 26215
+ACTOR MWeapLightning2 : "DPT.HQ-Weapon" 26215
 {
 	//$Category Weapons
   Weapon.AmmoUse 5
@@ -6207,7 +6218,7 @@ ACTOR SmallZapPuff : ZapPuff
 {
 	Scale 0.5
 }
-ACTOR MWeapBloodscourge2 : Weapon 26216
+ACTOR MWeapBloodscourge2 : "DPT.HQ-Weapon" 26216
 {
 	//$Category Weapons
 	Weapon.AmmoUse 6
@@ -6552,7 +6563,7 @@ ACTOR mindBeam
 		Stop
 	}
 }
-ACTOR MWeapFists : weapon 26217
+ACTOR MWeapFists : "DPT.HQ-Weapon" 26217
 {
 	//$Category Weapons
 	Obituary "%o head 'sploded by %k's brain!"
@@ -6587,7 +6598,7 @@ ACTOR MWeapFists : weapon 26217
 		goto ready
 	}
 }
-ACTOR MWeapShotgun : Weapon 26218
+ACTOR MWeapShotgun : "DPT.HQ-Weapon" 26218
 {
 	//$Category Weapons
 	scale .4
@@ -6684,7 +6695,7 @@ ACTOR ShotShellCasingOnFloor
         Stop
     }
 }
-ACTOR MWeapSufferStaff : Weapon 26219 //2005
+ACTOR MWeapSufferStaff : "DPT.HQ-Weapon" 26219 //2005
 {
 	//$Category Weapons
 	//Spawnid 32
@@ -6754,7 +6765,7 @@ ACTOR PLB
 		Stop
 	}
 }
-ACTOR Curing_Cannon : Weapon 26342
+ACTOR Curing_Cannon : "DPT.HQ-Weapon" 26342
 {
 	Inventory.PickupMessage "CURING CANNON"
 	VisibleToPlayerClass "Healer"
@@ -6836,7 +6847,7 @@ ACTOR HealthRestoring : PowerupGiver
 		Stop
 	}
 }
-ACTOR Healing_Cannon : Weapon 26343
+ACTOR Healing_Cannon : "DPT.HQ-Weapon" 26343
 {
 	VisibleToPlayerClass "Healer"
 	Radius 20
@@ -6930,7 +6941,7 @@ ACTOR Flash : powerupgiver
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
 }
-ACTOR LittleArchvile_Spawner : Weapon 26344
+ACTOR LittleArchvile_Spawner : "DPT.HQ-Weapon" 26344
 {
 	Inventory.PickupMessage "LITTLE ARCHVILE SPAWNER"
 	VisibleToPlayerClass "Healer"
@@ -7066,7 +7077,7 @@ ACTOR Healthpacks : ammo
 	inventory.maxamount 20
 	+INVENTORY.IGNORESKILL
 }
-ACTOR MedikitPack : Weapon 26345
+ACTOR MedikitPack : "DPT.HQ-Weapon" 26345
 {
 	Inventory.PickupMessage "MEDIKIT"
 	VisibleToPlayerClass "Healer"
@@ -7143,7 +7154,7 @@ ACTOR MedkitSpawn
 	}
 }
 // Benellus
-ACTOR Magnetsaw : Weapon 26346
+ACTOR Magnetsaw : "DPT.HQ-Weapon" 26346
 {
 	+WEAPON.MeleeWeapon
 	+Ammo_Optional //Stops it from switching away.
@@ -7253,7 +7264,7 @@ ACTOR FireLimit : Inventory
 {
 	Inventory.MaxAmount 4
 }
-ACTOR ScatterPistol : Weapon 26347
+ACTOR ScatterPistol : "DPT.HQ-Weapon" 26347
 {
    Inventory.PickupSound "misc/w_pkup"
    Inventory.PickupMessage "You got the Scatter Pistol!"
@@ -7435,7 +7446,7 @@ ACTOR ScatterPShotTrail
 		Loop
     }
 }
-ACTOR Shredder : Weapon 26348
+ACTOR Shredder : "DPT.HQ-Weapon" 26348
 {
 	//$Category Weapons
   Weapon.AmmoUse 1
@@ -7498,7 +7509,7 @@ ACTOR PlasmaticPuff : BulletPuff
 	}
 }
 /*
-ACTOR Quadvolgue : Weapon 24530
+ACTOR Quadvolgue : "DPT.HQ-Weapon" 24530
 {
 	//$Category Weapons
 	//$Title Quadvolgue
@@ -7756,13 +7767,6 @@ ACTOR Reload : Inventory
 	Inventory.MaxAmount 1
 	Inventory.Amount 1 
 }
-ACTOR CoD_Weapon : DoomWeapon
-{
-	+CLIENTSIDEONLY
-	+INVENTORY.UNDROPPABLE
-	Decal "BulletChip"
-	Weapon.UpSound "misc/w_pkup"
-}
 ACTOR Spread : Ammo
 {
 	Inventory.MaxAmount 5
@@ -7832,7 +7836,7 @@ ACTOR NoGibPuff : BulletPuff //replaces BulletPuff
 {
 	+NOEXTREMEDEATH
 }
-ACTOR M16 : CoD_Weapon
+ACTOR M16 : "DPT.HQ-Weapon"
 {
 	Obituary "%k > M16 > %o"
 	Weapon.AmmoUse 1
@@ -7907,7 +7911,7 @@ ACTOR M16 : CoD_Weapon
 		Goto Ready
 	}
 }
-ACTOR Deviation : Weapon 26349
+ACTOR Deviation : "DPT.HQ-Weapon" 26349
 {
    Inventory.PickupSound "misc/w_pkup"
    Inventory.PickupMessage "You got the ''Deviation'' Dumb Missile Launcher!"
@@ -8005,7 +8009,7 @@ ACTOR DumbTrail : Smoke
     Scale 0.175
     Alpha 0.3
 }
-ACTOR Karasawa : Weapon 26350
+ACTOR Karasawa : "DPT.HQ-Weapon" 26350
 {
   Inventory.PickupSound "Misc/W_PkUp"
   Inventory.PickupMessage "You got the 'Karasawa' High-Density Plasma Rifle!"
@@ -8128,7 +8132,7 @@ ACTOR BoltBlur
     Loop
   }
 }
-ACTOR BHGen : Weapon 26351
+ACTOR BHGen : "DPT.HQ-Weapon" 26351
 {
 	Weapon.AmmoUse 50
 	Weapon.AmmoGive 100
@@ -8609,7 +8613,7 @@ ACTOR Shotthrowz2 : Shotthrowz
 	}
 }
 */
-ACTOR MultiProjectileWeapon : Weapon 25006
+ACTOR MultiProjectileWeapon : "DPT.HQ-Weapon" 25006
 {
    Inventory.PickupMessage "You got the M6000 Multi-Projectile Weapon!"
    Inventory.PickupSound "misc/w_pkup"
@@ -8733,7 +8737,7 @@ ACTOR MultiProjectile3 : BFGBall
    }
 }
 // LazyPanda
-ACTOR DOOM42k16SSG : Weapon 26237
+ACTOR DOOM42k16SSG : "DPT.HQ-Weapon" 26237
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -8806,7 +8810,7 @@ ACTOR DoomExplosion
 		Stop
 	}
 }
-ACTOR ChainGuyGun : Weapon
+ACTOR ChainGuyGun : "DPT.HQ-Weapon"
 {
 	Obituary "%o was perforated by %k."
 	ATTACKSOUND "weapons/shotgf"
@@ -8847,7 +8851,7 @@ ACTOR ChainGuyGun : Weapon
 		Stop
 	}
 }
-ACTOR CacoBaller : Weapon
+ACTOR CacoBaller : "DPT.HQ-Weapon"
 {
 	Obituary "%o was smitten by %k."
 	HITObituary "%o got too close to &k."
@@ -8915,7 +8919,7 @@ ACTOR CacodemonBall2
 		stop
 	}
 }
-ACTOR DemonMouth : Weapon
+ACTOR DemonMouth : "DPT.HQ-Weapon"
 {
 	Obituary "%o was bit by %k."
 	weapon.kickback 60
@@ -8974,7 +8978,7 @@ ACTOR MDemonTraceRun
 		stop
 	}
 }
-ACTOR SpectreMouth : Weapon
+ACTOR SpectreMouth : "DPT.HQ-Weapon"
 {
 	Obituary "%o was bit by %k."
 	weapon.kickback 60
@@ -9032,7 +9036,7 @@ actor MSpectreTraceRun
 		stop
 	}
 }
-ACTOR ImpBaller : Weapon
+ACTOR ImpBaller : "DPT.HQ-Weapon"
 {
 	Obituary "%o was burned by %k."
 	hitObituary "%o was slashed by %k."
@@ -9081,7 +9085,7 @@ ACTOR PDoomImpBall : DoomImpBall
 	speed 30
 	DamageType "ImpBallDamage"
 }
-ACTOR ZombieRifle : Weapon
+ACTOR ZombieRifle : "DPT.HQ-Weapon"
 {
 	weapon.kickback 100
 	attacksound "weapons/pistol"
@@ -9122,7 +9126,7 @@ ACTOR ZombieRifle : Weapon
 		Stop
 	}
 }
-actor ZombieShotGun : Weapon
+actor ZombieShotGun : "DPT.HQ-Weapon"
 {
 	Obituary "%o chewed on %k's boomstick."
 	attacksound "weapons/shotgf"
@@ -9166,7 +9170,7 @@ actor ZombieShotGun : Weapon
 		Stop
 	}
 }
-ACTOR MLostSoulWeap : Weapon
+ACTOR MLostSoulWeap : "DPT.HQ-Weapon"
 {
 	Obituary "%o was spooked by %k."
 	weapon.kickback 30
@@ -9207,7 +9211,7 @@ ACTOR MLostSoulWeap : Weapon
 		Goto Ready
 	}
 }
-ACTOR PainElementWeap : Weapon
+ACTOR PainElementWeap : "DPT.HQ-Weapon"
 { 
 	weapon.kickback 30
 	+WEAPON.NOALERT
@@ -9273,7 +9277,7 @@ ACTOR SoulProj
 		Stop
 	}
 }
-ACTOR RevenantGun : Weapon
+ACTOR RevenantGun : "DPT.HQ-Weapon"
 {
 	Obituary "%o couldn't evade %k fireball."
 	hitObituary "%o was punched by %k."
@@ -9457,7 +9461,7 @@ ACTOR MRevenantGrenadePuppet : Grenade
 		stop
 	}
 }
-ACTOR ArPlasmaGun : Weapon
+ACTOR ArPlasmaGun : "DPT.HQ-Weapon"
 {
 	+CHEATNOTWEAPON
 	//$Category Weapons
@@ -9491,7 +9495,7 @@ ACTOR Plasma : ArachnotronPlasma
 {
 	SPEED 45
 }
-ACTOR BigFuckingGun9000 : Weapon
+ACTOR BigFuckingGun9000 : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	+WEAPON.NOAUTOFIRE
@@ -9748,7 +9752,7 @@ ACTOR 2704Ball2 : 2704Ball1
 	}
 }
 // Ovlab
-ACTOR SMG : weapon
+ACTOR SMG : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	Scale 0.4
@@ -9783,7 +9787,7 @@ ACTOR SMG : weapon
 		Goto Ready
 	}
 }
-ACTOR DoubleSMG : weapon
+ACTOR DoubleSMG : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	Scale 0.4
@@ -9848,7 +9852,7 @@ ACTOR SMGGenerator : CustomInventory 26235
 		Stop
 	} 
 }
-ACTOR Rifle : Weapon 26236
+ACTOR Rifle : "DPT.HQ-Weapon" 26236
 {
 	//$Category Weapons
 	Weapon.AmmoType "RifleAmmo"
@@ -9930,7 +9934,7 @@ ACTOR BlankPuff
 		Stop   
 	}
 }
-ACTOR TrollSSD : Weapon 26239
+ACTOR TrollSSD : "DPT.HQ-Weapon" 26239
 {
 	//$Category Weapons
 	+CHEATNOTWEAPON
@@ -10027,7 +10031,7 @@ ACTOR BFGSmoke
 		Stop
 	}
 }
-ACTOR Powercube : Weapon 26257
+ACTOR Powercube : "DPT.HQ-Weapon" 26257
 {
 	//$Category Weapons
 	//$Sprite CUBXA0
@@ -10537,7 +10541,7 @@ ACTOR CubeFear : PowerupGiver
 	}
 }
 // ETC
-ACTOR Basketball : Weapon 26255
+ACTOR Basketball : "DPT.HQ-Weapon" 26255
 {
 	//$Category Weapons
 	Weapon.AmmoUse 1
@@ -10629,7 +10633,7 @@ ACTOR Basketball1
 	}
 }
 // Zendos
-ACTOR ImpalerXBow : Weapon 26260
+ACTOR ImpalerXBow : "DPT.HQ-Weapon" 26260
 {
 	//$Category Weapons
 	Inventory.PickupMessage "Impaler Crossbow"
@@ -14185,7 +14189,7 @@ RerollGun:
 
 // Armyman
 
-ACTOR ArmymanAK47 : Weapon 26373
+ACTOR ArmymanAK47 : "DPT.HQ-Weapon" 26373
 {
 	//$Category Weapons
 	inventory.pickupmessage "You got the AK-47!"
@@ -14221,7 +14225,7 @@ ACTOR ArmymanAK47 : Weapon 26373
 	}
 }
 
-ACTOR ArmymanRPD : Weapon 26374
+ACTOR ArmymanRPD : "DPT.HQ-Weapon" 26374
 { 
 	Weapon.AmmoType "Clip" 
 	Weapon.AmmoGive 100
@@ -14403,7 +14407,7 @@ ACTOR 762MMCasing
 	}
 }
 
-ACTOR ArmymanRPG7 : Weapon 26375
+ACTOR ArmymanRPG7 : "DPT.HQ-Weapon" 26375
 {
 	Obituary "%o rode %k's rocket"  
 	Weapon.AmmoType "RocketAmmo" 
@@ -14529,7 +14533,7 @@ actor Rpgexplod
 	}
 }
 
-ACTOR ArmymanSVD : Weapon 26376
+ACTOR ArmymanSVD : "DPT.HQ-Weapon" 26376
 {
 	Obituary "%o was sniped out by %k's M40"
 	Weapon.AmmoType "Clip" 
@@ -14557,7 +14561,7 @@ ACTOR ArmymanSVD : Weapon 26376
 	}
 }
 
-ACTOR ArmymanUnarmed : Weapon // WORKER
+ACTOR ArmymanUnarmed : "DPT.HQ-Weapon" // WORKER
 {
 	//$Category Weapons
 	AttackSound "fist/hit"
@@ -14631,7 +14635,7 @@ ACTOR ArmymanUnarmed : Weapon // WORKER
 
 // LXandro Weapons (Duke Nukem)
 
-ACTOR LXandroUnarmed : Weapon
+ACTOR LXandroUnarmed : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -14705,7 +14709,7 @@ ACTOR LXandroUnarmed : Weapon
 	}
 }
 
-ACTOR LXandroChaingunCannon : Weapon 26392
+ACTOR LXandroChaingunCannon : "DPT.HQ-Weapon" 26392
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -14816,7 +14820,7 @@ ACTOR LXandroChaingunCannon : Weapon 26392
 	}
 }
 
-ACTOR LXandroDevastator : Weapon 26393
+ACTOR LXandroDevastator : "DPT.HQ-Weapon" 26393
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -14904,7 +14908,7 @@ Actor LXandroDevastatorRocket
 	}
 }
 
-ACTOR LXandroPistol : Weapon 26394
+ACTOR LXandroPistol : "DPT.HQ-Weapon" 26394
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15017,7 +15021,7 @@ ACTOR LXandroPistolClipHolder : Ammo
   -inventory.invbar
 }
 
-ACTOR LXandroPistols : Weapon 26395
+ACTOR LXandroPistols : "DPT.HQ-Weapon" 26395
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15147,7 +15151,7 @@ ACTOR LXandroPistolsClipHolder : Ammo
   -inventory.invbar
 }
 
-ACTOR LXandroRPG : Weapon 26396
+ACTOR LXandroRPG : "DPT.HQ-Weapon" 26396
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15228,7 +15232,7 @@ ACTOR LXandroRPGRocket
 	}
 }
 
-ACTOR LXandroShotgun : Weapon 26397
+ACTOR LXandroShotgun : "DPT.HQ-Weapon" 26397
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15288,7 +15292,7 @@ ACTOR LXandroShotgun : Weapon 26397
 
 // Ronikari Weapons
 
-ACTOR Auto9 : Weapon 26398
+ACTOR Auto9 : "DPT.HQ-Weapon" 26398
 {
 	//$Category Weapons
 	Weapon.AmmoType "Clip"
