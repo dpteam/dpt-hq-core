@@ -3723,7 +3723,7 @@ Actor PlasmariflePiano : Plasmarifle 10450
 	Weapon.AmmoUse2 0
 	Weapon.KickBack 0
 	Weapon.SlotNumber 4
-	Translation "0:255=192:207"
+	//Translation "0:255=192:207"
 	States
 	{
 Ready:
