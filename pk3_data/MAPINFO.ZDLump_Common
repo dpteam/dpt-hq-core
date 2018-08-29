@@ -134,6 +134,10 @@ map TITLEMAP "TITLE"
 {
 	music = "HQ_TITLE"
 }
+map CREDMAP "CREDITS"
+{
+	music = "HQ_INTRO"
+}
 //HQ
 map HQ1 "DPT CITY"
 {
