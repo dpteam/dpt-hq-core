@@ -1,6 +1,6 @@
 LISTMENU "MainMenu"
 {
-	IfGame(Doom, Chex)
+	IfGame(Doom)
 	{
 		StaticPatch 94, 2, "M_DOOM"
 		Position 97, 72
@@ -9,7 +9,7 @@ LISTMENU "MainMenu"
 			Position 97, 64
 		}
 	}
-	IfGame(Doom, Strife, Chex)
+	IfGame(Doom)
 	{
 		PatchItem "M_NGAME", "n", "PlayerclassMenu"
 		PatchItem "M_MULTI", "m", "ZA_MultiplayerOptions"
@@ -29,6 +29,11 @@ LISTMENU "MainMenu"
 		{
 			PatchItem "M_RDTHIS","r", "ReadThisMenu"
 		}
+		PatchItem "M_QUITG", "q", "QuitMenu"
+	}
+	IfGame(Hexen, Heretic, Strife, Chex)
+	{
+		PatchItem "M_UNSUP", "q", "QuitMenu"
 		PatchItem "M_QUITG", "q", "QuitMenu"
 	}
 }
