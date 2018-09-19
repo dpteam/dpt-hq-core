@@ -8,8 +8,8 @@ StatusBar FullScreen, ForceScaled // DPT.HQ HUD
 {
 	DrawImage "HQHUD5", 0, 0;
 	DrawBar "HEALFUL", "HEALNUL", Health, horizontal, 48,2;
-	DrawBar "AMMOFUL", "AMMONUL", Ammo1, horizontal, 142,2;
-	DrawBar "AMMOFUL" ,"AMMONUL", Ammo2, horizontal, 222,2;
+	DrawBar "AMMO1FUL", "AMMONUL", Ammo1, horizontal, 142,2;
+	DrawBar "AMMO2FUL" ,"AMMONUL", Ammo2, horizontal, 222,2;
 	DrawBar "ARMORFUL", "AMMONUL", Armor, horizontal, 298,2;
 	DrawBar "COINSFUL", "HEALNUL", Ammo Cash, horizontal, 48,186;
 	DrawBar "HUNGRFUL", "AMMONUL", Ammo HungryLevel, horizontal, 142,186;
