@@ -132,10 +132,14 @@ defaultmap
 }
 map TITLEMAP "TITLE"
 {
-	music = "HQ_TITLE"
+	secretnext = "CREDMAP"
+	next = "CREDMAP"
+	music = "NOMUS"
 }
 map CREDMAP "CREDITS"
 {
+	secretnext = "TITLEMAP"
+	next = "TITLEMAP"
 	music = "HQ_INTRO"
 }
 //HQ
