@@ -50,7 +50,7 @@ setslot 2 Pistol ZombieRifle RivetGun Tazer JailPistol MWeapFists Golden_Eagle S
 setslot 3 Shotgun SuperShotgun ZombieShotGun SSG EgoSmasher Coachgun SidebySide AlternativeDoom3SSG MWeapShotgun Gothic_Shotgun Doom3SSG Shredder Quadvolgue DOOM42k16SSG TrollSSD DUMP3Wingman DUMP3Tyrant Rifle LXandroShotgun 
 setslot 4 Chaingun Minigun SuperChaingun Machinegun UberMinigun AK1337 MWeapSufferStaff M16 UACM360 SMG DoubleSMG DUMP3DualModeRifle ArmymanAK47 ChainGuyGun LXandroChaingunCannon 
 setslot 5 RocketLauncher GrenadeLauncher RevenantGun PainElementWeap Explosive1 MinesWeap MWeapBloodscourge2 Deviation DUMP3CactusPipe ArmymanRPG7 LXandroRPG 
-setslot 6 PlasmaRifle Railgun ArPlasmaGun FlameThrower2 NailGunMG MWeapLightning2 Icegun Karasawa PlasmaRiflePiano PlasmaRiflePiano2 Powercube DUMP3Fusion_Gun DUMP3SirusBusterCannon ArmymanRPD LXandroDevastator 
+setslot 6 PlasmaRifle Railgun ArPlasmaGun FlameThrower2 NailGunMG MWeapLightning2 Icegun Karasawa PlasmaRiflePiano PlasmaRiflePiano2 Powercube DUMP3Fusion_Gun DUMP3SirusBusterCannon ArmymanRPD LXandroDevastator BlueRailgun 
 setslot 7 BFG9000 BFG10K BigFuckingGun9000 M40Rifle MWeapFrost2 IonRifle BHGen Healing_Cannon STFBFG9000 DUMP3Gibmaker 
 setslot 8 Satcheler MultiProjectileWeapon MedikitPack ArmymanSVD 
 setslot 9 SpawnerModule_Weapon SpawnerModule_Detonator HAAX Spartanleg LittleArchvile_Spawner Basketball DUMP3RevenantBox 
