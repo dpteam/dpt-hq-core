@@ -7,7 +7,7 @@
 actor DeadCyberdemon : Cyberdemon 5070
 {
 	Skip_Super
-	Game Doom
+	//Game Doom
 	DropItem None
 	States
 	{

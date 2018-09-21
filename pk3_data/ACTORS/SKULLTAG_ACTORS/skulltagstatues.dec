@@ -6,9 +6,9 @@
 
 ACTOR ImpStatue 5110
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 20
 	Height 56
 	+SOLID
@@ -28,9 +28,9 @@ ACTOR ImpStatue 5110
 
 ACTOR DemonStatue 5111
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 30
 	Height 56
 	+SOLID
@@ -50,9 +50,9 @@ ACTOR DemonStatue 5111
 
 ACTOR ArchvileStatue 5112
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 20
 	Height 56
 	+SOLID
@@ -72,9 +72,9 @@ ACTOR ArchvileStatue 5112
 
 ACTOR BaronStatue 5113
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 24
 	Height 64
 	+SOLID
@@ -94,9 +94,9 @@ ACTOR BaronStatue 5113
 
 ACTOR CyberdemonStatue 5114
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 40
 	Height 110
 	+SOLID
@@ -116,9 +116,9 @@ ACTOR CyberdemonStatue 5114
 
 ACTOR MassmouthStatue 5115
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 24
 	Height 64
 	XScale 0.5

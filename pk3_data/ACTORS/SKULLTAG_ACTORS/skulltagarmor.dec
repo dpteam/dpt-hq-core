@@ -6,7 +6,7 @@
 
 ACTOR RedArmor : BasicArmorPickup 5040
 {
-	Game Doom
+	//Game Doom
 	//SpawnID 168
 	Radius 20
 	Height 16

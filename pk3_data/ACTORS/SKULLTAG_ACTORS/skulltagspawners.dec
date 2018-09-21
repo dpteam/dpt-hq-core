@@ -12,7 +12,7 @@
 
 ACTOR RedArmorSpot : CustomPickupInvasionSpot 5237
 {
-	Game Doom
+	//Game Doom
 	DropItem "RedArmor"
 }
 
@@ -31,7 +31,7 @@ ACTOR RedArmorSpot : CustomPickupInvasionSpot 5237
 
 ACTOR WeakMonsterSpot : CustomMonsterInvasionSpot replaces WeakDoomMonsterSpot
 {
-	Game Doom
+	//Game Doom
 	DropItem "ZombieMan"
 	DropItem "ShotgunGuy"
 	DropItem "DoomImp"
@@ -49,7 +49,7 @@ ACTOR WeakMonsterSpot : CustomMonsterInvasionSpot replaces WeakDoomMonsterSpot
 
 ACTOR PowerfulMonsterSpot : CustomMonsterInvasionSpot replaces PowerfulDoomMonsterSpot
 {
-	Game Doom
+	//Game Doom
 	DropItem "ChaingunGuy"
 	DropItem "SuperShotgunGuy"
 	DropItem "Cacodemon"
@@ -70,7 +70,7 @@ ACTOR PowerfulMonsterSpot : CustomMonsterInvasionSpot replaces PowerfulDoomMonst
 
 ACTOR VeryPowerfulMonsterSpot : CustomMonsterInvasionSpot replaces VeryPowerfulDoomMonsterSpot
 {
-	Game Doom
+	//Game Doom
 	DropItem "Abaddon"
 	DropItem "Hectebus"
 	DropItem "Belphegor"
@@ -85,7 +85,7 @@ ACTOR VeryPowerfulMonsterSpot : CustomMonsterInvasionSpot replaces VeryPowerfulD
 
 ACTOR AnyMonsterSpot : CustomMonsterInvasionSpot replaces AnyDoomMonsterSpot
 {
-	Game Doom
+	//Game Doom
 	DropItem "DoomImp"
 	DropItem "DarkImp"
 	DropItem "Demon"
@@ -120,7 +120,7 @@ ACTOR AnyMonsterSpot : CustomMonsterInvasionSpot replaces AnyDoomMonsterSpot
 
 ACTOR DarkImpSpot : CustomMonsterInvasionSpot 5206
 {
-	Game Doom
+	//Game Doom
 	DropItem "DarkImp"
 }
 
@@ -132,7 +132,7 @@ ACTOR DarkImpSpot : CustomMonsterInvasionSpot 5206
 
 ACTOR BloodDemonSpot : CustomMonsterInvasionSpot 5209
 {
-	Game Doom
+	//Game Doom
 	DropItem "BloodDemon"
 }
 
@@ -144,7 +144,7 @@ ACTOR BloodDemonSpot : CustomMonsterInvasionSpot 5209
 
 ACTOR SuperShotgunGuySpot : CustomMonsterInvasionSpot 5213
 {
-	Game Doom
+	//Game Doom
 	DropItem "SuperShotgunGuy"
 }
 
@@ -156,7 +156,7 @@ ACTOR SuperShotgunGuySpot : CustomMonsterInvasionSpot 5213
 
 ACTOR CacolanternSpot : CustomMonsterInvasionSpot 5215
 {
-	Game Doom
+	//Game Doom
 	DropItem "Cacolantern"
 }
 
@@ -168,7 +168,7 @@ ACTOR CacolanternSpot : CustomMonsterInvasionSpot 5215
 
 ACTOR AbaddonSpot : CustomMonsterInvasionSpot 5216
 {
-	Game Doom
+	//Game Doom
 	DropItem "Abaddon"
 }
 
@@ -180,7 +180,7 @@ ACTOR AbaddonSpot : CustomMonsterInvasionSpot 5216
 
 ACTOR HectebusSpot : CustomMonsterInvasionSpot 5219
 {
-	Game Doom
+	//Game Doom
 	DropItem "Hectebus"
 }
 
@@ -192,7 +192,7 @@ ACTOR HectebusSpot : CustomMonsterInvasionSpot 5219
 
 ACTOR BelphegorSpot : CustomMonsterInvasionSpot 5223
 {
-	Game Doom
+	//Game Doom
 	DropItem "Belphegor"
 }
 
@@ -211,7 +211,7 @@ ACTOR BelphegorSpot : CustomMonsterInvasionSpot 5223
 
 ACTOR MinigunSpot : CustomWeaponInvasionSpot 5271
 {
-	Game Doom
+	//Game Doom
 	DropItem "Minigun"
 }
 
@@ -223,7 +223,7 @@ ACTOR MinigunSpot : CustomWeaponInvasionSpot 5271
 
 ACTOR GrenadeLauncherSpot : CustomWeaponInvasionSpot 5273
 {
-	Game Doom
+	//Game Doom
 	DropItem "GrenadeLauncher"
 }
 
@@ -235,7 +235,7 @@ ACTOR GrenadeLauncherSpot : CustomWeaponInvasionSpot 5273
 
 ACTOR RailgunSpot : CustomWeaponInvasionSpot 5275
 {
-	Game Doom
+	//Game Doom
 	DropItem "Railgun"
 }
 
@@ -247,7 +247,7 @@ ACTOR RailgunSpot : CustomWeaponInvasionSpot 5275
 
 ACTOR BFG10KSpot : CustomWeaponInvasionSpot 5277
 {
-	Game Doom
+	//Game Doom
 	DropItem "BFG10K"
 }
 

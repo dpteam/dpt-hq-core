@@ -6,7 +6,7 @@
 
 actor DarkImp : DoomImp 5003 // [RT] Inherits from the DoomImp for convenience
 {
-  game Doom
+  //Game Doom
   //SpawnID 155 // [RT] I think this is the right Spawnid, change if it isn't
   obituary "$OB_DARKIMP"
   hitobituary "$OB_DARKIMP_MELEE"
@@ -55,7 +55,7 @@ actor DarkImp : DoomImp 5003 // [RT] Inherits from the DoomImp for convenience
 
 actor DarkImpBall : DoomImpBall // [RT] Inherits from DoomImpBall for convenience.
 {
-  game Doom
+  //Game Doom
   //SpawnID 218
   Speed 20
   damage 3 // [RT] I think this is right, change if neccesary.
@@ -389,7 +389,7 @@ ACTOR HectShot : FatShot
 
 ACTOR SuperShotgunGuy 5005
 {
-   Game Doom
+   //Game Doom
    //SpawnID 157
    Health 120
    Radius 20

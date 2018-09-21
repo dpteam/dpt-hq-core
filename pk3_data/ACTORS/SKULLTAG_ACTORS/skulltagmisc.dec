@@ -6,7 +6,7 @@
 
 ACTOR Hissy 5057
 {
-	Game Doom
+	//Game Doom
 	Radius 20
 	Height 26
 	+SOLID
