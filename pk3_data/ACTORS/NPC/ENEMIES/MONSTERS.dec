@@ -1253,7 +1253,7 @@ Actor WtrFountain 20000
 
 Actor DropletA
 {
-	SpawnId 200
+	//SpawnID 200
 	+Missile
 	+DontSplash
 	RenderStyle Add
@@ -1274,13 +1274,13 @@ Actor DropletA
 
 Actor DropletB : DropletA
 {
-	//SpawnId 201
+	//SpawnID 201
 	Scale .4	
 }
 
 Actor DropletC : DropletA 
 {
-	//SpawnId 202
+	//SpawnID 202
 	Scale .3
 }
 
@@ -1304,7 +1304,7 @@ Actor DropletD
 
 Actor Dripper 20002
 {
-	SpawnId 203
+	//SpawnID 203
     	+Missile
 	+NoClip
 	+NoGravity
@@ -1348,7 +1348,7 @@ Actor DripperRainDrop
 
 Actor BubbleA
 {
-	SpawnId 204
+	//SpawnID 204
 	+Missile
 	RenderStyle Add
 	Alpha .5
@@ -1390,13 +1390,13 @@ Actor BubbleA
 
 Actor BubbleB : BubbleA
 {
-	SpawnId 205
+	//SpawnID 205
 	Scale .5
 }
 
 Actor BubbleC : BubbleA
 {
-	SpawnId 206
+	//SpawnID 206
 	Scale .4
 }
 

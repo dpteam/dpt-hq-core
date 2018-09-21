@@ -1,6 +1,6 @@
 ACTOR WWTScientist
 {
-	SpawnID 6
+	//SpawnID 6
 	YScale 0.35
 	XScale 0.4
 	Radius 20

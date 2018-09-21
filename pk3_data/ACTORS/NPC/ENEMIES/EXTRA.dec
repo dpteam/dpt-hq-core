@@ -5935,7 +5935,7 @@ ACTOR DFlare :enemy
 	Height 5
 	Speed 25
 	Damage 4
-	SpawnID 252
+	//SpawnID 252
 	RenderStyle Add
 	DamageType Fire
 	Alpha 0.85

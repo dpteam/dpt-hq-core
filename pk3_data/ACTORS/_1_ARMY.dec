@@ -76,7 +76,7 @@ Actor VehicleFallingCount : Inventory
 }
 ACTOR VehicleSpeed : Ammo
 {
-	SpawnID 11
+	//SpawnID 11
 	Inventory.PickupMessage "$GOTCLIP"
 	Inventory.Amount 0
 	Inventory.MaxAmount 999
@@ -96,7 +96,7 @@ Actor TankDirection : Inventory
 }
 ACTOR TankBaseDirection : Ammo
 {
-	SpawnID 11
+	//SpawnID 11
 	Inventory.PickupMessage "$GOTCLIP"
 	Inventory.Amount 0
 	Inventory.MaxAmount 360
@@ -343,7 +343,7 @@ Spawn:
 ACTOR TankAmmo : Ammo
 {
 	
-	SpawnID 11
+	//SpawnID 11
 	Inventory.PickupMessage "Picked up a Magazine."
 	Inventory.Amount 10
 	Inventory.MaxAmount 100
@@ -360,7 +360,7 @@ Spawn:
 ACTOR MechAmmo : Ammo
 {
 	
-	SpawnID 11
+	//SpawnID 11
 	Inventory.PickupMessage "Picked up a Magazine."
 	Inventory.Amount 10
 	Inventory.MaxAmount 100
@@ -4247,7 +4247,7 @@ Spawn:
 ACTOR AssaultHelicopterMachinegunProjectile
 {
 	
-	SpawnID 51
+	//SpawnID 51
 	Radius 13
 	Height 8
 	Speed 130
@@ -7017,7 +7017,7 @@ Spawn:
 ACTOR MechMachinegunProjectile
 {
 	
-	SpawnID 51
+	//SpawnID 51
 	Radius 13
 	Height 8
 	Speed 130

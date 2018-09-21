@@ -1054,7 +1054,7 @@ ACTOR SpawnerModule_OverheatExplosion
 	Speed 0
 	ExplosionDamage 255
 	ExplosionRadius 192
-	SpawnId 201 // !!!
+	//SpawnID 201 // !!!
 	States
 	{
 	Spawn:
@@ -1072,7 +1072,7 @@ ACTOR SpawnerModule_SpawningProcess
 	Height 56
 	Speed 0
 	Scale 3.5
-	SpawnId 202 // !!!
+	//SpawnID 202 // !!!
 	States
 	{
 	Spawn:
@@ -1291,7 +1291,7 @@ ACTOR SpawnerModules : Ammo 26226
 }
 ACTOR SpawnerModulesBox : CustomInventory 26227
 {
-	SpawnID 134
+	//SpawnID 134
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "Picked up a box of pipebombs."
@@ -2052,7 +2052,7 @@ ACTOR mocha
 }
 ACTOR Dick : "DPT.HQ-Weapon"
 {
-	SpawnID 29
+	//SpawnID 29
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
 	Inventory.PickupMessage "you now know how to piss and how to beat off... as if you didn't :P"
@@ -2134,7 +2134,7 @@ ACTOR Doom3SSG : "DPT.HQ-Weapon" 20206
 {
 	//$Category Weapons
 	decal "BulletChip"
-	spawnid 33
+	//SpawnID 33
 	Scale 0.27
 	Obituary "%o chewed on %k's Double Barrel Shotgun."
 	inventory.pickupmessage "You got the Double Barrel Shotgun!"  
@@ -4050,7 +4050,7 @@ ACTOR FlameThrowerFireRemains
 ACTOR HAAX : "DPT.HQ-Weapon" 26341
 {
 	//$Category Weapons
-  SpawnID 1
+  //SpawnID 1
   +WEAPON.NOAUTOFIRE
   Inventory.PickupMessage "wtf hax o_0!"
   States
@@ -4494,7 +4494,7 @@ ACTOR PillowFeather
 ACTOR Spartanleg : "DPT.HQ-Weapon" 20082
 {
 	//$Category Weapons
-  SpawnID 32
+  //SpawnID 32
   Weapon.Kickback 1000
   Inventory.PickupMessage "got the spartan boot!"
   Obituary "%o was owned by %k's spartan boot"
@@ -5642,7 +5642,7 @@ ACTOR MWeapWand2 : "DPT.HQ-Weapon" 26213
 	//$Category Weapons
 	Inventory.PickupMessage "You've found the Jade Wand!"
 	Obituary "%k drained all of %o's life."
-	SpawnID 180
+	//SpawnID 180
 	Weapon.AmmoType "CrossbowAmmo"
 	Weapon.AmmoGive 25
 	Weapon.AmmoUse 1
@@ -6698,7 +6698,7 @@ ACTOR ShotShellCasingOnFloor
 ACTOR MWeapSufferStaff : "DPT.HQ-Weapon" 26219 //2005
 {
 	//$Category Weapons
-	//Spawnid 32
+	//SpawnID 32
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got the Staff Of Suffering!"
 	+FLOATBOB

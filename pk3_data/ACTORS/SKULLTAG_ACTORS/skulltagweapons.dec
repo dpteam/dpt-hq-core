@@ -15,7 +15,7 @@ ACTOR Minigun : Weapon 5014
 	Inventory.PickupMessage "$PICKUP_MINIGUN"
 	Obituary "$OB_MINIGUN"
 	AttackSound "weapons/minigun"
-	SpawnID 214
+	//SpawnID 214
 	Radius 20
 	Height 16
 	States
@@ -59,7 +59,7 @@ ACTOR Minigun : Weapon 5014
 ACTOR RailGun : DoomWeapon 5012
 {
 	Game Doom
-	SpawnID 164
+	//SpawnID 164
 	Radius 20
 	Height 16
 	Weapon.Selectionorder 100
@@ -108,7 +108,7 @@ ACTOR RailGun : DoomWeapon 5012
 ACTOR BFG10K : DoomWeapon 5013
 {
 	Game Doom
-	SpawnID 165
+	//SpawnID 165
 	Radius 20
 	Height 20
 	Weapon.Selectionorder 2800
@@ -177,7 +177,7 @@ ACTOR BFG10K : DoomWeapon 5013
 ACTOR BFG10kShot
 {
 	Game Doom
-	SpawnID 217
+	//SpawnID 217
 	Radius 11
 	Height 8
 	Speed 20
@@ -215,7 +215,7 @@ ACTOR BFG10kShot
 ACTOR GrenadeLauncher : DoomWeapon 5011
 {
 	Game Doom
-	SpawnID 163
+	//SpawnID 163
 	Radius 20
 	Height 16
 	Weapon.Selectionorder 2500

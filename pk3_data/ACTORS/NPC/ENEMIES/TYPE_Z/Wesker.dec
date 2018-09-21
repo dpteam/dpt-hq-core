@@ -1,6 +1,6 @@
 ACTOR Wesker
 {
-	SpawnID 114
+	//SpawnID 114
 	YScale 0.35
 	XScale 0.4
 	Radius 20

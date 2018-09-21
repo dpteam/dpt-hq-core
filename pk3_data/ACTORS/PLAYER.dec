@@ -5721,7 +5721,7 @@ ACTOR RevenantClass : "DPT-HQ-Player"
 
 ACTOR PlayerVomit
 {
-	SpawnID 130
+	//SpawnID 130
 	Mass 5
 	Projectile
 	Speed 12

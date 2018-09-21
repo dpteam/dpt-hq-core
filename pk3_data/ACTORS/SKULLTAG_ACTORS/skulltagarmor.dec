@@ -7,7 +7,7 @@
 ACTOR RedArmor : BasicArmorPickup 5040
 {
 	Game Doom
-	SpawnID 168
+	//SpawnID 168
 	Radius 20
 	Height 16
 	Armor.Savepercent 66.66666
