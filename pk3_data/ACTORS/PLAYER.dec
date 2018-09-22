@@ -5167,7 +5167,7 @@ ACTOR ZombieManClass : "DPT-HQ-Player"
 	Player.ViewHeight 41
 	Player.MaxHealth 20
 	Player.ViewHeight 41
-	Player.SoundClass Brainless
+	Player.SoundClass "ZombieManClass"
 	Player.JumpZ 10
 	+NOSKIN
 	+NOPAIN
@@ -5230,7 +5230,7 @@ ACTOR ShotgunGuyClass : "DPT-HQ-Player"
 	Player.StartItem "Cash", 999
 	Player.JumpZ 8
 	Player.DisplayName "Sergeant"
-	Player.SoundClass "Brainless"
+	Player.SoundClass "ShotgunGuyClass"
 	+NOPAIN
 	+NOSKIN
 	-PICKUP
@@ -5288,7 +5288,7 @@ ACTOR ChainGunGuyClass : "DPT-HQ-Player"
 	Player.DisplayName "Chaingunner"
 	Player.MaxHealth 80
 	Player.ViewHeight 41
-	Player.SoundClass Brainless
+	Player.SoundClass "ChainGunGuyClass"
 	Player.JumpZ 10
 	+NOPAIN
 	-PICKUP
@@ -5354,7 +5354,7 @@ ACTOR DooMImpClass : "DPT-HQ-Player"
 	Player.MaxHealth 60
 	Player.JumpZ 7
 	Player.DisplayName "DoomImp"
-	Player.SoundClass "MImpale"
+	Player.SoundClass "DooMImpClass"
 	Player.ViewHeight 45
 	Player.StartItem "ImpBaller"
 	Player.StartItem "Stamina", 999
@@ -5423,7 +5423,7 @@ ACTOR DemonClass : "DPT-HQ-Player"
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
 	Player.MaxHealth 150
-	Player.SoundClass "Mdemon"
+	Player.SoundClass "DemonClass"
 	Player.JumpZ 15
 	Player.ViewHeight 30
 	-FRIENDLY
@@ -5478,6 +5478,7 @@ ACTOR SpectreClass : DemonClass
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
+	Player.SoundClass "DemonClass"
 }
 
 ACTOR LostSoulClass : "DPT-HQ-Player"
@@ -5491,7 +5492,7 @@ ACTOR LostSoulClass : "DPT-HQ-Player"
 	painchance 128
 	Player.DisplayName "Lost Soul"
 	Player.MaxHealth 100
-	Player.SoundClass "MLostSoul"
+	Player.SoundClass "LostSoulClass"
 	Player.JumpZ 0
 	Player.ViewHeight 20
 	Player.AttackZOffset 5
@@ -5552,10 +5553,10 @@ ACTOR CacodemonClass : "DPT-HQ-Player"
 	Height 56
 	Mass 400
 	PainChance 128
-	Player.DisplayName "CacoDemon"
+	Player.SoundClass "CacodemonClass"
+	Player.DisplayName "Cacodemon"
 	Player.MaxHealth 400
 	Player.ViewHeight 40
-	Player.SoundClass Cacodemon
 	Player.JumpZ 0
 	BloodColor "blue"
 	Player.StartItem "CacoBaller"
@@ -5612,8 +5613,8 @@ ACTOR PainElementalClass : "DPT-HQ-Player"
 	Height 56
 	Mass 400
 	PainChance 128
-	player.maxhealth 400
-	player.soundclass "PainElementalClass"
+	Player.MaxHealth 400
+	Player.SoundClass "PainElementalClass"
 	Player.DisplayName "Pain Elemental"
 	Player.StartItem "PainElementWeap"
 	Player.StartItem "Flighter"
@@ -5665,7 +5666,7 @@ ACTOR RevenantClass : "DPT-HQ-Player"
 	Scale 0.85
 	Player.MaxHealth 300
 	Player.ViewHeight 58
-	Player.SoundClass "MSkeleton"
+	Player.SoundClass "RevenantClass"
 	Player.JumpZ 7
 	Player.StartItem "RevenantGun"
 	Player.DisplayName "Revenant"

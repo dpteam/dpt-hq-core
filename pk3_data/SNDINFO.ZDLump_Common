@@ -1119,79 +1119,89 @@ $playeralias "LXandro" male *usefail DukeUseFail
 $playeralias "LXandro" male *surface dsdukgsp
 $playeralias "LXandro" male *taunt DukeTaunts
 
-$random bl_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
-$playeralias "brainless" male *pain100 dspopain
-$playeralias "brainless" male *pain75 *pain100
-$playeralias "brainless" male *pain50 *pain100
-$playeralias "brainless" male *pain25 *pain100
-$playeralias "brainless" male *death bl_death
-$playeralias "brainless" male *xdeath DSSLOP
-$playeralias "brainless" male *usefail dsposact
-$playeralias "brainless" male *grunt *pain100
-$playeralias "brainless" male *land *pain100
-$playeralias "brainless" male *jump dspopain
-$playeralias "brainless" male *taunt bl_taunt 
+$random zmc_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
+$playeralias "ZombieManClass" male *pain100 dspopain
+$playeralias "ZombieManClass" male *pain75 *pain100
+$playeralias "ZombieManClass" male *pain50 *pain100
+$playeralias "ZombieManClass" male *pain25 *pain100
+$playeralias "ZombieManClass" male *death bl_death
+$playeralias "ZombieManClass" male *xdeath DSSLOP
+$playeralias "ZombieManClass" male *usefail dsposact
+$playeralias "ZombieManClass" male *grunt *pain100
+$playeralias "ZombieManClass" male *land *pain100
+$playeralias "ZombieManClass" male *jump dspopain
+$playeralias "ZombieManClass" male *taunt zmc_taunt 
+
+$random sggc_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
+$playeralias "ShotgunGuyClass" male *pain100 dspopain
+$playeralias "ShotgunGuyClass" male *pain75 *pain100
+$playeralias "ShotgunGuyClass" male *pain50 *pain100
+$playeralias "ShotgunGuyClass" male *pain25 *pain100
+$playeralias "ShotgunGuyClass" male *death bl_death
+$playeralias "ShotgunGuyClass" male *xdeath DSSLOP
+$playeralias "ShotgunGuyClass" male *usefail dsposact
+$playeralias "ShotgunGuyClass" male *grunt *pain100
+$playeralias "ShotgunGuyClass" male *land *pain100
+$playeralias "ShotgunGuyClass" male *jump dspopain
+$playeralias "ShotgunGuyClass" male *taunt sggc_taunt 
+
+$random cggc_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
+$playeralias "ChainGunGuyClass" male *pain100 dspopain
+$playeralias "ChainGunGuyClass" male *pain75 *pain100
+$playeralias "ChainGunGuyClass" male *pain50 *pain100
+$playeralias "ChainGunGuyClass" male *pain25 *pain100
+$playeralias "ChainGunGuyClass" male *death bl_death
+$playeralias "ChainGunGuyClass" male *xdeath DSSLOP
+$playeralias "ChainGunGuyClass" male *usefail dsposact
+$playeralias "ChainGunGuyClass" male *grunt *pain100
+$playeralias "ChainGunGuyClass" male *land *pain100
+$playeralias "ChainGunGuyClass" male *jump dspopain
+$playeralias "ChainGunGuyClass" male *taunt cggc_taunt 
 
 $random imp_taunt { imp/sight1 imp/sight2 }
+$playeralias "DooMImpClass" male *pain100 dspopain
+$playeralias "DooMImpClass" male *pain75 *pain100
+$playeralias "DooMImpClass" male *pain50 *pain100
+$playeralias "DooMImpClass" male *pain25 *pain100
+$playeralias "DooMImpClass" male *death DSNULL
+$playeralias "DooMImpClass" male *xdeath DSSLOP
+$playeralias "DooMImpClass" male *usefail dsbgact
+$playeralias "DooMImpClass" male *grunt *pain100
+$playeralias "DooMImpClass" male *land *pain100
+$playeralias "DooMImpClass" male *jump dspopain
+$playeralias "DooMImpClass" male *taunt imp_taunt 
 
-$playeralias "Mimpale" male *pain100 dspopain
-$playeralias "Mimpale" male *pain75 *pain100
-$playeralias "Mimpale" male *pain50 *pain100
-$playeralias "Mimpale" male *pain25 *pain100
-$playeralias "Mimpale" male *death DSNULL
-$playeralias "Mimpale" male *xdeath DSSLOP
-$playeralias "Mimpale" male *usefail dsbgact
-$playeralias "Mimpale" male *grunt *pain100
-$playeralias "Mimpale" male *land *pain100
-$playeralias "Mimpale" male *jump dspopain
-$playeralias "Mimpale" male *taunt imp_taunt 
+$playeralias "DemonClass" male *pain100 DSDMPAIN
+$playeralias "DemonClass" male *pain75 *pain100
+$playeralias "DemonClass" male *pain50 *pain100
+$playeralias "DemonClass" male *pain25 *pain100
+$playeralias "DemonClass" male *death DSSGTDTH
+$playeralias "DemonClass" male *usefail DSDMACT
+$playeralias "DemonClass" male *grunt *pain100
+$playeralias "DemonClass" male *land *pain100 
+$playeralias "DemonClass" male *taunt dssgtsit 
 
-$playeralias "Mdemon" male *pain100 DSDMPAIN
-$playeralias "Mdemon" male *pain75 *pain100
-$playeralias "Mdemon" male *pain50 *pain100
-$playeralias "Mdemon" male *pain25 *pain100
-$playeralias "Mdemon" male *death DSSGTDTH
-$playeralias "Mdemon" male *usefail DSDMACT
-$playeralias "Mdemon" male *grunt *pain100
-$playeralias "Mdemon" male *land *pain100 
-$playeralias "Mdemon" male *taunt dssgtsit 
+$playeralias "LostSoulClass" male *pain100 DSDMPAIN
+$playeralias "LostSoulClass" male *pain75 *pain100
+$playeralias "LostSoulClass" male *pain50 *pain100
+$playeralias "LostSoulClass" male *pain25 *pain100
+$playeralias "LostSoulClass" male *death DSFIRXPL
+$playeralias "LostSoulClass" male *xdeath *death
+$playeralias "LostSoulClass" male *usefail DSDMACT
+$playeralias "LostSoulClass" male *grunt *usefail
+$playeralias "LostSoulClass" male *land *usefail
+$playeralias "LostSoulClass" male *taunt dssklatk
 
-$playeralias "MLostSoul" male *pain100 DSDMPAIN
-$playeralias "MLostSoul" male *pain75 *pain100
-$playeralias "MLostSoul" male *pain50 *pain100
-$playeralias "MLostSoul" male *pain25 *pain100
-$playeralias "MLostSoul" male *death DSFIRXPL
-$playeralias "MLostSoul" male *xdeath *death
-$playeralias "MLostSoul" male *usefail DSDMACT
-$playeralias "MLostSoul" male *grunt *usefail
-$playeralias "MLostSoul" male *land *usefail
-$playeralias "MLostSoul" male *taunt dssklatk
-
-$playeralias "Mskeleton" male *pain100 DSPOPAIN
-$playeralias "Mskeleton" male *pain75 *pain100
-$playeralias "Mskeleton" male *pain50 *pain100
-$playeralias "Mskeleton" male *pain25 *pain100
-$playeralias "Mskeleton" male *death DSSKEDTH
-$playeralias "Mskeleton" male *xdeath DSSKEDTH
-$playeralias "Mskeleton" male *usefail DSSKEACT
-$playeralias "Mskeleton" male *grunt *pain100
-$playeralias "Mskeleton" male *land *pain100
-$playeralias "Mskeleton" male *jump DSSKESIT
-$playeralias "Mskeleton" male *taunt dsskesit
-SKELLPUNCH DSSKESWG
-SKELLPCHHIT DSSKEPCH
-SKELLMISS DSSKEATK
-
-$playeralias "Cacodemon" male *pain100 DSDMPAIN
-$playeralias "Cacodemon" male *pain75 *pain100
-$playeralias "Cacodemon" male *pain50 *pain100
-$playeralias "Cacodemon" male *pain25 *pain100
-$playeralias "Cacodemon" male *death DSCACDTH
-$playeralias "Cacodemon" male *usefail DSDMACT
-$playeralias "Cacodemon" male *grunt *pain100
-$playeralias "Cacodemon" male *land *pain100
-$playeralias "Cacodemon" male *jump DSCACSIT
-$playeralias "Cacodemon" male *taunt dscacsit
+$playeralias "CacodemonClass" male *pain100 DSDMPAIN
+$playeralias "CacodemonClass" male *pain75 *pain100
+$playeralias "CacodemonClass" male *pain50 *pain100
+$playeralias "CacodemonClass" male *pain25 *pain100
+$playeralias "CacodemonClass" male *death DSCACDTH
+$playeralias "CacodemonClass" male *usefail DSDMACT
+$playeralias "CacodemonClass" male *grunt *pain100
+$playeralias "CacodemonClass" male *land *pain100
+$playeralias "CacodemonClass" male *jump DSCACSIT
+$playeralias "CacodemonClass" male *taunt dscacsit
 
 $playeralias "PainElementalClass" male *death dspedth
 $playeralias "PainElementalClass" male *xdeath dspedth
@@ -1206,6 +1216,21 @@ $playeralias "PainElementalClass" male *jump dsjump
 $playeralias "PainElementalClass" male *fist dsfirsht
 $playeralias "PainElementalClass" male *usefail dsdmact
 $playeralias "PainElementalClass" male *taunt dspesit
+
+$playeralias "RevenantClass" male *pain100 DSPOPAIN
+$playeralias "RevenantClass" male *pain75 *pain100
+$playeralias "RevenantClass" male *pain50 *pain100
+$playeralias "RevenantClass" male *pain25 *pain100
+$playeralias "RevenantClass" male *death DSSKEDTH
+$playeralias "RevenantClass" male *xdeath DSSKEDTH
+$playeralias "RevenantClass" male *usefail DSSKEACT
+$playeralias "RevenantClass" male *grunt *pain100
+$playeralias "RevenantClass" male *land *pain100
+$playeralias "RevenantClass" male *jump DSSKESIT
+$playeralias "RevenantClass" male *taunt dsskesit
+SKELLPUNCH DSSKESWG
+SKELLPCHHIT DSSKEPCH
+SKELLMISS DSSKEATK
 
 //minigun
 weapons/minigun dsminign
