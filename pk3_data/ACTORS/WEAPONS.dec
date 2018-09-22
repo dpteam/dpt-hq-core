@@ -6833,9 +6833,9 @@ ACTOR HealthRestoring : PowerupGiver
 	Radius 11
 	Height 10
 	Inventory.Amount 1
-	powerup.duration 15
+	Powerup.Duration 15
 	Inventory.PickupMessage ""
-	Inventory.PickupSound "LOL" // ??? WTF? No sound here... Mda uzh...
+	Inventory.PickupSound "LOL" // ??? WTF? No sound here... Mda uzh... // WORKER
 	Powerup.Type IronFeet
 	Powerup.Color Red 0.8
 	+INVENTORY.AUTOACTIVATE
@@ -6845,6 +6845,105 @@ ACTOR HealthRestoring : PowerupGiver
 	Spawn:
 		TNT1 A 4
 		Stop
+	}
+}
+ACTOR RepairTool : Weapon 6544
+{
+	//$Category Weapons
+	Weapon.SlotNumber 0
+	Weapon.Kickback 0
+	Weapon.SelectionOrder 2200
+	Inventory.PickupMessage "You got the Repair Tool (Slot 0)"
+	Obituary "$OB_MPCHAINSAW"
+	+WEAPON.MELEEWEAPON		
+	+NOBLOOD
+	States
+	{
+	Ready:
+		REPT A 4 A_WeaponReady
+		Loop
+	Deselect:
+		REPT A 1 A_Lower
+		Loop
+	Select:
+		REPT A 1 A_Raise
+		Loop
+	Fire:
+		REPT A 0 A_JumpIfTargetInLOS("AltFire")
+		Goto Ready
+	AltFire:
+		REPT A 4
+		REPT A 0 A_FireCustomMissile("RepairMissile")
+		REPT B 0 A_PlaySound("Healing")
+		REPT BC 1 BRIGHT
+		REPT A 1
+		REPT B 0 A_ReFire
+		Goto Ready
+	Spawn:
+		REPT Z 1
+		REPT Z -1
+		Stop
+	}
+}
+ACTOR RepairMissile
+{
+	XScale 0.3
+	YScale 0.24
+	DeathSound ""
+	Radius 13
+	Height 8
+	Speed 25
+	Damage (random (8, 8))
+	Projectile
+	+RANDOMIZE
+	RenderStyle Add
+	Species "VehicleSpecial"
+	DamageType Repair
+	Decal "BulletChip"
+	+THRUSPECIES
+	+NOBLOOD
+	+NOBLOODDECALS
+	Alpha 0.75
+	States
+	{
+	Spawn:
+		BOLT A 2 BRIGHT
+		BOLT B 2 BRIGHT
+		BOLT C 2 BRIGHT
+		loop
+	Death:
+		TNT1 A 30 A_SpawnItemEx ("RepairToolRicochet", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
+		stop
+	}
+}
+ACTOR RepairToolRicochet: DUMP3Fusion_Splash
+{
+	renderstyle Add
+	alpha 0.7
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+CLIENTSIDEONLY
+	+BLOODLESSIMPACT 
+	+FORCEXYBILLBOARD
+	+NOBLOOD
+	Obituary "%o ate bullet shrapnel."
+	damagetype "Shrapnel"
+	Scale 0.6
+	Speed 0
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_SpawnItem ("BlueFlareSmall", 0)
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
+	Spawn1:
+		TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
+		FXB7 ABCDEFGHIJ 1 BRIGHT
+		Stop
+	Spawn2:
+		TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
+		FXB8 ABCDEFGHIJ 1 BRIGHT
+		Stop
+		stop
 	}
 }
 ACTOR Healing_Cannon : "DPT.HQ-Weapon" 26343
@@ -6935,7 +7034,7 @@ ACTOR WakeMissile {}
 ACTOR Flash : powerupgiver
 {
 	Inventory.MaxAmount 1 
-	Powerup.duration 14
+	Powerup.Duration 14
 	Powerup.color "0f 0f 0f", 0.2
 	Powerup.type "ironfeet"
 	+INVENTORY.AUTOACTIVATE
@@ -10453,7 +10552,7 @@ ACTOR WTFPlasmaBallYellow : WTFPlasmaBall
 ACTOR CubeInfiniteAmmo : PowerupGiver
 {
 	inventory.pickupmessage "I AM FULL OF SANDWICH, AND I AM COMING FOR YOU!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "InfiniteAmmo"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
@@ -10469,7 +10568,7 @@ ACTOR CubeInfiniteAmmo : PowerupGiver
 ACTOR CubeInvicibility : PowerupGiver
 {
 	inventory.pickupmessage "HAHAHAHAAA!! I AM BULLETPROOOOOOF!!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "Invulnerable"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
@@ -10490,7 +10589,7 @@ ACTOR PowerCubeDamage : PowerDamage
 ACTOR CubeDamage : PowerupGiver
 {
 	inventory.pickupmessage "IT'S TIME TO RUN, COWARDS!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "CubeDamage"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
@@ -10511,7 +10610,7 @@ ACTOR PowerCubeProtect : PowerProtection
 ACTOR CubeProtection : PowerupGiver
 {
 	inventory.pickupmessage "YOU ARE NO MATCH FOR MEE!!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "CubeProtect"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
@@ -10527,7 +10626,7 @@ ACTOR CubeProtection : PowerupGiver
 ACTOR CubeFear : PowerupGiver
 {
 	inventory.pickupmessage "FEAR ME, COWAAAARDS!!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "Frightener"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
