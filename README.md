@@ -2,9 +2,9 @@
 
 ## Core component
 
-Funny cooperative+deathmatch entertaining modification for DOOM II. Created for Zandronum 3.0 port.
+Funny cooperative+deathmatch entertaining modification for DOOM II. Created for ZDoom32 port.
 
-Also have GZDoom/Delta-Touch compatibility
+Also have Delta-Touch compatibility
 
 ## How to compile (Windows)
 
@@ -14,12 +14,18 @@ Also have GZDoom/Delta-Touch compatibility
 4. Drag & Drop pk7 to zandronum.exe
 5. Play
 
+## How to compile (Linux)
+
+1. sudo apt-get install git
+2. git clone https://github.com/dpteam/dpt-hq-core dpt-hq-core
+3. sh build.sh
+4. Wait
+5. "./zdoom32 dpt-hq-core-current.pk7"
+6. Play
+
 ## Current important info
 
-CREDITS Currently Work in Progress, if im forgot some, please say it in issues.
-
-Issue #7
-
+CREDITS Currently Work in Progress, if im forgot some, please say it in issues. [Issue #7]
 
 Also info for paranoics:
 
