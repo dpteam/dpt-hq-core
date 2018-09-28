@@ -17,7 +17,7 @@ Also have Delta-Touch compatibility
 ## How to compile (Linux)
 
 1. sudo apt-get install git
-2. git clone https://github.com/dpteam/dpt-hq-core dpt-hq-core
+2. git clone -b zd32funcs git@github.com:dpteam/dpt-hq-core.git dpt-hq-core
 3. sh build.sh
 4. Wait
 5. "./zdoom32 dpt-hq-core-current.pk7"
