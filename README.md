@@ -56,8 +56,8 @@ https://qiwi.me/dartpower
 
 Development status:  
 [![Github All Releases](https://img.shields.io/github/downloads/dpteam/dpt-hq-core/total.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/releases)
-[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/commits/master)
-[![GitHub last commit](https://img.shields.io/github/last-commit/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/commits/master)
+[![GitHub commit activity the past week, 4 weeks, year](https://img.shields.io/github/commit-activity/y/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/commits/zd32funcs)
+[![GitHub last commit](https://img.shields.io/github/last-commit/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/commits/zd32funcs)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core)
 
 Social status:  
