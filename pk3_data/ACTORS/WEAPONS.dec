@@ -4,7 +4,7 @@
 // NEED TO ADD
 // WTF
 
-// NEXT : 26405
+// NEXT : 26406
 
 // Predefines
 
@@ -10670,7 +10670,7 @@ ACTOR CubeFear : PowerupGiver
 	}
 }
 // ETC
-actor BlueRailgun : "DPT.HQ-Weapon" //replaces Chainsaw
+ACTOR Railgun : "DPT.HQ-Weapon" 5012 //replaces Chainsaw
 {
 	Weapon.Selectionorder 2200
 	Weapon.AmmoUse 10
@@ -10683,22 +10683,22 @@ actor BlueRailgun : "DPT.HQ-Weapon" //replaces Chainsaw
 	decal "RailScorchLower"
 	States
 	{
-Ready:
+	Ready:
 		BRLG A 1 A_WeaponReady
 		Loop
-Deselect:
+	Deselect:
 		BRLG A 1 A_Lower
 		Loop
-Select:
+	Select:
 		BRLG A 1 A_Raise
 		Loop
-Fire:
+	Fire:
 		BRLG B 0 A_RailAttack ( 200, 0, 10, "00 00 FF", "FF FF FF", 0, 0)
 		BRLG B 5 A_Light1
 		BRLG A 45 A_Light0
 		BRLG A 0 A_ReFire
 		Goto Ready
-Spawn:
+	Spawn:
 		BRLW A -1
 		Stop
 	}
