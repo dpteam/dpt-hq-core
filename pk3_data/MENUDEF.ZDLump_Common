@@ -37,3 +37,49 @@ LISTMENU "MainMenu"
 		PatchItem "M_QUITG", "q", "QuitMenu"
 	}
 }
+OptionMenuSettings
+{
+	lineSpacing 11
+}
+OptionMenu "OptionsMenu"
+{
+	Title "$MENU_OPTIONS"
+	Submenu "DPT.HQ Options",			"DPTHeadQuartersOptions"
+	StaticText " "
+	Submenu "Customize Controls",		"CustomizeControls"
+	Submenu "Mouse options",			"MouseOptions"
+	Submenu "Joystick options",			"JoystickOptions"
+	StaticText " "
+	Submenu "Player Setup",				"PlayerMenu"
+	Submenu "Gameplay Options",			"GameplayOptions"
+	Submenu "Compatibility Options",	"CompatibilityOptions"
+	Submenu "Automap Options",			"AutomapOptions"
+	Submenu "HUD Options",				"HUDOptions"
+	Submenu "Miscellaneous Options",	"MiscOptions"
+	Submenu "Sound Options",			"SoundOptions"
+	Submenu "Display Options",			"VideoOptions"
+	Submenu "Set video mode",			"VideoModeMenu"
+	StaticText " "
+	SafeCommand "Reset to defaults",	"reset2defaults"
+	SafeCommand	"Reset to last saved",	"reset2saved"
+	Command "Developer Console",			"menuconsole"
+}
+OptionMenu "DPTHeadQuartersOptions"
+{
+	Title "DPT.HQ Options"
+	StaticText " "
+	Option "Language / Язык", "language", "Language"
+	StaticText "Select a mod localization"
+	StaticText " "
+}
+OptionValue "Language"
+{
+	0, "auto"
+	1, "enu"
+	2, "rus"
+}
+OptionValue "YesOrNo"
+{
+	0, "No"
+	1, "Yes"
+}

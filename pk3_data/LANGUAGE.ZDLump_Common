@@ -17,7 +17,6 @@ OB_BFG10K = "%o was blasted by %k's BFG10K.";
 OB_BFG10K_RARE = "%o got a blast in the ass from %k's BFG10K.";
 OB_BFG10K_SELF = "%o got reckless with %p BFG10K.";
 
-
 //Monsters
 //obituaries
 OB_CACODEMON_MELEE_RARE = "%o tried to get friendly with a cacodemon.";
@@ -41,10 +40,8 @@ CC_BLOODDEMON = "BLOOD DEMON";
 CC_CACOLANTERN = "CACOLANTERN";
 CC_HECTEBUS = "HECTEBUS";
 
-
 //Items
 PICKUP_REDARMOR = "Picked up the red armor!";
-
 
 //Episodes
 //cluster strings.
@@ -111,3 +108,11 @@ LEVEL_SP_PRE_32 = "level 32";
 OB_CRUSH = "%o.rar";
 OB_SUICIDE = "%o successful win the blue whale game";
 OB_EXIT = "%o DONT PLAY";
+
+// MENU
+MENU_TOS = "EM_UNSUP";
+MENU_OPTIONS = "OPTIONS";
+
+[rus]
+MENU_TOS = "RM_UNSUP";
+MENU_OPTIONS = "НАСТРОЙКИ";
