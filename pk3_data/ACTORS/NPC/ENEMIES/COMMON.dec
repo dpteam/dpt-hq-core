@@ -1111,7 +1111,7 @@ ACTOR AlphaGuard 26405
 		AGRD J 3
 		AGRD K 3 A_NoBlocking
 		AGRD L 3
-		AGRD M 3 A_AcolyteDie
+		AGRD M 3
 		AGRD N -1
 		Stop
 	Raise:
@@ -1168,7 +1168,7 @@ ACTOR ZeroSergant 26406
 		SGT0 J 3
 		SGT0 K 3 A_NoBlocking
 		SGT0 L 3
-		SGT0 M 3 A_AcolyteDie
+		SGT0 M 3
 		SGT0 N -1
 		Stop
 	Raise:
