@@ -1230,7 +1230,7 @@ ACTOR PlasmaZombie : ZombieMan 26407
 	}
 }
 
-ACTOR IcePlasmaZombie : PlasmaZombieMan 26408
+ACTOR IcePlasmaZombie : PlasmaZombie 26408
 {
 	Obituary "%o was killed by a Frozen Plasmatic ZombieMan."
 	DropItem Cell
