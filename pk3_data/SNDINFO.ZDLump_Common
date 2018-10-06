@@ -754,6 +754,7 @@ $playeralias "nighmare" male *jump DS137OOF
 $playeralias "nighmare" male *usefail DS137OOF
 $playeralias "nighmare" male *taunt DS137OOF
 
+POWRPAIN POWRPAIN
 POWERDTH POWERDTH
 POWERXDT POWERXDT
 POWERPN1 POWERPN1
@@ -1121,7 +1122,10 @@ $playeralias "LXandro" male *usefail DukeUseFail
 $playeralias "LXandro" male *surface dsdukgsp
 $playeralias "LXandro" male *taunt DukeTaunts
 
-$random zmc_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
+dsposit1 dsposit1
+dsposit2 dsposit2
+dsposit3 dsposit3
+$random zmc_taunt { dsposit1 dsposit2 dsposit3 }
 $playeralias "ZombieManClass" male *pain100 dspopain
 $playeralias "ZombieManClass" male *pain75 *pain100
 $playeralias "ZombieManClass" male *pain50 *pain100
@@ -1134,7 +1138,7 @@ $playeralias "ZombieManClass" male *land *pain100
 $playeralias "ZombieManClass" male *jump dspopain
 $playeralias "ZombieManClass" male *taunt zmc_taunt 
 
-$random sggc_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
+$random sggc_taunt { dsposit1 dsposit2 dsposit3 }
 $playeralias "ShotgunGuyClass" male *pain100 dspopain
 $playeralias "ShotgunGuyClass" male *pain75 *pain100
 $playeralias "ShotgunGuyClass" male *pain50 *pain100
@@ -1147,7 +1151,7 @@ $playeralias "ShotgunGuyClass" male *land *pain100
 $playeralias "ShotgunGuyClass" male *jump dspopain
 $playeralias "ShotgunGuyClass" male *taunt sggc_taunt 
 
-$random cggc_taunt { grunt/sight1 grunt/sight2 grunt/sight3 }
+$random cggc_taunt { dsposit1 dsposit2 dsposit3 }
 $playeralias "ChainGunGuyClass" male *pain100 dspopain
 $playeralias "ChainGunGuyClass" male *pain75 *pain100
 $playeralias "ChainGunGuyClass" male *pain50 *pain100
@@ -1160,7 +1164,7 @@ $playeralias "ChainGunGuyClass" male *land *pain100
 $playeralias "ChainGunGuyClass" male *jump dspopain
 $playeralias "ChainGunGuyClass" male *taunt cggc_taunt 
 
-$random imp_taunt { imp/sight1 imp/sight2 }
+$random imp_taunt { dsbgsit1 dsbgsit2 }
 $playeralias "DooMImpClass" male *pain100 dspopain
 $playeralias "DooMImpClass" male *pain75 *pain100
 $playeralias "DooMImpClass" male *pain50 *pain100
@@ -1173,6 +1177,7 @@ $playeralias "DooMImpClass" male *land *pain100
 $playeralias "DooMImpClass" male *jump dspopain
 $playeralias "DooMImpClass" male *taunt imp_taunt 
 
+DSDMPAIN DSDMPAIN
 $playeralias "DemonClass" male *pain100 DSDMPAIN
 $playeralias "DemonClass" male *pain75 *pain100
 $playeralias "DemonClass" male *pain50 *pain100
@@ -2382,7 +2387,7 @@ fist/wallhit2 HIT2
 fist/wallhit3 HIT3
 fist/softkick KICK
 fist/ready KNUCKLE
-$random fist/brutalmodeswing { fist/brutalmodeswing1 fist/brutalmodeswing2 fist/brutalmodeswing3 }
+$random fist/brutalmodeswing { fist/brutalmodeswing1 fist/brutalmodeswing2 }
 fist/brutalmodeswing1 MELEE1
 fist/brutalmodeswing2 MELEE2
 PAIN13_SND PAIN13
@@ -2866,7 +2871,7 @@ Pains/Male09/02 M9Hit02
 Pains/Male09/03 M9Hit03
 Pains/Male09/04 M9Hit04
 Pains/Male09/05 M9Hit05
-$random Throws/Male09 { Throws/Male09/01 nul }
+$random Throws/Male09 { Throws/Male09/01 NULL }
 Throws/Male09/01 M9thr01
 $random Deaths/Male09 {
 	Deaths/Male09/01
@@ -3244,8 +3249,8 @@ Pains/Wesker06 WESKPN6
 Pains/Wesker07 WESKPN7
 Pains/Wesker08 WESKPN8
 Pains/Wesker09 WESKPN9
-Pains/Wesker00 WESKPN10
-Pains/Wesker01 WESKPN11
+Pains/Wesker10 WESKPN10
+Pains/Wesker11 WESKPN11
 $random Deaths/Wesker { Deaths/Wesker01 Deaths/Wesker02 Deaths/Wesker03 Deaths/Wesker04 Deaths/Wesker05 Deaths/Wesker06 Deaths/Wesker07 Deaths/Wesker08 Deaths/Wesker09 }
 Deaths/Wesker01 WESKDE1
 Deaths/Wesker02 WESKDE2
@@ -3341,9 +3346,7 @@ $random Firing/MrFalcon {
 	Firing/MrFalcon/04
 	Firing/MrFalcon/05
 	Firing/MrFalcon/06
-	Firing/MrFalcon/07 
-	empty
-	empty }
+	Firing/MrFalcon/07 }
 Firing/MrFalcon/01 mffir01
 Firing/MrFalcon/02 mffir02
 Firing/MrFalcon/03 mffir03
@@ -3785,7 +3788,7 @@ SPEZ/shot2  RUGREN
 SPEZ/reload  RUREL
 SPEZ/grenade1 RUGREN1
 SPEZ/grenade2 RUGREN2
-$random SPEZ/grenade { SPEZ/grenade1 SPEZ/genade2}
+$random SPEZ/grenade { SPEZ/grenade1 SPEZ/grenade2}
 MP5/shot MP5FIRE
 EXP/Btoom EXPBIA  
 PULS/shot1  PULSFIR1
@@ -4491,7 +4494,7 @@ $random world/taz {DSTAZUP1 DSTAZUP2 DSTAZUP3 DSTAZUP4 DSTAZUP5 DSTAZUP6 DSTAZLA
 $random attack/taz {DSTAZBLA DSTAZWHT}
 $limit DSREPOOF 0
 $limit DSHITHOF 5
-$alias world/spark DSBLANK
+//$alias world/spark DSBLANK // WTF?
 $limit DSMP40AT 6
 $pitchshift DSMP40AT 6
 $pitchshift DSSKGVHE 0
@@ -4564,7 +4567,7 @@ DSMPTANT DSMPTANT
 DSBOWLAC DSBOWLAC
 $random city {DSCITY1 DSCITY2}
 $random arcade {DSRCADE1 DSRCADE2 DSRCADE3 DSRCADE4 DSRCADE5 DSRCADE6}
-$random DOOMARC {weapons/pistol imp/sight demon/pain chainguy/sight}
+$random DOOMARC {dspistol dsbgsit1 dsbgsit2 dsdmpain dsposit1 dsposit2 dsposit3}
 $random DSPACAR {DSPACS DSPPEL}
 $random TMNTAR {DSKRAARM DSKRAHI2 DSTMNTT DSTMNTF DSTMNTP}
 $random WOLFAR {DSCNDETH DSCNDIHI DSCNTAUN HANSSHT2 wolfss/sight wolfss/death}
