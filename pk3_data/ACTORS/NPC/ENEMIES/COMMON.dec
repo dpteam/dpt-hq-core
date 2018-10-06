@@ -1180,6 +1180,7 @@ ACTOR ZeroSergant 26406
 
 ACTOR PlasmaZombie : ZombieMan 26407
 {
+	//$Category "Monsters - Humans"
 	Health 40
 	Radius 20
 	Height 56
@@ -1232,6 +1233,7 @@ ACTOR PlasmaZombie : ZombieMan 26407
 
 ACTOR IcePlasmaZombie : PlasmaZombie 26408
 {
+	//$Category "Monsters - Humans"
 	Obituary "%o was killed by a Frozen Plasmatic ZombieMan."
 	DropItem Cell
 	MissileType IcePlasmaBall

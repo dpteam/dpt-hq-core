@@ -1,5 +1,6 @@
 ACTOR CyberdemonLord 8758
 {
+	//$Category "BOSSES - Mini"
 	Health 10000
 	Radius 80
 	Height 220
@@ -85,5 +86,6 @@ ACTOR CyberdemonLord 8758
 }
 ACTOR CyberdemonLordMP: CyberdemonLord 8759
 {
+	//$Category "BOSSES - Mini"
 	Health 40000
 }

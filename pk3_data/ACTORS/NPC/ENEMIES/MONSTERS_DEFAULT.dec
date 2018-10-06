@@ -71,6 +71,7 @@ Spawn:
 }
 ACTOR BrutalizedZombieMan: Zombieman Replaces Zombieman
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 15
 	States
@@ -130,6 +131,7 @@ Crush:
 }
 ACTOR BrutalizedShotgunGuy: Shotgunguy Replaces Shotgunguy
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 15
 	States
@@ -193,6 +195,7 @@ Crush:
 }
 ACTOR BrutalizedChaingunGuy: Chaingunguy Replaces Chaingunguy
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 15
 	States
@@ -243,6 +246,7 @@ Crush:
 }
 ACTOR BrutalizedWolfensteinSS: WolfensteinSS Replaces WolfensteinSS
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 15
 	States
@@ -291,6 +295,7 @@ Crush:
 }
 ACTOR BrutalizedImp: DoomImp Replaces DoomImp
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 15
 	States
@@ -350,6 +355,7 @@ Crush:
 }
 ACTOR BrutalizedDemon: Demon Replaces Demon
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 25
 	States
@@ -399,6 +405,7 @@ Crush:
 }
 ACTOR BrutalizedHellKnight: HelLKnight Replaces HellKnight
 {
+	//$Category "Monsters - Brutalized"
 	BloodColor "00 88 00"
 	Bloodtype "Brutal_Blood"
 	GibHealth 30
@@ -450,6 +457,7 @@ Crush:
 }
 ACTOR BrutalizedBaronOfHell: BaronOfHell Replaces BaronOfHell
 {
+	//$Category "Monsters - Brutalized"
 	BloodColor "00 88 00"
 	Bloodtype "Brutal_Blood"
 	GibHealth 30
@@ -501,6 +509,7 @@ Crush:
 }
 ACTOR BrutalizedCacodemon: Cacodemon Replaces Cacodemon
 {
+	//$Category "Monsters - Brutalized"
 	Bloodcolor "12 2 F0"
 	Bloodtype "Brutal_Blood"
 	GibHealth 30
@@ -550,6 +559,7 @@ Crush:
 }
 ACTOR BrutalizedRevenant: Revenant Replaces Revenant
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 30
 	States
@@ -595,6 +605,7 @@ Crush:
 }
 ACTOR BrutalizedFatso: Fatso Replaces Fatso
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 30
 	States
@@ -644,6 +655,7 @@ Crush:
 }
 ACTOR BrutalizedArachnotron: Arachnotron Replaces Arachnotron
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 30
 	States
@@ -698,6 +710,7 @@ Crush:
 }
 ACTOR BrutalizedCyberdemon: Cyberdemon Replaces Cyberdemon
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	Scale 1.1
 	States
@@ -741,6 +754,7 @@ Crush:
 }
 ACTOR BrutalizedSpiderMastermind: SpiderMastermind Replaces SpiderMastermind
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	States
 	{
@@ -782,6 +796,7 @@ Crush:
 }
 ACTOR BrutalizedArchvile: Archvile Replaces Archvile
 {
+	//$Category "Monsters - Brutalized"
 	Bloodtype "Brutal_Blood"
 	GibHealth 20
 	States

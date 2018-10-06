@@ -4,6 +4,7 @@ ACTOR GluttonyApostleFlakToken : Inventory {inventory.maxamount 10}
 ACTOR GluttonyApostleVomitToken : Inventory {inventory.maxamount 20}
 ACTOR GluttonyApostle 26358
 {
+	//$Category "BOSSES - Storymode"
 	health 16500
 	radius 108
 	height 282
@@ -836,6 +837,7 @@ Spawn4:
 
 ACTOR PatriarchFaithful
 {
+	//$Category "BOSSES - Storymode"
 	health 7500
 	Radius 33
 	Height 97
