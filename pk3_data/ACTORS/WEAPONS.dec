@@ -4550,7 +4550,7 @@ ACTOR DartPowerFists : Fist
 	+NOALERT
 	-SOLID
 	+INVENTORY.UNDROPPABLE
-	-Weapon.NOLMS
+	-WEAPON.NOLMS
 	Attacksound "fists/punch"
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You shouldn't see this!"
