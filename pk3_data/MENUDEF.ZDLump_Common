@@ -21,7 +21,7 @@ LISTMENU "MainMenu"
 		}
 		else
 		{
-			PatchItem "$MENU_OPTIONS","o", "OptionsMenu"
+			PatchItem "M_OPTION","o", "OptionsMenu"
 			PatchItem "M_LOADG", "l", "LoadGameMenu"
 			PatchItem "M_SAVEG", "s", "SaveGameMenu"
 		}
@@ -39,7 +39,7 @@ LISTMENU "MainMenu"
 }
 OptionMenuSettings
 {
-	lineSpacing 5
+	lineSpacing 7
 }
 OptionMenu "OptionsMenu"
 {

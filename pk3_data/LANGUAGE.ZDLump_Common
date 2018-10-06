@@ -109,10 +109,7 @@ OB_CRUSH = "%o.rar";
 OB_SUICIDE = "%o successful win the blue whale game";
 OB_EXIT = "%o DONT PLAY";
 
-// MENU
-MENU_TOS = "EM_UNSUP";
-MENU_OPTIONS = "EM_OPTIN";
-
 [rus]
-MENU_TOS = "RM_UNSUP";
-MENU_OPTIONS = "RM_OPTIN";
+OB_CRUSH = "%o.7z"; // Ибо в России крашеры ИЗ НАСТОЯЩЕГО ТИТАНА
+OB_SUICIDE = "%o выйграл в игре Синий Кит";
+OB_EXIT = "%o дезертировал";
