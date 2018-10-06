@@ -147,13 +147,13 @@ object AbaddonBall
 // Dark Imp Fireball
 pointlight DIBALL
 {
-	color 0.5 0.0 1.2
+	color 0.3 0.0 1.0
 	size 64
 }
 // Dark imp fireball explosion
 flickerlight DIBALL_X1
 {
-	color 0.5 0.0 1.2
+	color 0.3 0.0 1.0
 	size 80
 	secondarySize 88
 	chance 0.25
@@ -455,17 +455,17 @@ pointlight MACHINEGUNFIRELIGHT
 }
 pointlight CultLight1
 {
-	color 255 0 0
+	color 1.0 0 0
 	size 24
 }
 pointlight CultLight2
 {
-	color 255 0 0
+	color 1.0 0 0
 	size 16
 }
 pointlight CultLight3
 {
-	color 255 0 0
+	color 1.0 0 0
 	size 8
 }
 object CultShot1
