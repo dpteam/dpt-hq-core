@@ -5105,199 +5105,271 @@ ACTOR PowerAssaultHelicopterSwitch4 : PowerMorph {PowerMorph.PlayerClass "Player
 ACTOR PowerAssaultHelicopterSwitch3 : PowerMorph {PowerMorph.PlayerClass "PlayerAssaultHelicopter3"}
 ACTOR PowerAssaultHelicopterSwitch2 : PowerMorph {PowerMorph.PlayerClass "PlayerAssaultHelicopter2"}
 ACTOR PowerAssaultHelicopterSwitch1 : PowerMorph {PowerMorph.PlayerClass "PlayerAssaultHelicopter1"}
-ACTOR PlayerAssaultHelicopter99 : PlayerAssaultHelicopter
-{	States
+ACTOR PlayerAssaultHelicopter99: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_Explode(1, 5, 1)
-		Goto Spawn2}}
-ACTOR PlayerAssaultHelicopter98 : PlayerAssaultHelicopter
-{	States
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter98: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(2, 5, 1)/////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter97 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(2, 5, 1) 
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter97: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(3, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter96 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(3, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter96: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(4, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter95 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(4, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter95: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(5, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter94 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(5, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter94: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(6, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter93 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(6, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter93: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(7, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter92 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(7, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter92: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(8, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter91 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(8, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter91: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(9, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter90 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(9, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter90: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(10, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter89 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(10, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter89: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(11, 5, 1)////
-		Goto Spawn2}}
-ACTOR PlayerAssaultHelicopter88 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(11, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter88: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(12, 5, 1)////
-		Goto Spawn2}}
-ACTOR PlayerAssaultHelicopter87 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(12, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter87: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(13, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter86 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(13, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter86: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(14, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter85 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(14, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter85: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(15, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter84 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(15, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter84: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(16, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter83 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(16, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter83: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(17, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter82 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(17, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter82: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(18, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter81 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(18, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter81: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(19, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter80 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(19, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter80: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(20, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter79 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(20, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter79: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(21, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter78 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(21, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter78: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(22, 5, 1)////
-		Goto Spawn2}}	
+		TNT1 A 0 A_Explode(22, 5, 1) ////
+		Goto Spawn2
+	}
+}
 // FIX
-ACTOR PlayerAssaultHelicopter77 : PlayerAssaultHelicopter
-{	States
+ACTOR PlayerAssaultHelicopter77: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(22, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter76 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(22, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter76: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(22, 5, 1)////
-		Goto Spawn2}}	
+		TNT1 A 0 A_Explode(22, 5, 1) ////
+		Goto Spawn2
+	}
+}
 // FIX END
 /*ACTOR PlayerAssaultHelicopter74 : PlayerAssaultHelicopter
 {	States
@@ -5307,606 +5379,831 @@ Spawn:
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
 		TNT1 A 0 A_Explode(23, 5, 1)////
 		Goto Spawn2}}	*/
-ACTOR PlayerAssaultHelicopter75 : PlayerAssaultHelicopter
-{	States
+ACTOR PlayerAssaultHelicopter75: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(25, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter74 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(25, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter74: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(26, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter73 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(26, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter73: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(27, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter72 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(27, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter72: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(28, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter71 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(28, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter71: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(29, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter70 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(29, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter70: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(30, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter69 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(30, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter69: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(31, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter68 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(31, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter68: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(32, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter67 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(32, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter67: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(33, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter66 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(33, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter66: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(34, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter65 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(34, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter65: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(35, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter64 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(35, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter64: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(36, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter63 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(36, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter63: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(37, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter62 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(37, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter62: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(38, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter61 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(38, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter61: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(39, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter60 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(39, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter60: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(40, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter59 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(40, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter59: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(41, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter58 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(41, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter58: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(42, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter57 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(42, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter57: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(43, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter56 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(43, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter56: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(44, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter55 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(44, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter55: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(45, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter54 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(45, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter54: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(46, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter53 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(46, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter53: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(47, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter52 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(47, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter52: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(48, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter51 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(48, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter51: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(49, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter50 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(49, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter50: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(50, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter49 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(50, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter49: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
-		HELI A 1 
+Spawn: 
+		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(51, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter48 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(51, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter48: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(52, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter47 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(52, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter47: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(53, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter46 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(53, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter46: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(54, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter45 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(54, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter45: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(55, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter44 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(55, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter44: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(56, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter43 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(56, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter43: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(57, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter42 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(57, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter42: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(58, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter41 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(58, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter41: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(59, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter40 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(59, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter40: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(60, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter39 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(60, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter39: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
-		HELI A 1 
+Spawn: 
+		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(61, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter38 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(61, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter38: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(62, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter37 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(62, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter37: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(63, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter36 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(63, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter36: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(64, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter35 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(64, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter35: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(65, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter34 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(65, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter34: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(66, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter33 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(66, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter33: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(67, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter32 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(67, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter32: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(68, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter31 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(68, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter31: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(69, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter30 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(69, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter30: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(70, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter29 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(70, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter29: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
-		HELI A 1 
+Spawn: 
+		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(71, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter28 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(71, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter28: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(72, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter27 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(72, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter27: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(73, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter26 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(73, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter26: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(74, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter25 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(74, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter25: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(75, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter24 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(75, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter24: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(76, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter23 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(76, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter23: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(77, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter22 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(77, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter22: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(78, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter21 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(78, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter21: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(79, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter20 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(79, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter20: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(80, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter19 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(80, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter19: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
-		HELI A 1 
+Spawn: 
+		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(81, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter18 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(81, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter18: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(82, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter17 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(82, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter17: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(83, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter16 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(83, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter16: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(84, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter15 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(84, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter15: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(85, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter14 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(85, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter14: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(86, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter13 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(86, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter13: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(87, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter12 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(87, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter12: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(88, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter11 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(88, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter11: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(89, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter10 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(89, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter10: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(90, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter9 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(90, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter9: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
-		HELI A 1 
+Spawn: 
+		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(91, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter8 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(91, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter8: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(92, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter7 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(92, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter7: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(93, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter6 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(93, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter6: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(94, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter5 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(94, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter5: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(95, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter4 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(95, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter4: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(96, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter3 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(96, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter3: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(97, 5, 1)////
-		Goto Spawn2}}	
-ACTOR PlayerAssaultHelicopter2 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(97, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter2: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(98, 5, 1)////
-		Goto Spawn2}}		
-ACTOR PlayerAssaultHelicopter1 : PlayerAssaultHelicopter
-{	States
+		TNT1 A 0 A_Explode(98, 5, 1) ////
+		Goto Spawn2
+	}
+}
+ACTOR PlayerAssaultHelicopter1: PlayerAssaultHelicopter
+{
+	States
 	{
-Spawn:
+Spawn: 
 		HELI A 1
 		TNT1 A 0 A_TakeInventory("PressedUse", 1)
-		TNT1 A 0 A_Explode(99, 5, 1)////
-		Goto Spawn2}}	
+		TNT1 A 0 A_Explode(99, 5, 1) ////
+		Goto Spawn2
+	}
+}
 ACTOR SuperJuggernaut : Fatso 9952
 {
 	Scale 2.0
