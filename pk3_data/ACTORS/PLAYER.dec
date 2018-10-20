@@ -1,4 +1,4 @@
-ACTOR "DPT-HQ-Player" : PlayerPawn {}
+ACTOR "DPT-HQ-Player" : PlayerPawn { +NOSKIN }
 ACTOR Guest : "DPT-HQ-Player"
 {
 	DamageFactor "PrisonPower", 100.0
@@ -297,11 +297,11 @@ ACTOR RebelClass : "DPT-HQ-Player"
 		Stop
 	XDeath:
 		STRM A 0 A_TakeInventory("DrunkLevel", 100)
-		STRM O 5
-		STRM P 5 A_XScream
-		STRM Q 5 A_NoBlocking
-		STRM RSTUV 5
-		STRM W -1
+		STRM H 5
+		STRM I 5 A_XScream
+		STRM J 5 A_NoBlocking
+		STRM KLM 5
+		STRM N -1
 		Stop
 	Burn:
 		BURN A 0 A_TakeInventory("DrunkLevel", 100)
@@ -2238,7 +2238,6 @@ ACTOR DartPower : "DPT-HQ-Player"
 	Player.DamageScreenColor "00 88 FF"
 	Player.DisplayName "SIMPSON-NEKEK"
 	Player.SoundClass "DartPower"
-	//Player.StartItem "IonRifle"
 	Player.StartItem "Icegun"
 	Player.StartItem "UACM360"
 	Player.StartItem "Gothic_Shotgun"
@@ -2254,7 +2253,7 @@ ACTOR DartPower : "DPT-HQ-Player"
 	Player.StartItem "RedSprayPaint"
 	Player.StartItem "GreenSprayPaint"
 	Player.StartItem "SprayPaint"
-	Player.StartItem "Dick"
+	Player.StartItem "DartPowerDick"
 	Player.StartItem "DPTKEYCARD", 1
 	Player.StartItem "Artipoisonbag", 25
 	Player.ColorRange 112, 127
@@ -4986,6 +4985,167 @@ ACTOR DogClass : "DPT-HQ-Player"
 	}
 }
 
+ACTOR VodkaClass : "DPT-HQ-Player"
+{
+	DamageFactor "PrisonPower", 100.0
+	Speed 1
+	Health 100
+	Radius 16
+	Height 56
+	Mass 100
+	PainChance 255
+	Player.DisplayName "WIP: Vodka"
+	Player.SoundClass "Vodka"
+	Player.StartItem "VodkaUnarmed"
+	Player.StartItem "Dick"
+	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satcheler"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
+	Player.StartItem "Rivets", 225
+	Player.StartItem "Stamina", 999
+	Player.StartItem "HungryLevel", 999
+	Player.StartItem "Cash", 999
+	Player.StartItem "Artipoisonbag", 25
+	Player.ColorRange 112, 127
+	States
+	{
+	Spawn:
+		VODK A 1
+		VODK A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		Loop
+	Spawn_Drunk:
+		VODK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		VODK A 20
+		VODK A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		Goto SpD_3
+	SpD_1:
+		VODK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		VODK A 1 A_SetPitch(-0.20)
+		VODK A 1 A_SetPitch(0.20)
+		VODK A 1 A_SetPitch(0.30)
+		VODK A 1 A_SetPitch(-0.42)
+		Goto Spawn_Drunk
+	SpD_2:
+		VODK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		VODK A 1 A_SetPitch(-0.30)
+		VODK A 1 A_SetPitch(-0.30)
+		VODK A 1 A_SetPitch(-0.30)
+		VODK A 1 A_SetPitch(-0.30)
+		Goto Spawn_Drunk
+	SpD_3:
+		VODK A 0 A_JumpIf (momx > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy > 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momx < 0, "See_Drunk")
+		VODK A 0 A_JumpIf (momy < 0, "See_Drunk")
+		VODK A 1 A_SetPitch(0.30)
+		VODK A 1 A_SetPitch(0.30)
+		VODK A 1 A_SetPitch(0.30)
+		VODK A 1 A_SetPitch(0.30)
+		VODK A 1 A_SetAngle(random(-angle-15,angle+15))
+		Goto Spawn_Drunk
+	See:
+        VODK AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		VODK A 0 A_SpawnItem("Footstep",30,0.001)
+		VODK CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		VODK A 0 A_SpawnItem("Footstep",30,0.001)
+		Loop
+	See_Drunk:
+        VODK AB 4 A_SetPitch(-0.30)
+		VODK CD 4 A_SetPitch(0.50)
+        VODK AB 4 A_SetPitch(-0.20)
+		VODK CD 4 A_SetPitch(0.25)
+		VODK A 0 A_Jump(26, "Vomit")
+        VODK AB 4 A_SetPitch(-0.90)
+		VODK CD 4 A_SetAngle(random(angle-5,angle+5))
+		Goto Spawn_Drunk
+	Vomit:
+		VODK GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		VODK G 0 A_PlaySound("player/vomit", 2)
+		VODK GGGGGGGGGG 1 A_Stop
+		VODK G 0 A_SetPitch(-0.85)
+		VODK GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		VODK A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		VODK GGGGGGGG 1 A_Stop
+		Goto Spawn_Drunk
+	Missile:
+		VODK A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		VODK E 12 
+		Goto Spawn
+	Missile_Drunk:
+		VODK A 0 A_SetAngle(random(angle-12,angle+12))
+		VODK EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		Goto Spawn_Drunk
+	Melee:
+		VODK A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		VODK F 6 BRIGHT
+		Goto Missile
+	Melee_Drunk:
+		VODK FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		Goto Missile_Drunk
+	Pain.Jail:
+		VODK A 0 ACS_ExecuteAlways(700, 0)
+		Goto Spawn
+	Pain.Fire:
+		VODK G 4 
+		VODK G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		Goto Spawn
+	Pain:
+		VODK G 4 
+		VODK G 4 A_Pain
+		Goto Spawn
+	Pain_Drunk:
+		VODK A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		VODK G 4 A_SetPitch(0.75)
+		VODK G 4 A_Pain
+		Goto Spawn_Drunk
+	Death:
+		VODK A 0 A_TakeInventory("DrunkLevel", 100)
+		VODK H 10
+		VODK I 10 A_PlayerScream
+		VODK J 10 A_NoBlocking
+		VODK KLM 10
+		VODK N -1
+		Stop
+	XDeath:
+		VODK A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		VODK A 0 A_TakeInventory("DrunkLevel", 100)
+		VODK H 5
+		VODK I 5 A_XScream
+		VODK J 5 A_NoBlocking
+		VODK KLM 5
+		VODK N -1
+		Stop
+	Burn:
+		BURN A 0 A_TakeInventory("DrunkLevel", 100)
+        BURN A 3 Bright A_PlaySound("*burndeath")
+        BURN B 3 Bright
+        BURN C 3 Bright
+        BURN D 3 Bright A_NoBlocking
+        BURN E 5 Bright
+        BURN FGH 5 Bright
+        BURN I 5 Bright
+        BURN JKL 5 Bright
+        BURN M 5 Bright
+        BURN N 5 Bright
+        BURN OPQPQ 5 Bright
+        BURN RSTU 7 Bright
+        BURN V -1
+        Stop
+	}
+}
+
 /*
 ACTOR TemplateClass : "DPT-HQ-Player"
 {
@@ -5169,7 +5329,6 @@ ACTOR ZombieManClass : "DPT-HQ-Player"
 	Player.ViewHeight 41
 	Player.SoundClass "ZombieManClass"
 	Player.JumpZ 10
-	+NOSKIN
 	+NOPAIN
 	-PICKUP
 	-FRIENDLY
@@ -5232,7 +5391,6 @@ ACTOR ShotgunGuyClass : "DPT-HQ-Player"
 	Player.DisplayName "Sergeant"
 	Player.SoundClass "ShotgunGuyClass"
 	+NOPAIN
-	+NOSKIN
 	-PICKUP
 	-FRIENDLY
 	+NOTARGET
@@ -5292,7 +5450,6 @@ ACTOR ChainGunGuyClass : "DPT-HQ-Player"
 	Player.JumpZ 10
 	+NOPAIN
 	-PICKUP
-	+NOSKIN
 	-FRIENDLY
 	+NOTARGET
 	+NOTRIGGER
@@ -5363,7 +5520,6 @@ ACTOR DooMImpClass : "DPT-HQ-Player"
 	Player.DisplayName "DoomImp"
 	-FRIENDLY
 	+NOTARGET
-	+NOSKIN
 	+NOPAIN
 	-PICKUP
 	+LONGMELEERANGE
@@ -5430,7 +5586,6 @@ ACTOR DemonClass : "DPT-HQ-Player"
 	+NOTARGET
 	-PICKUP
 	+NOPAIN
-	+NOSKIN
 	+LONGMELEERANGE
 	+NOTRIGGER
 	states
@@ -5466,7 +5621,6 @@ ACTOR SpectreClass : DemonClass
 	RenderStyle OptFuzzy
 	Alpha 0.5
 	-PICKUP
-	+NOSKIN
 	+SHADOW
 	+NOPAIN
 	-FRIENDLY
@@ -5503,7 +5657,6 @@ ACTOR LostSoulClass : "DPT-HQ-Player"
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
 	-PICKUP
-	+NOSKIN
 	+NOPAIN
 	-FRIENDLY
 	+NOTARGET
@@ -5566,7 +5719,6 @@ ACTOR CacodemonClass : "DPT-HQ-Player"
 	Player.StartItem "Cash", 999
 	BloodColor "blue"
 	-PICKUP
-	+NOSKIN
 	+NOPAIN
 	-FRIENDLY
 	+NOTARGET
@@ -5623,7 +5775,6 @@ ACTOR PainElementalClass : "DPT-HQ-Player"
 	Player.StartItem "Cash", 999
 	Player.JumpZ 0
 	-PICKUP
-	+NOSKIN
 	+NOPAIN
 	-FRIENDLY
 	+NOTARGET
@@ -5677,7 +5828,6 @@ ACTOR RevenantClass : "DPT-HQ-Player"
 	-PICKUP
 	+LONGMELEERANGE
 	+MISSILEMORE
-	+NOSKIN
 	+NOPAIN
 	-FRIENDLY
 	+NOTARGET
