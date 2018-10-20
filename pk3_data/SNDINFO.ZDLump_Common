@@ -1122,6 +1122,35 @@ $playeralias "LXandro" male *usefail DukeUseFail
 $playeralias "LXandro" male *surface dsdukgsp
 $playeralias "LXandro" male *taunt DukeTaunts
 
+VDKP_CAR
+VDKP_DNH
+VDKP_HUL
+VDKP_MMM
+VDKP_PEN
+VDKP_PN1
+VDKP_PUT
+VDKP_PZD
+VDKP_SE2
+VDKP_SEE
+VDKP_SUK
+VDKP_UEB
+VDKP_USF
+VDKP_VEB
+VDKP_VHD
+VDKP_VIH
+$random VDKP_SND { VDKP_CAR VDKP_DNH VDKP_HUL VDKP_MMM VDKP_PEN VDKP_PN1 VDKP_PUT  VDKP_PZD VDKP_SE2 VDKP_SEE VDKP_SUK VDKP_UEB VDKP_USF VDKP_VEB VDKP_VHD VDKP_VIH }
+$playeralias "Vodka" male *pain100 VDKP_SND
+$playeralias "Vodka" male *pain75 VDKP_SND
+$playeralias "Vodka" male *pain50 VDKP_SND
+$playeralias "Vodka" male *pain25 VDKP_SND
+$playeralias "Vodka" male *death VDKP_SND
+$playeralias "Vodka" male *xdeath VDKP_SND
+$playeralias "Vodka" male *usefail VDKP_SND
+$playeralias "Vodka" male *grunt VDKP_SND
+$playeralias "Vodka" male *land VDKP_SND
+$playeralias "Vodka" male *jump VDKP_SND
+$playeralias "Vodka" male *taunt VDKP_SND 
+
 dsposit1 dsposit1
 dsposit2 dsposit2
 dsposit3 dsposit3
@@ -4340,7 +4369,7 @@ DSHGTSIT DSHGTSIT
 DSSLURP DSSLURP
 DSWLFSCT DSWLFSCT
 DSBBOMDI DSBBOMDI
-DSBBOMGO DSSPRY
+DSBBOMGO DSBBOMGO //DSSPRY // WTF? WHY IT HERE...
 DSHITHO2 DSHITHOF
 DSTANKSH DSTANKSH
 DSBOS1RG DSBOS1RG
