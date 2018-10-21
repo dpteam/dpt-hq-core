@@ -107,6 +107,80 @@ ACTOR DUMP3WeaponDropCooldown : DUMP3Cooldown
 
 // Weapons
 
+// ALL CLASSES UNARMED
+ACTOR Unarmed : "DPT.HQ-Weapon"
+{
+	//$Category Weapons
+	+WEAPON.CHEATNOTWEAPON
+	+INVENTORY.UNDROPPABLE
+	AttackSound "fist/hit"
+	States
+	{
+	Ready:
+		HAND ABCD 2
+        PNRS ABCD 2
+		HAND A 0 A_PlaySound("KNUCKLED")
+	RealReady:
+		PNRD A 9 A_WeaponReady
+		Loop
+    Deselect:
+		PNRD A 1 A_Lower
+		Loop
+	Select:
+		PNRD A 0 A_Raise
+		Wait
+	Fire:
+		PNRD A 1 A_Jump(255,"Fire1","Fire2")
+		Goto RealReady
+	Fire1:
+		TNT1 A 1 A_SetSpeed(0.0)
+		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 4)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		PNRD A 1 offset(0,78) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		PNRD A 1 offset(0,45) A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		PNRD A 1 A_ZoomFactor(0.95)
+		PNRD B 4 A_CustomPunch(12,0,0,"FistPuff")
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD A 1 A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD A 1 offset(0,32) A_ZoomFactor(0.97)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD A 1 offset(0,45) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD A 1 offset(0,64) A_ZoomFactor(0.99)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD A 1 offset(0,96) A_ZoomFactor(1.00)
+		TNT1 A 4
+		TNT1 A 1 A_SetSpeed(1.0)
+		Goto RealReady
+	Fire2:
+		TNT1 A 1 A_SetSpeed(0.0)
+		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 5)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		PNRD C 1 offset(0,78) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		PNRD C 1 offset(0,45) A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		PNRD C 1 A_ZoomFactor(0.95)
+		PNRD D 4 A_CustomPunch(12,0,0,"FistPuff")
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD C 1 A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD C 1 offset(0,32) A_ZoomFactor(0.97)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD C 1 offset(0,45) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD C 1 offset(0,64) A_ZoomFactor(0.99)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		PNRD C 1 offset(0,96) A_ZoomFactor(1.00)
+		TNT1 A 4
+		TNT1 A 1 A_SetSpeed(1.0)
+		Goto RealReady
+	}
+}
+
 ACTOR Unarmed : "DPT.HQ-Weapon"
 {
 	AttackSound "fist/hit"
@@ -316,6 +390,150 @@ ACTOR VodkaUnarmed : "DPT.HQ-Weapon"
 		PCW3 C 2 A_PlaySound("fist/brutalmodeswing")
 		PCW3 D 2 A_CustomPunch(12,0,0,"FistPuff")
 		PCW3 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	}
+}
+ACTOR ArmymanUnarmed : "DPT.HQ-Weapon" // WORKER
+{
+	//$Category Weapons
+	AttackSound "fist/hit"
+	+WEAPON.CHEATNOTWEAPON
+	+INVENTORY.UNDROPPABLE
+	States
+	{
+	Ready:
+		PCW1 ABCD 4
+		PCW1 A 0 A_PlaySound("KNUCKLED")
+        PCW1 EFG 3
+	RealReady:
+		PCW2 A 9 A_WeaponReady
+		Loop
+    Deselect:
+		NULL A 1 A_Lower
+		Loop
+	Select:
+		NULL A 0 A_Raise
+		Wait
+	Fire:
+		PCW2 A 0 A_JumpIfInventory("StrongItem",1,"StrongFire")
+	NormalFire:
+		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"Right")
+	Left:
+		PCW2 B 2
+		PCW2 C 2 A_PlaySound("fist/dodge")
+		PCW2 D 2 A_CustomPunch(8,0,0,"FistPuff")
+		PCW2 E 1
+		PCW2 F 1
+		PCW2 G 1
+		PCW2 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	Right:
+		PCW2 I 2
+		PCW2 J 2 A_PlaySound("fist/dodge")
+		PCW2 K 2 A_CustomPunch(8,0,0,"FistPuff")
+		PCW2 L 1
+		PCW2 M 1
+		PCW2 N 1
+		PCW2 O 2 A_TakeInventory("FistSeq",1)
+		Goto RealReady
+	StrongFire:
+		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"StrongRight")
+	StrongLeft:
+		PCW2 B 2
+		PCW2 C 2 A_PlaySound("fist/brutalmodeswing")
+		PCW2 D 2 A_CustomPunch(32,0,0,"FistPuff")
+		PCW2 E 1
+		PCW2 F 1
+		PCW2 G 1
+		PCW2 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	StrongRight:
+		PCW2 I 2
+		PCW2 J 2 A_PlaySound("fist/brutalmodeswing")
+		PCW2 K 2 A_CustomPunch(32,0,0,"FistPuff")
+		PCW2 L 1
+		PCW2 M 1
+		PCW2 N 1
+		PCW2 O 2 A_TakeInventory("FistSeq",1)
+		Goto RealReady
+	AltFire:
+		PCW3 B 2
+		PCW3 C 2 A_PlaySound("fist/brutalmodeswing")
+		PCW3 D 2 A_CustomPunch(12,0,0,"FistPuff")
+		PCW3 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	}
+}
+ACTOR LXandroUnarmed : "DPT.HQ-Weapon"
+{
+	//$Category Weapons
+	+WEAPON.CHEATNOTWEAPON
+	+INVENTORY.UNDROPPABLE
+	Obituary "%k has kicked %o's ass."
+	AttackSound "fist/hit"
+	States
+	{
+	Ready:
+		DNKN ABC 2
+		DNKN CBA 2
+		DNKN A 0 A_PlaySound("KNUCKLED")
+	RealReady:
+		TNT1 A 9 A_WeaponReady
+		Loop
+    Deselect:
+		TNT1 A 1 A_Lower
+		Loop
+	Select:
+		TNT1 A 0 A_Raise
+		Wait
+	Fire:
+		DNBT A 1 A_Jump(255,"Fire1","Fire2")
+		Goto RealReady
+	Fire1:
+		TNT1 A 1 A_SetSpeed(0.0)
+		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 4)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT A 1 offset(0,78) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT A 1 offset(0,45) A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT A 1 A_ZoomFactor(0.95)
+		DNBT B 4 A_CustomPunch(12,0,0,"FistPuff")
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,32) A_ZoomFactor(0.97)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,45) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,64) A_ZoomFactor(0.99)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,96) A_ZoomFactor(1.00)
+		TNT1 A 4
+		TNT1 A 1 A_SetSpeed(1.0)
+		Goto RealReady
+	Fire2:
+		TNT1 A 1 A_SetSpeed(0.0)
+		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 5)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT C 1 offset(0,78) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT C 1 offset(0,45) A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT C 1 A_ZoomFactor(0.95)
+		DNBT D 4 A_CustomPunch(12,0,0,"FistPuff")
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,32) A_ZoomFactor(0.97)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,45) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,64) A_ZoomFactor(0.99)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,96) A_ZoomFactor(1.00)
+		TNT1 A 4
+		TNT1 A 1 A_SetSpeed(1.0)
 		Goto RealReady
 	}
 }
@@ -15001,153 +15219,7 @@ ACTOR ArmymanSVD : "DPT.HQ-Weapon" 26376
 	}
 }
 
-ACTOR ArmymanUnarmed : "DPT.HQ-Weapon" // WORKER
-{
-	//$Category Weapons
-	AttackSound "fist/hit"
-	+WEAPON.CHEATNOTWEAPON
-	+INVENTORY.UNDROPPABLE
-	States
-	{
-	Ready:
-		PCW1 ABCD 4
-		PCW1 A 0 A_PlaySound("KNUCKLED")
-        PCW1 EFG 3
-	RealReady:
-		PCW2 A 9 A_WeaponReady
-		Loop
-    Deselect:
-		NULL A 1 A_Lower
-		Loop
-	Select:
-		NULL A 0 A_Raise
-		Wait
-	Fire:
-		PCW2 A 0 A_JumpIfInventory("StrongItem",1,"StrongFire")
-	NormalFire:
-		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"Right")
-	Left:
-		PCW2 B 2
-		PCW2 C 2 A_PlaySound("fist/dodge")
-		PCW2 D 2 A_CustomPunch(8,0,0,"FistPuff")
-		PCW2 E 1
-		PCW2 F 1
-		PCW2 G 1
-		PCW2 A 2 A_GiveInventory("FistSeq",1)
-		Goto RealReady
-	Right:
-		PCW2 I 2
-		PCW2 J 2 A_PlaySound("fist/dodge")
-		PCW2 K 2 A_CustomPunch(8,0,0,"FistPuff")
-		PCW2 L 1
-		PCW2 M 1
-		PCW2 N 1
-		PCW2 O 2 A_TakeInventory("FistSeq",1)
-		Goto RealReady
-	StrongFire:
-		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"StrongRight")
-	StrongLeft:
-		PCW2 B 2
-		PCW2 C 2 A_PlaySound("fist/brutalmodeswing")
-		PCW2 D 2 A_CustomPunch(32,0,0,"FistPuff")
-		PCW2 E 1
-		PCW2 F 1
-		PCW2 G 1
-		PCW2 A 2 A_GiveInventory("FistSeq",1)
-		Goto RealReady
-	StrongRight:
-		PCW2 I 2
-		PCW2 J 2 A_PlaySound("fist/brutalmodeswing")
-		PCW2 K 2 A_CustomPunch(32,0,0,"FistPuff")
-		PCW2 L 1
-		PCW2 M 1
-		PCW2 N 1
-		PCW2 O 2 A_TakeInventory("FistSeq",1)
-		Goto RealReady
-	AltFire:
-		PCW3 B 2
-		PCW3 C 2 A_PlaySound("fist/brutalmodeswing")
-		PCW3 D 2 A_CustomPunch(12,0,0,"FistPuff")
-		PCW3 A 2 A_GiveInventory("FistSeq",1)
-		Goto RealReady
-	}
-}
-
 // LXandro Weapons (Duke Nukem)
-
-ACTOR LXandroUnarmed : "DPT.HQ-Weapon"
-{
-	//$Category Weapons
-	+WEAPON.CHEATNOTWEAPON
-	+INVENTORY.UNDROPPABLE
-	Obituary "%k has kicked %o's ass."
-	AttackSound "fist/hit"
-	States
-	{
-	Ready:
-		DNKN ABC 2
-		DNKN CBA 2
-		DNKN A 0 A_PlaySound("KNUCKLED")
-	RealReady:
-		TNT1 A 9 A_WeaponReady
-		Loop
-    Deselect:
-		TNT1 A 1 A_Lower
-		Loop
-	Select:
-		TNT1 A 0 A_Raise
-		Wait
-	Fire:
-		DNBT A 1 A_Jump(255,"Fire1","Fire2")
-		Goto RealReady
-	Fire1:
-		TNT1 A 1 A_SetSpeed(0.0)
-		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 4)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT A 1 offset(0,78) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT A 1 offset(0,45) A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT A 1 A_ZoomFactor(0.95)
-		DNBT B 4 A_CustomPunch(12,0,0,"FistPuff")
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,32) A_ZoomFactor(0.97)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,45) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,64) A_ZoomFactor(0.99)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,96) A_ZoomFactor(1.00)
-		TNT1 A 4
-		TNT1 A 1 A_SetSpeed(1.0)
-		Goto RealReady
-	Fire2:
-		TNT1 A 1 A_SetSpeed(0.0)
-		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 5)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT C 1 offset(0,78) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT C 1 offset(0,45) A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT C 1 A_ZoomFactor(0.95)
-		DNBT D 4 A_CustomPunch(12,0,0,"FistPuff")
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,32) A_ZoomFactor(0.97)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,45) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,64) A_ZoomFactor(0.99)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,96) A_ZoomFactor(1.00)
-		TNT1 A 4
-		TNT1 A 1 A_SetSpeed(1.0)
-		Goto RealReady
-	}
-}
 
 ACTOR LXandroChaingunCannon : "DPT.HQ-Weapon" 26392
 {
