@@ -5652,7 +5652,7 @@ ACTOR LostSoulClass : "DPT-HQ-Player"
 	Player.AttackZOffset 5
 	RenderStyle SoulTrans
 	Player.StartItem "MLostSoulWeap"
-	Player.StartItem "Flighter"
+	Player.StartItem "Flighter", 1
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
@@ -5713,7 +5713,7 @@ ACTOR CacodemonClass : "DPT-HQ-Player"
 	Player.JumpZ 0
 	BloodColor "blue"
 	Player.StartItem "CacoBaller"
-	Player.StartItem "Flighter"
+	Player.StartItem "Flighter", 1
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
@@ -5769,7 +5769,7 @@ ACTOR PainElementalClass : "DPT-HQ-Player"
 	Player.SoundClass "PainElementalClass"
 	Player.DisplayName "Pain Elemental"
 	Player.StartItem "PainElementWeap"
-	Player.StartItem "Flighter"
+	Player.StartItem "Flighter", 1
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
