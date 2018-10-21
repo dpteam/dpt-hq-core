@@ -110,79 +110,6 @@ ACTOR DUMP3WeaponDropCooldown : DUMP3Cooldown
 // ALL CLASSES UNARMED
 ACTOR Unarmed : "DPT.HQ-Weapon"
 {
-	//$Category Weapons
-	+WEAPON.CHEATNOTWEAPON
-	+INVENTORY.UNDROPPABLE
-	AttackSound "fist/hit"
-	States
-	{
-	Ready:
-		HAND ABCD 2
-        PNRS ABCD 2
-		HAND A 0 A_PlaySound("KNUCKLED")
-	RealReady:
-		PNRD A 9 A_WeaponReady
-		Loop
-    Deselect:
-		PNRD A 1 A_Lower
-		Loop
-	Select:
-		PNRD A 0 A_Raise
-		Wait
-	Fire:
-		PNRD A 1 A_Jump(255,"Fire1","Fire2")
-		Goto RealReady
-	Fire1:
-		TNT1 A 1 A_SetSpeed(0.0)
-		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 4)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		PNRD A 1 offset(0,78) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		PNRD A 1 offset(0,45) A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		PNRD A 1 A_ZoomFactor(0.95)
-		PNRD B 4 A_CustomPunch(12,0,0,"FistPuff")
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD A 1 A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD A 1 offset(0,32) A_ZoomFactor(0.97)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD A 1 offset(0,45) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD A 1 offset(0,64) A_ZoomFactor(0.99)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD A 1 offset(0,96) A_ZoomFactor(1.00)
-		TNT1 A 4
-		TNT1 A 1 A_SetSpeed(1.0)
-		Goto RealReady
-	Fire2:
-		TNT1 A 1 A_SetSpeed(0.0)
-		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 5)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		PNRD C 1 offset(0,78) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		PNRD C 1 offset(0,45) A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		PNRD C 1 A_ZoomFactor(0.95)
-		PNRD D 4 A_CustomPunch(12,0,0,"FistPuff")
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD C 1 A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD C 1 offset(0,32) A_ZoomFactor(0.97)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD C 1 offset(0,45) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD C 1 offset(0,64) A_ZoomFactor(0.99)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		PNRD C 1 offset(0,96) A_ZoomFactor(1.00)
-		TNT1 A 4
-		TNT1 A 1 A_SetSpeed(1.0)
-		Goto RealReady
-	}
-}
-
-ACTOR Unarmed : "DPT.HQ-Weapon"
-{
 	AttackSound "fist/hit"
 	//$Category Weapons
 	States
@@ -5037,7 +4964,7 @@ ACTOR JabChecker2 : Inventory
 	Inventory.MaxAmount 1
 }
 ACTOR BulletSnuff : BulletPuff {} // FROM MOD NAMED XXX-MERECEANIES // NOT NEEDED TO ADD
-ACTOR DartPowerFists : Fist
+ACTOR DartPowerUnarmed : "DPT.HQ-Weapon" 
 {
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.MELEEWEAPON
@@ -7346,9 +7273,7 @@ ACTOR HealthRestoring : PowerupGiver
 ACTOR RepairTool : Weapon 6544
 {
 	//$Category Weapons
-	Weapon.SlotNumber 0
 	Weapon.Kickback 0
-	Weapon.SelectionOrder 2200
 	Inventory.PickupMessage "You got the Repair Tool (Slot 0)"
 	Obituary "$OB_MPCHAINSAW"
 	+WEAPON.MELEEWEAPON		
@@ -11168,7 +11093,6 @@ ACTOR CubeFear : PowerupGiver
 // ETC
 ACTOR Railgun : "DPT.HQ-Weapon" 5012 //replaces Chainsaw
 {
-	Weapon.Selectionorder 2200
 	Weapon.AmmoUse 10
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "Cell"
