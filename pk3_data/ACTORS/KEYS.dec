@@ -131,7 +131,7 @@ ACTOR MilitaryBaseBunkerSpecialCard : DoomKey
 ACTOR PrisonKey2 : DoomKey
 {
   Inventory.Pickupmessage "Picked up a DPT Police's prison key."
-  //Inventory.Icon "HUDKYBLU" // PRISON ICON (Решетки)
+  Inventory.Icon "HUDKYPKY"
   States
   {
   Spawn:
@@ -144,7 +144,7 @@ ACTOR PrisonKey2 : DoomKey
 ACTOR DPTKEYCARD : DoomKey
 {
   Inventory.Pickupmessage "Picked up a DPT KEY CARD."
-  //Inventory.Icon "HUDKYBLU" // DPT ICON
+  Inventory.Icon "HUDKYDPT"
   States
   {
   Spawn:
@@ -157,7 +157,7 @@ ACTOR DPTKEYCARD : DoomKey
 ACTOR DPTNICKBOCKKEYCARD : DoomKey
 {
   Inventory.Pickupmessage "Picked up a GAY KEY CARD."
-  //Inventory.Icon "HUDKYBLU" // NickBock icon (Рожа как старая на яндексе, можно с DartPower.CU.CC бекапа достать / можно HD сделать, HIRES)
+  Inventory.Icon "HUDKYDPT"
   States
   {
   Spawn:
@@ -170,7 +170,7 @@ ACTOR DPTNICKBOCKKEYCARD : DoomKey
 ACTOR SHITKEY : DoomKey 26253
 {
   Inventory.Pickupmessage "Picked up a SHIT KEY CARD."
-  //Inventory.Icon "HUDKYBLU" // merda icon (можно HD сделать, HIRES)
+  Inventory.Icon "HUDKYGVN"
   States
   {
   Spawn:
