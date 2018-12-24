@@ -1,4 +1,4 @@
-[DPT.HQ](https://i.imgur.com/3I6n1Wl.png)
+[https://i.imgur.com/3I6n1Wl.png](DPT.HQ)
 
 ## Core component
 
