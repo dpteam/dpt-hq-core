@@ -10,7 +10,7 @@ Spawn:
 		stop
 	}
 }
-ACTOR Flighter : PowerUpGiver
+ACTOR Flighter : PowerUpGiver // WORKER
 {
 	Powerup.Type "Flight"
 	Powerup.Duration 0x7fffffff
@@ -145,7 +145,7 @@ Use:
 		Stop
 	}
 }
-ACTOR Cash : Ammo
+ACTOR Cash : Ammo 26409
 {
 	//$Category Collectables
 	Inventory.Amount 0
@@ -723,8 +723,9 @@ Actor RandomFood : RandomSpawner 26254
 	Dropitem "Sweets1", 255
 	Dropitem "Sweets2", 255
 }
-ACTOR Cookie1 : HealthBonus
+ACTOR Cookie1 : HealthBonus 26410
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Cookie." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -734,8 +735,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Cookie2 : HealthBonus
+ACTOR Cookie2 : HealthBonus 26411
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Cookie." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -745,8 +747,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Doughnut1 : HealthBonus
+ACTOR Doughnut1 : HealthBonus 26412
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Doughnut." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -756,8 +759,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Doughnut2 : HealthBonus
+ACTOR Doughnut2 : HealthBonus 26413
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Doughnut." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -767,8 +771,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Candy : HealthBonus
+ACTOR Candy : HealthBonus 26414
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Candy." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -778,8 +783,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Candy2 : HealthBonus
+ACTOR Candy2 : HealthBonus 26415
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Candy." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -789,8 +795,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Chocolate : HealthBonus
+ACTOR Chocolate : HealthBonus 26416
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Chocolate."
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -800,8 +807,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Lolipop1 : HealthBonus
+ACTOR Lolipop1 : HealthBonus 26417
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Lolipop." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -811,8 +819,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Lolipop2 : HealthBonus
+ACTOR Lolipop2 : HealthBonus 26418
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Lolipop." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -822,8 +831,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Muffin1 : HealthBonus
+ACTOR Muffin1 : HealthBonus 26419
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Muffin." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -833,8 +843,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Muffin2 : HealthBonus
+ACTOR Muffin2 : HealthBonus 26420
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Muffin." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -844,8 +855,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Icecream1 : HealthBonus
+ACTOR Icecream1 : HealthBonus 26421
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Ice cream!!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -855,8 +867,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Icecream2 : HealthBonus
+ACTOR Icecream2 : HealthBonus 26422
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Ice cream!!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -866,8 +879,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Icecream3 : HealthBonus
+ACTOR Icecream3 : HealthBonus 26423
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Ice cream!!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -877,8 +891,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Icecream4 : HealthBonus
+ACTOR Icecream4 : HealthBonus 26424
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Ice cream!!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -888,8 +903,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Icecream5 : HealthBonus
+ACTOR Icecream5 : HealthBonus 26425
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Ice cream!!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -899,8 +915,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Icecream6 : HealthBonus
+ACTOR Icecream6 : HealthBonus 26426
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Ice cream!!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -910,8 +927,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Pudding1 : HealthBonus
+ACTOR Pudding1 : HealthBonus 26427
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Pudding." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -921,8 +939,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Pudding2 : HealthBonus
+ACTOR Pudding2 : HealthBonus 26428
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Pudding." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -932,8 +951,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Burger : HealthBonus
+ACTOR Burger : HealthBonus 26429
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Burger." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -943,8 +963,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Cake1 : HealthBonus
+ACTOR Cake1 : HealthBonus 26430
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Cake!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -954,8 +975,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Cake2 : HealthBonus
+ACTOR Cake2 : HealthBonus 26431
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Cake!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -965,8 +987,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Cake3 : HealthBonus
+ACTOR Cake3 : HealthBonus 26432
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Cake!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -976,8 +999,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Cake4 : HealthBonus
+ACTOR Cake4 : HealthBonus 26433
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up Cake!" 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -987,8 +1011,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Waffle1 : HealthBonus
+ACTOR Waffle1 : HealthBonus 26434
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Waffle." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -998,8 +1023,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Waffle2 : HealthBonus
+ACTOR Waffle2 : HealthBonus 26435
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up a Waffle." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -1009,8 +1035,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Sweets1 : HealthBonus
+ACTOR Sweets1 : HealthBonus 26436
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up some Sweets."
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -1020,8 +1047,9 @@ Spawn:
 		Loop
 	}
 }
-ACTOR Sweets2 : HealthBonus
+ACTOR Sweets2 : HealthBonus 26437
 {
+	//$Category Food
 	Inventory.PickupMessage "Picked up some Sweets." 
 	Inventory.PickupSound "Pickup/Food" 
 	States
@@ -1060,5 +1088,65 @@ ACTOR DoomScanner : PowerupGiver
 Spawn:
 		TNT1 A 1
 		stop
+	}
+}
+ACTOR BGTG_A : HealthBonus 26438
+{
+	//$Category SurpriseItems
+	Inventory.PickupMessage "Picked up!" 
+	Inventory.PickupSound "BGTGPICK" 
+	States
+	{
+Spawn:
+		BGTG A 2
+		Loop
+	}
+}
+ACTOR BGTG_B : HealthBonus 26439
+{
+	//$Category SurpriseItems
+	Inventory.PickupMessage "Picked up!" 
+	Inventory.PickupSound "BGTGPICK" 
+	States
+	{
+Spawn:
+		BGTG B 2
+		Loop
+	}
+}
+ACTOR BGTG_C : HealthBonus 26440
+{
+	//$Category SurpriseItems
+	Inventory.PickupMessage "Picked up!" 
+	Inventory.PickupSound "BGTGPICK" 
+	States
+	{
+Spawn:
+		BGTG C 2
+		Loop
+	}
+}
+ACTOR BGTG_D : HealthBonus 26441
+{
+	//$Category SurpriseItems
+	Inventory.PickupMessage "Picked up!" 
+	Inventory.PickupSound "BGTGPICK" 
+	States
+	{
+Spawn:
+		BGTG D 2
+		Loop
+	}
+}
+ACTOR BGTG_E : HealthBonus 26442
+{
+	//$Category SurpriseItems
+	Inventory.PickupMessage "Picked up!" 
+	Inventory.PickupSound "BGTGPICK" 
+	States
+	{
+Spawn:
+		BGTG E 2
+		Loop
 	}
 }
