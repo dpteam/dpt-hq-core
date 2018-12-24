@@ -29,7 +29,7 @@ CREDITS Currently Work in Progress, if im forgot some, please say it in issues. 
 
 Also info for paranoics:
 
-7z console archiver here from official 32-bit release 18.01
+7z console archiver here from official 64-bit release 18.05
 
 You can check 3 hash types (CRC32, MD5 & SHA1) in "7z.*.hash" files,
 
@@ -37,7 +37,7 @@ open with your archiver the exe of installer and extract files,
 
 and compare hashes with official installed files. (Or extracted from original installer)
 
-Link to original installer: https://www.7-zip.org/a/7z1801.exe
+Link to original installer: https://7-zip.org/a/7z1805-x64.exe
 
 ## Contribution info
 
