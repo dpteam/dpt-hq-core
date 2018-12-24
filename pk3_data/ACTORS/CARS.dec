@@ -662,6 +662,7 @@ ACTOR Car : PowerupGiver
 	Height 52
 	Inventory.PickupSound "Car/Start"
 	Inventory.PickupMessage "You got a Car!"
+	DamageFactor "Melee", 0.05
 	States
 	{
 Spawn:

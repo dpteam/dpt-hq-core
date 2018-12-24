@@ -2872,6 +2872,7 @@ Spawn:
 }
 ACTOR ParkedCar 12356
 {
+	//$Category Cars
 	Health	1
 	Height	1
 	Radius	1
@@ -2910,8 +2911,9 @@ Spawn6:
 		Stop
 	}	
 }
-ACTOR GreenCar
+ACTOR GreenCar 26443
 {
+	//$Category Cars
 	+SHOOTABLE
 	+SOLID
 	+FLOORCLIP
@@ -2923,6 +2925,7 @@ ACTOR GreenCar
 	Gravity 0.7
 	Scale 0.8
 	Mass	99999999
+	DamageFactor "Melee", 0.05
 	DamageFactor "Stomp", 50.0
 	DamageFactor "Cut", 0.05
 	DeathSound "weapons/rocklx"
@@ -2959,33 +2962,39 @@ Death:
 		Stop
 	}
 }
-ACTOR BlueCar: GreenCar
+ACTOR BlueCar: GreenCar 26444
 {
+	//$Category Cars
 	Health	100
 	Translation "112:127=194:207"
 }
-ACTOR RedCar: GreenCar
+ACTOR RedCar: GreenCar 26445
 {
+	//$Category Cars
 	Health	100
 	Translation "112:127=168:191"
 }
-ACTOR YellowCar: GreenCar
+ACTOR YellowCar: GreenCar 26446
 {
+	//$Category Cars
 	Health	100
 	Translation "112:127=160:167"
 }
-ACTOR GrayCar: GreenCar
+ACTOR GrayCar: GreenCar 26447
 {
+	//$Category Cars
 	Health	100
 	Translation "112:127=96:111"
 }
-ACTOR BrownCar: GreenCar
+ACTOR BrownCar: GreenCar 26448
 {
+	//$Category Cars
 	Health	100
 	Translation "112:127=64:79"
 }
 ACTOR FuckedUpCar 12357
 {
+	//$Category Cars
 	+SHOOTABLE
 	+SOLID
 	+FLOORCLIP
@@ -3000,6 +3009,7 @@ ACTOR FuckedUpCar 12357
 	Mass	99999999
 	DeathSound "weapons/rocklx"
 	DamageFactor "Stomp", 500.0
+	DamageFactor "Melee", 0.05
 	States
 	{
 Spawn:
