@@ -104,7 +104,7 @@ ACTOR DPTHQ_ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel
 	DAMAGEFACTOR "TAUNT", 0.0
 	DAMAGEFACTOR "HEAD", 0.0
 	DAMAGEFACTOR "MINORHEAD", 0.0
-	//SPAWNID 125
+	//SpawnID 125
 	HEALTH 20
 	RADIUS 10
 	HEIGHT 34
@@ -2163,7 +2163,7 @@ D:
 ACTOR Toilet1 290
 {
 	//$Category Objects
-	SpawnID 125
+	//SpawnID 125
 	Tag "Toilet"
 	Health 10
 	Radius 10

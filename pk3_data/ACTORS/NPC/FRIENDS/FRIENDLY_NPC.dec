@@ -1,5 +1,6 @@
 ACTOR Thamara 11888
 {
+	//$Category "NPC - Friendly"
 	Health 500
 	Speed 10
 	PainChance 180
@@ -44,6 +45,7 @@ ACTOR Thamara 11888
 }
 ACTOR Banana 23222
 {
+	//$Category "NPC - Friendly"
     Health 200
     PainChance 0
     Radius 25

@@ -5,7 +5,7 @@ ACTOR MrFalconReload : Inventory
 
 ACTOR MrFalcon
 {
-	SpawnID 7
+	//SpawnID 7
 	YScale 0.35
 	XScale 0.4
 	Radius 20

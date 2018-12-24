@@ -6,9 +6,9 @@
 
 ACTOR GreyColumn 5051
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 40
 	+SOLID
@@ -29,9 +29,9 @@ ACTOR GreyColumn 5051
 
 ACTOR TallGreyColumn 5052
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 52
 	+SOLID
@@ -52,9 +52,9 @@ ACTOR TallGreyColumn 5052
 
 ACTOR GreyHeartColumn 5053
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 40
 	+SOLID
@@ -75,9 +75,9 @@ ACTOR GreyHeartColumn 5053
 
 ACTOR TallGothicColumn 5054
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 52
 	+SOLID
@@ -98,9 +98,9 @@ ACTOR TallGothicColumn 5054
 
 ACTOR RevenantHand 5055
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 16
 	+SOLID
@@ -120,9 +120,9 @@ ACTOR RevenantHand 5055
 
 ACTOR ImpHead2002 26364 //5056
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 8
 	Height 32
 	+SOLID
@@ -142,9 +142,9 @@ ACTOR ImpHead2002 26364 //5056
 
 ACTOR Impse 5058
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 20
 	Height 48
 	+SOLID
@@ -176,9 +176,9 @@ ACTOR FloatingBobbingSkull : FloatingSkull 5009
 
 ACTOR ImpalingSpike 5120
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 64
 	+SOLID
@@ -199,9 +199,9 @@ ACTOR ImpalingSpike 5120
 
 ACTOR ImpalingSpike2 5121
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 56
 	+SOLID
@@ -222,9 +222,9 @@ ACTOR ImpalingSpike2 5121
 
 ACTOR ImpalingSpike3 5122
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 56
 	+SOLID
@@ -245,9 +245,9 @@ ACTOR ImpalingSpike3 5122
 
 ACTOR WhiteTorch 5150
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 68
 	+SOLID
@@ -268,9 +268,9 @@ ACTOR WhiteTorch 5150
 
 ACTOR ShortWhiteTorch 5151
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 37
 	+SOLID
@@ -291,9 +291,9 @@ ACTOR ShortWhiteTorch 5151
 
 ACTOR YellowTorch 5152
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 68
 	+SOLID
@@ -314,9 +314,9 @@ ACTOR YellowTorch 5152
 
 ACTOR ShortYellowTorch 5153
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 37
 	+SOLID
@@ -337,9 +337,9 @@ ACTOR ShortYellowTorch 5153
 
 ACTOR RedEvilEye 5059
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 54
 	+SOLID
@@ -360,9 +360,9 @@ ACTOR RedEvilEye 5059
 
 ACTOR BlueEvilEye 5060
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 54
 	+SOLID
@@ -383,9 +383,9 @@ ACTOR BlueEvilEye 5060
 
 ACTOR RedCandleStick 5156
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 20
 	Height 14
 	States
@@ -404,9 +404,9 @@ ACTOR RedCandleStick 5156
 
 ACTOR BlueCandleStick 5157
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 20
 	Height 14
 	States
@@ -425,9 +425,9 @@ ACTOR BlueCandleStick 5157
 
 ACTOR RedTechLamp 5154
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 80
 	+SOLID
@@ -448,9 +448,9 @@ ACTOR RedTechLamp 5154
 
 ACTOR RedTechLamp2 5155
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 60
 	+SOLID
@@ -471,9 +471,9 @@ ACTOR RedTechLamp2 5155
 
 ACTOR RedColumn 5158
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 48
 	+SOLID
@@ -494,9 +494,9 @@ ACTOR RedColumn 5158
 
 ACTOR BlueColumn 5159
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 48
 	+SOLID
@@ -517,9 +517,9 @@ ACTOR BlueColumn 5159
 
 ACTOR ImpalingSpike4 5320
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 56
 	+SOLID
@@ -540,9 +540,9 @@ ACTOR ImpalingSpike4 5320
 
 ACTOR ImpalingSpike5 5321
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 64
 	+SOLID
@@ -563,9 +563,9 @@ ACTOR ImpalingSpike5 5321
 
 ACTOR ImpalingSpike6 5322
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 45
 	+SOLID
@@ -586,9 +586,9 @@ ACTOR ImpalingSpike6 5322
 
 ACTOR ImpalingSpike7 5323
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 54
 	+SOLID
@@ -609,9 +609,9 @@ ACTOR ImpalingSpike7 5323
 
 ACTOR ImpalingSpike8 5324
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 54
 	+SOLID
@@ -632,9 +632,9 @@ ACTOR ImpalingSpike8 5324
 
 ACTOR ImpalingSpike9 5325
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 64
 	+SOLID
@@ -656,9 +656,9 @@ ACTOR ImpalingSpike9 5325
 
 ACTOR ImpalingSpike10 5326
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 64
 	+SOLID
@@ -679,9 +679,9 @@ ACTOR ImpalingSpike10 5326
 
 ACTOR ImpalingSpike11 5327
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 64
 	+SOLID
@@ -702,9 +702,9 @@ ACTOR ImpalingSpike11 5327
 
 ACTOR MarineHelmetGibs 5328
 {
-	Game Doom
-	Game Heretic
-	Game Hexen
+	//Game Doom
+	//Game Heretic
+	//Game Hexen
 	Radius 16
 	Height 64
 	States

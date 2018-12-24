@@ -26,6 +26,7 @@ ACTOR SpecOpsAK47Reload : Inventory
 }
 ACTOR SpecOps 13800
 {
+	//$Category "Enemies - Humans"
 	Health 100
 	Radius 20
 	Height 56
@@ -36,11 +37,11 @@ ACTOR SpecOps 13800
 	+COUNTKILL
 	+FLOORCLIP
 	+SOLID
-	SeeSound "*taunt"
+	SeeSound "player/taunt"
 	AttackSound "AK47/Fire"
 	PainSound "*pain"
 	DeathSound "*death"
-	ActiveSound "*taunt"
+	ActiveSound "player/taunt"
 	Obituary "$k > AK1337 > $o"
 	DropItem "Clip"
 	DropItem "AK1337"
@@ -104,7 +105,7 @@ ACTOR SpecOps 13800
 }
 Actor MilitaryBaseCommander 10111
 {
-	//$Category "Military"
+	//$Category "Enemies - Military"
 	Speed 10
 	Health 300
 	Radius 16
@@ -154,7 +155,7 @@ Actor MilitaryBaseCommander 10111
 }
 Actor MilitaryBaseCommander2 : MilitaryBaseCommander 11111
 {
-	//$Category "Military"
+	//$Category "Enemies - Military"
 	DropItem "MilitaryBaseBunkerSpecialCard"
 	Health 6000
 	Speed 15
@@ -163,7 +164,7 @@ Actor MilitaryBaseCommander2 : MilitaryBaseCommander 11111
 }
 Actor MilitaryBaseGuard 10112
 {
-	//$Category "Military"
+	//$Category "Enemies - Military"
 	Speed 10
 	Health 300
 	Radius 16
@@ -213,7 +214,7 @@ Actor MilitaryBaseGuard 10112
 }
 Actor MilitaryBaseOpposition 10113
 {
-	//$Category "Military"
+	//$Category "Enemies - Military"
 	Speed 10
 	Health 300
 	Radius 16
@@ -263,7 +264,7 @@ Actor MilitaryBaseOpposition 10113
 }
 Actor MilitaryBaseSniperGuard 10114
 {
-	//$Category "Military"
+	//$Category "Enemies - Military"
 	Speed 10
 	Health 300
 	Radius 16
@@ -319,7 +320,7 @@ Actor MilitaryBaseSniperGuard 10114
 }
 Actor Terrorist 10115
 {
-	//$Category "Enemies"
+	//$Category "Enemies - Humans"
 	Speed 10
 	Health 300
 	Radius 16
@@ -369,7 +370,7 @@ Actor Terrorist 10115
 }
 ACTOR Jitterskull
 {
-	//$Category "Spirits"
+	//$Category "Enemies - Ghouls"
 	Scale 0.13
 	Height 70
 	Radius 15
@@ -418,7 +419,7 @@ ACTOR Jitterskull
 }
 ACTOR RLAgitatingRevenant : Revenant 17756
 {
-	//$Category "SpecialMonsters"
+	//$Category "Monsters - Special"
 	MeleeSound ""
 	PainSound "misc/aaaaaa"
 	Health 5000
@@ -517,7 +518,7 @@ ACTOR PowerRLAgitationCheck : Powerup
 }
 ACTOR CREEPER_AND_RAVAGER_SPECIAL 15608
 {
-	//$Category "SpecialMonsters"
+	//$Category "Monsters - Ghouls"
 	OBITUARY "THE RAVAGER PLACED A CURSE UPON %o."
 	HITOBITUARY "%o SOUL WAS SUCKED OUT BY THE RAVAGER."
 	HEALTH 100
@@ -607,7 +608,7 @@ ACTOR RAVAGERBALL_SPC
 }
 ACTOR SHAR_SVIBORGA 26361
 {
-	//$Category "SpecialMonsters"
+	//$Category "Monsters - Special"
 	OBITUARY "%o. Dismassed."
 	HITOBITUARY "%o. Dismassed."
 	HEALTH 100
@@ -660,7 +661,7 @@ ACTOR SHAR_SVIBORGA 26361
 }
 Actor JustinBieber 26362
 {
-	//$Category "SpecialMonsters"
+	//$Category "Monsters - Special"
 	floatspeed 15
 	Speed 200
 	Scale 0.5
@@ -700,7 +701,7 @@ Actor JustinBieber 26362
 }
 ACTOR ChainsawZombie 3204
 {
-	//$Category "SpecialMonsters"
+	//$Category "Monsters - Special"
 	Scale 0.666
     Health 30
     Radius 20
@@ -770,7 +771,7 @@ ACTOR ChainsawZombie 3204
 }
 ACTOR Prikolist 26399
 {
-	//$Category "SpecialNPC"
+	//$Category "Monsters - Special"
 	Species "Player"
 	DamageFactor "Tourettes", 0.0
 	Health 200
@@ -983,6 +984,7 @@ ACTOR Prikolist 26399
 }
 Actor David : ZombieMan 26400
 {
+	//$Category "Monsters - Special"
 	+MISSILEMORE
 	+MISSILEEVENMORE
 	+LOOKALLAROUND
@@ -1006,4 +1008,235 @@ Actor David : ZombieMan 26400
 		POSS AABBCCDD 3 A_FastChase
 		Loop
 	}
+}
+ACTOR SkyBoxCyberdemon : Cyberdemon 26404
+{
+	//$Category "Monsters - Special"
+	+LOOKALLAROUND
+	Speed 5
+}
+
+Actor BlackDemon 26391
+{
+	//$Category "Monsters - Demons"
+	Health 200
+	PainChance 160
+	Speed 10
+	Radius 30
+	Height 56
+	Mass 400
+	Monster
+	+FLOORCLIP
+	SeeSound "demon/sight"
+	AttackSound "demon/melee"
+	PainSound "demon/pain"
+	DeathSound "demon/death"
+	ActiveSound "demon/active"
+	Obituary "%o was bit by a Black Demon."
+	States
+	{
+	Spawn:
+		DSRG AB 10 A_Look
+		Loop
+	See:
+		DSRG AABBCCDD 2 Fast A_Chase
+		Loop
+	Melee:
+		DSRG EF 8 Fast A_FaceTarget
+		DSRG G 8 Fast A_SargAttack
+		Goto See
+	Pain:
+		DSRG H 2 Fast
+		DSRG H 2 Fast A_Pain
+		Goto See
+	Death:
+		DSRG I 8
+		DSRG J 8 A_Scream
+		DSRG K 4
+		DSRG L 4 A_NoBlocking
+		DSRG M 4
+		DSRG N -1
+		Stop
+	Raise:
+		DSRG N 5
+		DSRG MLKJI 5
+		Goto See
+	}
+}
+
+ACTOR AlphaGuard 26405
+{
+	//$Category "Monsters - Humans"
+	Health 70
+	PainChance 150
+	Speed 7
+	Radius 24
+	Height 64
+	Mass 400
+	Monster
+	+SEESDAGGERS
+	+NOSPLASHALERT
+	+FLOORCLIP
+	+NEVERRESPAWN
+	MinMissileChance 150
+	Tag "Alpha Guard"
+	SeeSound "player/taunt"
+	PainSound "*pain"
+	DeathSound "*death"
+	ActiveSound "player/taunt"
+	Obituary "%o was zealously shot down by an Alpha Guard."
+	DropItem "Clip"
+	States
+	{
+	Spawn:
+		AGRD AB 5 A_Look
+		Loop
+	See:
+		AGRD ABCD 6 A_Chase
+		Loop
+	Missile:
+		AGRD E 8 A_FaceTarget
+		AGRD F 0 A_PlaySound ("weapons/shotgf", CHAN_WEAPON)
+		AGRD F 0 A_FaceTarget
+		AGRD F 6 A_CustomBulletAttack (8, 0, 1, 3*random(1,5), "BulletPuff", 2048, CBAF_NORANDOM)
+		Goto See
+	Pain:
+		AGRD O 8 A_Pain
+		Goto See
+	XDeath:
+	Death:
+		AGRD G 4
+		AGRD H 4 A_Scream
+		AGRD I 4
+		AGRD J 3
+		AGRD K 3 A_NoBlocking
+		AGRD L 3
+		AGRD M 3
+		AGRD N -1
+		Stop
+	Raise:
+		AGRD NMLKJ 3
+		AGRD IHG 4
+		Goto See
+	}
+}
+
+ACTOR ZeroSergant 26406
+{
+	//$Category "Monsters - Humans"
+	Health 70
+	PainChance 150
+	Speed 7
+	Radius 24
+	Height 64
+	Mass 400
+	Monster
+	+SEESDAGGERS
+	+NOSPLASHALERT
+	+FLOORCLIP
+	+NEVERRESPAWN
+	MinMissileChance 150
+	Tag "Zero Sergant"
+	SeeSound "player/taunt"
+	PainSound "*pain"
+	DeathSound "*death"
+	ActiveSound "player/taunt"
+	Obituary "%o was zealously shot down by an Alpha Guard."
+	DropItem "Clip"
+	States
+	{
+	Spawn:
+		SGT0 AB 5 A_Look
+		Loop
+	See:
+		SGT0 ABCD 6 A_Chase
+		Loop
+	Missile:
+		SGT0 E 6 A_FaceTarget
+		SGT0 F 0 A_PlaySound ("AK47/Fire", CHAN_WEAPON)
+		SGT0 F 0 A_FaceTarget
+		SGT0 F 3 A_CustomBulletAttack (8, 0, 1, 3*random(1,5), "BulletPuff", 2048, CBAF_NORANDOM)
+		Goto Missile+1
+	Pain:
+		SGT0 O 8 A_Pain
+		Goto See
+	XDeath:
+	Death:
+		SGT0 G 4
+		SGT0 H 4 A_Scream
+		SGT0 I 4
+		SGT0 J 3
+		SGT0 K 3 A_NoBlocking
+		SGT0 L 3
+		SGT0 M 3
+		SGT0 N -1
+		Stop
+	Raise:
+		SGT0 NMLKJ 3
+		SGT0 IHG 4
+		Goto See
+	}
+}
+
+ACTOR PlasmaZombie : ZombieMan 26407
+{
+	//$Category "Monsters - Humans"
+	Health 40
+	Radius 20
+	Height 56
+	Speed 8
+	PainChance 200
+	Monster
+	+FLOORCLIP
+	SeeSound "grunt/sight"
+	AttackSound "grunt/attack"
+	PainSound "grunt/pain"
+	DeathSound "grunt/death"
+	ActiveSound "grunt/active"
+	Obituary "%o was killed by a Plasmatic ZombieMan."
+	DropItem Cell
+	MissileType PlasmaBall
+	States
+	{
+	Spawn:
+		ZMAY AB 10 A_Look
+		Loop
+	See:
+		ZMAY AABBCCDD 4 A_Chase
+		Loop
+	Missile:
+		ZMAY E 10 A_FaceTarget
+		ZMAY F 5 A_MissileAttack
+		ZMAY E 5 A_FaceTarget
+		ZMAY F 5 A_MissileAttack
+		ZMAY E 5 A_FaceTarget
+		ZMAY F 5 A_MissileAttack
+		Goto See
+	Pain:
+		ZMAY G 3
+		ZMAY G 3 A_Pain
+		Goto See
+	XDeath:
+	Death:
+		ZMAY H 5
+		ZMAY I 5 A_Scream
+		ZMAY J 5 A_NoBlocking
+		ZMAY K 5
+		ZMAY L -1
+		Stop
+	Raise:
+		ZMAY K 5
+		ZMAY JIH 5
+		Goto See
+	}
+}
+
+ACTOR IcePlasmaZombie : PlasmaZombie 26408
+{
+	//$Category "Monsters - Humans"
+	Obituary "%o was killed by a Frozen Plasmatic ZombieMan."
+	DropItem Cell
+	MissileType IcePlasmaBall
+	Translation Ice
+	DamageType Ice
 }

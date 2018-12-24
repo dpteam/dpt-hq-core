@@ -147,6 +147,7 @@ Use:
 }
 ACTOR Cash : Ammo
 {
+	//$Category Collectables
 	Inventory.Amount 0
 	Inventory.MaxAmount 999//1000000000//999//0xFFFFFFFF
 	Inventory.Icon "COINA0"
@@ -254,6 +255,7 @@ ACTOR SuperStimDamage : PowerupGiver
 }
 ACTOR StimBerserk : CustomInventory 26371
 {
+	//$Category Powerups
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "Super Stim!"
@@ -271,6 +273,7 @@ Pickup:
 }
 ACTOR PinkArmor : BasicArmorPickup 26372
 {
+	//$Category Armor
 	Radius 20
 	Height 16
 	Inventory.PickupMessage "Picked up the PINK (gaiii) ARMOR!"
@@ -288,6 +291,7 @@ Spawn:
 }
 Actor PDA : CustomInventory 29876
 {
+	//$Category Special
 	Height 16
 	Radius 11
 	Inventory.PickupMessage "Saving..."
@@ -303,6 +307,7 @@ Pickup:
 }
 ACTOR Q1Medkit : Health replaces Medikit
 {
+	//$Category Quake
 	Scale 0.9
 	Inventory.Amount 25
 	Inventory.PickupMessage "You picked up a medkit."
@@ -316,6 +321,7 @@ Spawn:
 }
 ACTOR Q1Stimpack : Health replaces Stimpack
 {
+	//$Category Quake
 	Scale 0.9
 	Inventory.Amount 15
 	Inventory.PickupMessage "You picked up a first aid kit."
@@ -329,6 +335,7 @@ Spawn:
 }
 ACTOR Q1MegaHealth : Health replaces Soulsphere
 {
+	//$Category Quake
 	Scale 0.9
 	+COUNTITEM
 	+INVENTORY.AUTOACTIVATE
@@ -347,6 +354,7 @@ Spawn:
 }
 Actor Q1GreenArmor : BasicArmorPickup replaces GreenArmor
 {
+	//$Category Quake
 	Radius 20
 	Height 16
 	Inventory.Pickupmessage "Picked up the green armor."
@@ -363,6 +371,7 @@ Spawn:
 }
 Actor Q1YellowArmor : BasicArmorPickup replaces BlueArmor
 {
+	//$Category Quake
 	Radius 20
 	Height 16
 	Inventory.Pickupmessage "Picked up the yellow armor."
@@ -379,6 +388,7 @@ Spawn:
 }
 Actor Q1RedArmor : BasicArmorPickup replaces Megasphere
 {
+	//$Category Quake
 	Radius 20
 	Height 16
 	Inventory.Pickupmessage "Picked up the red armor!"

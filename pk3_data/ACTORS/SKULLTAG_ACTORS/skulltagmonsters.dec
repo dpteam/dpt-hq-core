@@ -6,8 +6,8 @@
 
 actor DarkImp : DoomImp 5003 // [RT] Inherits from the DoomImp for convenience
 {
-  game Doom
-  spawnid 155 // [RT] I think this is the right Spawnid, change if it isn't
+  //Game Doom
+  //SpawnID 155 // [RT] I think this is the right Spawnid, change if it isn't
   obituary "$OB_DARKIMP"
   hitobituary "$OB_DARKIMP_MELEE"
   health 120
@@ -55,8 +55,8 @@ actor DarkImp : DoomImp 5003 // [RT] Inherits from the DoomImp for convenience
 
 actor DarkImpBall : DoomImpBall // [RT] Inherits from DoomImpBall for convenience.
 {
-  game Doom
-  spawnid 218
+  //Game Doom
+  //SpawnID 218
   Speed 20
   damage 3 // [RT] I think this is right, change if neccesary.
   states
@@ -78,7 +78,7 @@ actor DarkImpBall : DoomImpBall // [RT] Inherits from DoomImpBall for convenienc
 
 ACTOR Cacolantern : Cacodemon 5006
 {
-	SpawnID 159
+	//SpawnID 159
 	Health 800
 	Obituary "$OB_CACOLANTERN"
 	HitObituary "$OB_CACOLANTERN_MELEE"
@@ -114,7 +114,7 @@ ACTOR Cacolantern : Cacodemon 5006
 
 ACTOR CacolanternBall
 {
-	SpawnID 219
+	//SpawnID 219
 	Radius 6
 	Height 8
 	Speed 20
@@ -143,7 +143,7 @@ ACTOR CacolanternBall
 
 ACTOR Abaddon : Cacolantern 5015
 {
-	SpawnID 220
+	//SpawnID 220
 	Health 1200
 	Speed 12
 	PainChance 40
@@ -183,7 +183,7 @@ ACTOR Abaddon : Cacolantern 5015
 
 ACTOR AbaddonBall
 {
-	SpawnID 221
+	//SpawnID 221
 	Radius 6
 	Height 8
 	Speed 20
@@ -212,7 +212,7 @@ ACTOR AbaddonBall
 
 ACTOR Belphegor : HellKnight 5008
 {
-	SpawnID 215
+	//SpawnID 215
 	Health 1500
 	PainChance 25
 	SeeSound "baron/sight"
@@ -258,7 +258,7 @@ ACTOR Belphegor : HellKnight 5008
 
 ACTOR BelphegorBall : BaronBall
 {
-	SpawnID 222
+	//SpawnID 222
 	Speed 20
 }
 
@@ -270,7 +270,7 @@ ACTOR BelphegorBall : BaronBall
 
 ACTOR BloodDemon : Demon 15004
 {
-	SpawnID 156
+	//SpawnID 156
 	Health 300
 	Obituary "$OB_BLOODDEMON_MELEE"
 	States
@@ -311,7 +311,7 @@ ACTOR BloodDemon : Demon 15004
 
 ACTOR Hectebus : Fatso 5007
 {
-   SpawnID 158
+   //SpawnID 158
    Health 1200
    PainChance 20
    Obituary "$OB_HECTEBUS"
@@ -389,8 +389,8 @@ ACTOR HectShot : FatShot
 
 ACTOR SuperShotgunGuy 5005
 {
-   Game Doom
-   SpawnID 157
+   //Game Doom
+   //SpawnID 157
    Health 120
    Radius 20
    Height 56

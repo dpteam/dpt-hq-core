@@ -13,6 +13,11 @@ episode HQ1
 	name = "DPT HQ"
 	key = "1"
 }
+episode MAP01
+{
+	name = "MAP01 START"
+	key = "2"
+}
 //COMMON SKILLS
 clearskills
 skill baby
@@ -132,7 +137,15 @@ defaultmap
 }
 map TITLEMAP "TITLE"
 {
-	music = "HQ_TITLE"
+	secretnext = "CREDMAP"
+	next = "CREDMAP"
+	music = "NOMUS"
+}
+map CREDMAP "CREDITS"
+{
+	secretnext = "TITLEMAP"
+	next = "TITLEMAP"
+	music = "HQ_INTRO"
 }
 //HQ
 map HQ1 "DPT CITY"

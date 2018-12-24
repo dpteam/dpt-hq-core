@@ -1,6 +1,6 @@
 ACTOR Bomber2
 {
-	SpawnID 112
+	//SpawnID 112
 	YScale 0.35
 	XScale 0.4
 	Radius 20

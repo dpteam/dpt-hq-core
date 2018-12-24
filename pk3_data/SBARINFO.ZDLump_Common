@@ -1,15 +1,15 @@
-InterpolateHealth True, 6;
-InterpolateArmor True, 6;
 base Doom;
 Height 32;
+InterpolateHealth True, 2;
+InterpolateArmor True, 2;
 MonospaceFonts True, "0";
 
 StatusBar FullScreen, ForceScaled // DPT.HQ HUD
 {
 	DrawImage "HQHUD5", 0, 0;
 	DrawBar "HEALFUL", "HEALNUL", Health, horizontal, 48,2;
-	DrawBar "AMMOFUL", "AMMONUL", Ammo1, horizontal, 142,2;
-	DrawBar "AMMOFUL" ,"AMMONUL", Ammo2, horizontal, 222,2;
+	DrawBar "AMMO1FUL", "AMMONUL", Ammo1, horizontal, 142,2;
+	DrawBar "AMMO2FUL" ,"AMMONUL", Ammo2, horizontal, 222,2;
 	DrawBar "ARMORFUL", "AMMONUL", Armor, horizontal, 298,2;
 	DrawBar "COINSFUL", "HEALNUL", Ammo Cash, horizontal, 48,186;
 	DrawBar "HUNGRFUL", "AMMONUL", Ammo HungryLevel, horizontal, 142,186;
@@ -48,7 +48,7 @@ StatusBar Normal, ForceScaled // Standard Doom Status bar
 	gamemode cooperative, singleplayer
 	{
 		drawimage "STARMS", 104, 168;
-		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 111, 172; 
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 111, 172;
 		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", 123, 172;
 		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", 135, 172;
 		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", 111, 182;

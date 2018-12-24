@@ -1,7 +1,7 @@
 ACTOR BALL 26238
 {
 	DamageType Ball
-	SPAWNID 255
+	//SpawnID 255
 	HEALTH 0x2fffffff
 	PAINCHANCE 255
 	MASS 70

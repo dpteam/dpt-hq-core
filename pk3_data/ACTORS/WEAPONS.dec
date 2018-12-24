@@ -4,7 +4,7 @@
 // NEED TO ADD
 // WTF
 
-// NEXT : 26404
+// NEXT : 26409
 
 // Predefines
 
@@ -28,18 +28,15 @@ ACTOR DUMP3Cooldown : Powerup
 }
 
 actor DUMP3ChainsawSlotFilled : DUMP3Boolean { -INVENTORY.UNDROPPABLE /*+INVENTORY.UNTOSSABLE*/ }
-actor DUMP3Weapon : Weapon
+actor "DPT.HQ-Weapon" : DoomWeapon
 {
-	/*Weapon.BobStyle Alpha
-	Weapon.BobSpeed 2.5
-	Weapon.BobRangeX 0.2
-	Weapon.BobRangeY 0.5*/
-	//    +INVENTORY.UNDROPPABLE
-	//+INVENTORY.UNTOSSABLE
-	+WEAPON.AMMO_OPTIONAL
-	+WEAPON.ALT_AMMO_OPTIONAL
-	+WEAPON.NOALERT
-	//	+CHEATNOTWEAPON
+	Weapon.BobStyle InverseSmooth
+	Weapon.BobSpeed 1.6
+	Weapon.BobRangeY 0.6
+	Weapon.BobRangeX 1.0
+	//Weapon.UpSound "misc/w_pkup"
+	//Decal "BulletChip"
+	//+WEAPON.CHEATNOTWEAPON
 	States
 	{
 	Ready:
@@ -56,12 +53,26 @@ actor DUMP3Weapon : Weapon
 	Fire:
 		TNT1 A 1
 		goto Ready
+	}
+}
+ACTOR DUMP3Weapon : "DPT.HQ-Weapon"
+{
+	+CLIENTSIDEONLY
+	Weapon.BobStyle Alpha
+	Weapon.BobSpeed 2.5
+	Weapon.BobRangeX 0.2
+	Weapon.BobRangeY 0.5
+	+WEAPON.AMMO_OPTIONAL
+	+WEAPON.ALT_AMMO_OPTIONAL
+	+WEAPON.NOALERT
+	States
+	{
 	Zoom:
 		"####" "#" 1 A_WeaponReady (WRF_NOFIRE)
 		"####" "#" 0 A_JumpIfInventory("DUMP3WeaponDropCooldown",1,"Ready")
 		"####" "#" 0 A_GiveInventory("DUMP3WeaponDropCounter",1)
 		"####" "#" 0 A_JumpIfInventory("DUMP3WeaponDropCounter",0,"DropGun")
-		"####" "#" 1 A_WeaponReady (WRF_NOFIRE /*| WRF_ALLOWZOOM*/)
+		"####" "#" 1 A_WeaponReady (WRF_NOFIRE | WRF_ALLOWZOOM)
 		"####" "#" 0 A_TakeInventory("DUMP3WeaponDropCounter",999)
 		"####" "#" 0 A_Jump(256, "Ready")
 		Goto Ready
@@ -96,7 +107,8 @@ ACTOR DUMP3WeaponDropCooldown : DUMP3Cooldown
 
 // Weapons
 
-ACTOR Unarmed : Weapon
+// ALL CLASSES UNARMED
+ACTOR Unarmed : "DPT.HQ-Weapon"
 {
 	AttackSound "fist/hit"
 	//$Category Weapons
@@ -170,7 +182,7 @@ ACTOR Unarmed : Weapon
 		Goto RealReady
 	}
 }
-ACTOR PocikUnarmed : Weapon
+ACTOR PocikUnarmed : "DPT.HQ-Weapon"
 {
 	AttackSound "fist/hit"
 	//$Category Weapons
@@ -239,6 +251,219 @@ ACTOR PocikUnarmed : Weapon
 		Goto RealReady
 	}
 }
+ACTOR VodkaUnarmed : "DPT.HQ-Weapon"
+{
+	AttackSound "fist/hit"
+	//$Category Weapons
+	States
+	{
+	Ready:
+		PCW1 ABCD 4
+		PCW1 A 0 A_PlaySound("KNUCKLED")
+        PCW1 EFG 3
+	RealReady:
+		PCW2 A 9 A_WeaponReady
+		Loop
+    Deselect:
+		NULL A 1 A_Lower
+		Loop
+	Select:
+		NULL A 0 A_Raise
+		Wait
+	Fire:
+		PCW2 A 0 A_JumpIfInventory("StrongItem",1,"StrongFire")
+	NormalFire:
+		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"Right")
+	Left:
+		PCW2 B 2
+		PCW2 C 2 A_PlaySound("fist/dodge")
+		PCW2 D 2 A_CustomPunch(8,0,0,"FistPuff")
+		PCW2 E 1
+		PCW2 F 1
+		PCW2 G 1
+		PCW2 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	Right:
+		PCW2 I 2
+		PCW2 J 2 A_PlaySound("fist/dodge")
+		PCW2 K 2 A_CustomPunch(8,0,0,"FistPuff")
+		PCW2 L 1
+		PCW2 M 1
+		PCW2 N 1
+		PCW2 O 2 A_TakeInventory("FistSeq",1)
+		Goto RealReady
+	StrongFire:
+		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"StrongRight")
+	StrongLeft:
+		PCW2 B 2
+		PCW2 C 2 A_PlaySound("fist/brutalmodeswing")
+		PCW2 D 2 A_CustomPunch(32,0,0,"FistPuff")
+		PCW2 E 1
+		PCW2 F 1
+		PCW2 G 1
+		PCW2 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	StrongRight:
+		PCW2 I 2
+		PCW2 J 2 A_PlaySound("fist/brutalmodeswing")
+		PCW2 K 2 A_CustomPunch(32,0,0,"FistPuff")
+		PCW2 L 1
+		PCW2 M 1
+		PCW2 N 1
+		PCW2 O 2 A_TakeInventory("FistSeq",1)
+		Goto RealReady
+	AltFire:
+		PCW3 B 2
+		PCW3 C 2 A_PlaySound("fist/brutalmodeswing")
+		PCW3 D 2 A_CustomPunch(12,0,0,"FistPuff")
+		PCW3 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	}
+}
+ACTOR ArmymanUnarmed : "DPT.HQ-Weapon" // WORKER
+{
+	//$Category Weapons
+	AttackSound "fist/hit"
+	+WEAPON.CHEATNOTWEAPON
+	+INVENTORY.UNDROPPABLE
+	States
+	{
+	Ready:
+		PCW1 ABCD 4
+		PCW1 A 0 A_PlaySound("KNUCKLED")
+        PCW1 EFG 3
+	RealReady:
+		PCW2 A 9 A_WeaponReady
+		Loop
+    Deselect:
+		NULL A 1 A_Lower
+		Loop
+	Select:
+		NULL A 0 A_Raise
+		Wait
+	Fire:
+		PCW2 A 0 A_JumpIfInventory("StrongItem",1,"StrongFire")
+	NormalFire:
+		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"Right")
+	Left:
+		PCW2 B 2
+		PCW2 C 2 A_PlaySound("fist/dodge")
+		PCW2 D 2 A_CustomPunch(8,0,0,"FistPuff")
+		PCW2 E 1
+		PCW2 F 1
+		PCW2 G 1
+		PCW2 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	Right:
+		PCW2 I 2
+		PCW2 J 2 A_PlaySound("fist/dodge")
+		PCW2 K 2 A_CustomPunch(8,0,0,"FistPuff")
+		PCW2 L 1
+		PCW2 M 1
+		PCW2 N 1
+		PCW2 O 2 A_TakeInventory("FistSeq",1)
+		Goto RealReady
+	StrongFire:
+		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"StrongRight")
+	StrongLeft:
+		PCW2 B 2
+		PCW2 C 2 A_PlaySound("fist/brutalmodeswing")
+		PCW2 D 2 A_CustomPunch(32,0,0,"FistPuff")
+		PCW2 E 1
+		PCW2 F 1
+		PCW2 G 1
+		PCW2 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	StrongRight:
+		PCW2 I 2
+		PCW2 J 2 A_PlaySound("fist/brutalmodeswing")
+		PCW2 K 2 A_CustomPunch(32,0,0,"FistPuff")
+		PCW2 L 1
+		PCW2 M 1
+		PCW2 N 1
+		PCW2 O 2 A_TakeInventory("FistSeq",1)
+		Goto RealReady
+	AltFire:
+		PCW3 B 2
+		PCW3 C 2 A_PlaySound("fist/brutalmodeswing")
+		PCW3 D 2 A_CustomPunch(12,0,0,"FistPuff")
+		PCW3 A 2 A_GiveInventory("FistSeq",1)
+		Goto RealReady
+	}
+}
+ACTOR LXandroUnarmed : "DPT.HQ-Weapon"
+{
+	//$Category Weapons
+	+WEAPON.CHEATNOTWEAPON
+	+INVENTORY.UNDROPPABLE
+	Obituary "%k has kicked %o's ass."
+	AttackSound "fist/hit"
+	States
+	{
+	Ready:
+		DNKN ABC 2
+		DNKN CBA 2
+		DNKN A 0 A_PlaySound("KNUCKLED")
+	RealReady:
+		TNT1 A 9 A_WeaponReady
+		Loop
+    Deselect:
+		TNT1 A 1 A_Lower
+		Loop
+	Select:
+		TNT1 A 0 A_Raise
+		Wait
+	Fire:
+		DNBT A 1 A_Jump(255,"Fire1","Fire2")
+		Goto RealReady
+	Fire1:
+		TNT1 A 1 A_SetSpeed(0.0)
+		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 4)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT A 1 offset(0,78) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT A 1 offset(0,45) A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT A 1 A_ZoomFactor(0.95)
+		DNBT B 4 A_CustomPunch(12,0,0,"FistPuff")
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,32) A_ZoomFactor(0.97)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,45) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,64) A_ZoomFactor(0.99)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT A 1 offset(0,96) A_ZoomFactor(1.00)
+		TNT1 A 4
+		TNT1 A 1 A_SetSpeed(1.0)
+		Goto RealReady
+	Fire2:
+		TNT1 A 1 A_SetSpeed(0.0)
+		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 5)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT C 1 offset(0,78) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT C 1 offset(0,45) A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch-1)
+		DNBT C 1 A_ZoomFactor(0.95)
+		DNBT D 4 A_CustomPunch(12,0,0,"FistPuff")
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 A_ZoomFactor(0.96)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,32) A_ZoomFactor(0.97)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,45) A_ZoomFactor(0.98)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,64) A_ZoomFactor(0.99)
+		TNT1 A 0 A_SetPitch(Pitch+1)
+		DNBT C 1 offset(0,96) A_ZoomFactor(1.00)
+		TNT1 A 4
+		TNT1 A 1 A_SetSpeed(1.0)
+		Goto RealReady
+	}
+}
 ACTOR FistSeq : Ammo
 {
 	Inventory.Amount 0
@@ -269,7 +494,7 @@ ACTOR FistPuff
 		Stop
 	}
 }
-ACTOR SSG : Weapon 26208
+ACTOR SSG : "DPT.HQ-Weapon" 26208
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -309,7 +534,7 @@ ACTOR SSG : Weapon 26208
 		Stop
 	}
 }
-ACTOR Topor : weapon 26222 //2005
+ACTOR Topor : "DPT.HQ-Weapon" 26222
 {
 	Inventory.PickupMessage "Picked up a RaskolnicOFF. Where is a granny!?.."
 	Inventory.PickupSound "misc/w_pkup"
@@ -355,7 +580,7 @@ ACTOR Topor : weapon 26222 //2005
 		Goto Ready
 	}
 }
-ACTOR Axe : Weapon 26223 //replaces Chainsaw
+ACTOR Axe : "DPT.HQ-Weapon" 26223
 {
 	+WEAPON.MELEEWEAPON
 	+WEAPON.NOALERT
@@ -419,7 +644,7 @@ ACTOR AxeHitPuff : BulletPuff
 		Stop
 	}
 }  
-ACTOR RivetGun : Weapon 26332
+ACTOR RivetGun : "DPT.HQ-Weapon" 26332
 {
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got the Rivet Gun!"
@@ -538,11 +763,11 @@ ACTOR RivetProj : FastProjectile
 		Loop
 	Death:
 		TNT1 A 0
-		TNT1 A 0 //A_SetScale(0.3)
+		TNT1 A 0 A_SetScale(0.3)
 		TNT1 A 0 A_SpawnItemEx("RivetBoltReboundFX",0,0,3,random(-2,2),random(-2,2),random(3,9),random(0,359),32)
 		TNT1 A 0 A_SetTranslucent(0.8)
-		RIVP A 2 BRIGHT
-		RIVP BCDE 1 BRIGHT
+		RIVP A 2 Bright
+		RIVP BCDE 1 Bright
 		Stop
 	}
 }
@@ -589,11 +814,11 @@ ACTOR RivetProjPainless : FastProjectile  //+PAINLESS on this version to prevent
 		Loop
 	Death:
 		TNT1 A 0
-		TNT1 A 0 //A_SetScale(0.3)
+		TNT1 A 0 A_SetScale(0.3)
 		TNT1 A 0 A_SpawnItemEx("RivetBoltReboundFX",0,0,3,random(-2,2),random(-2,2),random(3,9),random(0,359),32)
 		TNT1 A 0 A_SetTranslucent(0.8)
-		RIVP A 2 BRIGHT
-		RIVP BCDE 1 BRIGHT
+		RIVP A 2 Bright
+		RIVP BCDE 1 Bright
 		Stop
 	}
 }
@@ -642,7 +867,7 @@ ACTOR RivetSpreadShot : FastProjectile
 		TNT1 A 0 A_CustomMissile("RivetSpreadProj", 0, 0, 90, CMF_AIMDIRECTION)
 		TNT1 A 0 A_CustomMissile("RivetSpreadProj", 0, 0, -130, CMF_AIMDIRECTION)
 		TNT1 A 0 A_CustomMissile("RivetSpreadProj", 0, 0, 130, CMF_AIMDIRECTION)
-		TNT1 A 0 //A_SetScale(0.8)
+		TNT1 A 0 A_SetScale(0.8)
 		TNT1 A 0 A_SetTranslucent(0.8)
 		CLSD ABCDEFGHI 1 Bright
 		Stop
@@ -681,7 +906,7 @@ ACTOR RivetSpreadProj
 	Death: 
 		TNT1 A 0 A_SpawnItemEx("RivetBoltReboundFX",0,0,3,random(-2,2),random(-2,2),random(3,9),random(0,359),32)
 		TNT1 A 0
-		TNT1 A 0 //A_SetScale(0.4)
+		TNT1 A 0 A_SetScale(0.4)
 		TNT1 A 0 A_SetTranslucent(0.8) 
 		CLSD ABCDEFGHI 1 Bright
 		Stop   
@@ -723,7 +948,7 @@ ACTOR RivetFlyRing //Rivet projectile flight effect.
 {
 	+NOINTERACTION
 	+NOCLIP
-	+BRIGHT
+	+Bright
 	Radius 1
 	Height 1
 	Renderstyle Add
@@ -733,8 +958,8 @@ ACTOR RivetFlyRing //Rivet projectile flight effect.
 	{
 	Spawn:
 		RIVF AAA 1
-		RIVF A 1 //A_SetScale(0.15)
-		RIVF A 1 //A_SetScale(0.10)
+		RIVF A 1 A_SetScale(0.15)
+		RIVF A 1 A_SetScale(0.10)
 		Stop
 	}
 }
@@ -742,7 +967,7 @@ ACTOR RivetFlyRingB //Rivet projectile flight effect. Alt fire.
 {
 	+NOINTERACTION
 	+NOCLIP
-	+BRIGHT
+	+Bright
 	Radius 1
 	Height 1
 	Renderstyle Add
@@ -787,7 +1012,7 @@ ACTOR RivetBoltReboundFX
 		Goto Death+1
 	}
 }
-ACTOR M40Rifle : Weapon 26333 // WORKER
+ACTOR M40Rifle : "DPT.HQ-Weapon" 26333 // WORKER
 {
 	//$Category Weapons
 	Obituary "%o was sniped out by %k's M40"
@@ -901,7 +1126,7 @@ ACTOR M40762Ammo : Ammo 26224
 	{
 	Spawn:
 		SNPP B -1
-		stop
+		Stop
 	}
 }
 // Delta-Touch & GZDoom Fix
@@ -920,7 +1145,7 @@ ACTOR M40762AmmoBox : Ammo 26225
 		Stop
 	}
 }
-ACTOR SpawnerModule_Weapon : Weapon 25018 //WORKER // NEED USE ONLY TO SUMONNER CLASS
+ACTOR SpawnerModule_Weapon : "DPT.HQ-Weapon" 25018 //WORKER // NEED USE ONLY TO SUMONNER CLASS
 {
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got a Spawner Module!"
@@ -961,7 +1186,7 @@ ACTOR SpawnerModule_Weapon : Weapon 25018 //WORKER // NEED USE ONLY TO SUMONNER 
 		Goto Ready
 	}
 }
-ACTOR SpawnerModule_Detonator : Weapon //WORKER // NEED USE ONLY TO SUMONNER CLASS
+ACTOR SpawnerModule_Detonator : "DPT.HQ-Weapon" //WORKER // NEED USE ONLY TO SUMONNER CLASS
 {
 	Inventory.PickupSound "misc/w_pkup"
 	Weapon.AmmoType "SpawnerModules"
@@ -1043,14 +1268,14 @@ ACTOR SpawnerModule_OverheatExplosion
 	Speed 0
 	ExplosionDamage 255
 	ExplosionRadius 192
-	SpawnId 201 // !!!
+	//SpawnID 201 // !!!
 	States
 	{
 	Spawn:
-		NKXP B 3 BRIGHT
-		NKXP C 3 BRIGHT
-		NKXP D 3 BRIGHT A_Explode
-		NKXP EFGHIJKLMNOPQRSTUV 3 BRIGHT
+		NKXP B 3 Bright
+		NKXP C 3 Bright
+		NKXP D 3 Bright A_Explode
+		NKXP EFGHIJKLMNOPQRSTUV 3 Bright
 		Stop
 	}
 }
@@ -1061,14 +1286,14 @@ ACTOR SpawnerModule_SpawningProcess
 	Height 56
 	Speed 0
 	Scale 3.5
-	SpawnId 202 // !!!
+	//SpawnID 202 // !!!
 	States
 	{
 	Spawn:
-		GIZB A 3 BRIGHT A_SpawnItem("Egg1337",1,8)
-		GIZB B 3 BRIGHT
-		GIZB C 3 BRIGHT
-		GIZB D 3 BRIGHT
+		GIZB A 3 Bright A_SpawnItem("Egg1337",1,8)
+		GIZB B 3 Bright
+		GIZB C 3 Bright
+		GIZB D 3 Bright
 		Stop
 	}
 }
@@ -1122,10 +1347,10 @@ ACTOR BabyCacoBall
 	States
 	{
 	Spawn:
-		BCAB AB 4 BRIGHT
+		BCAB AB 4 Bright
 		Loop
 	Death:
-		BCAB CDE 6 BRIGHT
+		BCAB CDE 6 Bright
 		Stop
 	}
 }
@@ -1148,7 +1373,7 @@ ACTOR KidCaco 9655
 	MONSTER
 	+NOGRAVITY
 	+FLOAT 
-	states
+	States
 	{
 	Spawn:
 		CACB A 0
@@ -1169,12 +1394,12 @@ ACTOR KidCaco 9655
 		CACB A 10 A_Wander
 		goto See
 		CACB B 5 A_FaceTarget
-		CACB C 5 bright A_CustomMissile("BabyCacoBall", 17, 0, 0)
+		CACB C 5 Bright A_CustomMissile("BabyCacoBall", 17, 0, 0)
 		goto See
 	Grow:
 		CACB A 0
 		CACB A 1 A_SpawnItemEx("KidCaco2", 0,0,0,0,0,SXF_NOCHECKPOSITION)
-		stop
+		Stop
 	Pain:
 		CACB D 3
 		CACB D 3 A_Pain
@@ -1209,12 +1434,12 @@ ACTOR KidCaco2 : KidCaco
 	//  deathsound "caco/death"
 	//  activesound "caco/active"
 	//  attacksound "caco/melee"
-	states
+	States
 	{
 	Grow:
 		HEAD A 0
 		HEAD A 1  A_SpawnItemEx("KidCaco3", 0,0,0,0,0,SXF_NOCHECKPOSITION)
-		stop
+		Stop
 	}
 }
 ACTOR KidCaco3 : KidCaco 
@@ -1231,12 +1456,12 @@ ACTOR KidCaco3 : KidCaco
 	//  deathsound "caco/death"
 	//  activesound "caco/active"
 	//  attacksound "caco/melee"
-	states
+	States
 	{
 	Grow:
 		HEAD A 0
 		HEAD A 1  A_SpawnItemEx("KidCaco4", 0,0,0,0,0,SXF_NOCHECKPOSITION)
-		stop
+		Stop
 	}
 }
 ACTOR KidCaco4 : KidCaco3
@@ -1253,15 +1478,15 @@ ACTOR KidCaco4 : KidCaco3
 	//  deathsound "caco/death"
 	//  activesound "caco/active"
 	//  attacksound "caco/melee"
-	states
+	States
 	{
 	Grow:
 		HEAD A 0
 		HEAD A 0 A_Jump(140,2)
 		HEAD A 1  A_SpawnItemEx("GrowedCacodemonBoy", 0,0,0,0,0,SXF_NOCHECKPOSITION)
-		stop
+		Stop
 		HEAD A 1  A_SpawnItemEx("GrowedCacodemonGirl", 0,0,0,0,0,SXF_NOCHECKPOSITION)
-		stop
+		Stop
 	}
 }
 ACTOR SpawnerModules : Ammo 26226
@@ -1280,7 +1505,7 @@ ACTOR SpawnerModules : Ammo 26226
 }
 ACTOR SpawnerModulesBox : CustomInventory 26227
 {
-	SpawnID 134
+	//SpawnID 134
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "Picked up a box of pipebombs."
@@ -1295,7 +1520,7 @@ ACTOR SpawnerModulesBox : CustomInventory 26227
 		Stop
 	}
 }
-ACTOR UberMinigun : Weapon 26334
+ACTOR UberMinigun : "DPT.HQ-Weapon" 26334
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You got the UberMinigun!"
@@ -1329,9 +1554,9 @@ ACTOR UberMinigun : Weapon 26334
 		MINF A 0 A_GunFlash
 		MINF A 0 A_PlayweaponSound("weapons/minigun")
 		MINF A 0 A_PlaySound("weapons/minigunhold")
-		MINF A 1 BRIGHT A_FireBullets (5.6, 0, 2, 5, "BulletPuff")
-		MINF C 1 BRIGHT
-		MINF B 1 BRIGHT
+		MINF A 1 Bright A_FireBullets (5.6, 0, 2, 5, "BulletPuff")
+		MINF C 1 Bright
+		MINF B 1 Bright
 		MING C 0 A_ReFire
 		MING A 0 A_PlaySound("weapons/minigundown")
 		MING A 1
@@ -1351,7 +1576,7 @@ ACTOR UberMinigun : Weapon 26334
 		Goto Ready
 	}
 }
-ACTOR Satcheler : Weapon 25020
+ACTOR Satcheler : "DPT.HQ-Weapon" 25020
 {
 	//$Category Weapons
 	Inventory.PickupSound "misc/w_pkup"
@@ -1392,41 +1617,41 @@ ACTOR Satcheler : Weapon 25020
 	Fire:
 		STCG A 0 A_JumpIfNoAmmo("Ready")
 		STCG ABCDEFGH 1
-		STCG HGF 1
-		TNT1 A 0 A_PlayWeaponSound("Weapons/SatchelToss")
-		TNT1 A 0 A_FireCustomMissile("SatchelSpawner",0,1,-20,0)
-		STCF ABCDEFGH 1
-		TNT1 A 10
-		TNT1 A 10 A_ReFire
-		Goto SatchelOn
-	Hold:
-		STCG A 0 A_JumpIfNoAmmo("Ready")
-		STCG HGF 1
-		TNT1 A 0 A_PlayWeaponSound("Weapons/SatchelToss")
-		TNT1 A 0 A_FireCustomMissile("SatchelSpawner",0,1,-20,0)
-		STCF ABCDEFGH 1
-		TNT1 A 10
-		STCG A 0 A_JumpIfNoAmmo("SatchelOn")
-		TNT1 A 10 A_ReFire
-		Goto SatchelOn
-	AltFire:
-		STCG A 0 A_JumpIfNoAmmo("Ready")
-		STCG ABCDEFGH 1
 		TNT1 A 2 A_ReFire
 		TNT1 A 0 A_PlayWeaponSound("Weapons/SatchelToss")
 		TNT1 A 0 A_PlaySoundEx("Weapons/SatchelOof","Voice")
-		TNT1 A 0 A_FireCustomMissile("SatchelBlaster",0,1,20,0)
+		TNT1 A 0 A_FireCustomMissile("SatchelSpawner",0,1,20,0)
 		HNDG IJKLMNOP 1
 		TNT1 A 15
 		Goto SatchelOn
-	AltHold:
+	Hold:
 		TNT1 A 1
 		TNT1 A 0 A_ReFire
 		TNT1 A 0 A_PlayWeaponSound("Weapons/SatchelToss")
 		TNT1 A 0 A_PlaySoundEx("Weapons/SatchelOof","Voice")
-		TNT1 A 0 A_FireCustomMissile("SatchelBlaster",0,1,20,0)
+		TNT1 A 0 A_FireCustomMissile("SatchelSpawner",0,1,20,0)
 		HNDG IJKLMNOP 1
 		TNT1 A 15
+		Goto SatchelOn
+	AltFire:
+		STCG A 0 A_JumpIfNoAmmo("Ready")
+		STCG ABCDEFGH 1
+		STCG HGF 1
+		TNT1 A 0 A_PlayWeaponSound("Weapons/SatchelToss")
+		TNT1 A 0 A_FireCustomMissile("SatchelBlaster",0,1,-20,0)
+		STCF ABCDEFGH 1
+		TNT1 A 10
+		TNT1 A 10 A_ReFire
+		Goto SatchelOn
+	AltHold:
+		STCG A 0 A_JumpIfNoAmmo("Ready")
+		STCG HGF 1
+		TNT1 A 0 A_PlayWeaponSound("Weapons/SatchelToss")
+		TNT1 A 0 A_FireCustomMissile("SatchelBlaster",0,1,-20,0)
+		STCF ABCDEFGH 1
+		TNT1 A 10
+		STCG A 0 A_JumpIfNoAmmo("SatchelOn")
+		TNT1 A 10 A_ReFire
 		Goto SatchelOn
 	}
 }
@@ -1458,7 +1683,7 @@ ACTOR SatchelSpawner
 	Death:
 		STCP A 0 A_NoBlocking
 		STCP A 1 A_SpawnItem("BrutalExplosion",0,0) // "AmmoSatchel2"
-		stop
+		Stop
 	}
 }
 ACTOR AmmoSatchel2 : CustomInventory 26229
@@ -1468,14 +1693,14 @@ ACTOR AmmoSatchel2 : CustomInventory 26229
 	-COUNTITEM
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
-	states
+	States
 	{
 	Pickup:
 		TNT1 A 0 A_GiveInventory("Clip",10)
 		TNT1 A 0 A_GiveInventory("Shell",4)
 		TNT1 A 0 A_GiveInventory("RocketAmmo",2)
 		TNT1 A 0 A_GiveInventory("Cell",20)
-		stop
+		Stop
 	Spawn:
 		STCP A 600
 		Goto FadeOut
@@ -1514,7 +1739,7 @@ ACTOR SatchelBlaster
 		Stop
 	}
 }
-ACTOR FlameThrower2 : Weapon 26335
+ACTOR FlameThrower2 : "DPT.HQ-Weapon" 26335
 {
 	//$Category Weapons
 	Inventory.PickupSound "misc/w_pkup"
@@ -1539,19 +1764,19 @@ ACTOR FlameThrower2 : Weapon 26335
 		FLMG A 1 A_Raise
 		Loop
 	Fire:
-		FLMG E 0 bright A_GunFlash
-		FLMG E 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
-		FLMG F 1 bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
-		FLMG G 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
-		FLMG E 0 bright A_GunFlash
-		FLMG E 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
-		FLMG F 1 bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
-		FLMG G 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
-		FLMG E 0 bright A_GunFlash
-		FLMG E 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
-		FLMG F 1 bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
-		FLMG G 1 bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
-		FLMG H 2 bright A_ReFire
+		FLMG E 0 Bright A_GunFlash
+		FLMG E 1 Bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+		FLMG F 1 Bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
+		FLMG G 1 Bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+		FLMG E 0 Bright A_GunFlash
+		FLMG E 1 Bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+		FLMG F 1 Bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
+		FLMG G 1 Bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+		FLMG E 0 Bright A_GunFlash
+		FLMG E 1 Bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+		FLMG F 1 Bright A_FireCustomMissile("FTFire", 0, 0, Random(-4, 4), 0)
+		FLMG G 1 Bright A_FireCustomMissile("FTFire", 0, 1, Random(-4, 4), 0)
+		FLMG H 2 Bright A_ReFire
 		Goto Ready
 	Flash:
 		TNT1 A 2 A_Light1
@@ -1578,18 +1803,18 @@ ACTOR FTFire
 	{
 	Spawn:
 		TNT1 A 2
-		FRFX ABCD 2 bright A_Explode(5, 8, 0)
+		FRFX ABCD 2 Bright A_Explode(5, 8, 0)
 		TNT1 A 0 A_LowGravity
-		FRFX EFG 2 bright A_Explode(5, 16, 0)
-		FRFX HIJ 2 bright A_Explode(5, 32, 0)
-		FRFX KLM 2 bright A_Explode(5, 64, 0)
-		FRFX NO 2 bright
+		FRFX EFG 2 Bright A_Explode(5, 16, 0)
+		FRFX HIJ 2 Bright A_Explode(5, 32, 0)
+		FRFX KLM 2 Bright A_Explode(5, 64, 0)
+		FRFX NO 2 Bright
 		Stop
 	Death:
-		FRFX HIJ 2 bright A_Explode(5, 32, 0)
+		FRFX HIJ 2 Bright A_Explode(5, 32, 0)
 		TNT1 A 0 A_CustomMissile("DropFire", 0, 0, 0, 4)
-		FRFX KLM 2 bright A_Explode(5, 64, 0)
-		FRFX NO 2 bright
+		FRFX KLM 2 Bright A_Explode(5, 64, 0)
+		FRFX NO 2 Bright
 		Stop
 	}
 }
@@ -1609,20 +1834,20 @@ ACTOR DropFire
 	{
 	Spawn:
 		TNT1 A 0 A_PlaySound("Flamethrower/Flame")
-		FLME A 2 bright A_Explode(5, 32, 0)
-		FLME BCDEFGHIJKLMN 2 bright A_Explode(5, 16, 0)
+		FLME A 2 Bright A_Explode(5, 32, 0)
+		FLME BCDEFGHIJKLMN 2 Bright A_Explode(5, 16, 0)
 		TNT1 A 0 A_PlaySound("Flamethrower/Flame")
-		FLME A 2 bright A_Explode(5, 32, 0)
-		FLME BCDEFGHIJKLMN 2 bright A_Explode(5, 16, 0)
+		FLME A 2 Bright A_Explode(5, 32, 0)
+		FLME BCDEFGHIJKLMN 2 Bright A_Explode(5, 16, 0)
 		TNT1 A 0 A_PlaySound("Flamethrower/Flame")
-		FLME A 2 bright A_Explode(5, 32, 0)
-		FLME BCDEFGHIJKLMN 2 bright A_Explode(5, 16, 0)
+		FLME A 2 Bright A_Explode(5, 32, 0)
+		FLME BCDEFGHIJKLMN 2 Bright A_Explode(5, 16, 0)
 		TNT1 A 0 A_PlaySound("Flamethrower/Flame")
-		FLME A 2 bright A_Explode(5, 32, 0)
-		FLME BCDEFGHIJKLMN 2 bright A_Explode(5, 16, 0)
+		FLME A 2 Bright A_Explode(5, 32, 0)
+		FLME BCDEFGHIJKLMN 2 Bright A_Explode(5, 16, 0)
 		TNT1 A 0 A_PlaySound("Flamethrower/Flame")
-		FLME A 2 bright A_Explode(5, 32, 0)
-		FLME BCDEFGHIJKLMN 2 bright A_Explode(5, 16, 0)
+		FLME A 2 Bright A_Explode(5, 32, 0)
+		FLME BCDEFGHIJKLMN 2 Bright A_Explode(5, 16, 0)
 		TNT1 A 0 A_Jump(192, "Death")
 		Loop
 	Death:
@@ -1663,7 +1888,7 @@ ACTOR BigGas : Ammo 26231
 		Loop
 	}
 }
-ACTOR Machinegun : Weapon 26336
+ACTOR Machinegun : "DPT.HQ-Weapon" 26336
 {
 	//$Category Weapons
 	Obituary "%o was gunned down by %k's machinegun."
@@ -1676,7 +1901,7 @@ ACTOR Machinegun : Weapon 26336
 	Weapon.AmmoType "Clip"
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 20
-	states
+	States
 	{
 	Ready:
 		RGUN A 1 A_WeaponReady
@@ -1696,16 +1921,16 @@ ACTOR Machinegun : Weapon 26336
 		RGUN A 5
 		goto Ready
 	Flash:
-		TNT1 A 1 bright A_Light1
-		TNT1 B 1 bright A_Light2
-		TNT1 A 0 bright A_Light0
-		stop
+		TNT1 A 1 Bright A_Light1
+		TNT1 B 1 Bright A_Light2
+		TNT1 A 0 Bright A_Light0
+		Stop
 	Spawn:
 		RGUP A -1
-		stop
+		Stop
 	}
 }
-ACTOR NailGunMG : Weapon 26337
+ACTOR NailGunMG : "DPT.HQ-Weapon" 26337
 {
 	//$Category Weapons
 	Weapon.AmmoUse 1
@@ -1809,7 +2034,7 @@ ACTOR NailBlur
 		Loop
 	}
 }
-ACTOR AlternativeDoom3SSG : SuperShotgun 26338 //Replaces SuperShotgun
+ACTOR AlternativeDoom3SSG : SuperShotgun 26338
 {
 	//$Category Weapons
 	Decal "BulletChip"
@@ -1844,7 +2069,7 @@ ACTOR AlternativeDoom3SSG : SuperShotgun 26338 //Replaces SuperShotgun
 		Stop
 	}
 }
-ACTOR Coachgun : DoomWeapon 26220
+ACTOR Coachgun : "DPT.HQ-Weapon" 26220
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -1866,11 +2091,11 @@ ACTOR Coachgun : DoomWeapon 26220
 		Loop
 	Fire:
 		COCH A 3
-		COCH B 1 bright A_FireBullets (5, 4, 20, 5, "BulletPuff")
-		COCH B 0 bright A_PlaySoundEx ("coachgun/fire", "soundslot5")
-		COCH B 0 bright A_Gunflash
-		COCH B 0 bright Radius_Quake (3, 2, 0, 1, 0)
-		COCH C 1 bright A_SetPitch (pitch-2)
+		COCH B 1 Bright A_FireBullets (5, 4, 20, 5, "BulletPuff")
+		COCH B 0 Bright A_PlaySoundEx ("coachgun/fire", "soundslot5")
+		COCH B 0 Bright A_Gunflash
+		COCH B 0 Bright Radius_Quake (3, 2, 0, 1, 0)
+		COCH C 1 Bright A_SetPitch (pitch-2)
 		COCH D 1 A_SetPitch (pitch+0.4)
 		COCH AAAA 2 A_SetPitch (pitch+0.4)
 		COCH A 4
@@ -1896,7 +2121,7 @@ ACTOR Coachgun : DoomWeapon 26220
 		Stop
 	}
 }
-ACTOR EgoSmasher : Weapon 26339
+ACTOR EgoSmasher : "DPT.HQ-Weapon" 26339
 {
 	//$Category Weapons
 	decal BulletChip
@@ -1909,7 +2134,7 @@ ACTOR EgoSmasher : Weapon 26339
 	Weapon.AmmoUse 2
 	Weapon.AmmoGive 10
 	+WEAPON.NOAUTOFIRE
-	states
+	States
 	{
 	Spawn:
 		SOGP A -1
@@ -1928,14 +2153,14 @@ ACTOR EgoSmasher : Weapon 26339
 	Fire:
 		SOG2 A 0 A_GunFlash
 		SOG2 A 0 A_PlayWeaponSound("EGOFIR")
-		SOG2 B 1 bright A_FireBullets(3,5,5,11,"BulletPuff",1)
+		SOG2 B 1 Bright A_FireBullets(3,5,5,11,"BulletPuff",1)
 		SOG2 A 0 A_PlaySound("EGOFIR")
-		SOG2 C 1 bright A_FireBullets(3,5,5,11,"BulletPuff",0)
+		SOG2 C 1 Bright A_FireBullets(3,5,5,11,"BulletPuff",0)
 		SOG2 DEFGHIJK 1
 		goto Ready
 	}
 }
-ACTOR SidebySide : DoomWeapon 26221
+ACTOR SidebySide : "DPT.HQ-Weapon" 26221
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -1958,11 +2183,11 @@ ACTOR SidebySide : DoomWeapon 26221
 		Loop
 	Fire:
 		SBSH A 3
-		SBSH B 1 bright A_FireBullets (4.4,1.5, 25, 11, "BulletPuff")
-		SBSH B 0 bright A_PlaySoundEx ("SBSFIRE/fire", "soundslot5")
-		SBSH B 0 bright A_Gunflash
-		SBSH B 0 bright 
-		SBSH C 1 bright 
+		SBSH B 1 Bright A_FireBullets (4.4,1.5, 25, 11, "BulletPuff")
+		SBSH B 0 Bright A_PlaySoundEx ("SBSFIRE/fire", "soundslot5")
+		SBSH B 0 Bright A_Gunflash
+		SBSH B 0 Bright 
+		SBSH C 1 Bright 
 		SBSH D 1 
 		SBSH AAAA 2 
 		SBSH A 2
@@ -1988,9 +2213,18 @@ ACTOR SidebySide : DoomWeapon 26221
 		Stop
 	}
 }
-ACTOR Pussy : Weapon 
+ACTOR Pussy : "DPT.HQ-Weapon" 
 {
 	//$Category Weapons
+	Inventory.PickupSound ""
+	Inventory.PickupMessage ""
+	+WEAPON.MELEEWEAPON
+	Weapon.Kickback 0
+	Weapon.YAdjust 0
+	+INVENTORY.UNDROPPABLE
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.NOALERT
 	States
 	{
 	Ready:
@@ -2027,7 +2261,7 @@ ACTOR mocha
 	mass 1
 	DamageType Piss
 	SeeSound "DSPISS"
-	states
+	States
 	{
 	Spawn:
 		PISS ABCD 6
@@ -2039,12 +2273,18 @@ ACTOR mocha
 		Stop
 	}
 }
-ACTOR Dick : DoomWeapon
+ACTOR Dick : "DPT.HQ-Weapon"
 {
-	SpawnID 29
+	//$Category Weapons
+	Inventory.PickupSound ""
+	Inventory.PickupMessage ""
+	+WEAPON.MELEEWEAPON
+	Weapon.Kickback 0
+	Weapon.YAdjust 0
+	+INVENTORY.UNDROPPABLE
+	+WEAPON.CHEATNOTWEAPON
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.NOALERT
-	Inventory.PickupMessage "you now know how to piss and how to beat off... as if you didn't :P"
 	States
 	{
 	Ready:
@@ -2083,8 +2323,8 @@ ACTOR PissOBJ
 	+NOBLOCKMAP
 	-NOGRAVITY
 	Scale 1.5
-	damagetype piss
-	states
+	DamageType piss
+	States
 	{
 	Spawn:
 		BLUD A 1
@@ -2095,9 +2335,10 @@ ACTOR PissOBJ
 		Stop
 	}
 }
+ACTOR BiggestPissOBJ : PissOBJ { Scale 3 }
 ACTOR Cum
 {
-	Obituary "%o rodil detey i sdoh"
+	Obituary "%o successful win the gokkun challenge"
 	Speed 12
 	Radius 4
 	Height 4
@@ -2107,8 +2348,8 @@ ACTOR Cum
 	+NOBLOCKMAP
 	-NOGRAVITY
 	Scale 1.5
-	damagetype cum
-	states
+	DamageType cum
+	States
 	{
 	Spawn:
 		BLUD A 1
@@ -2116,14 +2357,209 @@ ACTOR Cum
 	Death:
 		BLUD ABCA 2
 		NULL A 0
+		Stop
+	}
+}
+ACTOR DartPowerDick : "DPT.HQ-Weapon"
+{
+	//$Category Weapons
+	Inventory.PickupSound ""
+	Inventory.PickupMessage ""
+	+WEAPON.MELEEWEAPON
+	Weapon.Kickback 0
+	Weapon.YAdjust 0
+	+INVENTORY.UNDROPPABLE
+	+WEAPON.CHEATNOTWEAPON
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.NOALERT
+	States
+	{
+Spawn:
+		NULL A 1
+		Stop
+Ready:
+		NULL A 1 A_WeaponReady
+		Loop
+Deselect:
+		NULL A 1 A_Lower
+		Loop
+Select:
+		NULL A 1 A_Raise
+		Goto Select
+Fire:
+		NULL A 0
+		NULL A 2 A_FireCustomMissile("BiggestPissOBJ",0,0,0,0,0)
+		NULL A 0 A_ReFire
+		Goto Ready
+AltFire:
+		NULL A 0 A_GiveInventory("Clip",1)
+		NULL A 0 A_PlayWeaponSound("DartPowerSwallow")
+		NULL A 2 offset (0, 35)
+		NULL A 2 offset (0, 30)
+		NULL A 2 offset (0, 25)
+		NULL A 2 offset (0, 20)
+		NULL A 2 offset (0, 15)
+		NULL A 2 offset (0, 10)
+		NULL A 25 offset (0, 5) A_GiveInventory("DartPowerCancelCheck",1)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (5, 15)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (10, 20)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (5, 25)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (0, 30)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (-5, 25)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (-10, 20)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (-5, 15)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (0, 10)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (0, 5)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (5, 15)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (10, 20)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (5, 25)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (0, 30)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (-5, 25)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (-10, 20)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (-5, 15)
+		NULL A 0 A_WeaponReady
+		NULL A 2 offset (0, 10)
+		NULL A 0 A_GiveInventory("DartPowerBallCooldown", 1)
+		NULL A 0 offset (0, 5) A_FireCustomMissile("DartPowerBall", 0, 0 ,0)
+		NULL A 1 offset (0, 55) A_PlayWeaponSound("DartPowerSpit")
+		NULL A 1 offset (0, 75)
+		NULL A 1 offset (0, 95)
+		NULL A 1 offset (0, 115)
+		NULL A 1 offset (0, 135) 
+		NULL A 1 offset (0, 115)
+		NULL A 1 offset (0, 95)
+		NULL A 1 offset (0, 75)
+		NULL A 1 offset (0, 55)
+		NULL A 10 offset (0, 32) A_TakeInventory("DartPowerCancelCheck",999)
+		NULL A 15 offset (0, 32)
+		Goto Ready
+Cancel:
+		NULL A 0 A_GiveInventory("Clip",1)
+		NULL A 0 A_TakeInventory("DartPowerCancelCheck",999)
+		NULL A 0 A_PlayWeaponSound("DartPowerCum")
+		NULL A 0 offset (0, 55) A_FireCustomMissile("VomitFake",0,0,0,0)
+		NULL A 1 offset (0, 55)
+		NULL A 1 offset (0, 60)
+		NULL A 1 offset (0, 65)
+		NULL A 1 offset (0, 70)
+		NULL A 1 offset (0, 75)
+		NULL A 1 offset (0, 80) 
+		NULL A 1 offset (0, 85) 
+		NULL A 1 offset (0, 90) 
+		NULL LLLLLLLLLLLLLLLLLLLLLLLLL 1 offset (0, 95) A_FireCustomMissile("DartPowerCum",random(-20,20),0,0,3)
+		NULL A 10 offset (0, 95) 
+		NULL A 2 offset (0, 90) 
+		NULL A 2 offset (0, 85)
+		NULL A 2 offset (0, 80) 
+		NULL A 2 offset (0, 75)
+		NULL A 2 offset (0, 70)
+		NULL A 2 offset (0, 65)
+		NULL A 2 offset (0, 60)
+		NULL A 2 offset (0, 55)
+		NULL A 2 offset (0, 32)
+		Goto Ready
+	}
+}
+Actor DartPowerCum
+{
+	speed 1
+	height 2
+	radius 2
+	scale 0.2
+	damage (random(2,3))
+	renderstyle translucent
+	alpha 0.8
+	Obituary "%o was puked on by %k."
+	PROJECTILE
+	+RIPPER
+	-NOGRAVITY
+	+BLOODLESSIMPACT
+	States
+	{
+Spawn:
+		SRBB E 0
+		SRBB E 5 A_Recoil(random(-12,-22))
+		SRBB EFGHI 5
 		stop
 	}
 }
-ACTOR Doom3SSG : Weapon 20206
+Actor VomitFake
+{
+	PROJECTILE
+	-SOLID
+	+NOGRAVITY
+	States
+	{
+Spawn:
+		TNT1 A 1
+		stop
+	}
+}
+ACTOR DartPowerCancelCheck : Inventory
+{
+	Inventory.Amount 1
+	Inventory.MaxAmount 1
+}
+ACTOR DartPowerBall
+{
+	PROJECTILE
+	Speed 50
+	-NOGRAVITY
+	Scale 0.8
+	+LOWGRAVITY
+	decal "BloodSplat"
+	Obituary "%o was stained by %k's blood ball." 
+	Damage 3
+	Height 5
+	Radius 6
+	renderstyle translucent
+	alpha 1.0
+	reactiontime 8
+	States
+	{
+Spawn:
+		BLBA AABBCCDD 2 A_SpawnItem("NashGore_FlyingBlood",0,0,0,1)
+		BLBA A 0 A_CountDown
+		Loop
+Death:
+		VFX6 A 0 A_Stop
+		VFX6 A 0 A_ChangeFlag("NOGRAVITY",1)
+		VFX6 A 0 A_Explode(125, 88, 0)
+		NULL A 0 A_PlaySound("gibbage/xsplat")
+		NULL A 0 A_SpawnItemEx ("GIB1", 1, 1, random(8,32), random(0,5), random(0,5), 0, random(0,360), 160, 0)
+		NULL A 0 A_SpawnItemEx ("GIB2", 1, 1, random(8,32), random(0,5), random(0,5), 0, random(0,360), 160, 0)
+		NULL A 0 A_SpawnItemEx ("GIB3", 1, 1, random(8,32), random(0,5), random(0,5), 0, random(0,360), 160, 0)
+		NULL A 0 A_SpawnItemEx ("GIB4", 1, 1, random(8,32), random(0,5), random(0,5), 0, random(0,360), 160, 0)
+		NULL A 0 A_SpawnItemEx ("GIB5", 1, 1, random(8,32), random(0,5), random(0,5), 0, random(0,360), 160, 0)
+		VFX6 ABCDE 3 A_FadeOut(0.08)
+		Stop
+	}
+}
+Actor DartPowerBallCooldown : PowerDamage
+{
+	DamageFactor "Null", 1.0
+	Powerup.Duration 69
+}
+ACTOR Doom3SSG : "DPT.HQ-Weapon" 20206
 {
 	//$Category Weapons
 	decal "BulletChip"
-	spawnid 33
 	Scale 0.27
 	Obituary "%o chewed on %k's Double Barrel Shotgun."
 	inventory.pickupmessage "You got the Double Barrel Shotgun!"  
@@ -2132,7 +2568,7 @@ ACTOR Doom3SSG : Weapon 20206
 	Weapon.AmmoUse 2
 	Weapon.AmmoGive 12
 	AttackSound "SSGFIRE"
-	states
+	States
 	{
 	Ready:
 		D3SS A 1 A_WeaponReady
@@ -2145,7 +2581,7 @@ ACTOR Doom3SSG : Weapon 20206
 		LOOP
 	Fire:
 		D3SS A 0 A_GunFlash
-		D3SS B 1 bright A_FireBullets (11.2, 7.1, 20, 5, "BulletPuff")
+		D3SS B 1 Bright A_FireBullets (11.2, 7.1, 20, 5, "BulletPuff")
 		D3SS CDEFAAA 2
 		D3SS GHIJKLMNOPQRSTUVWXY 1
 		D3SS A 0 A_PlaySound("SSGREL1")
@@ -2166,10 +2602,10 @@ ACTOR Doom3SSG : Weapon 20206
 		goto ready
 	Spawn:
 		SSGZ A -1
-		stop
+		Stop
 	}
 }
-ACTOR BlueSprayPaint : Weapon 26202
+ACTOR BlueSprayPaint : "DPT.HQ-Weapon" 26202
 {
 	//$Category Weapons
 	Weapon.UpSound "DSSPRYSH"
@@ -2254,13 +2690,13 @@ ACTOR PaintSpray
 		SPRA A 0
 		SPRA A 0 A_Jump(128,"Spawn2") 
 		SPRA AAABBBCCCDDDEEE 2 A_FadeOut(0.05)
-		stop
+		Stop
 	Spawn2:
 		SPRA FFFGGGHHHIIIJJJ 2 A_FadeOut(0.05)
-		stop
+		Stop
 	Death:
 		NULL Z 1
-		stop
+		Stop
 	}
 }
 ACTOR RedPaintSpray : PaintSpray
@@ -2274,7 +2710,7 @@ ACTOR GreenPaintSpray : PaintSpray
 	decal GreenSprayPaint
 }
 // New
-ACTOR SprayPaint : Weapon 26205
+ACTOR SprayPaint : "DPT.HQ-Weapon" 26205
 {
 	//$Category Weapons
 	Scale .75
@@ -2435,7 +2871,7 @@ ACTOR PaintMist
 	States
 	{
 	Spawn:
-		PTMT A 1 A_PlayWeaponSound("SprayMist") // WTF?
+		PTMT A 1 A_PlayWeaponSound("SprayMist")
 		Goto Death
 	Death:
 		PTMT A 1 Bright
@@ -2609,7 +3045,7 @@ ACTOR BlueStrike
    BBLU A 1 Bright A_SetTranslucent(1.0, 1)
    BBLU AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_FadeOut(0.02)
    TNT1 A 105
-   stop
+   Stop
  }
 }
 ACTOR BlueFlare2 : BlueStrike
@@ -2688,7 +3124,7 @@ TNT1 AAAAA 0 A_SpawnitemEx("IonFire", random(-1,1), random(-1,1), 0, 0.0001 * Ra
 //TNT1 AAAAAAAAAAAAAA 0 A_SpawnitemEx("IonBigSmoke", 0, 0, 16, 0.0001 * Random(0, 10000), 0.0001 * Random(0, 10000), 0.0001 * Random(0, 10000), 0, (128|32), 0)
 TNT1 A 0 
 TNT1 A 1
-stop
+Stop
 }}
 ACTOR IonFloor : IonRing
 {
@@ -2696,7 +3132,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("IonSmokefx", 0, 0, 0 ,0.00001 * Random(-800000, 800000), 0.00001 * Random(-800000, 800000),0,0, 128, 0)
-stop
+Stop
 }}
 ACTOR IonSphere : IonRing
 {
@@ -2704,7 +3140,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("IonSmokefx", 0, 0, 0 ,0.00001 * Random(-500000, 500000), 0.00001 * Random(-500000, 50000),0.00001 * Random(0, 500000),0, 128, 0)
-stop
+Stop
 }}
 ACTOR IonBlasphemy : IonRing
 {
@@ -2712,7 +3148,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("Ionfx2", 0, 0, 0 ,0.00001 * Random(-500000, 500000), 0.00001 * Random(-500000, 500000),0.00001 * Random(0, 500000),0, 128, 0)
-stop
+Stop
 }}
 ACTOR IonPole : IonRing
 {
@@ -2720,7 +3156,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("Ionfx2", 0, 0, 0 ,0.00001 * Random(-10000, 10000), 0.00001 * Random(-10000, 10000),0.00001 * Random(0, 2000000),0, 128,0)
-stop
+Stop
 }
 }
 ACTOR IonSmokePole : IonRing
@@ -2729,7 +3165,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("Ionsmokefx", 0, 0, 0 ,0.00001 * Random(-10000, 10000), 0.00001 * Random(-1000, 10000),0.00001 * Random(0, 2000000),0, 128,0)
-stop
+Stop
 }
 }
 ACTOR IonDebris : IonRing
@@ -2738,7 +3174,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("Ionfx3", 0, 0, 0 ,0.00001 * Random(-2000000, 2000000), 0.00001 * Random(-2000000, 2000000),0.00001 * Random(0, 2000000),0, 128,0)
-stop
+Stop
 }
 }
 ACTOR IonFx
@@ -2756,8 +3192,8 @@ PROJECTILE
 States
 {
 Spawn:
-ION1 ABCD 10 bright A_SpawnitemEx("IonFx2", 0, 0, 0, 0, 0, 0, 0, (128|32), 0)
-ION1 A 0 bright A_Countdown
+ION1 ABCD 10 Bright A_SpawnitemEx("IonFx2", 0, 0, 0, 0, 0, 0, 0, (128|32), 0)
+ION1 A 0 Bright A_Countdown
 loop
 Death:
 Stop
@@ -2794,8 +3230,8 @@ Alpha 0.02
 States
 {
 Spawn:
-ION1 ABCD 4 bright A_SpawnitemEx("IonFx4", 0, 0, 0, 0, 0, 0, 0, (128|32), 0)
-ION1 A 0 bright A_Countdown
+ION1 ABCD 4 Bright A_SpawnitemEx("IonFx4", 0, 0, 0, 0, 0, 0, 0, (128|32), 0)
+ION1 A 0 Bright A_Countdown
 loop
 Death:
 Stop
@@ -2914,7 +3350,7 @@ Spawn:
    BBLU A 0 Radius_Quake(7, 105, 120, 140, 0)
    BBLU AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_FadeOut(0.02)
    TNT1 A 105
-   stop
+   Stop
  }
 }
 ACTOR HyperBlueFlare : BlueFlare2
@@ -2935,7 +3371,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("HyperIonSmokefx", 0, 0, 0 ,0.00001 * Random(-800000, 800000), 0.00001 * Random(-1200000, 1200000),0,0, 128, 0)
-stop
+Stop
 }}
 ACTOR HyperIonSphere : IonSphere
 {
@@ -2943,7 +3379,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("HyperIonSmokefx", 0, 0, 0 ,0.00001 * Random(-700000, 700000), 0.00001 * Random(-700000, 700000),0.00001 * Random(0, 700000),0, 128, 0)
-stop
+Stop
 }}
 ACTOR HyperIonBlasphemy : IonBlasphemy
 {
@@ -2951,7 +3387,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("HyperIonfx2", 0, 0, 0 ,0.00001 * Random(-700000, 700000), 0.00001 * Random(-700000, 700000),0.00001 * Random(0, 700000),0, 128, 0)
-stop
+Stop
 }}
 ACTOR HyperIonPole : IonPole
 {
@@ -2959,7 +3395,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("HyperIonfx2", 0, 0, 0 ,0.00001 * Random(-300000, 300000), 0.00001 * Random(-300000, 300000),0.00001 * Random(0, 5000000),0, 128,0)
-stop
+Stop
 }
 }
 ACTOR HyperIonSmokePole : IonSmokePole
@@ -2968,7 +3404,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("HyperIonsmokefx", 0, 0, 0 ,0.00001 * Random(-300000, 300000), 0.00001 * Random(-700000, 700000),0.00001 * Random(0, 5000000),0, 128,0)
-stop
+Stop
 }
 }
 ACTOR HyperIonDebris : IonDebris
@@ -2977,7 +3413,7 @@ States
 {
 Spawn:
 TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItemEx("HyperIonfx3", 0, 0, 0 ,0.00001 * Random(-6000000, 6000000), 0.00001 * Random(-6000000, 6000000),0.00001 * Random(0, 6000000),0, 128,0)
-stop
+Stop
 }
 }
 ACTOR HyperIonsmokefx : Ionsmokefx
@@ -3017,8 +3453,8 @@ Alpha 0.07
 States
 {
 Spawn:
-ION1 ABCD 8 bright A_SpawnitemEx("HyperIonFx4", 0, 0, 0, 0, 0, 0, 0, (128|32), 0)
-ION1 A 0 bright A_Countdown
+ION1 ABCD 8 Bright A_SpawnitemEx("HyperIonFx4", 0, 0, 0, 0, 0, 0, 0, (128|32), 0)
+ION1 A 0 Bright A_Countdown
 loop
 Death:
 Stop
@@ -3045,7 +3481,7 @@ Spawn:
    Wait
  }
 }
-ACTOR IonRifle : Weapon 31212
+ACTOR IonRifle : "DPT.HQ-Weapon" 31212
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You got the Ion Attack Rifle!"
@@ -3096,7 +3532,7 @@ ACTOR IonBall : Plasmaball
 	{
 	Death:
 		PLSE A 0 A_CustomMissile("Bluestrike", 0, 0, 0, 0, 0)
-		PLSE ABCDE 4 bright
+		PLSE ABCDE 4 Bright
 		Stop
 	}
 }
@@ -3468,7 +3904,7 @@ ACTOR NukeHyperSmokering : Nuke
    Stop
  }
 }
-ACTOR Explosive1 : Weapon 26340
+ACTOR Explosive1 : "DPT.HQ-Weapon" 26340
 {
 	//$Category Weapons
   Weapon.AmmoUse 1
@@ -3490,12 +3926,12 @@ ACTOR Explosive1 : Weapon 26340
   Fire:
     DYNO A 5 
     DYNO B 5
-    DYNO C 5 BRIGHT A_PlaysoundEx("Lighter/Click","Weapon")
-    DYNO DDDDD 1 BRIGHT A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
-    DYNO EEEEE 1 BRIGHT A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
-    DYNO FFFFF 1 BRIGHT A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
-    DYNO GGGGG 1 BRIGHT A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
-    DYNO HHHHH 1 BRIGHT A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
+    DYNO C 5 Bright A_PlaysoundEx("Lighter/Click","Weapon")
+    DYNO DDDDD 1 Bright A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
+    DYNO EEEEE 1 Bright A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
+    DYNO FFFFF 1 Bright A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
+    DYNO GGGGG 1 Bright A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
+    DYNO HHHHH 1 Bright A_SpawnItemEx("PuffSpark1",4,15,35,0,0,0,random(45,60),128)
     DYNO I 0 A_Giveinventory("EXPLOSIVESHOUT",1)
     DYNO I 2 offset (35, 28) A_FireCustomMissile("TNT",0,1,1,5,0)
     DYNO I 2 offset (35, 32)
@@ -3526,36 +3962,36 @@ ACTOR FloatingPlasma1
   Alpha 0.5
   gravity 0.9
   scale 0.007
-  states
+  States
   {
   Spawn:
-    FLAE AAAAAAAAA 4 bright A_SpawnItemEx("PuffSpark1",1,1,1,0,0,0,0,128,64)
+    FLAE AAAAAAAAA 4 Bright A_SpawnItemEx("PuffSpark1",1,1,1,0,0,0,0,128,64)
     Goto Death
   Death:
     FLAE A 0 A_Stop
-    FLAE A 0 BRIGHT A_Jump(30,"Longer2")
-    FLAE A 0 BRIGHT A_Jump(30,"Longer3")
-    FLAE A 0 BRIGHT A_Jump(30,"Longer1")
-    FLAE AAAAAAAAA 4 bright
+    FLAE A 0 Bright A_Jump(30,"Longer2")
+    FLAE A 0 Bright A_Jump(30,"Longer3")
+    FLAE A 0 Bright A_Jump(30,"Longer1")
+    FLAE AAAAAAAAA 4 Bright
     Goto Longer1
   Longer1:
-    FLAE AAAAAAAAAA 1 BRIGHT
+    FLAE AAAAAAAAAA 1 Bright
     FLAE A 1 A_SpawnItemEx("PuffSpark1",1,1,1,0,0,0,0,128,64)
-    FLAE AAAAAAAAAA 5 BRIGHT A_FadeOut(0.1)
+    FLAE AAAAAAAAAA 5 Bright A_FadeOut(0.1)
     Stop
   Longer2:
-    FLAE AAAAA 1 BRIGHT
-    FLAE AAAAA 1 BRIGHT
-    FLAE AAAAA 1 BRIGHT
+    FLAE AAAAA 1 Bright
+    FLAE AAAAA 1 Bright
+    FLAE AAAAA 1 Bright
     FLAE A 1 A_SpawnItemEx("PuffSpark1",1,1,1,0,0,0,0,128,64)
-    FLAE AAAAAAAAAA 5 BRIGHT A_FadeOut(0.1)
+    FLAE AAAAAAAAAA 5 Bright A_FadeOut(0.1)
     Stop
   Longer3:
-    FLAE AAAAA 1 BRIGHT
-    FLAE AAAAA 1 BRIGHT
+    FLAE AAAAA 1 Bright
+    FLAE AAAAA 1 Bright
     FLAE A 1 A_SpawnItemEx("PuffSpark2",1,1,1,0,0,0,0,128,64)
-    FLAE AAAAAAAAAA 5 BRIGHT A_FadeOut(0.1)
-    stop
+    FLAE AAAAAAAAAA 5 Bright A_FadeOut(0.1)
+    Stop
   }
 }
 ACTOR TNTAMMO : Ammo 26233
@@ -3566,11 +4002,11 @@ ACTOR TNTAMMO : Ammo 26233
   inventory.icon "TNTTB0"
   ammo.backpackamount 3
   ammo.backpackmaxamount 6
-  states
+  States
   {
   Spawn:
     TNTT B 700
-    stop
+    Stop
   }
 }
 ACTOR PuffSpark1
@@ -3592,7 +4028,7 @@ ACTOR PuffSpark1
     PUF1 E 2 
     PUF1 F 2 
     PUF1 GGHHIIJJ 2 A_FadeOut(0.16)
-    stop
+    Stop
   }
 }
 ACTOR PuffSpark2
@@ -3610,7 +4046,7 @@ ACTOR PuffSpark2
     PUF2 A 4 A_Stop
     PUF2 B 4 
     PUF2 CCDDEE 4 A_FadeOut(0.16)
-    stop
+    Stop
   }
 }
 ACTOR EXPLOSIVESHOUT: Inventory
@@ -3635,120 +4071,120 @@ ACTOR TNT
   DamageType "Explosion"
   gravity 0.7
   Scale 0.7
-  Obituary "$OB_MPROCKET" // "%o rode %k's rocket."
+  Obituary "%o rode %k's dynamite."
   States
   {
   Spawn:
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)   
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)   
     Loop
   Death:
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNTT A 1 A_SpawnItemEx("PuffSpark1",0,0,0,0,0,0,random(45,60),128)
     TNTT A 0 A_PlaysoundEx("TNT/Fire","Weapon")
-    TNTT AAA 0 bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
+    TNTT AAA 0 Bright A_SpawnItemEx ("TNTFIRE",0,0,0,random(-3,3),random(-3,3),random(-3,3),random(0,359),128,32)  
     TNT1 A 0 A_CustomMissile("Smoke1",0,32,0,0,0)
     TNT1 A 0 A_CustomMissile("Smoke1",0,0,0,0,0)
     TNT1 A 0 A_CustomMissile("Smoke1",0,16,0,0,0)
@@ -3759,31 +4195,31 @@ ACTOR TNT
     TNT1 A 0 A_CustomMissile("TNTFIRE3",0,-16,0,0,0)
     TNT1 A 0 A_CustomMissile("TNTExplosion",8,0,0,0,0)
     TNT1 A 0 A_PlaysoundEx("Car/Explosion","Weapon")
-    BOMB AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 bright A_SpawnItemEx ("TNTFIRE1",0,0,0,random(5,10),random(5,10),random(5,10),random(0,359),128,32) 
-    TNT1 AAAAAAAAAAAAAAAA 0 bright A_SpawnItemEx ("Rocks",0,0,0,random(10,20),random(10,20),random(10,20),random(0,359),128,32) 
-    TNT1 AAAAAAAAAAAAAAAA 0 bright A_SpawnItemEx ("Rocks1",0,0,0,random(10,20),random(10,20),random(10,20),random(0,359),128,32) 
-    TNT1 AAAAAAAAAAAAAAAA 0 bright A_SpawnItemEx ("Rocks2",0,0,0,random(10,20),random(10,20),random(10,20),random(0,359),128,32) 
-    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 bright A_SpawnItemEx ("Smoke1",0,0,0,random(1,2),random(1,2),random(1,2),random(0,359),128,32) 
-    TNT1 A 0 bright A_Explode (128,128)
-    TNT1 A 8 bright A_Explode (64,128)
-    TNT1 B 6 bright A_Explode (32,128)
-    TNT1 C 4 bright A_Explode (32,128)
-    TNT1 D 6 bright A_Explode (32,128)
-    TNT1 E 4 bright A_Explode (32,128)
-    TNT1 F 6 bright A_Explode (32,128)
-    TNT1 G 4 bright A_Explode (32,128)
-    TNT1 H 6 bright A_Explode (32,128)
-    TNT1 I 4 bright A_Explode (32,128)
-    TNT1 J 6 bright A_Explode (32,128)
-    TNT1 K 4 bright A_Explode (16,128)
-    TNT1 L 6 bright A_Explode (16,128)
-    TNT1 M 4 bright A_Explode (16,128)
-    TNT1 N 6 bright A_Explode (16,128)
-    TNT1 O 4 bright A_Explode (16,128)
-    TNT1 P 6 bright A_Explode (16,128)
-    TNT1 Q 4 bright A_Explode (16,128)
+    BOMB AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 Bright A_SpawnItemEx ("TNTFIRE1",0,0,0,random(5,10),random(5,10),random(5,10),random(0,359),128,32) 
+    TNT1 AAAAAAAAAAAAAAAA 0 Bright A_SpawnItemEx ("Rocks",0,0,0,random(10,20),random(10,20),random(10,20),random(0,359),128,32) 
+    TNT1 AAAAAAAAAAAAAAAA 0 Bright A_SpawnItemEx ("Rocks1",0,0,0,random(10,20),random(10,20),random(10,20),random(0,359),128,32) 
+    TNT1 AAAAAAAAAAAAAAAA 0 Bright A_SpawnItemEx ("Rocks2",0,0,0,random(10,20),random(10,20),random(10,20),random(0,359),128,32) 
+    TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 Bright A_SpawnItemEx ("Smoke1",0,0,0,random(1,2),random(1,2),random(1,2),random(0,359),128,32) 
+    TNT1 A 0 Bright A_Explode (128,128)
+    TNT1 A 8 Bright A_Explode (64,128)
+    TNT1 B 6 Bright A_Explode (32,128)
+    TNT1 C 4 Bright A_Explode (32,128)
+    TNT1 D 6 Bright A_Explode (32,128)
+    TNT1 E 4 Bright A_Explode (32,128)
+    TNT1 F 6 Bright A_Explode (32,128)
+    TNT1 G 4 Bright A_Explode (32,128)
+    TNT1 H 6 Bright A_Explode (32,128)
+    TNT1 I 4 Bright A_Explode (32,128)
+    TNT1 J 6 Bright A_Explode (32,128)
+    TNT1 K 4 Bright A_Explode (16,128)
+    TNT1 A 6 Bright A_Explode (16,128)
+    TNT1 M 4 Bright A_Explode (16,128)
+    TNT1 N 6 Bright A_Explode (16,128)
+    TNT1 O 4 Bright A_Explode (16,128)
+    TNT1 P 6 Bright A_Explode (16,128)
+    TNT1 Q 4 Bright A_Explode (16,128)
     TNT1 A -1
-    stop
+    Stop
   }
 }
 ACTOR TNTFIRE : FloatingPlasma1
@@ -3801,29 +4237,29 @@ ACTOR Smoke1
   alpha 0.75
   scale 0.3
   Gravity 2.5
-  states
+  States
   {
   Spawn:
-    SMOK A 4 bright
-    SMOK B 4 bright
-    SMOK C 4 bright
-    SMOK D 4 bright
-    SMOK E 4 bright
-    SMOK F 4 bright
-    SMOK G 4 bright
-    SMOK H 4 bright
-    SMOK I 4 bright
-    SMOK J 4 bright
-    SMOK K 4 bright
-    SMOK L 4 bright
-    SMOK M 4 bright
-    SMOK N 4 bright
-    SMOK O 4 bright
-    SMOK P 4 bright
+    SMOK A 4 Bright
+    SMOK B 4 Bright
+    SMOK C 4 Bright
+    SMOK D 4 Bright
+    SMOK E 4 Bright
+    SMOK F 4 Bright
+    SMOK G 4 Bright
+    SMOK H 4 Bright
+    SMOK I 4 Bright
+    SMOK J 4 Bright
+    SMOK K 4 Bright
+    SMOK L 4 Bright
+    SMOK M 4 Bright
+    SMOK N 4 Bright
+    SMOK O 4 Bright
+    SMOK P 4 Bright
     goto Death
   Death:
-    SHAR Q 16 BRIGHT A_FadeOut(0.16)
-    stop
+    SHAR Q 16 Bright A_FadeOut(0.16)
+    Stop
   }
 }
 ACTOR TNTFire3
@@ -3842,46 +4278,46 @@ ACTOR TNTFire3
   +NOGRAVITY
   +NOCLIP
   scale 1
-  states
+  States
   {
   Spawn:
-    FIRE ABCDEFGH 4 bright A_Jump(32,"Death")
+    FIRE ABCDEFGH 4 Bright A_Jump(32,"Death")
     Goto Death
   Death:
-    PYXP A 0 bright A_Scream
+    PYXP A 0 Bright A_Scream
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE A 4 BRIGHT A_Explode(35,64)
+    FIRE A 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE B 4 BRIGHT A_Explode(35,64)
+    FIRE B 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE C 4 BRIGHT A_Explode(35,64)
+    FIRE C 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE D 4 BRIGHT A_Explode(35,64)
+    FIRE D 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE E 4 BRIGHT A_Explode(35,64)
+    FIRE E 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE F 4 BRIGHT A_Explode(35,64)
+    FIRE F 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE G 4 BRIGHT A_Explode(35,64)
+    FIRE G 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE H 4 BRIGHT A_Explode(35,64)
+    FIRE H 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE A 4 BRIGHT A_Explode(35,64)
+    FIRE A 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE B 4 BRIGHT A_Explode(35,64)
+    FIRE B 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE C 4 BRIGHT A_Explode(35,64)
+    FIRE C 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE D 4 BRIGHT A_Explode(35,64)
+    FIRE D 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE E 4 BRIGHT A_Explode(35,64)
+    FIRE E 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE F 4 BRIGHT A_Explode(35,64)
+    FIRE F 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE G 4 BRIGHT A_Explode(35,64)
+    FIRE G 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
-    FIRE H 4 BRIGHT A_Explode(35,64)
+    FIRE H 4 Bright A_Explode(35,64)
     TNT1 A 0 A_SpawnItemEx("FlameThrowerFireRemains",8,8,32,random(0,1),random(0,1),random(0,1),random(0,360),128)
     FIRE ABCDEFGH 4 A_FadeOut(0.16)
     Stop
@@ -3909,30 +4345,30 @@ ACTOR TNTExplosion
   States
   {
   Spawn:
-    PYXP A 0 bright A_PlaySound("Car/Explosion")
-    PYXP A 0 bright 
-    PYXP A 8 bright 
-    PYXP B 6 bright 
-    PYXP C 4 bright 
-    PYXP D 6 bright 
-    PYXP E 4 bright 
-    PYXP F 6 bright
-    PYXP G 4 bright 
-    PYXP H 6 bright 
-    PYXP I 4 bright 
-    PYXP J 6 bright 
-    PYXP K 4 bright 
-    PYXP L 6 bright 
-    PYXP M 4 bright 
-    PYXP N 6 bright 
-    PYXP O 4 bright 
-    PYXP P 6 bright 
-    PYXP Q 4 bright 
-    PYXP R 6 bright
-    PYXP S 4 bright
-    PYXP T 6 bright
-    PYXP U 4 bright
-    stop
+    PYXP A 0 Bright A_PlaySound("Car/Explosion")
+    PYXP A 0 Bright 
+    PYXP A 8 Bright 
+    PYXP B 6 Bright 
+    PYXP C 4 Bright 
+    PYXP D 6 Bright 
+    PYXP E 4 Bright 
+    PYXP F 6 Bright
+    PYXP G 4 Bright 
+    PYXP H 6 Bright 
+    PYXP I 4 Bright 
+    PYXP J 6 Bright 
+    PYXP K 4 Bright 
+    PYXP L 6 Bright 
+    PYXP M 4 Bright 
+    PYXP N 6 Bright 
+    PYXP O 4 Bright 
+    PYXP P 6 Bright 
+    PYXP Q 4 Bright 
+    PYXP R 6 Bright
+    PYXP S 4 Bright
+    PYXP T 6 Bright
+    PYXP U 4 Bright
+    Stop
   }
 }
 ACTOR TNTFIRE1 : FloatingPlasma1
@@ -3953,7 +4389,7 @@ ACTOR Rocks
   bounceFactor 0.3
   gravity 0.9
   Scale 1
-  Obituary "$OB_MPROCKET" // "%o rode %k's rocket."
+  Obituary "%o rode %k's rocket."
   States
   {
   Spawn:
@@ -3966,15 +4402,15 @@ ACTOR Rocks
 Left1:
     5HRD A 350
     5HRD AAAAAAAAAA 5 A_FadeOut(0.16)
-    stop
+    Stop
 Left2:
     5HRD B 350
     5HRD BBBBBBBBBB 5 A_FadeOut(0.16)
-    stop
+    Stop
 Left3:
     5HRD M 350
     5HRD CCCCCCCCCC 5 A_FadeOut(0.16)
-    stop
+    Stop
   }
 }
 ACTOR Rocks1 : Rocks {}
@@ -3992,7 +4428,7 @@ ACTOR Rocks2
   bounceFactor 0.6
   gravity 0.8
   Scale 0.9
-  Obituary "$OB_MPROCKET" // "%o rode %k's rocket."
+  Obituary "%o rode %k's rocket."
   States
   {
   Spawn:
@@ -4005,15 +4441,15 @@ ACTOR Rocks2
 Left1:
     5HRD A 350
     5HRD AAAAAAAAAA 5 A_FadeOut(0.16)
-    stop
+    Stop
 Left2:
     5HRD B 350
     5HRD BBBBBBBBBB 5 A_FadeOut(0.16)
-    stop
+    Stop
 Left3:
     5HRD M 350
     5HRD CCCCCCCCCC 5 A_FadeOut(0.16)
-    stop
+    Stop
   }
 }
 ACTOR FlameThrowerFireRemains
@@ -4026,20 +4462,19 @@ ACTOR FlameThrowerFireRemains
   Speed 2
   Damage 0
   Scale 0.4
-  states
+  States
   {
   Spawn:
     TNT1 A 4
-    FLMB A 3 bright
+    FLMB A 3 Bright
     FLMB A 0 ThrustThingZ(0,5,0,1)
-    FLMB BBCCDDEEFFGGHH 2 bright A_FadeOut(0.07)
-    stop
+    FLMB BBCCDDEEFFGGHH 2 Bright A_FadeOut(0.07)
+    Stop
   }
 }
-ACTOR HAAX : DoomWeapon 26341
+ACTOR HAAX : "DPT.HQ-Weapon" 26341
 {
 	//$Category Weapons
-  SpawnID 1
   +WEAPON.NOAUTOFIRE
   Inventory.PickupMessage "wtf hax o_0!"
   States
@@ -4080,10 +4515,10 @@ ACTOR FlyingPC
   States
   {
   Spawn:
-    CPU1 A 1 bright
+    CPU1 A 1 Bright
     loop
   Death:
-    TNT1 A 0 bright A_ChangeFlag("NOGRAVITY",1)
+    TNT1 A 0 Bright A_ChangeFlag("NOGRAVITY",1)
     TNT1 A 0
     TNT1 A 0 A_TossGib
     TNT1 A 0 A_TossGib
@@ -4095,13 +4530,13 @@ ACTOR FlyingPC
     TNT1 A 0 A_TossGib
     TNT1 A 0 A_TossGib
     TNT1 A 0 A_TossGib
-    MISL B 8 bright A_Explode(256,256)
-    MISL C 6 bright
-    MISL D 4 bright
-    stop
+    MISL B 8 Bright A_Explode(256,256)
+    MISL C 6 Bright
+    MISL D 4 Bright
+    Stop
   }
 }
-ACTOR AK1337 : Weapon 19006
+ACTOR AK1337 : "DPT.HQ-Weapon" 19006
 {
 //$Category Weapons
   inventory.pickupmessage "You got the AK-47!"
@@ -4113,7 +4548,7 @@ ACTOR AK1337 : Weapon 19006
   Weapon.AmmoUse2 0
   Weapon.AmmoGive2 36
   Scale 0.2
-  states
+  States
   {
   Ready:
     AK47 A 1 offset (0, 34) A_WeaponReady
@@ -4126,13 +4561,13 @@ ACTOR AK1337 : Weapon 19006
     loop
   Fire: 
     1156 A 0 A_JumpIfNoAmmo("AltFire")
-    1156 A 0 bright A_PlaysoundEx("SND1401","Weapon")
-    1156 C 1 bright A_FireBullets(2,3,-1,4,"BulletPuff",1,1280)
-    1156 D 1 bright A_SpawnItemEx("MachineCasing",4,15,30,random(1,3),random(0,1),random(1,3),random(45,60),128)
+    1156 A 0 Bright A_PlaysoundEx("SND1401","Weapon")
+    1156 C 1 Bright A_FireBullets(2,3,-1,4,"BulletPuff",1,1280)
+    1156 D 1 Bright A_SpawnItemEx("MachineCasing",4,15,30,random(1,3),random(0,1),random(1,3),random(45,60),128)
 	1156 A 0 A_ALERTMONSTERS
     1156 EF 1
-    1156 A 0 bright A_JumpIfNoAmmo("AltFire")
-    1156 A 0 bright A_ReFire
+    1156 A 0 Bright A_JumpIfNoAmmo("AltFire")
+    1156 A 0 Bright A_ReFire
     goto Ready
   AltFire:
     AK47 A 1 A_JumpIfInventory("AKIn",30,2)
@@ -4162,13 +4597,13 @@ ACTOR AK1337 : Weapon 19006
     AK47 A 0 A_ReFire
     goto Ready
   Flash:
-    AK47 A 4 bright A_Light1
-    AK47 B 5 bright A_Light2
-    AK47 A 0 bright A_Light0
-    stop
+    AK47 A 4 Bright A_Light1
+    AK47 B 5 Bright A_Light2
+    AK47 A 0 Bright A_Light0
+    Stop
   Spawn:
     AKPK A -1
-    stop
+    Stop
   }
 }
 ACTOR 9MMCasing
@@ -4225,11 +4660,11 @@ ACTOR AKAmmo : Ammo 26234
   inventory.icon "CLP2D0"
   ammo.backpackamount 30
   ammo.backpackmaxamount 480
-  states
+  States
   {
   Spawn:
     CLP2 D 700
-    stop
+    Stop
   }
 }
 ACTOR MachineCasing : 9MMCasing
@@ -4279,7 +4714,7 @@ ACTOR AK47ClipCasing
     Stop
   }
 }
-ACTOR MinesWeap : Weapon 26207
+ACTOR MinesWeap : "DPT.HQ-Weapon" 26207
 {
 	//$Category Weapons
 	Weapon.AmmoType "MineAmmo1337"
@@ -4364,13 +4799,13 @@ ACTOR MineThrown1337
   States
   {
   Spawn:
-    BRMN A 1 BRIGHT
+    BRMN A 1 Bright
     loop
   Death:
     TNT1 A 0
     TNT1 A 0 A_Scream
     TNT1 A 0 A_SpawnItem("Mine1337")
-    stop
+    Stop
   }
 }
 ACTOR Mine1337
@@ -4393,7 +4828,7 @@ ACTOR Mine1337
   States
   {
   Spawn:
-    BRMN A 1 BRIGHT
+    BRMN A 1 Bright
     loop
   Melee:
     goto death
@@ -4422,7 +4857,7 @@ ACTOR Mine1337
 		Stop
   }
 }
-ACTOR Pillow : Weapon 20003
+ACTOR Pillow : "DPT.HQ-Weapon" 20003
 {
 	//$Category Weapons
 	Inventory.PickupSound ""
@@ -4480,10 +4915,9 @@ ACTOR PillowFeather
 			Stop
 	}
 }
-ACTOR Spartanleg : DoomWeapon 20082
+ACTOR Spartanleg : "DPT.HQ-Weapon" 20082
 {
 	//$Category Weapons
-  SpawnID 32
   Weapon.Kickback 1000
   Inventory.PickupMessage "got the spartan boot!"
   Obituary "%o was owned by %k's spartan boot"
@@ -4515,7 +4949,7 @@ ACTOR Spartanleg : DoomWeapon 20082
     Goto Ready
   Spawn:
     B00T A -1
-    stop
+    Stop
   }
 }
 // DARTPOWER
@@ -4530,7 +4964,7 @@ ACTOR JabChecker2 : Inventory
 	Inventory.MaxAmount 1
 }
 ACTOR BulletSnuff : BulletPuff {} // FROM MOD NAMED XXX-MERECEANIES // NOT NEEDED TO ADD
-ACTOR DartPowerFists : Fist
+ACTOR DartPowerUnarmed : "DPT.HQ-Weapon" 
 {
 	+WEAPON.WIMPY_WEAPON
 	+WEAPON.MELEEWEAPON
@@ -4539,10 +4973,10 @@ ACTOR DartPowerFists : Fist
 	+NOALERT
 	-SOLID
 	+INVENTORY.UNDROPPABLE
-	-Weapon.NOLMS
+	-WEAPON.NOLMS
 	Attacksound "fists/punch"
-	Inventory.PickupSound "misc/w_pkup"
-	Inventory.PickupMessage "You shouldn't see this!"
+	Inventory.PickupSound ""
+	Inventory.PickupMessage ""
 	Weapon.AmmoUse 0
 	States
 	{
@@ -4557,7 +4991,7 @@ ACTOR DartPowerFists : Fist
 		loop
 	Fire:
 		NULL A 0 A_JumpIfInventory("jabchecker",1, "JabLeft")
-	JabRight:
+	JaBright:
 		NULL A 0 A_TakeInventory("jabchecker2",1)
 		DPNG B 1 //A_BFGSound
 		DPNG C 1
@@ -4601,7 +5035,7 @@ ACTOR DartPowerFists : Fist
 		Goto Ready
 	Hold:
 		NULL A 0 A_JumpIfInventory("jabchecker",1, "JabLeft")
-		NULL A 0 A_JumpIfInventory("jabchecker2",1, "JabRight")
+		NULL A 0 A_JumpIfInventory("jabchecker2",1, "JaBright")
 		DPNG I 1
 		DPNG J 2 //A_BFGSound
 		DPNG K 2
@@ -4754,27 +5188,27 @@ ACTOR 9mmSpawner : DebrisGeneral
 	Death1:
 		CAS1 I 1250
 		CAS1 IIIIIIIIIIIIIIIII 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death2:
 		CAS1 J 1250
 		CAS1 JJJJJJJJJJJJJJJJJ 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death3:
 		CAS1 K 1250
 		CAS1 KKKKKKKKKKKKKKKKK 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death4:
 		CAS1 L 1250
 		CAS1 LLLLLLLLLLLLLLLLL 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death5:
 		CAS1 M 1250
 		CAS1 MMMMMMMMMMMMMMMMM 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death6:
 		CAS1 N 1250
 		CAS1 NNNNNNNNNNNNNNNNN 1  A_FadeOut(0.04)
-		stop
+		Stop
 	}
 }*/
 ACTOR ShellSpawner : 9mmSpawner
@@ -4805,30 +5239,30 @@ ACTOR ShotgunCasing22 : 9mmCasing
 	Death1:
 		SHL1 I 1250
 		SHL1 IIIIIIIIIIIIIIIII 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death2:
 		SHL1 J 1250
 		SHL1 JJJJJJJJJJJJJJJJJ 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death3:
 		SHL1 K 1250
 		SHL1 KKKKKKKKKKKKKKKKK 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death4:
 		SHL1 L 1250
 		SHL1 LLLLLLLLLLLLLLLLL 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death5:
 		SHL1 M 1250
 		SHL1 MMMMMMMMMMMMMMMMM 1  A_FadeOut(0.04)
-		stop
+		Stop
 	Death6:
 		SHL1 N 1250
 		SHL1 NNNNNNNNNNNNNNNNN 1  A_FadeOut(0.04)
-		stop
+		Stop
 	}
 }
-ACTOR Gothic_Shotgun : Weapon 10407
+ACTOR Gothic_Shotgun : "DPT.HQ-Weapon" 10407
 {
 	//$Category Weapons
 	Weapon.AmmoUse 1
@@ -4902,7 +5336,7 @@ ACTOR Gothic_Shotgun : Weapon 10407
 // Scripts and sprites taken from Action Doom 2
 // Additional sprites and scripting by TheCamaleonMaligno
 // AAAAND with some sprites more + no autofire by Samuzero15tlh
-ACTOR Katana : DoomWeapon 10498 // Secret
+ACTOR Katana : "DPT.HQ-Weapon" 10498 // Secret
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You found the Shion's Katana!!"
@@ -5037,7 +5471,7 @@ ACTOR Fakedeflect
 		Stop
 	}
 }
-ACTOR UACM360 : Weapon 12461
+ACTOR UACM360 : "DPT.HQ-Weapon" 12461
 {
 	//$Category Weapons
   weapon.kickback 200
@@ -5071,17 +5505,17 @@ ACTOR UACM360 : Weapon 12461
     DGGN A 0 A_PlayWeaponSound ("DSM4SHOT")
     DGGN A 0 A_GunFlash
     DGGN A 0 A_Jump(192,3,5,7)
-    DGGN A 1 OFFSET (0, 33) bright
-    DGGN A 1 OFFSET (5, 37) bright 
+    DGGN A 1 OFFSET (0, 33) Bright
+    DGGN A 1 OFFSET (5, 37) Bright 
     Goto M4Refire
-    DGGN A 1 OFFSET (3, 35) bright
-    DGGN A 1 OFFSET (7, 38) bright 
+    DGGN A 1 OFFSET (3, 35) Bright
+    DGGN A 1 OFFSET (7, 38) Bright 
     Goto M4Refire
-    DGGN A 1 OFFSET (4, 36) bright
-    DGGN A 1 OFFSET (4, 39) bright 
+    DGGN A 1 OFFSET (4, 36) Bright
+    DGGN A 1 OFFSET (4, 39) Bright 
     Goto M4Refire
-    DGGN A 1 OFFSET (6, 37) bright
-    DGGN A 1 OFFSET (7, 34) bright 
+    DGGN A 1 OFFSET (6, 37) Bright
+    DGGN A 1 OFFSET (7, 34) Bright 
     Goto M4Refire  
   M4Refire:
     DGGN A 0 A_ReFire
@@ -5135,7 +5569,7 @@ ACTOR M4Cache : Ammo
 {
    Inventory.MaxAmount 92
 }
-ACTOR Golden_Eagle : Weapon 32761
+ACTOR Golden_Eagle : "DPT.HQ-Weapon" 32761
 {
 	//$Category Weapons
 	Weapon.AmmoType "clip"
@@ -5156,7 +5590,7 @@ ACTOR Golden_Eagle : Weapon 32761
 	{
 	Spawn:
 		GEAG M -1
-		stop
+		Stop
 	Ready:
 		GEAG A 1 A_WeaponReady
 		loop
@@ -5175,7 +5609,7 @@ ACTOR Golden_Eagle : Weapon 32761
 		GEAG A 0 A_AlertMonsters
 		GEAG A 0 A_TakeInventory("PistolClipHolder", 1)
 		GEAG B 0 A_FireBullets(5.6,5.6,1,12,"BulletPuff")
-		GEAG B 2 BRIGHT A_GunFlash // A_Light1
+		GEAG B 2 Bright A_GunFlash // A_Light1
 		GEAG C 2 // A_Light0
 		GEAG A 0 A_JumpIfNoAmmo(1)
 		Goto Hold
@@ -5224,8 +5658,8 @@ ACTOR PistolClipHolder : Ammo
   -inventory.invbar
 }
 ACTOR IGparticles {} // NEED TO ADD
-ACTOR Icegun : Weapon 26209
-{ 
+ACTOR Icegun : "DPT.HQ-Weapon" 26209
+{
 	//$Category Weapons
 	Weapon.AmmoType "Cell" 
 	Weapon.AmmoType2 "Cell"
@@ -5252,11 +5686,11 @@ ACTOR Icegun : Weapon 26209
 		ICEG A 1 A_Raise 
 		Loop 
 	Fire: 
-		ICEG A 2 
+		ICEG A 2
 		ICEG B 0 A_GunFlash
-		ICEG B 1 A_FireCustomMissile("IcePlasmaBall_", 0, 1, 0, 0)
+		ICEG B 1 A_FireCustomMissile("IcePlasmaBall", 0, 1, 0, 0)
 		ICEG C 2
-		ICEG B 3 
+		ICEG B 3
 		ICEG A 2 A_ReFire
 		goto Ready 
 	AltFire:
@@ -5266,16 +5700,16 @@ ACTOR Icegun : Weapon 26209
 		ICEG A 0 A_ReFire
 		Goto Ready
 	Flash: 
-		ICEG A 2 BRIGHT A_Light1 
-		ICEG A 1 BRIGHT A_Light0
+		ICEG A 2 Bright A_Light1 
+		ICEG A 1 Bright A_Light0
 		Stop 
 	}
 }
-ACTOR IcePlasmaBall_
+ACTOR IcePlasmaBall
 {
 	Radius 10
 	Height 8
-	Speed 25
+	Speed 35 // 25
 	Damage 10
 	Scale 0.5
 	Projectile
@@ -5318,7 +5752,7 @@ ACTOR IceFlames
 	}
 }
 // NighMare
-ACTOR NighMareKatana : Weapon 26210
+ACTOR NighMareKatana : "DPT.HQ-Weapon" 26210
 {
 	//$Category Weapons
   scale 0.1
@@ -5424,7 +5858,7 @@ ACTOR KatanaPuff
   }
 }
 
-ACTOR MurderKnife : Weapon 26212
+ACTOR MurderKnife : "DPT.HQ-Weapon" 26212
 {
 	//$Category Weapons
   Weapon.Kickback 100
@@ -5505,20 +5939,20 @@ ACTOR StabPuff
   attacksound ""
   seesound "weapons/KnifeHit"
   Obituary "" 
-  states
+  States
   {
   Spawn:
     TNT1 A 0
     TNT1 A 1
-    stop
+    Stop
   Crash:
   	TNT1 A 0
   	TNT1 A 1
-  	stop
+  	Stop
   Melee:
   	TNT1 A 0
   	TNT1 A 1
-  	stop
+  	Stop
   }
 }
 ACTOR StabPuff2 : StabPuff //The Silent puff
@@ -5536,20 +5970,20 @@ ACTOR BackStabPuff
   attacksound ""
   seesound "weapons/BackStab"
   Obituary "" 
-  states
+  States
   {
   Spawn:
     TNT1 A 0
     TNT1 A 1
-    stop
+    Stop
   Crash:
   	TNT1 A 0
   	TNT1 A 1
-  	stop
+  	Stop
   Melee:
   	TNT1 A 0
   	TNT1 A 1
-  	stop
+  	Stop
   }
 }
 // Cop
@@ -5562,7 +5996,7 @@ ACTOR JailPuff : BulletPuff
 {
     DamageType "Jail"
 }
-ACTOR JailPistol : Weapon
+ACTOR JailPistol : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	+CHEATNOTWEAPON
@@ -5590,7 +6024,7 @@ ACTOR JailPistol : Weapon
 		Stop
 	}
 }
-ACTOR Tazer : Weapon 25025
+ACTOR Tazer : "DPT.HQ-Weapon" 25025
 {
 	//$Category Weapons
    Inventory.PickupMessage "You got a tazer!"
@@ -5626,18 +6060,18 @@ ACTOR Tazer : Weapon 25025
    }
 }
 // Mage
-ACTOR MWeapWand2 : Weapon 26213
+ACTOR MWeapWand2 : "DPT.HQ-Weapon" 26213
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You've found the Jade Wand!"
 	Obituary "%k drained all of %o's life."
-	SpawnID 180
+	//SpawnID 180
 	Weapon.AmmoType "CrossbowAmmo"
 	Weapon.AmmoGive 25
 	Weapon.AmmoUse 1
 	Weapon.SisterWeapon JadeWand2
 	AttackSound "weapons/jadefire"
-	Damagetype "Lightning"
+	DamageType "Lightning"
 	States
 	{
 	Spawn:
@@ -5688,7 +6122,7 @@ ACTOR JadeShot
 	PROJECTILE
 	-NOGRAVITY
 	RENDERSTYLE Normal
-	Damagetype "Lightning"
+	DamageType "Lightning"
 	+RIPPER
 	+THRUGHOST
 	SeeSound "weapons/jadefire"
@@ -5729,7 +6163,7 @@ ACTOR JadeTrail
 ACTOR JadeLightSpawner
 {
 	+NoBlockMap +NoGravity +NoSector +NoInteraction +NoClip -Solid +CLIENTSIDEONLY
-	states
+	States
 	{
 	Spawn:
 	Active:
@@ -5758,17 +6192,17 @@ ACTOR JadePuff
 	Scale .5
 	Alpha .5
 	DamageType Lightning
-	states
+	States
 	{
 	Spawn:
-		JADE DEFGHI 2 bright
-		stop
+		JADE DEFGHI 2 Bright
+		Stop
 	Crash:
-		JADE DEFGHI 2 bright
-		stop
+		JADE DEFGHI 2 Bright
+		Stop
 	}
 }
-ACTOR MWeapFrost2 : Weapon 26214
+ACTOR MWeapFrost2 : "DPT.HQ-Weapon" 26214
 {
 	//$Category Weapons
   Obituary "%o was chilled by %k's Frost Fang"
@@ -5878,7 +6312,7 @@ ACTOR FrostFangBall
   Projectile
   DamageType Ice
   DeathSound "FrostFang/Hit2"
-  states
+  States
   {
   Spawn:
     TNT1 A 0 A_SpawnItemEx("FrostFangFog2", 0, 0, 0, Random(1, 2), 0, Random(-1, 1), Random(-30, 30), 128)
@@ -5973,7 +6407,7 @@ ACTOR EverIceHefty : Ammo replaces BlasterHefty
     Loop
   }
 }
-ACTOR MWeapLightning2 : Weapon 26215
+ACTOR MWeapLightning2 : "DPT.HQ-Weapon" 26215
 {
 	//$Category Weapons
   Weapon.AmmoUse 5
@@ -6207,7 +6641,7 @@ ACTOR SmallZapPuff : ZapPuff
 {
 	Scale 0.5
 }
-ACTOR MWeapBloodscourge2 : Weapon 26216
+ACTOR MWeapBloodscourge2 : "DPT.HQ-Weapon" 26216
 {
 	//$Category Weapons
 	Weapon.AmmoUse 6
@@ -6287,33 +6721,33 @@ ACTOR CultShot1
 	States
 	{
 	Spawn:
-		SCBL A 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL A 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL A 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL A 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL A 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL A 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL B 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL B 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL B 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL B 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL B 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL B 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL C 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL C 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL C 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL C 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL C 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL C 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL D 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL D 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL D 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL D 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBL D 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBL D 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
 		Loop
 	Death:
-		SCBL EEEEFFFGGH 2 BRIGHT
+		SCBL EEEEFFFGGH 2 Bright
 		Stop
 	}
 }
@@ -6338,24 +6772,24 @@ ACTOR CultShot2
 	States
 	{
 	Spawn:
-		SCB2 A 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 A 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 A 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 B 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 B 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 B 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 C 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 C 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 C 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 D 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 D 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 D 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 E 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 E 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 E 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 F 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 F 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
-		SCB2 F 1 BRIGHT A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 A 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 A 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 A 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 B 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 B 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 B 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 C 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 C 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 C 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 D 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 D 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 D 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 E 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 E 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 E 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 F 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 F 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
+		SCB2 F 1 Bright A_SpawnItemEx("CultTrail3",0,frandom(4,-4),frandom(4,-4),Random(1,-1),Random(1,-1),Random(1,-1),Random(0,360))	TNT1 A 0 A_GiveInventory("MaybeFire",1)
 		Loop
 	Death:
 		TNT1 A 0 A_CustomMissile("CultShot3",0,0,0,Random(1,-1)*frandom(0,8))
@@ -6374,7 +6808,7 @@ ACTOR CultShot2
 		TNT1 A 0 A_CustomMissile("CultShot3",0,0,292.5,Random(1,-1)*frandom(0,8))
 		TNT1 A 0 A_CustomMissile("CultShot3",0,0,315,Random(1,-1)*frandom(0,8))
 		TNT1 A 0 A_CustomMissile("CultShot3",0,0,337.5,Random(1,-1)*frandom(0,8))
-		SCB2 GHIJKLMNOPQ 2 BRIGHT
+		SCB2 GHIJKLMNOPQ 2 Bright
 		Stop
 	}
 }
@@ -6384,29 +6818,29 @@ ACTOR CultShot3 : CultShot1
 	States
 	{
 	Spawn:
-		SCBP A 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP A 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP A 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP A 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP A 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP A 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP B 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP B 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP B 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP B 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP B 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP B 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP C 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP C 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP C 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP C 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP C 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP C 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP D 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP D 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP D 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP D 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
-		SCBP D 1 BRIGHT A_SpawnItemEX("CultTrail1")
+		SCBP D 1 Bright A_SpawnItemEX("CultTrail1")
 		TNT1 AAA 0 A_Cstaffmissileslither
 		Loop
 	}
@@ -6425,33 +6859,33 @@ ACTOR CultTrail3
 		TNT1 A 0 A_Jump(256,"A","B","C","D","E","F")
 		Loop
 	A:
-		SCB2 A 1 BRIGHT A_fadeout
-		TNT1 A 0 //A_SetScale(Alpha)
+		SCB2 A 1 Bright A_fadeout
+		TNT1 A 0 A_SetScale(Alpha)
 		TNT1 A 0 A_Jump(256,"B","C","D","E","F")
 		Goto Spawn
 	B:
-		SCB2 B 1 BRIGHT A_fadeout
-		TNT1 A 0 //A_SetScale(Alpha)
+		SCB2 B 1 Bright A_fadeout
+		TNT1 A 0 A_SetScale(Alpha)
 		TNT1 A 0 A_Jump(256,"A","C","D","E","F")
 		Goto Spawn
 	C:
-		SCB2 C 1 BRIGHT A_fadeout
-		TNT1 A 0 //A_SetScale(Alpha)
+		SCB2 C 1 Bright A_fadeout
+		TNT1 A 0 A_SetScale(Alpha)
 		TNT1 A 0 A_Jump(256,"A","B","D","E","F")
 		Goto Spawn
 	D:
-		SCB2 D 1 BRIGHT A_fadeout
-		TNT1 A 0 //A_SetScale(Alpha)
+		SCB2 D 1 Bright A_fadeout
+		TNT1 A 0 A_SetScale(Alpha)
 		TNT1 A 0 A_Jump(256,"A","B","C","E","F")
 		Goto Spawn
 	E:
-		SCB2 E 1 BRIGHT A_fadeout
-		TNT1 A 0 //A_SetScale(Alpha)
+		SCB2 E 1 Bright A_fadeout
+		TNT1 A 0 A_SetScale(Alpha)
 		TNT1 A 0 A_Jump(256,"A","B","C","D","F")
 		Goto Spawn
 	F:
-		SCB2 F 1 BRIGHT A_fadeout
-		TNT1 A 0 //A_SetScale(Alpha)
+		SCB2 F 1 Bright A_fadeout
+		TNT1 A 0 A_SetScale(Alpha)
 		TNT1 A 0 A_Jump(256,"A","B","C","D","E")
 		Goto Spawn
 	}
@@ -6469,10 +6903,10 @@ ACTOR CultTrail1
 	Spawn:
 		TNT1 A 0 A_Jump(256,"A","B")
 	A:
-		CSFT AABBCCDDEE 1 BRIGHT //A_fadeout(0.05)
+		CSFT AABBCCDDEE 1 Bright //A_fadeout(0.05)
 		Stop
 	B:
-		CSFT FFGGHHIIJJ 1 BRIGHT //A_fadeout(0.05)
+		CSFT FFGGHHIIJJ 1 Bright //A_fadeout(0.05)
 		Stop
 	}
 }
@@ -6507,7 +6941,7 @@ ACTOR CultAmmo : Ammo
 	States
 	{
 	Spawn:
-		COTL ABC 4 BRIGHT
+		COTL ABC 4 Bright
 		Loop
 	}
 }
@@ -6525,7 +6959,7 @@ ACTOR LargeCultAmmo : Ammo
 	States
 	{
 	Spawn:
-		COTS ABC 4 BRIGHT
+		COTS ABC 4 Bright
 		Loop
 	}
 }
@@ -6552,13 +6986,13 @@ ACTOR mindBeam
 		Stop
 	}
 }
-ACTOR MWeapFists : weapon 26217
+ACTOR MWeapFists : "DPT.HQ-Weapon" 26217
 {
 	//$Category Weapons
 	Obituary "%o head 'sploded by %k's brain!"
 	weapon.kickback 100
 	+WEAPON.MELEEWEAPON
-	states
+	States
 	{
 	Spawn:
 		PHAS A -1
@@ -6587,7 +7021,7 @@ ACTOR MWeapFists : weapon 26217
 		goto ready
 	}
 }
-ACTOR MWeapShotgun : Weapon 26218
+ACTOR MWeapShotgun : "DPT.HQ-Weapon" 26218
 {
 	//$Category Weapons
 	scale .4
@@ -6600,7 +7034,7 @@ ACTOR MWeapShotgun : Weapon 26218
 	Attacksound "HSGH"
 	Scale 0.5
 	weapon.kickback 1500
-	states
+	States
 	{
 	spawn:
 		HNTS A 4
@@ -6625,8 +7059,8 @@ ACTOR MWeapShotgun : Weapon 26218
 	fire:
 		Q2SF A 1 A_playsound(lift)
 		Q2SF ABCDE 3
-		Q2SF FF 1 bright A_FireBullets(23,23,20,2,"BulletPuff",1,1000)
-		Q2SF FFGGHH 1 bright 
+		Q2SF FF 1 Bright A_FireBullets(23,23,20,2,"BulletPuff",1,1000)
+		Q2SF FFGGHH 1 Bright 
 		Q2SF JJ 2
 		Q2SF K 1 A_FireCustomMissile("ShotShellCasing",45+random(-8,6),0,2,3)
 		Q2SF K 1 A_FireCustomMissile("ShotShellCasing",315+random(-8,6),0,2,3)
@@ -6684,10 +7118,10 @@ ACTOR ShotShellCasingOnFloor
         Stop
     }
 }
-ACTOR MWeapSufferStaff : Weapon 26219 //2005
+ACTOR MWeapSufferStaff : "DPT.HQ-Weapon" 26219 //2005
 {
 	//$Category Weapons
-	//Spawnid 32
+	//SpawnID 32
 	Inventory.PickupSound "misc/w_pkup"
 	Inventory.PickupMessage "You got the Staff Of Suffering!"
 	+FLOATBOB
@@ -6754,7 +7188,7 @@ ACTOR PLB
 		Stop
 	}
 }
-ACTOR Curing_Cannon : Weapon 26342
+ACTOR Curing_Cannon : "DPT.HQ-Weapon" 26342
 {
 	Inventory.PickupMessage "CURING CANNON"
 	VisibleToPlayerClass "Healer"
@@ -6765,7 +7199,7 @@ ACTOR Curing_Cannon : Weapon 26342
 	Weapon.AmmoType2 "Cell"
 	//Weapon.UpSound "WeaponSelect"
 	//$Category Weapons
-	states
+	States
 	{
 	Ready:
 		REP4 A 0
@@ -6779,7 +7213,7 @@ ACTOR Curing_Cannon : Weapon 26342
 		Goto Ready
 	AltFire:
 		REP4 A 4
-		REP4 BC 4 bright A_FireCustomMissile("HealthMissile",0,1,0,0)
+		REP4 BC 4 Bright A_FireCustomMissile("HealthMissile",0,1,0,0)
 		REP4 B 0 A_PlaySound("Healing")
 		REP4 A 2 A_Refire
 		Goto Ready
@@ -6822,21 +7256,148 @@ ACTOR HealthRestoring : PowerupGiver
 	Radius 11
 	Height 10
 	Inventory.Amount 1
-	powerup.duration 15
+	Powerup.Duration 15
 	Inventory.PickupMessage ""
-	Inventory.PickupSound "LOL" // ??? WTF? No sound here... Mda uzh...
+	Inventory.PickupSound "LOL" // ??? WTF? No sound here... Mda uzh... // WORKER
 	Powerup.Type IronFeet
 	Powerup.Color Red 0.8
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 4
 		Stop
 	}
 }
-ACTOR Healing_Cannon : Weapon 26343
+ACTOR RepairTool : Weapon 6544
+{
+	//$Category Weapons
+	Weapon.Kickback 0
+	Inventory.PickupMessage "You got the Repair Tool (Slot 0)"
+	Obituary "$OB_MPCHAINSAW"
+	+WEAPON.MELEEWEAPON		
+	+NOBLOOD
+	States
+	{
+	Ready:
+		REPT A 4 A_WeaponReady
+		Loop
+	Deselect:
+		REPT A 1 A_Lower
+		Loop
+	Select:
+		REPT A 1 A_Raise
+		Loop
+	Fire:
+		REPT A 0 A_JumpIfTargetInLOS("AltFire")
+		Goto Ready
+	AltFire:
+		REPT A 4
+		REPT A 0 A_FireCustomMissile("RepairMissile")
+		REPT B 0 A_PlaySound("Healing")
+		REPT BC 1 Bright
+		REPT A 1
+		REPT B 0 A_ReFire
+		Goto Ready
+	Spawn:
+		REPT Z 1
+		REPT Z -1
+		Stop
+	}
+}
+ACTOR RepairMissile
+{
+	XScale 0.3
+	YScale 0.24
+	DeathSound ""
+	Radius 13
+	Height 8
+	Speed 25
+	Damage (random (8, 8))
+	Projectile
+	+RANDOMIZE
+	RenderStyle Add
+	Species "VehicleSpecial"
+	DamageType Repair
+	Decal "BulletChip"
+	+THRUSPECIES
+	+NOBLOOD
+	+NOBLOODDECALS
+	Alpha 0.75
+	States
+	{
+	Spawn:
+		BOLT A 2 Bright
+		BOLT B 2 Bright
+		BOLT C 2 Bright
+		loop
+	Death:
+		TNT1 A 30 A_SpawnItemEx ("RepairToolRicochet", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
+		Stop
+	}
+}
+ACTOR RepairToolRicochet: BulletPuff
+{
+	Scale .5
+	Alpha 1
+	Renderstyle Add
+	DeathSound "fusion/hit"
+	+NOINTERACTION
+	+PUFFONACTORS
+	+NOGRAVITY
+	+ALWAYSPUFF
+	+CLIENTSIDEONLY
+	+NOBLOCKMAP
+	+BLOODLESSIMPACT 
+	+FORCEXYBILLBOARD
+	+NOBLOOD
+	Obituary "%o ate bullet shrapnel."
+	DamageType "Shrapnel"
+	Speed 0
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_SpawnItem ("BlueFlareSmall", 0)
+		TNT1 A 0 A_Jump(256,"Spawn1","Spawn2","Spawn3")
+	Spawn1:
+		TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
+		SAFP A 2 Bright
+		SAFP B 2 Bright A_Quake(1,6,0,75, "")
+		SAFP C 2 Bright
+		SAFP D 2 Bright
+		SAFP E 2 Bright
+		SAFP F 2 Bright
+		SAFP G 2 Bright
+		SAFP H 2 Bright
+		SAFP I 2 Bright
+		Stop
+	Spawn2:
+		TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
+		SBFP A 2 Bright
+		SBFP B 2 Bright A_Quake(1,6,0,75, "")
+		SBFP C 2 Bright
+		SBFP D 2 Bright
+		SBFP E 2 Bright
+		SBFP F 2 Bright
+		SBFP G 2 Bright
+		SBFP H 2 Bright
+		SBFP I 2 Bright
+		Stop
+	Spawn3:
+		TNT1 AA 0 A_SpawnItem ("BlueFlareSmall", 0)
+		SCFP A 2 Bright
+		SCFP B 2 Bright A_Quake(1,6,0,75, "")
+		SCFP C 2 Bright
+		SCFP D 2 Bright
+		SCFP E 2 Bright
+		SCFP F 2 Bright
+		SCFP G 2 Bright
+		SCFP H 2 Bright
+		Stop
+	}
+}
+ACTOR Healing_Cannon : "DPT.HQ-Weapon" 26343
 {
 	VisibleToPlayerClass "Healer"
 	Radius 20
@@ -6864,21 +7425,21 @@ ACTOR Healing_Cannon : Weapon 26343
 		CHLY AA 1 A_Lower
 		Goto Deselect +2
 	Fire:
-		CHLY B 2 bright
-		CHLY C 2 bright
-		CHLY D 2 bright
-		CHLY E 4 bright
+		CHLY B 2 Bright
+		CHLY C 2 Bright
+		CHLY D 2 Bright
+		CHLY E 4 Bright
 		CHLY C 0 A_GiveInventory("Flash",1)
 		CHLY F 8 A_FireBullets(52,52,65,30,"Hellishpuff",1)
 		CHLY A 12 
 		Goto Ready
 	AltFire:
-		CHLY B 2 bright
-		CHLY C 2 bright
-		CHLY D 2 bright
-		CHLY E 3 bright
+		CHLY B 2 Bright
+		CHLY C 2 Bright
+		CHLY D 2 Bright
+		CHLY E 3 Bright
 		CHLY C 0 A_GiveInventory("Flash",1)
-		CHLY F 5 bright A_FireCustomMissile("WakeMissile",0,1,0,0)
+		CHLY F 5 Bright A_FireCustomMissile("WakeMissile",0,1,0,0)
 		CHLY A 12 
 		Goto Ready
 	Spawn:
@@ -6890,11 +7451,11 @@ ACTOR hellishpuff : bulletpuff
 {
 	VSpeed 0
 	DamageType "HellishStrike"
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 1 
-		stop
+		Stop
 	}
 }
 ACTOR WakeMissile {}
@@ -6908,14 +7469,14 @@ ACTOR WakeMissile {}
 	+FRIENDLY
 	+NOGRAVITY
 	+NOCLIP
-	states
+	States
 	{
 	Spawn:
 		HEAL A 2 A_VileChase
 		Loop
 	Death:
 		TNT1 A 1
-		STop
+		Stop
 	Heal:
 		TNT1 A 1
 		Stop
@@ -6924,13 +7485,13 @@ ACTOR WakeMissile {}
 ACTOR Flash : powerupgiver
 {
 	Inventory.MaxAmount 1 
-	Powerup.duration 14
+	Powerup.Duration 14
 	Powerup.color "0f 0f 0f", 0.2
 	Powerup.type "ironfeet"
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ALWAYSPICKUP
 }
-ACTOR LittleArchvile_Spawner : Weapon 26344
+ACTOR LittleArchvile_Spawner : "DPT.HQ-Weapon" 26344
 {
 	Inventory.PickupMessage "LITTLE ARCHVILE SPAWNER"
 	VisibleToPlayerClass "Healer"
@@ -6939,10 +7500,10 @@ ACTOR LittleArchvile_Spawner : Weapon 26344
 	+INVENTORY.UNDROPPABLE
 	+FLOATBOB
 	//$Category Weapons
-	states
+	States
 	{
 	Ready:
-		ICHN ABCD 9 bright A_WeaponReady
+		ICHN ABCD 9 Bright A_WeaponReady
 		Loop
 	Select:
 		ICHN A 0 A_Raise
@@ -6953,10 +7514,10 @@ ACTOR LittleArchvile_Spawner : Weapon 26344
 		ICHN A 1 A_Lower
 		Loop
 	Fire:
-		ICHN E 3 bright
-		ICHN F 3 bright DamageThing(16)
-		ICHN G 3 bright A_FireCustomMissile("LittleTornadoDemonSpawnerModule",random(-1,1),0,0,0)
-		ICHN H 3 bright
+		ICHN E 3 Bright
+		ICHN F 3 Bright DamageThing(16)
+		ICHN G 3 Bright A_FireCustomMissile("LittleTornadoDemonSpawnerModule",random(-1,1),0,0,0)
+		ICHN H 3 Bright
 		ICHN I 2 
 		ICHN I 1 OffSet(0,6)
 		ICHN I 1 OffSet(0,12)
@@ -6976,13 +7537,13 @@ ACTOR TurningMissile
 	Speed 25
 	seesound "SORATK"
 	Damage 1
-	states
+	States
 	{
 	Spawn:
-		CPFX ABCD 3 bright
+		CPFX ABCD 3 Bright
 		Loop
 	Death:
-		CPFX EFGHIJKLMNO 2 bright
+		CPFX EFGHIJKLMNO 2 Bright
 		Stop
 	}
 }
@@ -6991,7 +7552,7 @@ ACTOR ArchVile1 : archvile //replaces archvile
 	Scale 0.35
 	Speed 15
 	PainChance 255
-	states
+	States
 	{
 	Pain.Morpher:
 		ARE2 A 1 A_ChangeFlag("NOPAIN",1)
@@ -7050,14 +7611,14 @@ ACTOR LittleTornadoDemonSpawnerModule
 	Speed 17
 	Scale 0.75
 	seesound "SORATK"
-	states
+	States
 	{
 	Spawn:
-		CPFX ABCD 3 bright
+		CPFX ABCD 3 Bright
 		Loop
 	Death:
 		CPFX E 0 A_SpawnItemEx("ArchVile1",0)
-		CPFX EFGHIJKLMNO 2 bright
+		CPFX EFGHIJKLMNO 2 Bright
 		Stop
 	}
 }
@@ -7066,7 +7627,7 @@ ACTOR Healthpacks : ammo
 	inventory.maxamount 20
 	+INVENTORY.IGNORESKILL
 }
-ACTOR MedikitPack : Weapon 26345
+ACTOR MedikitPack : "DPT.HQ-Weapon" 26345
 {
 	Inventory.PickupMessage "MEDIKIT"
 	VisibleToPlayerClass "Healer"
@@ -7080,7 +7641,7 @@ ACTOR MedikitPack : Weapon 26345
 	+WEAPON.NOAUTOFIRE
 	+WEAPON.AMMO_OPTIONAL
 	//$Category Weapons
-	states
+	States
 	{
 	Ready:
 		AIDA A 1 A_WeaponReady
@@ -7143,7 +7704,7 @@ ACTOR MedkitSpawn
 	}
 }
 // Benellus
-ACTOR Magnetsaw : Weapon 26346
+ACTOR Magnetsaw : "DPT.HQ-Weapon" 26346
 {
 	+WEAPON.MeleeWeapon
 	+Ammo_Optional //Stops it from switching away.
@@ -7253,7 +7814,7 @@ ACTOR FireLimit : Inventory
 {
 	Inventory.MaxAmount 4
 }
-ACTOR ScatterPistol : Weapon 26347
+ACTOR ScatterPistol : "DPT.HQ-Weapon" 26347
 {
    Inventory.PickupSound "misc/w_pkup"
    Inventory.PickupMessage "You got the Scatter Pistol!"
@@ -7333,7 +7894,7 @@ ACTOR ScatterPShot : FastProjectile
    Damage (3*random(2,4))
    Scale 0.25
    PROJECTILE
-   +BRIGHT
+   +Bright
    RenderStyle Add
    MissileHeight 8
    MissileType "ScatterPShotTrail"
@@ -7347,7 +7908,7 @@ ACTOR ScatterPShot : FastProjectile
    Death:
       TNT1 A 0
 	  TNT1 A 0 A_PlaySound("SPRPIMPT")
-	  TNT1 A 0 //A_SetScale(0.20)
+	  TNT1 A 0 A_SetScale(0.20)
 	  TNT1 AAAA 0 A_CustomMissile("ScatterSpark",0,0,random(0,360),CMF_AIMDIRECTION,random(0,12))
       SPRI ABCDE 1
       Stop
@@ -7361,7 +7922,7 @@ ACTOR ScatterSpark
    Scale 0.15
    Gravity 0.3
    PROJECTILE
-   +BRIGHT
+   +Bright
    -NOGRAVITY
    +DROPOFF 
    +THRUACTORS
@@ -7376,7 +7937,7 @@ ACTOR ScatterSpark
    Death:
       TNT1 A 0
 	  TNT1 A 0 A_PlaySound("SPRPIMPT",5,0.12,0)
-	  TNT1 A 0 //A_SetScale(0.08)
+	  TNT1 A 0 A_SetScale(0.08)
       SPRI ABCDE 1
       Stop
    }
@@ -7435,7 +7996,7 @@ ACTOR ScatterPShotTrail
 		Loop
     }
 }
-ACTOR Shredder : Weapon 26348
+ACTOR Shredder : "DPT.HQ-Weapon" 26348
 {
 	//$Category Weapons
   Weapon.AmmoUse 1
@@ -7498,7 +8059,7 @@ ACTOR PlasmaticPuff : BulletPuff
 	}
 }
 /*
-ACTOR Quadvolgue : Weapon 24530
+ACTOR Quadvolgue : "DPT.HQ-Weapon" 24530
 {
 	//$Category Weapons
 	//$Title Quadvolgue
@@ -7756,13 +8317,6 @@ ACTOR Reload : Inventory
 	Inventory.MaxAmount 1
 	Inventory.Amount 1 
 }
-ACTOR CoD_Weapon : DoomWeapon
-{
-	+CLIENTSIDEONLY
-	+INVENTORY.UNDROPPABLE
-	Decal "BulletChip"
-	Weapon.UpSound "misc/w_pkup"
-}
 ACTOR Spread : Ammo
 {
 	Inventory.MaxAmount 5
@@ -7832,7 +8386,7 @@ ACTOR NoGibPuff : BulletPuff //replaces BulletPuff
 {
 	+NOEXTREMEDEATH
 }
-ACTOR M16 : CoD_Weapon
+ACTOR M16 : "DPT.HQ-Weapon"
 {
 	Obituary "%k > M16 > %o"
 	Weapon.AmmoUse 1
@@ -7907,7 +8461,7 @@ ACTOR M16 : CoD_Weapon
 		Goto Ready
 	}
 }
-ACTOR Deviation : Weapon 26349
+ACTOR Deviation : "DPT.HQ-Weapon" 26349
 {
    Inventory.PickupSound "misc/w_pkup"
    Inventory.PickupMessage "You got the ''Deviation'' Dumb Missile Launcher!"
@@ -7961,8 +8515,8 @@ ACTOR DumbRocket : Rocket
  Loop
  Death:
  TNT1 A 0 A_Explode
- TNT1 AAAAAAAAAA 0 bright A_SpawnItemEx("Smoke", 0, 0, 0, random(2,-2), random(2,-2), 1+random(1,-3), 0, 128, 0)
- TNT1 AAAA 0 bright A_SpawnItemEx("Boomy", 0, random(2,-2), random(2,-2), 0, 0, 1, 0, 128, 0)
+ TNT1 AAAAAAAAAA 0 Bright A_SpawnItemEx("Smoke", 0, 0, 0, random(2,-2), random(2,-2), 1+random(1,-3), 0, 128, 0)
+ TNT1 AAAA 0 Bright A_SpawnItemEx("Boomy", 0, random(2,-2), random(2,-2), 0, 0, 1, 0, 128, 0)
  TNT1 A 1
  Stop
  }
@@ -7977,7 +8531,7 @@ ACTOR Smoke
     States
     {
     Spawn:
-      SMOK ABCDEFGHIJKLMNOPQ 1 BRIGHT
+      SMOK ABCDEFGHIJKLMNOPQ 1 Bright
       Stop
     }
 }
@@ -7993,10 +8547,10 @@ ACTOR Boomy
     Spawn:
       TNT1 A 0 A_Jump(255,"Spawn1","Spawn2")
     Spawn1:    
-      EXP1 ABCDEFGHIJKLMNOP 1 BRIGHT
+      EXP1 ABCDEFGHIJKLMNOP 1 Bright
       Stop
     Spawn2:    
-      EXP2 ABCDEFGHIJKLMNOP 1 BRIGHT
+      EXP2 ABCDEFGHIJKLMNOP 1 Bright
       Stop
     }
 }
@@ -8005,7 +8559,7 @@ ACTOR DumbTrail : Smoke
     Scale 0.175
     Alpha 0.3
 }
-ACTOR Karasawa : Weapon 26350
+ACTOR Karasawa : "DPT.HQ-Weapon" 26350
 {
   Inventory.PickupSound "Misc/W_PkUp"
   Inventory.PickupMessage "You got the 'Karasawa' High-Density Plasma Rifle!"
@@ -8015,7 +8569,7 @@ ACTOR Karasawa : Weapon 26350
   Weapon.AmmoUse 1
   Weapon.KickBack 1000
 	//$Category Weapons
-  states
+  States
   {
   Spawn:
     KSWP A -1
@@ -8121,14 +8675,14 @@ ACTOR BoltBlur
   +NoGravity
   +DropOff
   +NoTeleport
-  states
+  States
   {
   Spawn:
     KWBR AB 2 Bright A_FadeOut(0.3)
     Loop
   }
 }
-ACTOR BHGen : Weapon 26351
+ACTOR BHGen : "DPT.HQ-Weapon" 26351
 {
 	Weapon.AmmoUse 50
 	Weapon.AmmoGive 100
@@ -8208,7 +8762,7 @@ ACTOR DMBall
 		Goto Spawn+6
 	Death:
 		TNT1 A 0 A_SpawnItem("BlackHole",0,0,0)
-		TNT1 A 0 //A_SetScale(1.2)
+		TNT1 A 0 A_SetScale(1.2)
 		VORX ABCDEFGH 2 Bright
 		Stop
 	}
@@ -8304,25 +8858,25 @@ ACTOR BHExplosion
 	States
 	{
 	Spawn:
-		DBX3 A 1 Light("BHEXP_1") Bright //A_SetScale(1.2)
+		DBX3 A 1 Light("BHEXP_1") Bright A_SetScale(1.2)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Light("BHEXP_2") Bright //A_SetScale(1.4)
+		DBX3 A 1 Light("BHEXP_2") Bright A_SetScale(1.4)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Light("BHEXP_3") Bright //A_SetScale(1.6)
+		DBX3 A 1 Light("BHEXP_3") Bright A_SetScale(1.6)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Light("BHEXP_4") Bright //A_SetScale(1.8)
+		DBX3 A 1 Light("BHEXP_4") Bright A_SetScale(1.8)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Light("BHEXP_5") Bright //A_SetScale(2.0)
+		DBX3 A 1 Light("BHEXP_5") Bright A_SetScale(2.0)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Light("BHEXP_6") Bright //A_SetScale(2.2)
+		DBX3 A 1 Light("BHEXP_6") Bright A_SetScale(2.2)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Light("BHEXP_7") Bright //A_SetScale(2.4)
+		DBX3 A 1 Light("BHEXP_7") Bright A_SetScale(2.4)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Bright //A_SetScale(2.6)
+		DBX3 A 1 Bright A_SetScale(2.6)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Bright //A_SetScale(2.8)
+		DBX3 A 1 Bright A_SetScale(2.8)
 		TNT1 A 0 A_FadeOut(0.13)
-		DBX3 A 1 Bright //A_SetScale(3.0)
+		DBX3 A 1 Bright A_SetScale(3.0)
 		TNT1 A 0 A_FadeOut(0.13)
 		Stop
 	}
@@ -8346,22 +8900,22 @@ ACTOR Benelluss : SuperShotgun
   {
   SSG1start:
 	BEN1 BCDEAAAAAAAAAAAA 1
-	stop
+	Stop
   SSG2start:
 	BEN2 EDCBAAAAAAAAAAAA 1
-	stop
+	Stop
   SSG3start:
 	BEN3 EDCBAAAAAAAAAAAA 1
-	stop
+	Stop
   SSG4start:
 	BEN4 EDCBAAAAAAAAAAAA 1
-	stop
+	Stop
   SSG5start:
 	BEN5 EDCBAAAAAAAAAAAA 1
-	stop
+	Stop
   SSG6start:
 	BEN6 BCDEAAAAAAAAAAAA 1
-	stop
+	Stop
   Ready:
 	TNT1 A 0 A_GiveInventory("IAMNOTREADYHURRRR",1)
 	TNT1 A 0 A_GiveInventory("Infrared2",1)
@@ -8533,7 +9087,7 @@ ACTOR BulletShotguns
 		PUFF A 2 Bright A_Scream
 		PUFF B 2 Bright A_SpawnItemEX("shotthrowz", 0, 0, 0, random (4, 12), 0, random (4, 12), random(0, 360))
 		PUFF C 2 Bright
-		stop
+		Stop
 	}
 }
 ACTOR Shotyes : Inventory { Inventory.MaxAmount 1 }
@@ -8563,7 +9117,7 @@ ACTOR Shotthrowz
 		Goto See
 	Tranz:
 		TNT1 A 1 A_SpawnItemEX("Shotthrowz2", 0, 0, 0, random (4, 12), 0, random (4, 12), random(0, 360))
-		stop
+		Stop
 	See:	
 		SOTG A 0 A_Jump(128,"Tranz")
 		SOTG ABCD 2
@@ -8573,7 +9127,7 @@ ACTOR Shotthrowz
 		goto see+1
 	Death:
 		MISL B 1 A_JumpIfInventory("Shotyes",1,"RealDeath")
-		stop
+		Stop
 	RealDeath:
 		MISL B 5 Bright A_Scream
 		MISL C 4 Bright
@@ -8600,7 +9154,7 @@ ACTOR Shotthrowz2 : Shotthrowz
 		Goto See+1
 	Death:
 		MISL B 1 A_JumpIfInventory("Shotyes",1,"RealDeath")
-		stop
+		Stop
 	RealDeath:
 		MISL B 5 Bright A_Scream
 		MISL C 4 Bright
@@ -8609,7 +9163,7 @@ ACTOR Shotthrowz2 : Shotthrowz
 	}
 }
 */
-ACTOR MultiProjectileWeapon : Weapon 25006
+ACTOR MultiProjectileWeapon : "DPT.HQ-Weapon" 25006
 {
    Inventory.PickupMessage "You got the M6000 Multi-Projectile Weapon!"
    Inventory.PickupSound "misc/w_pkup"
@@ -8659,7 +9213,7 @@ ACTOR MultiProjectileWeapon : Weapon 25006
       MPWG F 0 A_PlaySound("weapons/charge3")
       MPWG E 15 
       MPWG E 0 Bright A_FireCustomMissile("MultiProjectile3",0,1,0,0)
-      MPWF HHHH 0 BRIGHT A_FireBullets(4,4,2,15,"MultiPuff",1)
+      MPWF HHHH 0 Bright A_FireBullets(4,4,2,15,"MultiPuff",1)
       MPWF H 8 Bright A_Light2
       MPWF G 8 Bright 
       MPWF F 8 Bright A_Light1
@@ -8733,7 +9287,7 @@ ACTOR MultiProjectile3 : BFGBall
    }
 }
 // LazyPanda
-ACTOR DOOM42k16SSG : Weapon 26237
+ACTOR DOOM42k16SSG : "DPT.HQ-Weapon" 26237
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2
@@ -8781,10 +9335,10 @@ ACTOR SkulMissile : Rocket
 	seesound "skull/melee"
 	deathsound "skull/death"
 	scale 0.7
-	states
+	States
 	{
 	Spawn:
-		SKUL CD 8 bright
+		SKUL CD 8 Bright
 		loop
 	}
 }
@@ -8806,7 +9360,7 @@ ACTOR DoomExplosion
 		Stop
 	}
 }
-ACTOR ChainGuyGun : Weapon
+ACTOR ChainGuyGun : "DPT.HQ-Weapon"
 {
 	Obituary "%o was perforated by %k."
 	ATTACKSOUND "weapons/shotgf"
@@ -8847,7 +9401,7 @@ ACTOR ChainGuyGun : Weapon
 		Stop
 	}
 }
-ACTOR CacoBaller : Weapon
+ACTOR CacoBaller : "DPT.HQ-Weapon"
 {
 	Obituary "%o was smitten by %k."
 	HITObituary "%o got too close to &k."
@@ -8859,7 +9413,7 @@ ACTOR CacoBaller : Weapon
 	+WEAPON.DONTBOB
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Spawn:
 		CACO A 0 Thing_Remove (0)
@@ -8903,19 +9457,19 @@ ACTOR CacodemonBall2
 	+RANDOMIZE
 	+SEEKERMISSILE
 	+SCREENSEEKER
-	states
+	States
 	{
 	Spawn:
-		BAL2 AB 2 bright
-		BAL2 AB 2 bright A_SeekerMissile(30,60,SMF_PRECISE,256,10)
+		BAL2 AB 2 Bright
+		BAL2 AB 2 Bright A_SeekerMissile(30,60,SMF_PRECISE,256,10)
 		BAL2 A 0 A_SpawnItem("TracerSmoke",0)
 		loop
 	Death:
-		BAL2 CDE 3 bright
-		stop
+		BAL2 CDE 3 Bright
+		Stop
 	}
 }
-ACTOR DemonMouth : Weapon
+ACTOR DemonMouth : "DPT.HQ-Weapon"
 {
 	Obituary "%o was bit by %k."
 	weapon.kickback 60
@@ -8924,7 +9478,7 @@ ACTOR DemonMouth : Weapon
 	+WEAPON.DONTBOB
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0 Thing_Remove (0)
@@ -8971,10 +9525,10 @@ ACTOR MDemonTraceRun
 	{	
 	Spawn:
 		SARG ABCD 2
-		stop
+		Stop
 	}
 }
-ACTOR SpectreMouth : Weapon
+ACTOR SpectreMouth : "DPT.HQ-Weapon"
 {
 	Obituary "%o was bit by %k."
 	weapon.kickback 60
@@ -8983,7 +9537,7 @@ ACTOR SpectreMouth : Weapon
 	+WEAPON.DONTBOB
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0 Thing_Remove (0)
@@ -9029,10 +9583,10 @@ actor MSpectreTraceRun
 	{	
 	Spawn:
 		SARG AB 2
-		stop
+		Stop
 	}
 }
-ACTOR ImpBaller : Weapon
+ACTOR ImpBaller : "DPT.HQ-Weapon"
 {
 	Obituary "%o was burned by %k."
 	hitObituary "%o was slashed by %k."
@@ -9042,7 +9596,7 @@ ACTOR ImpBaller : Weapon
 	+WEAPON.NOALERT
 	+WEAPON.AMMO_OPTIONAL
 	+WEAPON.CHEATNOTWEAPON
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0 Thing_Remove (0)
@@ -9063,9 +9617,9 @@ ACTOR ImpBaller : Weapon
 		Loop
 	Fire:
 		CLAW A 0 A_JumpIfCloser (130,"Melee") //60
-		CLAW B 5 bright
-		CLAW C 5 bright
-		CLAW D 5 bright A_FireCustomMissile ("PDoomImpBall",0,0,5,10)
+		CLAW B 5 Bright
+		CLAW C 5 Bright
+		CLAW D 5 Bright A_FireCustomMissile ("PDoomImpBall",0,0,5,10)
 		CLAW E 5
 		Goto Ready
 	Melee:
@@ -9081,7 +9635,7 @@ ACTOR PDoomImpBall : DoomImpBall
 	speed 30
 	DamageType "ImpBallDamage"
 }
-ACTOR ZombieRifle : Weapon
+ACTOR ZombieRifle : "DPT.HQ-Weapon"
 {
 	weapon.kickback 100
 	attacksound "weapons/pistol"
@@ -9091,7 +9645,7 @@ ACTOR ZombieRifle : Weapon
 	+WEAPON.AMMO_OPTIONAL
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Ready:
 		POGN A 7 A_WeaponReady
@@ -9109,8 +9663,8 @@ ACTOR ZombieRifle : Weapon
 		Loop
 	Fire:
 		POGN A 3 A_GunFlash
-		POGN B 3 bright A_FireBullets (1.5,1.0,1,8,"FBulletPuff",1)
-		POGN C 3 bright
+		POGN B 3 Bright A_FireBullets (1.5,1.0,1,8,"FBulletPuff",1)
+		POGN C 3 Bright
 		POGN A 0 A_Refire
 		POGN A 5
 		Goto Ready
@@ -9122,7 +9676,7 @@ ACTOR ZombieRifle : Weapon
 		Stop
 	}
 }
-actor ZombieShotGun : Weapon
+actor ZombieShotGun : "DPT.HQ-Weapon"
 {
 	Obituary "%o chewed on %k's boomstick."
 	attacksound "weapons/shotgf"
@@ -9132,7 +9686,7 @@ actor ZombieShotGun : Weapon
 	+WEAPON.AMMO_OPTIONAL
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Ready:
 		STG2 A 6 A_WeaponReady
@@ -9157,16 +9711,16 @@ actor ZombieShotGun : Weapon
 		STG2 A 3 A_ReFire
 		goto Ready
 	Flash:
-		SHTF A 3 bright A_Light1
-		SHTF B 3 bright A_Light2
-		SHTF B 0 bright A_Light0
-		stop
+		SHTF A 3 Bright A_Light1
+		SHTF B 3 Bright A_Light2
+		SHTF B 0 Bright A_Light0
+		Stop
 	Spawn:
 		TNT1 A 1 Thing_Remove (0)
 		Stop
 	}
 }
-ACTOR MLostSoulWeap : Weapon
+ACTOR MLostSoulWeap : "DPT.HQ-Weapon"
 {
 	Obituary "%o was spooked by %k."
 	weapon.kickback 30
@@ -9174,7 +9728,7 @@ ACTOR MLostSoulWeap : Weapon
 	+Ammo_Optional
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 1 Thing_Remove (0)
@@ -9207,7 +9761,7 @@ ACTOR MLostSoulWeap : Weapon
 		Goto Ready
 	}
 }
-ACTOR PainElementWeap : Weapon
+ACTOR PainElementWeap : "DPT.HQ-Weapon"
 { 
 	weapon.kickback 30
 	+WEAPON.NOALERT
@@ -9216,7 +9770,7 @@ ACTOR PainElementWeap : Weapon
 	+WEAPON.DONTBOB
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Spawn:
 		PEWE A 0 Thing_Remove (0)
@@ -9258,22 +9812,22 @@ ACTOR SoulProj
 	+RANDOMIZE
 	+DONTREFLECT
 	+SKYEXPLODE
-	states
+	States
 	{
 	Spawn:
-		SKUL CD 4 BRIGHT
+		SKUL CD 4 Bright
 		loop
 	Death:
-		SKUL F 6 BRIGHT A_Explode (18,128,0,0)
-		SKUL G 6 BRIGHT A_Scream
-		SKUL H 6 BRIGHT
-		SKUL I 6 BRIGHT A_NoBlocking
+		SKUL F 6 Bright A_Explode (18,128,0,0)
+		SKUL G 6 Bright A_Scream
+		SKUL H 6 Bright
+		SKUL I 6 Bright A_NoBlocking
 		SKUL J 6
 		SKUL K 6
 		Stop
 	}
 }
-ACTOR RevenantGun : Weapon
+ACTOR RevenantGun : "DPT.HQ-Weapon"
 {
 	Obituary "%o couldn't evade %k fireball."
 	hitObituary "%o was punched by %k."
@@ -9283,7 +9837,7 @@ ACTOR RevenantGun : Weapon
 	+WEAPON.NOALERT
 	+WEAPON.CHEATNOTWEAPON
 	+INVENTORY.UNDROPPABLE
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0 Thing_Remove (0)
@@ -9304,36 +9858,36 @@ ACTOR RevenantGun : Weapon
 		REVP A 0 A_JumpIfInventory ("PM_AltFireY",1,"AltFireY")
 		REVP A 0 A_JumpIfInventory ("Mskull",0,"MasterShot")
 		REVP A 0 A_JumpIfInventory ("SKELCH2",1,"RightGunShot")
-		REVP I 8 bright
-		REVP K 8 bright A_FireCustomMissile ("HomingMissile",0,0,-8,16,1)
-		REVP L 8 bright
+		REVP I 8 Bright
+		REVP K 8 Bright A_FireCustomMissile ("HomingMissile",0,0,-8,16,1)
+		REVP L 8 Bright
 		REVP A 4 A_GiveInventory ("SKELCH2",1)
 		Goto Ready
 	AltFireX:
-		REVP I 8 bright
-		REVP K 8 bright A_FireCustomMissile ("PCybRocket3",0,0,-8,16,1)
-		REVP L 16 bright
+		REVP I 8 Bright
+		REVP K 8 Bright A_FireCustomMissile ("PCybRocket3",0,0,-8,16,1)
+		REVP L 16 Bright
 		Goto Ready
 	AltFireY:
-		REVP I 8 bright
+		REVP I 8 Bright
 		REVP K 0 A_PlaySoundEx ("weapons/mgren","weapon")
-		REVP K 8 bright A_FireCustomMissile ("MRevenantGrenadePuppet",0,0,-8,16,1)
-		REVP L 16 bright
+		REVP K 8 Bright A_FireCustomMissile ("MRevenantGrenadePuppet",0,0,-8,16,1)
+		REVP L 16 Bright
 		Goto Ready
 	RightGunShot:
-		REVP M 8 bright
-		REVP N 8 bright A_FireCustomMissile ("HomingMissile",0,0,8,16,1)
-		REVP O 8 bright
+		REVP M 8 Bright
+		REVP N 8 Bright A_FireCustomMissile ("HomingMissile",0,0,8,16,1)
+		REVP O 8 Bright
 		REVP A 0 SetPlayerProperty (0, 0, 0)
 		REVP A 4 A_TakeInventory ("SKELCH2",1)
 		Goto Ready
 	MasterShot:
 		REVP A 0 SetPlayerProperty (0, 1, 0)
 		REVP A 0 A_GunFlash
-		REVP I 11 bright A_TakeInventory ("SKELCH",1)
-		REVP K 0 bright A_FireCustomMissile ("HomingMissile",0,0,11,16,1)
-		REVP K 11 bright A_FireCustomMissile ("HomingMissile",0,0,-11,16,1)
-		REVP L 11 bright
+		REVP I 11 Bright A_TakeInventory ("SKELCH",1)
+		REVP K 0 Bright A_FireCustomMissile ("HomingMissile",0,0,11,16,1)
+		REVP K 11 Bright A_FireCustomMissile ("HomingMissile",0,0,-11,16,1)
+		REVP L 11 Bright
 		REVP A 0 SetPlayerProperty (0, 0, 0)
 		REVP A 6 A_TakeInventory ("SKELCH2",1)
 		Goto Ready
@@ -9345,9 +9899,9 @@ ACTOR RevenantGun : Weapon
 		REVP FG 3 
 		Goto Ready
 	Flash: 
-		REVP M 11 bright
-		REVP N 11 bright
-		REVP O 11 bright
+		REVP M 11 Bright
+		REVP N 11 Bright
+		REVP O 11 Bright
 		Stop
 	}
 }
@@ -9355,33 +9909,33 @@ actor SKELCH3 : Inventory
 {
 	inventory.amount 1
 	inventory.maxamount 1
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
-		stop
+		Stop
 	}
 }
 actor SKELCH2 : Inventory
 {
 	inventory.amount 1
 	inventory.maxamount 1
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
-		stop
+		Stop
 	}
 }
 actor SKELCH : Inventory
 {
 	inventory.amount 1
 	inventory.maxamount 1
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
-		stop
+		Stop
 	}
 }
 actor HomingMissile
@@ -9398,17 +9952,17 @@ actor HomingMissile
 	PROJECTILE
 	+SEEKERMISSILE
 	+SCREENSEEKER
-	states
+	States
 	{
 	Spawn:
-		FATB AB 2 bright A_SeekerMissile(30,60,SMF_PRECISE,256,10) //45,90 //SMF_LOOK removed
+		FATB AB 2 Bright A_SeekerMissile(30,60,SMF_PRECISE,256,10) //45,90 //SMF_LOOK removed
 		FATB A 0 A_SpawnItem("TracerSmoke",0)
 		loop
 	Death:
-		FBXP A 8 bright
-		FBXP B 6 bright 
-		FBXP C 4 bright 
-		stop
+		FBXP A 8 Bright
+		FBXP B 6 Bright 
+		FBXP C 4 Bright 
+		Stop
 	}
 }
 actor TracerSmoke
@@ -9417,11 +9971,11 @@ actor TracerSmoke
 	alpha 0.5
 	+NOBLOCKMAP
 	+NOGRAVITY
-	states
+	States
 	{
 	Spawn:
 		PUFF BCBCD 3
-		stop
+		Stop
 	}
 }
 ACTOR MRevenantGrenadePuppet : Grenade
@@ -9451,13 +10005,13 @@ ACTOR MRevenantGrenadePuppet : Grenade
 		GRN2 ABCDEFGHIJK 3  
 		loop
 	Death:
-		MISL B 8 bright A_Explode
-		MISL C 6 bright
-		MISL D 4 bright
-		stop
+		MISL B 8 Bright A_Explode
+		MISL C 6 Bright
+		MISL D 4 Bright
+		Stop
 	}
 }
-ACTOR ArPlasmaGun : Weapon
+ACTOR ArPlasmaGun : "DPT.HQ-Weapon"
 {
 	+CHEATNOTWEAPON
 	//$Category Weapons
@@ -9491,7 +10045,7 @@ ACTOR Plasma : ArachnotronPlasma
 {
 	SPEED 45
 }
-ACTOR BigFuckingGun9000 : Weapon
+ACTOR BigFuckingGun9000 : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	+WEAPON.NOAUTOFIRE
@@ -9507,7 +10061,7 @@ ACTOR BigFuckingGun9000 : Weapon
 		BFGG A 1 A_Raise
 		Loop
 	Fire:
-		BFGG B 10 bright A_BFGSound
+		BFGG B 10 Bright A_BFGSound
 		BFGG A 0 A_FireCustomMissile("2704Ball1", random(30,-30)/4.0, 1, 0, 0, 0, random(36,-36)/4.0)
 		BFGG A 0 A_FireCustomMissile("2704Ball2", random(30,-30)/4.0, 0, 0, 0, 0, random(36,-36)/4.0)
 		BFGG A 0 A_AlertMonsters
@@ -9708,7 +10262,7 @@ ACTOR BigFuckingGun9000 : Weapon
 		BFGG A 0 A_AlertMonsters
 		BFGG A 1 A_GunFlash
 		BFGG A 2 A_ReFire
-		BFGG B 18 bright
+		BFGG B 18 Bright
 		goto Ready
 	Flash:
 		BFGF A 11 Bright A_Light1
@@ -9748,7 +10302,7 @@ ACTOR 2704Ball2 : 2704Ball1
 	}
 }
 // Ovlab
-ACTOR SMG : weapon
+ACTOR SMG : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	Scale 0.4
@@ -9777,13 +10331,13 @@ ACTOR SMG : weapon
 		SMG1 A 1 A_WeaponReady
 		loop
 	Fire:
-		SMG1 B 1 BRIGHT A_FireBullets(0,0,1,5,"BulletPuff",1)
-		SMG1 C 1 BRIGHT
+		SMG1 B 1 Bright A_FireBullets(0,0,1,5,"BulletPuff",1)
+		SMG1 C 1 Bright
 		SMG1 A 2
 		Goto Ready
 	}
 }
-ACTOR DoubleSMG : weapon
+ACTOR DoubleSMG : "DPT.HQ-Weapon"
 {
 	//$Category Weapons
 	Scale 0.4
@@ -9812,10 +10366,10 @@ ACTOR DoubleSMG : weapon
 		SMG2 A 1 A_WeaponReady
 		loop
 	Fire:
-		SMG2 B 1 BRIGHT A_FireBullets(0,0,1,5,"BulletPuff",1)
-		SMG2 CA 1 BRIGHT
-		SMG2 D 1 BRIGHT A_FireBullets(0,0,1,5,"BulletPuff",1)
-		SMG2 EA 1 BRIGHT
+		SMG2 B 1 Bright A_FireBullets(0,0,1,5,"BulletPuff",1)
+		SMG2 CA 1 Bright
+		SMG2 D 1 Bright A_FireBullets(0,0,1,5,"BulletPuff",1)
+		SMG2 EA 1 Bright
 		Goto Ready
 	}
 }   
@@ -9848,7 +10402,7 @@ ACTOR SMGGenerator : CustomInventory 26235
 		Stop
 	} 
 }
-ACTOR Rifle : Weapon 26236
+ACTOR Rifle : "DPT.HQ-Weapon" 26236
 {
 	//$Category Weapons
 	Weapon.AmmoType "RifleAmmo"
@@ -9930,7 +10484,7 @@ ACTOR BlankPuff
 		Stop   
 	}
 }
-ACTOR TrollSSD : Weapon 26239
+ACTOR TrollSSD : "DPT.HQ-Weapon" 26239
 {
 	//$Category Weapons
 	+CHEATNOTWEAPON
@@ -9999,7 +10553,7 @@ ACTOR STFBFG9000 : BFG9000 26256
 		Loop
 	Fire:
 	Hold:
-		BFGG A 20 A_PlaySound("weapons/bfgf") //A_PlayWeaponSound("weapons/bfgf")
+		BFGG A 20 A_PlaySound("weapons/bfgf")
 		BFGG B 10 Bright A_GunFlash
 		BFGG B 5 Bright A_FireCustomMissile("BFGBall")
 		Goto AfterFire
@@ -10027,7 +10581,7 @@ ACTOR BFGSmoke
 		Stop
 	}
 }
-ACTOR Powercube : Weapon 26257
+ACTOR Powercube : "DPT.HQ-Weapon" 26257
 {
 	//$Category Weapons
 	//$Sprite CUBXA0
@@ -10080,74 +10634,74 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.98)
-		CUBF A 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),1,15,0,0,0.1*random(40,-40))
+		CUBF A 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),1,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.9775)
-		CUBF B 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF B 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.975)
-		CUBF C 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF C 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.9725)
-		CUBF D 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF D 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.975)
-		CUBF E 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF E 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.9775)
-		CUBF F 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF F 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_GiveInventory("CubeAmmo",1)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.98)
-		CUBF A 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),1,15,0,0,0.1*random(40,-40))
+		CUBF A 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),1,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.9775)
-		CUBF B 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF B 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.975)
-		CUBF C 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF C 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.9725)
-		CUBF D 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF D 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.975)
-		CUBF E 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF E 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_SetBlend("Green",0.05,1)
 		CUBF A 0 A_Recoil(0.2)
 		CUBF A 0 A_SetAngle(Angle+frandom(0.7,-0.7))
 		CUBF A 0 A_SetPitch(Pitch+frandom(0.7,-0.7))
 		CUBF A 0 A_ZoomFactor(0.9775)
-		CUBF F 1 BRIGHT A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
+		CUBF F 1 Bright A_FireCustomMissile("CubeLightning",0.1*random(40,-40),0,15,0,0,0.1*random(40,-40))
 		CUBF A 0 A_ReFire
 		Goto SuperPootisMan
 	SuperPootisMan2:
@@ -10186,7 +10740,7 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBallYellow",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFRocketBlue",frandom(15.000,-15.000),0,0,0,0,frandom(15.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBall",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
-		CUBF A 1 BRIGHT
+		CUBF A 1 Bright
 		CUBF A 0 A_SetBlend("Yellow",0.2,1)
 		CUBF A 0 A_Recoil(0.4)
 		CUBF A 0 A_SetAngle(Angle+frandom(1.0,-1.0))
@@ -10200,7 +10754,7 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBallYellow",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFRocketBlue",frandom(15.000,-15.000),0,0,0,0,frandom(15.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBall",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
-		CUBF B 1 BRIGHT
+		CUBF B 1 Bright
 		CUBF A 0 A_SetBlend("Cyan",0.2,1)
 		CUBF A 0 A_Recoil(0.4)
 		CUBF A 0 A_SetAngle(Angle+frandom(1.0,-1.0))
@@ -10214,7 +10768,7 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBallYellow",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFRocketBlue",frandom(15.000,-15.000),0,0,0,0,frandom(15.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBall",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
-		CUBF C 1 BRIGHT 
+		CUBF C 1 Bright 
 		CUBF A 0 A_SetBlend("Orange",0.2,1)
 		CUBF A 0 A_Recoil(0.4)
 		CUBF A 0 A_SetAngle(Angle+frandom(1.0,-1.0))
@@ -10228,7 +10782,7 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBallYellow",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFRocketBlue",frandom(15.000,-15.000),0,0,0,0,frandom(15.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBall",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
-		CUBF D 1 BRIGHT
+		CUBF D 1 Bright
 		CUBF A 0 A_SetBlend("Blue",0.2,1)
 		CUBF A 0 A_Recoil(0.4)
 		CUBF A 0 A_SetAngle(Angle+frandom(1.0,-1.0))
@@ -10242,7 +10796,7 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBallYellow",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFRocketBlue",frandom(15.000,-15.000),0,0,0,0,frandom(15.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBall",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
-		CUBF E 1 BRIGHT
+		CUBF E 1 Bright
 		CUBF A 0 A_SetBlend("Red",0.2,1)
 		CUBF A 0 A_Recoil(0.4)
 		CUBF A 0 A_SetAngle(Angle+frandom(1.0,-1.0))
@@ -10256,7 +10810,7 @@ ACTOR Powercube : Weapon 26257
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBallYellow",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFRocketBlue",frandom(15.000,-15.000),0,0,0,0,frandom(15.000,-15.000))
 		CUBF A 0 A_FireCustomMissile("WTFPlasmaBall",frandom(15.000,-15.000),0,0,0,0,frandom(5.000,-15.000))
-		CUBF F 1 BRIGHT
+		CUBF F 1 Bright
 		CUBF A 0 A_ReFire
 		Goto SupersitooPMan
 	SupersitooPMan2:
@@ -10334,7 +10888,7 @@ ACTOR CubeLightning : FastProjectile
 	+BLOODLESSIMPACT
 	DamageType Fire
 	MissileType "CubeLightningTrailSpawner"
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 2
@@ -10346,7 +10900,7 @@ ACTOR CubeLightning : FastProjectile
 		Stop
 	Ded:
 		TNT1 A 1
-		stop
+		Stop
 	}
 }
 ACTOR CubeLightningTrailSpawner
@@ -10374,10 +10928,10 @@ ACTOR CubeLightningTrail
 	{
 	Spawn:
 		TNT1 A 0
-		CUBS ABCDE 2 bright A_FadeOut(0.1)
+		CUBS ABCDE 2 Bright A_FadeOut(0.1)
 	Trolololo:
-		TNT1 A 0 //A_SetScale(ScaleX -0.01, ScaleY -0.01)
-		CUBS F 1 bright A_FadeOut(0.08)
+		TNT1 A 0 A_SetScale(ScaleX -0.01, ScaleY -0.01)
+		CUBS F 1 Bright A_FadeOut(0.08)
 		Loop
 	}
 }
@@ -10449,13 +11003,13 @@ ACTOR WTFPlasmaBallYellow : WTFPlasmaBall
 ACTOR CubeInfiniteAmmo : PowerupGiver
 {
 	inventory.pickupmessage "I AM FULL OF SANDWICH, AND I AM COMING FOR YOU!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "InfiniteAmmo"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ADDITIVETIME
 	powerup.color "70 0 99" 0.03
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
@@ -10465,13 +11019,13 @@ ACTOR CubeInfiniteAmmo : PowerupGiver
 ACTOR CubeInvicibility : PowerupGiver
 {
 	inventory.pickupmessage "HAHAHAHAAA!! I AM BULLETPROOOOOOF!!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "Invulnerable"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ADDITIVETIME
 	powerup.color Orange 0.03
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
@@ -10486,13 +11040,13 @@ ACTOR PowerCubeDamage : PowerDamage
 ACTOR CubeDamage : PowerupGiver
 {
 	inventory.pickupmessage "IT'S TIME TO RUN, COWARDS!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "CubeDamage"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ADDITIVETIME
 	powerup.color Red 0.03
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
@@ -10507,13 +11061,13 @@ ACTOR PowerCubeProtect : PowerProtection
 ACTOR CubeProtection : PowerupGiver
 {
 	inventory.pickupmessage "YOU ARE NO MATCH FOR MEE!!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "CubeProtect"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ADDITIVETIME
 	powerup.color Cyan 0.03
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
@@ -10523,13 +11077,13 @@ ACTOR CubeProtection : PowerupGiver
 ACTOR CubeFear : PowerupGiver
 {
 	inventory.pickupmessage "FEAR ME, COWAAAARDS!!"
-	powerup.duration -30
+	Powerup.Duration -30
 	powerup.type "Frightener"
 	+INVENTORY.ALWAYSPICKUP
 	+INVENTORY.AUTOACTIVATE
 	+INVENTORY.ADDITIVETIME
 	powerup.color Yellow 0.03
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
@@ -10537,7 +11091,39 @@ ACTOR CubeFear : PowerupGiver
 	}
 }
 // ETC
-ACTOR Basketball : Weapon 26255
+ACTOR Railgun : "DPT.HQ-Weapon" 5012 //replaces Chainsaw
+{
+	Weapon.AmmoUse 10
+	Weapon.AmmoGive 40
+	Weapon.AmmoType "Cell"
+	Weapon.UpSound "weapons/railup"
+	Weapon.ReadySound ""
+	Inventory.PickupMessage "You got the railgun!"
+	Obituary "%o was railed by %k."
+	decal "RailScorchLower"
+	States
+	{
+	Ready:
+		BRLG A 1 A_WeaponReady
+		Loop
+	Deselect:
+		BRLG A 1 A_Lower
+		Loop
+	Select:
+		BRLG A 1 A_Raise
+		Loop
+	Fire:
+		BRLG B 0 A_RailAttack ( 200, 0, 10, "00 00 FF", "FF FF FF", 0, 0)
+		BRLG B 5 A_Light1
+		BRLG A 45 A_Light0
+		BRLG A 0 A_ReFire
+		Goto Ready
+	Spawn:
+		BRLW A -1
+		Stop
+	}
+}
+ACTOR Basketball : "DPT.HQ-Weapon" 26255
 {
 	//$Category Weapons
 	Weapon.AmmoUse 1
@@ -10625,11 +11211,11 @@ ACTOR Basketball1
 		Goto Spawn+1
 	Death:
 		BBAL B 1
-		stop
+		Stop
 	}
 }
 // Zendos
-ACTOR ImpalerXBow : Weapon 26260
+ACTOR ImpalerXBow : "DPT.HQ-Weapon" 26260
 {
 	//$Category Weapons
 	Inventory.PickupMessage "Impaler Crossbow"
@@ -10815,7 +11401,7 @@ FireFinish:
 		//		TNT1 A 0 A_JumpIf(CallACS("dump3_velocityrecoil") == 0, 2) // skip the recoil if disabled
 		//		TNT1 A 0 A_ChangeVelocity (Cos(Pitch) * -0.2, 0, Sin(Pitch) * 0.2, 1)
 		TNT1 A 0 A_SetPitch(pitch-(0.3))
-		IAPS B 1 BRIGHT offset(0,36) A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
+		IAPS B 1 Bright offset(0,36) A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
 		TNT1 A 0 A_Light1
 		TNT1 A 0 A_SetPitch(pitch+(0.1))
 		IAPS C 1 offset(0,38) A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
@@ -10839,7 +11425,7 @@ AntiClickFire:
 		//		TNT1 A 0 A_JumpIf(CallACS("dump3_velocityrecoil") == 0, 2) // skip the recoil if disabled
 		//		TNT1 A 0 A_ChangeVelocity (Cos(Pitch) * -0.2, 0, Sin(Pitch) * 0.2, 1)
 		TNT1 A 0 A_SetPitch(pitch-(0.3))
-		IAPS B 1 BRIGHT offset(0,36) A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
+		IAPS B 1 Bright offset(0,36) A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
 		TNT1 A 0 A_Light1
 		TNT1 A 0 A_SetPitch(pitch+(0.1))
 		IAPS C 1 offset(0,38) A_WeaponReady(WRF_NOFIRE | WRF_NOSWITCH)
@@ -10880,7 +11466,7 @@ DropGunPickup: // You can't drop the pistol you geothermal giraffe
 		"####" "#" 0 A_Print("Stop trying to drop this gun.")
 		"####" "#" 0 A_Jump(256, "Ready")
 		Goto Ready
-		"####" "#" 0 A_Print("The pistol is actually good for once, stop it.")
+		"####" "#" 0 A_Print("The pistol is actually good for once, Stop it.")
 		"####" "#" 0 A_Jump(256, "Ready")
 		Goto Ready
 		"####" "#" 0 A_Print("stahp")
@@ -11015,7 +11601,7 @@ actor DUMP3HammerAttack : FastProjectile
 	{
 Spawn:
 		TNT1 A 1
-		stop
+		Stop
 Death:
 Crash:
 		TNT1 A 1
@@ -11025,7 +11611,7 @@ Crash:
 		TNT1 AAA 0 A_SpawnItemEx("DUMP3FancyWhiteSmokeSmall",0,0,0,random(-25,25)/100.00,random(-25,25)/100.00,random(-25,25)/100.00,0,160)
 		TNT1 AAAAAA 0 A_SpawnItemEx("DUMP3FancyWhiteSmokeSmall",0,0,0,random(-75,75)/100.00,random(-75,75)/100.00,random(-75,75)/100.00,0,160)
 		TNT1 A 1
-		stop
+		Stop
 XDeath:
 		TNT1 A 0 A_Stop
 		TNT1 A 0 A_GiveToTarget("DUMP3HammerHit",1)
@@ -11039,7 +11625,7 @@ XDeath:
 		TNT1 AAAAAAAAAA 0 A_SpawnItemEx("DUMP3RainbowSparkTiny",random(-5,5),random(-5,5),random(-5,5),random(-80,80)/10.00,random(-80,80)/10.0,random(-3,3),random(-180,180),160)
 		TNT1 AAAA 0 A_SpawnItemEx("DUMP3FancyWhiteSmoke",random(-10,10),random(-10,10),random(-10,-10),random(-200,200)/100.00,random(-200,200)/100.00,random(-100,300)/100.00,random(-180,180),160)
 		TNT1 A 1
-		stop
+		Stop
 	}
 }
 actor DUMP3HammerAttackBerserk : DUMP3HammerAttack
@@ -11063,7 +11649,7 @@ actor DUMP3RainbowSparkles : DUMP3GenericGoreActor
 	RenderStyle Add
 	Alpha 0.95
 	+NOINTERACTION
-	+BRIGHT
+	+Bright
 	+RANDOMIZE
 	States
 	{
@@ -11074,22 +11660,22 @@ Spawn:
 		loop
 Spawn1:
 		RPK1 ABCDE 4
-		stop
+		Stop
 Spawn2:
 		RPK2 ABCDE 4
-		stop
+		Stop
 Spawn3:
 		RPK3 ABCDE 4
-		stop
+		Stop
 Spawn4:
 		RPK4 ABCDE 4
-		stop
+		Stop
 Spawn5:
 		RPK5 ABCDE 4
-		stop
+		Stop
 Spawn6:
 		RPK6 ABCDE 4
-		stop
+		Stop
 	}
 }
 actor DUMP3RainbowSparkleSound : DUMP3RainbowSparkles
@@ -11115,7 +11701,7 @@ actor DUMP3WhiteSpark : DUMP3GenericGoreActor
 	Scale 0.3
 	+MISSILE
 	+NOINTERACTION
-	+BRIGHT
+	+Bright
 	+RANDOMIZE
 	States
 	{
@@ -11135,7 +11721,7 @@ actor DUMP3RainbowSpark : DUMP3GenericGoreActor
 	Scale 0.3
 	+MISSILE
 	+NOINTERACTION
-	+BRIGHT
+	+Bright
 	+RANDOMIZE
 	States
 	{
@@ -11204,7 +11790,7 @@ actor DUMP3RainbowSparkHuge : DUMP3GenericGoreActor
 	Scale 0.5
 	+MISSILE
 	+NOINTERACTION
-	+BRIGHT
+	+Bright
 	+RANDOMIZE
 	States
 	{
@@ -11215,22 +11801,22 @@ Spawn:
 		loop
 Spawn1:
 		RNB1 ABCDEFGH 2
-		stop
+		Stop
 Spawn2:
 		RNB2 ABCDEFGH 2
-		stop
+		Stop
 Spawn3:
 		RNB3 ABCDEFGH 2
-		stop
+		Stop
 Spawn4:
 		RNB4 ABCDEFGH 2
-		stop
+		Stop
 Spawn5:
 		RNB5 ABCDEFGH 2
-		stop
+		Stop
 Spawn6:
 		RNB6 ABCDEFGH 2
-		stop
+		Stop
 	}
 }
 actor DUMP3RainbowSparkTiny : DUMP3GenericGoreActor
@@ -11256,34 +11842,34 @@ Spawn:
 		TNT1 A 1
 		loop
 Spawn1:
-		RSP1 ABCDE 4 BRIGHT
+		RSP1 ABCDE 4 Bright
 Spawn1b:
-		RSP1 ABCDE 4 BRIGHT A_FadeOut(0.05)
+		RSP1 ABCDE 4 Bright A_FadeOut(0.05)
 		loop
 Spawn2:
-		RSP2 ABCDE 4 BRIGHT
+		RSP2 ABCDE 4 Bright
 Spawn2b:
-		RSP2 ABCDE 4 BRIGHT A_FadeOut(0.05)
+		RSP2 ABCDE 4 Bright A_FadeOut(0.05)
 		loop
 Spawn3:
-		RSP3 ABCDE 4 BRIGHT
+		RSP3 ABCDE 4 Bright
 Spawn3b:
-		RSP3 ABCDE 4 BRIGHT A_FadeOut(0.05)
+		RSP3 ABCDE 4 Bright A_FadeOut(0.05)
 		loop
 Spawn4:
-		RSP4 ABCDE 4 BRIGHT
+		RSP4 ABCDE 4 Bright
 Spawn4b:
-		RSP4 ABCDE 4 BRIGHT A_FadeOut(0.05)
+		RSP4 ABCDE 4 Bright A_FadeOut(0.05)
 		loop
 Spawn5:
-		RSP5 ABCDE 4 BRIGHT
+		RSP5 ABCDE 4 Bright
 Spawn5b:
-		RSP5 ABCDE 4 BRIGHT A_FadeOut(0.05)
+		RSP5 ABCDE 4 Bright A_FadeOut(0.05)
 		loop
 Spawn6:
-		RSP6 ABCDE 4 BRIGHT
+		RSP6 ABCDE 4 Bright
 Spawn6b:
-		RSP6 ABCDE 4 BRIGHT A_FadeOut(0.05)
+		RSP6 ABCDE 4 Bright A_FadeOut(0.05)
 		loop
 	}
 }
@@ -11298,7 +11884,7 @@ actor DUMP3HappyOnlineSound
 Spawn:
 		TNT1 A 0
 		TNT1 A 1 A_PlaySoundEx("happy/gib","soundslot5",0,0)
-		stop
+		Stop
 	}
 }
 ACTOR DUMP3FancyWhiteSmoke : DUMP3GenericGoreActor
@@ -11351,7 +11937,7 @@ actor DUMP3FancyWhiteSmokeSpawner
 Spawn:
 		TNT1 A 0
 		TNT1 AAAAAAAAAA 4 A_SpawnItemEx("DUMP3FancyWhiteSmoke",random(-10,10),random(-10,10),random(-10,-10),random(-200,200)/100.00,random(-200,200)/100.00,random(200,600)/100.00,random(-180,180),160)
-		stop
+		Stop
 	}
 }
 actor DUMP3HeartProjectile
@@ -11423,7 +12009,7 @@ actor DUMP3LargeHeart
 	{
 Spawn:
 		HPUF ABCDEFGHI 4 Bright
-		stop
+		Stop
 	}
 }
 ACTOR DUMP3Wingman : DUMP3Weapon
@@ -11561,46 +12147,46 @@ Fire:
 		TYRS A 1 A_WeaponReady (WRF_NOFIRE)
 		Goto Ready
 		TYRS A 0 A_JumpIfInventory("DUMP3TyrannicalImpactCombo",1,"TyrannicalImpact")
-		TYRS G 2 Offset(104, 124)
-		TYRS B 1 Bright Offset(104, 117) A_PlaySound("tyrantsg/fire", CHAN_AUTO)
+		TYRS G 2 //Offset(104, 124)
+		TYRS B 1 Bright /*Offset(104, 117)*/ A_PlaySound("tyrantsg/fire", CHAN_AUTO)
 		TNT1 A 0 //A_JumpIf(CallACS("dump3_gunsmoke") == 0, 3) // skip the gunsmoke if disabled
 		TNT1 A 0 A_FireCustomMissile ("DUMP3GunSmokeSpawner", 0,0,-1,5)
 		TNT1 A 0 A_FireCustomMissile ("DUMP3GunSmokeSpawner", 0,0,1,5)
 		TYRS A 0 A_AlertMonsters
 		TYRS A 0 A_GunFlash
 		TYRS G 0  A_FireBullets (12, 10, 10, 7, "DUMP3BulletPuff")
-		TYRS G 2 Offset(104, 142)
-		TYRS G 2 Offset(104, 140)
-		TYRS G 2 Offset(104, 138)
+		TYRS G 2 //Offset(104, 142)
+		TYRS G 2 //Offset(104, 140)
+		TYRS G 2 //Offset(104, 138)
 		TYRS A 0 A_Refire("Hold")
-		TYRS G 2 Offset(94, 149)
-		TYRS G 2 Offset(78, 146)
-		TYRS C 2 Offset(34, 129)
-		TYRS C 2 Offset(22, 122)
-		TYRS C 2 Offset(14, 114)
-		TYRS D 2 Offset(35, 87)
-		TYRS D 2 Offset(25, 72)
-		TYRS E 2 Offset(16, 62)
-		TYRS F 2 Offset(-27, 60) A_PlaySound("tyrantsg/pump", CHAN_AUTO)
+		TYRS G 2 //Offset(94, 149)
+		TYRS G 2 //Offset(78, 146)
+		TYRS C 2 //Offset(34, 129)
+		TYRS C 2 //Offset(22, 122)
+		TYRS C 2 //Offset(14, 114)
+		TYRS D 2 //Offset(35, 87)
+		TYRS D 2 //Offset(25, 72)
+		TYRS E 2 //Offset(16, 62)
+		TYRS F 2 //Offset(-27, 60) A_PlaySound("tyrantsg/pump", CHAN_AUTO)
 		TYRS A 0 //A_JumpIf(CallACS("dump3_casings") == 0, 3) // skip the casings if disabled
 		TYRS AA 0 A_FireCustomMissile ("DUMP3ShellCasingSpawner3", 0,0,-5,-7, 0)
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrantShotgunRingSpawner",0,0,0)
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrantShotgunRingDMG",0,0,10)
-		TYRS E 2 Offset(13, 62)
-		TYRS E 2 Offset(20, 74)
-		TYRS D 2 Offset(33, 85)
-		TYRS D 2 Offset(44, 98)
-		TYRS D 2 Offset(61, 109)
-		TYRS D 2 Offset(79, 120)
-		TYRS D 2 Offset(103, 118)
-		TYRS G 2 Offset(104, 124)
+		TYRS E 2 //Offset(13, 62)
+		TYRS E 2 //Offset(20, 74)
+		TYRS D 2 //Offset(33, 85)
+		TYRS D 2 //Offset(44, 98)
+		TYRS D 2 //Offset(61, 109)
+		TYRS D 2 //Offset(79, 120)
+		TYRS D 2 //Offset(103, 118)
+		TYRS G 2 //Offset(104, 124)
 		Goto Ready
 TyrannicalImpact:
 		TYRS A 0 A_JumpIfInventory("Shell",1,1)
 		Goto Ready
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrannicalImpactQuickStun",10,0,0)
-		TYRS G 8 Offset(104, 124)
-		TYRS B 1 Bright Offset(104, 135) A_PlaySound("tyrantsg/fire", CHAN_AUTO)
+		TYRS G 8 //Offset(104, 124)
+		TYRS B 1 Bright /*Offset(104, 135)*/ A_PlaySound("tyrantsg/fire", CHAN_AUTO)
 		TNT1 A 0 //A_JumpIf(CallACS("dump3_gunsmoke") == 0, 3) // skip the gunsmoke if disabled
 		TNT1 A 0 A_FireCustomMissile ("DUMP3GunSmokeSpawner", 0,0,-1,5)
 		TNT1 A 0 A_FireCustomMissile ("DUMP3GunSmokeSpawner", 0,0,1,5)
@@ -11608,119 +12194,119 @@ TyrannicalImpact:
 		TYRS A 0 A_GunFlash	
 		TYRS A 0 A_FireBullets (12, 10, 10, 9, "DUMP3BulletPuff") //Deals bonus damage due to super combo!
 		TYRS A 0 A_TakeInventory ("Shell",1,TIF_NOTAKEINFINITE)
-		TYRS G 2 Offset(104, 157)
-		TYRS G 2 Offset(104, 155)
-		TYRS G 2 Offset(104, 150)
-		TYRS G 2 Offset(94, 149)
-		TYRS G 2 Offset(78, 146)
-		TYRS C 2 Offset(34, 129)
-		TYRS C 2 Offset(22, 122)
-		TYRS C 2 Offset(14, 114)
-		TYRS D 2 Offset(35, 87)
-		TYRS D 2 Offset(25, 72)
-		TYRS E 2 Offset(16, 62)
-		TYRS F 2 Offset(-27, 60) A_PlaySound("tyrantsg/pump", CHAN_AUTO)
+		TYRS G 2 //Offset(104, 157)
+		TYRS G 2 //Offset(104, 155)
+		TYRS G 2 //Offset(104, 150)
+		TYRS G 2 //Offset(94, 149)
+		TYRS G 2 //Offset(78, 146)
+		TYRS C 2 //Offset(34, 129)
+		TYRS C 2 //Offset(22, 122)
+		TYRS C 2 //Offset(14, 114)
+		TYRS D 2 //Offset(35, 87)
+		TYRS D 2 //Offset(25, 72)
+		TYRS E 2 //Offset(16, 62)
+		TYRS F 2 //Offset(-27, 60) A_PlaySound("tyrantsg/pump", CHAN_AUTO)
 		TYRS A 0 //A_JumpIf(CallACS("dump3_casings") == 0, 3) // skip the casings if disabled
 		TYRS AA 0 A_FireCustomMissile ("DUMP3ShellCasingSpawner3", 0,0,-5,-7, 0)
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrantShotgunRingSpawner",0,0,0)
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrantShotgunRingDMG",0,0,10)
-		TYRS E 2 Offset(13, 62)
-		TYRS E 2 Offset(20, 74)
-		TYRS D 2 Offset(33, 85)
-		TYRS D 2 Offset(44, 98)
-		TYRS D 2 Offset(61, 109)
-		TYRS D 2 Offset(79, 120)
-		TYRS D 2 Offset(103, 118)
-		TYRS G 2 Offset(104, 124)
+		TYRS E 2 //Offset(13, 62)
+		TYRS E 2 //Offset(20, 74)
+		TYRS D 2 //Offset(33, 85)
+		TYRS D 2 //Offset(44, 98)
+		TYRS D 2 //Offset(61, 109)
+		TYRS D 2 //Offset(79, 120)
+		TYRS D 2 //Offset(103, 118)
+		TYRS G 2 //Offset(104, 124)
 		TYRS A 0 A_TakeInventory("DUMP3TyrannicalImpactCombo",1)
 		Goto Ready
 Hold:
 		TYRS A 0 A_JumpIfInventory("Shell",1,1)
 		Goto Ready
-		TYRS B 1 Bright Offset(104, 135) A_PlaySound("tyrantsg/fire", CHAN_AUTO)
+		TYRS B 1 Bright /*Offset(104, 135)*/ A_PlaySound("tyrantsg/fire", CHAN_AUTO)
 		TNT1 A 0 //A_JumpIf(CallACS("dump3_gunsmoke") == 0, 3) // skip the gunsmoke if disabled
 		TNT1 A 0 A_FireCustomMissile ("DUMP3GunSmokeSpawner", 0,0,-1,3)
 		TNT1 A 0 A_FireCustomMissile ("DUMP3GunSmokeSpawner", 0,0,1,3)
 		TYRS A 0 A_AlertMonsters
 		TYRS A 0 A_GunFlash
 		TYRS A 0 A_FireBullets (12, 10, 10, 7, "DUMP3BulletPuff")
-		TYRS G 2 Offset(104, 157)
-		TYRS G 2 Offset(104, 155)
-		TYRS G 2 Offset(104, 150)
-		TYRS G 2 Offset(94, 149)
-		TYRS G 2 Offset(78, 146)
-		TYRS C 2 Offset(34, 129)
-		TYRS C 2 Offset(22, 122)
-		TYRS C 2 Offset(14, 114)
-		TYRS D 2 Offset(35, 87)
-		TYRS D 2 Offset(25, 72)
-		TYRS E 2 Offset(16, 62)
-		TYRS F 2 Offset(-27, 60) A_PlaySound("tyrantsg/pump", CHAN_AUTO)
+		TYRS G 2 //Offset(104, 157)
+		TYRS G 2 //Offset(104, 155)
+		TYRS G 2 //Offset(104, 150)
+		TYRS G 2 //Offset(94, 149)
+		TYRS G 2 //Offset(78, 146)
+		TYRS C 2 //Offset(34, 129)
+		TYRS C 2 //Offset(22, 122)
+		TYRS C 2 //Offset(14, 114)
+		TYRS D 2 //Offset(35, 87)
+		TYRS D 2 //Offset(25, 72)
+		TYRS E 2 //Offset(16, 62)
+		TYRS F 2 /*Offset(-27, 60)*/ A_PlaySound("tyrantsg/pump", CHAN_AUTO)
 		TYRS A 0 //A_JumpIf(CallACS("dump3_casings") == 0, 3) // skip the casings if disabled
 		TYRS AA 0 A_FireCustomMissile ("DUMP3ShellCasingSpawner3", 0,0,-5,-7, 0)
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrantShotgunRingSpawner",0,0,0)
 		TYRS A 0 A_SpawnItemEx("DUMP3TyrantShotgunRingDMG",0,0,10)
-		TYRS E 2 Offset(13, 62)
-		TYRS E 2 Offset(20, 74)
-		TYRS D 2 Offset(33, 85)
-		TYRS D 2 Offset(44, 98)
-		TYRS D 2 Offset(61, 109)
-		TYRS D 2 Offset(79, 120)
-		TYRS D 2 Offset(103, 118)
-		TYRS G 2 Offset(104, 124)
+		TYRS E 2 //Offset(13, 62)
+		TYRS E 2 //Offset(20, 74)
+		TYRS D 2 //Offset(33, 85)
+		TYRS D 2 //Offset(44, 98)
+		TYRS D 2 //Offset(61, 109)
+		TYRS D 2 //Offset(79, 120)
+		TYRS D 2 //Offset(103, 118)
+		TYRS G 2 //Offset(104, 124)
 		TYRS A 0 A_Refire("Fire")
 		Goto Ready	
 AltFire:
-		TYRS G 1 Offset(104, 124)
-		TYRS G 1 Offset(104, 139)
-		TYRS G 1 Offset(105, 154)
-		TYRS G 1 Offset(105, 167)
-		TYRS G 1 Offset(105, 186)
+		TYRS G 1 //Offset(104, 124)
+		TYRS G 1 //Offset(104, 139)
+		TYRS G 1 //Offset(105, 154)
+		TYRS G 1 //Offset(105, 167)
+		TYRS G 1 //Offset(105, 186)
 		TNT1 A 5
-		TYRS H 2 Offset(194, 171)
-		TYRS H 2 Offset(119, 170)
-		TYRS C 2 Offset(152, 146)
-		TYRS C 2 Offset(126, 124)
-		TYRS D 2 Offset(104, 81)	
+		TYRS H 2 //Offset(194, 171)
+		TYRS H 2 //Offset(119, 170)
+		TYRS C 2 //Offset(152, 146)
+		TYRS C 2 //Offset(126, 124)
+		TYRS D 2 //Offset(104, 81)	
 		TYRS A 0 A_PlaySound("tyrantsg/melee", CHAN_AUTO)
 		TYRS A 0 Radius_Quake(5, 2, 0, 1, 0)
 		TYRS A 0 A_CustomPunch(1, 0, 0, "DUMP3TyrantMPuffDummy",35)	
 		TNT1 A 0 A_CustomPunch(35, 0, 0, "DUMP3TyrantMPuff",120)	
-		TYRS D 1 Offset(69, 73)
+		TYRS D 1 //Offset(69, 73)
 		TYRS A 0 A_JumpIfInventory("Shell",1,2)
 		TYRS A 0 A_Jump(256,2)
 		TYRS A 0 A_JumpIfInventory("DUMP3TyrannicalImpactCombo",1,"Fire")
-		TYRS E 1 Offset(27, 62)
-		TYRS E 1 Offset(-7, 62)
-		TYRS F 1 Offset(-66, 60)
-		TYRS F 1 Offset(-103, 60)
+		TYRS E 1 //Offset(27, 62)
+		TYRS E 1 //Offset(-7, 62)
+		TYRS F 1 //Offset(-66, 60)
+		TYRS F 1 //Offset(-103, 60)
 		TNT1 A 5
 		TYRS A 0 A_Refire	
-		TYRS C 1 Offset(216, 160)
-		TYRS C 1 Offset(190, 141)
-		TYRS C 1 Offset(153, 131)
-		TYRS C 1 Offset(90, 128)
-		TYRS G 1 Offset(104, 124)
+		TYRS C 1 //Offset(216, 160)
+		TYRS C 1 //Offset(190, 141)
+		TYRS C 1 //Offset(153, 131)
+		TYRS C 1 //Offset(90, 128)
+		TYRS G 1 //Offset(104, 124)
 		Goto Ready
 AltHold:
 		TNT1 A 5
-		TYRS H 2 Offset(194, 171)
-		TYRS H 2 Offset(119, 170)
-		TYRS C 2 Offset(152, 146)
-		TYRS C 2 Offset(126, 124)
-		TYRS D 2 Offset(104, 81)	
+		TYRS H 2 //Offset(194, 171)
+		TYRS H 2 //Offset(119, 170)
+		TYRS C 2 //Offset(152, 146)
+		TYRS C 2 //Offset(126, 124)
+		TYRS D 2 //Offset(104, 81)	
 		TYRS A 0 A_PlaySound("tyrantsg/melee", CHAN_AUTO)
 		TYRS A 0 Radius_Quake(5, 2, 0, 1, 0)	
 		TYRS A 0 A_CustomPunch(1, 0, 0, "DUMP3TyrantMPuffDummy",35)	
 		TNT1 A 0 A_CustomPunch(35, 0, 0, "DUMP3TyrantMPuff",120)	
-		TYRS D 1 Offset(69, 73)
+		TYRS D 1 //Offset(69, 73)
 		TYRS A 0 A_JumpIfInventory("Shell",1,2)
 		TYRS A 0 A_Jump(256,2)
 		TYRS A 0 A_JumpIfInventory("DUMP3TyrannicalImpactCombo",1,"Fire")
-		TYRS E 1 Offset(27, 62)
-		TYRS E 1 Offset(-7, 62)
-		TYRS F 1 Offset(-66, 60)
-		TYRS F 1 Offset(-103, 60)
+		TYRS E 1 //Offset(27, 62)
+		TYRS E 1 //Offset(-7, 62)
+		TYRS F 1 //Offset(-66, 60)
+		TYRS F 1 //Offset(-103, 60)
 		TNT1 A 5
 		TYRS A 0 A_Refire
 		Goto AltFire+22	
@@ -11749,7 +12335,7 @@ ACTOR DUMP3TyrantShotgunRingSpawner
 	Height 3
 	Speed 0
 	-SHOOTABLE
-	+BRIGHT
+	+Bright
 	+MOVEWITHSECTOR
 	+DONTSPLASH
 	+NOCLIP
@@ -11781,7 +12367,7 @@ ACTOR DUMP3TyrantShotgunRingDMG
 	PROJECTILE
 	+DONTSPLASH
 	+THRUACTORS
-	+BRIGHT
+	+Bright
 	Radius 10
 	Height 10
 	States
@@ -11837,7 +12423,7 @@ ACTOR DUMP3TyrantPumpFX //Aesthetic. Deals no damage.
 	Alpha 0.05
 	Scale 0.2
 	PROJECTILE
-	+BRIGHT
+	+Bright
 	+THRUACTORS
 	+DONTSPLASH
 	+MOVEWITHSECTOR
@@ -11849,8 +12435,8 @@ Spawn:
 		TQFX A 0
 		TQFX AAAAAAAA 1
 		TQFX A 0 A_SetTranslucent(0.05)
-		TQFX AAA 3 //A_SetScale(0.15)
-		TQFX AA 1 //A_SetScale(0.10)
+		TQFX AAA 3 A_SetScale(0.15)
+		TQFX AA 1 A_SetScale(0.10)
 Death:
 		TQFX A 0
 		Stop
@@ -11896,7 +12482,7 @@ Actor DUMP3IronAnnihilatorShotSparkFX : FastProjectile
 	Scale 0.06
 	Gravity 0.3
 	PROJECTILE
-	+BRIGHT
+	+Bright
 	+THRUACTORS
 	+CLIENTSIDEONLY
 	RenderStyle Add
@@ -11994,7 +12580,7 @@ Death:
 ACTOR DUMP3PestMissileExplosion
 {
 	PROJECTILE
-	+BRIGHT
+	+Bright
 	+FORCERADIUSDMG
 	Radius 4
 	Height 4
@@ -12012,9 +12598,9 @@ Death:
 		SHXP A 0 A_PlaySound("ironannihilator/pestmissileexplode",5,1,0)
 		SHXP A 0 A_Explode (110, 100)
 		SHXP ABC 1
-		SHXP D 2 //A_SetScale(1.2)
+		SHXP D 2 A_SetScale(1.2)
 		SHXP E 2 A_SetTranslucent(0.4)
-		TNT1 A 0 //A_SetScale(0.9)
+		TNT1 A 0 A_SetScale(0.9)
 		SHXP F 2 A_SetTranslucent(0.2)
 		Stop
 	}
@@ -12344,7 +12930,7 @@ Fire:
 		FUSP A 1 A_WeaponReady (WRF_NOFIRE)
 		Goto Ready
 		TNT1 A 0 A_AlertMonsters
-		FUSP B 1 BRIGHT A_FireCustomMissile("DUMP3Minor_Fusion_Bolt")
+		FUSP B 1 Bright A_FireCustomMissile("DUMP3Minor_Fusion_Bolt")
 		FUSP C 1 A_PlaySound ("fusion/fire", CHAN_WEAPON, 1, 0, 1)
 		FUSP D 1
 		FUSP E 1
@@ -12362,7 +12948,7 @@ altFire:
 		TNT1 A 0 A_AlertMonsters
 		FUSP A 35 A_PlaySound ("fusion/charging", CHAN_WEAPON, 1, 0, 1.2) //WTH WONT THIS WORK // because you did it weird
 		TNT1 A 0 A_AlertMonsters
-		FUSP B 1 BRIGHT A_FireCustomMissile("DUMP3Major_Fusion_Bolt")
+		FUSP B 1 Bright A_FireCustomMissile("DUMP3Major_Fusion_Bolt")
 		FUSP B 0 A_ZoomFactor(1.05, 1)
 		FUSP B 0 A_ZoomFactor(1.0)
 		FUSP B 0 A_Recoil(1)
@@ -12404,37 +12990,37 @@ Spawn:
 		TNT1 A 0 //A_PlaySound ("on/fire", 1, 3, 0, 1) //SUCH PUNS
 		TNT1 A 0 A_Jump(256,"Spawn1","Spawn2","Spawn3")
 Spawn1:
-		SAFP A 2 BRIGHT
-		SAFP B 2 BRIGHT A_Quake(1,6,0,75, "")
-		SAFP C 2 BRIGHT
-		SAFP D 2 BRIGHT
-		SAFP E 2 BRIGHT
-		SAFP F 2 BRIGHT
-		SAFP G 2 BRIGHT
-		SAFP H 2 BRIGHT
-		SAFP I 2 BRIGHT
-		stop
+		SAFP A 2 Bright
+		SAFP B 2 Bright A_Quake(1,6,0,75, "")
+		SAFP C 2 Bright
+		SAFP D 2 Bright
+		SAFP E 2 Bright
+		SAFP F 2 Bright
+		SAFP G 2 Bright
+		SAFP H 2 Bright
+		SAFP I 2 Bright
+		Stop
 Spawn2:
-		SBFP A 2 BRIGHT
-		SBFP B 2 BRIGHT A_Quake(1,6,0,75, "")
-		SBFP C 2 BRIGHT
-		SBFP D 2 BRIGHT
-		SBFP E 2 BRIGHT
-		SBFP F 2 BRIGHT
-		SBFP G 2 BRIGHT
-		SBFP H 2 BRIGHT
-		SBFP I 2 BRIGHT
-		stop
+		SBFP A 2 Bright
+		SBFP B 2 Bright A_Quake(1,6,0,75, "")
+		SBFP C 2 Bright
+		SBFP D 2 Bright
+		SBFP E 2 Bright
+		SBFP F 2 Bright
+		SBFP G 2 Bright
+		SBFP H 2 Bright
+		SBFP I 2 Bright
+		Stop
 Spawn3:
-		SCFP A 2 BRIGHT
-		SCFP B 2 BRIGHT A_Quake(1,6,0,75, "")
-		SCFP C 2 BRIGHT
-		SCFP D 2 BRIGHT
-		SCFP E 2 BRIGHT
-		SCFP F 2 BRIGHT
-		SCFP G 2 BRIGHT
-		SCFP H 2 BRIGHT
-		stop
+		SCFP A 2 Bright
+		SCFP B 2 Bright A_Quake(1,6,0,75, "")
+		SCFP C 2 Bright
+		SCFP D 2 Bright
+		SCFP E 2 Bright
+		SCFP F 2 Bright
+		SCFP G 2 Bright
+		SCFP H 2 Bright
+		Stop
 	}
 }
 ACTOR DUMP3Major_Fusion_Bolt : FastProjectile
@@ -12456,21 +13042,21 @@ ACTOR DUMP3Major_Fusion_Bolt : FastProjectile
 	States
 	{
 Spawn:
-		PROJ A 1 BRIGHT
+		PROJ A 1 Bright
 		loop
 Death:
-		CHGS A 2 BRIGHT A_PlaySound ("on/fire", 7, 1, 0, 1) //SUCH PUNS // setting volume above 1 doesn't do anything
+		CHGS A 2 Bright A_PlaySound ("on/fire", 7, 1, 0, 1) //SUCH PUNS // setting volume above 1 doesn't do anything
 		TNT1 A 0 A_Quake(2,6,0,200, "")
 		TNT1 A 0 A_PlaySound ("fusion/hit", CHAN_WEAPON, 1, 0, 0.8)
-		CHGS B 2 BRIGHT A_SpawnItemEx ("DUMP3Ash_cloud", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
-		CHGS C 2 BRIGHT
-		CHGS D 2 BRIGHT
-		CHGS E 2 BRIGHT
-		CHGS F 2 BRIGHT
-		CHGS G 2 BRIGHT
-		CHGS H 2 BRIGHT
-		CHGS I 2 BRIGHT
-		stop
+		CHGS B 2 Bright A_SpawnItemEx ("DUMP3Ash_cloud", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
+		CHGS C 2 Bright
+		CHGS D 2 Bright
+		CHGS E 2 Bright
+		CHGS F 2 Bright
+		CHGS G 2 Bright
+		CHGS H 2 Bright
+		CHGS I 2 Bright
+		Stop
 	}
 }
 ACTOR DUMP3Minor_Fusion_Bolt
@@ -12490,14 +13076,14 @@ ACTOR DUMP3Minor_Fusion_Bolt
 	States
 	{
 Spawn:
-		BOLT A 2 BRIGHT
-		BOLT B 2 BRIGHT
-		BOLT C 2 BRIGHT
+		BOLT A 2 Bright
+		BOLT B 2 Bright
+		BOLT C 2 Bright
 		loop
 Death:
 		TNT1 A 0 A_PlaySound ("fusion/hit", CHAN_WEAPON, 0.8, 0, 1.4)
 		TNT1 A 30 A_SpawnItemEx ("DUMP3Fusion_Splash", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
-		stop
+		Stop
 	}
 }
 ACTOR DUMP3Fusion_Trail
@@ -12512,7 +13098,7 @@ ACTOR DUMP3Fusion_Trail
 	States
 	{
 Spawn:
-		TRAL A 1 BRIGHT A_FadeOut(0.25)
+		TRAL A 1 Bright A_FadeOut(0.25)
 		loop
 	}
 }
@@ -12537,7 +13123,7 @@ Spawn:
 		FSMK H 4
 		FSMK I 4
 		FSMK J 4
-		stop
+		Stop
 	}
 }
 Actor DUMP3SirusBusterCannon : DUMP3Weapon
@@ -12574,13 +13160,13 @@ FireArcBlast:
 		TNT1 A 0 A_JumpIfInventory("Cell",3,2,AAPTR_DEFAULT) // Increased to 3 because jesus christ the ammo efficiency is over 5x the plasma rifle
 		TNT1 A 0 A_Jump(256,"Failure")
 		TNT1 A 0 A_AlertMonsters
-		SARC P 1 bright A_PlaySound("sirusbeamcannon/beamstart",CHAN_WEAPON,1.0,false,ATTN_NORM)
-		SARC P 2 bright A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
+		SARC P 1 Bright A_PlaySound("sirusbeamcannon/beamstart",CHAN_WEAPON,1.0,false,ATTN_NORM)
+		SARC P 2 Bright A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),false,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),false,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
-		SARC Q 3 bright
+		SARC Q 3 Bright
 		TNT1 A 0 A_Refire("ContinuousStream")
 		//SARC R 6 A_PlaySound("sirusbeamcannon/beamend",CHAN_WEAPON,1.0,false,ATTN_NORM)
 		SARC M 1 A_PlaySound("sirusbeamcannon/beamend",CHAN_WEAPON,1.0,false,ATTN_NORM)
@@ -12593,13 +13179,13 @@ ContinuousStream:
 		SARC R 6 A_PlaySound("sirusbeamcannon/beamend",CHAN_WEAPON,1.0,false,ATTN_NORM)
 		goto Ready
 		TNT1 A 0 A_AlertMonsters
-		SARC P 1 bright A_PlaySound("sirusbeamcannon/beamloop",CHAN_WEAPON,1.0,true,ATTN_NORM)
-		SARC P 2 bright A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
+		SARC P 1 Bright A_PlaySound("sirusbeamcannon/beamloop",CHAN_WEAPON,1.0,true,ATTN_NORM)
+		SARC P 2 Bright A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),false,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_RailAttack(45,random(7,-7),false,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
-		SARC Q 2 bright A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
+		SARC Q 2 Bright A_RailAttack(45,random(7,-7),true,"none","7AB8CC",RGF_SILENT|RGF_NOPIERCING,40,"DUMP3LightningBeamPuff")
 		TNT1 A 0 A_Refire("ContinuousStream")
 		TNT1 A 0 A_PlaySound("",CHAN_WEAPON,1.0,false,ATTN_NORM)
 		//SARC R 6 A_PlaySound("sirusbeamcannon/beamend",CHAN_WEAPON,1.0,false,ATTN_NORM)
@@ -12611,16 +13197,16 @@ FireTargetStrike:
 		TNT1 A 0 A_Jump(256,"Failure")
 		SARC O 16
 		TNT1 A 0 A_AlertMonsters
-		SARC P 1 bright A_PlaySound("sirusbeamcannon/beamstart",CHAN_WEAPON,1.0,false,ATTN_NORM)
-		SARC P 2 bright A_TakeInventory("Cell",25,TIF_NOTAKEINFINITE,AAPTR_DEFAULT)
+		SARC P 1 Bright A_PlaySound("sirusbeamcannon/beamstart",CHAN_WEAPON,1.0,false,ATTN_NORM)
+		SARC P 2 Bright A_TakeInventory("Cell",25,TIF_NOTAKEINFINITE,AAPTR_DEFAULT)
 		SARC Q 2 A_RailAttack(150,0,false,"none","FFFFFF",RGF_SILENT,0,"DUMP3LightningBeamPuff")
 		goto Ready
 FireLightningBall:
 		TNT1 A 0 A_JumpIfInventory("Cell",50,2,AAPTR_DEFAULT)
 		TNT1 A 0 A_Jump(256,"Failure")
 		TNT1 A 0 A_AlertMonsters
-		SARC P 2 bright A_PlaySound("sirusbeamcannon/beamstart",CHAN_WEAPON,1.0,false,ATTN_NORM)
-		SARC Q 2 bright A_FireCustomMissile("DUMP3LightningOrbAttack",0,false,0,0,0,0)
+		SARC P 2 Bright A_PlaySound("sirusbeamcannon/beamstart",CHAN_WEAPON,1.0,false,ATTN_NORM)
+		SARC Q 2 Bright A_FireCustomMissile("DUMP3LightningOrbAttack",0,false,0,0,0,0)
 		TNT1 A 0 A_TakeInventory("Cell",50,TIF_NOTAKEINFINITE,AAPTR_DEFAULT)
 		//SARC R 6
 		SARC MLKJIH 1
@@ -12696,25 +13282,25 @@ Actor DUMP3LightningOrbAttack
 	States
 	{
 Spawn:
-		PLSE A 0 bright A_SeekerMissile(90,90,SMF_LOOK|SMF_PRECISE,256,12)
-		PLSE A 0 bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
-		PLSE AAA 1 bright //A_SetScale(ScaleX+0.15)
-		PLSE A 0 bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
-		PLSE DAD 1 bright //A_SetScale(ScaleX-0.15)
-		PLSE A 0 bright A_SeekerMissile(90,90,SMF_LOOK|SMF_PRECISE,256,12)
-		PLSE A 0 bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
-		PLSE AAA 1 bright //A_SetScale(ScaleX-0.15)
-		PLSE A 0 bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
-		PLSE CAC 1 bright //A_SetScale(ScaleX+0.15)
-		//PLSS ABABAB 12 bright A_SeekerMissile(90,90,SMF_LOOK|SMF_PRECISE,256,12)
+		PLSE A 0 Bright A_SeekerMissile(90,90,SMF_LOOK|SMF_PRECISE,256,12)
+		PLSE A 0 Bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
+		PLSE AAA 1 Bright A_SetScale(ScaleX+0.15)
+		PLSE A 0 Bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
+		PLSE DAD 1 Bright A_SetScale(ScaleX-0.15)
+		PLSE A 0 Bright A_SeekerMissile(90,90,SMF_LOOK|SMF_PRECISE,256,12)
+		PLSE A 0 Bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
+		PLSE AAA 1 Bright A_SetScale(ScaleX-0.15)
+		PLSE A 0 Bright A_JumpIfTracerCloser(/*Radius+*/32,"Death")
+		PLSE CAC 1 Bright A_SetScale(ScaleX+0.15)
+		//PLSS ABABAB 12 Bright A_SeekerMissile(90,90,SMF_LOOK|SMF_PRECISE,256,12)
 		//TNT1 A 0 A_PlaySound("sirusbeamcannon/electro",CHAN_AUTO,1.0,false,ATTN_NORM)
 		Loop
 Death:
-		PLSE A 0 bright A_Stop
-		PLSE A 0 bright //A_SetScale(ScaleX+0.5)
-		PLSE A 0 bright A_PlaySound("weapons/plasmax",CHAN_AUTO,1.0,false,ATTN_NORM)
-		PLSE ABC 2 bright A_Explode(400,580,0,true,520)
-		PLSE DE 2 bright
+		PLSE A 0 Bright A_Stop
+		PLSE A 0 Bright A_SetScale(ScaleX+0.5)
+		PLSE A 0 Bright A_PlaySound("weapons/plasmax",CHAN_AUTO,1.0,false,ATTN_NORM)
+		PLSE ABC 2 Bright A_Explode(400,580,0,true,520)
+		PLSE DE 2 Bright
 		Stop
 	}
 }
@@ -12726,7 +13312,7 @@ Actor DUMP3LightningBeamPuff : BulletPuff
 	States
 	{
 Spawn:
-		ELKP ABCDE 4 bright
+		ELKP ABCDE 4 Bright
 		Stop
 	}
 }
@@ -13037,7 +13623,7 @@ ACTOR DUMP3CrabTrail
   {
   Spawn:
    CGHT ABC 5
-   stop
+   Stop
   }
 }
 ACTOR DUMP3DarkPulseCannon : DUMP3Weapon
@@ -13066,16 +13652,16 @@ Fire:
 		TNT1 A 0 A_JumpIfInventory("Cell",2,2)
 		IBFG A 1 A_WeaponReady (WRF_NOFIRE)
 		Goto Ready
-		IBFG B 5 bright
+		IBFG B 5 Bright
 		TNT1 A 0 A_AlertMonsters
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG C 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG C 5 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 5 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG D 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG D 5 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 5 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG A 0 A_Refire
@@ -13086,13 +13672,13 @@ Hold:
 		Goto Ready
 		TNT1 A 0 A_AlertMonsters
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG C 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG C 5 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 5 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG D 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG D 5 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 5 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG A 0 A_Refire("Hold2")
@@ -13100,13 +13686,13 @@ Hold:
 Hold2:
 		TNT1 A 0 A_AlertMonsters
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG C 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG C 4 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 4 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG D 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG D 4 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 4 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG A 0 A_Refire("Hold3")
@@ -13114,11 +13700,11 @@ Hold2:
 Hold3:
 		TNT1 A 0 A_AlertMonsters
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG C 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG C 4 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 4 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG D 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG D 4 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 4 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG A 0 A_Refire("Hold4")
@@ -13126,29 +13712,29 @@ Hold3:
 Hold4:
 		TNT1 A 0 A_AlertMonsters
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG C 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG C 2 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 2 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG C 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG C 2 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG C 2 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG D 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG D 2 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 2 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG C 0 A_PlaySound("weapons/darkpulse", CHAN_WEAPON)
-		IBFG D 0 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
-		IBFG D 2 bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 0 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
+		IBFG D 2 Bright A_FireCustomMissile("DUMP3DarkPulse" , frandom(-10, 10), true, frandom(-4, 4), 0, 0, frandom(-4, 4))
 		TNT1 A 0 A_JumpIfInventory("Cell",2,1)
 		Goto Cooldown
 		IBFG A 0 A_Refire("Hold4")
 		Goto Cooldown
 Cooldown:
-		IBFG BFGH 6 bright
+		IBFG BFGH 6 Bright
 		IBFG IJK 6
 		Goto Ready
 AltFire:
@@ -13222,12 +13808,12 @@ ACTOR DUMP3DarkGrenade
 	States
 	{
 Spawn:
-		IBFS AB 4 bright
+		IBFS AB 4 Bright
 		Loop
 Death:
-		IEXP A 5 bright A_NoGravity
-		IEXP B 5 bright A_Explode(256, 256, 0)
-		IEXP CDEFG 5 bright
+		IEXP A 5 Bright A_NoGravity
+		IEXP B 5 Bright A_Explode(256, 256, 0)
+		IEXP CDEFG 5 Bright
 		Stop
 	}
 }
@@ -13243,7 +13829,7 @@ ACTOR DUMP3DarkTrail
 	{
 Spawn:
 		ITRL ABCDEFG 4 A_FadeOut(0.05)
-		stop
+		Stop
 	}
 }
 actor DUMP3RevenantBox : DUMP3Weapon
@@ -13252,7 +13838,7 @@ actor DUMP3RevenantBox : DUMP3Weapon
 	scale 0.35
 	Inventory.PickupMessage "You found a box of pocket Revenants!"
 	Tag "Revenant Box - [Combine_Kegan]"
-	states
+	States
 	{
 spawn:
 		RBOX A 10
@@ -13452,17 +14038,17 @@ actor DUMP3Bonermelee : fastprojectile
 	+noblood
 	+NOEXTREMEDEATH
 	mass 1000000
-	states
+	States
 	{
 Spawn:
 		BAL1 A 1
-		stop
+		Stop
 Death:
 		TNT1 A 0
 		TNT1 A 0
 		TNT1 A 0 radius_quake (1,5,0,8,0)
 		TNT1 A 1 
-		stop
+		Stop
 crash:
 Xdeath:
 		TNT1 A 0
@@ -13474,12 +14060,12 @@ Xdeath:
 		TNT1 AAAAA 0 a_spawnitemex("DUMP3lilboner",0,0,0,random(-10,10),random(-10,10),5,0,SXF_NOCHECKPOSITION)
 		TNT1 A 1 A_radiusthrust (10000,30)
 		TNT1 A 4
-		stop
+		Stop
 	}
 }
 actor DUMP3doombonermelee : DUMP3bonermelee
 {
-	states
+	States
 	{
 crash:
 Xdeath:
@@ -13492,12 +14078,12 @@ Xdeath:
 		TNT1 AAAAA 0 a_spawnitemex("DUMP3lildoomboner",0,0,0,random(-10,10),random(-10,10),5,0,SXF_NOCHECKPOSITION)
 		TNT1 A 1 A_radiusthrust (10000,30)
 		TNT1 A 4
-		stop
+		Stop
 	}
 }
 actor DUMP3goldbonermelee : DUMP3bonermelee
 {
-	states
+	States
 	{
 crash:
 Xdeath:
@@ -13510,7 +14096,7 @@ Xdeath:
 		TNT1 AAAAA 0 a_spawnitemex("DUMP3goldenboner",0,0,0,random(-10,10),random(-10,10),5,0,SXF_NOCHECKPOSITION)
 		TNT1 A 1 A_radiusthrust (10000,30)
 		TNT1 A 4
-		stop
+		Stop
 	}
 }
 actor DUMP3thrownboner
@@ -13530,7 +14116,7 @@ actor DUMP3thrownboner
 	+noblood
 	+NOEXTREMEDEATH
 	Decal "DUMP3RevenantCrash"
-	states
+	States
 	{
 spawn:
 		TNT1 A 0
@@ -13554,13 +14140,13 @@ xdeath:
 		TNT1 A 0 a_spawnitemex ("DUMP3bonerspawn")
 		TNT1 AAA 0 a_spawnitemex("DUMP3lilboner",0,0,0,random(-5,5),random(-5,5),5,0,SXF_NOCHECKPOSITION)
 		TNT1 A 4
-		stop
+		Stop
 	}
 }
 actor DUMP3throwndoomboner : DUMP3thrownboner
 {
 	Decal "DUMP3DoomguyRevenantCrash"
-	states
+	States
 	{
 spawn:
 		TNT1 A 0
@@ -13584,13 +14170,13 @@ xdeath:
 		TNT1 A 0 a_spawnitemex ("DUMP3bonerspawn")
 		TNT1 AAA 0 a_spawnitemex("DUMP3lildoomboner",0,0,0,random(-5,5),random(-5,5),5,0,SXF_NOCHECKPOSITION)
 		TNT1 A 4
-		stop
+		Stop
 	}
 }
 actor DUMP3throwngoldenboner : DUMP3thrownboner
 {
 	Decal "DUMP3RevenantCrash"
-	states
+	States
 	{
 spawn:
 		TNT1 A 0
@@ -13616,7 +14202,7 @@ xdeath:
 		TNT1 A 0 a_spawnitemex ("DUMP3bonerspawn")
 		TNT1 AAA 0 a_spawnitemex("DUMP3goldenboner",0,0,0,random(-5,5),random(-5,5),5,0,SXF_NOCHECKPOSITION)
 		TNT1 A 4
-		stop
+		Stop
 	}
 }
 actor DUMP3lilboner
@@ -13642,7 +14228,7 @@ actor DUMP3lilboner
 	MeleeSound "skeleton/melee"
 	HitObituary "%o was punched in the junk by a lil skelly."
 	var int user_bonertimer;
-	states
+	States
 	{
 Spawn:
 		SKEL AB 10 A_Look
@@ -13728,7 +14314,7 @@ actor DUMP3lildoomboner : DUMP3lilboner
 	PainSound "skeleton/pain"
 	DeathSound "skeleton/death"
 	ActiveSound "doomboner/active"
-	states
+	States
 	{
 Spawn:
 		DBNR AB 10 A_Look
@@ -13813,7 +14399,7 @@ actor DUMP3goldenboner : DUMP3lilboner
 	PainSound "goldboner/pain"
 	DeathSound "goldboner/death"
 	ActiveSound "goldboner/active"
-	states
+	States
 	{
 Spawn:
 		GBNR AB 10 A_Look
@@ -13929,13 +14515,13 @@ death:
 		RBNE B 10 a_fadeout (0.25)
 		RBNE B 10 a_fadeout (0.25)
 		RBNE B 10 a_fadeout (0.25)
-		stop
+		Stop
 	}
 }
 actor DUMP3bonerskull : DUMP3bonegib
 {
 	scale 0.55
-	states
+	States
 	{
 spawn:
 		RVHD ABCD 2
@@ -13949,20 +14535,20 @@ death:
 		RVHD D 10 a_fadeout (0.25)
 		RVHD D 10 a_fadeout (0.25)
 		RVHD D 10 a_fadeout (0.25)
-		stop
+		Stop
 dead2:
 		RVHD B 300
 		RVHD B 10 a_fadeout (0.25)
 		RVHD B 10 a_fadeout (0.25)
 		RVHD B 10 a_fadeout (0.25)
 		RVHD B 10 a_fadeout (0.25)
-		stop
+		Stop
 	}
 }
 actor DUMP3goldbones : DUMP3bonegib
 {
 	scale 0.55
-	states
+	States
 	{
 spawn:
 		GBGB ABCD 2
@@ -13973,13 +14559,13 @@ death:
 		GBGB C 10 a_fadeout (0.25)
 		GBGB C 10 a_fadeout (0.25)
 		GBGB C 10 a_fadeout (0.25)
-		stop
+		Stop
 	}
 }
 actor DUMP3goldskull : DUMP3bonegib
 {
 	scale 0.55
-	states
+	States
 	{
 spawn:
 		GSKL ABCD 2
@@ -13993,20 +14579,20 @@ death:
 		GSKL D 10 a_fadeout (0.25)
 		GSKL D 10 a_fadeout (0.25)
 		GSKL D 10 a_fadeout (0.25)
-		stop
+		Stop
 dead2:
 		GSKL B 300
 		GSKL B 10 a_fadeout (0.25)
 		GSKL B 10 a_fadeout (0.25)
 		GSKL B 10 a_fadeout (0.25)
 		GSKL B 10 a_fadeout (0.25)
-		stop
+		Stop
 	}
 }
 actor DUMP3goldhipbone : DUMP3bonegib
 {
 	scale 0.55	
-	states
+	States
 	{
 spawn:
 		GHGB ABCD 2
@@ -14017,13 +14603,13 @@ death:
 		GHGB C 10 a_fadeout (0.25)
 		GHGB C 10 a_fadeout (0.25)
 		GHGB C 10 a_fadeout (0.25)
-		stop
+		Stop
 	}
 }
 actor DUMP3goldribcage : DUMP3bonegib
 {
 	scale 0.55
-	states
+	States
 	{
 spawn:
 		GRGB ABCD 2
@@ -14034,7 +14620,7 @@ death:
 		GRGB C 10 a_fadeout (0.25)
 		GRGB C 10 a_fadeout (0.25)
 		GRGB C 10 a_fadeout (0.25)
-		stop
+		Stop
 	}
 }
 actor DUMP3bonerspawn
@@ -14046,7 +14632,7 @@ actor DUMP3bonerspawn
 	Renderstyle Add
 	Alpha 0.80
 	scale 0.50
-	+bright
+	+Bright
 	States
 	{
 spawn:
@@ -14054,10 +14640,10 @@ spawn:
 		TNT1 A 0
 		TNT1 A 0 a_playsound ("brain/spit",0,0.60)
 		FIRE ABCDEFGH 1
-		stop
+		Stop
 death:
 		TNT1 A 1
-		stop
+		Stop
 	}
 }
 actor DUMP3bonerboom
@@ -14068,7 +14654,7 @@ actor DUMP3bonerboom
 	Height 5
 	Renderstyle Add
 	Alpha 0.5
-	+bright
+	+Bright
 	States
 	{
 Spawn:
@@ -14079,7 +14665,7 @@ Spawn:
 		wait
 death:
 		TNT1 A 1
-		stop
+		Stop
 	}
 }
 actor DUMP3bonerhit : inventory
@@ -14166,8 +14752,8 @@ AltFire:
 		RMDM A 1 Offset(0,37) 
 		Goto Ready
 Flash:
-		RMDF A 1 BRIGHT A_Light2
-		RMDF B 1 BRIGHT A_Light1
+		RMDF A 1 Bright A_Light2
+		RMDF B 1 Bright A_Light1
 		TNT1 A 1 A_Light0
 		Goto LightDone
 		
@@ -14185,7 +14771,7 @@ RerollGun:
 
 // Armyman
 
-ACTOR ArmymanAK47 : Weapon 26373
+ACTOR ArmymanAK47 : "DPT.HQ-Weapon" 26373
 {
 	//$Category Weapons
 	inventory.pickupmessage "You got the AK-47!"
@@ -14194,7 +14780,7 @@ ACTOR ArmymanAK47 : Weapon 26373
 	Weapon.AmmoUse1 1
 	Weapon.AmmoGive1 30
 	Scale 0.2
-	states
+	States
 	{
 	Ready:
 		6K47 A 1 A_WeaponReady
@@ -14207,21 +14793,21 @@ ACTOR ArmymanAK47 : Weapon 26373
 		loop
 	Fire: 
 		6K47 A 0 A_JumpIfNoAmmo("Ready")
-		6K47 A 0 bright A_PlaysoundEx("AMAK47FR","Weapon")
-		6K47 B 1 bright A_FireBullets(2,3,-1,4,"BulletPuff",1,1280)
-		6K47 C 1 bright A_SpawnItemEx("MachineCasing",4,15,30,random(1,3),random(0,1),random(1,3),random(45,60),128)
+		6K47 A 0 Bright A_PlaysoundEx("AMAK47FR","Weapon")
+		6K47 B 1 Bright A_FireBullets(2,3,-1,4,"BulletPuff",1,1280)
+		6K47 C 1 Bright A_SpawnItemEx("MachineCasing",4,15,30,random(1,3),random(0,1),random(1,3),random(45,60),128)
 		6K47 A 0 A_ALERTMONSTERS
 		6K47 A 1
-		6K47 A 0 bright A_JumpIfNoAmmo("Ready")
-		6K47 A 0 bright A_ReFire
+		6K47 A 0 Bright A_JumpIfNoAmmo("Ready")
+		6K47 A 0 Bright A_ReFire
 		goto Ready
 	Spawn:
 		AKPK A -1
-		stop
+		Stop
 	}
 }
 
-ACTOR ArmymanRPD : Weapon 26374
+ACTOR ArmymanRPD : "DPT.HQ-Weapon" 26374
 { 
 	Weapon.AmmoType "Clip" 
 	Weapon.AmmoGive 100
@@ -14283,7 +14869,7 @@ ACTOR CasingSmoketrail
 		goto death       
 	Death: 
 		SMKE ABCDEFGH 1
-		STOP      
+		Stop      
 	}
 }
 
@@ -14312,17 +14898,17 @@ ACTOR EPTRPDMAG
 		TNT1 A 0 A_jump(128,4)
 		TNT1 A 0 A_jump(128,2)
 		RPEB C -1
-		stop
+		Stop
 		RPEB D -1
-		stop
+		Stop
 		RPEB C -1
-		stop
+		Stop
 		RPEB D -1
-		stop
+		Stop
 		RPEB C -1
-		stop
+		Stop
 		RPEB D -1
-		stop
+		Stop
 	}
 }
 
@@ -14350,17 +14936,17 @@ ACTOR Beltlink
 		TNT1 A 0 A_jump(128,4)
 		TNT1 A 0 A_jump(128,2)
 		SPCR A -1
-		stop
+		Stop
 		SPCR B -1
-		stop
+		Stop
 		SPCR C -1
-		stop
+		Stop
 		SPCR D -1
-		stop
+		Stop
 		SPCR C -1
-		stop
+		Stop
 		SPCR B -1
-		stop
+		Stop
 	}
 }
 
@@ -14389,28 +14975,28 @@ ACTOR 762MMCasing
 		TNT1 A 0 A_jump(128,4)
 		TNT1 A 0 A_jump(128,2)
 		CAS3 I -1
-		stop
+		Stop
 		CAS3 J -1
-		stop
+		Stop
 		CAS3 K -1
-		stop
+		Stop
 		CAS3 L -1
-		stop
+		Stop
 		CAS3 M -1
-		stop
+		Stop
 		CAS3 N -1
-		stop
+		Stop
 	}
 }
 
-ACTOR ArmymanRPG7 : Weapon 26375
+ACTOR ArmymanRPG7 : "DPT.HQ-Weapon" 26375
 {
 	Obituary "%o rode %k's rocket"  
 	Weapon.AmmoType "RocketAmmo" 
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 1
 	+WEAPON.NOAUTOFIRE 
-	states
+	States
 	{
 	Ready:
 		ARPG A 1 A_WeaponReady 
@@ -14462,9 +15048,9 @@ ACTOR ArmymanRPG7 : Weapon 26375
 		ARPG A 1 offset(1,51)
 		Goto Ready
 	Flash:
-		TNT1 A 0 bright A_Light1
-		TNT1 A 0 bright A_Light0
-		stop
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 Bright A_Light0
+		Stop
 	}
 }
 
@@ -14480,13 +15066,13 @@ actor Rpg7Rocket
 	States
 	{
 	Spawn:
-		RPGR A 1 bright A_SpawnItem("RocketSmoke")
+		RPGR A 1 Bright A_SpawnItem("RocketSmoke")
 		RPGR A 1 A_PlaySound("rocket/fly")
 		loop
 	Death:
 		TNT1 A 0 A_SpawnItem("Rpgexplod")
 		EXPL T 0 A_PlaySound("nothing/fuckyou")
-		stop
+		Stop
 	}
 }
 
@@ -14525,18 +15111,18 @@ actor Rpgexplod
 		EXPL C 2
 		EXPL B 2
 		EXPL A 2
-		stop
+		Stop
 	}
 }
 
-ACTOR ArmymanSVD : Weapon 26376
+ACTOR ArmymanSVD : "DPT.HQ-Weapon" 26376
 {
 	Obituary "%o was sniped out by %k's M40"
 	Weapon.AmmoType "Clip" 
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 7
 	+WEAPON.NOAUTOFIRE
-	states
+	States
 	{
 	Ready:
 		SVDR A 1 A_WeaponReady 
@@ -14557,155 +15143,9 @@ ACTOR ArmymanSVD : Weapon 26376
 	}
 }
 
-ACTOR ArmymanUnarmed : Weapon // WORKER
-{
-	//$Category Weapons
-	AttackSound "fist/hit"
-	+WEAPON.CHEATNOTWEAPON
-	+INVENTORY.UNDROPPABLE
-	States
-	{
-	Ready:
-		PCW1 ABCD 4
-		PCW1 A 0 A_PlaySound("KNUCKLED")
-        PCW1 EFG 3
-	RealReady:
-		PCW2 A 9 A_WeaponReady
-		Loop
-    Deselect:
-		NULL A 1 A_Lower
-		Loop
-	Select:
-		NULL A 0 A_Raise
-		Wait
-	Fire:
-		PCW2 A 0 A_JumpIfInventory("StrongItem",1,"StrongFire")
-	NormalFire:
-		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"Right")
-	Left:
-		PCW2 B 2
-		PCW2 C 2 A_PlaySound("fist/dodge")
-		PCW2 D 2 A_CustomPunch(8,0,0,"FistPuff")
-		PCW2 E 1
-		PCW2 F 1
-		PCW2 G 1
-		PCW2 A 2 A_GiveInventory("FistSeq",1)
-		Goto RealReady
-	Right:
-		PCW2 I 2
-		PCW2 J 2 A_PlaySound("fist/dodge")
-		PCW2 K 2 A_CustomPunch(8,0,0,"FistPuff")
-		PCW2 L 1
-		PCW2 M 1
-		PCW2 N 1
-		PCW2 O 2 A_TakeInventory("FistSeq",1)
-		Goto RealReady
-	StrongFire:
-		PCW2 A 0 A_JumpIfInventory("FistSeq",1,"StrongRight")
-	StrongLeft:
-		PCW2 B 2
-		PCW2 C 2 A_PlaySound("fist/brutalmodeswing")
-		PCW2 D 2 A_CustomPunch(32,0,0,"FistPuff")
-		PCW2 E 1
-		PCW2 F 1
-		PCW2 G 1
-		PCW2 A 2 A_GiveInventory("FistSeq",1)
-		Goto RealReady
-	StrongRight:
-		PCW2 I 2
-		PCW2 J 2 A_PlaySound("fist/brutalmodeswing")
-		PCW2 K 2 A_CustomPunch(32,0,0,"FistPuff")
-		PCW2 L 1
-		PCW2 M 1
-		PCW2 N 1
-		PCW2 O 2 A_TakeInventory("FistSeq",1)
-		Goto RealReady
-	AltFire:
-		PCW3 B 2
-		PCW3 C 2 A_PlaySound("fist/brutalmodeswing")
-		PCW3 D 2 A_CustomPunch(12,0,0,"FistPuff")
-		PCW3 A 2 A_GiveInventory("FistSeq",1)
-		Goto RealReady
-	}
-}
-
 // LXandro Weapons (Duke Nukem)
 
-ACTOR LXandroUnarmed : Weapon
-{
-	//$Category Weapons
-	+WEAPON.CHEATNOTWEAPON
-	+INVENTORY.UNDROPPABLE
-	Obituary "%k has kicked %o's ass."
-	AttackSound "fist/hit"
-	States
-	{
-	Ready:
-		DNKN ABC 2
-		DNKN CBA 2
-		DNKN A 0 A_PlaySound("KNUCKLED")
-	RealReady:
-		TNT1 A 9 A_WeaponReady
-		Loop
-    Deselect:
-		TNT1 A 1 A_Lower
-		Loop
-	Select:
-		TNT1 A 0 A_Raise
-		Wait
-	Fire:
-		DNBT A 1 A_Jump(255,"Fire1","Fire2")
-		Goto RealReady
-	Fire1:
-		TNT1 A 1 //A_SetSpeed(0.0)
-		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 4)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT A 1 offset(0,78) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT A 1 offset(0,45) A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT A 1 A_ZoomFactor(0.95)
-		DNBT B 4 A_CustomPunch(12,0,0,"FistPuff")
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,32) A_ZoomFactor(0.97)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,45) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,64) A_ZoomFactor(0.99)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT A 1 offset(0,96) A_ZoomFactor(1.00)
-		TNT1 A 4
-		TNT1 A 1 //A_SetSpeed(1.0)
-		Goto RealReady
-	Fire2:
-		TNT1 A 1 //A_SetSpeed(0.0)
-		TNT1 A 0 A_PlaySound("fist/brutalmodeswing", 5)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT C 1 offset(0,78) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT C 1 offset(0,45) A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch-1)
-		DNBT C 1 A_ZoomFactor(0.95)
-		DNBT D 4 A_CustomPunch(12,0,0,"FistPuff")
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 A_ZoomFactor(0.96)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,32) A_ZoomFactor(0.97)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,45) A_ZoomFactor(0.98)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,64) A_ZoomFactor(0.99)
-		TNT1 A 0 A_SetPitch(Pitch+1)
-		DNBT C 1 offset(0,96) A_ZoomFactor(1.00)
-		TNT1 A 4
-		TNT1 A 1 //A_SetSpeed(1.0)
-		Goto RealReady
-	}
-}
-
-ACTOR LXandroChaingunCannon : Weapon 26392
+ACTOR LXandroChaingunCannon : "DPT.HQ-Weapon" 26392
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -14734,76 +15174,76 @@ ACTOR LXandroChaingunCannon : Weapon 26392
 		DNCG A 0 A_PlaySound("DNCHNGFR", CHAN_WEAPON)
 		DNCG B 2 A_FireBullets(5.6, 0, 1, 5, "BulletPuff")
 		TNT1 A 0 A_Recoil(0.3)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.995)
 		DNCG C 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		DNCG I 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG J 1 
 		TNT1 A 0 A_ZoomFactor(1.00)
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG A 1 A_ReFire
 		Goto Ready
 	Fire2:
 		DNCG A 0 A_PlaySound("DNCHNGFR", CHAN_WEAPON)
 		DNCG D 2 A_FireBullets(5.6, 0, 1, 5, "BulletPuff")
 		TNT1 A 0 A_Recoil(0.3)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.995)
 		DNCG C 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		DNCG I 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG J 1 
 		TNT1 A 0 A_ZoomFactor(1.00)
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG A 1 A_ReFire
 		Goto Ready
 	Fire3:
 		DNCG A 0 A_PlaySound("DNCHNGFR", CHAN_WEAPON)
 		DNCG E 2 A_FireBullets(5.6, 0, 1, 5, "BulletPuff")
 		TNT1 A 0 A_Recoil(0.3)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.995)
 		DNCG C 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		DNCG I 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG J 1 
 		TNT1 A 0 A_ZoomFactor(1.00)
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG A 1 A_ReFire
 		Goto Ready
 	Fire4:
 		DNCG A 0 A_PlaySound("DNCHNGFR", CHAN_WEAPON)
 		DNCG E 2 A_FireBullets(5.6, 0, 1, 5, "BulletPuff")
 		TNT1 G 0 A_Recoil(0.3)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.995)
 		DNCG C 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		TNT1 A 0 A_ZoomFactor(0.99)
 		DNCG I 1 
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG J 1 
 		TNT1 A 0 A_ZoomFactor(1.00)
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNCG A 1 A_ReFire
 		Goto Ready
 	EndFire:
@@ -14816,7 +15256,7 @@ ACTOR LXandroChaingunCannon : Weapon 26392
 	}
 }
 
-ACTOR LXandroDevastator : Weapon 26393
+ACTOR LXandroDevastator : "DPT.HQ-Weapon" 26393
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -14828,7 +15268,7 @@ ACTOR LXandroDevastator : Weapon 26393
 	Obituary "%o couldn't evade %k rocket."
 	weapon.kickback 60
 	attacksound "DNDEVAFR"
-	states
+	States
 	{
 	Spawn:
 		DNDV Z -1
@@ -14849,7 +15289,7 @@ ACTOR LXandroDevastator : Weapon 26393
 		DNDV B 2
 		DNDV C 2
 		TNT1 A 0 A_Recoil(5)
-		DNDV D 2 bright A_FireCustomMissile ("LXandroDevastatorRocket",0,0,8,10,1)
+		DNDV D 2 Bright A_FireCustomMissile ("LXandroDevastatorRocket",0,0,8,10,1)
 		TNT1 A 0 Radius_Quake (3,4,0,1,0)
 		DNDV C 2
 		DNDV B 2
@@ -14859,7 +15299,7 @@ ACTOR LXandroDevastator : Weapon 26393
 		DNDV E 2
 		DNDV F 2
 		TNT1 A 0 A_Recoil(5)
-		DNDV G 2 bright A_FireCustomMissile ("LXandroDevastatorRocket",0,0,-8,10,1)
+		DNDV G 2 Bright A_FireCustomMissile ("LXandroDevastatorRocket",0,0,-8,10,1)
 		TNT1 A 0 Radius_Quake (3,4,0,1,0)
 		DNDV F 2
 		DNDV E 2
@@ -14871,11 +15311,11 @@ actor LXDVChoosing : Inventory
 {
 	inventory.amount 1
 	inventory.maxamount 1
-	states
+	States
 	{
 	Spawn:
 		TNT1 A -1
-		stop
+		Stop
 	}
 }
 Actor LXandroDevastatorRocket
@@ -14904,7 +15344,7 @@ Actor LXandroDevastatorRocket
 	}
 }
 
-ACTOR LXandroPistol : Weapon 26394
+ACTOR LXandroPistol : "DPT.HQ-Weapon" 26394
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -14927,7 +15367,7 @@ ACTOR LXandroPistol : Weapon 26394
 	{
 	Spawn:
 		DNPS Z -1
-		stop
+		Stop
 	Ready:
 		DNP1 A 1 A_WeaponReady
 		loop
@@ -14947,10 +15387,10 @@ ACTOR LXandroPistol : Weapon 26394
 		DNP1 A 0 A_AlertMonsters
 		DNP1 A 0 A_TakeInventory("LXandroPistolClipHolder", 1)
 		DNP1 B 0 A_FireBullets(5.6,5.6,1,12,"BulletPuff")
-		DNP1 B 1 BRIGHT A_GunFlash // A_Light1
+		DNP1 B 1 Bright A_GunFlash // A_Light1
 		TNT1 A 0 A_ZoomFactor(0.99)
 		TNT1 A 0 A_SetPitch(Pitch-1.5)
-		DNP1 B 1 BRIGHT A_GunFlash // A_Light1
+		DNP1 B 1 Bright A_GunFlash // A_Light1
 		TNT1 A 0 A_SetPitch(Pitch-1.5)
 		TNT1 A 0 A_ZoomFactor(0.98)
 		DNP1 C 1 // A_Light0
@@ -15017,7 +15457,7 @@ ACTOR LXandroPistolClipHolder : Ammo
   -inventory.invbar
 }
 
-ACTOR LXandroPistols : Weapon 26395
+ACTOR LXandroPistols : "DPT.HQ-Weapon" 26395
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15040,7 +15480,7 @@ ACTOR LXandroPistols : Weapon 26395
 	{
 	Spawn:
 		DNPS Z -1
-		stop
+		Stop
 	Ready:
 		DNP2 A 1 A_WeaponReady
 		loop
@@ -15061,29 +15501,29 @@ ACTOR LXandroPistols : Weapon 26395
 		DNP2 A 0 A_TakeInventory("LXandroPistolsClipHolder", 1)
 		DNP2 B 1 A_FireBullets(5.6,5.6,1,12,"BulletPuff")
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
-		DNP2 B 1 BRIGHT A_GunFlash // A_Light1
+		TNT1 A 0 A_SetRoll(Roll+1)
+		DNP2 B 1 Bright A_GunFlash // A_Light1
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		DNP2 C 1
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNP2 C 1
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNP2 A 0 A_TakeInventory("LXandroPistolsClipHolder", 1)
 		DNP2 D 1 A_FireBullets(5.6,5.6,1,12,"BulletPuff")
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
-		DNP2 D 1 BRIGHT A_GunFlash // A_Light1
+		TNT1 A 0 A_SetRoll(Roll-1)
+		DNP2 D 1 Bright A_GunFlash // A_Light1
 		TNT1 A 0 A_SetPitch(Pitch-1)
-		TNT1 A 0 //A_SetRoll(Roll-1)
+		TNT1 A 0 A_SetRoll(Roll-1)
 		DNP2 E 1
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		DNP2 E 1
 		TNT1 A 0 A_SetPitch(Pitch+1)
-		TNT1 A 0 //A_SetRoll(Roll+1)
+		TNT1 A 0 A_SetRoll(Roll+1)
 		DNP2 A 0 A_JumpIfNoAmmo(1)
 		Goto Ready
 		DNP2 A 0 A_TakeInventory("LXandroPistolsClipHolder", 12)
@@ -15147,7 +15587,7 @@ ACTOR LXandroPistolsClipHolder : Ammo
   -inventory.invbar
 }
 
-ACTOR LXandroRPG : Weapon 26396
+ACTOR LXandroRPG : "DPT.HQ-Weapon" 26396
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15158,7 +15598,7 @@ ACTOR LXandroRPG : Weapon 26396
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 1
 	+WEAPON.NOAUTOFIRE
-	states
+	States
 	{
 	Ready:
 		DNRP A 1 A_WeaponReady 
@@ -15198,9 +15638,9 @@ ACTOR LXandroRPG : Weapon 26396
 		DNRP A 10 A_WeaponReady
 		Goto Ready
 	Flash:
-		TNT1 A 0 bright A_Light1
-		TNT1 A 0 bright A_Light0
-		stop
+		TNT1 A 0 Bright A_Light1
+		TNT1 A 0 Bright A_Light0
+		Stop
 	}
 }
 ACTOR LXandroRPGRocket
@@ -15228,7 +15668,7 @@ ACTOR LXandroRPGRocket
 	}
 }
 
-ACTOR LXandroShotgun : Weapon 26397
+ACTOR LXandroShotgun : "DPT.HQ-Weapon" 26397
 {
 	//$Category Weapons
 	+WEAPON.CHEATNOTWEAPON
@@ -15288,7 +15728,7 @@ ACTOR LXandroShotgun : Weapon 26397
 
 // Ronikari Weapons
 
-ACTOR Auto9 : Weapon 26398
+ACTOR Auto9 : "DPT.HQ-Weapon" 26398
 {
 	//$Category Weapons
 	Weapon.AmmoType "Clip"
@@ -15310,7 +15750,7 @@ ACTOR Auto9 : Weapon 26398
 	{
 	Spawn:
 		RUNW Z -1
-		stop
+		Stop
 	Ready:
 		RUNW A 1 A_WeaponReady
 		loop
@@ -15328,7 +15768,7 @@ ACTOR Auto9 : Weapon 26398
 		RUNW A 0 A_AlertMonsters
 		RUNW A 0 A_TakeInventory("PistolClipHolder", 1)
 		RUNW B 0 A_FireBullets(5.6,5.6,1,12,"BulletPuff")
-		RUNW B 2 BRIGHT A_GunFlash // A_Light1
+		RUNW B 2 Bright A_GunFlash // A_Light1
 		RUNW C 2 // A_Light0
 		RUNW A 0 A_JumpIfNoAmmo(1)
 		Goto Hold

@@ -140,26 +140,6 @@ clearbots
 	favoriteweapon = "SuperShotgun"
 }
 {
-	name = "\cHDPT\cK.\cIZveraboy\c-"
-	script = HUMANBOT
-	chatlump = "BOTF_DPT.ZanLump_chat"
-	chatfile = "BOTF_DPT.ZanLump_chat"
-	gender = male
-	color = "00 88 FF"
-	railcolor = "00 88 FF"
-	skin = ""
-	class = "Guest"
-	revealed = true
-	accuracy = -2
-	intelect = -2
-	evade = -2
-	anticipation = -2
-	reactiontime = -2
-	perception = -2
-	chatfrequency = 5
-	favoriteweapon = "SuperShotgun"
-}
-{
 	name = "\cHDPT\cK.\cIBasik\c-"
 	script = HUMANBOT
 	chatlump = "BOTF_DPT.ZanLump_chat"
