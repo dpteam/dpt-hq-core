@@ -1,0 +1,119 @@
+CLASS DeadHostage1 26380 : ACTOR { //replaces DeadZombieman
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.35;
+		XScale 0.4;
+	}
+	States
+	{
+		Spawn:
+			BUMM I -1;
+			Stop;
+	}
+}
+
+CLASS DeadHostage2 26381 : ACTOR { //replaces DeadShotgunGuy
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.3;
+		XScale 0.35;
+	}
+	States
+	{
+		Spawn:
+			CIV1 O -1;
+			Stop;
+	}
+}
+
+CLASS DeadHostage3 26382 : ACTOR { //replaces DeadMarine
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.42;
+		XScale 0.47;
+	}
+	States
+	{
+		Spawn:
+			CIV2 V -1;
+			Stop;
+	}
+}
+
+CLASS DeadHostage4 26383 : ACTOR { //replaces DeadDoomImp
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.35;
+		XScale 0.4;
+	}
+	States
+	{
+		Spawn:
+			CIV3 U -1;
+			Stop;
+	}
+}
+
+CLASS DeadHostage5 26384 : ACTOR { //replaces DeadDemon
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.4;
+		XScale 0.45;
+	}
+	States
+	{
+		Spawn:
+			HMK2 F -1;
+			Stop;
+	}
+}
+
+CLASS DeadHostage6 26385 : ACTOR { //replaces DeadCacodemon
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.4;
+		XScale 0.45;
+	}
+	States
+	{
+		Spawn:
+			HMK1 F -1;
+			Stop;
+	}
+}
+
+CLASS DeadCop1 26401 : ACTOR { //replaces GibbedMarine
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.45;
+		XScale 0.5;
+	}
+	States
+	{
+		Spawn:
+			COP1 V -1;
+			Stop;
+	}
+}
+
+CLASS DeadCop2 26402 : ACTOR { //replaces GibbedMarineExtra
+	Default {
+		
+		//$Category "Dead NPCs"
+		YScale 0.35;
+		XScale 0.4;
+	}
+	States
+	{
+		Spawn:
+			COP2 R -1;
+			Stop;
+	}
+}

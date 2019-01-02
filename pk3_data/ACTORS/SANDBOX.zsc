@@ -1,0 +1,3820 @@
+// Common
+CLASS "Sandbox-AMMUNATION" : Inventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		+INVENTORY.ALWAYSPICKUP;
+		Inventory.Amount 99;
+		Inventory.MaxAmount 99;
+		Inventory.Icon "RGHTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+	}
+}
+CLASS "Sandbox-WeaponGiverModule" : CustomInventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		Inventory.Amount 64;
+		Inventory.MaxAmount 64;
+		Inventory.Icon "DOOMZ0";
+	}
+}
+// Ammunation
+CLASS "Sandbox-BFG9000Giver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "BFUGICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("BFG9000", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-ChaingunGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "MGUNICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("Chaingun", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-ChainsawGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "CSAWICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("Chainsaw", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-FistGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "PUNGICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("Fist", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-PistolGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "PISTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("Pistol", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-PlasmaRifleGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "PLASICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("PlasmaRifle", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-RocketLauncherGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "LAUNICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("RocketLauncher", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-ShotgunGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "SHOTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("Shotgun", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-SuperShotgunGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "SGN2ICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("SuperShotgun", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-BackpackGiver" : "Sandbox-WeaponGiverModule" { 
+	Default {
+		
+		Inventory.Icon "BPAKICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("Backpack", 1);
+			Stop;
+	}
+}
+// Common
+CLASS "Sandbox-ENEMIES" : Inventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		+INVENTORY.ALWAYSPICKUP;
+		Inventory.Amount 99;
+		Inventory.MaxAmount 99;
+		Inventory.Icon "ENMYICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+	}
+}
+CLASS "Sandbox-EnemySpawnerModule" : CustomInventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		Inventory.Amount 64;
+		Inventory.MaxAmount 64;
+		Inventory.Icon "DOOMZ0";
+	}
+}
+// Arachnotron
+CLASS "Sandbox-ArachnotronEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "BSPIICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ArachnotronEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ArachnotronEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ArachnotronEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 0);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ArachnotronEnemy" : Arachnotron { //replaces Arachnotron
+	Default {
+		
+		-SOLID;
+	}
+}
+// Archvile
+CLASS "Sandbox-ArchvileEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "VILEICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ArchvileEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ArchvileEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ArchvileEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 1);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ArchvileEnemy" : Archvile { //replaces Archvile
+	Default {
+		
+		-SOLID;
+	}
+}
+// BaronOfHell
+CLASS "Sandbox-BaronOfHellEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "BOSSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-BaronOfHellEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-BaronOfHellEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-BaronOfHellEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 2);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-BaronOfHellEnemy" : BaronOfHell { //replaces BaronOfHell
+	Default {
+		
+		-SOLID;
+	}
+}
+// HellKnight
+CLASS "Sandbox-HellKnightEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "BOS2ICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-HellKnightEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-HellKnightEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-HellKnightEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 3);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-HellKnightEnemy" : HellKnight { //replaces HellKnight
+	Default {
+		
+		-SOLID;
+	}
+}
+// Cacodemon
+CLASS "Sandbox-CacodemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "HEADICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-CacodemonEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-CacodemonEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-CacodemonEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 4);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-CacodemonEnemy" : Cacodemon { //replaces Cacodemon
+	Default {
+		
+		-SOLID;
+	}
+}
+// Cyberdemon
+CLASS "Sandbox-CyberdemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "CYBRICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-CyberdemonEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-CyberdemonEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-CyberdemonEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 5);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-CyberdemonEnemy" : Cyberdemon { //replaces Cyberdemon
+	Default {
+		
+		-SOLID;
+	}
+}
+// Demon
+CLASS "Sandbox-DemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SARGICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-DemonEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-DemonEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-DemonEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 6);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-DemonEnemy" : Demon { //replaces Demon
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// Spectre
+CLASS "Sandbox-SpectreEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SPCTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-SpectreEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-SpectreEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-SpectreEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 7);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-SpectreEnemy" : Spectre { //replaces Spectre
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// ChaingunGuy
+CLASS "Sandbox-ChaingunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "CPOSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ChaingunGuyEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ChaingunGuyEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ChaingunGuyEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 8);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ChaingunGuyEnemy" : ChaingunGuy { //replaces ChaingunGuy
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// DoomImp
+CLASS "Sandbox-DoomImpEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "TROOICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-DoomImpEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-DoomImpEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-DoomImpEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 9);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-DoomImpEnemy" : DoomImp { //replaces DoomImp
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// Fatso
+CLASS "Sandbox-FatsoEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "FATTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-FatsoEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-FatsoEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-FatsoEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 10);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-FatsoEnemy" : Fatso { //replaces Fatso
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// LostSoul
+CLASS "Sandbox-LostSoulEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SKULICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-LostSoulEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-LostSoulEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-LostSoulEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 11);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-LostSoulEnemy" : LostSoul { //replaces LostSoul
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// PainElemental
+CLASS "Sandbox-PainElementalEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "PAINICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-PainElementalEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-PainElementalEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-PainElementalEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 12);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-PainElementalEnemy" : PainElemental { //replaces PainElemental
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// Revenant
+CLASS "Sandbox-RevenantEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SKELICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-RevenantEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-RevenantEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-RevenantEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 13);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-RevenantEnemy" : Revenant { //replaces Revenant
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// ShotgunGuy
+CLASS "Sandbox-ShotgunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SPOSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ShotgunGuyEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ShotgunGuyEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ShotgunGuyEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 14);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ShotgunGuyEnemy" : ShotgunGuy { //replaces ShotgunGuy
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// SpiderMastermind
+CLASS "Sandbox-SpiderMastermindEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SPIDICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-SpiderMastermindEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-SpiderMastermindEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-SpiderMastermindEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 15);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-SpiderMastermindEnemy" : SpiderMastermind { //replaces SpiderMastermind
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// WolfensteinSS
+CLASS "Sandbox-WolfensteinSSEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SSWVICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-WolfensteinSSEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-WolfensteinSSEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-WolfensteinSSEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 16);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-WolfensteinSSEnemy" : WolfensteinSS { //replaces WolfensteinSS
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// ZombieMan
+CLASS "Sandbox-ZombieManEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "POSSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ZombieManEnemySpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ZombieManEnemySpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ZombieManEnemySpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(102, 0, 17);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ZombieManEnemy" : ZombieMan { //replaces ZombieMan
+	Default {
+		
+		-SOLID;
+		-FRIENDLY;
+	}
+}
+// Common
+CLASS "Sandbox-FRIENDS" : Inventory { 
+	Default {
+		
+		+INVENTORY.ALWAYSPICKUP;
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		Inventory.Amount 99;
+		Inventory.MaxAmount 99;
+		Inventory.Icon "FRNDICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+	}
+}
+CLASS "Sandbox-FriendSpawnerModule" : CustomInventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		Inventory.Amount 64;
+		Inventory.MaxAmount 64;
+		Inventory.Icon "DOOMZ0";
+	}
+}
+// Arachnotron
+CLASS "Sandbox-ArachnotronFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "BSPIICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ArachnotronFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ArachnotronFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ArachnotronFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 0);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ArachnotronFriend" : Arachnotron { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Archvile
+CLASS "Sandbox-ArchvileFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "VILEICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ArchvileFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ArchvileFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ArchvileFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 1);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ArchvileFriend" : Archvile { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// BaronOfHell
+CLASS "Sandbox-BaronOfHellFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "BOSSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-BaronOfHellFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-BaronOfHellFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-BaronOfHellFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 2);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-BaronOfHellFriend" : BaronOfHell { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// HellKnight
+CLASS "Sandbox-HellKnightFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "BOS2ICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-HellKnightFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-HellKnightFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-HellKnightFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 3);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-HellKnightFriend" : HellKnight { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Cacodemon
+CLASS "Sandbox-CacodemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "HEADICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-CacodemonFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-CacodemonFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-CacodemonFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 4);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-CacodemonFriend" : Cacodemon { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Cyberdemon
+CLASS "Sandbox-CyberdemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "CYBRICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-CyberdemonFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-CyberdemonFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-CyberdemonFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 5);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-CyberdemonFriend" : Cyberdemon { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Demon
+CLASS "Sandbox-DemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SARGICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-DemonFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-DemonFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-DemonFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 6);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-DemonFriend" : Demon { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Spectre
+CLASS "Sandbox-SpectreFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SPCTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-SpectreFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-SpectreFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-SpectreFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 7);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-SpectreFriend" : Spectre { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// ChaingunGuy
+CLASS "Sandbox-ChaingunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "CPOSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ChaingunGuyFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ChaingunGuyFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ChaingunGuyFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 8);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ChaingunGuyFriend" : ChaingunGuy { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// DoomImp
+CLASS "Sandbox-DoomImpFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "TROOICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-DoomImpFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-DoomImpFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-DoomImpFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 9);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-DoomImpFriend" : DoomImp { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Fatso
+CLASS "Sandbox-FatsoFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "FATTICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-FatsoFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-FatsoFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-FatsoFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 10);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-FatsoFriend" : Fatso { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// LostSoul
+CLASS "Sandbox-LostSoulFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SKULICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-LostSoulFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-LostSoulFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-LostSoulFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 11);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-LostSoulFriend" : LostSoul { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// PainElemental
+CLASS "Sandbox-PainElementalFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "PAINICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-PainElementalFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-PainElementalFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-PainElementalFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 12);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-PainElementalFriend" : PainElemental { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Revenant
+CLASS "Sandbox-RevenantFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SKELICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-RevenantFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-RevenantFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-RevenantFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 13);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-RevenantFriend" : Revenant { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// ShotgunGuy
+CLASS "Sandbox-ShotgunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SPOSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ShotgunGuyFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ShotgunGuyFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ShotgunGuyFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 14);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ShotgunGuyFriend" : ShotgunGuy { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// SpiderMastermind
+CLASS "Sandbox-SpiderMastermindFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SPIDICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-SpiderMastermindFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-SpiderMastermindFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-SpiderMastermindFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 15);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-SpiderMastermindFriend" : SpiderMastermind { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// WolfensteinSS
+CLASS "Sandbox-WolfensteinSSFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "SSWVICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-WolfensteinSSFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-WolfensteinSSFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-WolfensteinSSFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 16);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-WolfensteinSSFriend" : WolfensteinSS { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// ZombieMan
+CLASS "Sandbox-ZombieManFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+	Default {
+		
+		Inventory.Icon "POSSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			TNT1 A 0 A_JumpIf(ACS_ExecuteWithResult(101), 2);
+			TNT1 A 0 A_GiveInventory("Sandbox-ZombieManFriendSpawner");
+			Stop;
+			DOOM A 1 A_FireCustomMissile("Sandbox-ZombieManFriendSpawner.Projectile", 1, 0, 0, 0);
+			Stop;
+	}
+}
+CLASS "Sandbox-ZombieManFriendSpawner.Projectile" : ACTOR { 
+	Default {
+		
+		Radius 4;
+		Height 4;
+		Speed 4;
+		Damage 0;
+		Scale 1.0;
+		+NoBlockmap;
+		+ActivatePCross;
+		+ActivateImpact;
+		-NoTeleport;
+		+DropOff;
+		+DontFall;
+		+Missile;
+		+DOOMBOUNCE;
+		+BOUNCEONACTORS;
+		DeathSound "misc/teleport";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1 Bright;
+			Loop;
+		Death:
+			TFOG A 8 Bright ACS_ExecuteAlways(100, 0, 17);
+			TFOG BCDEFGHIJ 8 Bright;
+			Stop;
+	}
+}
+CLASS "Sandbox-ZombieManFriend" : ZombieMan { 
+	Default {
+		
+		+FRIENDLY;
+		-SOLID;
+	}
+}
+// Common
+CLASS "Sandbox-KEYS" : Inventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		+INVENTORY.ALWAYSPICKUP;
+		Inventory.Amount 99;
+		Inventory.MaxAmount 99;
+		Inventory.Icon "KEYSICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+	}
+}
+CLASS "Sandbox-KeyGiverModule" : CustomInventory { 
+	Default {
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		Inventory.Amount 64;
+		Inventory.MaxAmount 64;
+		Inventory.Icon "DOOMZ0";
+	}
+}
+// Keys
+CLASS "Sandbox-BlueCardGiver" : "Sandbox-KeyGiverModule"  { 
+	Default {
+		
+		Inventory.Icon "BKEYICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("BlueCard", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-BlueSkullGiver" : "Sandbox-KeyGiverModule"  { 
+	Default {
+		
+		Inventory.Icon "BSKUICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("BlueSkull", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-RedCardGiver" : "Sandbox-KeyGiverModule"  { 
+	Default {
+		
+		Inventory.Icon "RKEYICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("RedCard", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-RedSkullGiver" : "Sandbox-KeyGiverModule"  { 
+	Default {
+		
+		Inventory.Icon "RSKUICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("RedSkull", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-YellowCardGiver" : "Sandbox-KeyGiverModule"  { 
+	Default {
+		
+		Inventory.Icon "YKEYICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("YellowCard", 1);
+			Stop;
+	}
+}
+CLASS "Sandbox-YellowSkullGiver" : "Sandbox-KeyGiverModule"  { 
+	Default {
+		
+		Inventory.Icon "YSKUICON";
+	}
+	States
+	{
+		Spawn:
+			DOOM A 1;
+			Loop;
+		Use:
+			DOOM A 1 A_GiveInventory("YellowSkull", 1);
+			Stop;
+	}
+}
+// Decorate
+// Constants
+const int GGUN_RANGE = 1024.0;
+const int GGUN_PUNT_RANGE = 256.0;
+const int scrGGunPuntRecoil = 1;
+const int scrGGunPunt = 2;
+const int scrGGunGrab = 3;
+const int scrRefire = 4;
+// Actors
+CLASS HeldByGGun : Inventory { 
+	Default {
+		
+		Inventory.MaxAmount 1;
+		-INVBAR;
+		+IGNORESKILL;
+	}
+}
+CLASS GGunIsGrabbing : Inventory { 
+	Default {
+		
+		Inventory.MaxAmount 1;
+		-INVBAR;
+		+IGNORESKILL;
+	}
+}
+CLASS NoGGunPickup : Inventory { 
+	Default {
+		
+		Inventory.MaxAmount 1;
+		-INVBAR;
+		+IGNORESKILL;
+	}
+}
+/*
+ACTOR SandBoxMatterManipulator : Fist
+{
+	States
+	{
+	Spawn:
+		GRAV A -1
+		Stop
+	Deselect:
+		GGUN A 1 A_Lower
+		Loop
+	Select:
+		GGUN A 1 A_Raise
+		Loop
+	Ready:
+		GGUN A 1 A_WeaponReady
+		Loop
+	AltFire:
+		GGUN BCD 2 A_JumpIfTargetInLOS("Grab", 1, 0)
+		TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(scrRefire), "AltHold")
+		Goto UnAltFire
+	AltHold:
+		GGUN D 1 A_JumpIfTargetInLOS("Grab", 1, 0)
+		TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(scrRefire), "AltHold")
+		Goto UnAltFire
+	UnAltFire:
+		TNT1 A 0 A_StopSound(CHAN_WEAPON)
+		GGUN DCB 2
+		Goto Ready
+	Fire:
+		TNT1 A 0 A_JumpIfTargetInLOS("Punt", 1, 0)
+		Goto Ready
+	Punt:
+		GGUN A 18 ACS_ExecuteAlways(scrGGunPunt, 0)
+		Goto Ready
+	Grab:
+		TNT1 A 0 A_PlaySound("ggun/holdloop", CHAN_WEAPON, 1.0, 1)
+		TNT1 A 0 A_GiveInventory("GGunIsGrabbing", 1)
+		TNT1 A 0 ACS_ExecuteAlways(scrGGunGrab, 0)
+		Goto GrabHold+1
+	GrabHold:
+		GGUN D 1 A_JumpIfInventory("GGunIsGrabbing", 1, 1)
+		Goto UnAltFire
+		GGUN D 1
+		Loop
+	}
+}
+*/
+CLASS SandBoxMatterManipulator : Fist {} { 
+	Default {
+	// Common
+	Actor "Sandbox-POWERUPS" : Inventory
+		
+		+INVENTORY.INVBAR;
+		+INVENTORY.PICKUPFLASH;
+		+INVENTORY.ALWAYSPICKUP;
+		Inventory.Amount 99;
+		Inventory.MaxAmount 99;
+		Inventory.Icon "POWRICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+}
+}
+CLASS "Sandbox-PowerupGiverModule" : CustomInventory { 
+	Default {
+	
+	+INVENTORY.INVBAR;
+	+INVENTORY.PICKUPFLASH;
+	Inventory.Amount 64;
+	Inventory.MaxAmount 64;
+	Inventory.Icon "DOOMZ0";
+	}
+}
+// Powerups
+CLASS "Sandbox-AllmapGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "PMAPICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Allmap", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-BerserkGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "PSTRICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Berserk", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-BlueArmorGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "ARM2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("BlueArmor", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-BlurSphereGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "PINSICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("BlurSphere", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-GreenArmorGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "ARM1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("GreenArmor", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-HealthBonusGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "BON1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("HealthBonus", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-InfraredGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "PVISICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Infrared", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-InvulnerabilitySphereGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "PINVICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("InvulnerabilitySphere", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-MedikitGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "MEDIICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Medikit", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-MegasphereGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "MEGAICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Megasphere", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-RadSuitGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "SUITICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("RadSuit", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-SoulsphereGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "SOULICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Soulsphere", 1);
+		Stop;
+}
+}
+CLASS "Sandbox-StimpackGiver" : "Sandbox-PowerupGiverModule" { 
+	Default {
+	
+	Inventory.Icon "STIMICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_GiveInventory("Stimpack", 1);
+		Stop;
+}
+}
+// Common
+CLASS "Sandbox-PROPS" : Inventory { 
+	Default {
+	
+	+INVENTORY.ALWAYSPICKUP;
+	+INVENTORY.INVBAR;
+	+INVENTORY.PICKUPFLASH;
+	Inventory.Amount 99;
+	Inventory.MaxAmount 99;
+	Inventory.Icon "PROPICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+}
+}
+CLASS "Sandbox-PropSpawnerModule" : CustomInventory { 
+	Default {
+	
+	+INVENTORY.INVBAR;
+	+INVENTORY.PICKUPFLASH;
+	Inventory.Amount 64;
+	Inventory.MaxAmount 64;
+	Inventory.Icon "DOOMZ0";
+	}
+}
+// Column
+CLASS "Sandbox-ColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COLUICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Column");
+		Stop;
+}
+}
+CLASS "Sandbox-Column" : Column replaces Column { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// BurningBarrel
+CLASS "Sandbox-BurningBarrelSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "FCANICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-BurningBarrel");
+		Stop;
+}
+}
+CLASS "Sandbox-BurningBarrel" : BurningBarrel replaces BurningBarrel { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ExplosiveBarrel
+CLASS "Sandbox-ExplosiveBarrelSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "BAR1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ExplosiveBarrel");
+		Stop;
+}
+}
+CLASS "Sandbox-ExplosiveBarrel" : ExplosiveBarrel replaces ExplosiveBarrel { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// TechLamp
+CLASS "Sandbox-TechLampSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TLMPICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-TechLamp");
+		Stop;
+}
+}
+CLASS "Sandbox-TechLamp" : TechLamp replaces TechLamp { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Column
+CLASS "Sandbox-TechLamp2Spawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TLP2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-TechLamp2");
+		Stop;
+}
+}
+CLASS "Sandbox-TechLamp2" : TechLamp2 replaces TechLamp2 { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// TechPillar
+CLASS "Sandbox-TechPillarSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "ELECICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-TechPillar");
+		Stop;
+}
+}
+CLASS "Sandbox-TechPillar" : TechPillar replaces TechPillar { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// BigTree
+CLASS "Sandbox-BigTreeSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TRE2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-BigTree");
+		Stop;
+}
+}
+CLASS "Sandbox-BigTree" : BigTree replaces BigTree { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// BlueTorch
+CLASS "Sandbox-BlueTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TBLUICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-BlueTorch");
+		Stop;
+}
+}
+CLASS "Sandbox-BlueTorch" : BlueTorch replaces BlueTorch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Candelabra
+CLASS "Sandbox-CandelabraSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "CBRAICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Candelabra");
+		Stop;
+}
+}
+CLASS "Sandbox-Candelabra" : Candelabra replaces Candelabra { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Candlestick
+CLASS "Sandbox-CandlestickSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "CANDICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Candlestick");
+		Stop;
+}
+}
+CLASS "Sandbox-Candlestick" : Candlestick replaces Candlestick { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// EvilEye
+CLASS "Sandbox-EvilEyeSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "CEYEICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-EvilEye");
+		Stop;
+}
+}
+CLASS "Sandbox-EvilEye" : EvilEye replaces EvilEye { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// FloatingSkull
+CLASS "Sandbox-FloatingSkullSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "FSKUICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-FloatingSkull");
+		Stop;
+}
+}
+CLASS "Sandbox-FloatingSkull" : FloatingSkull replaces FloatingSkull { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// GreenTorch
+CLASS "Sandbox-GreenTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TGRNICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-GreenTorch");
+		Stop;
+}
+}
+CLASS "Sandbox-GreenTorch" : GreenTorch replaces GreenTorch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HeadCandles
+CLASS "Sandbox-HeadCandlesSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POL3ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HeadCandles");
+		Stop;
+}
+}
+CLASS "Sandbox-HeadCandles" : HeadCandles replaces HeadCandles { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HeadOnAStick
+CLASS "Sandbox-HeadOnAStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POL4ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HeadOnAStick");
+		Stop;
+}
+}
+CLASS "Sandbox-HeadOnAStick" : HeadOnAStick replaces HeadOnAStick { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HeadsOnAStick
+CLASS "Sandbox-HeadsOnAStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POL2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HeadsOnAStick");
+		Stop;
+}
+}
+CLASS "Sandbox-HeadsOnAStick" : HeadsOnAStick replaces HeadsOnAStick { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HeartColumn
+CLASS "Sandbox-HeartColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COL5ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HeartColumn");
+		Stop;
+}
+}
+CLASS "Sandbox-HeartColumn" : HeartColumn replaces HeartColumn { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// RedTorch
+CLASS "Sandbox-RedTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TREDICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-RedTorch");
+		Stop;
+}
+}
+CLASS "Sandbox-RedTorch" : RedTorch replaces RedTorch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ShortBlueTorch
+CLASS "Sandbox-ShortBlueTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "SMBTICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ShortBlueTorch");
+		Stop;
+}
+}
+CLASS "Sandbox-ShortBlueTorch" : ShortBlueTorch replaces ShortBlueTorch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ShortGreenColumn
+CLASS "Sandbox-ShortGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COL2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ShortGreenColumn");
+		Stop;
+}
+}
+CLASS "Sandbox-ShortGreenColumn" : ShortGreenColumn replaces ShortGreenColumn { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ShortGreenTorch
+CLASS "Sandbox-ShortGreenTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "SMGTICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ShortGreenTorch");
+		Stop;
+}
+}
+CLASS "Sandbox-ShortGreenTorch" : ShortGreenTorch replaces ShortGreenTorch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ShortRedColumn
+CLASS "Sandbox-ShortRedColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COL4ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ShortRedColumn");
+		Stop;
+}
+}
+CLASS "Sandbox-ShortRedColumn" : ShortRedColumn replaces ShortRedColumn { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ShortRedTorch
+CLASS "Sandbox-ShortRedTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "SMRTICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ShortRedTorch");
+		Stop;
+}
+}
+CLASS "Sandbox-ShortRedTorch" : ShortRedTorch replaces ShortRedTorch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// SkullColumn
+CLASS "Sandbox-SkullColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COL6ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-SkullColumn");
+		Stop;
+}
+}
+CLASS "Sandbox-SkullColumn" : SkullColumn replaces SkullColumn { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Stalagtite
+CLASS "Sandbox-StalagtiteSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "SMITICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Stalagtite");
+		Stop;
+}
+}
+CLASS "Sandbox-Stalagtite" : Stalagtite replaces Stalagtite { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// TallGreenColumn
+CLASS "Sandbox-TallGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COL1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-TallGreenColumn");
+		Stop;
+}
+}
+CLASS "Sandbox-TallGreenColumn" : TallGreenColumn replaces TallGreenColumn { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// TallRedColumn
+CLASS "Sandbox-TallRedColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "COL3ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-TallRedColumn");
+		Stop;
+}
+}
+CLASS "Sandbox-TallRedColumn" : TallRedColumn replaces TallRedColumn { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// TorchTree
+CLASS "Sandbox-TorchTreeSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "TRE1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-TorchTree");
+		Stop;
+}
+}
+CLASS "Sandbox-TorchTree" : TorchTree replaces TorchTree { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadCacodemon
+CLASS "Sandbox-DeadCacodemonSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "CACOICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadCacodemon");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadCacodemon" : DeadCacodemon replaces DeadCacodemon { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadDemon
+CLASS "Sandbox-DeadDemonSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "DEMNICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadDemon");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadDemon" : DeadDemon replaces DeadDemon { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadDoomImp
+CLASS "Sandbox-DeadDoomImpSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "DIMPICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadDoomImp");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadDoomImp" : DeadDoomImp replaces DeadDoomImp { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadMarine
+CLASS "Sandbox-DeadMarineSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "MARNICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadMarine");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadMarine" : DeadMarine replaces DeadMarine { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadShotgunGuy
+CLASS "Sandbox-DeadShotgunGuySpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "SHGGICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadShotgunGuy");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadShotgunGuy" : DeadShotgunGuy replaces DeadShotgunGuy { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadZombieMan
+CLASS "Sandbox-DeadZombieManSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "ZMBMICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadZombieMan");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadZombieMan" : DeadZombieMan replaces DeadZombieMan { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// GibbedMarine
+CLASS "Sandbox-GibbedMarineSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "GBMRICON";// !!!
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-GibbedMarine");
+		Stop;
+}
+}
+CLASS "Sandbox-GibbedMarine" : GibbedMarine replaces GibbedMarine { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// BloodyTwitch
+CLASS "Sandbox-BloodyTwitchSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "GOR1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-BloodyTwitch");
+		Stop;
+}
+}
+CLASS "Sandbox-BloodyTwitch" : BloodyTwitch replaces BloodyTwitch { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// BrainStem
+CLASS "Sandbox-BrainStemSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "BRS1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-BrainStem");
+		Stop;
+}
+}
+CLASS "Sandbox-BrainStem" : BrainStem replaces BrainStem { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// ColonGibs
+CLASS "Sandbox-ColonGibsSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POB1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-ColonGibs");
+		Stop;
+}
+}
+CLASS "Sandbox-ColonGibs" : ColonGibs replaces ColonGibs { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// DeadStick
+CLASS "Sandbox-DeadStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POL1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-DeadStick");
+		Stop;
+}
+}
+CLASS "Sandbox-DeadStick" : DeadStick replaces DeadStick { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HangBNoBrain
+CLASS "Sandbox-HangBNoBrainSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "HDB2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HangBNoBrain");
+		Stop;
+}
+}
+CLASS "Sandbox-HangBNoBrain" : HangBNoBrain replaces HangBNoBrain { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HangNoGuts
+CLASS "Sandbox-HangNoGutsSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "HDB1ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HangNoGuts");
+		Stop;
+}
+}
+CLASS "Sandbox-HangNoGuts" : HangNoGuts replaces HangNoGuts { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HangTLookingDown
+CLASS "Sandbox-HangTLookingDownSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "HDB3ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HangTLookingDown");
+		Stop;
+}
+}
+CLASS "Sandbox-HangTLookingDown" : HangTLookingDown replaces HangTLookingDown { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HangTLookingUp
+CLASS "Sandbox-HangTLookingUpSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "HDB5ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HangTLookingUp");
+		Stop;
+}
+}
+CLASS "Sandbox-HangTLookingUp" : HangTLookingUp replaces HangTLookingUp { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HangTNoBrain
+CLASS "Sandbox-HangTNoBrainSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "HDB6ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HangTNoBrain");
+		Stop;
+}
+}
+CLASS "Sandbox-HangTNoBrain" : HangTNoBrain replaces HangTNoBrain { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// HangTSkull
+CLASS "Sandbox-HangTSkullSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "HDB4ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-HangTSkull");
+		Stop;
+}
+}
+CLASS "Sandbox-HangTSkull" : HangTSkull replaces HangTSkull { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// LiveStick
+CLASS "Sandbox-LiveStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POL6ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-LiveStick");
+		Stop;
+}
+}
+CLASS "Sandbox-LiveStick" : LiveStick replaces LiveStick { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Meat2
+CLASS "Sandbox-Meat2Spawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "GOR2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Meat2");
+		Stop;
+}
+}
+CLASS "Sandbox-Meat2" : Meat2 replaces Meat2 { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Meat3
+CLASS "Sandbox-Meat3Spawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "GOR3ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Meat3");
+		Stop;
+}
+}
+CLASS "Sandbox-Meat3" : Meat3 replaces Meat3 { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Meat4
+CLASS "Sandbox-Meat4Spawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "GOR4ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Meat4");
+		Stop;
+}
+}
+CLASS "Sandbox-Meat4" : Meat4 replaces Meat4 { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// Meat5
+CLASS "Sandbox-Meat5Spawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "GOR5ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-Meat5");
+		Stop;
+}
+}
+CLASS "Sandbox-Meat5" : Meat5 replaces Meat5 { 
+	Default {
+	
+	-SOLID;
+	}
+}
+// SmallBloodPool
+CLASS "Sandbox-SmallBloodPoolSpawner" : "Sandbox-PropSpawnerModule"  { 
+	Default {
+	
+	Inventory.Icon "POB2ICON";
+	}
+	States
+	{
+	Spawn:
+		DOOM A 1;
+		Loop;
+	Use:
+		DOOM A 1 A_SpawnItemEx("Sandbox-SmallBloodPool");
+		Stop;
+}
+}
+CLASS "Sandbox-SmallBloodPool" : SmallBloodPool replaces SmallBloodPool { 
+	Default {
+	
+	-SOLID;
+	}
+}

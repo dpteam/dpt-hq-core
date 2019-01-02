@@ -1,0 +1,64 @@
+CLASS WILDGUYS_Spawner1 : RandomSpawner 17601 { 
+	Default {
+		
+		DropItem "PistolThug1";
+		DropItem "Cop2";
+	}
+}
+
+CLASS WILDGUYS_Spawner2 : RandomSpawner 17602 { 
+	Default {
+		
+		DropItem "Cop1";
+		DropItem "MagnumFemale";
+	}
+}
+
+CLASS WILDGUYS_Spawner3 : RandomSpawner 17603 { 
+	Default {
+		
+		Dropitem "SMGThug";
+		Dropitem "SilentJ";
+	}
+}
+
+CLASS WILDGUYS_Spawner4 : RandomSpawner 17604 { 
+	Default {
+		
+		DropItem "MagnumThug";
+		DropItem "PistolThugFemale1";
+	}
+}
+
+CLASS WILDGUYS_Spawner5 : RandomSpawner 17605 { 
+	Default {
+		
+		DropItem "ShotgunThug";
+		DropItem "ARThug2";
+		DropItem "Punchy";
+	}
+}
+
+CLASS WILDGUYS_Spawner6 : RandomSpawner 17606 { 
+	Default {
+		
+		DropItem "CopTaser";
+		DropItem "TaserFemale";
+	}
+}
+
+CLASS WILDGUYS_Spawner7 : RandomSpawner 17607 { 
+	Default {
+		
+		DropItem "Bomber1";
+		DropItem "FemaleExec";
+	}
+}
+
+CLASS WILDGUYS_Spawner8 : RandomSpawner 17608 { 
+	Default {
+		
+		DropItem "ARThug";
+		DropItem "Undercover";
+	}
+}

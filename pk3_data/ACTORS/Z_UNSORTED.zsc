@@ -1,0 +1,6012 @@
+CLASS FirePitsOfHell 1276 : ACTOR { 
+	Default {
+		
+		height 32;
+		radius 32;
+		+NOCLIP;
+		+NOBLOCKMAP;
+		+LOOKALLAROUND;
+		+CLIENTSIDEONLY;
+		Renderstyle "Add";
+		Scale 1.5;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Playsound("props/redfire");
+			F1RE ABCDEFGH 2 bright A_SpawnItem("YellowFlareLarge1X",0,49);
+			TTRB A 0 A_CustomMissile ("ExplosionSmoke", 80, 0, random (0, 180), 2, random (0, 180));
+			Loop;
+	}
+}
+CLASS Smokesh 3276 : ACTOR { 
+	Default {
+		
+		height 32;
+		radius 32;
+		+NOCLIP;
+		+NOBLOCKMAP;
+		+LOOKALLAROUND;
+		+CLIENTSIDEONLY;
+		Renderstyle "Translucent";
+		Alpha 0.9;
+		Scale 1.5;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			SM7K ABCDEFGH 4;
+			Loop;
+	}
+}
+CLASS Detonator : ACTOR { 
+	Default {
+		
+		height 64;
+		radius 64;
+		+SOLID;
+		+SHOOTABLE;
+		+NOBLOOD;
+		+NOGRAVITY;
+		mass 999999;
+		Health 99999;
+		Scale 0.8;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 4;
+			Stop;
+	}
+}
+CLASS FireStinguisher 1281 : ACTOR { 
+	Default {
+		
+		height 22;
+		radius 6;
+		+SOLID;
+		+SHOOTABLE;
+		+NOBLOOD;
+		Health 10;
+		Scale 0.5;
+	}
+	states
+	{
+		Spawn:
+			UFEX A 1;
+			UFEX A -1;
+			Stop;
+		Death:
+			TNT1 A 0;
+			THRF A 0 A_SpawnItemEx ("Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			THRF A 0 A_SpawnItemEx ("Detonator",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			Stop;
+	}
+}
+CLASS SmallTree 1277 : ACTOR { 
+	Default {
+		
+		//$Category Trees
+		height 97;
+		radius 8;
+	}
+	states
+	{
+		Spawn:
+			PLNT A 1;
+			PLNT A -1;
+			Stop;
+	}
+}
+CLASS Plant01 1278 : ACTOR { 
+	Default {
+		
+		//$Category Vegetation
+		height 21;
+		radius 21;
+		-SOLID;
+	}
+	states
+	{
+		Spawn:
+			PLNT B 1;
+			PLNT B -1;
+			Stop;
+		Death:
+			TNT1 A 0 A_noBlocking();
+			THRF A 0 A_SpawnItemEx ("Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			THRF A 0 A_SpawnItemEx ("Detonator",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			Stop;
+	}
+}
+CLASS BigPalm: Plant01 { //1279
+	Default {
+		
+		//$Category Trees
+		+SOLID;
+		height 120;
+		radius 12;
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			TREE O 1;
+			TREE O -1;
+			Stop;
+	}
+}
+CLASS Plant02: Plant01 1290 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.8;
+	}
+	states
+	{
+		Spawn:
+			PLNT C 1;
+			PLNT C -1;
+			Stop;
+	}
+}
+CLASS Plant03: Plant01 1292 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+		Health 50;
+		Height 4;
+		+SHOOTABLE;
+		-SOLID;
+		-NOBLOOD;
+		Bloodtype "SlimePlantBloodType";
+		Bloodcolor "DarkGreen";
+		Mass 99999;
+		Health 100;
+	}
+	states
+	{
+		Spawn:
+			PLNT D 1;
+			PLNT D -1;
+			Stop;
+		Death:
+			TNT1 A 0 A_NoBlocking();
+			TNT1 AAAA 0 A_CustomMissile ("Plant3Piece4", 60, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAAAA 0 A_CustomMissile ("Plant3Piece4", 30, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAA 0 A_CustomMissile ("Plant3Piece1", 30, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAA 0 A_CustomMissile ("Plant3Piece2", 10, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAA 0 A_CustomMissile ("Plant3Piece3", 20, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves4", 60, 0, random (0, 360), 2, random (30, 160));
+			Stop;
+	}
+}
+CLASS Plant04: Plant01 1293 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.8;
+	}
+	states
+	{
+		Spawn:
+			PLNT E 1;
+			PLNT E -1;
+			Stop;
+	}
+}
+CLASS Plant05: Plant01 1294 { 
+	Default {
+		
+		//$Category Vegetation
+		//Scale 0.8
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			PLNT F 1;
+			PLNT F -1;
+			Stop;
+	}
+}
+CLASS Plant06: Plant01 1295 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			PLNT G 1;
+			PLNT G -1;
+			Stop;
+	}
+}
+CLASS Plant07: Plant01 1490 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.9;
+	}
+	states
+	{
+		Spawn:
+			PLNT H 1;
+			PLNT H -1;
+			Stop;
+	}
+}
+CLASS Plant08: Plant01 1491 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.9;
+	}
+	states
+	{
+		Spawn:
+			PLNT I 1;
+			PLNT I -1;
+			Stop;
+	}
+}
+CLASS Plant18: Plant01 1991 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.9;
+	}
+	states
+	{
+		Spawn:
+			PLNT J 1;
+			PLNT J -1;
+			Stop;
+	}
+}
+CLASS Plant11: Plant01 1992 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.9;
+		+SHOOTABLE;
+		-NOBLOOD;
+		-SOLID;
+		Bloodtype "DarkPlantBloodType";
+		Bloodcolor "DarkGreen";
+		Mass 999999;
+		Health 100;
+		Height 16;
+	}
+	states
+	{
+		Spawn:
+			PLNT K 1;
+			PLNT K -1;
+			Stop;
+		Death:
+			TNT1 A 0 A_NoBlocking();
+			TNT1 AAAA 0 A_CustomMissile ("Plant11Piece1", 20, 0, random (0, 360), 2, random (60, 120));
+			TNT1 AAAA 0 A_CustomMissile ("Plant11Piece2", 40, 0, random (0, 360), 2, random (60, 120));
+			Stop;
+	}
+}
+CLASS Plant12: Plant11 1993 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.9;
+	}
+	states
+	{
+		Spawn:
+			PLNT L 1;
+			PLNT L -1;
+			Stop;
+	}
+}
+CLASS Plant13: Plant01 1994 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.9;
+	}
+	states
+	{
+		Spawn:
+			PLNT M 1;
+			PLNT M -1;
+			Stop;
+	}
+}
+CLASS Plant14: Plant01 1995 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.6;
+	}
+	states
+	{
+		Spawn:
+			PLNT N 1;
+			PLNT N -1;
+			Stop;
+	}
+}
+CLASS Plant15: Plant01 1996 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			PLNT O 1;
+			PLNT O -1;
+			Stop;
+	}
+}
+CLASS Grass01: Plant01 1492 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			GRSS B 1;
+			GRSS B -1;
+			Stop;
+	}
+}
+CLASS Grass02: Plant01 1493 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			GRSS A 1;
+			GRSS A -1;
+			Stop;
+	}
+}
+CLASS Grass03: Plant01 1793 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 0.8;
+	}
+	states
+	{
+		Spawn:
+			GRSS C 1;
+			GRSS C -1;
+			Stop;
+	}
+}
+CLASS Grass04: Plant01 1794 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			GRSS D 1;
+			GRSS D -1;
+			Stop;
+	}
+}
+CLASS Grass05: Plant01 1795 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			GRSS E 1;
+			GRSS E -1;
+			Stop;
+	}
+}
+/////////////////////////////////////////////
+//////////////      Trees       /////////////
+/////////////////////////////////////////////
+CLASS Tree01: Plant01 { //1296
+	Default {
+		
+		//$Category Trees
+		Scale 1.0;
+		+SOLID;
+		height 96;
+		radius 16;
+	}
+	states
+	{
+		Spawn:
+			TREE A 1;
+			TREE A -1;
+			Stop;
+	}
+}
+CLASS Tree02: Tree01 { //1297
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE B 1;
+			TREE B -1;
+			Stop;
+	}
+}
+CLASS Tree03: Tree01 { //1298
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE C 1;
+			TREE C -1;
+			Stop;
+	}
+}
+CLASS Tree04: Tree01 { //1299
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE D 1;
+			TREE D -1;
+			Stop;
+	}
+}
+CLASS Tree05: Tree01 { //1300
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE E 1;
+			TREE E -1;
+			Stop;
+	}
+}
+CLASS DeadTree01: Tree01 1301 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE F 1;
+			TREE F -1;
+			Stop;
+	}
+}
+CLASS DeadTree02: Tree01 1302 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE G 1;
+			TREE G -1;
+			Stop;
+	}
+}
+CLASS DeadTree03: Tree01 1303 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE H 1;
+			TREE H -1;
+			Stop;
+	}
+}
+CLASS Cactus: Tree01 1304 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE J 1;
+			TREE J -1;
+			Stop;
+	}
+}
+CLASS TreePine: Tree01 1704 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE I 1;
+			TREE I -1;
+			Stop;
+	}
+}
+CLASS Tree06: Tree01 { //1705
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE P 1;
+			TREE P -1;
+			Stop;
+	}
+}
+CLASS TreeDesert01: Tree01 1706 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE K 1;
+			TREE K -1;
+			Stop;
+	}
+}
+CLASS TreeDesert02: Tree01 1707 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE L 1;
+			TREE L -1;
+			Stop;
+	}
+}
+CLASS TreeDeadPalm: Tree01 1708 { 
+	Default {
+		
+		//$Category Trees
+	}
+	states
+	{
+		Spawn:
+			TREE M 1;
+			TREE M -1;
+			Stop;
+	}
+}
+CLASS JungleTree01: Plant01 1997 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			TREE R 1;
+			TREE R -1;
+			Stop;
+	}
+}
+CLASS JungleTree02: Plant01 1998 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			TREE S 1;
+			TREE S -1;
+			Stop;
+	}
+}
+CLASS JungleTree03: Plant01 1999 { 
+	Default {
+		
+		//$Category Vegetation
+		Scale 1.0;
+	}
+	states
+	{
+		Spawn:
+			TREE T 1;
+			TREE T -1;
+			Stop;
+	}
+}
+/////////////////////////////////////////////
+////////////// Urban Decorations/////////////
+/////////////////////////////////////////////
+CLASS Box: Tree01 26365 { 
+	Default {
+		
+		+SOLID;
+		Radius 12;
+		Height 12;
+	}
+	states
+	{
+		Spawn:
+			UBOX A 1;
+			UBOX A -1;
+			Stop;
+	}
+}
+CLASS Hidrant: Box 1306 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UHDR A 1;
+			UHDR A -1;
+			Stop;
+	}
+}
+CLASS Cone: Box 1308 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UCON A 1;
+			UCON A -1;
+			Stop;
+	}
+}
+CLASS Pandela1: Box 1309 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UKTC F 1;
+			UKTC F -1;
+			Stop;
+	}
+}
+CLASS Pandela2: Box 1310 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UKTC G 1;
+			UKTC G -1;
+			Stop;
+	}
+}
+CLASS Tires: Box 1311 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UTIR A 1;
+			UTIR A -1;
+			Stop;
+	}
+}
+CLASS Trashcan1: Box 1312 { 
+	Default {
+		
+		Radius 8;
+		Height 16;
+		Scale 0.6;
+	}
+	states
+	{
+		Spawn:
+			UTRS A 1;
+			UTRS A -1;
+			Stop;
+	}
+}
+CLASS Trashcan2: Trashcan1 1313 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UTRS B 1;
+			UTRS B -1;
+			Stop;
+	}
+}
+CLASS Trashcan3: Trashcan1 1314 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			UTRS D 1;
+			UTRS D -1;
+			Stop;
+	}
+}
+CLASS TrashBag: Trashcan1 1315 { 
+	Default {
+		
+		Radius 12;
+		Height 16;
+		Scale 0.4;
+	}
+	states
+	{
+		Spawn:
+			UTRS C 1;
+			UTRS C -1;
+			Stop;
+	}
+}
+CLASS CeilLamp1: Box 1316 { 
+	Default {
+		
+		Radius 8;
+		Height 32;
+		+NOGRAVITY;
+		+NOCLIP;
+		Scale 0.25;
+	}
+	states
+	{
+		Spawn:
+			ULGT A 1 BRIGHT;
+			Loop;
+	}
+}
+CLASS CeilLamp2: CeilLamp1 1317 { 
+	Default {
+		
+		Radius 8;
+		Height 32;
+	}
+	states
+	{
+		Spawn:
+			ULGT D 1 BRIGHT;
+			Loop;
+	}
+}
+CLASS CeilLamp3: Box 1726 { 
+	Default {
+		
+		Radius 8;
+		Height 24;
+		+NOGRAVITY;
+		+NOCLIP;
+		+SPAWNCEILING;
+		Scale 0.25;
+	}
+	states
+	{
+		Spawn:
+			ULGT C 1 BRIGHT;
+			Loop;
+	}
+}
+CLASS HellFlag: Box 1318 { 
+	Default {
+		
+		Radius 8;
+		Height 48;
+	}
+	states
+	{
+		Spawn:
+			HFLG A -1;
+			Stop;
+	}
+}
+CLASS 3Candles: Box 1319 { 
+	Default {
+		
+		-SOLID;
+		Radius 8;
+		Height 8;
+	}
+	states
+	{
+		Spawn:
+			HCND IJK 2;
+			Loop;
+	}
+}
+CLASS CeilCandelabra: Box 1320 { 
+	Default {
+		
+		Radius 50;
+		Height 50;
+		+NOGRAVITY;
+		+SOLID;
+	}
+	states
+	{
+		Spawn:
+			HCND ABC 3;
+			Loop;
+	}
+}
+CLASS Toilet: Trashcan1 1321 { 
+	Default {
+		
+		Scale 0.7;
+	}
+	states
+	{
+		Spawn:
+			TOLT A 1;
+			TOLT A -1;
+			Stop;
+	}
+}
+CLASS CowHead: Box 1806 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			COW1 A 1;
+			COW1 A -1;
+			Stop;
+	}
+}
+CLASS AttSign: Box 1322 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			USGN A 1;
+			USGN A -1;
+			Stop;
+	}
+}
+CLASS AttSign2: Box 1323 { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			USGN B 1;
+			USGN B -1;
+			Stop;
+	}
+}
+CLASS Trash1: Box 1326 { 
+	Default {
+		
+		-SOLID;
+		Scale 0.25;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(255, "Type1", "Type2");
+		Type1:
+			TRSH A 1;
+			TRSH A -1;
+			Stop;
+		Type2:
+			TRSH H 1;
+			TRSH H -1;
+			Stop;
+	}
+}
+CLASS Trash2: Trash1 1327 { 
+	Default {
+		
+		Scale 0.2;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(255, "Type1", "Type2");
+		Type1:
+			TRSH B 1;
+			TRSH B -1;
+			Stop;
+		Type2:
+			TRSH C 1;
+			TRSH C -1;
+			Stop;
+	}
+}
+CLASS Trash3: Trash1 1328 { 
+	Default {
+		
+		Scale 0.5;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(255, "Type1", "Type2");
+		Type1:
+			TRSH D 1;
+			TRSH D -1;
+			Stop;
+		Type2:
+			TRSH E 1;
+			TRSH E -1;
+			Stop;
+	}
+}
+CLASS Trash4: Trash1 1329 { 
+	Default {
+		
+		Scale 0.5;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(255, "Type1", "Type2");
+		Type1:
+			TRSH F 1;
+			TRSH F -1;
+			Stop;
+		Type2:
+			TRSH G 1;
+			TRSH G -1;
+			Stop;
+	}
+}
+CLASS Trash5Bottle: Trash1 1330 { 
+	Default {
+		
+		Scale 0.7;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(255, "Type1", "Type2", "Type3", "Type4", "Type5");
+			Goto Type1;
+		Type1:
+			TRSB A 1;
+			TRSB A -1;
+			Stop;
+		Type2:
+			TRSB B 1;
+			TRSB B -1;
+			Stop;
+		Type3:
+			TRSB C 1;
+			TRSB C -1;
+			Stop;
+		Type4:
+			TRSB D 1;
+			TRSB D -1;
+			Stop;
+		Type5:
+			TRSB E 1;
+			TRSB E -1;
+			Stop;
+	}
+}
+CLASS RubbleSmall: Trash1 1331 { 
+	Default {
+		
+		-SOLID;
+		-SHOOTABLE;
+		+FORCEXYBILLBOARD;
+		Mass 999999;
+		Scale 1.0;
+		Radius 32;
+		Height 16;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(255, "Type1", "Type2");
+			Goto Type1;
+		Type1:
+			RUBL A 1;
+			RUBL A -1;
+			Stop;
+		Type2:
+			RUBL B 1;
+			RUBL B -1;
+			Stop;
+	}
+}
+CLASS RubbleMedium: RubbleSmall 1332 { 
+	Default {
+		
+		+SOLID;
+		+SHOOTABLE;
+		+NOBLOOD;
+		Radius 32;
+		Height 32;
+		Scale 1.3;
+	}
+	states
+	{
+		Spawn:
+			RUBL C 1;
+			RUBL C -1;
+			Stop;
+	}
+}
+CLASS RubbleLarge: RubbleMedium 1333 { 
+	Default {
+		
+		Radius 64;
+		Height 56;
+		Scale 2.0;
+	}
+	states
+	{
+		Spawn:
+			RUBL D 1;
+			RUBL D -1;
+			Stop;
+	}
+}
+CLASS SignBusStop: RubbleMedium 1334 { 
+	Default {
+		
+		Radius 4;
+		Height 92;
+	}
+	states
+	{
+		Spawn:
+			RUBL E 1;
+			RUBL E -1;
+			Stop;
+	}
+}
+CLASS SignStop: RubbleMedium 1335 { 
+	Default {
+		
+		Radius 4;
+		Height 92;
+	}
+	states
+	{
+		Spawn:
+			RUBL F 1;
+			RUBL F -1;
+			Stop;
+	}
+}
+CLASS GlassOnTHeFloor : RubbleSmall { 
+	Default {
+		
+		-SOLID;
+		Radius 0;
+		Height 0;
+		+CLIENTSIDEONLY;
+		+FORCEXYBILLBOARD;
+		renderstyle "Add";
+		alpha 0.4;
+		xscale 0.6;
+		yscale 0.2;
+	translation "0:255=4:4"
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0;
+		TNT1 A 0 A_jump(255,"death1","death2","death3","death4","death5","death6");
+	Death1:
+		BPRT A -1;
+		Stop;
+	Death2:
+		BPRT C -1;
+		Stop;
+	Death3:
+		BPRT E -1;
+		Stop;
+	Death4:
+		BPRT G -1;
+		Stop;
+	Death5:
+		BPRT B -1;
+		Stop;
+	Death6:
+		BPRT D -1;
+		Stop;
+}
+}
+CLASS SummonGlass: RubbleSmall 1336 { 
+	Default {
+	
+	Radius 0;
+	Height 0;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		NULL AAAAAAA 0 A_SpawnItemEx("GlassOntheFloor", random (85, -85), random (45, -45));
+		TNT1 A 0;
+		Stop;
+}
+}
+CLASS TabbleLight 1539 : ACTOR { 
+	Default {
+	
+	Radius 16;
+	Height 16;
+	Health 10;
+	Mass 200;
+	DeathSound "world/glassbreak";
+	//+SOLID
+	//+NOBLOOD
+	//+PUSHABLE
+	//+SHOOTABLE
+	}
+	States
+	{
+	Spawn:
+		LECM A -1;
+		Stop;
+	Death:
+		NULL A 0 A_Scream();
+		NULL AAAAAA 0 A_CustomMissile ("GlassShard", 32, 0, random (0, 360), 2, random (0, 360));
+		LECM BCD 5;
+		LECM D -1;
+		stop;
+}
+}
+CLASS LampShade: TabbleLight 1440 { 
+	Default {
+	
+	}
+	States
+	{
+	Spawn:
+		LECM G -1;
+		Stop;
+	Death:
+		NULL A 0 A_Scream();
+		NULL AAAAAA 0 A_CustomMissile ("GlassShard", 32, 0, random (0, 360), 2, random (0, 360));
+		TNT1 A 0;
+		stop;
+}
+}
+CLASS Toaster: TabbleLight 1441 { 
+	Default {
+	
+	Scale 0.7;
+	}
+	States
+	{
+	Spawn:
+		LECM F -1;
+		Stop;
+	Death:
+		NULL A 0 A_Scream();
+		NULL AAAAAA 0 A_CustomMissile ("GlassShard", 32, 0, random (0, 360), 2, random (0, 360));
+		TNT1 A 0;
+		stop;
+}
+}
+CLASS CofeeMaker: TabbleLight 1442 { 
+	Default {
+	
+	}
+	States
+	{
+	Spawn:
+		LECM E -1;
+		Stop;
+	Death:
+		NULL A 0 A_Scream();
+		NULL AAAAAA 0 A_CustomMissile ("GlassShard", 32, 0, random (0, 360), 2, random (0, 360));
+		TNT1 A 0;
+		stop;
+}
+}
+CLASS FlowerPot: TabbleLight 1443 { 
+	Default {
+	
+	Scale 0.5;
+	}
+	States
+	{
+	Spawn:
+		FLWR A -1;
+		Stop;
+	Death:
+		NULL A 0 A_Scream();
+		NULL AAAAAA 0 A_CustomMissile ("GlassShard", 32, 0, random (0, 360), 2, random (0, 360));
+		TNT1 A 0;
+		stop;
+}
+}
+CLASS ExplosiveArea 1437 : ACTOR { 
+	Default {
+	
+	//$Category SpecialFX
+	height 1;
+	radius 1;
+	+SOLID;
+	+SHOOTABLE;
+	+NOBLOOD;
+	+NOGRAVITY;
+	Mass 9999999;
+	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0;
+	damagefactor "Shrapnel", 0.0 damagefactor "KillMe", 0.0 damagefactor "Taunt", 0.0 damagefactor "Avoid", 0.0;
+	damagefactor "Trample", 0.0;
+	Health 100;
+	Scale 0.5;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 1;
+		TNT1 A -1;
+		Stop;
+	Death:
+		TNT1 A 1;
+		THRF A 0 A_SpawnItemEx ("Rocket",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		//TNT1 A 1
+		THRF A 0 A_SpawnItemEx ("Detonator",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0;
+		THRF A 0 A_SpawnItemEx ("Detonator",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		Stop;
+}
+}
+CLASS ExplosiveArea2: ExplosiveArea 1438 { 
+	Default {
+	
+	//$Category SpecialFX
+	height 96;
+	radius 32;
+	Health 200;
+	}
+}
+CLASS ExplosiveArea3: ExplosiveArea 1439 { 
+	Default {
+	
+	//$Category SpecialFX
+	height 96;
+	radius 32;
+	Health 400;
+	}
+}
+CLASS WallDestroyer : ExplosiveBarrel 12035 { 
+	Default {
+	
+	//$Category SpecialFX
+	Health 20;
+	Radius 0;
+	Height 0;
+	+NOGRAVITY;
+	Gravity 0;
+	Mass 99999999;
+	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0 damagefactor "Trample", 0.0 damagefactor "Shrapnel", 0.0;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 2;
+		Loop;
+	Death:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("WallExplosion");
+		Stop;
+}
+}
+CLASS WallExplosion : Rocket { 
+	Default {
+	
+	Speed 0;
+	}
+	States
+	{
+	Spawn:
+		Goto Death;
+}
+}
+CLASS WaterFall 12036 : ACTOR { 
+	Default {
+	
+	//$Category Water
+	Radius 0;
+	Height 0;
+	+NOGRAVITY;
+	+NOBLOCKMAP;
+	+NOCLIP;
+	Gravity 0;
+	Mass 99999999;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 1 A_CustomMissile ("WaterfallParticle2556", 0, 0, random (35, 55), 2, random (30, 60));
+		Loop;
+}
+}
+CLASS BloodFountain 12037 : ACTOR { 
+	Default {
+	
+	//$Category Water
+	Radius 0;
+	Height 0;
+	+NOGRAVITY;
+	+NOBLOCKMAP;
+	+NOCLIP;
+	Gravity 0;
+	Mass 99999999;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 3 A_CustomMissile ("BloodFountainParticle", 0, 0, random (0, 360), 2, random (110, 70));
+		Loop;
+}
+}
+CLASS WaterfallParticle2556 : ACTOR { 
+	Default {
+	
+	Height 0;
+	Radius 0;
+	Mass 0;
+	+Missile;
+	+NoBlockMap;
+	-NoGravity;
+	+DontSplash;
+	+FORCEXYBILLBOARD;
+	+CLIENTSIDEONLY;
+	BounceFactor 0.1;
+	Gravity 0.9;
+	RenderStyle "Translucent";
+	Scale 2.0;
+	//Speed 2
+	Speed 3;
+	}
+	States
+	{
+	Spawn:
+		WPR1 B 1 BRIGHT;//D -1
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
+		Loop;
+	Death:
+		TNT1 F 0 A_CustomMissile ("WaterParticle12556", 6, 0, random (0, 360), 2, random (70, 110));
+		Stop;
+	SpawnUnderwater:
+		TNT1 A 0 A_CustomMissile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
+		WPR1 B 3;
+		TNT1 AAAA 0 A_CustomMissile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
+		Stop;
+}
+}
+CLASS WaterParticle12556 : ACTOR { 
+	Default {
+	
+	Height 0;
+	Radius 0;
+	Mass 0;
+	+Missile;
+	+NoBlockMap;
+	-NoGravity;
+	+DontSplash;
+	+DoomBounce;
+	+FORCEXYBILLBOARD;
+	+CLIENTSIDEONLY;
+	BounceFactor 0.1;
+	Gravity 0.3;
+	RenderStyle "Add";
+	Scale 2.2;
+	//Speed 2
+	Speed 5;
+	}
+	States
+	{
+	Spawn:
+		WPR1 A 1;
+		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0);
+		Goto Stand;
+	Stand:
+		WPR1 A 2 A_FadeOut(0.03);
+		Loop;
+	Death:
+		TNT1 A 1;
+		TNT1 A 0;
+		Stop;
+}
+}
+CLASS BloodFountainParticle: WaterParticle12556 { 
+	Default {
+	
+	Speed 5;
+	RenderStyle "Translucent";
+	Alpha 0.8;
+	}
+	States
+	{
+	Spawn:
+		BLOD AABBCDE 5;
+		Stop;
+	Death:
+		TNT1 A 1;
+		TNT1 A 0;
+		Stop;
+}
+}
+CLASS FireballTrapSmart 20005 : ACTOR { 
+	Default {
+	
+	//$Category Traps
+	Monster;
+	+STANDSTILL;
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	-SHOOTABLE;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		TNT1 A 0 A_CheckSight("Hold");
+		TNT1 A 0 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 60;
+		Loop;
+	Hold:
+		TNT1 A 1;
+		Goto Spawn;
+}
+}
+CLASS RoffCandle 587 : ACTOR { 
+	Default {
+	
+	Radius 16;
+	Height 68;
+	+SOLID;
+	+NOGRAVITY;
+	+SPAWNCEILING;
+	}
+	States
+	{
+	Spawn:
+		CAN5 ABC 10 BRIGHT;
+		Loop;
+}
+}
+CLASS SuperNail : ACTOR { 
+	Default {
+	
+	Radius 20;
+	Height 20;
+	Speed 40;
+	FastSpeed 40;
+	Damage 10;
+	Projectile;
+	SeeSound "Weapons/NailFire";
+	DeathSound "Weapons/NailHit";
+	+RIPPER;
+	+MISSILE;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("Weapons/NailFire");
+		NLPJ A 1 A_Recoil(-5);
+		Goto Spawn+1;
+	Death:
+		NLPJ BCDEFGHI 4;
+		Stop;
+}
+}
+CLASS WeakNail: SuperNail { 
+	Default {
+	
+	Speed 30;
+	FastSpeed 30;
+	Damage 5;
+	}
+}
+CLASS NailTrapSuper 20006 : ACTOR { 
+	Default {
+	
+	//$Category Traps
+	Monster;
+	+STANDSTILL;
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	-SHOOTABLE;
+	+NOTARGET;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		TNT1 A 0 A_CheckSight("Hold");
+		TNT1 A 1;
+		TNT1 AAAAA 5 A_CustomMissile("SuperNail", 0, 0, 0, 2);
+		TNT1 A 60;
+		Stop;
+	Hold:
+		TNT1 A 1;
+		Goto Spawn;
+}
+}
+CLASS NailTrapWeak: NailTrapSuper 20007 { 
+	Default {
+	
+	//$Category Traps
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		TNT1 A 0 A_CheckSight("Hold");
+		TNT1 A 1;
+		TNT1 AAAAA 5 A_CustomMissile("WeakNail", 0, 0, 0, 2);
+		TNT1 A 60;
+		Stop;
+}
+}
+CLASS FireballTrapFollowTarget: NailTrapSuper 20008 { 
+	Default {
+	
+	//$Category Traps
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		TNT1 A 0 A_CheckSight("Hold");
+		TNT1 A 1 A_Chase();
+		TNT1 A 10 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 1 A_FaceTarget();
+		TNT1 A 10 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 1 A_FaceTarget();
+		TNT1 A 10 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 1 A_FaceTarget();
+		TNT1 A 10 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 1 A_FaceTarget();
+		TNT1 A 10 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 1 A_FaceTarget();
+		TNT1 A 10 A_CustomMissile("DoomImpBall", 0, 0, 0, 2);
+		TNT1 A 60;
+		Stop;
+}
+}
+CLASS AmbientSoundWaterFall1 21006 : ACTOR { 
+	Default {
+	
+	//$Category Water
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	-SHOOTABLE;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("WAFALL1");
+		TNT1 A 100;
+		Loop;
+}
+}
+CLASS AmbientSoundWaterFall2 21007 : ACTOR { 
+	Default {
+	
+	//$Category Water
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	-SHOOTABLE;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("WAFALL2");
+		TNT1 A 100;
+		Loop;
+}
+}
+CLASS Torch 871 : ACTOR { 
+	Default {
+	
+	Radius 0;
+	Height 0;
+	+NOCLIP;
+	+NOGRAVITY;
+	}
+	States
+	{
+	Spawn:
+		TORC ABC 4 BRIGHT;
+		Loop;
+}
+}
+CLASS Nail : ACTOR { 
+	Default {
+	
+	Radius 20;
+	Height 20;
+	Speed 40;
+	FastSpeed 40;
+	Damage 10;
+	Projectile;
+	SeeSound "Weapons/NailFire";
+	DeathSound "Weapons/NailHit";
+	+RIPPER;
+	+MISSILE;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("Weapons/NailFire");
+		NLPJ A 1 A_Recoil(-5);
+		Goto Spawn+1;
+	Death:
+		NLPJ BCDEFGHI 4;
+		Stop;
+}
+}
+CLASS NailTrap : ACTOR { 
+	Default {
+	
+	Radius 1;
+	Height 1;
+	Scale 0.8;
+	Speed 0;
+	Mass 1;
+	+DOOMBOUNCE;
+	+NOBLOCKMAP;
+	+NOTELEPORT;
+	+MOVEWITHSECTOR;
+	+NOGRAVITY;
+	+NOCLIP;
+	+DONTSPLASH;
+	}
+	States
+	{
+	Spawn:
+		NLPJ B 5;
+		NLPJ BBBBBBBBB 6 A_CustomMissile("Nail", 15, 0, 0, 1);
+		NLPJ B 5;
+		Stop;
+}
+}
+CLASS NailTrap2 : ACTOR { 
+	Default {
+	
+	//SpawnID 232
+	Radius 1;
+	Height 1;
+	Scale 0.8;
+	Speed 0;
+	Mass 1;
+	Decal BloodSuper;
+	BounceFactor 0.5;
+	+DOOMBOUNCE;
+	+MISSILE;
+	+NOBLOCKMAP;
+	+NOTELEPORT;
+	+MOVEWITHSECTOR;
+	+NOGRAVITY;
+	+NOCLIP;
+	+DONTSPLASH;
+	}
+	States
+	{
+	Spawn:
+		NLPJ B 5;
+		NLPJ BBBBBBBBB 6 A_SpawnItem("Nail");
+		NLPJ B 5;
+		Stop;
+}
+}
+CLASS Wires1: Box 1444 { 
+	Default {
+	
+	Radius 8;
+	Height 56;
+	+NOGRAVITY;
+	+NOCLIP;
+	+SPAWNCEILING;
+	Scale 0.5;
+	}
+	states
+	{
+	Spawn:
+		WIRE A 1;
+		Loop;
+}
+}
+CLASS Wires2: Wires1 1445 { 
+	Default {
+	
+	Scale 0.4;
+	Height 48;
+	}
+	states
+	{
+	Spawn:
+		WIRE B 1;
+		Loop;
+}
+}
+CLASS SwampTree1: Tree01 1446 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.0;
+	}
+	states
+	{
+	Spawn:
+		STRE A 1;
+		Loop;
+}
+}
+CLASS SwampTree1b: SwampTree1 1447 { 
+	Default {
+	
+	//$Category Trees
+	XScale -1.0;
+	Yscale 0.8;
+	}
+}
+CLASS SwampTree2: Tree01 1448 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.5;
+	}
+	states
+	{
+	Spawn:
+		STRE B 1 BRIGHT;
+		Loop;
+}
+}
+CLASS SwampTree2b: SwampTree2 1449 { 
+	Default {
+	
+	//$Category Trees
+	XScale -1.0;
+	Yscale 1.0;
+	}
+}
+CLASS SwampTree3: Tree01 1450 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.2;
+	}
+	states
+	{
+	Spawn:
+		STRE C 1 BRIGHT;
+		Loop;
+}
+}
+CLASS SpawnSpark_Down 26369 : ACTOR { 
+	Default {
+	
+	//$Category SpecialFX
+	height 8;
+	radius 4;
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	+NOSECTOR;
+	+NOCLIP;
+	+SPAWNCEILING;
+	+CLIENTSIDEONLY;
+	}
+	states
+	{
+	Spawn:
+	Active:
+		TNT1 A 0;
+		TNT1 A 0 A_PlaySound ("Sparks/Spawn");
+		TNT1 A 0 A_Jump (256, 1, 2, 3, 4, 5, 6);
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+	SpawnSparks:
+		TNT1 AA 0 A_CustomMissile ("Spark_W1", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W2", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W3", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W4", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W5", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W6", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W7", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W8", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W9", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W10", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W11", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W12", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W13", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W14", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 AA 0 A_CustomMissile ("Spark_W15", 0.0, 0, random (0, 360), 2, random (270, 315));
+		TNT1 A 0 A_Jump (256, 1, 2, 3, 4, 5, 6);
+		TNT1 A 100;
+		Goto Spawn;
+		TNT1 A 120;
+		Goto Spawn;
+		TNT1 A 540;
+		Goto Spawn;
+		TNT1 A 80;
+		Goto Spawn;
+		TNT1 A 140;
+		Goto Spawn;
+		TNT1 A 160;
+		Goto Spawn;
+	Inactive:
+		TNT1 A -1;
+		stop;
+}
+}
+CLASS SpawnSpark_Up 26368 : ACTOR { 
+	Default {
+	
+	//$Category SpecialFX
+	height 8;
+	radius 4;
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	+NOSECTOR;
+	+NOCLIP;
+	+CLIENTSIDEONLY;
+	}
+	states
+	{
+	Spawn:
+	Active:
+		TNT1 A 0;
+		TNT1 A 0 A_PlaySound ("Sparks/Spawn");
+		TNT1 A 0 A_Jump (256, 1, 2, 3, 4, 5, 6);
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+		goto SpawnSparks;
+		TNT1 A 1 A_SpawnItem ("SparkFlare_W1");
+	SpawnSparks:
+		TNT1 AA 0 A_CustomMissile ("Spark_W1", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W2", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W3", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W4", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W5", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W6", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W7", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W8", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W9", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W10", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W11", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W12", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W13", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W14", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W15", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 AA 0 A_CustomMissile ("Spark_W16", 0.0, 0, random (0, 360), 2, random (67, 113));
+		TNT1 A 0 A_Jump (256, 1, 2, 3, 4, 5, 6);
+		TNT1 A 100;
+		Goto Spawn;
+		TNT1 A 120;
+		Goto Spawn;
+		TNT1 A 540;
+		Goto Spawn;
+		TNT1 A 80;
+		Goto Spawn;
+		TNT1 A 140;
+		Goto Spawn;
+		TNT1 A 160;
+		Goto Spawn;
+	Inactive:
+		TNT1 A -1;
+		stop;
+}
+}
+CLASS Tree31: Tree01 8912 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.2;
+	}
+	states
+	{
+	Spawn:
+		TREE N 1;
+		Loop;
+}
+}
+CLASS Tree32: Tree01 26366 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.0;
+	}
+	states
+	{
+	Spawn:
+		TREE P 1;
+		Loop;
+}
+}
+CLASS Tree33: Tree01 26367 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.0;
+	}
+	states
+	{
+	Spawn:
+		TREE Q 1;
+		Loop;
+}
+}
+CLASS Tree34: Tree01 8913 { 
+	Default {
+	
+	//$Category Trees
+	Scale 1.0;
+	}
+	states
+	{
+	Spawn:
+		TREE R 1;
+		Loop;
+}
+}
+CLASS WaitingToExplode 26330 : ACTOR { 
+	Default {
+	
+	//$Category SpecialFX
+	height 22;
+	radius 6;
+	-SOLID;
+	-SHOOTABLE;
+	+NOBLOOD;
+	+NOGRAVITY;
+	Health 500;
+	Scale 0.5;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 1;
+		Loop;
+	Death:
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+}
+}
+CLASS PlantVase823 1454 : ACTOR { 
+	Default {
+	
+	height 22;
+	radius 6;
+	-SOLID;
+	-SHOOTABLE;
+	+NOBLOOD;
+	+NOGRAVITY;
+	Health 500;
+	Scale 1.0;
+	}
+	states
+	{
+	Spawn:
+		VAS7 A 1;
+		VAS7 A -1;
+		Loop;
+}
+}
+CLASS RandomJungleTree 1455 : ACTOR { 
+	Default {
+	
+	height 32;
+	radius 32;
+	-SOLID;
+	+NOCLIP;
+	}
+	States
+	{
+	Spawn:
+		TREE R 0;
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3");
+		Goto Spawn1;
+	Spawn1:
+		TNT1 A 0 A_SpawnItem("NewJungleTree01");
+		Stop;
+	Spawn2:
+		TNT1 A 0 A_SpawnItem("NewJungleTree02");
+		Stop;
+	Spawn3:
+		TNT1 A 0 A_SpawnItem("NewJungleTree03");
+		Stop;
+}
+}
+CLASS Plant09: Plant01 1456 { 
+	Default {
+	
+	//$Category Vegetation
+	Scale 0.8;
+	Health 50;
+	Height 16;
+	+SHOOTABLE;
+	-SOLID;
+	+NOBLOOD;
+	Mass 99999;
+	Health 100;
+	}
+	states
+	{
+	Spawn:
+		PLNT P 1;
+		PLNT P -1;
+		Stop;
+	Death:
+		TNT1 A 0 A_NoBlocking();
+		TNT1 AAAA 0 A_CustomMissile ("JunglePlantPiece1", 30, 0, random (0, 360), 2, random (30, 160));
+		TNT1 AAAA 0 A_CustomMissile ("JunglePlantPiece2", 10, 0, random (0, 360), 2, random (30, 160));
+		Stop;
+}
+}
+CLASS Plant10: Plant01 1457 { 
+	Default {
+	
+	//$Category Vegetation
+	Scale 0.8;
+	Health 50;
+	Height 16;
+	+SHOOTABLE;
+	-SOLID;
+	+NOBLOOD;
+	Mass 99999;
+	Health 100;
+	+NOGRAVITY;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_Jump(128, "Spawn2");
+		PLNT Q 1;
+		PLNT Q -1;
+		Stop;
+	Spawn2:
+		PLNT R 1;
+		PLNT R -1;
+		Stop;
+	Death:
+		TNT1 A 0 A_NoBlocking();
+		TNT1 AAAA 0 A_CustomMissile ("JunglePlantPiece1", 30, 0, random (0, 360), 2, random (30, 160));
+		TNT1 AAAA 0 A_CustomMissile ("JunglePlantPiece2", 10, 0, random (0, 360), 2, random (30, 160));
+		Stop;
+}
+}
+//Destructible Trees
+CLASS BasicDebry : ACTOR { 
+	Default {
+	
+	Radius 0;
+	Height 0;
+	+NOTELEPORT;
+	+DONTSPLASH;
+	+MISSILE;
+	+FORCEXYBILLBOARD;
+	+CLIENTSIDEONLY;
+	+THRUACTORS;
+	}
+}
+CLASS DarkPlantBloodType : ACTOR { 
+	Default {
+	
+	Decal BrutalBloodSplat;
+	+FORCEXYBILLBOARD;
+	+GHOST;
+	+NOBLOCKMAP;
+	+NOGRAVITY;
+	+NOCLIP;
+	-DONTSPLASH;
+	-ALLOWPARTICLES;
+	Speed 0;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 AAAA 0 A_CustomMissile ("LeaveHitParticle1", 0, 0, random (0, 360), 2, random (0, 360));
+		stop;
+}
+}
+CLASS SlimePlantBloodType: DarkPlantBloodType { 
+	Default {
+	
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 AAAA 0 A_CustomMissile ("LeaveHitParticle2", 0, 0, random (0, 360), 2, random (0, 360));
+		stop;
+}
+}
+CLASS LeaveHitParticle1: BasicDebry { 
+	Default {
+	
+	Height 2;
+	Radius 2;
+	Mass 0;
+	+SKYEXPLODE;
+	+DOOMBOUNCE;
+	BounceFactor 0.5;
+	Gravity 0.6;
+	Speed 6;
+	}
+	States
+	{
+	Spawn:
+		LEVP ABCB 4;
+		Stop;
+}
+}
+CLASS LeaveHitParticle2: BasicDebry { 
+	Default {
+	
+	Height 2;
+	Radius 2;
+	Mass 0;
+	+SKYEXPLODE;
+	+DOOMBOUNCE;
+	BounceFactor 0.5;
+	Gravity 0.6;
+	Speed 6;
+	}
+	States
+	{
+	Spawn:
+		LEVG ABCB 4;
+		Stop;
+}
+}
+CLASS LeaveHitParticle3: BasicDebry { 
+	Default {
+	
+	Height 2;
+	Radius 2;
+	Mass 0;
+	+SKYEXPLODE;
+	+DOOMBOUNCE;
+	BounceFactor 0.5;
+	Gravity 0.6;
+	Speed 4;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3");
+		Goto Spawn1;
+	Spawn1:
+		LEVP A 6;
+		Stop;
+	Spawn2:
+		LEVP B 6;
+		Stop;
+	Spawn3:
+		LEVP C 6;
+		Stop;
+	Death:
+		TNT1 A 0;
+		Stop;
+}
+}
+CLASS TreeLeaves1: BasicDebry { 
+	Default {
+	
+	Height 2;
+	Radius 2;
+	Mass 0;
+	+SKYEXPLODE;
+	+DOOMBOUNCE;
+	BounceFactor 0.01;
+	Gravity 0.3;
+	Speed 16;
+	}
+	States
+	{
+	Spawn:
+		LEVP ABCB 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		LEVP B 3000;
+		Stop;
+}
+}
+CLASS TreeLeaves2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.6;
+	}
+	States
+	{
+	Spawn:
+		LEVR ABCD 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		LEVP B 3000;
+		Stop;
+}
+}
+CLASS TreeLeaves4: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.2;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		LEVG ABBCBB 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		LEVG B 3000;
+		Stop;
+}
+}
+CLASS TreeLeaves4Falling: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.06;
+	Speed 0;
+	+THRUACTORS;
+	}
+	States
+	{
+	Spawn:
+		LEVG ABB 2;
+		TNT1 A 0 ThrustThing (random(0, 360), 2, 1, 0);
+		LEVG CBB 2;
+		TNT1 A 0 ThrustThing (random(0, 360), 2, 1, 0);
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		LEVG B 500;
+		Stop;
+}
+}
+CLASS NewTree01 1296 : ACTOR { 
+	Default {
+	
+	Scale 1.0;
+	+SOLID;
+	height 96;
+	radius 16;
+	Mass 9999999;
+	+SHOOTABLE;
+	+NOBLOOD;
+	Health 200;
+	}
+	states
+	{
+	Spawn:
+		TREE A 1;
+		TREE A -1;
+		Stop;
+	Death:
+		TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves1", 80, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAAAAAA 0 A_CustomMissile ("TreeLeaves2", 80, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0 A_CustomMissile ("Tree1Piece1", 80, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AA 0 A_CustomMissile ("Tree1Piece2", 80, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+}
+}
+CLASS Tree1Piece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP11 A 2;
+		Loop;
+	Death:
+		TP11 A 1;
+		TP11 A -1;
+		Stop;
+}
+}
+CLASS Tree1Piece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TP11 B 2;
+		Loop;
+	Death:
+		TP11 B 1;
+		TP11 B-1;
+		Stop;
+}
+}
+CLASS Tree6Piece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP16 A 2;
+		Loop;
+	Death:
+		TP16 A 1;
+		TP16 A -1;
+		Stop;
+}
+}
+CLASS Tree6Piece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TP16 B 2;
+		Loop;
+	Death:
+		TP16 B 1;
+		TP16 B -1;
+		Stop;
+}
+}
+CLASS JunglePlantPiece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TPJP ABCDEFGH 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		TPJP I 1;
+		TPJP I -1;
+		Stop;
+}
+}
+CLASS JunglePlantPiece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	XScale -1.0;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TPJP ABCDEFGH 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		TPJP I 1;
+		TPJP I -1;
+		Stop;
+}
+}
+CLASS TreePalmPiece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.4;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TPPL ABCDEFGH 4;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		TPPL I 1;
+		TPPL I -1;
+		Stop;
+}
+}
+CLASS TreePalmPiece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.4;
+	Speed 9;
+	}
+	States
+	{
+	Spawn:
+		TPPL HGFEDCBA 4;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		TPPL I 1;
+		TPPL I -1;
+		Stop;
+}
+}
+CLASS TreePalmPiece3: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.2;
+	Speed 9;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		PALT FFGHII 3;
+		PALT IIGHFF 3;
+		Loop;
+	Death:
+		PALT G 1;
+		PALT G -1;
+		Stop;
+}
+}
+CLASS NewJungleTree01 : ACTOR { 
+	Default {
+	
+	Scale 1.0;
+	+SOLID;
+	height 96;
+	radius 16;
+	Mass 9999999;
+	+SHOOTABLE;
+	+NOBLOOD;
+	Health 300;
+	}
+	states
+	{
+	Spawn:
+		TREE R 200;
+		TNT1 A 0 A_SpawnItem("TreeLeaves4Falling", 0, 100);
+		Loop;
+	Death:
+		TNT1 AAAAAAA 0 A_CustomMissile ("TreeJunglePiece6", 150, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAAAAAA 0 A_CustomMissile ("TreeJunglePiece6", 90, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAA 0 A_CustomMissile ("TreeJunglePiece1", 140, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAA 0 A_CustomMissile ("TreeJunglePiece2", 140, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AA 0 A_CustomMissile ("TreeJunglePiece3", 140, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 A_CustomMissile ("TreeJunglePiece4", 140, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 A_CustomMissile ("TreeJunglePiece5", 140, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves4", 140, 0, random (0, 360), 2, random (30, 160));
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+}
+}
+CLASS NewJungleTree02: NewJungleTree01 { 
+	Default {
+	
+	}
+	states
+	{
+	Spawn:
+		TREE S 300;
+		TNT1 A 0 A_SpawnItem("TreeLeaves4Falling", 0, 100);
+		Loop;
+}
+}
+CLASS NewJungleTree03: NewJungleTree01 { 
+	Default {
+	
+	}
+	states
+	{
+	Spawn:
+		TREE T 400;
+		TNT1 A 0 A_SpawnItem("TreeLeaves4Falling", 0, 100);
+		Loop;
+}
+}
+CLASS TreeJunglePiece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TPJN A 2;
+		Loop;
+	Death:
+		TPJN A 1;
+		TPJN A -1;
+		Stop;
+}
+}
+CLASS TreeJunglePiece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TPJN B 2;
+		Loop;
+	Death:
+		TPJN B 1;
+		TPJN B -1;
+		Stop;
+}
+}
+CLASS TreeJunglePiece3: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 6;
+	}
+	States
+	{
+	Spawn:
+		TPJN C 2;
+		Loop;
+	Death:
+		TPJN C 1;
+		TPJN C -1;
+		Stop;
+}
+}
+CLASS TreeJunglePiece4: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TPJN D 2;
+		Loop;
+	Death:
+		TPJN D 1;
+		TPJN D -1;
+		Stop;
+}
+}
+CLASS TreeJunglePiece5: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TPJN E 2;
+		Loop;
+	Death:
+		TPJN E 1;
+		TPJN E -1;
+		Stop;
+}
+}
+CLASS TreeJunglePiece6: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 16;
+	}
+	States
+	{
+	Spawn:
+		TPJN F 2;
+		Loop;
+	Death:
+		TPJN G 1;
+		TPJN G 100;
+		Stop;
+}
+}
+CLASS Plant11Piece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP17 A 2;
+		Loop;
+	Death:
+		TP17 A 1;
+		TP17 A -1;
+		Stop;
+}
+}
+CLASS Plant11Piece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP17 B 2;
+		Loop;
+	Death:
+		TP17 B 1;
+		TP17 B -1;
+		Stop;
+}
+}
+CLASS Plant3Piece1: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP18 A 2;
+		Loop;
+	Death:
+		TP18 A 1;
+		TP18 A -1;
+		Stop;
+}
+}
+CLASS Plant3Piece2: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP18 B 2;
+		Loop;
+	Death:
+		TP18 B 1;
+		TP18 B -1;
+		Stop;
+}
+}
+CLASS Plant3Piece3: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 10;
+	}
+	States
+	{
+	Spawn:
+		TP18 C 2;
+		Loop;
+	Death:
+		TP18 C 1;
+		TP18 C -1;
+		Stop;
+}
+}
+CLASS Plant3Piece4: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 9;
+	}
+	States
+	{
+	Spawn:
+		TP18 D 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		TP18 E 1;
+		TP18 E 100;
+		Stop;
+}
+}
+//////////////////
+CLASS PalmTree22 1279 : ACTOR { 
+	Default {
+	
+	Scale 1.0;
+	+SOLID;
+	height 34;
+	radius 12;
+	Mass 9999999;
+	+SHOOTABLE;
+	+NOBLOOD;
+	Health 300;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("PalmTreeWood0", 0, 34);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeWood1", 0, 97);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeWood2", 0, 167);//222
+		TNT1 A 0 A_SpawnItemEx ("PalmTreeTop",0,0,242,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		//TNT1 A 0 A_SpawnItem("PalmTreeTop", 0, 242) //222
+		PALM A 1;
+		PALM A -1;
+		Stop;
+	Death:
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 34);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 97);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 167);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 242);//222
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle22567", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+}
+}
+CLASS PalmTreeTop : ACTOR { 
+	Default {
+	
+	XScale 3.0;
+	YScale 2.0;
+	+SOLID;
+	height 48;
+	radius 12;
+	Mass 9999999;
+	+SHOOTABLE;
+	+NOBLOOD;
+	MONSTER;
+	-COUNTKILL;
+	+FRIENDLY;
+	Health 90;
+	DamageFactor "PalmTree", 25.0;
+	}
+	states
+	{
+	Spawn:
+		PALM B 1;
+		PALM B -1;
+		Stop;
+	Death:
+		TNT1 AAAAAAAA 0 A_CustomMissile ("WoodParticle22567", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0 A_CustomMissile ("TreePalmPiece1", 40, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0 A_CustomMissile ("TreePalmPiece2", 40, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAAAAAA 0 A_CustomMissile ("TreePalmPiece3", 40, 0, random (0, 360), 2, random (40, 140));
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+	Death.Cut:
+	Death.Saw:
+	Death.PalmTree:
+		TNT1 AAAA 0 A_CustomMissile ("TreePalmPiece3", 40, 0, random (0, 360), 2, random (40, 140));
+		TNT1 A 0 A_CustomMissile ("PalmTreeFlyingTop", 10, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+	Death.Massacre:
+		TNT1 A 0;
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 1 A_Scream();
+		TNT1 A 0 A_SpawnItem("PalmTreeTop", 0, 2);
+		Stop;
+}
+}
+CLASS PalmTreeWood1 : ACTOR { 
+	Default {
+	
+	Scale 1.0;
+	+SOLID;
+	DamageFactor "PalmTree", 25.0;
+	height 68;
+	radius 12;
+	Mass 9999999;
+	+SHOOTABLE;
+	+NOBLOOD;
+	MONSTER;
+	-COUNTKILL;
+	+FRIENDLY;
+	Health 100;
+	}
+	states
+	{
+	Spawn:
+		PALM C 1;
+		PALM C -1;
+		Stop;
+	Death:
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("WoodParticle22567", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 34);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 97);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 167);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 242);//222
+		Stop;
+	Death.PalmTree:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 34);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 97);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 167);//222
+		TNT1 A 0 A_SpawnItem("PalmTreeKill", 0, 242);//222
+		Goto Death;
+	Death.Massacre:
+		TNT1 A 0;
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 1 A_Scream();
+		TNT1 A 0 A_SpawnItem("PalmTreeTop", 0, 2);
+		Stop;
+}
+}
+CLASS WoodParticle22567 : ACTOR { 
+	Default {
+	
+	Scale 1.3;
+	bouncefactor 0.5;
+	speed 8;
+	gravity 0.5;
+	+DOOMBOUNCE;
+	+MISSILE;
+	+THRUACTORS;
+	+MOVEWITHSECTOR;
+	+CLIENTSIDEONLY;
+	+NOBLOCKMAP;
+	+NOTELEPORT;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0;
+		WOOD ABCD 2;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		loop;
+	Death:
+		TNT1 A 0;
+		WOOD B 300;
+		Stop;
+}
+}
+CLASS PalmTreeWood2: PalmTreeWood1 { 
+	Default {
+	
+	height 70;
+	}
+	states
+	{
+	Spawn:
+		PALM D 1;
+		PALM D -1;
+		Stop;
+}
+}
+CLASS PalmTreeWood0: PalmTreeWood1 { 
+	Default {
+	
+	height 63;
+	}
+	states
+	{
+	Spawn:
+		PALM E 1;
+		PALM E -1;
+		Stop;
+}
+}
+CLASS PalmTreeKill : ACTOR { 
+	Default {
+	
+	+NOTARGET;
+	Radius 10;
+	Height 10;
+	DamageType PalmTree;
+	+NOGRAVITY;
+	+NOTELEPORT;
+	+NODAMAGETHRUST;
+	+THRUGHOST;
+	+NORADIUSDMG;
+	+NOEXTREMEDEATH;
+	PROJECTILE;
+	+DEHEXPLOSION;
+	+ACTIVATEMCROSS;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 0;
+		TNT1 A 0 A_Explode(5,10, 0);
+		Stop;
+}
+}
+CLASS PalmTreeFlyingTop: BasicDebry { 
+	Default {
+	
+	Height 48;
+	Radius 48;
+	+SHOOTABLE;
+	+DOOMBOUNCE;
+	+NOBLOOD;
+	Mass 99999;
+	BounceFactor 0.03;
+	Gravity 0.9;
+	Speed 16;
+	Damage 6;
+	+NOEXTREMEDEATH;
+	}
+	States
+	{
+	Spawn:
+		PALT ABCD 5;
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		Loop;
+	Death:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("FallenPalmTreeTop");
+		Stop;
+}
+}
+CLASS FallenPalmTreeTop : ACTOR { 
+	Default {
+	
+	Scale 1.0;
+	+SOLID;
+	height 48;
+	radius 48;
+	Mass 9999999;
+	+SHOOTABLE;
+	+NOBLOOD;
+	-SOLID;
+	Health 50;
+	}
+	states
+	{
+	Spawn:
+		PALT E 1;
+		PALT E -1;
+		Stop;
+	Death:
+		TNT1 AAAAAAAA 0 A_CustomMissile ("WoodParticle22567", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0 A_CustomMissile ("TreePalmPiece1", 40, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0 A_CustomMissile ("TreePalmPiece2", 40, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0 A_CustomMissile ("TreePalmPiece3", 40, 0, random (0, 360), 2, random (40, 140));
+		TNT1 A 0 A_NoBlocking();
+		Stop;
+}
+}
+CLASS LightPosts 2222 : ACTOR { 
+	Default {
+	
+	Radius 10;
+	Height 180;
+	Health 99999;
+	Mass 10000000;
+	+SOLID;
+	+NOBLOOD;
+	+SHOOTABLE;
+	Health 200;
+	}
+	States
+	{
+	Spawn:
+		PSTE A 1;
+		Loop;
+	Death:
+		TNT1 A 0 A_Scream();
+		TNT1 A 0 A_NoBlocking();
+		NULL A 0 A_CustomMissile ("MetalTrashParticle2", 12, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle1", 24, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle2", 36, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle1", 48, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle2", 56, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle1", 68, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle2", 80, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle1", 92, 0, random (0, 360), 2, random (0, 180));
+		NULL A 0 A_CustomMissile ("MetalTrashParticle2", 110, 0, random (0, 360), 2, random (0, 180));
+		NULL AA 0 A_CustomMissile ("LightPostPiece", 180, 0, random (0, 360), 2, random (0, 180));
+		Stop;
+}
+}
+CLASS LightPostPiece: TreeLeaves1 { 
+	Default {
+	
+	Gravity 0.9;
+	Speed 8;
+	}
+	States
+	{
+	Spawn:
+		TP33 ABCD 4;
+		Loop;
+	Death:
+		TP33 C 1;
+		TP33 C -1;
+		Stop;
+}
+}
+CLASS LeavesSpawner 4752 : ACTOR { 
+	Default {
+	
+	+NOCLIP;
+	+NOGRAVITY;
+	Height 2;
+	Radius 2;
+	}
+	states
+	{
+	Spawn:
+		TNT1 A 50 A_SpawnItem("TreeLeaves4Falling", 0, -5);
+		TNT1 A 0 A_Jump(50, "Spawn2");
+		Loop;
+	Spawn2:
+		TNT1 AAA 17 A_SpawnItem("TreeLeaves4Falling", 0, -5);
+		Goto Spawn;
+}}
+CLASS RandomRoot 6425 : ACTOR { 
+	Default {
+	
+	height 1;
+	radius 16;
+	-SOLID;
+	+NOCLIP;
+	}
+	States
+	{
+	Spawn:
+		ROOT A 1;
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Spawn5");
+		Goto Spawn1;
+	Spawn1:
+		TNT1 A 0 A_SpawnItem("Root");
+		Stop;
+	Spawn2:
+		TNT1 A 0 A_SpawnItem("RootSmooth");
+		Stop;
+	Spawn3:
+		TNT1 A 0 A_SpawnItem("RootSmall");
+		Stop;
+	Spawn4:
+		TNT1 A 0 A_SpawnItem("RootTiny");
+		Stop;
+	Spawn5:
+		TNT1 A 0 A_SpawnItem("RootDouble");
+		Stop;
+}
+}
+CLASS Root : ACTOR { 
+	Default {
+	
+	Radius 1;
+	Height 1;
+	-SOLID;
+	+NOGRAVITY;
+	}
+	States
+	{
+	Spawn:
+		ROOT A -1;
+		Stop;
+}
+}
+CLASS RootSmooth : ACTOR { 
+	Default {
+	
+	Radius 1;
+	Height 1;
+	-SOLID;
+	+NOGRAVITY;
+	}
+	States
+	{
+	Spawn:
+		ROOT B -1;
+		Stop;
+}
+}
+CLASS RootSmall : ACTOR { 
+	Default {
+	
+	Radius 1;
+	Height 1;
+	-SOLID;
+	+NOGRAVITY;
+	}
+	States
+	{
+	Spawn:
+		ROOT C -1;
+		Stop;
+}
+}
+CLASS RootTiny : ACTOR { 
+	Default {
+	
+	Radius 1;
+	Height 1;
+	-SOLID;
+	+NOGRAVITY;
+	}
+	States
+	{
+	Spawn:
+		ROOT D -1;
+		Stop;
+}
+}
+CLASS RootDouble : ACTOR { 
+	Default {
+	
+	Radius 1;
+	Height 1;
+	-SOLID;
+	+NOGRAVITY;
+	}
+	States
+	{
+	Spawn:
+		ROOT E -1;
+		Stop;
+}
+}
+CLASS ParkedCar 12356 : ACTOR { 
+	Default {
+	
+	//$Category Cars
+	Health1;
+	Height1;
+	Radius1;
+	Gravity 0.7;
+	Scale 0.8;
+	}
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		TNT1 A 1 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4", "Spawn5", "Spawn6");
+		TNT1 A 1;
+		Goto Spawn3;
+	Spawn1:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("GreenCar");
+		Stop;
+	Spawn2:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("BlueCar");
+		Stop;
+	Spawn3:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("RedCar");
+		Stop;
+	Spawn4:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("YellowCar");
+		Stop;
+	Spawn5:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("GrayCar");
+		Stop;
+	Spawn6:
+		TNT1 A 0;
+		TNT1 A 0 A_SpawnItem("BrownCar");
+		Stop;
+}	
+}
+CLASS GreenCar 26443 : ACTOR { 
+	Default {
+	
+	//$Category Cars
+	+SHOOTABLE;
+	+SOLID;
+	+FLOORCLIP;
+	+NOBLOOD;
+	-PUSHABLE;
+	Health150;
+	Height48;
+	Radius48;
+	Gravity 0.7;
+	Scale 0.8;
+	Mass99999999;
+	DamageFactor "Melee", 0.05;
+	DamageFactor "Stomp", 50.0;
+	DamageFactor "Cut", 0.05;
+	DeathSound "weapons/rocklx";
+	}
+	States
+	{
+	Spawn:
+		ELEC B 1;
+		LOOP;
+	Death:
+		TNT1 A 0 A_SpawnItem("BigExplosion1112");
+		TNT1 A 0 A_PlaySound("weapons/explode");
+		TNT1 A 0 A_PlaySound("EXPLOSIO", 3);
+		TNT1 A 0 A_Scream();
+		NULL AAAAAA 0 A_CustomMissile ("MetalTrashParticle1", 96, 0, random (0, 360), 2, random (0, 180));
+		NULL AAAAAA 0 A_CustomMissile ("MetalTrashParticle2", 96, 0, random (0, 360), 2, random (0, 180));
+		NULL AAAAAAAAA 0 A_CustomMissile ("GlassShard", 96, 0, random (0, 360), 2, random (0, 360));
+		ELEC A 0 A_Explode(100, 250);
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 0 A_SpawnItem("FuckedUpCar");
+		TNT1 A 6;
+		TNT1 A 0 A_PlaySound("FAREXPL", 1);
+		TNT1 A 0 A_PLaySound("CARCRASH", 5);
+		TNT1 A 40;
+		Stop;
+	Death.Stomp:
+		NULL AAAAAA 0 A_CustomMissile ("MetalTrashParticle1", 4, 0, random (0, 360), 2, random (0, 180));
+		NULL AAAAAA 0 A_CustomMissile ("MetalTrashParticle2", 4, 0, random (0, 360), 2, random (0, 180));
+		NULL AAAAAAAAA 0 A_CustomMissile ("GlassShard", 4, 0, random (0, 360), 2, random (0, 360));
+		ELEC D 1;
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 0 A_Scream();
+		TNT1 A 0 A_PLaySound("CARCRASH", 5);
+		ELEC D -1;
+		Stop;
+}
+}
+CLASS BlueCar: GreenCar 26444 { 
+	Default {
+	
+	//$Category Cars
+	Health100;
+Translation "112:127=194:207"
+	}
+}
+CLASS RedCar: GreenCar 26445 { 
+	Default {
+ 
+	//$Category Cars
+	Health	100
+	Translation "112:127=168:191"
+	}
+}
+CLASS YellowCar: GreenCar 26446 { 
+	Default {
+ 
+	//$Category Cars
+	Health	100
+	Translation "112:127=160:167"
+	}
+}
+CLASS GrayCar: GreenCar 26447 { 
+	Default {
+ 
+	//$Category Cars
+	Health	100
+	Translation "112:127=96:111"
+	}
+}
+CLASS BrownCar: GreenCar 26448 { 
+	Default {
+ 
+	//$Category Cars
+	Health	100
+	Translation "112:127=64:79"
+	}
+}
+CLASS FuckedUpCar 12357 : ACTOR { 
+	Default {
+ 
+	//$Category Cars
+	+SHOOTABLE
+	+SOLID
+	+FLOORCLIP
+	+NOBLOOD
+	-PUSHABLE
+	+NORADIUSDMG
+	Health	600
+	Height	48
+	Radius	48
+	Gravity 0.7
+	Scale 0.8
+	Mass	99999999
+	DeathSound "weapons/rocklx"
+CLASSgeFactor "Stomp", 500.0 : ACTOR { 
+	Default {
+		DamageFactor "Melee", 0.05;
+	}
+	States
+	{
+		Spawn:
+			ELEC C 1;
+			LOOP;
+		Death:
+			TNT1 A 0 A_PlaySound("weapons/explode");
+			TNT1 A 0 A_Scream();
+			NULL AAAAAA 0 A_CustomMissile ("MetalTrashParticle1", 96, 0, random (0, 360), 2, random (0, 180));
+			NULL AAAAAA 0 A_CustomMissile ("MetalTrashParticle2", 96, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 A_SpawnItem("TankShotExplosion");
+			TNT1 A 20;
+			Stop;
+		Death.Stomp:
+			NULL AAAA 0 A_CustomMissile ("MetalTrashParticle1", 96, 0, random (0, 360), 2, random (0, 180));
+			NULL AAAA 0 A_CustomMissile ("MetalTrashParticle2", 96, 0, random (0, 360), 2, random (0, 180));
+			ELEC E 1;
+			TNT1 A 0 A_NoBlocking();
+			ELEC E -1;
+			Stop;
+	}
+}
+CLASS NewTree02 1297 : ACTOR { 
+	Default {
+		
+		Scale 1.0;
+		+SOLID;
+		height 96;
+		radius 16;
+		Mass 9999999;
+		+SHOOTABLE;
+		+NOBLOOD;
+		DamageFactor "Stomp", 50.0;
+		DamageFactor "Cut", 0.7;
+		Health 300;
+		deathsound "TREEDIE";
+	}
+	states
+	{
+		Spawn:
+			TREE B 1;
+			TREE B -1;
+			Stop;
+		Death:
+			TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves1", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAA 0 A_CustomMissile ("TreeLeaves2", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAA 0 A_CustomMissile ("Tree2Piece1", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAA 0 A_CustomMissile ("Tree2Piece2", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 A_NoBlocking();
+			TNT1 A 0 A_Scream();
+			Stop;
+	}
+}
+CLASS Tree2Piece1: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 10;
+	}
+	States
+	{
+		Spawn:
+			TP12 A 2;
+			Loop;
+		Death:
+			TP12 A 1;
+			TP12 A -1;
+			Stop;
+	}
+}
+CLASS Tree2Piece2: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 8;
+	}
+	States
+	{
+		Spawn:
+			TP12 B 2;
+			Loop;
+		Death:
+			TP12 B 1;
+			TP12 B -1;
+			Stop;
+	}
+}
+CLASS NewTree03 1298 : ACTOR { 
+	Default {
+		
+		Scale 1.0;
+		+SOLID;
+		height 96;
+		radius 16;
+		Mass 9999999;
+		+SHOOTABLE;
+		+NOBLOOD;
+		deathsound "TREEDIE";
+		DamageFactor "Stomp", 50.0;
+		DamageFactor "Cut", 0.7;
+		Health 300;
+	}
+	states
+	{
+		Spawn:
+			TREE C 1;
+			TREE C -1;
+			Stop;
+		Death:
+			TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves1", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAA 0 A_CustomMissile ("TreeLeaves2", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAA 0 A_CustomMissile ("Tree3Piece1", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAA 0 A_CustomMissile ("Tree3Piece2", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 A_NoBlocking();
+			TNT1 A 0 A_Scream();
+			Stop;
+	}
+}
+CLASS Tree3Piece1: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 10;
+	}
+	States
+	{
+		Spawn:
+			TP13 A 2;
+			Loop;
+		Death:
+			TP13 A 1;
+			TP13 A -1;
+			Stop;
+	}
+}
+CLASS Tree3Piece2: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 8;
+	}
+	States
+	{
+		Spawn:
+			TP13 B 2;
+			Loop;
+		Death:
+			TP13 B 1;
+			TP13 B-1;
+			Stop;
+	}
+}
+CLASS NewTree04 1299 : ACTOR { 
+	Default {
+		
+		Scale 1.0;
+		+SOLID;
+		height 96;
+		radius 16;
+		Mass 9999999;
+		+SHOOTABLE;
+		+NOBLOOD;
+		deathsound "TREEDIE";
+		DamageFactor "Stomp", 50.0;
+		DamageFactor "Cut", 0.7;
+		Health 300;
+	}
+	states
+	{
+		Spawn:
+			TREE D 1;
+			TREE D -1;
+			Stop;
+		Death:
+			TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves1", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAA 0 A_CustomMissile ("TreeLeaves2", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAA 0 A_CustomMissile ("Tree4Piece1", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAA 0 A_CustomMissile ("Tree4Piece2", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AA 0 A_CustomMissile ("Tree4Piece3", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 A_NoBlocking();
+			TNT1 A 0 A_Scream();
+			Stop;
+	}
+}
+CLASS Tree4Piece3: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 8;
+	}
+	States
+	{
+		Spawn:
+			TP14 C 2;
+			Loop;
+		Death:
+			TP14 C 1;
+			TP14 C -1;
+			Stop;
+	}
+}
+CLASS NewTree06 1305 : ACTOR { 
+	Default {
+		
+		Scale 1.0;
+		+SOLID;
+		height 96;
+		radius 16;
+		Mass 9999999;
+		+SHOOTABLE;
+		+NOBLOOD;
+		deathsound "TREEDIE";
+		DamageFactor "Stomp", 50.0;
+		DamageFactor "Cut", 0.7;
+		Health 300;
+	}
+	states
+	{
+		Spawn:
+			TREE D 1;
+			TREE D -1;
+			Stop;
+		Death:
+			TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves1", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAA 0 A_CustomMissile ("TreeLeaves2", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAA 0 A_CustomMissile ("Tree4Piece1", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAA 0 A_CustomMissile ("Tree4Piece2", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AA 0 A_CustomMissile ("Tree4Piece3", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 A_NoBlocking();
+			TNT1 A 0 A_Scream();
+			Stop;
+	}
+}
+CLASS Tree4Piece1: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 10;
+	}
+	States
+	{
+		Spawn:
+			TP14 A 2;
+			Loop;
+		Death:
+			TP14 A 1;
+			TP14 A -1;
+			Stop;
+	}
+}
+CLASS Tree4Piece2: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 8;
+	}
+	States
+	{
+		Spawn:
+			TP14 B 2;
+			Loop;
+		Death:
+			TP14 B 1;
+			TP14 B -1;
+			Stop;
+	}
+}
+CLASS NewTree05 1300 : ACTOR { 
+	Default {
+		
+		Scale 1.0;
+		+SOLID;
+		height 96;
+		radius 16;
+		Mass 9999999;
+		+SHOOTABLE;
+		+NOBLOOD;
+		deathsound "TREEDIE";
+		DamageFactor "Stomp", 50.0;
+		DamageFactor "Cut", 0.7;
+		Health 300;
+	}
+	states
+	{
+		Spawn:
+			TREE E 1;
+			TREE E -1;
+			Stop;
+		Death:
+			TNT1 AAAAAAAAAAAAAAAA 0 A_CustomMissile ("TreeLeaves1", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAA 0 A_CustomMissile ("TreeLeaves2", 120, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAA 0 A_CustomMissile ("Tree5Piece1", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAA 0 A_CustomMissile ("Tree5Piece2", 140, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 A_NoBlocking();
+			TNT1 A 0 A_Scream();
+			Stop;
+	}
+}
+CLASS Tree5Piece1: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 10;
+	}
+	States
+	{
+		Spawn:
+			TP15 A 2;
+			Loop;
+		Death:
+			TP15 A 1;
+			TP15 A -1;
+			Stop;
+	}
+}
+CLASS Tree5Piece2: TreeLeaves1 { 
+	Default {
+		
+		Gravity 0.9;
+		Speed 8;
+	}
+	States
+	{
+		Spawn:
+			TP15 B 2;
+			Loop;
+		Death:
+			TP15 B 1;
+			TP15 B -1;
+			Stop;
+	}
+}
+CLASS ExplosionFire: BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		Radius 1;
+		Height 1;
+		Alpha 1.0;
+		RenderStyle "Translucent";
+		Scale 1.5;
+		Speed 3;
+	}
+	States
+	{
+		Spawn:
+			SMOK A 0;
+			Goto Death;
+		Death:
+			FIR3 ABCDEFGHIJKLMNOP 1 BRIGHT A_SpawnItem("RedFlare");
+			Stop;
+	}
+}
+CLASS DestroyedBuildingSmoke: BasicParticle { 
+	Default {
+		
+		-NOGRAVITY;
+		+DOOMBOUNCE;
+		BounceFactor 0.1;
+		Radius 0;
+		Height 0;
+		Alpha 0.4;
+		RenderStyle "Translucent";
+		Scale 3.0;
+		Speed 2;
+		Gravity 0.1;
+	}
+	States
+	{
+		Spawn:
+			SMO3 A 50;
+			SMO3 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeOut(0.006);
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS DestroyedBuildingSmokeSpawner: DestroyedBuildingSmoke { 
+	Default {
+		
+		Speed 10;
+		Gravity 0.2;
+	}
+	States
+	{
+		Spawn:
+			SMO3 AAAA 10 A_SpawnItem("DestroyedBuildingSmoke");
+			SMO3 AAAAAAAAAAAAAAAA 1 A_FadeOut(0.03);
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS StoneParticle1: BasicParticle { 
+	Default {
+		
+		+DOOMBOUNCE;
+		-NOGRAVITY;
+		-THRUACTORS;
+		Gravity 0.8;
+		Scale 0.8;
+		BounceFactor 0.4;
+		+BOUNCEONACTORS;
+		Damage 0;
+		Speed 16;
+		Radius 4;
+		Height 4;
+	}
+	States
+	{
+		Spawn:
+			FLRB KLMN 3;
+		Death:
+			FLRB K 1;
+			FLRB K 300;
+			Stop;
+	}
+}
+CLASS StoneParticle2: BasicParticle { 
+	Default {
+		
+		+DOOMBOUNCE;
+		-NOGRAVITY;
+		-THRUACTORS;
+		Gravity 0.7;
+		Scale 0.6;
+		Damage 0;
+		+BOUNCEONACTORS;
+		Radius 4;
+		Height 4;
+		BounceFactor 0.4;
+		Speed 14;
+	}
+	States
+	{
+		Spawn:
+			FLRB NMLK 3;
+		Death:
+			FLRB N 1;
+			FLRB N 300;
+			Stop;
+	}
+}
+CLASS ExplosionParticle22 : BasicParticle { 
+	Default {
+		
+		Height 2;
+		Radius 2;
+		Mass 0;
+		RenderStyle "Add";
+		+DOOMBOUNCE;
+		BounceFactor 0.01;
+		Scale 0.18;
+		Gravity 0.9;
+		Speed 19;
+	}
+	States
+	{
+		Spawn:
+			SPRK AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_FadeOut(0.02);
+			Stop;
+	}
+}
+CLASS ExplosionSmoke22 : BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		BounceFactor 0.5;
+		Radius 0;
+		Height 0;
+		Alpha 0.2;
+		RenderStyle "Translucent";
+		Scale 1.8;
+		Speed 2;
+	}
+	States
+	{
+		Spawn:
+			SMO2 A 20;
+			SMO2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.006);
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS ExplosionSmokeSmall: ExplosionSmoke { 
+	Default {
+		
+		Scale 0.3;
+	}
+}
+CLASS ExplosionSmokeSmall2: ExplosionSmoke { 
+	Default {
+		
+		Speed 5;
+		Scale 0.6;
+	}
+}
+CLASS DestroyedBuildingSmokePillar: ExplosionSmoke { 
+	Default {
+		
+		Speed 4;
+		+SKYEXPLODE;
+		Alpha 0;
+		Scale 1.2;
+	}
+	states
+	{
+		Spawn:
+			SMK1 KKKKKK 2 A_FadeIn(0.1);
+			SMK1 K 100;
+		Death:
+			SMK1 KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK 2 A_FadeOut(0.03);
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS RocketSmokeTrail32: ExplosionSmoke { 
+	Default {
+		
+		Scale 0.25;
+		Renderstyle "Add";
+		Alpha 0.4;
+	}
+	States
+	{
+		Spawn:
+			SMO2 A 6;
+			TNT1 A 0 A_Stop();
+			SMO2 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_FadeOut(0.05);
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS HollywoodFire: BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		BounceFactor 0.5;
+		Radius 0;
+		Height 0;
+		Alpha 1.0;
+		RenderStyle "Translucent";
+		Scale 1.3;
+		Speed 1;
+	}
+	States
+	{
+		Spawn:
+			FIR3 ABCDEFGHIJKL 2 BRIGHT A_SpawnItem("RedFlare");
+			TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			FIR3 MNOP 2 BRIGHT;
+			//FIR3 PPPPPPPPPP 1 BRIGHT A_FadeOut(0.1)
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS HollywoodFire2: BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		BounceFactor 0.5;
+		Radius 0;
+		Height 0;
+		Alpha 1.0;
+		RenderStyle "Add";
+		Scale 1.5;
+		Speed 4;
+	}
+	States
+	{
+		Spawn:
+			FIR3 ABCDEFGHIJKL 2 BRIGHT;
+			TNT1 A 0 A_CustomMissile ("DestroyedBuildingSmokePillar", 5, 0, random (0, 360), 2, random (80, 100));
+			FIR3 MNOP 2 BRIGHT;
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS BigExplosion1112 : ACTOR { 
+	Default {
+		
+		+NOCLIP;
+		+THRUACTORS;
+		+MISSILE;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 Radius_Quake(5, 24, 0, 7, 0);
+			TNT1 A 0 Radius_Quake(2, 24, 0, 16, 0);
+			TNT1 A 0 A_SpawnItem("ExplosionFlareSpawnerSmall");
+			TNT1 AAAA 0 A_CustomMissile ("ExplosionFire", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticle", 50, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAA 0 A_CustomMissile ("HollywoodExplosion", 10, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAA 0 A_CustomMissile ("HollywoodFireBig", 10, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 9;
+			TNT1 AAAAAAAA 0 A_CustomMissile ("ExplosionSmoke", 40, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAA 0 A_CustomMissile ("ExplosionSmokeFast", 40, 0, random (0, 360), 2, random (0, 360));
+			TNT1 A 0 A_NoBlocking();
+			TNT1 A 0 A_PlaySound("weapons/rocklx", 5);
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_CustomMissile ("ExplosionSmokeFast", 0, 0, random (0, 360), 2, random (40, 120));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 4 A_CustomMissile ("ExplosionSmokeFast", 0, 0, random (0, 360), 2, random (40, 120));
+			Stop;
+	}
+}	
+CLASS HollywoodFireBig: HollywoodFire { 
+	Default {
+		
+		Scale 3.0;
+		Speed 3;
+	}
+	States
+	{
+		Spawn:
+			FIR3 ABCDEFGHIJKL 2 BRIGHT A_SpawnItem("RedFlare");
+			TNT1 AA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			FIR3 MNOP 2 BRIGHT;
+			Goto Death;
+	}
+}
+CLASS HollywoodExplosion: BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		BounceFactor 0.5;
+		Radius 0;
+		Height 0;
+		Alpha 1.0;
+		RenderStyle "Translucent";
+		Scale 0.9;
+		Speed 24;
+	}
+	States
+	{
+		Spawn:
+			FIR3 AAAAAA 2 BRIGHT A_CustomMissile ("HollywoodFire", 0, 0, random (0, 360), 2, random (0, 360));
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS SmallFireTrailVehicle: BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		Radius 1;
+		Height 1;
+		Alpha 1.0;
+		RenderStyle "Add";
+		Scale 0.8;
+		Speed 3;
+	}
+	States
+	{
+		Spawn:
+			SMOK A 0;
+			Goto Death;
+		Death:
+			FIR3 ABCDEFGHIJKLMNOP 1 BRIGHT A_SpawnItem("RedFlareSmall");
+			Stop;
+	}
+}
+CLASS ExplosionSmokeFast: ExplosionSmoke { 
+	Default {
+		
+		Speed 5;
+		Scale 1.0;
+	}
+}
+CLASS TankShotExplosion: BasicParticle { 
+	Default {
+		
+		+NOGRAVITY;
+		+DOOMBOUNCE;
+		BounceFactor 0.5;
+		Radius 0;
+		Height 0;
+		Alpha 1.0;
+		RenderStyle "Translucent";
+		Scale 1.8;
+		Speed 0;
+	}
+	States
+	{
+		Spawn:
+			tnt1 A 0;
+			TNT1 A 0 Radius_Quake(6, 12, 0, 32, 0);
+			TNT1 A 0 Radius_Quake(4, 12, 0, 48, 0);
+			TNT1 A 0 A_SpawnItem("ExplosionFlareSpawner", 0, 20);
+			TNT1 A 0 A_Jump(128, "Spawn2");
+			EXP1 ABCDEFGHIJKLMN 2 BRIGHT;
+			Goto Death;
+		Spawn2:
+			EXP2 ABCDEFGHIJKLMN 2 BRIGHT;
+			Goto Death;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+CLASS CityWindow 3567 : ACTOR { 
+	Default {
+		
+		+NOGRAVITY;
+		Height 1;
+		Radius 1;
+		Scale 1.0;
+		+SHOOTABLE;
+		Mass 999999999;
+		Health 60;
+	}
+	States
+	{
+		Spawn:
+			MISL A 1;
+			TNT1 A -1;
+			Stop;
+		Death:
+			TNT1 A 0 A_SpawnItem("DestroyedWindowDecalSpawner");
+			Stop;
+	}
+}
+CLASS CityWindowLarge: CityWindow 3568 { 
+	Default {
+		
+		Radius 32;
+	}
+}
+CLASS DestroyedWindowDecalSpawner : ACTOR { 
+	Default {
+		
+		Radius 2;
+		Height 2;
+		Speed 70;
+		Damage 0;
+		Scale 0.01;
+		Projectile;
+		+MISSILE;
+		Decal "DESTROYEDWINDOW";
+	}
+	States
+	{
+		Spawn:
+			MISL AAAAAAAAAAAAAAAAAAAA 1 A_Recoil(-5);
+			Stop;
+		Death:
+			TNT1 A 0;
+			TNT1 A 0 A_jump(64, "Death2");
+			TNT1 AAAA 0 A_CustomMissile ("StoneParticle2", 0, 0, random (0, 360), 2, random (30, 60));
+			TNT1 AAAA 0 A_CustomMissile ("StoneParticle1", 0, 0, random (0, 360), 2, random (30, 60));
+			TNT1 AAAA 0 A_CustomMissile ("DestroyedBuildingSmoke", 0, 0, random (0, 360), 2, random (-30, -60));
+			TNT1 AAAA 0 A_CustomMissile ("DestroyedBuildingSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 40));
+			TNT1 A 12;
+			Stop;
+		Death2:
+			TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("StoneParticle2", 0, 0, random (0, 360), 2, random (30, 60));
+			TNT1 AAAA 0 A_CustomMissile ("StoneParticle2", 0, 0, random (0, 360), 2, random (30, 60));
+			TNT1 AAAA 0 A_CustomMissile ("StoneParticle1", 0, 0, random (0, 360), 2, random (30, 60));
+			TNT1 AAAA 0 A_CustomMissile ("DestroyedBuildingSmoke", 0, 0, random (0, 360), 2, random (-30, -60));
+			TNT1 AAAA 0 A_CustomMissile ("DestroyedBuildingSmokeSpawner", 0, 0, random (0, 360), 2, random (0, 40));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 10 A_CustomMissile ("HollywoodFire2", 0, 0, random (0, 360), 2, random (40, 60));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 10 A_CustomMissile ("HollywoodFire2", 0, 0, random (0, 360), 2, random (40, 60));
+			Stop;
+	}
+}
+CLASS zombiemarine_prison : zombiemarine 11347 { 
+	Default {
+		
+		DamageType "PrisonPower";
+	}
+}
+// PIANO
+CLASS PlasmariflePiano : Plasmarifle 10450 { 
+	Default {
+		
+		Weapon.AmmoUse 0;
+		Weapon.AmmoUse2 0;
+		Weapon.KickBack 0;
+		Weapon.SlotNumber 4;
+		//Translation "0:255=192:207"
+	}
+	States
+	{
+		Ready:
+			2LSG A 1 A_WeaponReady();
+			Loop;
+		Deselect:
+			2LSG A 1 A_Lower();
+			2LSG AAAAAAAAAAAAA 0 A_Lower();
+			Loop;
+		Select:
+			2LSG A 1 A_Raise();
+			2LSG AAAAAAAAAAAAA 0 A_Raise();
+			Loop;
+		Fire:
+			2LSG A 0 A_FireCustomMissile("PlasmaBallPiano", -50, 0, 0, 0, 0);
+			2LSG A 0 A_FireCustomMissile("PlasmaBallPiano", 0, 0, 0, 0, 0);
+			2LSG A 5 A_FireCustomMissile("PlasmaBallPiano", 50, 0, 0, 0, 0);
+			2LSG A 1 A_ReFire();
+			Goto Ready;
+		AltFire:
+			2LSG A 2 A_FireCustomMissile("PlasmaBallPiano", 0, 0, 0, 0, 0);
+			2LSG A 1 A_ReFire();
+			goto Ready;
+		Spawn:
+			PLAS A -1;
+			Stop;
+	}
+}
+CLASS PlasmaRiflePiano2 : PlasmaRifle { 
+	Default {
+		
+		Weapon.AmmoUse 0;
+		Weapon.AmmoUse2 0;
+		Weapon.KickBack 0;
+		Weapon.SlotNumber 3;
+	}
+	States
+	{
+		Ready:
+			PLSG A 1 A_WeaponReady();
+			Loop;
+		Deselect:
+			PLSG A 1 A_Lower();
+			PLSG AAAAAAAAAAAAA 0 A_Lower();
+			Loop;
+		Select:
+			PLSG A 1 A_Raise();
+			PLSG AAAAAAAAAAAAA 0 A_Raise();
+			Loop;
+		Fire:
+			PLSG A 5 A_FirePlasma();
+			PLSG A 1 A_ReFire();
+			Goto Ready;
+		AltFire:
+			PLSG A 5 A_FireCustomMissile("PlasmaBallBounce", 0, 0, 0, 0, 0);
+			PLSG A 1 A_ReFire();
+			goto Ready;
+		Flash:
+			PLSF A 4 Bright A_Light1();
+			Goto LightDone;
+			PLSF B 4 Bright A_Light1();
+			Goto LightDone;
+		Spawn:
+			PLAS A -1;
+			Stop;
+	}
+}
+CLASS PlasmaBallPiano : PlasmaBall { //replaces PlasmaBall
+	Default {
+		
+		+RIPPER;
+		+BLOODLESSIMPACT;
+		speed 50;
+		height 2;
+		radius 3;
+		SeeSound "NULL";
+		DeathSound "NULL";
+	}
+}
+CLASS PlasmaBallBounce : PlasmaBall { 
+	Default {
+		
+		+RIPPER;
+		+BLOODLESSIMPACT;
+		+HEXENBOUNCE;
+		-NOGRAVITY;
+		bouncecount 5;
+		height 2;
+		radius 3;
+		SeeSound "NULL";
+		DeathSound "NULL";
+	}
+}
+CLASS C : ACTOR { 
+	Default {
+		
+		DeathSound "C";
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			goto Death;
+		Death:
+			TNT1 A 1 A_Scream();
+			TNT1 A 35;
+			stop;
+}}
+CLASS CS : C 	{ DeathSound "CS" } { 
+	Default {
+	}
+CLASS D : C 	{ DeathSound "D" } { 
+	Default {
+	}
+CLASS DS : C 	{ DeathSound "Ds" } { 
+	Default {
+	}
+CLASS E : C 	{ DeathSound "E" } { 
+	Default {
+	}
+CLASS F : C 	{ DeathSound "F" } { 
+	Default {
+	}
+CLASS FS : C 	{ DeathSound "FS" } { 
+	Default {
+	}
+CLASS G : C 	{ DeathSound "G" } { 
+	Default {
+	}
+CLASS GS : C 	{ DeathSound "GS" } { 
+	Default {
+	}
+CLASS A : C 	{ DeathSound "A" } { 
+	Default {
+	}
+CLASS AS : C 	{ DeathSound "AS" } { 
+	Default {
+	}
+CLASS B : C 	{ DeathSound "B" } { 
+	Default {
+	}
+CLASS CO : C 	{ DeathSound "CO" } { 
+	Default {
+	}
+CLASS COS : C 	{ DeathSound "COS" } { 
+	Default {
+	}
+CLASS DO : C 	{ DeathSound "DO" } { 
+	Default {
+	}
+CLASS DOS : C  	{ DeathSound "DOS" } { 
+	Default {
+	}
+CLASS EO : C	{ DeathSound "EO" } { 
+	Default {
+	}
+CLASS FO : C	{ DeathSound "FO" } { 
+	Default {
+	}
+CLASS FOS : C	{ DeathSound "FOS" } { 
+	Default {
+	}
+CLASS GO : C	{ DeathSound "GO" } { 
+	Default {
+	}
+CLASS GOS : C	{ DeathSound "GOS" } { 
+	Default {
+	}
+CLASS AO : C	{ DeathSound "AO" } { 
+	Default {
+	}
+CLASS AOS : C	{ DeathSound "AOS" } { 
+	Default {
+	}
+CLASS BO : C	{ DeathSound "BO" } { 
+	Default {
+	}
+CLASS COO : C	{ DeathSound "COO" } { 
+	Default {
+	}
+CLASS COOS : C	{ DeathSound "COOS" } { 
+	Default {
+	}
+CLASS DOO : C	{ DeathSound "DOO" } { 
+	Default {
+	}
+CLASS DOOS : C	{ DeathSound "DOOS" } { 
+	Default {
+	}
+CLASS EOO : C	{ DeathSound "EOO" } { 
+	Default {
+	}
+CLASS FOO : C	{ DeathSound "FOO" } { 
+	Default {
+	}
+CLASS FOOS : C	{ DeathSound "FOOS" } { 
+	Default {
+	}
+CLASS GOO : C	{ DeathSound "GOO" } { 
+	Default {
+	}
+CLASS GOOS : C	{ DeathSound "GOOS" } { 
+	Default {
+	}
+CLASS AOO : C	{ DeathSound "AOO" } { 
+	Default {
+	}
+CLASS AOOS : C  { DeathSound "AOOS" } { 
+	Default {
+	}
+CLASS BOO : C	{ DeathSound "BOO" } { 
+	Default {
+	}
+CLASS COOO : C	{ DeathSound "COOO" } { 
+	Default {
+	}
+CLASS VC : C	{ DeathSound "VC" } { 
+	Default {
+	}
+CLASS VCS : C 	{ DeathSound "VCS" } { 
+	Default {
+	}
+CLASS VD : C 	{ DeathSound "VD" } { 
+	Default {
+	}
+CLASS VDS : C 	{ DeathSound "VDs" } { 
+	Default {
+	}
+CLASS VE : C 	{ DeathSound "VE" } { 
+	Default {
+	}
+CLASS VF : C 	{ DeathSound "VF" } { 
+	Default {
+	}
+CLASS VFS : C 	{ DeathSound "VFS" } { 
+	Default {
+	}
+CLASS VG : C 	{ DeathSound "VG" } { 
+	Default {
+	}
+CLASS VGS : C 	{ DeathSound "VGS" } { 
+	Default {
+	}
+CLASS VA : C 	{ DeathSound "VA" } { 
+	Default {
+	}
+CLASS VAS : C 	{ DeathSound "VAS" } { 
+	Default {
+	}
+CLASS VB : C 	{ DeathSound "VB" } { 
+	Default {
+	}
+CLASS VCO : C 	{ DeathSound "VCO" } { 
+	Default {
+	}
+CLASS VCOS : C 	{ DeathSound "VCOS" } { 
+	Default {
+	}
+CLASS VDO : C 	{ DeathSound "VDO" } { 
+	Default {
+	}
+CLASS VDOS : C  { DeathSound "VDOS" } { 
+	Default {
+	}
+CLASS VEO : C	{ DeathSound "VEO" } { 
+	Default {
+	}
+CLASS VFO : C	{ DeathSound "VFO" } { 
+	Default {
+	}
+CLASS VFOS : C	{ DeathSound "VFOS" } { 
+	Default {
+	}
+CLASS VGO : C	{ DeathSound "VGO" } { 
+	Default {
+	}
+CLASS VGOS : C	{ DeathSound "VGOS" } { 
+	Default {
+	}
+CLASS VAO : C	{ DeathSound "VAO" } { 
+	Default {
+	}
+CLASS VAOS : C	{ DeathSound "VAOS" } { 
+	Default {
+	}
+CLASS VBO : C	{ DeathSound "VBO" } { 
+	Default {
+	}
+CLASS VCOO : C	{ DeathSound "VCOO" } { 
+	Default {
+	}
+CLASS VCOOS : C	{ DeathSound "VCOOS" } { 
+	Default {
+	}
+CLASS VDOO : C	{ DeathSound "VDOO" } { 
+	Default {
+	}
+CLASS VDOOS : C	{ DeathSound "VDOOS" } { 
+	Default {
+	}
+CLASS VEOO : C	{ DeathSound "VEOO" } { 
+	Default {
+	}
+CLASS VFOO : C	{ DeathSound "VFOO" } { 
+	Default {
+	}
+CLASS VFOOS : C	{ DeathSound "VFOOS" } { 
+	Default {
+	}
+CLASS VGOO : C	{ DeathSound "VGOO" } { 
+	Default {
+	}
+CLASS VGOOS : C	{ DeathSound "VGOOS" } { 
+	Default {
+	}
+CLASS VAOO : C	{ DeathSound "VAOO" } { 
+	Default {
+	}
+CLASS VAOOS : C { DeathSound "VAOOS" } { 
+	Default {
+	}
+CLASS VBOO : C	{ DeathSound "VBOO" } { 
+	Default {
+	}
+CLASS VCOOO : C	{ DeathSound "VCOOO" } { 
+	Default {
+	}
+CLASS TC : C	{ DeathSound "TC" } { 
+	Default {
+	}
+CLASS TCS : C 	{ DeathSound "TCS" } { 
+	Default {
+	}
+CLASS TD : C 	{ DeathSound "TD" } { 
+	Default {
+	}
+CLASS TDS : C 	{ DeathSound "TDs" } { 
+	Default {
+	}
+CLASS TE : C 	{ DeathSound "TE" } { 
+	Default {
+	}
+CLASS TF : C 	{ DeathSound "TF" } { 
+	Default {
+	}
+CLASS TFS : C 	{ DeathSound "TFS" } { 
+	Default {
+	}
+CLASS TG : C 	{ DeathSound "TG" } { 
+	Default {
+	}
+CLASS TGS : C 	{ DeathSound "TGS" } { 
+	Default {
+	}
+CLASS TA : C 	{ DeathSound "TA" } { 
+	Default {
+	}
+CLASS TAS : C 	{ DeathSound "TAS" } { 
+	Default {
+	}
+CLASS TB : C 	{ DeathSound "TB" } { 
+	Default {
+	}
+CLASS TCO : C 	{ DeathSound "TCO" } { 
+	Default {
+	}
+CLASS TCOS : C 	{ DeathSound "TCOS" } { 
+	Default {
+	}
+CLASS TDO : C 	{ DeathSound "TDO" } { 
+	Default {
+	}
+CLASS TDOS : C  { DeathSound "TDOS" } { 
+	Default {
+	}
+CLASS TEO : C	{ DeathSound "TEO" } { 
+	Default {
+	}
+CLASS TFO : C	{ DeathSound "TFO" } { 
+	Default {
+	}
+CLASS TFOS : C	{ DeathSound "TFOS" } { 
+	Default {
+	}
+CLASS TGO : C	{ DeathSound "TGO" } { 
+	Default {
+	}
+CLASS TGOS : C	{ DeathSound "TGOS" } { 
+	Default {
+	}
+CLASS TAO : C	{ DeathSound "TAO" } { 
+	Default {
+	}
+CLASS TAOS : C	{ DeathSound "TAOS" } { 
+	Default {
+	}
+CLASS TBO : C	{ DeathSound "TBO" } { 
+	Default {
+	}
+CLASS TCOO : C	{ DeathSound "TCOO" } { 
+	Default {
+	}
+CLASS TCOOS : C	{ DeathSound "TCOOS" } { 
+	Default {
+	}
+CLASS TDOO : C	{ DeathSound "TDOO" } { 
+	Default {
+	}
+CLASS TDOOS : C	{ DeathSound "TDOOS" } { 
+	Default {
+	}
+CLASS TEOO : C	{ DeathSound "TEOO" } { 
+	Default {
+	}
+CLASS TFOO : C	{ DeathSound "TFOO" } { 
+	Default {
+	}
+CLASS TFOOS : C	{ DeathSound "TFOOS" } { 
+	Default {
+	}
+CLASS TGOO : C	{ DeathSound "TGOO" } { 
+	Default {
+	}
+CLASS TGOOS : C	{ DeathSound "TGOOS" } { 
+	Default {
+	}
+CLASS TAOO : C	{ DeathSound "TAOO" } { 
+	Default {
+	}
+CLASS TAOOS : C { DeathSound "TAOOS" } { 
+	Default {
+	}
+CLASS TBOO : C	{ DeathSound "TBOO" } { 
+	Default {
+	}
+CLASS TCOOO : C	{ DeathSound "TCOOO" } { 
+	Default {
+	}
+CLASS HC : C	{ DeathSound "HC" } { 
+	Default {
+	}
+CLASS HCS : C 	{ DeathSound "HCS" } { 
+	Default {
+	}
+CLASS HD : C 	{ DeathSound "HD" } { 
+	Default {
+	}
+CLASS HDS : C 	{ DeathSound "HDs" } { 
+	Default {
+	}
+CLASS HE : C 	{ DeathSound "HE" } { 
+	Default {
+	}
+CLASS HF : C 	{ DeathSound "HF" } { 
+	Default {
+	}
+CLASS HFS : C 	{ DeathSound "HFS" } { 
+	Default {
+	}
+CLASS HG : C 	{ DeathSound "HG" } { 
+	Default {
+	}
+CLASS HGS : C 	{ DeathSound "HGS" } { 
+	Default {
+	}
+CLASS HA : C 	{ DeathSound "HA" } { 
+	Default {
+	}
+CLASS HAS : C 	{ DeathSound "HAS" } { 
+	Default {
+	}
+CLASS HB : C 	{ DeathSound "HB" } { 
+	Default {
+	}
+CLASS HCO : C 	{ DeathSound "HCO" } { 
+	Default {
+	}
+CLASS HCOS : C 	{ DeathSound "HCOS" } { 
+	Default {
+	}
+CLASS HDO : C 	{ DeathSound "HDO" } { 
+	Default {
+	}
+CLASS HDOS : C  { DeathSound "HDOS" } { 
+	Default {
+	}
+CLASS HEO : C	{ DeathSound "HEO" } { 
+	Default {
+	}
+CLASS HFO : C	{ DeathSound "HFO" } { 
+	Default {
+	}
+CLASS HFOS : C	{ DeathSound "HFOS" } { 
+	Default {
+	}
+CLASS HGO : C	{ DeathSound "HGO" } { 
+	Default {
+	}
+CLASS HGOS : C	{ DeathSound "HGOS" } { 
+	Default {
+	}
+CLASS HAO : C	{ DeathSound "HAO" } { 
+	Default {
+	}
+CLASS HAOS : C	{ DeathSound "HAOS" } { 
+	Default {
+	}
+CLASS HBO : C	{ DeathSound "HBO" } { 
+	Default {
+	}
+CLASS HCOO : C	{ DeathSound "HCOO" } { 
+	Default {
+	}
+CLASS HCOOS : C	{ DeathSound "HCOOS" } { 
+	Default {
+	}
+CLASS HDOO : C	{ DeathSound "HDOO" } { 
+	Default {
+	}
+CLASS HDOOS : C	{ DeathSound "HDOOS" } { 
+	Default {
+	}
+CLASS HEOO : C	{ DeathSound "HEOO" } { 
+	Default {
+	}
+CLASS HFOO : C	{ DeathSound "HFOO" } { 
+	Default {
+	}
+CLASS HFOOS : C	{ DeathSound "HFOOS" } { 
+	Default {
+	}
+CLASS HGOO : C	{ DeathSound "HGOO" } { 
+	Default {
+	}
+CLASS HGOOS : C	{ DeathSound "HGOOS" } { 
+	Default {
+	}
+CLASS HAOO : C	{ DeathSound "HAOO" } { 
+	Default {
+	}
+CLASS HAOOS : C { DeathSound "HAOOS" } { 
+	Default {
+	}
+CLASS HBOO : C	{ DeathSound "HBOO" } { 
+	Default {
+	}
+CLASS HCOOO : C	{ DeathSound "HCOOO" } { 
+	Default {
+	}
+CLASS MC : C 	{ DeathSound "MC" } { 
+	Default {
+	}
+CLASS MCS : C 	{ DeathSound "MCS" } { 
+	Default {
+	}
+CLASS MD : C 	{ DeathSound "MD" } { 
+	Default {
+	}
+CLASS MDS : C 	{ DeathSound "MDs" } { 
+	Default {
+	}
+CLASS ME : C 	{ DeathSound "ME" } { 
+	Default {
+	}
+CLASS MF : C 	{ DeathSound "MF" } { 
+	Default {
+	}
+CLASS MFS : C 	{ DeathSound "MFS" } { 
+	Default {
+	}
+CLASS MG : C 	{ DeathSound "MG" } { 
+	Default {
+	}
+CLASS MGS : C 	{ DeathSound "MGS" } { 
+	Default {
+	}
+CLASS MA : C 	{ DeathSound "MA" } { 
+	Default {
+	}
+CLASS MAS : C 	{ DeathSound "MAS" } { 
+	Default {
+	}
+CLASS MB : C 	{ DeathSound "MB" } { 
+	Default {
+	}
+CLASS MCO : C 	{ DeathSound "MCO" } { 
+	Default {
+	}
+CLASS MCOS : C 	{ DeathSound "MCOS" } { 
+	Default {
+	}
+CLASS MDO : C 	{ DeathSound "MDO" } { 
+	Default {
+	}
+CLASS MDOS : C  { DeathSound "MDOS" } { 
+	Default {
+	}
+CLASS MEO : C	{ DeathSound "MEO" } { 
+	Default {
+	}
+CLASS MFO : C	{ DeathSound "MFO" } { 
+	Default {
+	}
+CLASS MFOS : C	{ DeathSound "MFOS" } { 
+	Default {
+	}
+CLASS MGO : C	{ DeathSound "MGO" } { 
+	Default {
+	}
+CLASS MGOS : C	{ DeathSound "MGOS" } { 
+	Default {
+	}
+CLASS MAO : C	{ DeathSound "MAO" } { 
+	Default {
+	}
+CLASS MAOS : C	{ DeathSound "MAOS" } { 
+	Default {
+	}
+CLASS MBO : C	{ DeathSound "MBO" } { 
+	Default {
+	}
+CLASS MCOO : C	{ DeathSound "MCOO" } { 
+	Default {
+	}
+CLASS MCOOS : C	{ DeathSound "MCOOS" } { 
+	Default {
+	}
+CLASS MDOO : C	{ DeathSound "MDOO" } { 
+	Default {
+	}
+CLASS MDOOS : C	{ DeathSound "MDOOS" } { 
+	Default {
+	}
+CLASS MEOO : C	{ DeathSound "MEOO" } { 
+	Default {
+	}
+CLASS MFOO : C	{ DeathSound "MFOO" } { 
+	Default {
+	}
+CLASS MFOOS : C	{ DeathSound "MFOOS" } { 
+	Default {
+	}
+CLASS MGOO : C	{ DeathSound "MGOO" } { 
+	Default {
+	}
+CLASS MGOOS : C	{ DeathSound "MGOOS" } { 
+	Default {
+	}
+CLASS MAOO : C	{ DeathSound "MAOO" } { 
+	Default {
+	}
+CLASS MAOOS : C { DeathSound "MAOOS" } { 
+	Default {
+	}
+CLASS MBOO : C	{ DeathSound "MBOO" } { 
+	Default {
+	}
+CLASS MCOOO : C	{ DeathSound "MCOOO" } { 
+	Default {
+	}
+CLASS SC : C	{ DeathSound "SC" } { 
+	Default {
+	}
+CLASS SCS : C 	{ DeathSound "SCS" } { 
+	Default {
+	}
+CLASS SD : C 	{ DeathSound "SD" } { 
+	Default {
+	}
+CLASS SDS : C 	{ DeathSound "SDs" } { 
+	Default {
+	}
+CLASS SE : C 	{ DeathSound "SE" } { 
+	Default {
+	}
+CLASS SF : C 	{ DeathSound "SF" } { 
+	Default {
+	}
+CLASS SFS : C 	{ DeathSound "SFS" } { 
+	Default {
+	}
+CLASS SG : C 	{ DeathSound "SG" } { 
+	Default {
+	}
+CLASS SGS : C 	{ DeathSound "SGS" } { 
+	Default {
+	}
+CLASS SA : C 	{ DeathSound "SA" } { 
+	Default {
+	}
+CLASS SAS : C 	{ DeathSound "SAS" } { 
+	Default {
+	}
+CLASS SB : C 	{ DeathSound "SB" } { 
+	Default {
+	}
+CLASS SCO : C 	{ DeathSound "SCO" } { 
+	Default {
+	}
+CLASS SCOS : C 	{ DeathSound "SCOS" } { 
+	Default {
+	}
+CLASS SDO : C 	{ DeathSound "SDO" } { 
+	Default {
+	}
+CLASS SDOS : C  { DeathSound "SDOS" } { 
+	Default {
+	}
+CLASS SEO : C	{ DeathSound "SEO" } { 
+	Default {
+	}
+CLASS SFO : C	{ DeathSound "SFO" } { 
+	Default {
+	}
+CLASS SFOS : C	{ DeathSound "SFOS" } { 
+	Default {
+	}
+CLASS SGO : C	{ DeathSound "SGO" } { 
+	Default {
+	}
+CLASS SGOS : C	{ DeathSound "SGOS" } { 
+	Default {
+	}
+CLASS SAO : C	{ DeathSound "SAO" } { 
+	Default {
+	}
+CLASS SAOS : C	{ DeathSound "SAOS" } { 
+	Default {
+	}
+CLASS SBO : C	{ DeathSound "SBO" } { 
+	Default {
+	}
+CLASS SCOO : C	{ DeathSound "SCOO" } { 
+	Default {
+	}
+CLASS SCOOS : C	{ DeathSound "SCOOS" } { 
+	Default {
+	}
+CLASS SDOO : C	{ DeathSound "SDOO" } { 
+	Default {
+	}
+CLASS SDOOS : C	{ DeathSound "SDOOS" } { 
+	Default {
+	}
+CLASS SEOO : C	{ DeathSound "SEOO" } { 
+	Default {
+	}
+CLASS SFOO : C	{ DeathSound "SFOO" } { 
+	Default {
+	}
+CLASS SFOOS : C	{ DeathSound "SFOOS" } { 
+	Default {
+	}
+CLASS SGOO : C	{ DeathSound "SGOO" } { 
+	Default {
+	}
+CLASS SGOOS : C	{ DeathSound "SGOOS" } { 
+	Default {
+	}
+CLASS SAOO : C	{ DeathSound "SAOO" } { 
+	Default {
+	}
+CLASS SAOOS : C { DeathSound "SAOOS" } { 
+	Default {
+	}
+CLASS SBOO : C	{ DeathSound "SBOO" } { 
+	Default {
+	}
+CLASS SCOOO : C	{ DeathSound "SCOOO" } { 
+	Default {
+	}
+CLASS Kick : C 		{ DeathSound "KICK" } { 
+	Default {
+	}
+CLASS Hat : C  		{ DeathSound "HAT" } { 
+	Default {
+	}
+CLASS Snare : C 	{ DeathSound "SNARE" } { 
+	Default {
+	}
+CLASS "Crash" : C 	{ DeathSound "CRASH" } { 
+	Default {
+	}
+CLASS Ride : C 		{ DeathSound "RIDE" } { 
+	Default {
+	}
+CLASS TomA : C		{ DeathSound "TOMA" } { 
+	Default {
+	}
+CLASS TomB : C		{ DeathSound "TOMB" } { 
+	Default {
+	// DBZONE
+	//====================================================================================================
+	// Mercenary Enemies
+	//====================================================================================================
+	ACTOR Brawler 30001;
+	
+	// white
+Translation "112:127=80:95"
+	//SpawnID 201
+	Health 200;
+	Radius 16;
+	Height 56;
+	//Speed 12
+	Speed 6;
+	Mass 200;
+	PainChance 150;
+	MONSTER;
+	+FLOORCLIP;
+	MeleeSound "weapons/fist";
+	PainSound "player/male/pain100_1";
+	DeathSound "player/male/death1";
+	HitObituary "%o was killed by a brawler."();
+	MeleeDamage 2;
+	}
+	States
+	{
+Spawn:
+	MERC AB 10 A_Look();
+	Loop;
+See:
+	//MERC AABBCCDD 2 A_Chase
+	MERC AAAABBBBCCCCDDDD 1 A_Chase();
+	Loop;
+Melee:
+	MERC E 3 A_FaceTarget();
+	MERC F 3 A_MeleeAttack();
+	MERC E 7;
+	Goto See;
+Pain:
+	MERC G 3;
+	MERC G 3 A_Pain();
+	Goto See;
+Death:
+	MERC H 5;
+	MERC I 5 A_Scream();
+	MERC J 5 A_Fall();
+	MERC K 5;
+	MERC L 5;
+	MERC M 5;
+	MERC N -1;
+	Stop;
+XDeath:
+	MERC O 5;
+	MERC P 5 A_XScream();
+	MERC Q 5 A_Fall();
+	MERC RSTUV 5;
+	MERC W -1;
+	Stop;
+Raise:
+	MERC MLKJIH 5;
+	Goto See;
+}
+}
+CLASS Berserker 30002 : ACTOR { 
+	Default {
+ 
+	// purple
+	Translation "112:116=250:250", "117:119=251:251", "120:121=252:252", "122:123=253:253", "124:127=254:254"
+	//SpawnID 202
+	Health 200
+	Radius 16
+	Height 56
+	Speed 7
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	MeleeSound "weapons/fist"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	HitObituary "%o was killed by a berserker."
+	MeleeDamage 25
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Melee:
+		MERC E 3 A_FaceTarget
+		MERC F 3 A_MeleeAttack
+		MERC E 7
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Chainsawer 30003 : ACTOR { 
+	Default {
+ 
+	// tan
+	Translation "112:127=128:143"
+	//SpawnID 203
+	Health 200
+	Radius 16
+	Height 56
+	Speed 6
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	SeeSound "weapons/sawup"
+	AttackSound "weapons/sawhit"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	HitObituary "%o was killed by a chainsawer."
+	//DropItem Chainsaw
+	MeleeDamage 3
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		MERC A 0 A_PlaySound ("weapons/sawidle")
+		Loop
+Melee:
+		MERC E 2 A_FaceTarget
+		MERC F 2 A_MeleeAttack
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Pistoleer 30004 : ACTOR { 
+	Default {
+ 
+	// grey
+	Translation "112:127=96:111"
+	//SpawnID 204
+	Health 100
+	Radius 16
+	Height 56
+	Speed 6
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/pistol"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a pistoleer."
+	DropItem Clip
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 2 A_FaceTarget
+		MERC E 5 A_FaceTarget
+		MERC F 6 Bright A_CustomBulletAttack (5.6, 0, 1, 5, "BulletPuff")
+		MERC E 8 A_CPosRefire
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Shotgunner 30005 : ACTOR { 
+	Default {
+ 
+	// orange
+	Translation "112:127=208:223"
+	//SpawnID 205
+	Health 100
+	Radius 16
+	Height 56
+	Speed 6
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/shotgf"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a shotgunner."
+	DropItem Shotgun
+	Decal BulletChip
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 2 A_FaceTarget
+		MERC E 5 A_FaceTarget
+		MERC F 7 Bright A_CustomBulletAttack (5.6, 3.7, 7, 5, "BulletPuff")
+		MERC E 27
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Chaingunner 30006 : ACTOR { 
+	Default {
+ 
+	// yellow
+	Translation "112:124=160:166", "125:127=167:167"
+	//SpawnID 206
+	Health 150
+	Radius 16
+	Height 56
+	Speed 6
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/chngun"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a chaingunner."
+	DropItem Chaingun
+	Decal BulletChip
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 2 A_FaceTarget
+		MERC E 5 A_FaceTarget
+		MERC F 2 Bright A_CustomBulletAttack (5.6, 3.7, 1, 5, "BulletPuff")
+		MERC E 2 A_CPosRefire
+		Goto Missile+2
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Supershotgunner 30007 : ACTOR { 
+	Default {
+ 
+	// red
+	Translation "112:127=176:191"
+	//SpawnID 207
+	Health 100
+	Radius 16
+	Height 56
+	Speed 6
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/sshotf"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a supershotgunner."
+	DropItem SuperShotgun
+	Decal BulletChip
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 2 A_FaceTarget
+		MERC E 5 A_FaceTarget
+		MERC E 0 A_PlaySound ("weapons/sshotf")
+		MERC F 7 Bright A_CustomBulletAttack (11, 7, 15, 5, "BulletPuff")
+		MERC E 14
+		MERC E 14 A_PlaySound ("weapons/sshoto")
+		MERC E 13 A_PlaySound ("weapons/sshotl")
+		MERC E 11 A_PlaySound ("weapons/sshotc")
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Rocketeer 30008 : ACTOR { 
+	Default {
+ 
+	// brown
+	Translation "112:127=64:79"
+	//SpawnID 208
+	Health 300
+	Radius 16
+	Height 56
+	Speed 5
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/rocklf"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a rocketeer."
+	DropItem RocketLauncher
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 8 A_FaceTarget
+		MERC F 12 A_CustomMissile ("Rocket", 32, 0, 0)
+		MERC E 8 A_SpidRefire
+		Goto Missile+1
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Plasmagunner 30009 : ACTOR { 
+	Default {
+ 
+	// blue
+	Translation "112:127=192:207"
+	//SpawnID 209
+	Health 100
+	Radius 16
+	Height 56
+	Speed 6
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/plasmaf"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a plasmagunner."
+	DropItem PlasmaRifle
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 5 A_FaceTarget
+		MERC F 2 Bright A_CustomMissile ("PlasmaBall", 32, 0, 0)
+		MERC E 1 A_SpidRefire
+		Goto Missile+1
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS Railgunner 30010 : ACTOR { 
+	Default {
+ 
+	// indigo
+	Translation "112:114=240:240", "115:124=241:246", "125:127=0:0"
+	//SpawnID 210
+	Health 100
+	Radius 16
+	Height 56
+	Speed 5
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	AttackSound "weapons/railgf"
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was killed by a railgunner."
+	//DropItem BlueRailgun
+	DropItem Cell
+	Decal RailScorchLower
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 2 A_FaceTarget
+		MERC E 5 A_FaceTarget
+		MERC F 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		MERC E 40
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC O 5
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+CLASS BFG_Gunner 30011 : ACTOR { 
+	Default {
+ 
+	// green
+	Translation "112:127=112:127"
+	//SpawnID 211
+	Health 100
+	Radius 16
+	Height 56
+	Speed 4
+	Mass 200
+	PainChance 150
+	MONSTER 
+	+FLOORCLIP
+	PainSound "player/male/pain100_1"
+	DeathSound "player/male/death1"
+	Obituary "%o was on the wrong end of a bfg."
+	//DropItem BFG9000
+	DropItem Cell
+	}
+	States
+	{
+Spawn:
+		MERC AB 10 A_Look
+		Loop
+See:
+		MERC AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		MERC E 0 A_FaceTarget
+		MERC E 3 A_PlaySound ("weapons/bfgf")
+		MERC EEEEEEEEE 3 A_FaceTarget
+		MERC F 10 A_CustomMissile ("BFGBall", 32, 0, 0)
+		MERC E 20
+		Goto See
+Pain:
+		MERC G 3
+		MERC G 3 A_Pain
+		Goto See
+Death:
+		MERC H 5
+		MERC I 5 A_Scream
+		MERC J 5 A_Fall
+		MERC K 5
+		MERC L 5
+		MERC M 5
+		MERC N -1
+		Stop
+XDeath:
+		MERC P 5 A_XScream
+		MERC Q 5 A_Fall
+		MERC RSTUV 5
+		MERC W -1
+		Stop
+Raise:
+		MERC MLKJIH 5
+		Goto See
+	}
+}
+//====================================================================================================
+CLASS FurryTails 30013 : ACTOR { 
+	Default {
+ 
+	//SpawnID 
+	Health 3000
+	Radius 16
+	Height 44
+	Speed 5
+	Mass 200
+	PainChance 20
+	MONSTER
+	+FLOORCLIP
+	//ActiveSound "none"
+	//SeeSound "none"
+	//AttackSound "none"
+	//PainSound "none"
+	//DeathSound "none"
+	Obituary "%o was railed by a cute fox."
+	Decal RailScorchLower
+	}
+	States
+	{
+Spawn:
+		TAIL AC 10 A_Look
+		Loop
+See:
+		TAIL AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		TAIL E 2 A_FaceTarget
+		TAIL E 5 A_FaceTarget
+		TAIL E 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		TAIL E 15
+		Goto See
+Melee:
+		TAIL E 2 A_FaceTarget
+		TAIL E 5 A_FaceTarget
+		TAIL E 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		TAIL E 15
+		Goto See
+Pain:
+		TAIL G 3
+		TAIL G 3 A_Pain
+		Goto See
+Death:
+		TAIL H 8
+		TAIL I 8 A_Scream
+		TAIL J 8 A_Fall
+		TAIL K 8
+		TAIL L 70
+		TFOG A 6 Bright
+		TFOG B 6 Bright
+		TFOG C 6 Bright
+		TFOG D 6 Bright
+		TFOG E 6 Bright
+		TFOG F 6 Bright
+		TFOG G 6 Bright
+		TFOG H 6 Bright
+		TFOG I 6 Bright
+		TFOG J 6 Bright
+		Stop
+XDeath:
+		TAIL H 8
+		TAIL I 8 A_Scream
+		TAIL J 8 A_Fall
+		TAIL K 8
+		TAIL L 70
+		TFOG A 6 Bright
+		TFOG B 6 Bright
+		TFOG C 6 Bright
+		TFOG D 6 Bright
+		TFOG E 6 Bright
+		TFOG F 6 Bright
+		TFOG G 6 Bright
+		TFOG H 6 Bright
+		TFOG I 6 Bright
+		TFOG J 6 Bright
+		Stop
+Raise:
+		TAIL LKJIH 5
+		Goto See
+	}
+}
+CLASS FuzzyTails 30014 : ACTOR { 
+	Default {
+ 
+	//SpawnID 
+	Health 6000
+	Radius 16
+	Height 44
+	Speed 5
+	Mass 200
+	PainChance 20
+	MONSTER
+	+FLOORCLIP
+	//ActiveSound "none"
+	//SeeSound "none"
+	//AttackSound "none"
+	//PainSound "none"
+	//DeathSound "none"
+	Obituary "%o was railed by a invisible fox."
+	Decal RailScorchLower
+	RenderStyle "Fuzzy"
+	}
+	States
+	{
+Spawn:
+		TAIL AC 10 A_Look
+		Loop
+See:
+		TAIL AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		TAIL E 2 A_FaceTarget
+		TAIL E 5 A_FaceTarget
+		TAIL E 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		TAIL E 15
+		Goto See
+Melee:
+		TAIL E 2 A_FaceTarget
+		TAIL E 5 A_FaceTarget
+		TAIL E 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		TAIL E 15
+		Goto See
+Pain:
+		TAIL G 3
+		TAIL G 3 A_Pain
+		Goto See
+Death:
+		TAIL H 8
+		TAIL I 0 A_SetTranslucent(1.0, 0)
+		TAIL I 8 A_Scream
+		TAIL J 8 A_Fall
+		TAIL K 8
+		TAIL L 70
+		TFOG A 6 Bright
+		TFOG B 6 Bright
+		TFOG C 6 Bright
+		TFOG D 6 Bright
+		TFOG E 6 Bright
+		TFOG F 6 Bright
+		TFOG G 6 Bright
+		TFOG H 6 Bright
+		TFOG I 6 Bright
+		TFOG J 6 Bright
+		Stop
+XDeath:
+		TAIL H 8
+		TAIL I 0 A_SetTranslucent(1.0, 0)
+		TAIL I 8 A_Scream
+		TAIL J 8 A_Fall
+		TAIL K 8
+		TAIL L 70
+		TFOG A 6 Bright
+		TFOG B 6 Bright
+		TFOG C 6 Bright
+		TFOG D 6 Bright
+		TFOG E 6 Bright
+		TFOG F 6 Bright
+		TFOG G 6 Bright
+		TFOG H 6 Bright
+		TFOG I 6 Bright
+		TFOG J 6 Bright
+		Stop
+Raise:
+		TAIL LKJIH 5
+		Goto See
+	}
+}
+CLASS InvulnerableTails 30015 : ACTOR { 
+	Default {
+ 
+	//SpawnID 
+	Health 3000
+	Radius 16
+	Height 44
+	Speed 5
+	Mass 200
+	PainChance 20
+	MONSTER
+	+FLOORCLIP
+	//ActiveSound "none"
+	//SeeSound "none"
+	//AttackSound "none"
+	//PainSound "none"
+	//DeathSound "none"
+	Obituary "%o was railed by a invulnerable fox."
+	Decal RailScorchLower
+	+INVULNERABLE
+	}
+	States
+	{
+Spawn:
+		TAIL AC 10 A_Look
+		Loop
+See:
+		TAIL AAAABBBBCCCCDDDD 1 A_Chase
+		Loop
+Missile:
+		TAIL E 2 A_FaceTarget
+		TAIL E 5 A_FaceTarget
+		TAIL E 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		TAIL E 15
+		Goto See
+Melee:
+		TAIL E 2 A_FaceTarget
+		TAIL E 5 A_FaceTarget
+		TAIL E 5 A_CustomRailgun(90 , 0 , "00 00 FF", "FF FF FF", 0, 0, 0)
+		TAIL E 15
+		Goto See
+Pain:
+		TAIL G 3
+		TAIL G 3 A_Pain
+		Goto See
+Death:
+		TAIL H 8
+		TAIL I 8 A_Scream
+		TAIL J 8 A_Fall
+		TAIL K 8
+		TAIL L 70
+		TFOG A 6 Bright
+		TFOG B 6 Bright
+		TFOG C 6 Bright
+		TFOG D 6 Bright
+		TFOG E 6 Bright
+		TFOG F 6 Bright
+		TFOG G 6 Bright
+		TFOG H 6 Bright
+		TFOG I 6 Bright
+		TFOG J 6 Bright
+		Stop
+XDeath:
+		TAIL H 8
+		TAIL I 8 A_Scream
+		TAIL J 8 A_Fall
+		TAIL K 8
+		TAIL L 70
+		TFOG A 6 Bright
+		TFOG B 6 Bright
+		TFOG C 6 Bright
+		TFOG D 6 Bright
+		TFOG E 6 Bright
+		TFOG F 6 Bright
+		TFOG G 6 Bright
+		TFOG H 6 Bright
+		TFOG I 6 Bright
+		TFOG J 6 Bright
+		Stop
+Raise:
+		TAIL LKJIH 5
+		Goto See
+	}
+}
+CLASS NewCyberdemon 30016 : ACTOR { 
+	Default {
+ 
+	Translation "16:31=226:231", "32:47=160:167", "168:179=226:231", "180:191=160:167", "208:215=226:231", "216:223=160:167", "232:235=164:167"
+	Health 8000
+	Radius 40
+	Height 110
+	Mass 1000
+	Speed 16
+	PainChance 20
+	Monster
+	MinMissileChance 160
+	+BOSS 
+	+MISSILEMORE
+	+FLOORCLIP
+	+NORADIUSDMG
+	+DONTMORPH
+	+BOSSDEATH
+	SeeSound "cyber/sight"
+	PainSound "cyber/pain"
+	DeathSound "cyber/death"
+	ActiveSound "cyber/active"
+	Obituary "%o wad splattered by a cyberdemon."
+	BloodColor "Yellow"
+	}
+	States
+	{
+Spawn:
+		CYBR AB 10 A_Look
+		Loop
+See:
+		CYBR A 3 A_Hoof
+		CYBR ABBCC 3 A_Chase
+		CYBR D 3 A_Metal
+		CYBR D 3 A_Chase
+		Loop
+Missile:
+		CYBR E 6 A_FaceTarget
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 0)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 20)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, -20)
+		CYBR F 6 Bright
+		CYBR E 6 A_FaceTarget
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 0)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 20)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, -20)
+		CYBR F 6 Bright
+		CYBR E 6 A_FaceTarget
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 0)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 20)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, -20)
+		CYBR F 6 Bright
+		CYBR E 6 A_FaceTarget
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 0)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 20)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, -20)
+		CYBR F 6 Bright
+		CYBR E 6 A_FaceTarget
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 0)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, 20)
+		CYBR F 0 A_CustomMissile ("Rocket", 32, 0, -20)
+		CYBR F 6 Bright
+		CYBR E 6 A_FaceTarget
+		Goto See
+Pain:
+		CYBR G 10 A_Pain
+		Goto See
+Death:
+		CYBR H 10
+		CYBR I 10 A_Scream
+		CYBR JKL 10
+		CYBR M 10 A_NoBlocking
+		CYBR NO 10
+		CYBR P 30
+		CYBR P -1 A_BossDeath
+		Stop
+	}
+}
+CLASS SilverArmor : BasicArmorPickup 30017 { 
+	Default {
+ 
+	//SpawnID 217
+	Inventory.PickupSound "misc/i_pkup"
+	Inventory.PickupMessage "Picked up the SilverArmor!"
+	Armor.SavePercent 99
+	Armor.SaveAmount 200
+	Inventory.Icon ARMSA0
+	+FLOORCLIP
+	}
+	States
+	{
+Spawn:
+		ARMS A -1 Bright
+		Stop
+	} 
+}
+CLASS Moon 30018 : ACTOR { 
+	Default {
+ 
+	Height 1
+	Radius 1
+	scale 0.25
+	+NOGRAVITY
+	}
+	states
+	{
+Spawn:
+		MOON A -1 Bright
+		stop
+	}
+}
+//====================================================================================================
+CLASS RadSuit2 : PowerupGiver replaces RadSuit { 
+	Default {
+ 
+	//SpawnID 136
+	Height 46
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	Inventory.MaxAmount 0
+	Inventory.PickupMessage "$GOTSUIT"
+	Powerup.Type IronFeet
+	Powerup.Color 67 110 255 0.15
+	}
+	States
+	{
+Spawn:
+		SUIT A -1 Bright
+		Stop
+	}
+}
+//====================================================================================================

@@ -1,0 +1,285 @@
+//=================================================================================================
+//
+// Items
+//
+//=================================================================================================
+
+//=================================================================================================
+//
+// Red armor spawner
+//
+//=================================================================================================
+
+CLASS RedArmorSpot : CustomPickupInvasionSpot 5237 { 
+	Default {
+		
+		//Game Doom
+		DropItem "RedArmor";
+	}
+}
+
+
+//=================================================================================================
+//
+// Monsters
+//
+//=================================================================================================
+
+//=================================================================================================
+//
+// Weak monster spawner
+//
+//=================================================================================================
+
+CLASS WeakMonsterSpot : CustomMonsterInvasionSpot replaces WeakDoomMonsterSpot { 
+	Default {
+		
+		//Game Doom
+		DropItem "ZombieMan";
+		DropItem "ShotgunGuy";
+		DropItem "DoomImp";
+		DropItem "DarkImp";
+		DropItem "Demon";
+		DropItem "BloodDemon";
+		DropItem "LostSoul";
+	}
+}
+
+//=================================================================================================
+//
+// Powerful monster spawner
+//
+//=================================================================================================
+
+CLASS PowerfulMonsterSpot : CustomMonsterInvasionSpot replaces PowerfulDoomMonsterSpot { 
+	Default {
+		
+		//Game Doom
+		DropItem "ChaingunGuy";
+		DropItem "SuperShotgunGuy";
+		DropItem "Cacodemon";
+		DropItem "Cacolantern";
+		DropItem "Revenant";
+		DropItem "HellKnight";
+		DropItem "BaronOfHell";
+		DropItem "Arachnotron";
+		DropItem "Fatso";
+		DropItem "PainElemental";
+	}
+}
+
+//=================================================================================================
+//
+// Very powerful monster spawner
+//
+//=================================================================================================
+
+CLASS VeryPowerfulMonsterSpot : CustomMonsterInvasionSpot replaces VeryPowerfulDoomMonsterSpot { 
+	Default {
+		
+		//Game Doom
+		DropItem "Abaddon";
+		DropItem "Hectebus";
+		DropItem "Belphegor";
+		DropItem "Archvile";
+	}
+}
+
+//=================================================================================================
+//
+// Any monster spawner
+//
+//=================================================================================================
+
+CLASS AnyMonsterSpot : CustomMonsterInvasionSpot replaces AnyDoomMonsterSpot { 
+	Default {
+		
+		//Game Doom
+		DropItem "DoomImp";
+		DropItem "DarkImp";
+		DropItem "Demon";
+		DropItem "Spectre";
+		DropItem "BloodDemon";
+		DropItem "ZombieMan";
+		DropItem "ShotgunGuy";
+		DropItem "ChaingunGuy";
+		DropItem "SuperShotgunGuy";
+		DropItem "Cacodemon";
+		DropItem "Cacolantern";
+		DropItem "Abaddon";
+		DropItem "Revenant";
+		DropItem "Fatso";
+		DropItem "Hectebus";
+		DropItem "Arachnotron";
+		DropItem "HellKnight";
+		DropItem "BaronOfHell";
+		DropItem "Belphegor";
+		DropItem "LostSoul";
+		DropItem "PainElemental";
+		DropItem "Cyberdemon";
+		DropItem "SpiderMastermind";
+		DropItem "Archvile";
+	}
+}
+
+//=================================================================================================
+//
+// Dark imp spawner
+//
+//=================================================================================================
+
+CLASS DarkImpSpot : CustomMonsterInvasionSpot 5206 { 
+	Default {
+		
+		//Game Doom
+		DropItem "DarkImp";
+	}
+}
+
+//=================================================================================================
+//
+// Blood demon spawner
+//
+//=================================================================================================
+
+CLASS BloodDemonSpot : CustomMonsterInvasionSpot 5209 { 
+	Default {
+		
+		//Game Doom
+		DropItem "BloodDemon";
+	}
+}
+
+//=================================================================================================
+//
+// Super shotgun guy spawner
+//
+//=================================================================================================
+
+CLASS SuperShotgunGuySpot : CustomMonsterInvasionSpot 5213 { 
+	Default {
+		
+		//Game Doom
+		DropItem "SuperShotgunGuy";
+	}
+}
+
+//=================================================================================================
+//
+// Cacolantern spawner
+//
+//=================================================================================================
+
+CLASS CacolanternSpot : CustomMonsterInvasionSpot 5215 { 
+	Default {
+		
+		//Game Doom
+		DropItem "Cacolantern";
+	}
+}
+
+//=================================================================================================
+//
+// Abaddon spawner
+//
+//=================================================================================================
+
+CLASS AbaddonSpot : CustomMonsterInvasionSpot 5216 { 
+	Default {
+		
+		//Game Doom
+		DropItem "Abaddon";
+	}
+}
+
+//=================================================================================================
+//
+// Hectebus spawner
+//
+//=================================================================================================
+
+CLASS HectebusSpot : CustomMonsterInvasionSpot 5219 { 
+	Default {
+		
+		//Game Doom
+		DropItem "Hectebus";
+	}
+}
+
+//=================================================================================================
+//
+// Belphegor spawner
+//
+//=================================================================================================
+
+CLASS BelphegorSpot : CustomMonsterInvasionSpot 5223 { 
+	Default {
+		
+		//Game Doom
+		DropItem "Belphegor";
+	}
+}
+
+
+//=================================================================================================
+//
+// Weapons
+//
+//=================================================================================================
+
+//=================================================================================================
+//
+// Minigun spawner
+//
+//=================================================================================================
+
+CLASS MinigunSpot : CustomWeaponInvasionSpot 5271 { 
+	Default {
+		
+		//Game Doom
+		DropItem "Minigun";
+	}
+}
+
+//=================================================================================================
+//
+// Grenade launcher spawner
+//
+//=================================================================================================
+
+CLASS GrenadeLauncherSpot : CustomWeaponInvasionSpot 5273 { 
+	Default {
+		
+		//Game Doom
+		DropItem "GrenadeLauncher";
+	}
+}
+
+//=================================================================================================
+//
+// Railgun spawner
+//
+//=================================================================================================
+
+CLASS RailgunSpot : CustomWeaponInvasionSpot 5275 { 
+	Default {
+		
+		//Game Doom
+		DropItem "Railgun";
+	}
+}
+
+//=================================================================================================
+//
+// BFG10K spawner
+//
+//=================================================================================================
+
+CLASS BFG10KSpot : CustomWeaponInvasionSpot 5277 { 
+	Default {
+		
+		//Game Doom
+		DropItem "BFG10K";
+	}
+}
+
