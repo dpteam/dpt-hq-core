@@ -248,7 +248,7 @@ ACTOR NuclearBarrel : DPTHQ_ExplosiveBarrel 16001
 		TNT1 AAAAAA 0 A_SpawnIteMEx("NukeRadiation3",random(2000,-2000),random(2000,-2000),random(0, 85))
 		TNT1 AAAAAA 0 A_SpawnIteMEx("NukeRadiation4",random(2000,-2000),random(2000,-2000),random(0, 85))
 		TNT1 A -1
-		TNT1 A 0 A_SpawnItemEx("T800_Death", 0, 0, 0, 0, 0, 0, 0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx("Explosion", 0, 0, 0, 0, 0, 0, 0,SXF_NOCHECKPOSITION,0) // WORKER
 		TNT1 A 5 A_NoBlocking
 		TNT1 A -1
 		Stop	

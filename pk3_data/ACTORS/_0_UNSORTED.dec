@@ -2,7 +2,7 @@
 ACTOR Firing : Inventory {}
 ACTOR Tourettes_BulletPuff : BulletPuff {}
 ACTOR XDeathGibs {}
-ACTOR GrowingBloodPool : Brutal_Blood {}
+ACTOR GrowingBloodPool : Blood {}
 ACTOR XDeathOrgan1 {}
 ACTOR XDeathOrgan2 {}
 ACTOR Bloodmist {}
