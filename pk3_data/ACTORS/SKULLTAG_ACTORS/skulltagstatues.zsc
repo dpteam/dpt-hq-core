@@ -4,12 +4,12 @@
 //
 //=================================================================================================
 
-CLASS ImpStatue 5110 : ACTOR { 
+class ImpStatue 5110 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 20;
 		Height 56;
 		+SOLID;
@@ -28,12 +28,12 @@ CLASS ImpStatue 5110 : ACTOR {
 //
 //=================================================================================================
 
-CLASS DemonStatue 5111 : ACTOR { 
+class DemonStatue 5111 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 30;
 		Height 56;
 		+SOLID;
@@ -52,12 +52,12 @@ CLASS DemonStatue 5111 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ArchvileStatue 5112 : ACTOR { 
+class ArchvileStatue 5112 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 20;
 		Height 56;
 		+SOLID;
@@ -76,12 +76,12 @@ CLASS ArchvileStatue 5112 : ACTOR {
 //
 //=================================================================================================
 
-CLASS BaronStatue 5113 : ACTOR { 
+class BaronStatue 5113 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 24;
 		Height 64;
 		+SOLID;
@@ -100,12 +100,12 @@ CLASS BaronStatue 5113 : ACTOR {
 //
 //=================================================================================================
 
-CLASS CyberdemonStatue 5114 : ACTOR { 
+class CyberdemonStatue 5114 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 40;
 		Height 110;
 		+SOLID;
@@ -124,12 +124,12 @@ CLASS CyberdemonStatue 5114 : ACTOR {
 //
 //=================================================================================================
 
-CLASS MassmouthStatue 5115 : ACTOR { 
+class MassmouthStatue 5115 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 24;
 		Height 64;
 		XScale 0.5;

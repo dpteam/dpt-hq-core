@@ -1,4 +1,4 @@
-CLASS Skimmer : ACTOR { 
+class Skimmer : actor { 
 	Default {
 		
 		Health 300;
@@ -17,7 +17,7 @@ CLASS Skimmer : ACTOR {
 		+NOGRAVITY;
 		+NOBLOOD;
 		+DONTRIP;
-		+SPAWNCEILING;
+		+SpawnCEILING;
 	}
 	States
 	{
@@ -29,7 +29,7 @@ CLASS Skimmer : ACTOR {
 			Loop;
 		Missile:
 			SKIM A 12 A_FaceTarget();
-			SKIM B 0 A_PlayWeaponSound("Skimmer/Burst");
+			SKIM B 0 A_PlayweaponSound("Skimmer/Burst");
 			SKIM B 0 BRIGHT A_CustomMissile("EnemySMGTracer", 26, 35);
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
@@ -96,7 +96,7 @@ CLASS Skimmer : ACTOR {
 	}
 }
 
-CLASS Skimmer_F : Skimmer 22202 { 
+class Skimmer_F : Skimmer 22202 { 
 	Default {
 		
 		+FRIENDLY;

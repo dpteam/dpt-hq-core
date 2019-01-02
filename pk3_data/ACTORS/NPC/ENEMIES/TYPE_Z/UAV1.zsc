@@ -1,4 +1,4 @@
-CLASS UAV1 : ACTOR { 
+class UAV1 : actor { 
 	Default {
 		
 		Health 300;
@@ -17,7 +17,7 @@ CLASS UAV1 : ACTOR {
 		+NOGRAVITY;
 		+NOBLOOD;
 		+DONTRIP;
-		+SPAWNCEILING;
+		+SpawnCEILING;
 	}
 	States
 	{
@@ -109,7 +109,7 @@ CLASS UAV1 : ACTOR {
 	}
 }
 
-CLASS UAV1MiniMissile : FastProjectile { 
+class UAV1MiniMissile : FastProjectile { 
 	Default {
 		
 		Radius 11;
@@ -137,7 +137,7 @@ CLASS UAV1MiniMissile : FastProjectile {
 }
 	
 	
-CLASS MiniMissileTrail : ACTOR { 
+class MiniMissileTrail : actor { 
 	Default {
 		
 		Alpha 1.0;

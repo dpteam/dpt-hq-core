@@ -1,4 +1,4 @@
-CLASS BumSpawner : RandomSpawner 17451 { 
+class BumSpawner : RandomSpawner 17451 { 
 	Default {
 		
 		DropItem "WWTPanhandler";
@@ -16,14 +16,14 @@ CLASS BumSpawner : RandomSpawner 17451 {
 	}
 }
 
-CLASS BumSpawner_F : BumSpawner 22104 { 
+class BumSpawner_F : BumSpawner 22104 { 
 	Default {
 		
 		+FRIENDLY;
 	}
 }
 
-CLASS WWTPanhandler : ACTOR { 
+class WWTPanhandler : actor { 
 	Default {
 		
 		MONSTER;
@@ -79,7 +79,7 @@ CLASS WWTPanhandler : ACTOR {
 	}
 }
 
-CLASS WWTPanhandler2 : WWTPanhandler { 
+class WWTPanhandler2 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -94,7 +94,7 @@ CLASS WWTPanhandler2 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler3 : WWTPanhandler { 
+class WWTPanhandler3 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -109,7 +109,7 @@ CLASS WWTPanhandler3 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler4 : WWTPanhandler { 
+class WWTPanhandler4 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -124,7 +124,7 @@ CLASS WWTPanhandler4 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler5 : WWTPanhandler { 
+class WWTPanhandler5 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -139,7 +139,7 @@ CLASS WWTPanhandler5 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler6 : WWTPanhandler { 
+class WWTPanhandler6 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -154,7 +154,7 @@ CLASS WWTPanhandler6 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler7 : WWTPanhandler { 
+class WWTPanhandler7 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -169,7 +169,7 @@ CLASS WWTPanhandler7 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler8 : WWTPanhandler { 
+class WWTPanhandler8 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -184,7 +184,7 @@ CLASS WWTPanhandler8 : WWTPanhandler {
 	}
 }
 
-CLASS WWTPanhandler9 : WWTPanhandler { 
+class WWTPanhandler9 : WWTPanhandler { 
 	Default {
 		
 	}
@@ -198,7 +198,7 @@ CLASS WWTPanhandler9 : WWTPanhandler {
 			Loop;
 	}
 }
-CLASS WWTPanhandlerA : WWTPanhandler { 
+class WWTPanhandlerA : WWTPanhandler { 
 	Default {
 		
 	}
@@ -212,7 +212,7 @@ CLASS WWTPanhandlerA : WWTPanhandler {
 			Loop;
 	}
 }
-CLASS WWTPanhandlerB : WWTPanhandler { 
+class WWTPanhandlerB : WWTPanhandler { 
 	Default {
 		
 	}
@@ -226,7 +226,7 @@ CLASS WWTPanhandlerB : WWTPanhandler {
 			Loop;
 	}
 }
-CLASS WWTPanhandlerC : WWTPanhandler { 
+class WWTPanhandlerC : WWTPanhandler { 
 	Default {
 		
 	}

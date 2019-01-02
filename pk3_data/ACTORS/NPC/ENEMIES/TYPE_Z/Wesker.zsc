@@ -1,7 +1,6 @@
-CLASS Wesker : ACTOR { 
+class Wesker : actor { 
 	Default {
 		
-		//SpawnID 114
 		YScale 0.35;
 		XScale 0.4;
 		Radius 20;
@@ -45,10 +44,10 @@ CLASS Wesker : ACTOR {
 			Loop;
 		Missile:
 			WESK FGG 3 A_FaceTarget();
-			WESK G 0 A_PlaySound("Mateba/WeskerFire", CHAN_WEAPON, 1.0, 0, ATTN_NONE);
+			WESK G 0 A_PlaySound("Mateba/WeskerFire", CHAN_weapon, 1.0, 0, ATTN_NONE);
 			WESK G 2 BRIGHT A_CustomMissile("WeskerPistolTracer", 32, 0, 0);
 			WESK G 18 A_FaceTarget();
-			WESK G 0 A_PlaySound("Mateba/WeskerFire", CHAN_WEAPON, 1.0, 0, ATTN_NONE);
+			WESK G 0 A_PlaySound("Mateba/WeskerFire", CHAN_weapon, 1.0, 0, ATTN_NONE);
 			WESK G 2 BRIGHT A_CustomMissile("WeskerPistolTracer", 32, 0, 0);
 			WESK H 3 A_TakeInventory("WeskerTauntSeq", 40);
 			WESK F 4;
@@ -88,7 +87,7 @@ CLASS Wesker : ACTOR {
 	}
 }
 
-CLASS WeskerPistolTracer : Tracer { 
+class WeskerPistolTracer : Tracer { 
 	Default {
 		
 		Damage (random(18,90));
@@ -98,7 +97,7 @@ CLASS WeskerPistolTracer : Tracer {
 	}
 }
 
-CLASS WeskerTauntSeq : Inventory { 
+class WeskerTauntSeq : Inventory { 
 	Default {
 		
 		Inventory.MaxAmount 40;

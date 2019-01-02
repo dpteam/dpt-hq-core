@@ -1,4 +1,4 @@
-CLASS DualieDooley : ACTOR { 
+class DualieDooley : actor { 
 	Default {
 		
 		YScale 0.35;
@@ -43,28 +43,28 @@ CLASS DualieDooley : ACTOR {
 			DTHG HF 8 A_FaceTarget();
 		MissileHold:
 			DTHG G 0 A_JumpIfInventory("UziLoaded", 8, "Reload");
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG F 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
-			DTHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			DTHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			DTHG G 1 BRIGHT A_CustomMissile("EnemyDualiesTracer", 50, 0, random(-6,6), 0, random (-3,3));
 			DTHG G 0 A_GiveInventory("UziLoaded",1);
@@ -107,7 +107,7 @@ CLASS DualieDooley : ACTOR {
 	}
 }
 
-CLASS DualieDooley_F : DualieDooley 22215 { 
+class DualieDooley_F : DualieDooley 22215 { 
 	Default {
 		
 		+FRIENDLY;

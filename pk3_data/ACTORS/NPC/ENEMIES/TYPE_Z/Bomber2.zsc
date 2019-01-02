@@ -1,7 +1,6 @@
-CLASS Bomber2 : ACTOR { 
+class Bomber2 : actor { 
 	Default {
 		
-		//SpawnID 112
 		YScale 0.35;
 		XScale 0.4;
 		Radius 20;
@@ -33,7 +32,7 @@ CLASS Bomber2 : ACTOR {
 			BMB2 BCDE 6 A_Chase();
 			Loop;
 		Missile:
-			BMB2 F 0 A_PlayWeaponSound("Grenade/Throw");
+			BMB2 F 0 A_PlayweaponSound("Grenade/Throw");
 			BMB2 AF 8 A_FaceTarget();
 			BMB2 G 0 A_Jump(64, "Missile2");
 			BMB2 G 5 A_CustomMissile("EnemyGrenade", 40, 0, random(-2,2));
@@ -42,17 +41,17 @@ CLASS Bomber2 : ACTOR {
 		Missile2:
 			BMB2 F 2 A_PlaySound("Throws/Male08", CHAN_VOICE);
 			BMB2 G 2 A_CustomMissile("EnemyGrenade", 40, 0, random(-10.0,-8.0));
-			BMB2 F 0 A_PlayWeaponSound("Grenade/Throw");
+			BMB2 F 0 A_PlayweaponSound("Grenade/Throw");
 			BMB2 H 5;
 			BMB2 A 2;
 			BMB2 F 2 A_PlaySound("Throws/Male08", CHAN_VOICE);
 			BMB2 G 2 A_CustomMissile("EnemyGrenade", 40, 0, random(-2,2));
-			BMB2 F 0 A_PlayWeaponSound("Grenade/Throw");
+			BMB2 F 0 A_PlayweaponSound("Grenade/Throw");
 			BMB2 H 5;
 			BMB2 A 2;
 			BMB2 F 2 A_PlaySound("Throws/Male08", CHAN_VOICE);
 			BMB2 G 2 A_CustomMissile("EnemyGrenade", 40, 0, random(8.0,10.0));
-			BMB2 F 0 A_PlayWeaponSound("Grenade/Throw");
+			BMB2 F 0 A_PlayweaponSound("Grenade/Throw");
 			BMB2 H 5;
 			BMB2 H 6;
 			Goto See;
@@ -76,7 +75,7 @@ CLASS Bomber2 : ACTOR {
 	}
 }
 
-CLASS Bomber2_F : Bomber2 22220 { 
+class Bomber2_F : Bomber2 22220 { 
 	Default {
 		
 		+FRIENDLY;

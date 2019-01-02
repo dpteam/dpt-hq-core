@@ -1,4 +1,4 @@
-CLASS TaserFemale : ACTOR { 
+class TaserFemale : actor { 
 	Default {
 		
 		XScale 0.38;

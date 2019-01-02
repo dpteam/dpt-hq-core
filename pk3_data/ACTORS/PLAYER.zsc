@@ -1,6 +1,6 @@
-CLASS "DPT-HQ-Player" : PlayerPawn { +NOSKIN } { 
+class "DPT-HQ-Player" : PlayerPawn { +NOSKIN } { 
 	Default {
-	ACTOR Guest : "DPT-HQ-Player"
+	actor Guest : "DPT-HQ-Player"
 		
 		DamageFactor "PrisonPower", 100.0;
 		Speed 1;
@@ -10,11 +10,11 @@ CLASS "DPT-HQ-Player" : PlayerPawn { +NOSKIN } {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "DPT.HQ Guest";
-		Player.SoundClass "guest";
+		Player.Soundclass "guest";
 		Player.StartItem "RivetGun";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -93,7 +93,7 @@ CLASS "DPT-HQ-Player" : PlayerPawn { +NOSKIN } {
 		ELIT GGGGGGGGGG 1 A_Stop();
 		ELIT G 0 A_SetPitch(-0.85);
 		ELIT GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		ELIT A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		ELIT A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		ELIT GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -163,7 +163,7 @@ CLASS "DPT-HQ-Player" : PlayerPawn { +NOSKIN } {
 }
 }
 
-CLASS RebelClass : "DPT-HQ-Player" { 
+class Rebelclass : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -174,11 +174,11 @@ CLASS RebelClass : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Rebel"
-		Player.SoundClass "RebelClass";
+		Player.Soundclass "Rebelclass";
 		Player.StartItem "RivetGun";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -257,7 +257,7 @@ CLASS RebelClass : "DPT-HQ-Player" {
 		STRM GGGGGGGGGG 1 A_Stop();
 		STRM G 0 A_SetPitch(-0.85);
 		STRM GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		STRM A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		STRM A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		STRM GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -326,7 +326,7 @@ CLASS RebelClass : "DPT-HQ-Player" {
 }
 }
 
-CLASS Armyman : "DPT-HQ-Player" { 
+class Armyman : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -338,16 +338,16 @@ CLASS Armyman : "DPT-HQ-Player" {
 	PainChance 255;
 	-FRIENDLY;// Experimental
 	Player.DisplayName "WIP: Army"
-		Player.SoundClass "Armyman";
+		Player.Soundclass "Armyman";
 		Player.StartItem "ArmymanSVD";
 		Player.StartItem "ArmymanRPG7";
 		Player.StartItem "ArmymanRPD";
 		Player.StartItem "ArmymanAK47";
 		Player.StartItem "ArmymanUnarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "RocketAmmo", 100;
+		Player.StartItem "Rocketammo", 100;
 		Player.StartItem "Clip", 400;
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -426,7 +426,7 @@ CLASS Armyman : "DPT-HQ-Player" {
 		OPFS GGGGGGGGGG 1 A_Stop();
 		OPFS G 0 A_SetPitch(-0.85);
 		OPFS GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		OPFS A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		OPFS A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		OPFS GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -495,7 +495,7 @@ CLASS Armyman : "DPT-HQ-Player" {
 }
 }
 
-CLASS Pocik : "DPT-HQ-Player" { 
+class Pocik : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -506,10 +506,10 @@ CLASS Pocik : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Pocik"
-		Player.SoundClass "Pocik";
+		Player.Soundclass "Pocik";
 		Player.StartItem "PocikUnarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -588,7 +588,7 @@ CLASS Pocik : "DPT-HQ-Player" {
 		POCK GGGGGGGGGG 1 A_Stop();
 		POCK G 0 A_SetPitch(-0.85);
 		POCK GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		POCK A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		POCK A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		POCK GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -657,7 +657,7 @@ CLASS Pocik : "DPT-HQ-Player" {
 }
 }
 
-CLASS Cop : "DPT-HQ-Player" { 
+class Cop : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 0.0;
@@ -669,7 +669,7 @@ CLASS Cop : "DPT-HQ-Player" {
 	PainChance 255;
 	+NOSKIN;
 	Player.DisplayName "DPT POLICE OFFICER";
-	Player.SoundClass "guest";
+	Player.Soundclass "guest";
 	Player.StartItem "Tazer";
 	Player.StartItem "JailPistol";
 	Player.StartItem "PrisonKey2";
@@ -747,7 +747,7 @@ CLASS Cop : "DPT-HQ-Player" {
 		FCOP NNNNNNNNNN 1 A_Stop();
 		FCOP N 0 A_SetPitch(-0.85);
 		FCOP NNNNNNNN 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		FCOP A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		FCOP A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		FCOP NNNNNNNN 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -806,7 +806,7 @@ CLASS Cop : "DPT-HQ-Player" {
 }
 }
 
-CLASS Mingebag : "DPT-HQ-Player" { 
+class Mingebag : "DPT-HQ-Player" { 
 	Default {
 	
 	Speed 1;
@@ -1011,7 +1011,7 @@ CLASS Mingebag : "DPT-HQ-Player" {
 		PLAY GGGGGGGGGG 1 A_Stop();
 		PLAY G 0 A_SetPitch(-0.85);
 		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		PLAY GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -1098,7 +1098,7 @@ CLASS Mingebag : "DPT-HQ-Player" {
 }
 }
 
-CLASS Mage : "DPT-HQ-Player" { 
+class Mage : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -1115,9 +1115,9 @@ CLASS Mage : "DPT-HQ-Player" {
 	RadiusDamageFactor 0.25;
 	//Player.JumpZ 9
 	Player.Viewheight 48;
-	Player.SpawnClass "Mage";
+	Player.Spawnclass "Mage";
 	Player.DisplayName "Mag";
-	Player.SoundClass "mageslayer";
+	Player.Soundclass "mageslayer";
 	Player.ScoreIcon "MAGEFACE";
 	Player.InvulnerabilityMode "Reflective";
 	Player.HealRadiusType "Mana";
@@ -1204,7 +1204,7 @@ CLASS Mage : "DPT-HQ-Player" {
 		MAGE GGGGGGGGGG 1 A_Stop();
 		MAGE G 0 A_SetPitch(-0.85);
 		MAGE GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		MAGE A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		MAGE A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		MAGE GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -1274,7 +1274,7 @@ CLASS Mage : "DPT-HQ-Player" {
 }
 }
 
-CLASS Healer : "DPT-HQ-Player" { 
+class Healer : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -1368,7 +1368,7 @@ CLASS Healer : "DPT-HQ-Player" {
 		PBAK GGGGGGGGGG 1 A_Stop();
 		PBAK G 0 A_SetPitch(-0.85);
 		PBAK GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		PBAK A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		PBAK A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		PBAK GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -1438,7 +1438,7 @@ CLASS Healer : "DPT-HQ-Player" {
 }
 }
 
-CLASS ImbaPers : "DPT-HQ-Player" { 
+class ImbaPers : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -1450,10 +1450,10 @@ CLASS ImbaPers : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Imba Pers"
-		Player.SoundClass "ImbaPers";
+		Player.Soundclass "ImbaPers";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -1532,7 +1532,7 @@ CLASS ImbaPers : "DPT-HQ-Player" {
 		ENFO GGGGGGGGGG 1 A_Stop();
 		ENFO G 0 A_SetPitch(-0.85);
 		ENFO GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		ENFO A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		ENFO A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		ENFO GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -1601,7 +1601,7 @@ CLASS ImbaPers : "DPT-HQ-Player" {
 }
 }
 
-CLASS CalebClass : "DPT-HQ-Player" { 
+class Calebclass : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -1612,10 +1612,10 @@ CLASS CalebClass : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Caleb"
-		Player.SoundClass "Caleb";
+		Player.Soundclass "Caleb";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -1694,7 +1694,7 @@ CLASS CalebClass : "DPT-HQ-Player" {
 		CALP GGGGGGGGGG 1 A_Stop();
 		CALP G 0 A_SetPitch(-0.85);
 		CALP GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		CALP A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		CALP A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		CALP GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -1763,7 +1763,7 @@ CLASS CalebClass : "DPT-HQ-Player" {
 }
 }
 
-CLASS Troll : "DPT-HQ-Player" { 
+class Troll : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -1774,10 +1774,10 @@ CLASS Troll : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Troll"
-		Player.SoundClass "player";
+		Player.Soundclass "player";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -1856,7 +1856,7 @@ CLASS Troll : "DPT-HQ-Player" {
 		TROL GGGGGGGGGG 1 A_Stop();
 		TROL G 0 A_SetPitch(-0.85);
 		TROL GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		TROL A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		TROL A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		TROL GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -1925,7 +1925,7 @@ CLASS Troll : "DPT-HQ-Player" {
 }
 }
 
-CLASS Ya_Zhe_MaTb : "DPT-HQ-Player" { 
+class Ya_Zhe_MaTb : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -1936,10 +1936,10 @@ CLASS Ya_Zhe_MaTb : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Ya_Zhe_MaTb"
-		Player.SoundClass "player";
+		Player.Soundclass "player";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -2018,7 +2018,7 @@ CLASS Ya_Zhe_MaTb : "DPT-HQ-Player" {
 		PLAY GGGGGGGGGG 1 A_Stop();
 		PLAY G 0 A_SetPitch(-0.85);
 		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		PLAY GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -2088,7 +2088,7 @@ CLASS Ya_Zhe_MaTb : "DPT-HQ-Player" {
 }
 }
 
-CLASS Brutal_Player : "DPT-HQ-Player" { 
+class Brutal_Player : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -2099,10 +2099,10 @@ CLASS Brutal_Player : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Brutal_Player"
-		Player.SoundClass "player";
+		Player.Soundclass "player";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -2181,7 +2181,7 @@ CLASS Brutal_Player : "DPT-HQ-Player" {
 		PLAY GGGGGGGGGG 1 A_Stop();
 		PLAY G 0 A_SetPitch(-0.85);
 		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		PLAY GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -2251,7 +2251,7 @@ CLASS Brutal_Player : "DPT-HQ-Player" {
 }
 }
 
-CLASS DartPower : "DPT-HQ-Player" { 
+class DartPower : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -2264,7 +2264,7 @@ CLASS DartPower : "DPT-HQ-Player" {
 	+NOSKIN;
 	Player.DamageScreenColor "00 88 FF";
 	Player.DisplayName "SIMPSON-NEKEK";
-	Player.SoundClass "DartPower";
+	Player.Soundclass "DartPower";
 	Player.StartItem "Icegun";
 	Player.StartItem "UACM360";
 	Player.StartItem "Gothic_Shotgun";
@@ -2352,7 +2352,7 @@ CLASS DartPower : "DPT-HQ-Player" {
 		CHUB GGGGGGGGGG 1 A_Stop();
 		CHUB G 0 A_SetPitch(-0.85);
 		CHUB GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		CHUB A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		CHUB A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		CHUB GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -2422,7 +2422,7 @@ CLASS DartPower : "DPT-HQ-Player" {
 }
 }
 
-CLASS Ronikari : "DPT-HQ-Player" { 
+class Ronikari : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -2433,11 +2433,11 @@ CLASS Ronikari : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Ronikari"
-		Player.SoundClass "Ronikari";
+		Player.Soundclass "Ronikari";
 		Player.StartItem "Auto9";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -2516,7 +2516,7 @@ CLASS Ronikari : "DPT-HQ-Player" {
 		RONI GGGGGGGGGG 1 A_Stop();
 		RONI G 0 A_SetPitch(-0.85);
 		RONI GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		RONI A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		RONI A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		RONI GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -2585,7 +2585,7 @@ CLASS Ronikari : "DPT-HQ-Player" {
 }
 }
 
-CLASS NickBock : "DPT-HQ-Player" { 
+class NickBock : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -2596,10 +2596,10 @@ CLASS NickBock : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: NickBock"
-		Player.SoundClass "player";
+		Player.Soundclass "player";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -2678,7 +2678,7 @@ CLASS NickBock : "DPT-HQ-Player" {
 		PLAY GGGGGGGGGG 1 A_Stop();
 		PLAY G 0 A_SetPitch(-0.85);
 		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		PLAY GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -2748,7 +2748,7 @@ CLASS NickBock : "DPT-HQ-Player" {
 }
 }
 
-CLASS Ovlab : "DPT-HQ-Player" { 
+class Ovlab : "DPT-HQ-Player" { 
 	Default {
 	
 	Scale 1.1;
@@ -2762,12 +2762,12 @@ CLASS Ovlab : "DPT-HQ-Player" {
 	+NOSKIN;
 	Player.DamageScreenColor "FF 00 00";
 	Player.DisplayName "Ovlab";
-	Player.SoundClass "ovlab";
+	Player.Soundclass "ovlab";
 	Player.StartItem "ScatterPistol";
 	Player.StartItem "Shredder";
 	Player.StartItem "Deviation";
 	Player.StartItem "BHGen";
-	Player.StartItem "MultiProjectileWeapon";
+	Player.StartItem "MultiProjectileweapon";
 	Player.StartItem "Karasawa";
 	Player.StartItem "Quadvolgue";
 	Player.StartItem "M16";
@@ -2775,11 +2775,11 @@ CLASS Ovlab : "DPT-HQ-Player" {
 	Player.StartItem "DoubleSMG";
 	Player.StartItem "Rifle";
 	Player.StartItem "Unarmed";
-	Player.StartItem "RifleAmmo", 150;
+	Player.StartItem "Rifleammo", 150;
 	Player.StartItem "Cell", 600;
 	Player.StartItem "Shell", 100;
-	Player.StartItem "RocketAmmo", 100;
-	Player.StartItem "AmmoCount", 300;
+	Player.StartItem "Rocketammo", 100;
+	Player.StartItem "ammoCount", 300;
 	Player.StartItem "Clip", 400;
 	Player.StartItem "Stamina", 999;
 	Player.StartItem "HungryLevel", 999;
@@ -2860,7 +2860,7 @@ CLASS Ovlab : "DPT-HQ-Player" {
 		WRIR GGGGGGGGGG 1 A_Stop();
 		WRIR G 0 A_SetPitch(-0.85);
 		WRIR GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		WRIR A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		WRIR A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		WRIR GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -2929,7 +2929,7 @@ CLASS Ovlab : "DPT-HQ-Player" {
 }
 }
 
-CLASS LazyPanda : "DPT-HQ-Player" { 
+class LazyPanda : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -2942,14 +2942,14 @@ CLASS LazyPanda : "DPT-HQ-Player" {
 	+NOSKIN;
 	Player.DamageScreenColor "FF 00 FF";
 	Player.DisplayName "LazyPanda";
-	Player.SoundClass "lazypanda";
+	Player.Soundclass "lazypanda";
 	Player.StartItem "Chainsaw";
 	Player.StartItem "DOOM42k16SSG";
 	Player.StartItem "BFG10K";
 	Player.StartItem "Pussy";
 	Player.StartItem "Clip", 400;
 	Player.StartItem "Shell", 100;
-	Player.StartItem "RocketAmmo", 100;
+	Player.StartItem "Rocketammo", 100;
 	Player.StartItem "Cell", 600;
 	Player.StartItem "Stamina", 999;
 	Player.StartItem "HungryLevel", 999;
@@ -3029,7 +3029,7 @@ CLASS LazyPanda : "DPT-HQ-Player" {
 		FPL3 GGGGGGGGGG 1 A_Stop();
 		FPL3 G 0 A_SetPitch(-0.85);
 		FPL3 GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		FPL3 A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		FPL3 A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		FPL3 GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -3099,7 +3099,7 @@ CLASS LazyPanda : "DPT-HQ-Player" {
 }
 }
 
-CLASS NighMare : "DPT-HQ-Player" { 
+class NighMare : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -3112,7 +3112,7 @@ CLASS NighMare : "DPT-HQ-Player" {
 	+NOSKIN;
 	Player.DamageScreenColor "00 00 FF";
 	Player.DisplayName "WIP: NighMare"
-		Player.SoundClass "NighMare";
+		Player.Soundclass "NighMare";
 		Player.StartItem "MurderKnife";
 		Player.StartItem "NighMareKatana";
 		Player.StartItem "Unarmed";
@@ -3196,7 +3196,7 @@ CLASS NighMare : "DPT-HQ-Player" {
 		1337 GGGGGGGGGG 1 A_Stop();
 		1337 G 0 A_SetPitch(-0.85);
 		1337 GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		1337 A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		1337 A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		1337 GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -3265,7 +3265,7 @@ CLASS NighMare : "DPT-HQ-Player" {
 }
 }
 
-CLASS Velaron : "DPT-HQ-Player" { 
+class Velaron : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -3276,10 +3276,10 @@ CLASS Velaron : "DPT-HQ-Player" {
 	Mass 100;
 	PainChance 255;
 	Player.DisplayName "WIP: Velaron"
-		Player.SoundClass "player";
+		Player.Soundclass "player";
 		Player.StartItem "Unarmed";
 		Player.StartItem "Dick";
-		Player.StartItem "SatchelAmmo", 5;
+		Player.StartItem "Satchelammo", 5;
 		Player.StartItem "Satcheler";
 		Player.StartItem "BlueSprayPaint";
 		Player.StartItem "RedSprayPaint";
@@ -3358,7 +3358,7 @@ CLASS Velaron : "DPT-HQ-Player" {
 		PLAY GGGGGGGGGG 1 A_Stop();
 		PLAY G 0 A_SetPitch(-0.85);
 		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		PLAY GGGGGGGG 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -3428,7 +3428,7 @@ CLASS Velaron : "DPT-HQ-Player" {
 }
 }
 
-CLASS Benellus : "DPT-HQ-Player" { 
+class Benellus : "DPT-HQ-Player" { 
 	Default {
 	
 	DamageFactor "PrisonPower", 100.0;
@@ -3444,7 +3444,7 @@ CLASS Benellus : "DPT-HQ-Player" {
 	//Player.JumpZ 2.5
 	Player.DamageScreenColor "FF FF FF";
 	Player.DisplayName "Benellus";
-	Player.SoundClass "benellus";
+	Player.Soundclass "benellus";
 	Player.StartItem "Unarmed";
 	Player.StartItem "DUMP3RevenantBox";
 	Player.StartItem "DUMP3Gibmaker";
@@ -3460,8 +3460,8 @@ CLASS Benellus : "DPT-HQ-Player" {
 	Player.StartItem "DUMP3ShiningHeartHammer";
 	Player.StartItem "Cell", 600;
 	Player.StartItem "Shell", 100;
-	Player.StartItem "RocketAmmo", 100;
-	Player.StartItem "AmmoCount", 300;
+	Player.StartItem "Rocketammo", 100;
+	Player.StartItem "ammoCount", 300;
 	Player.StartItem "Clip", 400;
 	Player.StartItem "Stamina", 999;
 	Player.StartItem "HungryLevel", 999;
@@ -3540,7 +3540,7 @@ CLASS Benellus : "DPT-HQ-Player" {
 		BENE AAAAAAAAAA 1 A_Stop();
 		BENE A 0 A_SetPitch(-0.85);
 		BENE AAAAAAAA 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-		BENE A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+		BENE A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 		BENE AAAAAAAA 1 A_Stop();
 		Goto Spawn_Drunk;
 	Missile:
@@ -3594,10 +3594,10 @@ CLASS Benellus : "DPT-HQ-Player" {
 }
 }
 
-CLASS WhiteFatShot : FatShot { Translation "176:191=80:95" } { 
+class WhiteFatShot : FatShot { Translation "176:191=80:95" } { 
 	Default {
 
-CLASS Zero775 : "DPT-HQ-Player" { 
+class Zero775 : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -3608,10 +3608,10 @@ CLASS Zero775 : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: Zero775"
-			Player.SoundClass "player";
+			Player.Soundclass "player";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Dick";
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -3690,7 +3690,7 @@ CLASS Zero775 : "DPT-HQ-Player" {
 			GARD GGGGGGGGGG 1 A_Stop();
 			GARD G 0 A_SetPitch(-0.85);
 			GARD GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			GARD A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			GARD A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			GARD GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -3759,7 +3759,7 @@ CLASS Zero775 : "DPT-HQ-Player" {
 	}
 }
 
-CLASS Oppressor1338 : "DPT-HQ-Player" { 
+class Oppressor1338 : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -3773,13 +3773,13 @@ CLASS Oppressor1338 : "DPT-HQ-Player" {
 		Player.DamageScreenColor "00 00 00";
 		Player.DisplayName "WIP: Oppressor1338"
 			// Пока этот пиздюк не даст скин со звуками >:(
-			//Player.SoundClass "oppressor"
-			Player.SoundClass "player";
+			//Player.Soundclass "oppressor"
+			Player.Soundclass "player";
 			Player.StartItem "Powercube";
 			Player.StartItem "STFBFG9000";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Cell", 600;
-			Player.StartItem "RocketAmmo", 100;
+			Player.StartItem "Rocketammo", 100;
 			Player.StartItem "Clip", 400;
 			Player.StartItem "Stamina", 999;
 			Player.StartItem "HungryLevel", 999;
@@ -3860,7 +3860,7 @@ CLASS Oppressor1338 : "DPT-HQ-Player" {
 			PLAY GGGGGGGGGG 1 A_Stop();
 			PLAY G 0 A_SetPitch(-0.85);
 			PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			PLAY GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -3930,7 +3930,7 @@ CLASS Oppressor1338 : "DPT-HQ-Player" {
 	}
 }
 
-CLASS Zendos : "DPT-HQ-Player" { 
+class Zendos : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -3943,7 +3943,7 @@ CLASS Zendos : "DPT-HQ-Player" {
 		+NOSKIN;
 		Player.DamageScreenColor "00 FF 00";
 		Player.DisplayName "WIP: Zendos"
-			Player.SoundClass "player";// Нужны звуки ОФК
+			Player.Soundclass "player";// Нужны звуки ОФК
 			Player.StartItem "ImpalerXBow";
 			Player.StartItem "DOOM42k16SSG";
 			Player.StartItem "Unarmed";
@@ -4029,7 +4029,7 @@ CLASS Zendos : "DPT-HQ-Player" {
 			CYG2 GGGGGGGGGG 1 A_Stop();
 			CYG2 G 0 A_SetPitch(-0.85);
 			CYG2 GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			CYG2 A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			CYG2 A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			CYG2 GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -4091,7 +4091,7 @@ CLASS Zendos : "DPT-HQ-Player" {
 	}
 }
 
-CLASS Dean_Portman : "DPT-HQ-Player" { 
+class Dean_Portman : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -4102,10 +4102,10 @@ CLASS Dean_Portman : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: Dean_Portman"
-			Player.SoundClass "player";
+			Player.Soundclass "player";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Dick";
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -4184,7 +4184,7 @@ CLASS Dean_Portman : "DPT-HQ-Player" {
 			PLAY GGGGGGGGGG 1 A_Stop();
 			PLAY G 0 A_SetPitch(-0.85);
 			PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			PLAY GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -4254,7 +4254,7 @@ CLASS Dean_Portman : "DPT-HQ-Player" {
 	}
 }
 
-CLASS OVA : "DPT-HQ-Player" { 
+class OVA : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -4269,7 +4269,7 @@ CLASS OVA : "DPT-HQ-Player" {
 		Alpha 0.95;
 		PainChance 255;
 		Player.DisplayName "WIP: OVA"
-			Player.SoundClass "player";
+			Player.Soundclass "player";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Dick";
 			Player.StartItem "Stamina", 999;
@@ -4334,7 +4334,7 @@ CLASS OVA : "DPT-HQ-Player" {
 	}
 }
 
-CLASS OVA_Shadow1  : ACTOR { 
+class OVA_Shadow1  : actor { 
 	Default {
 		
 		alpha 0.8;
@@ -4348,7 +4348,7 @@ CLASS OVA_Shadow1  : ACTOR {
 	}
 }
 
-CLASS OVA_Shadow2  : ACTOR { 
+class OVA_Shadow2  : actor { 
 	Default {
 		
 		alpha 0.8;
@@ -4362,7 +4362,7 @@ CLASS OVA_Shadow2  : ACTOR {
 	}
 }
 
-CLASS OVA_Shadow3  : ACTOR { 
+class OVA_Shadow3  : actor { 
 	Default {
 		
 		alpha 0.8;
@@ -4376,7 +4376,7 @@ CLASS OVA_Shadow3  : ACTOR {
 	}
 }
 
-CLASS OVA_Shadow4  : ACTOR { 
+class OVA_Shadow4  : actor { 
 	Default {
 		
 		alpha 0.8;
@@ -4390,7 +4390,7 @@ CLASS OVA_Shadow4  : ACTOR {
 	}
 }
 
-CLASS IDHLEB : "DPT-HQ-Player" { 
+class IDHLEB : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -4401,10 +4401,10 @@ CLASS IDHLEB : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: IDHLEB"
-			Player.SoundClass "player";
+			Player.Soundclass "player";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Dick";
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -4483,7 +4483,7 @@ CLASS IDHLEB : "DPT-HQ-Player" {
 			PLAY GGGGGGGGGG 1 A_Stop();
 			PLAY G 0 A_SetPitch(-0.85);
 			PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			PLAY GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -4553,7 +4553,7 @@ CLASS IDHLEB : "DPT-HQ-Player" {
 	}
 }
 
-CLASS LXandro : "DPT-HQ-Player" { 
+class LXandro : "DPT-HQ-Player" { 
 	Default {
 		
 		Player.ForwardMove 0.95, 0.925;
@@ -4569,7 +4569,7 @@ CLASS LXandro : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: Leutenant Xandro"
-			Player.SoundClass "LXandro";
+			Player.Soundclass "LXandro";
 			Player.StartItem "LXandroUnarmed";
 			Player.StartItem "LXandroPistol";
 			Player.StartItem "LXandroPistols";
@@ -4578,10 +4578,10 @@ CLASS LXandro : "DPT-HQ-Player" {
 			Player.StartItem "LXandroDevastator";
 			Player.StartItem "LXandroRPG";
 			Player.StartItem "Dick";
-			Player.StartItem "RocketAmmo", 100;
+			Player.StartItem "Rocketammo", 100;
 			Player.StartItem "Shell", 200;
 			Player.StartItem "Clip", 400;
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -4660,7 +4660,7 @@ CLASS LXandro : "DPT-HQ-Player" {
 			DUKE GGGGGGGGGG 1 A_Stop();
 			DUKE G 0 A_SetPitch(-0.85);
 			DUKE GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			DUKE A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			DUKE A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			DUKE GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -4729,7 +4729,7 @@ CLASS LXandro : "DPT-HQ-Player" {
 	}
 }
 
-CLASS GanGsteRinO999 : "DPT-HQ-Player" { 
+class GanGsteRinO999 : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 0.0;
@@ -4740,10 +4740,10 @@ CLASS GanGsteRinO999 : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: GanGsteRinO999"
-			Player.SoundClass "player";
+			Player.Soundclass "player";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Dick";
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -4822,7 +4822,7 @@ CLASS GanGsteRinO999 : "DPT-HQ-Player" {
 			PLAY GGGGGGGGGG 1 A_Stop();
 			PLAY G 0 A_SetPitch(-0.85);
 			PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			PLAY GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -4892,7 +4892,7 @@ CLASS GanGsteRinO999 : "DPT-HQ-Player" {
 	}
 }
 
-CLASS DogClass : "DPT-HQ-Player" { 
+class Dogclass : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -4903,10 +4903,10 @@ CLASS DogClass : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: Dog"
-			Player.SoundClass "player";
+			Player.Soundclass "player";
 			Player.StartItem "Unarmed";
 			Player.StartItem "Dick";
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -4985,7 +4985,7 @@ CLASS DogClass : "DPT-HQ-Player" {
 			PLAY GGGGGGGGGG 1 A_Stop();
 			PLAY G 0 A_SetPitch(-0.85);
 			PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			PLAY A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			PLAY A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			PLAY GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -5054,7 +5054,7 @@ CLASS DogClass : "DPT-HQ-Player" {
 	}
 }
 
-CLASS VodkaClass : "DPT-HQ-Player" { 
+class Vodkaclass : "DPT-HQ-Player" { 
 	Default {
 		
 		DamageFactor "PrisonPower", 100.0;
@@ -5065,10 +5065,10 @@ CLASS VodkaClass : "DPT-HQ-Player" {
 		Mass 100;
 		PainChance 255;
 		Player.DisplayName "WIP: Vodka"
-			Player.SoundClass "Vodka";
+			Player.Soundclass "Vodka";
 			Player.StartItem "VodkaUnarmed";
 			Player.StartItem "Dick";
-			Player.StartItem "SatchelAmmo", 5;
+			Player.StartItem "Satchelammo", 5;
 			Player.StartItem "Satcheler";
 			Player.StartItem "BlueSprayPaint";
 			Player.StartItem "RedSprayPaint";
@@ -5147,7 +5147,7 @@ CLASS VodkaClass : "DPT-HQ-Player" {
 			VODK GGGGGGGGGG 1 A_Stop();
 			VODK G 0 A_SetPitch(-0.85);
 			VODK GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18));
-			VODK A 0 A_takeinventory("DrunkLevel",20);//Half of the drunk line are lost
+			VODK A 0 A_takeInventory("DrunkLevel",20);//Half of the drunk line are lost
 			VODK GGGGGGGG 1 A_Stop();
 			Goto Spawn_Drunk;
 		Missile:
@@ -5218,7 +5218,7 @@ CLASS VodkaClass : "DPT-HQ-Player" {
 }
 
 /*
-ACTOR TemplateClass : "DPT-HQ-Player"
+actor Templateclass : "DPT-HQ-Player"
 {
 	DamageFactor "PrisonPower", 100.0
 	Speed 1
@@ -5227,11 +5227,11 @@ ACTOR TemplateClass : "DPT-HQ-Player"
 	Height 56
 	Mass 100
 	PainChance 255
-	Player.DisplayName "Template Class"
-	Player.SoundClass "player"
+	Player.DisplayName "Template class"
+	Player.Soundclass "player"
 	Player.StartItem "Unarmed"
 	Player.StartItem "Dick"
-	Player.StartItem "SatchelAmmo", 5
+	Player.StartItem "Satchelammo", 5
 	Player.StartItem "Satcheler"
 	Player.StartItem "BlueSprayPaint"
 	Player.StartItem "RedSprayPaint"
@@ -5309,7 +5309,7 @@ ACTOR TemplateClass : "DPT-HQ-Player"
 		PLAY GGGGGGGGGG 1 A_Stop
 		PLAY G 0 A_SetPitch(-0.85)
 		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
-		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost/
+		PLAY A 0 A_takeInventory("DrunkLevel",20)//Half of the drunk line are lost/
 		PLAY GGGGGGGG 1 A_Stop
 		Goto Spawn_Drunk
 	Missile:
@@ -5381,7 +5381,7 @@ ACTOR TemplateClass : "DPT-HQ-Player"
 */
 // ETC
 
-CLASS ZombieManClass : "DPT-HQ-Player" { 
+class ZombieManclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 20;
@@ -5399,7 +5399,7 @@ CLASS ZombieManClass : "DPT-HQ-Player" {
 		Player.ViewHeight 41;
 		Player.MaxHealth 20;
 		Player.ViewHeight 41;
-		Player.SoundClass "ZombieManClass";
+		Player.Soundclass "ZombieManclass";
 		Player.JumpZ 10;
 		+NOPAIN;
 		-PICKUP;
@@ -5407,7 +5407,7 @@ CLASS ZombieManClass : "DPT-HQ-Player" {
 		+NOTARGET;
 		+NOTRIGGER;
 	}
-	states
+	States
 	{
 		Spawn:
 			POSS AB 10();
@@ -5425,7 +5425,7 @@ CLASS ZombieManClass : "DPT-HQ-Player" {
 			POSS E 3;
 			POSS F 6 bright;
 			POSS E 6();
-			Goto spawn;
+			Goto Spawn;
 		Death:
 			POSS H 5 A_SpawnItemEx ("Clip",0,0,random(29,38),0,0,0,0,32,0);
 			POSS I 5 A_PlaySoundEx ("grunt/death","Body");
@@ -5444,7 +5444,7 @@ CLASS ZombieManClass : "DPT-HQ-Player" {
 	}
 }
 
-CLASS ShotgunGuyClass : "DPT-HQ-Player" { 
+class ShotgunGuyclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 30;
@@ -5463,18 +5463,18 @@ CLASS ShotgunGuyClass : "DPT-HQ-Player" {
 		Player.StartItem "Cash", 999;
 		Player.JumpZ 8;
 		Player.DisplayName "Sergeant";
-		Player.SoundClass "ShotgunGuyClass";
+		Player.Soundclass "ShotgunGuyclass";
 		+NOPAIN;
 		-PICKUP;
 		-FRIENDLY;
 		+NOTARGET;
 		+NOTRIGGER;
 	}
-	states
+	States
 	{
 		Spawn:
 			SPOS AB 10();
-			loop;
+			Loop;
 		See:
 			SPOS A 0 A_Jump (240,2);
 			SPOS A 0 A_PlaySoundEx ("shotguy/active","body");
@@ -5487,7 +5487,7 @@ CLASS ShotgunGuyClass : "DPT-HQ-Player" {
 			SPOS E 1;
 			SPOS F 10 bright;
 			SPOS E 10;
-			goto Spawn;
+			Goto Spawn;
 		Death:
 			SPOS H 5 A_SpawnItemEx ("ShotGun",0,0,random(29,38),0,0,0,0,32,0);
 			SPOS I 5 A_PlaySoundEx ("shotguy/death","Body");
@@ -5505,7 +5505,7 @@ CLASS ShotgunGuyClass : "DPT-HQ-Player" {
 	}
 }
 
-CLASS ChainGunGuyClass : "DPT-HQ-Player" { 
+class ChainGunGuyclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 80;
@@ -5522,7 +5522,7 @@ CLASS ChainGunGuyClass : "DPT-HQ-Player" {
 		Player.DisplayName "Chaingunner";
 		Player.MaxHealth 80;
 		Player.ViewHeight 41;
-		Player.SoundClass "ChainGunGuyClass";
+		Player.Soundclass "ChainGunGuyclass";
 		Player.JumpZ 10;
 		+NOPAIN;
 		-PICKUP;
@@ -5530,11 +5530,11 @@ CLASS ChainGunGuyClass : "DPT-HQ-Player" {
 		+NOTARGET;
 		+NOTRIGGER;
 	}
-	states
+	States
 	{
 		Spawn:
 			CPOS AB 10;
-			loop;
+			Loop;
 		See:
 			CPOS A 0();
 			CPOS A 0 A_Jump (240,2);
@@ -5571,14 +5571,14 @@ CLASS ChainGunGuyClass : "DPT-HQ-Player" {
 			Stop;
 	}
 }
-CLASS FHeat : CustomInventory { 
+class FHeat : CustomInventory { 
 	Default {
 		
 		Inventory.Amount 0;
 		Inventory.MaxAmount 100;
 	}
 }
-CLASS DooMImpClass : "DPT-HQ-Player" { 
+class DooMImpclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 60;
@@ -5591,7 +5591,7 @@ CLASS DooMImpClass : "DPT-HQ-Player" {
 		Player.MaxHealth 60;
 		Player.JumpZ 7;
 		Player.DisplayName "DoomImp";
-		Player.SoundClass "DooMImpClass";
+		Player.Soundclass "DooMImpclass";
 		Player.ViewHeight 45;
 		Player.StartItem "ImpBaller";
 		Player.StartItem "Stamina", 999;
@@ -5610,7 +5610,7 @@ CLASS DooMImpClass : "DPT-HQ-Player" {
 		Spawn:
 			TROO A 10();
 			TROO B 10();
-			loop;
+			Loop;
 		See:
 			TROO A 0;
 			TROO A 0 A_Jump (240,2);
@@ -5623,10 +5623,10 @@ CLASS DooMImpClass : "DPT-HQ-Player" {
 		Missile:
 			TROO EF 8;
 			TROO G 6;
-			goto Spawn;
+			Goto Spawn;
 		Melee:
 			TROO G 6;
-			goto See;
+			Goto See;
 		Death:
 			TROO I 8;
 			TROO J 8 A_PlaySoundEx ("imp/death","Body");
@@ -5645,7 +5645,7 @@ CLASS DooMImpClass : "DPT-HQ-Player" {
 	}
 }
 
-CLASS DemonClass : "DPT-HQ-Player" { 
+class Demonclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 350;
@@ -5661,7 +5661,7 @@ CLASS DemonClass : "DPT-HQ-Player" {
 		Player.StartItem "HungryLevel", 999;
 		Player.StartItem "Cash", 999;
 		Player.MaxHealth 150;
-		Player.SoundClass "DemonClass";
+		Player.Soundclass "Demonclass";
 		Player.JumpZ 15;
 		Player.ViewHeight 30;
 		-FRIENDLY;
@@ -5671,11 +5671,11 @@ CLASS DemonClass : "DPT-HQ-Player" {
 		+LONGMELEERANGE;
 		+NOTRIGGER;
 	}
-	states
+	States
 	{
 		Spawn:
 			SARG AB 10();
-			loop;
+			Loop;
 		See:
 			SARG A 0;
 			SARG A 0 A_Jump (240,2);
@@ -5684,10 +5684,10 @@ CLASS DemonClass : "DPT-HQ-Player" {
 			SARG AB 4;
 			SARG A 0 A_SpawnItem("Footstep",30,0.001);
 			SARG CD 4;
-			loop;
+			Loop;
 		Missile:
 			SARG EFG 8;
-			goto Spawn;
+			Goto Spawn;
 		Death:
 			SARG I 8;
 			SARG J 8 A_PlaySoundEx ("demon/death","body");
@@ -5699,7 +5699,7 @@ CLASS DemonClass : "DPT-HQ-Player" {
 	}
 }
 
-CLASS SpectreClass : DemonClass { 
+class Spectreclass : Demonclass { 
 	Default {
 		
 		RenderStyle Opt"Fuzzy";
@@ -5716,11 +5716,11 @@ CLASS SpectreClass : DemonClass {
 		Player.StartItem "Stamina", 999;
 		Player.StartItem "HungryLevel", 999;
 		Player.StartItem "Cash", 999;
-		Player.SoundClass "DemonClass";
+		Player.Soundclass "Demonclass";
 	}
 }
 
-CLASS LostSoulClass : "DPT-HQ-Player" { 
+class LostSoulclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 100;
@@ -5732,7 +5732,7 @@ CLASS LostSoulClass : "DPT-HQ-Player" {
 		painchance 128;
 		Player.DisplayName "Lost Soul";
 		Player.MaxHealth 100;
-		Player.SoundClass "LostSoulClass";
+		Player.Soundclass "LostSoulclass";
 		Player.JumpZ 0;
 		Player.ViewHeight 20;
 		Player.AttackZOffset 5;
@@ -5749,29 +5749,29 @@ CLASS LostSoulClass : "DPT-HQ-Player" {
 		+DONTFALL;
 		+NOTRIGGER;
 	}
-	states
+	States
 	{
 		Spawn:
 			SKUL AB 10 bright;
-			loop;
+			Loop;
 		See:
 			SKUL A 0;
 			SKUL A 0 A_Jump (240,2);
 			SKUL A 0 A_PlaySoundEx ("skull/active","body");
 			SKUL AB 6 bright;
-			goto Spawn;
+			Goto Spawn;
 		Missile:
 			SKUL C 4 bright;
 			SKUL D 4 bright;
 			SKUL CCDD 2 bright;
 			SKUL C 3;
-			goto Spawn;
+			Goto Spawn;
 		Melee:
 			SKUL C 4 bright;
 			SKUL D 4 bright;
 			SKUL CCDD 2 bright;
 			SKUL C 3;
-			goto Spawn;
+			Goto Spawn;
 		Death:
 			SKUL F 6 bright A_NoGravity();
 			SKUL G 6 bright A_PlaySoundEx ("skull/death","body");
@@ -5780,11 +5780,11 @@ CLASS LostSoulClass : "DPT-HQ-Player" {
 			SKUL JK 6 bright;
 			TNT1 A 1 A_HideThing();
 			TNT1 A -1;
-			stop;
+			Stop;
 	}
 }
 
-CLASS CacodemonClass : "DPT-HQ-Player" { 
+class Cacodemonclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 400;
@@ -5794,7 +5794,7 @@ CLASS CacodemonClass : "DPT-HQ-Player" {
 		Height 56;
 		Mass 400;
 		PainChance 128;
-		Player.SoundClass "CacodemonClass";
+		Player.Soundclass "Cacodemonclass";
 		Player.DisplayName "Cacodemon";
 		Player.MaxHealth 400;
 		Player.ViewHeight 40;
@@ -5845,7 +5845,7 @@ CLASS CacodemonClass : "DPT-HQ-Player" {
 	}
 }
 
-CLASS PainElementalClass : "DPT-HQ-Player" { 
+class PainElementalclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Speed 0.5;
@@ -5856,7 +5856,7 @@ CLASS PainElementalClass : "DPT-HQ-Player" {
 		Mass 400;
 		PainChance 128;
 		Player.MaxHealth 400;
-		Player.SoundClass "PainElementalClass";
+		Player.Soundclass "PainElementalclass";
 		Player.DisplayName "Pain Elemental";
 		Player.StartItem "PainElementWeap";
 		Player.StartItem "Flighter", 1;
@@ -5891,11 +5891,11 @@ CLASS PainElementalClass : "DPT-HQ-Player" {
 			PAIN M 8 bright A_PainDie();
 			TNT1 A 1 A_HideThing();
 			TNT1 A -1;
-			stop;
+			Stop;
 	}
 }
 
-CLASS RevenantClass : "DPT-HQ-Player" { 
+class Revenantclass : "DPT-HQ-Player" { 
 	Default {
 		
 		Health 300;
@@ -5909,7 +5909,7 @@ CLASS RevenantClass : "DPT-HQ-Player" {
 		Scale 0.85;
 		Player.MaxHealth 300;
 		Player.ViewHeight 58;
-		Player.SoundClass "RevenantClass";
+		Player.Soundclass "Revenantclass";
 		Player.JumpZ 7;
 		Player.StartItem "RevenantGun";
 		Player.DisplayName "Revenant";
@@ -5925,11 +5925,11 @@ CLASS RevenantClass : "DPT-HQ-Player" {
 		+NOTARGET;
 		+NOTRIGGER;
 	}
-	states
+	States
 	{
 		Spawn:
 			SKEL AB 10();
-			loop;
+			Loop;
 		See:
 			SKEL A 0;
 			SKEL A 0 A_Jump (240,2);
@@ -5938,18 +5938,18 @@ CLASS RevenantClass : "DPT-HQ-Player" {
 			SKEL AABBCC 2;
 			SKEL A 0 A_SpawnItem("Footstep",30,0.001);
 			SKEL DDEEFF 2;
-			loop;
+			Loop;
 		Missile:
 			SKEL A 6();
 			SKEL J 7 ();
 			SKEL K 7 bright;
 			SKEL K 7();
-			goto See;
+			Goto See;
 		Punch:
 			SKEL G 5();
 			SKEL H 5();
 			SKEL I 4;
-			goto See;
+			Goto See;
 		Death:
 			SKEL L 7;
 			SKEL M 7;
@@ -5961,12 +5961,11 @@ CLASS RevenantClass : "DPT-HQ-Player" {
 	}
 }
 
-// ETC ACTORS
+// ETC actorS
 
-CLASS PlayerVomit : ACTOR { 
+class PlayerVomit : actor { 
 	Default {
 		
-		//SpawnID 130
 		Mass 5;
 		Projectile;
 		Speed 12;

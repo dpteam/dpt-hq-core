@@ -4,12 +4,12 @@
 //
 //=================================================================================================
 
-CLASS GreyColumn 5051 : ACTOR { 
+class GreyColumn 5051 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 40;
 		+SOLID;
@@ -29,12 +29,12 @@ CLASS GreyColumn 5051 : ACTOR {
 //
 //=================================================================================================
 
-CLASS TallGreyColumn 5052 : ACTOR { 
+class TallGreyColumn 5052 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 52;
 		+SOLID;
@@ -54,12 +54,12 @@ CLASS TallGreyColumn 5052 : ACTOR {
 //
 //=================================================================================================
 
-CLASS GreyHeartColumn 5053 : ACTOR { 
+class GreyHeartColumn 5053 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 40;
 		+SOLID;
@@ -79,12 +79,12 @@ CLASS GreyHeartColumn 5053 : ACTOR {
 //
 //=================================================================================================
 
-CLASS TallGothicColumn 5054 : ACTOR { 
+class TallGothicColumn 5054 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 52;
 		+SOLID;
@@ -104,12 +104,12 @@ CLASS TallGothicColumn 5054 : ACTOR {
 //
 //=================================================================================================
 
-CLASS RevenantHand 5055 : ACTOR { 
+class RevenantHand 5055 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 16;
 		+SOLID;
@@ -128,12 +128,12 @@ CLASS RevenantHand 5055 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpHead2002 26364 : ACTOR { //5056
+class ImpHead2002 26364 : actor { //5056
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 8;
 		Height 32;
 		+SOLID;
@@ -152,12 +152,12 @@ CLASS ImpHead2002 26364 : ACTOR { //5056
 //
 //=================================================================================================
 
-CLASS Impse 5058 : ACTOR { 
+class Impse 5058 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 20;
 		Height 48;
 		+SOLID;
@@ -177,7 +177,7 @@ CLASS Impse 5058 : ACTOR {
 //
 //=================================================================================================
 
-CLASS FloatingBobbingSkull : FloatingSkull 5009 { 
+class FloatingBobbingSkull : FloatingSkull 5009 { 
 	Default {
 		
 		+FLOATBOB;
@@ -190,12 +190,12 @@ CLASS FloatingBobbingSkull : FloatingSkull 5009 {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike 5120 : ACTOR { 
+class ImpalingSpike 5120 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 64;
 		+SOLID;
@@ -215,12 +215,12 @@ CLASS ImpalingSpike 5120 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike2 5121 : ACTOR { 
+class ImpalingSpike2 5121 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 56;
 		+SOLID;
@@ -240,12 +240,12 @@ CLASS ImpalingSpike2 5121 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike3 5122 : ACTOR { 
+class ImpalingSpike3 5122 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 56;
 		+SOLID;
@@ -265,12 +265,12 @@ CLASS ImpalingSpike3 5122 : ACTOR {
 //
 //=================================================================================================
 
-CLASS WhiteTorch 5150 : ACTOR { 
+class WhiteTorch 5150 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 68;
 		+SOLID;
@@ -290,12 +290,12 @@ CLASS WhiteTorch 5150 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ShortWhiteTorch 5151 : ACTOR { 
+class ShortWhiteTorch 5151 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 37;
 		+SOLID;
@@ -315,12 +315,12 @@ CLASS ShortWhiteTorch 5151 : ACTOR {
 //
 //=================================================================================================
 
-CLASS YellowTorch 5152 : ACTOR { 
+class YellowTorch 5152 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 68;
 		+SOLID;
@@ -340,12 +340,12 @@ CLASS YellowTorch 5152 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ShortYellowTorch 5153 : ACTOR { 
+class ShortYellowTorch 5153 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 37;
 		+SOLID;
@@ -365,12 +365,12 @@ CLASS ShortYellowTorch 5153 : ACTOR {
 //
 //=================================================================================================
 
-CLASS RedEvilEye 5059 : ACTOR { 
+class RedEvilEye 5059 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 54;
 		+SOLID;
@@ -390,12 +390,12 @@ CLASS RedEvilEye 5059 : ACTOR {
 //
 //=================================================================================================
 
-CLASS BlueEvilEye 5060 : ACTOR { 
+class BlueEvilEye 5060 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 54;
 		+SOLID;
@@ -415,12 +415,12 @@ CLASS BlueEvilEye 5060 : ACTOR {
 //
 //=================================================================================================
 
-CLASS RedCandleStick 5156 : ACTOR { 
+class RedCandleStick 5156 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 20;
 		Height 14;
 	}
@@ -438,12 +438,12 @@ CLASS RedCandleStick 5156 : ACTOR {
 //
 //=================================================================================================
 
-CLASS BlueCandleStick 5157 : ACTOR { 
+class BlueCandleStick 5157 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 20;
 		Height 14;
 	}
@@ -461,12 +461,12 @@ CLASS BlueCandleStick 5157 : ACTOR {
 //
 //=================================================================================================
 
-CLASS RedTechLamp 5154 : ACTOR { 
+class RedTechLamp 5154 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 80;
 		+SOLID;
@@ -486,12 +486,12 @@ CLASS RedTechLamp 5154 : ACTOR {
 //
 //=================================================================================================
 
-CLASS RedTechLamp2 5155 : ACTOR { 
+class RedTechLamp2 5155 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 60;
 		+SOLID;
@@ -511,12 +511,12 @@ CLASS RedTechLamp2 5155 : ACTOR {
 //
 //=================================================================================================
 
-CLASS RedColumn 5158 : ACTOR { 
+class RedColumn 5158 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 48;
 		+SOLID;
@@ -536,12 +536,12 @@ CLASS RedColumn 5158 : ACTOR {
 //
 //=================================================================================================
 
-CLASS BlueColumn 5159 : ACTOR { 
+class BlueColumn 5159 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 48;
 		+SOLID;
@@ -561,12 +561,12 @@ CLASS BlueColumn 5159 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike4 5320 : ACTOR { 
+class ImpalingSpike4 5320 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 56;
 		+SOLID;
@@ -586,12 +586,12 @@ CLASS ImpalingSpike4 5320 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike5 5321 : ACTOR { 
+class ImpalingSpike5 5321 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 64;
 		+SOLID;
@@ -611,12 +611,12 @@ CLASS ImpalingSpike5 5321 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike6 5322 : ACTOR { 
+class ImpalingSpike6 5322 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 45;
 		+SOLID;
@@ -636,12 +636,12 @@ CLASS ImpalingSpike6 5322 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike7 5323 : ACTOR { 
+class ImpalingSpike7 5323 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 54;
 		+SOLID;
@@ -661,12 +661,12 @@ CLASS ImpalingSpike7 5323 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike8 5324 : ACTOR { 
+class ImpalingSpike8 5324 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 54;
 		+SOLID;
@@ -686,12 +686,12 @@ CLASS ImpalingSpike8 5324 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike9 5325 : ACTOR { 
+class ImpalingSpike9 5325 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 64;
 		+SOLID;
@@ -712,12 +712,12 @@ CLASS ImpalingSpike9 5325 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike10 5326 : ACTOR { 
+class ImpalingSpike10 5326 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 64;
 		+SOLID;
@@ -737,12 +737,12 @@ CLASS ImpalingSpike10 5326 : ACTOR {
 //
 //=================================================================================================
 
-CLASS ImpalingSpike11 5327 : ACTOR { 
+class ImpalingSpike11 5327 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 64;
 		+SOLID;
@@ -762,12 +762,12 @@ CLASS ImpalingSpike11 5327 : ACTOR {
 //
 //=================================================================================================
 
-CLASS MarineHelmetGibs 5328 : ACTOR { 
+class MarineHelmetGibs 5328 : actor { 
 	Default {
 		
-		//Game Doom
-		//Game Heretic
-		//Game Hexen
+		
+		
+		
 		Radius 16;
 		Height 64;
 	}

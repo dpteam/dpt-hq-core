@@ -1,7 +1,6 @@
-CLASS WWTScientist : ACTOR { 
+class WWTScientist : actor { 
 	Default {
 		
-		//SpawnID 6
 		YScale 0.35;
 		XScale 0.4;
 		Radius 20;
@@ -14,7 +13,7 @@ CLASS WWTScientist : ACTOR {
 		DeathSound "Scientist/Death";
 		DamageFactor "EnemyBullet", 0.3;
 		DamageFactor "EnemyGrenade", 0.3;
-		Obituary "%o unwittingly proved the success of an experimental weapon.";
+		Obituary "%o unwittingly proved the success of an experimental Weapon.";
 		MONSTER;
 		+FLOORCLIP;
 	}
@@ -50,7 +49,7 @@ CLASS WWTScientist : ACTOR {
 	}
 }
 
-CLASS ScientistPlasmaBall : FastProjectile { 
+class ScientistPlasmaBall : FastProjectile { 
 	Default {
 		
 		Radius 11;
@@ -80,14 +79,14 @@ CLASS ScientistPlasmaBall : FastProjectile {
 	}
 }
 
-CLASS ScientistMissileTrail : MiniMissileTrail { 
+class ScientistMissileTrail : MiniMissileTrail { 
 	Default {
 		
 		Scale 0.6;
 	}
 }
 
-CLASS WWTScientist_F : WWTScientist 22206 { 
+class WWTScientist_F : WWTScientist 22206 { 
 	Default {
 		
 		+FRIENDLY;

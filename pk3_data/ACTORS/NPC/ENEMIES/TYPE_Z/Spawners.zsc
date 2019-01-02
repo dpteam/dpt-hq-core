@@ -1,4 +1,4 @@
-CLASS WILDGUYS_Spawner1 : RandomSpawner 17601 { 
+class WILDGUYS_Spawner1 : RandomSpawner 17601 { 
 	Default {
 		
 		DropItem "PistolThug1";
@@ -6,7 +6,7 @@ CLASS WILDGUYS_Spawner1 : RandomSpawner 17601 {
 	}
 }
 
-CLASS WILDGUYS_Spawner2 : RandomSpawner 17602 { 
+class WILDGUYS_Spawner2 : RandomSpawner 17602 { 
 	Default {
 		
 		DropItem "Cop1";
@@ -14,7 +14,7 @@ CLASS WILDGUYS_Spawner2 : RandomSpawner 17602 {
 	}
 }
 
-CLASS WILDGUYS_Spawner3 : RandomSpawner 17603 { 
+class WILDGUYS_Spawner3 : RandomSpawner 17603 { 
 	Default {
 		
 		Dropitem "SMGThug";
@@ -22,7 +22,7 @@ CLASS WILDGUYS_Spawner3 : RandomSpawner 17603 {
 	}
 }
 
-CLASS WILDGUYS_Spawner4 : RandomSpawner 17604 { 
+class WILDGUYS_Spawner4 : RandomSpawner 17604 { 
 	Default {
 		
 		DropItem "MagnumThug";
@@ -30,7 +30,7 @@ CLASS WILDGUYS_Spawner4 : RandomSpawner 17604 {
 	}
 }
 
-CLASS WILDGUYS_Spawner5 : RandomSpawner 17605 { 
+class WILDGUYS_Spawner5 : RandomSpawner 17605 { 
 	Default {
 		
 		DropItem "ShotgunThug";
@@ -39,7 +39,7 @@ CLASS WILDGUYS_Spawner5 : RandomSpawner 17605 {
 	}
 }
 
-CLASS WILDGUYS_Spawner6 : RandomSpawner 17606 { 
+class WILDGUYS_Spawner6 : RandomSpawner 17606 { 
 	Default {
 		
 		DropItem "CopTaser";
@@ -47,7 +47,7 @@ CLASS WILDGUYS_Spawner6 : RandomSpawner 17606 {
 	}
 }
 
-CLASS WILDGUYS_Spawner7 : RandomSpawner 17607 { 
+class WILDGUYS_Spawner7 : RandomSpawner 17607 { 
 	Default {
 		
 		DropItem "Bomber1";
@@ -55,7 +55,7 @@ CLASS WILDGUYS_Spawner7 : RandomSpawner 17607 {
 	}
 }
 
-CLASS WILDGUYS_Spawner8 : RandomSpawner 17608 { 
+class WILDGUYS_Spawner8 : RandomSpawner 17608 { 
 	Default {
 		
 		DropItem "ARThug";

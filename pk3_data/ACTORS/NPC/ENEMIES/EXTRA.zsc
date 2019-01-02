@@ -1,4 +1,4 @@
-CLASS enemy : ACTOR { 
+class enemy : actor { 
 	Default {
 		
 		-FRIENDLY;
@@ -7,7 +7,7 @@ CLASS enemy : ACTOR {
 		damagefactor"Enemy",0;
 	}
 }
-CLASS US_Cap : enemy 31300 { 
+class US_Cap : enemy 31300 { 
 	Default {
 		
 		Health 1900;
@@ -89,7 +89,7 @@ CLASS US_Cap : enemy 31300 {
 			Stop;
 	} 
 } 
-CLASS US_Marine : enemy 31301 { 
+class US_Marine : enemy 31301 { 
 	Default {
 		
 		Health 999;
@@ -174,7 +174,7 @@ CLASS US_Marine : enemy 31301 {
 			Stop;
 	} 
 } 
-CLASS m24grenadeex : enemy { 
+class m24grenadeex : enemy { 
 	Default {
 		
 		Radius 4;
@@ -196,7 +196,7 @@ CLASS m24grenadeex : enemy {
 			Stop;
 	}
 }
-CLASS ELgrenadeex : enemy 23311 { 
+class ELgrenadeex : enemy 23311 { 
 	Default {
 		
 		Radius 4;
@@ -211,7 +211,7 @@ CLASS ELgrenadeex : enemy 23311 {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "EXP/Btoom";
 	}
 	States
@@ -296,7 +296,7 @@ CLASS ELgrenadeex : enemy 23311 {
 			Stop;
 	}
 }
-CLASS SLGroundFire :enemy { 
+class SLGroundFire :enemy { 
 	Default {
 		
 		Projectile;
@@ -369,7 +369,7 @@ CLASS SLGroundFire :enemy {
 			Stop;
 	}
 }
-CLASS SLGFXtraSpawner : ACTOR { 
+class SLGFXtraSpawner : actor { 
 	Default {
 		
 		+NOCLIP;
@@ -383,7 +383,7 @@ CLASS SLGFXtraSpawner : ACTOR {
 			Stop;
 	}
 }
-CLASS SLGFXtra : ACTOR { 
+class SLGFXtra : actor { 
 	Default {
 		
 		Projectile;
@@ -410,7 +410,7 @@ CLASS SLGFXtra : ACTOR {
 			Stop;
 	}
 }
-CLASS DebrisGeneral : ACTOR { 
+class DebrisGeneral : actor { 
 	Default {
 		
 		+MISSILE;
@@ -427,7 +427,7 @@ CLASS DebrisGeneral : ACTOR {
 		damage 0;
 	}
 }
-CLASS GrenadeVisualExplosion : ACTOR { 
+class GrenadeVisualExplosion : actor { 
 	Default {
 		
 		+NOCLIP;
@@ -437,14 +437,14 @@ CLASS GrenadeVisualExplosion : ACTOR {
 		alpha 0.9;
 		scale 1.25;
 	}
-	states
+	States
 	{
 		Spawn:
 			GEXP GHIJKLMNOPQRSTUVW 1 bright;
-			stop;
+			Stop;
 	}
 }
-CLASS RPGRocket : enemy { 
+class RPGRocket : enemy { 
 	Default {
 		
 		damage 1000;
@@ -458,7 +458,7 @@ CLASS RPGRocket : enemy {
 		DeathSound "rpg7/exp";
 		scale .8;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0;
@@ -483,23 +483,23 @@ CLASS RPGRocket : enemy {
 			TNT1 A 0 A_custommissile("BigSmokingPiece",0,0,random(-360,360),2,random(-30,90));
 			TNT1 A 0 A_custommissile("BigSmokingPiece",0,0,random(-360,360),2,random(-30,90));
 			TNT1 A 1 A_custommissile("BigSmokingPiece",0,0,random(-360,360),2,random(-30,90));
-			stop;
+			Stop;
 	}
 }
-CLASS BigSmokingPiece : DebrisGeneral { 
+class BigSmokingPiece : DebrisGeneral { 
 	Default {
 		
 		+NOCLIP;
 		speed 2;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_SpawnItem("BigSmokingPieceSmoke");
-			stop;
+			Stop;
 	}
 }
-CLASS BigSmokingPieceSmoke : ACTOR { 
+class BigSmokingPieceSmoke : actor { 
 	Default {
 		
 		+FORCEXYBILLBOARD;
@@ -511,14 +511,14 @@ CLASS BigSmokingPieceSmoke : ACTOR {
 		scale 0.45;
 		vspeed 1;
 	}
-	states
+	States
 	{
 		Spawn:
 			SMOK QPONMLKJIHGFEDCBA 2 A_FadeOut(0.02);
 			wait;
 	}
 }
-CLASS BigRocketSmoke : ACTOR { 
+class BigRocketSmoke : actor { 
 	Default {
 		
 		+FORCEXYBILLBOARD;
@@ -530,29 +530,29 @@ CLASS BigRocketSmoke : ACTOR {
 		renderstyle "Add";
 		alpha 0.6;
 	}
-	states
+	States
 	{
 		Spawn:
 			SMOK ABCD 2;
 			SMOK EFGH 3;
 			SMOK IJKL 4;
 			SMOK MNOPQ 5;
-			stop;
+			Stop;
 	}
 }
-CLASS RocketVisualExplosion : GrenadeVisualExplosion { 
+class RocketVisualExplosion : GrenadeVisualExplosion { 
 	Default {
 		
 		scale 3.2;
 	}
-	states
+	States
 	{
 		Spawn:
 			EXPR ABCDEFGHIJKLMNOPQRSTUVWXY 1 bright;
-			stop;
+			Stop;
 	}
 }
-CLASS radgrenadeex : enemy { 
+class radgrenadeex : enemy { 
 	Default {
 		
 		Radius 4;
@@ -567,7 +567,7 @@ CLASS radgrenadeex : enemy {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		+DONTHURTSPECIES;
 		DeathSound "radg/bang";
 	}
@@ -579,7 +579,7 @@ CLASS radgrenadeex : enemy {
 		Death:
 			OXPL ABCDEFDHIJKLM 2 bright;
 			SHOK ABCDEFGHIJKLMNOPQR 1;
-			goto RAD;
+			Goto RAD;
 		RAD:
 			TNT1 A 10 bright A_Explode(10,50,0);
 			TNT1 A 10 bright A_Explode(15,75,0);
@@ -701,13 +701,13 @@ CLASS radgrenadeex : enemy {
 			TNT1 A 10 bright A_Explode(400,4000,0);
 			TNT1 A 10 bright A_Explode(500,5000,0);
 			TNT1 A 10 bright A_Explode(600,6000,0);
-			goto after;
+			Goto after;
 		after:
 			TNT1 A 10 bright A_Explode(100,50,0);
-			loop;
+			Loop;
 	}
 }
-CLASS firegrenadeex : enemy { 
+class firegrenadeex : enemy { 
 	Default {
 		
 		Radius 4;
@@ -722,7 +722,7 @@ CLASS firegrenadeex : enemy {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "firegre/bang";
 	}
 	States
@@ -764,7 +764,7 @@ CLASS firegrenadeex : enemy {
 			LFIR M 3 bright A_Explode(10,200,0);
 			LFIR N 3 bright A_Explode(10,200,0);
 			TNT1 A 0 A_Jump(24,"lowfire");
-			loop;
+			Loop;
 		lowfire:
 			TNT1 A 0 A_PlaySound("CAP/hit");
 			SFIR A 3 bright A_Explode(10,100,0);
@@ -799,14 +799,14 @@ CLASS firegrenadeex : enemy {
 			SFIR M 3 bright A_Explode(10,100,0);
 			SFIR N 3 bright A_Explode(10,100,0);
 			TNT1 A 0 A_Jump(32,"nofire");
-			loop;
+			Loop;
 		nofire:
 			TNT1 A 0 A_PlaySound("CAP/hit");
 			TNT1 A -1;
 			Stop;
 	}
 }
-CLASS nezumi2 : enemy { 
+class nezumi2 : enemy { 
 	Default {
 		
 		Radius 4;
@@ -821,7 +821,7 @@ CLASS nezumi2 : enemy {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DONTHURTSHOOTER;
 		scale 0.3;
 	}
@@ -835,7 +835,7 @@ CLASS nezumi2 : enemy {
 			Stop;
 	}
 }
-CLASS grenadeex : enemy { 
+class grenadeex : enemy { 
 	Default {
 		
 		Radius 4;
@@ -850,7 +850,7 @@ CLASS grenadeex : enemy {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "EXP/Btoom";
 	}
 	States
@@ -865,7 +865,7 @@ CLASS grenadeex : enemy {
 			Stop;
 	}
 }
-CLASS stungrenadeex : enemy { 
+class stungrenadeex : enemy { 
 	Default {
 		
 		Radius 4;
@@ -881,7 +881,7 @@ CLASS stungrenadeex : enemy {
 		+Missile;
 		+DOOMBOUNCE;
 		+FULLVOLDEATH;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "fgre/bang";
 	}
 	States
@@ -903,7 +903,7 @@ CLASS stungrenadeex : enemy {
 			Stop;
 	}
 }
-CLASS stung : enemy 31302 { 
+class stung : enemy 31302 { 
 	Default {
 		
 		Health 1000;
@@ -977,7 +977,7 @@ CLASS stung : enemy 31302 {
 			Stop;
 	} 
 }
-CLASS JSDF_heli : enemy 31303 { 
+class JSDF_heli : enemy 31303 { 
 	Default {
 		
 		Health 2000;
@@ -990,7 +990,7 @@ CLASS JSDF_heli : enemy 31303 {
 		+FLOORCLIP;
 		+NOGRAVITY;
 		+FLOAT;
-		+SPAWNFLOAT;
+		+SpawnFLOAT;
 		+NOBLOOD;
 		+NOTARGET;
 		+LOOKALLAROUND;
@@ -1088,7 +1088,7 @@ CLASS JSDF_heli : enemy 31303 {
 			Stop   ();
 	} 
 } 
-CLASS JSDF_helipod : enemy 31304 { 
+class JSDF_helipod : enemy 31304 { 
 	Default {
 		
 		Health 100000;
@@ -1128,7 +1128,7 @@ CLASS JSDF_helipod : enemy 31304 {
 			Stop   ();
 	} 
 } 
-CLASS USCM_Choper : enemy 31305 { 
+class USCM_Choper : enemy 31305 { 
 	Default {
 		
 		Health 1500;
@@ -1142,7 +1142,7 @@ CLASS USCM_Choper : enemy 31305 {
 		+NOGRAVITY;
 		+FLOAT;
 		+PUSHABLE;
-		+SPAWNFLOAT;
+		+SpawnFLOAT;
 		+NORADIUSDMG;
 		+NOBLOOD;
 		+NOTARGET;
@@ -1205,7 +1205,7 @@ CLASS USCM_Choper : enemy 31305 {
 			Stop   ();
 	} 
 } 
-CLASS US_Tank : enemy 31306 { 
+class US_Tank : enemy 31306 { 
 	Default {
 		
 		Health 4000;
@@ -1266,9 +1266,9 @@ CLASS US_Tank : enemy 31306 {
 			ITNK E 4 BRIGHT A_CustomBulletAttack (4, 4, 1, 16, "BulletPuff");
 			TNT1 A 0 A_SpawnItem ("CaseSpawn_H", 0, 30,0);
 			ITNK A 0 A_Jump(128,1);
-			goto See;
+			Goto See;
 			ITNK A 0 A_CPosRefire();
-			goto Missile;
+			Goto Missile;
 		Pain:
 			ITNK F 4 A_Pain();
 			ITNK F 4;
@@ -1287,7 +1287,7 @@ CLASS US_Tank : enemy 31306 {
 			Stop;
 	}
 }
-CLASS IncaTankGun : enemy { 
+class IncaTankGun : enemy { 
 	Default {
 		
 		Radius 4;
@@ -1318,7 +1318,7 @@ CLASS IncaTankGun : enemy {
 			Stop;
 	}
 }
-CLASS TExplosion : enemy { 
+class TExplosion : enemy { 
 	Default {
 		
 		RENDERSTYLE "Add";
@@ -1345,7 +1345,7 @@ CLASS TExplosion : enemy {
 			Stop;
 	}
 }
-CLASS Tanker : enemy 31307 { 
+class Tanker : enemy 31307 { 
 	Default {
 		
 		Health 700;
@@ -1394,10 +1394,10 @@ CLASS Tanker : enemy 31307 {
 			TNT1 A 0 A_ClearTarget();
 			INC1 F 0 A_SetAngle(Angle+random(-45,45));
 			INC1 F 0 A_Jump(64,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		ClearTarget:
 			TNT1 A 0 A_ClearTarget();
 			Goto See;
@@ -1430,7 +1430,7 @@ CLASS Tanker : enemy 31307 {
 			Stop;
 	}
 }
-CLASS predator : enemy 31308 { 
+class predator : enemy 31308 { 
 	Default {
 		
 		health 1987;
@@ -1470,11 +1470,11 @@ CLASS predator : enemy 31308 {
 		+CANUSEWALLS;
 		+NOVERTICALMELEERANGE;
 	}
-	states
+	States
 	{
 		Spawn: 
 			PRED E 10 A_Look();
-			goto see;
+			Goto see;
 		See: 
 			PRED A 0 A_settranslucent(1,0);
 			PRED A 0 A_jump(50,"see2");
@@ -1483,7 +1483,7 @@ CLASS predator : enemy 31308 {
 			Loop;
 		See2:
 			PRED AABBCCDD 2 A_fastChase ();
-			goto See;
+			Goto See;
 		Missile:
 			PRED A 0 A_settranslucent(1,2);
 			PRED E 0 A_jump(64,"cutter");
@@ -1497,17 +1497,17 @@ CLASS predator : enemy 31308 {
 			PRED E 0 A_PlaySound("pre/reload");
 			PRED E 8 A_VileTarget("pre_Fire");
 			PRED A 0 A_settranslucent(1,0);
-			goto See;
+			Goto See;
 		cutter: 
 			PRED EEE 5 A_FaceTarget   ();
 			PRED G 5 A_custommissile("pre_cutters",60,-10);
-			goto See;
+			Goto See;
 		pjump: 
 			PRED E 2 A_FaceTarget();
 			PRED E 0 A_playsound ("pre/jump");
 			PRED A 0 ThrustThing(angle*256/360, 30, 3, 0);
 			PRED AB 2 ThrustThingZ(0,50,0,1);
-			goto See;
+			Goto See;
 		Melee:
 			PRED A 1 A_FaceTarget();
 			PRED G 4 A_CustomMeleeAttack(80,"NIF/hit2","none");
@@ -1517,7 +1517,7 @@ CLASS predator : enemy 31308 {
 		Pain:
 			PRED G 2 A_settranslucent(1,0);
 			PRED G 2 A_Pain();
-			goto See;
+			Goto See;
 		Death:
 			PRED O 8;
 			PRED P 8 A_Scream();
@@ -1529,10 +1529,10 @@ CLASS predator : enemy 31308 {
 			PRED T 8 A_settranslucent(1.0,0);
 			PRED UV 8;
 			PRED W -1;
-			stop;
+			Stop;
 	}
 }
-CLASS pre_cutters : enemy { 
+class pre_cutters : enemy { 
 	Default {
 		
 		Radius 1;
@@ -1548,14 +1548,14 @@ CLASS pre_cutters : enemy {
 	{
 		Spawn:
 			ITMK BC 1();
-			goto death;
+			Goto death;
 		Death:
 			ITMK D 1();
 			TNT1 A 0 A_SpawnItem("pre_cutter",1,10);
-			stop;
+			Stop;
 	}
 }
-CLASS pre_cutter : enemy 31309 { 
+class pre_cutter : enemy 31309 { 
 	Default {
 		
 		Health 100000;
@@ -1569,7 +1569,7 @@ CLASS pre_cutter : enemy 31309 {
 		+FLOORCLIP;
 		+NOGRAVITY;
 		+FLOAT;
-		+SPAWNFLOAT;
+		+SpawnFLOAT;
 		+NOBLOOD;
 		+NOTARGET;
 		+LOOKALLAROUND;
@@ -1613,11 +1613,11 @@ CLASS pre_cutter : enemy 31309 {
 			Stop;
 	} 
 } 
-CLASS predatorblood : bloodsplatter { 
+class predatorblood : bloodsplatter { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			BLUD CBA 8 bright;
@@ -1627,7 +1627,7 @@ CLASS predatorblood : bloodsplatter {
 			Stop;
 	}
 }
-CLASS predball : enemy { 
+class predball : enemy { 
 	Default {
 		
 		Radius 6;
@@ -1657,7 +1657,7 @@ CLASS predball : enemy {
 			Stop;
 	}
 }
-CLASS predflash : enemy { 
+class predflash : enemy { 
 	Default {
 		
 		Radius 6;
@@ -1675,10 +1675,10 @@ CLASS predflash : enemy {
 		Spawn:
 			WH74 ABCDEFGHIJKLM 1 BRIGHT;
 			TNT1 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS predlaser : fastprojectile { 
+class predlaser : fastprojectile { 
 	Default {
 		
 		Radius 1;
@@ -1695,13 +1695,13 @@ CLASS predlaser : fastprojectile {
 	{
 		Spawn:
 			SITE A 1 bright A_seekermissile(50,50);
-			loop;
+			Loop;
 		Death:
 			SITE AA 10 bright;
-			stop;
+			Stop;
 	}
 }
-CLASS Alien : enemy 31310 { 
+class Alien : enemy 31310 { 
 	Default {
 		
 		Health 1979;
@@ -1747,7 +1747,7 @@ CLASS Alien : enemy 31310 {
 	{
 		Spawn:
 			ALIN X 10 A_Look();
-			goto see;
+			Goto see;
 		See:
 			ALIN AABBCCDD 2 A_Chase();
 			TNT1 A 0 A_Jump(64,"ClearTarget");
@@ -1763,7 +1763,7 @@ CLASS Alien : enemy 31310 {
 			ALIN ZZ 4 A_CustomMeleeAttack(40,"NIF/hit3","none");
 			ALIN X 4 A_facetarget();
 			ALIN Z 0 A_stop();
-			goto see;
+			Goto see;
 		Melee:
 			ALIN E 0 A_jump(90,"tail");
 			ALIN E 0 A_playsound("a_claw");
@@ -1786,7 +1786,7 @@ CLASS Alien : enemy 31310 {
 			Goto See;
 		Death:
 			ALIN I 0 A_jump(256,"death1","death2");
-			stop;
+			Stop;
 		Death1:  
 			ALIN I 8();
 			ALIN J 8 A_Scream  ();
@@ -1815,10 +1815,10 @@ CLASS Alien : enemy 31310 {
 			ALIG C 5 A_NoBlocking();
 			ALIG DEF 5;
 			ALIG G -1;
-			stop;
+			Stop;
 	}
 }
-CLASS Alien_mini : enemy 31311 { 
+class Alien_mini : enemy 31311 { 
 	Default {
 		
 		Health 444;
@@ -1865,7 +1865,7 @@ CLASS Alien_mini : enemy 31311 {
 	{
 		Spawn:
 			ALIN X 10 A_Look();
-			goto see;
+			Goto see;
 		See:
 			ALIN AABBCCDD 2 A_Chase();
 			TNT1 A 0 A_Jump(64,"ClearTarget");
@@ -1881,7 +1881,7 @@ CLASS Alien_mini : enemy 31311 {
 			ALIN ZZ 4 A_CustomMeleeAttack(40,"NIF/hit","none");
 			ALIN X 4 A_facetarget();
 			ALIN Z 0 A_stop();
-			goto see;
+			Goto see;
 		Melee:
 			ALIN E 0 A_jump(90,"tail");
 			ALIN E 0 A_playsound("claw");
@@ -1904,7 +1904,7 @@ CLASS Alien_mini : enemy 31311 {
 			Goto See;
 		Death:
 			ALIN I 0 A_jump(256,"death1","death2");
-			stop;
+			Stop;
 		Death1:  
 			ALIN I 8();
 			ALIN J 8 A_Scream  ();
@@ -1933,10 +1933,10 @@ CLASS Alien_mini : enemy 31311 {
 			ALIG C 5 A_NoBlocking();
 			ALIG DEF 5;
 			ALIG G -1;
-			stop;
+			Stop;
 	}
 }
-CLASS RSentry : enemy 31312 { 
+class RSentry : enemy 31312 { 
 	Default {
 		
 		Radius 10;
@@ -1987,7 +1987,7 @@ CLASS RSentry : enemy 31312 {
 			Stop;
 	}
 }
-CLASS SLDS : enemy 31313 { 
+class SLDS : enemy 31313 { 
 	Default {
 		
 		Health 10000;
@@ -2046,7 +2046,7 @@ CLASS SLDS : enemy 31313 {
 			Stop;
 	}
 }
-CLASS SLDS2 : enemy 31314 { 
+class SLDS2 : enemy 31314 { 
 	Default {
 		
 		Health 10000;
@@ -2106,7 +2106,7 @@ CLASS SLDS2 : enemy 31314 {
 			Stop;
 	}
 }
-CLASS doomguy_handx : enemy { 
+class doomguy_handx : enemy { 
 	Default {
 		
 		Radius 3;
@@ -2121,13 +2121,13 @@ CLASS doomguy_handx : enemy {
 	{
 		Spawn:
 			PLSL B 1();
-			goto death;
+			Goto death;
 		Death:
 			TNT1 A -1 A_SpawnItem("doomguy_hand",1,8);
-			stop;
+			Stop;
 	}
 }
-CLASS doomguy_pistolx : enemy { 
+class doomguy_pistolx : enemy { 
 	Default {
 		
 		Radius 3;
@@ -2142,13 +2142,13 @@ CLASS doomguy_pistolx : enemy {
 	{
 		Spawn:
 			PLSL B 1();
-			goto death;
+			Goto death;
 		Death:
 			TNT1 A -1 A_SpawnItem("doomguy_pistol",1,8);
-			stop;
+			Stop;
 	}
 }
-CLASS doomguy_spasx : enemy { 
+class doomguy_spasx : enemy { 
 	Default {
 		
 		Radius 3;
@@ -2163,13 +2163,13 @@ CLASS doomguy_spasx : enemy {
 	{
 		Spawn:
 			PLSL B 1();
-			goto death;
+			Goto death;
 		Death:
 			TNT1 A -1 A_SpawnItem("doomguy_spas",1,8);
-			stop;
+			Stop;
 	}
 }
-CLASS doomguy_m4a1x : enemy { 
+class doomguy_m4a1x : enemy { 
 	Default {
 		
 		Radius 3;
@@ -2184,13 +2184,13 @@ CLASS doomguy_m4a1x : enemy {
 	{
 		Spawn:
 			PLSL B 1();
-			goto death;
+			Goto death;
 		Death:
 			TNT1 A -1 A_SpawnItem("doomguy_m4a1",1,8);
-			stop;
+			Stop;
 	}
 }
-CLASS doomguy_sawx : enemy { 
+class doomguy_sawx : enemy { 
 	Default {
 		
 		Radius 3;
@@ -2205,13 +2205,13 @@ CLASS doomguy_sawx : enemy {
 	{
 		Spawn:
 			PLSL B 1();
-			goto death;
+			Goto death;
 		Death:
 			TNT1 A -1 A_SpawnItem("doomguy_saw",1,8);
-			stop;
+			Stop;
 	}
 }
-CLASS doomguy : enemy 31315 { 
+class doomguy : enemy 31315 { 
 	Default {
 		
 		Health 999999;
@@ -2255,17 +2255,17 @@ CLASS doomguy : enemy 31315 {
 			HLP0 ABABAB 10();
 			PLSL AAAABABABABABABA 5;
 			TNT1 A 0 A_Jump(256, 1, 2, 3, 4, 5, 6);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_handx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_pistolx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_spasx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_m4a1x", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_sawx", 0, 0);
-			stop;
+			Stop;
 			PLSL A 50 A_playsound ("guy/death");
 			Goto See;
 		See: 
@@ -2290,13 +2290,13 @@ CLASS doomguy : enemy 31315 {
 			HLP0 A 1 A_FaceTarget();
 			HLP0 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			HLP0 AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			HLP0 A 1 A_FaceTarget();
 			HLP0 B 0 A_playsound ("guy/jump");
 			HLP0 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			HLP0 AB 2 ThrustThingZ(0,18,0,1);
-			goto See;
+			Goto See;
 		Melee:
 			HLP0 A 2 A_FaceTarget();
 			HLP0 E 3 A_CustomMeleeAttack(15,"kick/hit","none");
@@ -2315,7 +2315,7 @@ CLASS doomguy : enemy 31315 {
 			Stop;
 	} 
 }
-CLASS doomguy_hand : enemy 31316 { 
+class doomguy_hand : enemy 31316 { 
 	Default {
 		
 		Health 999999;
@@ -2372,26 +2372,26 @@ CLASS doomguy_hand : enemy 31316 {
 		WChange:
 			PLSL AAAABABABABABABA 5;
 			TNT1 A 0 A_Jump(256, 1, 2, 3, 4);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_pistolx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_spasx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_m4a1x", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_sawx", 0, 0);
-			stop;
+			Stop;
 		drun: 
 			PLA2 A 1 A_FaceTarget();
 			PLA2 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLA2 AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			PLA2 A 1 A_FaceTarget();
 			PLA2 B 0 A_playsound ("guy/jump");
 			PLA2 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLA2 AB 2 ThrustThingZ(0,30,0,1);
-			goto See;
+			Goto See;
 		Melee:
 			PLA2 A 2 A_FaceTarget();
 			PLA2 E 3 A_CustomMeleeAttack(100,"kick/hit","none");
@@ -2410,7 +2410,7 @@ CLASS doomguy_hand : enemy 31316 {
 			Stop;
 	} 
 }
-CLASS doomguy_saw : enemy 31317 { 
+class doomguy_saw : enemy 31317 { 
 	Default {
 		
 		Health 999999;
@@ -2468,27 +2468,27 @@ CLASS doomguy_saw : enemy 31317 {
 		WChange:
 			PLSL AAAABABABABABABA 5;
 			TNT1 A 0 A_Jump(256, 1, 2, 3, 4);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_handx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_pistolx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_spasx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_m4a1x", 0, 0);
-			stop;
+			Stop;
 		drun: 
 			PLA0 A 1 A_FaceTarget();
 			PLA0 A 0 A_playsound ("guy/saw_active");
 			PLA0 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLA0 AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			PLA0 A 1 A_FaceTarget();
 			PLA0 A 0 A_playsound ("guy/saw_active");
 			PLA0 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLA0 AB 2 ThrustThingZ(0,18,0,1);
-			goto See;
+			Goto See;
 		Melee:
 			PLA0 E 1 A_FaceTarget();
 			PLA0 A 0 A_playsound ("guy/saw_nohit");
@@ -2508,7 +2508,7 @@ CLASS doomguy_saw : enemy 31317 {
 			Stop;
 	} 
 }
-CLASS doomguy_m4a1 : enemy 31318 { 
+class doomguy_m4a1 : enemy 31318 { 
 	Default {
 		
 		Health 999999;
@@ -2565,26 +2565,26 @@ CLASS doomguy_m4a1 : enemy 31318 {
 		WChange:
 			PLSL AAAABABABABABABA 5;
 			TNT1 A 0 A_Jump(256, 1, 2, 3, 4);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_handx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_pistolx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_spasx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_sawx", 0, 0);
-			stop;
+			Stop;
 		drun: 
 			PLAR A 1 A_FaceTarget();
 			PLAR B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLAR AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			PLAR A 1 A_FaceTarget();
 			PLAR B 0 A_playsound ("guy/jump");
 			PLAR B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLAR AB 2 ThrustThingZ(0,18,0,1);
-			goto See;
+			Goto See;
 		Missile: 
 			PLAR E 1 A_FaceTarget();
 			TNT1 A 0 A_SpawnItem ("CaseSpawn_R", 0, 30,0);
@@ -2609,7 +2609,7 @@ CLASS doomguy_m4a1 : enemy 31318 {
 			Stop;
 	} 
 }
-CLASS doomguy_spas : enemy 31319 { 
+class doomguy_spas : enemy 31319 { 
 	Default {
 		
 		Health 999999;
@@ -2666,33 +2666,33 @@ CLASS doomguy_spas : enemy 31319 {
 		WChange:
 			PLSL AAAABABABABABABA 5;
 			TNT1 A 0 A_Jump(256, 1, 2, 3, 4);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_handx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_pistolx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_m4a1x", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_sawx", 0, 0);
-			stop;
+			Stop;
 		drun: 
 			PLA3 A 1 A_FaceTarget();
 			PLA3 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLA3 AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			PLA3 A 1 A_FaceTarget();
 			PLA3 B 0 A_playsound ("guy/jump");
 			PLA3 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			PLA3 AB 2 ThrustThingZ(0,18,0,1);
-			goto See;
+			Goto See;
 		Missile: 
 			PLA3 E 1 A_FaceTarget();
 			TNT1 E 0 A_custommissile("gunflash2",30,0);
 			PLA3 F 2 Bright A_CustomBulletAttack (4, 4, 8, 10, "BulletPuff");
 			TNT1 A 0 A_SpawnItem ("CaseSpawn_S", 0, 30,0);
 			PLA3 E 1 A_CPosRefire();
-			goto See;
+			Goto See;
 		Pain:
 			PLA3 G 4;
 			PLA3 G 4 A_Pain();
@@ -2706,7 +2706,7 @@ CLASS doomguy_spas : enemy 31319 {
 			Stop;
 	} 
 }
-CLASS doomguy_pistol : enemy 31320 { 
+class doomguy_pistol : enemy 31320 { 
 	Default {
 		
 		Health 999999;
@@ -2763,26 +2763,26 @@ CLASS doomguy_pistol : enemy 31320 {
 		WChange:
 			PLSL AAAABABABABABABA 5;
 			TNT1 A 0 A_Jump(256, 1, 2, 3, 4);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_handx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_spasx", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_m4a1x", 0, 0);
-			stop;
+			Stop;
 			HLP0 A 0 A_SpawnItem("doomguy_sawx", 0, 0);
-			stop;
+			Stop;
 		drun: 
 			DUEL A 1 A_FaceTarget();
 			DUEL B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			DUEL AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			DUEL A 1 A_FaceTarget();
 			DUEL B 0 A_playsound ("guy/jump");
 			DUEL B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			DUEL AB 2 ThrustThingZ(0,25,0,1);
-			goto See;
+			Goto See;
 		Missile: 
 			DUEL E 1 A_FaceTarget();
 			DUEL E 0 A_Jump(32,"snipe");
@@ -2798,7 +2798,7 @@ CLASS doomguy_pistol : enemy 31320 {
 			DUEL F 4 Bright A_CustomBulletAttack (2, 2, 2, 12, "BulletPuff");
 			TNT1 A 0 A_SpawnItem ("CaseSpawn_P", 0, 30,0);
 			DUEL E 1 A_CPosRefire();
-			goto See;
+			Goto See;
 		snipe:
 			DUEL E 10 A_FaceTarget();
 			DUEL E 0 A_PlaySound("guy/de_shot");
@@ -2806,7 +2806,7 @@ CLASS doomguy_pistol : enemy 31320 {
 			DUEL F 1 Bright A_VileAttack();//("snipe/shot", 20, 15, 3) 
 			TNT1 A 0 A_SpawnItem ("CaseSpawn_P", 0, 30,0);
 			DUEL E 5 A_CPosRefire();
-			goto See;
+			Goto See;
 		Melee:
 			DUEL E 2 A_FaceTarget();
 			TNT1 E 0 A_custommissile("gunflash",35,0);
@@ -2834,7 +2834,7 @@ CLASS doomguy_pistol : enemy 31320 {
 			Stop;
 	} 
 }
-CLASS usagi : enemy 31321 { 
+class usagi : enemy 31321 { 
 	Default {
 		
 		Health 999999;
@@ -2882,7 +2882,7 @@ CLASS usagi : enemy 31321 {
 			LE21 A 2 A_FaceTarget();
 			LE21 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			LE21 AB 2 ThrustThingZ(0,5,0,1);
-			goto See;
+			Goto See;
 		Pain: 
 			LE21 A 3();
 			LE21 A 3 A_Pain();
@@ -2895,7 +2895,7 @@ CLASS usagi : enemy 31321 {
 			Stop;
 	} 
 }
-CLASS Swats : enemy 31322 { 
+class Swats : enemy 31322 { 
 	Default {
 		
 		Health 700;
@@ -2936,11 +2936,11 @@ CLASS Swats : enemy 31322 {
 		Spawn:
 			SWAT O 1;
 			SWAT O 2 A_PlaySound("SWAT/active");
-			goto inposition;
+			Goto inposition;
 		inposition:
 			SWAT O 30 A_Look();
 			SWAT O 0 A_SetAngle(Angle+random(-45,45));
-			loop;
+			Loop;
 		See: 
 			SWAT AABBCCDD 3 A_Chase();
 			TNT1 A 0 A_Jump(32,"Clearing");
@@ -2951,19 +2951,19 @@ CLASS Swats : enemy 31322 {
 			TNT1 E 0 A_ClearTarget();
 			SWAT E 0 A_SetAngle(Angle+random(-45,45));
 			SWAT E 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		ClearingB:
 			SWAT O 5 A_Look();
 			TNT1 O 0 A_ClearTarget();
 			SWAT O 0 A_SetAngle(Angle+random(-45,45));
 			SWAT O 0 A_Jump(32,"see");
-			goto LaserB;
+			Goto LaserB;
 		LaserB:
 			TNT1 A 0 A_CustomMissile ("gunlaser",10, 0, 0, 2, 3);
-			goto ClearingB;
+			Goto ClearingB;
 		Missile: 
 			TNT1 A 0 A_Recoil (10);
 			SWAT E 1 A_FaceTarget();
@@ -3012,7 +3012,7 @@ CLASS Swats : enemy 31322 {
 			Stop;
 	}
 }
-CLASS Swats_cap : enemy 31323 { 
+class Swats_cap : enemy 31323 { 
 	Default {
 		
 		Health 1200;
@@ -3051,11 +3051,11 @@ CLASS Swats_cap : enemy 31323 {
 		Spawn:
 			UPOS E 1;
 			UPOS E 2 A_PlaySound("SWAT/active");
-			goto inposition;
+			Goto inposition;
 		inposition:
 			UPOS E 10 A_Look();
 			UPOS E 0 A_SetAngle(Angle+random(-45,45));
-			loop;
+			Loop;
 		See: 
 			UPOS AABBCCDD 3 A_Chase();
 			TNT1 A 0 A_Jump(72,"Clearing");
@@ -3065,10 +3065,10 @@ CLASS Swats_cap : enemy 31323 {
 			TNT1 E 0 A_ClearTarget();
 			UPOS E 0 A_SetAngle(Angle+random(-45,45));
 			UPOS E 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			TNT1 A 0 A_Recoil (10);
 			UPOS E 1 A_FaceTarget();
@@ -3118,7 +3118,7 @@ CLASS Swats_cap : enemy 31323 {
 			Stop;
 	}
 }
-CLASS NAZIS_SS : enemy 31324 { 
+class NAZIS_SS : enemy 31324 { 
 	Default {
 		
 		Health 666;
@@ -3172,7 +3172,7 @@ CLASS NAZIS_SS : enemy 31324 {
 			TNT1 A 0 A_ClearTarget();
 			NAZS E 0 A_SetAngle(Angle+random(-45,45));
 			NAZS E 0 A_Jump(64,"see");
-			loop;
+			Loop;
 		Missile: 
 			NAZS E 1 A_FaceTarget();
 			TNT1 E 0 A_Jump(32,"snipe");
@@ -3202,7 +3202,7 @@ CLASS NAZIS_SS : enemy 31324 {
 			Stop;
 	} 
 } 
-CLASS NAZIS_SR : enemy 31325 { 
+class NAZIS_SR : enemy 31325 { 
 	Default {
 		
 		Health 666;
@@ -3255,7 +3255,7 @@ CLASS NAZIS_SR : enemy 31325 {
 			TNT1 A 0 A_ClearTarget();
 			NAZS E 0 A_SetAngle(Angle+random(-45,45));
 			NAZS E 0 A_Jump(32,"see");
-			loop;
+			Loop;
 		Missile: 
 			NAZS E 7 A_FaceTarget();
 			TNT1 E 0 A_Jump(64,"snipe");
@@ -3285,7 +3285,7 @@ CLASS NAZIS_SR : enemy 31325 {
 			Stop;
 	} 
 } 
-CLASS NAZIS_CAP : enemy 31326 { 
+class NAZIS_CAP : enemy 31326 { 
 	Default {
 		
 		Health 1500;
@@ -3334,7 +3334,7 @@ CLASS NAZIS_CAP : enemy 31326 {
 			TNT1 A 0 A_ClearTarget();
 			NAZC B 0 A_SetAngle(Angle+random(-45,45));
 			NAZC A 0 A_Jump(64,"see");
-			loop;
+			Loop;
 		Missile: 
 			NAZC E 7 A_FaceTarget();
 			TNT1 E 0 A_custommissile("gunflash2",30,0);
@@ -3371,7 +3371,7 @@ CLASS NAZIS_CAP : enemy 31326 {
 			Stop;
 	} 
 } 
-CLASS SPEZ : enemy 31327 { 
+class SPEZ : enemy 31327 { 
 	Default {
 		
 		Health 750;
@@ -3426,10 +3426,10 @@ CLASS SPEZ : enemy 31327 {
 			TNT1 A 0 A_ClearTarget();
 			PBPS E 0 A_SetAngle(Angle+random(-45,45));
 			PBPS E 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			PBPS E 1 A_FaceTarget();
 			PBPS E 0 A_Jump(32,"grenade");
@@ -3464,7 +3464,7 @@ CLASS SPEZ : enemy 31327 {
 			Stop;
 	} 
 } 
-CLASS akid : enemy 31328 { 
+class akid : enemy 31328 { 
 	Default {
 		
 		Health 1200;
@@ -3523,10 +3523,10 @@ CLASS akid : enemy 31328 {
 			TNT1 F 0 A_ClearTarget();
 			HLP1 A 0 A_SetAngle(Angle+random(-45,45));
 			HLP1 F 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			HLP1 F 1 A_FaceTarget();
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
@@ -3594,7 +3594,7 @@ CLASS akid : enemy 31328 {
 			Stop;
 	} 
 }
-CLASS hunter : enemy 31329 { 
+class hunter : enemy 31329 { 
 	Default {
 		
 		Health 900;
@@ -3664,7 +3664,7 @@ CLASS hunter : enemy 31329 {
 			Stop;
 	} 
 } 
-CLASS outlaw : enemy 31330 { 
+class outlaw : enemy 31330 { 
 	Default {
 		
 		Health 900;
@@ -3752,7 +3752,7 @@ CLASS outlaw : enemy 31330 {
 			Stop;
 	} 
 } 
-CLASS wanko : enemy 31331 { 
+class wanko : enemy 31331 { 
 	Default {
 		
 		Health 120;
@@ -3799,7 +3799,7 @@ CLASS wanko : enemy 31331 {
 			TNT1 A 0 A_ClearTarget();
 			TNT1 A 0 A_SetAngle(Angle+random(-45,45));
 			TNT1 A 0 A_Jump(32,"see");
-			loop;
+			Loop;
 		Melee:
 			WNCO F 2 A_FaceTarget();
 			WNCO G 3 A_CustomMeleeAttack(10,"demon/melee","none");
@@ -3820,7 +3820,7 @@ CLASS wanko : enemy 31331 {
 			Stop;
 	} 
 }
-CLASS JSDF : enemy 31332 { 
+class JSDF : enemy 31332 { 
 	Default {
 		
 		Health 750;
@@ -3868,10 +3868,10 @@ CLASS JSDF : enemy 31332 {
 			TNT1 A 0 A_ClearTarget();
 			EDFA E 0 A_SetAngle(Angle+random(-45,45));
 			EDFA E 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			EDFA A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			TNT1 A 0 A_Recoil (5);
 			EDFA E 1 A_FaceTarget();
@@ -3903,7 +3903,7 @@ CLASS JSDF : enemy 31332 {
 			Stop;
 	} 
 } 
-CLASS JSDF_Cap : enemy 31333 { 
+class JSDF_Cap : enemy 31333 { 
 	Default {
 		
 		Health 1700;
@@ -3951,10 +3951,10 @@ CLASS JSDF_Cap : enemy 31333 {
 			TNT1 A 0 A_ClearTarget();
 			EDFC E 0 A_SetAngle(Angle+random(-45,45));
 			EDFC E 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			TNT1 A 0 A_Recoil (5);
 			EDFC E 1 A_FaceTarget();
@@ -3985,7 +3985,7 @@ CLASS JSDF_Cap : enemy 31333 {
 			Stop;
 	} 
 } 
-CLASS JSDF_pilot : enemy { 
+class JSDF_pilot : enemy { 
 	Default {
 		
 		Health 1000;
@@ -3999,7 +3999,7 @@ CLASS JSDF_pilot : enemy {
 		+DropOff;
 		+DontFall;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		deathsound "EDF/death";
 	}
 	States
@@ -4019,7 +4019,7 @@ CLASS JSDF_pilot : enemy {
 			Stop ;
 	}
 }
-CLASS itonoko : enemy 31334 { 
+class itonoko : enemy 31334 { 
 	Default {
 		
 		Health 1200;
@@ -4068,7 +4068,7 @@ CLASS itonoko : enemy 31334 {
 			TNT1 A 0 A_ClearTarget();
 			ITNC G 0 A_SetAngle(Angle+random(-45,45));
 			ITNC G 0 A_Jump(32,"see");
-			loop;
+			Loop;
 		Missile: 
 			ITNC G 3 A_FaceTarget();
 			ITNC G 0 A_Recoil(4);
@@ -4108,7 +4108,7 @@ CLASS itonoko : enemy 31334 {
 			Stop;
 	} 
 } 
-CLASS USCM_Marine : enemy 31335 { 
+class USCM_Marine : enemy 31335 { 
 	Default {
 		
 		Health 700;
@@ -4157,10 +4157,10 @@ CLASS USCM_Marine : enemy 31335 {
 			TNT1 A 0 A_ClearTarget();
 			USCM E 0 A_SetAngle(Angle+random(-45,45));
 			USCM E 0 A_Jump(64,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			USCM E 1 A_FaceTarget();
 			USCM E 0 A_Jump(24,"grenade");
@@ -4203,7 +4203,7 @@ CLASS USCM_Marine : enemy 31335 {
 			Stop;
 	} 
 }
-CLASS USCM_pilot : enemy 31336 { 
+class USCM_pilot : enemy 31336 { 
 	Default {
 		
 		Health 500;
@@ -4252,10 +4252,10 @@ CLASS USCM_pilot : enemy 31336 {
 			TNT1 A 0 A_ClearTarget();
 			USMS E 0 A_SetAngle(Angle+random(-45,45));
 			USMS E 0 A_Jump(64,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		Missile: 
 			USMS E 1 A_FaceTarget();
 			USMS E 0 A_Jump(24,"grenade");
@@ -4298,7 +4298,7 @@ CLASS USCM_pilot : enemy 31336 {
 			Stop;
 	} 
 }
-CLASS USCM_Cap : enemy 31337 { 
+class USCM_Cap : enemy 31337 { 
 	Default {
 		
 		Health 1200;
@@ -4348,10 +4348,10 @@ CLASS USCM_Cap : enemy 31337 {
 			TNT1 A 0 A_ClearTarget();
 			ILLP E 0 A_SetAngle(Angle+random(-45,45));
 			ILLP E 0 A_Jump(64,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		ClearTarget:
 			TNT1 A 0 A_ClearTarget();
 			Goto See;
@@ -4408,7 +4408,7 @@ CLASS USCM_Cap : enemy 31337 {
 			Stop;
 	} 
 }
-CLASS rena : enemy 31338 { 
+class rena : enemy 31338 { 
 	Default {
 		
 		Health 1200;
@@ -4464,7 +4464,7 @@ CLASS rena : enemy 31338 {
 			TNT1 A 0 A_ClearTarget();
 			RENA E 0 A_SetAngle(Angle+random(-45,45));
 			RENA E 0 A_Jump(32,"see");
-			loop;
+			Loop;
 		Missile: 
 			RENA E 0 A_PlaySound("REN/rel");
 			RENA E 1 A_FaceTarget();
@@ -4500,7 +4500,7 @@ CLASS rena : enemy 31338 {
 			Stop;
 	} 
 }
-CLASS takako : enemy 31339 { 
+class takako : enemy 31339 { 
 	Default {
 		
 		Health 1000;
@@ -4560,7 +4560,7 @@ CLASS takako : enemy 31339 {
 		Missile:
 			TKKO E 2 A_FaceTarget();
 			TNT1 A 0 A_Jump(256, "magic1","MLeftHand","MDoubleSerie","MRightHand", "magic2", "magic3","magic1");
-			goto Missile;
+			Goto Missile;
 		MLeftHand:
 			TNT1 A 0 A_PlaySound("Goat/Attack");
 			TKKO E 2 A_FaceTarget();
@@ -4649,7 +4649,7 @@ CLASS takako : enemy 31339 {
 			Stop;
 	} 
 }
-CLASS nagato : enemy 31340 { 
+class nagato : enemy 31340 { 
 	Default {
 		
 		Health 1000;
@@ -4714,7 +4714,7 @@ CLASS nagato : enemy 31340 {
 			TNT1 A 0 A_ClearTarget();
 			NGTO E 0 A_SetAngle(Angle+random(-45,45));
 			NGTO E 0 A_Jump(32,"see");
-			loop;
+			Loop;
 		Missile: 
 			NGTO F 1 A_FaceTarget();
 			NGTO F 0 A_PlaySound("NGT/shot");
@@ -4749,7 +4749,7 @@ CLASS nagato : enemy 31340 {
 			Stop;
 	} 
 }
-CLASS ayaka : enemy 31341 { 
+class ayaka : enemy 31341 { 
 	Default {
 		
 		Health 10000;
@@ -4928,14 +4928,14 @@ CLASS ayaka : enemy 31341 {
 			Goto See;
 	}
 }
-CLASS BabeMeleeChecker : Inventory { 
+class BabeMeleeChecker : Inventory { 
 	Default {
 		
 		Inventory.Amount 1;
 		Inventory.MaxAmount 1;
 	}
 }
-CLASS BabeShot : LoreShot { 
+class BabeShot : LoreShot { 
 	Default {
 		
 		Radius 1;
@@ -4969,7 +4969,7 @@ CLASS BabeShot : LoreShot {
 			Stop;
 	}
 }
-CLASS BabeShotTrail : ACTOR { 
+class BabeShotTrail : actor { 
 	Default {
 		
 		Radius 1;
@@ -4995,7 +4995,7 @@ CLASS BabeShotTrail : ACTOR {
 			Stop;
 	}
 }
-CLASS Helemental :enemy 31342 { 
+class Helemental :enemy 31342 { 
 	Default {
 		
 		health 2000;
@@ -5032,17 +5032,17 @@ CLASS Helemental :enemy 31342 {
 		+CANUSEWALLS;
 		+NOVERTICALMELEERANGE;
 	}
-	states
+	States
 	{
 		Spawn:
 			HELE A 10 A_Look();
-			loop;
+			Loop;
 		See:
 			HELE A 0 A_SetShootable();
 			HELE AAAAAAAAAAAA 3 A_Chase();
 			TNT1 A 0 A_Jump(32,"ClearTarget");
 			HELE A 0 A_Jump(72,1);
-			goto See+1;
+			Goto See+1;
 			HELE A 0 A_UnSetshootable();
 			HELE A 1 A_PlaySound("monster/heltel");
 			HELE A 1 A_SetTranslucent(0.90);
@@ -5070,15 +5070,15 @@ CLASS Helemental :enemy 31342 {
 			HELE A 1 A_SetTranslucent(0.90);
 			HELE A 1 A_SetTranslucent(1.0);
 			HELE A 0 A_SetShootable();
-			goto See;
+			Goto See;
 		ClearTarget:
 			TNT1 A 0 A_ClearTarget();
 			Goto See;
 		Missile:
 			HELE A 0 A_Jump(80,1);
-			goto Missile1;
+			Goto Missile1;
 			HELE A 0 A_Jump(128,1);
-			goto Missile2;
+			Goto Missile2;
 			HELE A 0;
 			Goto Missile3;
 		Missile1:
@@ -5088,25 +5088,25 @@ CLASS Helemental :enemy 31342 {
 			HELE G 0 Bright A_CustomMissile("HadesBall",24,0,0,0,0);
 			HELE G 0 Bright A_CustomMissile("HadesBall",24,0,5,0,0);
 			HELE G 5 Bright A_CustomMissile("HadesBall",24,0,10,0,0);
-			goto See+1;
+			Goto See+1;
 		Missile2:
 			HELE EF 5 Bright A_Facetarget();
 			HELE G 0 Bright A_CustomMissile("HadesBolt",32,0,-16,0,0);
 			HELE G 0 Bright A_CustomMissile("HadesBolt",32,0,0,0,0);
 			HELE G 5 Bright A_CustomMissile("HadesBolt",32,0,16,0,0);
-			goto See+1;
+			Goto See+1;
 		Missile3:
 			HELE B 0;
-			goto See+1;
+			Goto See+1;
 		Melee:
 			HELE ABD 5 Bright A_Facetarget();
 			HELE C 5 Bright A_MeleeAttack();
-			goto See+1;
+			Goto See+1;
 		Pain:
 			HELE H 3;
 			HELE H 3 A_Pain();
 			HELE H 6;
-			goto See;
+			Goto See;
 		Death:
 			HELE I 5 Bright A_Scream();
 			HELE JKL 5 Bright;
@@ -5114,10 +5114,10 @@ CLASS Helemental :enemy 31342 {
 			HELE NOP 5 Bright;
 			HELE QRSTU 5();
 			HELE V -1 A_SetFloorClip();
-			stop;
+			Stop;
 	}
 }
-CLASS HadesBall : CacodemonBall { 
+class HadesBall : CacodemonBall { 
 	Default {
 		
 		Damage 8;
@@ -5129,17 +5129,17 @@ CLASS HadesBall : CacodemonBall {
 		SeeSound "Monster/hadtel";
 		DeathSound "Monster/hadsit";
 	}
-	states
+	States
 	{
 		Spawn:
 			HEFX AB 4 bright;
-			loop;
+			Loop;
 		Death:
 			HEFX CDEEFGH 3 bright;
-			stop;
+			Stop;
 	}
 }
-CLASS HadesBolt : CacodemonBall { 
+class HadesBolt : CacodemonBall { 
 	Default {
 		
 		Damage 6;
@@ -5173,13 +5173,13 @@ CLASS HadesBolt : CacodemonBall {
 			LFX2 J 1 Bright A_Explode(16,34,0);
 			LFX2 J 0 Bright A_CustomMissile("HadesBolt2",0,0,0,6,90);
 			LFX2 J 0 Bright A_CountDown();
-			loop;
+			Loop;
 		Death:
 			LFX2 FGHIJ 2 Bright A_Explode(16,34,0);
-			stop;
+			Stop;
 	}
 }
-CLASS HadesBolt2 : CacodemonBall { 
+class HadesBolt2 : CacodemonBall { 
 	Default {
 		
 		Damage 0;
@@ -5191,17 +5191,17 @@ CLASS HadesBolt2 : CacodemonBall {
 		SeeSound "Monster/hadtel";
 		DeathSound "Monster/hadsit";
 	}
-	states
+	States
 	{
 		Spawn:
 			NULL A 1 bright A_Explode(16,30,0);
-			loop;
+			Loop;
 		Death:
 			NULL A 1 bright;
-			stop;
+			Stop;
 	}
 }
-CLASS HellWarrior : enemy 31343 { 
+class HellWarrior : enemy 31343 { 
 	Default {
 		
 		Health 1500;
@@ -5293,7 +5293,7 @@ CLASS HellWarrior : enemy 31343 {
 			Goto See;
 	} 
 }
-CLASS HellWarriorBall : enemy { 
+class HellWarriorBall : enemy { 
 	Default {
 		
 		Radius 6;
@@ -5318,7 +5318,7 @@ CLASS HellWarriorBall : enemy {
 			Stop;
 	}
 }
-CLASS HellWarriorBall2 : enemy { 
+class HellWarriorBall2 : enemy { 
 	Default {
 		
 		Radius 6;
@@ -5345,7 +5345,7 @@ CLASS HellWarriorBall2 : enemy {
 			Stop;
 	}
 }
-CLASS HellWarriorShield : ACTOR { 
+class HellWarriorShield : actor { 
 	Default {
 		
 		Radius 8;
@@ -5365,7 +5365,7 @@ CLASS HellWarriorShield : ACTOR {
 			Loop;
 	}
 }
-CLASS CacoLich : enemy 31344 { 
+class CacoLich : enemy 31344 { 
 	Default {
 		
 		Health 1000;
@@ -5525,7 +5525,7 @@ CLASS CacoLich : enemy 31344 {
 			Stop;
 	}
 }
-CLASS CacoLichBall :enemy { 
+class CacoLichBall :enemy { 
 	Default {
 		
 		Radius 8;
@@ -5550,7 +5550,7 @@ CLASS CacoLichBall :enemy {
 			Stop;
 	}
 }
-CLASS CacoLichFlameFar :enemy { 
+class CacoLichFlameFar :enemy { 
 	Default {
 		
 		Radius 4;
@@ -5573,7 +5573,7 @@ CLASS CacoLichFlameFar :enemy {
 			Stop;
 	}
 }
-CLASS CacoLichFlame :enemy { 
+class CacoLichFlame :enemy { 
 	Default {
 		
 		Radius 4;
@@ -5596,7 +5596,7 @@ CLASS CacoLichFlame :enemy {
 			Stop;
 	}
 }
-CLASS StoneImp 31345 : ACTOR { 
+class StoneImp 31345 : actor { 
 	Default {
 		
 		Health 3000;
@@ -5662,7 +5662,7 @@ CLASS StoneImp 31345 : ACTOR {
 			Stop;
 	}
 }
-CLASS zombiemarine : enemy 31346 { 
+class zombiemarine : enemy 31346 { 
 	Default {
 		
 		Health 150;
@@ -5718,21 +5718,21 @@ CLASS zombiemarine : enemy 31346 {
 			TNT1 E 0 A_ClearTarget();
 			UDM2 E 0 A_SetAngle(Angle+random(-45,45));
 			UDM2 E 0 A_Jump(32,"see");
-			goto Laser;
+			Goto Laser;
 		Laser:
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-			goto Clearing;
+			Goto Clearing;
 		drun: 
 			UDM2 A 1 A_FaceTarget();
 			UDM2 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			UDM2 AB 2 ThrustThingZ(0,10,0,1);
-			goto See;
+			Goto See;
 		djump: 
 			UDM2 A 1 A_FaceTarget();
 			UDM2 B 0 A_playsound ("guy/jump");
 			UDM2 B 0 ThrustThing(angle*256/360, 30, 1, 0);
 			UDM2 AB 2 ThrustThingZ(0,18,0,1);
-			goto See;
+			Goto See;
 		Missile: 
 			UDM2 E 1 A_FaceTarget();
 			TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
@@ -5758,10 +5758,10 @@ CLASS zombiemarine : enemy 31346 {
 			UDM2 I 5;
 			UDM2 H 5;
 			UDM2 G 5;
-			goto see;
+			Goto see;
 	} 
 }
-CLASS Daedabus :enemy 31347 { 
+class Daedabus :enemy 31347 { 
 	Default {
 		
 		Health 1000;
@@ -5867,7 +5867,7 @@ CLASS Daedabus :enemy 31347 {
 			Goto See;
 	}
 }
-CLASS DaedFire : FatShot { 
+class DaedFire : FatShot { 
 	Default {
 		
 		Speed 22;
@@ -5891,7 +5891,7 @@ CLASS DaedFire : FatShot {
 			Stop;
 	}
 }
-CLASS DaedTrail : ACTOR { 
+class DaedTrail : actor { 
 	Default {
 		
 		Scale 0.65;
@@ -5908,7 +5908,7 @@ CLASS DaedTrail : ACTOR {
 			Stop;
 	}
 }
-CLASS Diabloist : enemy 31348 { 
+class Diabloist : enemy 31348 { 
 	Default {
 		
 		Health 1500;
@@ -6040,7 +6040,7 @@ CLASS Diabloist : enemy 31348 {
 			Stop   ();
 	} 
 }
-CLASS DFire :enemy { 
+class DFire :enemy { 
 	Default {
 		
 		Radius 0;
@@ -6119,14 +6119,13 @@ CLASS DFire :enemy {
 			Stop;
 	}
 }
-CLASS DFlare :enemy { 
+class DFlare :enemy { 
 	Default {
 		
 		Radius 5;
 		Height 5;
 		Speed 25;
 		Damage 4;
-		//SpawnID 252
 		RenderStyle "Add";
 		DamageType Fire;
 		Alpha 0.85;
@@ -6145,13 +6144,13 @@ CLASS DFlare :enemy {
 			Stop;
 	}
 }
-CLASS DMissile : CFlameMissile { 
+class DMissile : CFlameMissile { 
 	Default {
 		
 		+ThruGhost;
 	}
 }
-CLASS DTracer :enemy { 
+class DTracer :enemy { 
 	Default {
 		
 		Radius 5;
@@ -6184,7 +6183,7 @@ CLASS DTracer :enemy {
 			Stop;
 	}
 }
-CLASS MFlareFX : ACTOR { 
+class MFlareFX : actor { 
 	Default {
 		
 		Radius 0;
@@ -6201,7 +6200,7 @@ CLASS MFlareFX : ACTOR {
 			Stop;
 	}
 }
-CLASS DTracerPuff : ACTOR { 
+class DTracerPuff : actor { 
 	Default {
 		
 		Radius 1;
@@ -6218,22 +6217,22 @@ CLASS DTracerPuff : ACTOR {
 	{
 		Spawn:
 			FTRA ABCDEFGHIJ 3 Bright A_Explode(4, 8);
-			stop;
+			Stop;
 	}
 }
-CLASS DMissileTrail : CFlameFloor { 
+class DMissileTrail : CFlameFloor { 
 	Default {
 		
 		+ThruGhost;
 	}
 }
-CLASS DMissileCircle : CircleFlame { 
+class DMissileCircle : CircleFlame { 
 	Default {
 		
 		+ThruGhost;
 	}
 }
-CLASS SegwayZombie :enemy 31349 { 
+class SegwayZombie :enemy 31349 { 
 	Default {
 		
 		health 300;
@@ -6275,13 +6274,13 @@ CLASS SegwayZombie :enemy 31349 {
 		+CANUSEWALLS;
 		+NOVERTICALMELEERANGE;
 	}
-	states
+	States
 	{
 	Spawn:
 		ZSEG A 10 A_Look();
 		ZSEG A 0 A_Stop();
 		ZSEG A 0 A_StopSoundEx ("SoundSlot7");
-		loop;
+		Loop;
 	See:
 		ZSEG A 0 A_Jump (8, "Coward", "Brave");
 		ZSEG A 1 A_Chase();
@@ -6296,10 +6295,10 @@ CLASS SegwayZombie :enemy 31349 {
 		Goto See;
 	Coward:
 		ZSEG A 0 A_ChangeFlag ("FRIGHTENED", 1);
-		goto See;
+		Goto See;
 	Brave:
 		ZSEG A 0 A_ChangeFlag ("FRIGHTENED", 0);
-		goto See;
+		Goto See;
 	Missile: 
 		ZSEG A 1 A_FaceTarget();
 		ZSEG A 0ThrustThing (angle*190/360, 15, 1, 0);
@@ -6339,7 +6338,7 @@ CLASS SegwayZombie :enemy 31349 {
 	Pain:
 		ZSEG A 0 A_Pain();
 		ZSEG A 0 A_PlaySoundEx ("Segway/Go", "SoundSlot7", 1);
-		goto See;
+		Goto See;
 	Death:
 		ZSEG B 5 A_SpawnItemEx ("Boom", 0, 0, 32, 0, 0, 0, 0, 160);
 		ZSEG B 0 A_StopSoundEx ("SoundSlot7");
@@ -6347,10 +6346,10 @@ CLASS SegwayZombie :enemy 31349 {
 		ZSEG C 5 A_Scream();
 		ZSEG D 5 A_NoBlocking();
 		ZSEG E -1;
-		stop;
+		Stop;
 }
 }
-CLASS SegwayPuff : ACTOR { 
+class SegwayPuff : actor { 
 	Default {
 	
 	radius 2;
@@ -6367,14 +6366,14 @@ CLASS SegwayPuff : ACTOR {
 	+DONTSPLASH;
 	+NOCLIP;
 	}
-	states
+	States
 	{
 	Spawn:
 		ZPUF ABCDE 1;
-		stop;
+		Stop;
 }
 }
-CLASS Boom : ACTOR { 
+class Boom : actor { 
 	Default {
 	
 	Radius 11;
@@ -6390,10 +6389,10 @@ CLASS Boom : ACTOR {
 		MISL B 8 bright;
 		MISL C 6 bright;
 		MISL D 4 bright;
-		stop;
+		Stop;
 }
 }
-CLASS UndeadPriest :enemy 31350 { 
+class UndeadPriest :enemy 31350 { 
 	Default {
 	
 	health 900;
@@ -6426,27 +6425,27 @@ CLASS UndeadPriest :enemy 31350 {
 	+CANUSEWALLS;
 	+NOVERTICALMELEERANGE;
 	}
-	states
+	States
 	{
 	Spawn:
 		UNDP A 10 A_Look();
-		loop;
+		Loop;
 	See:
 		UNDP A 0 A_Jump (32, "Run");
 		TNT1 A 0 A_Jump(64,"Clearing");
 		UNDP AABBCCDD 3 A_Chase();
-		loop;
+		Loop;
 	Run:
 		UNDP A 0 A_Jump (24, "See");
 		TNT1 A 0 A_Jump(64,"Clearing");
 		UNDP AABBCCDD 2 A_Chase();
-		loop;
+		Loop;
 	Clearing:
 		UNDP E 5 A_Look();
 		TNT1 A 0 A_ClearTarget();
 		UNDP E 0 A_SetAngle(Angle+random(-45,45));
 		UNDP E 0 A_Jump(32,"see");
-		loop;
+		Loop;
 	Missile:
 		UNDP E 5 A_FaceTarget();
 		TNT1 E 0 A_custommissile("gunflash2",40,0);
@@ -6465,11 +6464,11 @@ CLASS UndeadPriest :enemy 31350 {
 		UNDP D 8 A_PlaySound("SWAT/look");
 		TNT1 A 0 A_SpawnItem ("CaseSpawn_S", 0, 30,0);
 		TNT1 A 0 A_SpawnItem ("CaseSpawn_S", 0, 30,0);
-		goto See;
+		Goto See;
 	Pain:
 		UNDP G 3;
 		UNDP G 3 A_Pain();
-		goto See;
+		Goto See;
 	Death:
 		UNDP H 6;
 		UNDP I 6 A_Scream();
@@ -6480,7 +6479,7 @@ CLASS UndeadPriest :enemy 31350 {
 		Stop;
 }
 }
-CLASS Afrit :enemy 31351 { 
+class Afrit :enemy 31351 { 
 	Default {
 	
 	Health 1300;
@@ -6572,7 +6571,7 @@ CLASS Afrit :enemy 31351 {
 		Stop;
 }
 }
-CLASS AfritBall :enemy { 
+class AfritBall :enemy { 
 	Default {
 	
 	Radius 6;
@@ -6596,7 +6595,7 @@ CLASS AfritBall :enemy {
 		Stop;
 }
 }
-CLASS Comet :enemy { 
+class Comet :enemy { 
 	Default {
 	
 	Radius 6;
@@ -6621,7 +6620,7 @@ CLASS Comet :enemy {
 		Stop;
 }
 }
-CLASS CometTail : ACTOR { 
+class CometTail : actor { 
 	Default {
 	
 	Projectile;
@@ -6636,7 +6635,7 @@ CLASS CometTail : ACTOR {
 		Stop;
 }
 }
-CLASS CometDeathGlow : CometTail { 
+class CometDeathGlow : CometTail { 
 	Default {
 	
 	Scale 2.0;
@@ -6649,7 +6648,7 @@ CLASS CometDeathGlow : CometTail {
 		Stop;
 }
 }
-CLASS CometDeath : ACTOR { 
+class CometDeath : actor { 
 	Default {
 	
 	Projectile;
@@ -6664,7 +6663,7 @@ CLASS CometDeath : ACTOR {
 		Stop;
 }
 }
-CLASS OrbitComet : Comet { 
+class OrbitComet : Comet { 
 	Default {
 	
 	SeeSound "";
@@ -6681,7 +6680,7 @@ CLASS OrbitComet : Comet {
 		Stop;
 }
 }
-CLASS OrbitComet2 : OrbitComet { 
+class OrbitComet2 : OrbitComet { 
 	Default {
 	
 	}
@@ -6694,13 +6693,13 @@ CLASS OrbitComet2 : OrbitComet {
 		Stop;
 }
 }
-CLASS OrbitCometTail : CometTail { 
+class OrbitCometTail : CometTail { 
 	Default {
 	
 	Scale 0.5;
 	}
 }
-CLASS HellFire :enemy { 
+class HellFire :enemy { 
 	Default {
 	
 	//+NOBLOCKMAP
@@ -6724,7 +6723,7 @@ CLASS HellFire :enemy {
 		Stop;
 }
 }
-CLASS HellFire1 :enemy { 
+class HellFire1 :enemy { 
 	Default {
 	
 	+Ripper;
@@ -6750,7 +6749,7 @@ CLASS HellFire1 :enemy {
 		Stop;
 }
 }
-CLASS HellFire2 :enemy { 
+class HellFire2 :enemy { 
 	Default {
 	
 	+Ripper;
@@ -6779,7 +6778,7 @@ CLASS HellFire2 :enemy {
 		Stop;
 }
 }
-CLASS Azazel : enemy 31352 { 
+class Azazel : enemy 31352 { 
 	Default {
 	
 	Health 2400;
@@ -6903,7 +6902,7 @@ CLASS Azazel : enemy 31352 {
 		Stop;
 }
 }
-CLASS SatyrLordMissile1 :enemy { 
+class SatyrLordMissile1 :enemy { 
 	Default {
 	
 	Projectile;
@@ -6932,7 +6931,7 @@ Death:
 	Stop;
 }
 }
-CLASS SLM1Trail : ACTOR { 
+class SLM1Trail : actor { 
 	Default {
  
 	Projectile
@@ -6954,7 +6953,7 @@ Spawn:
 		Wait
 	}
 }
-CLASS SatyrLordMissile2 :enemy { 
+class SatyrLordMissile2 :enemy { 
 	Default {
  
 	Speed 14
@@ -6971,7 +6970,7 @@ CLASS SatyrLordMissile2 :enemy {
 	seesound "whiteballbsee"
 	deathsound "whiteballbdeth"
 	}
-	states
+	States
 	{
 Spawn:
 		PSMM A 2 Bright A_SeekerMissile(25,10)
@@ -6992,13 +6991,13 @@ Spawn:
 		TNT1 A 0 A_CustomMissile("SLM2Trail",0,0,0)
 		PSMM F 2 Bright A_SeekerMissile(25,10)
 		TNT1 A 0 A_CustomMissile("SLM2Trail",0,0,0)
-		goto Spawn+12
+		Goto Spawn+12
 Death:
 		PSMM GGHHIIJJKKLLMM 2 Bright A_FadeOut(0.05)
 		stop
 	}
 }
-CLASS SLM2Trail : ACTOR { 
+class SLM2Trail : actor { 
 	Default {
  
 	Projectile
@@ -7017,14 +7016,14 @@ Spawn:
 		Wait
 	}
 }
-CLASS SatyrLordMissileDual1Fake :enemy { 
+class SatyrLordMissileDual1Fake :enemy { 
 	Default {
  
 	Projectile
 	Speed 0
 	Scale 0.34
 	RenderStyle "Add"
-	SeeSound "waitingballsspawn"
+	SeeSound "waitingballsSpawn"
 	}
 	States
 	{
@@ -7039,7 +7038,7 @@ Death:
 		Stop
 	}
 }
-CLASS SatyrLordMissileDual1Real :enemy { 
+class SatyrLordMissileDual1Real :enemy { 
 	Default {
  
 	Projectile
@@ -7080,7 +7079,7 @@ Death:
 		Stop
 	}
 }
-CLASS SLMD1RTrail : ACTOR { 
+class SLMD1RTrail : actor { 
 	Default {
  
 	Projectile
@@ -7102,7 +7101,7 @@ Spawn:
 		Wait
 	}
 }
-CLASS SatyrLordMissileDual2Fake :enemy { 
+class SatyrLordMissileDual2Fake :enemy { 
 	Default {
  
 	Projectile
@@ -7110,7 +7109,7 @@ CLASS SatyrLordMissileDual2Fake :enemy {
 	Scale 0.8
 	RenderStyle "Add"
 	Alpha 0.75
-	SeeSound "waitingballsspawn"
+	SeeSound "waitingballsSpawn"
 	Translation "112:127=80:111"
 	}
 	States
@@ -7126,7 +7125,7 @@ Death:
 		Stop
 	}
 }
-CLASS SatyrLordMissileDual2Real :enemy { 
+class SatyrLordMissileDual2Real :enemy { 
 	Default {
  
 	Projectile
@@ -7163,7 +7162,7 @@ Death:
 		Wait
 	}
 }
-CLASS SLMD2RTrail :enemy { 
+class SLMD2RTrail :enemy { 
 	Default {
  
 	Projectile
@@ -7182,7 +7181,7 @@ Spawn:
 		Wait
 	}
 }
-CLASS Roach :enemy 31353 { 
+class Roach :enemy 31353 { 
 	Default {
  
 	Health 700
@@ -7358,9 +7357,9 @@ Raise:
 		Goto See
 	}
 }
-CLASS RoachScared : Inventory { Inventory.MaxAmount 1 } { 
+class RoachScared : Inventory { Inventory.MaxAmount 1 } { 
 	Default {
-CLASS RoachBall : enemy { 
+class RoachBall : enemy { 
 	Default {
 	
 	Damage (Random(15, 12));
@@ -7386,7 +7385,7 @@ CLASS RoachBall : enemy {
 		Stop;
 }
 }
-CLASS RoachBallTrail : ACTOR { 
+class RoachBallTrail : actor { 
 	Default {
 	
 	Projectile;
@@ -7401,7 +7400,7 @@ CLASS RoachBallTrail : ACTOR {
 		Loop;
 }
 }
-CLASS WickedTorso : ACTOR { 
+class WickedTorso : actor { 
 	Default {
 	
 	Health 1;
@@ -7421,7 +7420,7 @@ CLASS WickedTorso : ACTOR {
 	Spawn:
 		WICK Q 5 A_PlaySound("monster/tenpn1");
 		WICK R 5 A_CheckFloor("Ground");
-		goto Spawn+1;
+		Goto Spawn+1;
 	Ground:
 		WICK S 1 A_SetFloorClip();
 		WICK S 4 A_PlaySound("monster/tenpn2");
@@ -7432,7 +7431,7 @@ CLASS WickedTorso : ACTOR {
 		stop       ();
 }
 }
-CLASS WickedTorsoed :WickedTorso Replaces WickedTorso { 
+class WickedTorsoed :WickedTorso Replaces WickedTorso { 
 	Default {
 	
 	Health 1;
@@ -7452,7 +7451,7 @@ CLASS WickedTorsoed :WickedTorso Replaces WickedTorso {
 	Spawn:
 		WICK Q 5 A_PlaySound("monster/tenpn1");
 		WICK R 5 A_CheckFloor("Ground");
-		goto Spawn+1;
+		Goto Spawn+1;
 	Ground:
 		WICK S 1 A_SetFloorClip();
 		WICK S 4 A_PlaySound("monster/tenpn2");
@@ -7463,7 +7462,7 @@ CLASS WickedTorsoed :WickedTorso Replaces WickedTorso {
 		stop       ();
 }
 }
-CLASS ArchonOfHell : enemy 31354 { 
+class ArchonOfHell : enemy 31354 { 
 	Default {
 	
 	Health 2000;
@@ -7572,7 +7571,7 @@ CLASS ArchonOfHell : enemy 31354 {
 		Stop;
 } 
 }
-CLASS ArchonComet : enemy { 
+class ArchonComet : enemy { 
 	Default {
 	
 	Radius 8;
@@ -7594,16 +7593,16 @@ CLASS ArchonComet : enemy {
 	{
 	Spawn: 
 		BAAR AAAABBBBCCCC 1 Bright A_SpawnItem("ArchonCometTrail",0,0);
-		loop;
+		Loop;
 	Death:
 		BAAR J 0 Bright A_SetTranslucent (0.67,1);
 		BAAR J 3 Bright;
 		BAAR K 3 Bright A_Explode(40,150,0);
 		BAAR LMN 3 Bright;
-		stop;
+		Stop;
 }
 }
-CLASS ArchonSoul : ACTOR { 
+class ArchonSoul : actor { 
 	Default {
 	
 	Radius 1;
@@ -7620,7 +7619,7 @@ CLASS ArchonSoul : ACTOR {
 		Stop;
 }
 }
-CLASS ArchonCometTrail : ACTOR { 
+class ArchonCometTrail : actor { 
 	Default {
 	
 	Radius 3;
@@ -7639,7 +7638,7 @@ CLASS ArchonCometTrail : ACTOR {
 		Stop;
 }
 }
-CLASS BaronBall1337 : ACTOR { 
+class BaronBall1337 : actor { 
 	Default {
 	
 	Radius 6;
@@ -7657,17 +7656,17 @@ CLASS BaronBall1337 : ACTOR {
 	DONTHURTSHOOTER;
 	+DONTHURTSPECIES;
 	}
-	states
+	States
 	{
 	Spawn:
 		BAL7 AB 4 bright;
-		loop;
+		Loop;
 	Death:
 		BAL7 CDE 6 bright;
-		stop;
+		Stop;
 }
 }
-CLASS hellhound : enemy 31355 { 
+class hellhound : enemy 31355 { 
 	Default {
 	
 	Health 600;
@@ -7708,7 +7707,7 @@ CLASS hellhound : enemy 31355 {
 	{ 
 	Spawn: 
 		HDOG AA 10 A_Look();
-		goto see;
+		Goto see;
 	See: 
 		HDOG AAAABBBBCCCCDDDDEEEEFFFF 1 A_Chase();
 		TNT1 A 0 A_Jump(64,"ClearTarget");
@@ -7748,7 +7747,7 @@ CLASS hellhound : enemy 31355 {
 		Stop;
 } 
 }
-CLASS DogFire : enemy { 
+class DogFire : enemy { 
 	Default {
 	
 	Radius 2;
@@ -7777,15 +7776,15 @@ CLASS DogFire : enemy {
 		FRFX HIJ 2 Bright A_Explode(1,32,0);
 		FRFX KLM 2 Bright A_Explode(1,64,0);
 		FRFX NO 2 Bright;
-		stop;
+		Stop;
 	Death:
 		FRFX HIJ 2 Bright A_Explode(1,32,0);
 		FRFX KLM 2 Bright A_Explode(1,64,0);
 		FRFX NO 2 Bright;
-		stop;
+		Stop;
 }
 }
-CLASS DogShot : enemy { 
+class DogShot : enemy { 
 	Default {
 	
 	Radius 8;
@@ -7805,13 +7804,13 @@ CLASS DogShot : enemy {
 	Spawn:
 		NULL A 3;
 		HHFX AABBCC 1 Bright A_CustomMissile("DogTrail",0,0,0,0,0);
-		goto Spawn+1;
+		Goto Spawn+1;
 	Death:
 		HHFX DFGH 4 Bright;
-		stop;
+		Stop;
 }
 }
-CLASS DogTrail : BulletPuff { 
+class DogTrail : BulletPuff { 
 	Default {
 	
 	RENDERSTYLE "Add";
@@ -7821,10 +7820,10 @@ CLASS DogTrail : BulletPuff {
 	Spawn:
 		NULL A 5;
 		HHFX DFGH 3 Bright;
-		stop;
+		Stop;
 }
 }
-CLASS Fallen : enemy 31356 { 
+class Fallen : enemy 31356 { 
 	Default {
 	
 	Health 500;
@@ -7862,7 +7861,7 @@ CLASS Fallen : enemy 31356 {
 	{ 
 	Spawn: 
 		FALN ABCDB 8 Bright A_Look();
-		goto see;
+		Goto see;
 	See:
 		FALN A 0 Bright A_Jump (96,12);
 		FALN A 1 Bright A_Playsound ("monster/falwng");
@@ -7957,7 +7956,7 @@ CLASS Fallen : enemy 31356 {
 		Stop;
 } 
 }
-CLASS FallenFX : enemy { 
+class FallenFX : enemy { 
 	Default {
 	
 	Radius 2;
@@ -7976,7 +7975,7 @@ CLASS FallenFX : enemy {
 		Stop;
 }
 }
-CLASS FallenShot : enemy { 
+class FallenShot : enemy { 
 	Default {
 	
 	Radius 8;
@@ -7997,13 +7996,13 @@ CLASS FallenShot : enemy {
 	{
 	Spawn:
 		BALF AB 2 Bright A_CustomMissile("FallenFX",0,0,0,0);
-		loop;
+		Loop;
 	Death:
 		BALF CDEF 4 Bright;
-		stop;
+		Stop;
 }
 }
-CLASS FallenSP : enemy { 
+class FallenSP : enemy { 
 	Default {
 	
 	Radius 2;
@@ -8018,13 +8017,13 @@ CLASS FallenSP : enemy {
 	{
 	Spawn:
 		FBSP AB 3 BRIGHT A_Countdown();
-		loop;
+		Loop;
 	Death:
 		FBSP CDE 3 BRIGHT;
 		Stop;
 }
 }
-CLASS FusionSpider : enemy 31357 { 
+class FusionSpider : enemy 31357 { 
 	Default {
 	
 	Health 2000;
@@ -8057,11 +8056,11 @@ CLASS FusionSpider : enemy 31357 {
 	+CANUSEWALLS;
 	+NOVERTICALMELEERANGE;
 	}
-	states
+	States
 	{
 	Spawn:
 		FSPI AB 10 A_Look();
-		goto see;
+		Goto see;
 	See:
 		FSPI A 10;
 		FSPI A 3 A_BabyMetal();
@@ -8092,7 +8091,7 @@ CLASS FusionSpider : enemy 31357 {
 		Stop;
 }
 }
-CLASS FusionShot : enemy { 
+class FusionShot : enemy { 
 	Default {
 	
 	Radius 13;
@@ -8108,7 +8107,7 @@ CLASS FusionShot : enemy {
 	+DONTHURTSPECIES;
 	Decal PlasmaScorchLower;
 	}
-	states
+	States
 	{
 	Spawn:
 		FS03 AB 10 BRIGHT A_SpawnItemEx("FusionTrail", 0, 0, 0, 0, 0, 0, Random(-10, 10), 128);
@@ -8118,7 +8117,7 @@ CLASS FusionShot : enemy {
 		Stop;
 }
 }
-CLASS FusionTrail : enemy { 
+class FusionTrail : enemy { 
 	Default {
 	
 	Radius 4;
@@ -8129,7 +8128,7 @@ CLASS FusionTrail : enemy {
 	RENDERSTYLE "Add";
 	PROJECTILE;
 	}
-	states
+	States
 	{
 	Spawn:
 		TNT0 A 2;
@@ -8137,7 +8136,7 @@ CLASS FusionTrail : enemy {
 		Stop;
 }
 }
-CLASS FemaleScientist : enemy 31358 { 
+class FemaleScientist : enemy 31358 { 
 	Default {
 	
 	health 500;
@@ -8173,7 +8172,7 @@ CLASS FemaleScientist : enemy 31358 {
 	{
 	Spawn:
 		FSZK AB 10 A_Look();
-		goto see;
+		Goto see;
 	See:
 		FSZK AABBCCDD 4 A_Chase();
 		TNT1 A 0 A_Jump(64,"ClearTarget");
@@ -8185,11 +8184,11 @@ CLASS FemaleScientist : enemy 31358 {
 		FSZK E 4 A_FaceTarget();
 		FSZK F 5 A_CustomMeleeAttack(50,"NIF/Hit", "skeleton/swing");
 		FSZK E 4 A_ComboAttack();
-		goto See;
+		Goto See;
 	Pain:
 		FSZK G 3;
 		FSZK G 3 A_Pain();
-		goto See;
+		Goto See;
 	Death:
 		FSZK H 5;
 		FSZK I 5 A_Scream();
@@ -8198,10 +8197,10 @@ CLASS FemaleScientist : enemy 31358 {
 		FSZK L 5;
 		FSZK M 5;
 		FSZK N -1;
-		stop;
+		Stop;
 }
 }
-CLASS ImpWarlord : enemy 31359 { 
+class ImpWarlord : enemy 31359 { 
 	Default {
 	
 	Health 500;
@@ -8241,7 +8240,7 @@ CLASS ImpWarlord : enemy 31359 {
 	{
 	Spawn:
 		WARI AB 10 A_Look();
-		goto see;
+		Goto see;
 	See:
 		WARI AABBCCDD 3 A_Chase();
 		TNT1 A 0 A_Jump(64,"ClearTarget");
@@ -8275,7 +8274,7 @@ CLASS ImpWarlord : enemy 31359 {
 		WARI L 7 A_FaceTarget();
 		WARI M 0 A_PlaySound("implord/maceswing");
 		WARI M 5 A_FaceTarget();
-		WARI M 0 A_PlayWeaponSound("imp/attack");
+		WARI M 0 A_PlayweaponSound("imp/attack");
 		WARI M 0 A_Jump(128,3);
 		WARI N 0 A_CustomMissile("GreenPoisonBall", 40, 0, -8, 1);
 		WARI N 0 A_CustomMissile("GreenPoisonBall", 24, 0, 8, 1);
@@ -8326,7 +8325,7 @@ CLASS ImpWarlord : enemy 31359 {
 		Goto See;
 }
 }
-CLASS YellowSkullSeeker : enemy { 
+class YellowSkullSeeker : enemy { 
 	Default {
 	
 	Radius 8;
@@ -8352,7 +8351,7 @@ CLASS YellowSkullSeeker : enemy {
 		Stop;
 }
 }
-CLASS GreenPoisonBall : enemy { 
+class GreenPoisonBall : enemy { 
 	Default {
 	
 	Radius 8;
@@ -8376,7 +8375,7 @@ CLASS GreenPoisonBall : enemy {
 		Stop;
 }
 }
-CLASS RedSkullBall : enemy { 
+class RedSkullBall : enemy { 
 	Default {
 	
 	Radius 8;
@@ -8401,7 +8400,7 @@ CLASS RedSkullBall : enemy {
 		Stop;
 }
 }
-CLASS WarlordShield : ACTOR { 
+class WarlordShield : actor { 
 	Default {
 	
 	+DOOMBOUNCE;
@@ -8415,7 +8414,7 @@ CLASS WarlordShield : ACTOR {
 		Stop;
 }
 }
-CLASS WarlordMace : ACTOR { 
+class WarlordMace : actor { 
 	Default {
 	
 	+DOOMBOUNCE;
@@ -8429,14 +8428,14 @@ CLASS WarlordMace : ACTOR {
 		Stop;
 }
 }
-CLASS FamiliarSpawner : enemy { 
+class FamiliarSpawner : enemy { 
 	Default {
 	
 	+MISSILE;
 	+DOOMBOUNCE;
 	Speed 8;
 	Damage 0;
-	DeathSound "implord/familiarspawn";
+	DeathSound "implord/familiarSpawn";
 	}
 	States
 	{
@@ -8455,7 +8454,7 @@ CLASS FamiliarSpawner : enemy {
 		Stop;
 }
 }
-CLASS DragonFamiliar : enemy 31360 { 
+class DragonFamiliar : enemy 31360 { 
 	Default {
 	
 	Health 100;
@@ -8493,7 +8492,7 @@ CLASS DragonFamiliar : enemy 31360 {
 	{
 	Spawn:
 		DFAM ABCD 10 A_Look();
-		goto see;
+		Goto see;
 	See:
 		DFAM AABBCCDD 3 A_Chase();
 		Loop;
@@ -8528,7 +8527,7 @@ CLASS DragonFamiliar : enemy 31360 {
 		Stop;
 }
 }
-CLASS MiniFirePuff : enemy { 
+class MiniFirePuff : enemy { 
 	Default {
 	
 	Radius 6;
@@ -8550,13 +8549,13 @@ CLASS MiniFirePuff : enemy {
 		Stop;
 }
 }
-CLASS MiniFirePuffNoDamage : MiniFirePuff { 
+class MiniFirePuffNoDamage : MiniFirePuff { 
 	Default {
 	
 	Damage 0;
 	}
 }
-CLASS BatFamiliar : enemy 31361 { 
+class BatFamiliar : enemy 31361 { 
 	Default {
 	
 	Health 80;
@@ -8597,7 +8596,7 @@ CLASS BatFamiliar : enemy 31361 {
 	{
 	Spawn:
 		BFAM ABCB 3 A_Look();
-		goto see;
+		Goto see;
 	See:
 		BFAM ABCB 3 A_Chase();
 		Loop;
@@ -8626,7 +8625,7 @@ CLASS BatFamiliar : enemy 31361 {
 		Stop;
 }
 }
-CLASS HellGuard : enemy 31362 { 
+class HellGuard : enemy 31362 { 
 	Default {
 	
 	Health 1500;
@@ -8719,7 +8718,7 @@ CLASS HellGuard : enemy 31362 {
 		Goto See;
 }
 }
-CLASS HellGuardBall : enemy { 
+class HellGuardBall : enemy { 
 	Default {
 	
 	Radius 13;
@@ -8744,7 +8743,7 @@ CLASS HellGuardBall : enemy {
 		Stop;
 }
 }
-CLASS Maelstrom : enemy 31363 { 
+class Maelstrom : enemy 31363 { 
 	Default {
 	
 	Health 3000;
@@ -8755,7 +8754,7 @@ CLASS Maelstrom : enemy 31363 {
 	damage 20;
 	Monster;
 	+FLOAT;
-	+SPAWNFLOAT;
+	+SpawnFLOAT;
 	+NOGRAVITY;
 	+MISSILEMORE;
 	DONTHURTSHOOTER;
@@ -8786,7 +8785,7 @@ CLASS Maelstrom : enemy 31363 {
 	{
 	Spawn:
 		ASKU A 10 BRIGHT A_Look();
-		goto see;
+		Goto see;
 	See:
 		ASKU B 1 BRIGHT A_Chase();
 		TNT1 A 0 A_Jump(64,"ClearTarget");
@@ -8820,7 +8819,7 @@ CLASS Maelstrom : enemy 31363 {
 		Stop;
 }
 }
-CLASS chaingunguyenemy : enemy 31364 { 
+class chaingunguyenemy : enemy 31364 { 
 	Default {
 	
 	Health 1000;
@@ -8861,7 +8860,7 @@ CLASS chaingunguyenemy : enemy 31364 {
 	{
 	Spawn:
 		ZSCH A 1;
-		goto see;
+		Goto see;
 	See: 
 		ZSCH AABBCCDD 3 A_Chase();
 		TNT1 A 0 A_Jump(32,"Clearing");
@@ -8871,10 +8870,10 @@ CLASS chaingunguyenemy : enemy 31364 {
 		TNT1 A 0 A_ClearTarget();
 		ZSCL A 0 A_SetAngle(Angle+random(-45,45));
 		ZSCL A 0 A_Jump(32,"see");
-		goto Laser;
+		Goto Laser;
 	Laser:
 		TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
-		goto Clearing;
+		Goto Clearing;
 	Missile: 
 		ZSCH E 1 A_FaceTarget();
 		TNT1 A 0 A_CustomMissile ("gunlaser", 30, 0, 0, 2, 3);
@@ -8935,7 +8934,7 @@ CLASS chaingunguyenemy : enemy 31364 {
 		Stop;
 }
 }
-CLASS heli_Missile : enemy { 
+class heli_Missile : enemy { 
 	Default {
 	
 	Radius 11;
@@ -8956,14 +8955,14 @@ CLASS heli_Missile : enemy {
 	{
 	Spawn:
 		PNZR A 1 bright A_Tracer();
-		loop;
+		Loop;
 	Death:
 		GRNE A 2 bright A_Explode(200,128,0);
 		GRNE BCDEFGHIJKLMN 4 bright;
-		stop;
+		Stop;
 }
 }
-CLASS SPEZ_Grenade : enemy { 
+class SPEZ_Grenade : enemy { 
 	Default {
 	
 	Radius 11;
@@ -8983,14 +8982,14 @@ CLASS SPEZ_Grenade : enemy {
 	{
 	Spawn:
 		GRNS A 1 bright;
-		loop;
+		Loop;
 	Death:
 		GRNE A 2 bright A_Explode(128,128,0);
 		GRNE BCDEFGHIJKLMN 4 bright;
-		stop;
+		Stop;
 }
 }
-CLASS Friend_Plasma : enemy { 
+class Friend_Plasma : enemy { 
 	Default {
 	
 	Radius 13;
@@ -9010,13 +9009,13 @@ CLASS Friend_Plasma : enemy {
 	{
 	Spawn:
 		WF70 BC 2 bright;
-		loop;
+		Loop;
 	Death:
 		PLSE ABCDE 4 bright;
-		stop;
+		Stop;
 }
 }
-CLASS USCM_Pulse : enemy { 
+class USCM_Pulse : enemy { 
 	Default {
 	
 	Radius 2;
@@ -9036,13 +9035,13 @@ CLASS USCM_Pulse : enemy {
 	{
 	Spawn:
 		TRAC A 1 bright;
-		loop;
+		Loop;
 	Death:
 		PLGN ABCD 3 bright;
-		stop;
+		Stop;
 }
 }
-CLASS HMG_BUL : enemy { 
+class HMG_BUL : enemy { 
 	Default {
 	
 	Radius 2;
@@ -9060,13 +9059,13 @@ CLASS HMG_BUL : enemy {
 	{
 	Spawn:
 		OTBL A 1 bright;
-		loop;
+		Loop;
 	Death:
 		PLGN ABCD 3 bright;
-		stop;
+		Stop;
 }
 }
-CLASS USCM_fire : enemy { 
+class USCM_fire : enemy { 
 	Default {
 	
 	Radius 2;
@@ -9086,15 +9085,15 @@ CLASS USCM_fire : enemy {
 	{
 	Spawn:
 		FRF2 SRQ 6 bright;
-		loop;
+		Loop;
 	Death:
 		FRFX QRSTUVW 4 bright;
 		FRF2 QRSTUVW 4 bright;
 		TNT1 A -1;
-		stop;
+		Stop;
 }
 }
-CLASS USCM_Grenade : enemy { 
+class USCM_Grenade : enemy { 
 	Default {
 	
 	Radius 11;
@@ -9115,14 +9114,14 @@ CLASS USCM_Grenade : enemy {
 	{
 	Spawn:
 		PMIS A 1 bright A_Tracer();
-		loop;
+		Loop;
 	Death:
 		GRNE A 2 bright A_Explode(128,128,0);
 		GRNE BCDEFGHIJKLMN 4 bright;
-		stop;
+		Stop;
 }
 }
-CLASS nagato_knife : enemy { 
+class nagato_knife : enemy { 
 	Default {
 	
 	Radius 2;
@@ -9140,14 +9139,14 @@ CLASS nagato_knife : enemy {
 	{
 	Spawn:
 		NF00 A 1 A_Tracer();
-		loop;
+		Loop;
 	Death:
 		NF00 HIJK 3 A_Gravity();
 		NF00 N 600 A_Fall();
-		stop;
+		Stop;
 }
 }
-CLASS magic_bin : enemy { 
+class magic_bin : enemy { 
 	Default {
 	
 	Radius 3;
@@ -9167,15 +9166,15 @@ CLASS magic_bin : enemy {
 	{
 	Spawn:
 		WD10 EFG 1 A_Tracer();
-		loop;
+		Loop;
 	Death:
 		FRFX QRSTUVW 4 bright;
 		FRF2 QRSTUVW 4 bright;
 		TNT1 A -1;
-		stop;
+		Stop;
 }
 }
-CLASS magic_bonus : enemy { 
+class magic_bonus : enemy { 
 	Default {
 	
 	Radius 3;
@@ -9193,14 +9192,14 @@ CLASS magic_bonus : enemy {
 	{
 	Spawn:
 		BONX AAABBBCCCDDDCCCBBB 2 bright;
-		loop;
+		Loop;
 	Death:
 		BONX A 5 bright A_Gravity();
 		TNT1 A -1();
-		stop;
+		Stop;
 }
 }
-CLASS magic_Fire : enemy { 
+class magic_Fire : enemy { 
 	Default {
 	
 	RenderStyle "Add";
@@ -9218,7 +9217,7 @@ CLASS magic_Fire : enemy {
 		Stop;
 }
 }
-CLASS pre_Fire : enemy { 
+class pre_Fire : enemy { 
 	Default {
 	
 	RenderStyle "Add";
@@ -9234,7 +9233,7 @@ CLASS pre_Fire : enemy {
 		Stop;
 }
 }
-CLASS pre_pod : enemy 31365 { 
+class pre_pod : enemy 31365 { 
 	Default {
 	
 	Health 100000;
@@ -9272,7 +9271,7 @@ CLASS pre_pod : enemy 31365 {
 		Stop  ();
 } 
 } 
-CLASS fuck_pod 31366 : ACTOR { 
+class fuck_pod 31366 : actor { 
 	Default {
 	
 	Health 1000;
@@ -9305,7 +9304,7 @@ CLASS fuck_pod 31366 : ACTOR {
 		Stop  ();
 } 
 } 
-CLASS CaseSpawn_P : ACTOR { 
+class CaseSpawn_P : actor { 
 	Default {
 	
 	Speed 20;
@@ -9321,7 +9320,7 @@ CLASS CaseSpawn_P : ACTOR {
 		Stop;
 }
 }
-CLASS CaseSpawn_R : ACTOR { 
+class CaseSpawn_R : actor { 
 	Default {
 	
 	Speed 20;
@@ -9337,7 +9336,7 @@ CLASS CaseSpawn_R : ACTOR {
 		Stop;
 }
 }
-CLASS CaseSpawn_H : ACTOR { 
+class CaseSpawn_H : actor { 
 	Default {
 	
 	Speed 20;
@@ -9353,7 +9352,7 @@ CLASS CaseSpawn_H : ACTOR {
 		Stop;
 }
 }
-CLASS CaseSpawn_S : CaseSpawn_R { 
+class CaseSpawn_S : CaseSpawn_R { 
 	Default {
 	
 	}
@@ -9365,7 +9364,7 @@ CLASS CaseSpawn_S : CaseSpawn_R {
 		Stop;
 }
 } 
-CLASS EmptyBrassX : ACTOR { 
+class EmptyBrassX : actor { 
 	Default {
 	
 	Height 2;
@@ -9431,7 +9430,7 @@ CLASS EmptyBrassX : ACTOR {
 		Stop;
 }
 }
-CLASS EmptyBrass : ACTOR { 
+class EmptyBrass : actor { 
 	Default {
 	
 	Height 2;
@@ -9497,7 +9496,7 @@ CLASS EmptyBrass : ACTOR {
 		Stop;
 }
 }
-CLASS EmptyBrassS : ACTOR { 
+class EmptyBrassS : actor { 
 	Default {
 	
 	Height 2;
@@ -9563,7 +9562,7 @@ CLASS EmptyBrassS : ACTOR {
 		Stop;
 }
 }
-CLASS ShotgunCasing : ACTOR { 
+class ShotgunCasing : actor { 
 	Default {
 	
 	Height 12;
@@ -9630,7 +9629,7 @@ CLASS ShotgunCasing : ACTOR {
 		Stop;
 }
 }
-CLASS gunflash : enemy { 
+class gunflash : enemy { 
 	Default {
 	
 	Radius 16;
@@ -9649,34 +9648,34 @@ CLASS gunflash : enemy {
 	Spawn:
 		TNT1 A 2;
 		MUZB A 0 A_Jump(256,"p1","p2","p3","p4","p5","p6","p7","p8");
-		stop;
+		Stop;
 	p1:
 		MUZC A 1 bright;
-		stop;
+		Stop;
 	p2:
 		MUZC B 1 bright;
-		stop;
+		Stop;
 	p3:
 		MUZC C 1 bright;
-		stop;
+		Stop;
 	p4:
 		MUZC D 1 bright;
-		stop;
+		Stop;
 	p5:
 		MUZC E 1 bright;
-		stop;
+		Stop;
 	p6:
 		MUZC F 1 bright;
-		stop;
+		Stop;
 	p7:
 		MUZC G 1 bright;
-		stop;
+		Stop;
 	p8:
 		MUZC H 1 bright;
-		stop;
+		Stop;
 }
 }
-CLASS gunflashI : enemy { 
+class gunflashI : enemy { 
 	Default {
 	
 	Radius 16;
@@ -9695,34 +9694,34 @@ CLASS gunflashI : enemy {
 	Spawn:
 		TNT1 A 4;
 		MUZB A 0 A_Jump(256,"p1","p2","p3","p4","p5","p6","p7","p8");
-		stop;
+		Stop;
 	p1:
 		MUZC A 1 bright;
-		stop;
+		Stop;
 	p2:
 		MUZC B 1 bright;
-		stop;
+		Stop;
 	p3:
 		MUZC C 1 bright;
-		stop;
+		Stop;
 	p4:
 		MUZC D 1 bright;
-		stop;
+		Stop;
 	p5:
 		MUZC E 1 bright;
-		stop;
+		Stop;
 	p6:
 		MUZC F 1 bright;
-		stop;
+		Stop;
 	p7:
 		MUZC G 1 bright;
-		stop;
+		Stop;
 	p8:
 		MUZC H 1 bright;
-		stop;
+		Stop;
 }
 }
-CLASS gunflash2 : enemy { 
+class gunflash2 : enemy { 
 	Default {
 	
 	Radius 16;
@@ -9741,28 +9740,28 @@ CLASS gunflash2 : enemy {
 	Spawn:
 		TNT1 A 2;
 		MUZB A 0 A_Jump(256,"p1","p2","p3","p4","p5","p6");
-		stop;
+		Stop;
 	p1:
 		MUZB A 1 bright;
-		stop;
+		Stop;
 	p2:
 		MUZB B 1 bright;
-		stop;
+		Stop;
 	p3:
 		MUZB C 1 bright;
-		stop;
+		Stop;
 	p4:
 		MUZB D 1 bright;
-		stop;
+		Stop;
 	p5:
 		MUZB E 1 bright;
-		stop;
+		Stop;
 	p6:
 		MUZB F 1 bright;
-		stop;
+		Stop;
 }
 }
-CLASS gunflashH : enemy { 
+class gunflashH : enemy { 
 	Default {
 	
 	Radius 16;
@@ -9781,28 +9780,28 @@ CLASS gunflashH : enemy {
 	Spawn:
 		TNT1 A 5;
 		MUZB A 0 A_Jump(256,"p1","p2","p3","p4","p5","p6");
-		stop;
+		Stop;
 	p1:
 		MUZB A 1 bright;
-		stop;
+		Stop;
 	p2:
 		MUZB B 1 bright;
-		stop;
+		Stop;
 	p3:
 		MUZB C 1 bright;
-		stop;
+		Stop;
 	p4:
 		MUZB D 1 bright;
-		stop;
+		Stop;
 	p5:
 		MUZB E 1 bright;
-		stop;
+		Stop;
 	p6:
 		MUZB F 1 bright;
-		stop;
+		Stop;
 }
 }
-CLASS gunlaser : fastprojectile { 
+class gunlaser : fastprojectile { 
 	Default {
 	
 	Radius 1;
@@ -9819,13 +9818,13 @@ CLASS gunlaser : fastprojectile {
 	{
 	Spawn:
 		SITE A 1 bright A_seekermissile(50,50);
-		loop;
+		Loop;
 	Death:
 		SITE AA 2 bright;
-		stop;
+		Stop;
 }
 }
-CLASS US_marine_T 31367 : ACTOR { 
+class US_marine_T 31367 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -9876,7 +9875,7 @@ CLASS US_marine_T 31367 : ACTOR {
 		Stop;
 }
 }
-CLASS US_cap_T 31368 : ACTOR { 
+class US_cap_T 31368 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -9927,7 +9926,7 @@ CLASS US_cap_T 31368 : ACTOR {
 		Stop;
 }
 }
-CLASS JSDF_T 31369 : ACTOR { 
+class JSDF_T 31369 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -9978,7 +9977,7 @@ CLASS JSDF_T 31369 : ACTOR {
 		Stop;
 }
 }
-CLASS JSDF_cap_T 31370 : ACTOR { 
+class JSDF_cap_T 31370 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10029,7 +10028,7 @@ CLASS JSDF_cap_T 31370 : ACTOR {
 		Stop;
 }
 }
-CLASS NAZIS_T 31371 : ACTOR { 
+class NAZIS_T 31371 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10080,7 +10079,7 @@ CLASS NAZIS_T 31371 : ACTOR {
 		Stop;
 }
 }
-CLASS SPEZ_T 31372 : ACTOR { 
+class SPEZ_T 31372 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10131,7 +10130,7 @@ CLASS SPEZ_T 31372 : ACTOR {
 		Stop;
 }
 }
-CLASS akid_T 31373 : ACTOR { 
+class akid_T 31373 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10182,7 +10181,7 @@ CLASS akid_T 31373 : ACTOR {
 		Stop;
 }
 }
-CLASS NAZIS_CAP_T 31374 : ACTOR { 
+class NAZIS_CAP_T 31374 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10233,7 +10232,7 @@ CLASS NAZIS_CAP_T 31374 : ACTOR {
 		Stop;
 }
 }
-CLASS swats_T 31375 : ACTOR { 
+class swats_T 31375 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10284,7 +10283,7 @@ CLASS swats_T 31375 : ACTOR {
 		Stop;
 }
 }
-CLASS swats_cap_T 31376 : ACTOR { 
+class swats_cap_T 31376 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10335,7 +10334,7 @@ CLASS swats_cap_T 31376 : ACTOR {
 		Stop;
 }
 }
-CLASS USCM_marine_T 31377 : ACTOR { 
+class USCM_marine_T 31377 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10386,7 +10385,7 @@ CLASS USCM_marine_T 31377 : ACTOR {
 		Stop;
 }
 }
-CLASS USCM_cap_T 31378 : ACTOR { 
+class USCM_cap_T 31378 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10437,7 +10436,7 @@ CLASS USCM_cap_T 31378 : ACTOR {
 		Stop;
 }
 }
-CLASS player_T 31379 : ACTOR { 
+class player_T 31379 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10488,7 +10487,7 @@ CLASS player_T 31379 : ACTOR {
 		Stop;
 }
 }
-CLASS rena_T 31380 : ACTOR { 
+class rena_T 31380 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10539,7 +10538,7 @@ CLASS rena_T 31380 : ACTOR {
 		Stop;
 }
 }
-CLASS nagato_T 31381 : ACTOR { 
+class nagato_T 31381 : actor { 
 	Default {
 	
 	Health 1000000;
@@ -10590,7 +10589,7 @@ CLASS nagato_T 31381 : ACTOR {
 		Stop;
 }
 }
-CLASS JSDF_heli2 : enemy 21303 { 
+class JSDF_heli2 : enemy 21303 { 
 	Default {
 	
 	Health 2000;

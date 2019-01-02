@@ -1,4 +1,4 @@
-CLASS WWTCoatGuy : ACTOR { 
+class WWTCoatGuy : actor { 
 	Default {
 		
 		MONSTER;
@@ -63,7 +63,7 @@ CLASS WWTCoatGuy : ACTOR {
 	}
 }
 
-CLASS WWTCoatGuy_F : WWTCoatGuy 22101 { 
+class WWTCoatGuy_F : WWTCoatGuy 22101 { 
 	Default {
 		
 		+FRIENDLY;

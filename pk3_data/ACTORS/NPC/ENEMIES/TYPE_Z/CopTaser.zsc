@@ -1,4 +1,4 @@
-CLASS CopTaser : ACTOR { 
+class CopTaser : actor { 
 	Default {
 		
 		YScale 0.35;
@@ -61,7 +61,7 @@ CLASS CopTaser : ACTOR {
 	}
 }
 
-CLASS CopTaser_F : CopTaser 22216 { 
+class CopTaser_F : CopTaser 22216 { 
 	Default {
 		
 		+FRIENDLY;

@@ -1,4 +1,4 @@
-CLASS Undercover : ACTOR { 
+class Undercover : actor { 
 	Default {
 		
 		YScale 0.4;
@@ -12,7 +12,7 @@ CLASS Undercover : ACTOR {
 		PainSound "Pains/Female02";
 		DeathSound "Deaths/Female02";
 		DropItem "WWTUzi";
-		DropItem "9mmAmmoLarge" 42;
+		DropItem "9mmammoLarge" 42;
 		DamageFactor "EnemyBullet", 0.3;
 		DamageFactor "EnemyGrenade", 0.3;
 		DamageFactor "PlayerPistol", 0.5;
@@ -35,30 +35,30 @@ CLASS Undercover : ACTOR {
 		Missile:
 			UNDR FGG 3 A_FaceTarget();
 			UNDR G 0();//A_JumpIf(CallACS("IsNightmare") >= 4, "MissileNightmare")
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 1 A_FaceTarget();
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 1 A_FaceTarget();
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 1 A_FaceTarget();
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 1 A_FaceTarget();
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 2;
 			Goto See;
 		MissileNightmare:
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 1 A_FaceTarget();
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 2 A_FaceTarget();
-			UNDR G 0 A_PlayWeaponSound("Uzi/FireSilent");
+			UNDR G 0 A_PlayweaponSound("Uzi/FireSilent");
 			UNDR H 2 BRIGHT A_CustomMissile("EnemySMGTracer", 44, 0, random(-2,2));
 			UNDR G 2;
 			UNDR F 3 A_MonsterRefire(32, "See");

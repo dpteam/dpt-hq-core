@@ -1,4 +1,4 @@
-CLASS Bomber1 : ACTOR { 
+class Bomber1 : actor { 
 	Default {
 		
 		YScale 0.35;
@@ -33,7 +33,7 @@ CLASS Bomber1 : ACTOR {
 			Loop;
 		Missile:
 			BOM1 A 10 A_FaceTarget();
-			BOM1 F 0 A_PlayWeaponSound("Grenade/Throw");
+			BOM1 F 0 A_PlayweaponSound("Grenade/Throw");
 			BOM1 F 5 A_FaceTarget();
 			BOM1 G 5 A_CustomMissile("EnemyPipebomb", 40, 0, random(-2,2));
 			BOM1 H 5;
@@ -63,7 +63,7 @@ CLASS Bomber1 : ACTOR {
 	}
 }
 
-CLASS Bomber1_F : Bomber1 22221 { 
+class Bomber1_F : Bomber1 22221 { 
 	Default {
 		
 		+FRIENDLY;

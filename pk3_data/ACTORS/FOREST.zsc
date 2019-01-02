@@ -1,4 +1,4 @@
-CLASS TreeSpawner1 : RandomSpawner 17000 { 
+class TreeSpawner1 : RandomSpawner 17000 { 
 	Default {
 		
 		DropItem "treeA";
@@ -11,7 +11,7 @@ CLASS TreeSpawner1 : RandomSpawner 17000 {
 {
 	DropItem "treeB"
 }*/
-CLASS treeA 21311 : ACTOR { 
+class treeA 21311 : actor { 
 	Default {
 		
 		radius 16;
@@ -19,14 +19,14 @@ CLASS treeA 21311 : ACTOR {
 		Scale 1.8;
 		+SOLID;
 	}
-	states
+	States
 	{
 		Spawn:
 			5REE A -1;
 			Stop;
 	}
 }
-CLASS treeB 21312 : ACTOR { 
+class treeB 21312 : actor { 
 	Default {
 		
 		radius 16;
@@ -34,14 +34,14 @@ CLASS treeB 21312 : ACTOR {
 		Scale 2;
 		+SOLID;
 	}
-	states
+	States
 	{
 		Spawn:
 			5REE B -1;
 			Stop;
 	}
 }
-CLASS treeC 21313 : ACTOR { 
+class treeC 21313 : actor { 
 	Default {
 		
 		radius 16;
@@ -49,14 +49,14 @@ CLASS treeC 21313 : ACTOR {
 		Scale 1.1;
 		+SOLID;
 	}
-	states
+	States
 	{
 		Spawn:
 			5REE C -1;
 			Stop;
 	}
 }
-CLASS treeE 21314 : ACTOR { 
+class treeE 21314 : actor { 
 	Default {
 		
 		radius 16;
@@ -64,14 +64,14 @@ CLASS treeE 21314 : ACTOR {
 		Scale 1.85;
 		+SOLID;
 	}
-	states
+	States
 	{
 		Spawn:
 			5REE E -1;
 			Stop;
 	}
 }
-CLASS Bird 21211 : ACTOR { 
+class Bird 21211 : actor { 
 	Default {
 		
 		health 20;
@@ -89,22 +89,22 @@ CLASS Bird 21211 : ACTOR {
 		+NOGRAVITY;
 		-NOICEDEATH;
 		-DONTFALL;
-		+SPAWNCEILING;
+		+SpawnCEILING;
 		+RANDOMIZE;
 	}
-	states
+	States
 	{
 		Spawn:
 			CROW AAAAABBBBBCCCCCBBBBB 1 A_Wander();
-			loop;
+			Loop;
 		Pain:
 			CROW A 3 A_Pain();
-			goto Spawn;
+			Goto Spawn;
 		Death:
 			CROW A 3 A_NoBlocking();
 			CROW A 6 A_Scream();
 			CROW A 8;
-			stop;
+			Stop;
 	}
 }
 // Удалил нахуй, а то почему-то дохлые блять сразу спавнятся -___-
@@ -121,7 +121,7 @@ CLASS Bird 21211 : ACTOR {
 	monster
 	-friendly
 	painchance 256
-	states
+	States
 	{
 Spawn:
 		DEER A 1
@@ -185,7 +185,7 @@ Listening:
 		DEER Z 49 A_TurretLook
 		DEER Z 1 A_Jump(100,"Listening")
 		DEER W 8
-		goto Walk
+		Goto Walk
 		Pain.hearLoud:
 See:
 		TNT1 A 0 A_ChangeFlag("FRIGHTENED",1)
@@ -220,12 +220,12 @@ See:
 		TNT1 A 0 A_TurretLook
 		TNT1 A 0 A_Jump(128,"See")
 		TNT1 A 0 A_ChangeFlag("FRIGHTENED",0)
-		goto Walk
+		Goto Walk
 		Pain.hearSilent:
 		DEER AA 1 A_Jump(200,"Walk")
-		goto See
+		Goto See
 		Pain.BushGive:
-		goto Walk
+		Goto Walk
 		Pain.GunFire:
 Death: 
 		TNT1 A 0 A_Jump(40,"See") 
@@ -234,46 +234,46 @@ Death:
 		stop
 	}
 }*/
-CLASS DeerSightSmall : ACTOR { 
+class DeerSightSmall : actor { 
 	Default {
 		
 		-solid;
 		damagetype "deerSeeSmall";
 	}
-	states
+	States
 	{
 		Spawn:
 			BON1 AA 1 A_Explode(1,80,1,0);
-			stop;
+			Stop;
 	}
 }
-CLASS DeerSightMedium : ACTOR { 
+class DeerSightMedium : actor { 
 	Default {
 		
 		-solid;
 		damagetype "deerSeeMedium";
 	}
-	states
+	States
 	{
 		Spawn:
 			BON1 AA 1 A_Explode(1,128,1,0);
-			stop;
+			Stop;
 	}
 }
-CLASS DeerSightLarge : ACTOR { 
+class DeerSightLarge : actor { 
 	Default {
 		
 		-solid;
 		damagetype "deerSeeLarge";
 	}
-	states
+	States
 	{
 		Spawn:
 			BON1 AA 1 A_Explode(1,256,1,0);
-			stop;
+			Stop;
 	}
 }
-CLASS DeadDeer : ACTOR { 
+class DeadDeer : actor { 
 	Default {
 		
 		scale 0.4;
@@ -283,12 +283,12 @@ CLASS DeadDeer : ACTOR {
 		+SOLID;
 		+SHOOTABLE;
 	}
-	states
+	States
 	{
 		Spawn:
 			DEAD ABCD 5 A_NoBlocking();
 			DEAD EFGH 5;
 			DEAD I -1;
-			stop;
+			Stop;
 	}
 }

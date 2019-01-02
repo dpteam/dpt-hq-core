@@ -1,4 +1,4 @@
-CLASS CalebPistolTracer : Tracer { 
+class CalebPistolTracer : Tracer { 
 	Default {
 		
 		Damage (random(6,9));
@@ -9,7 +9,7 @@ CLASS CalebPistolTracer : Tracer {
 	}
 }
 
-CLASS Caleb : ACTOR { 
+class Caleb : actor { 
 	Default {
 		
 		YScale 0.5;
@@ -23,7 +23,7 @@ CLASS Caleb : ACTOR {
 		PainSound "Pains/Caleb";
 		DeathSound "Deaths/Caleb";
 		ActiveSound "Actives/Caleb";
-		DropItem "44MagAmmo" 48;
+		DropItem "44Magammo" 48;
 		DropItem "Mateba";
 		DropItem "Mateba";
 		Obituary "%o's not really a match for crazy gunslingers.";
@@ -42,22 +42,22 @@ CLASS Caleb : ACTOR {
 			CALB G 5 A_FaceTarget();
 		Missile2:
 			CALB G 0 A_Jump(80,"Laugh");
-			CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire");
+			CALB G 0 A_PlayweaponSound("Mateba/EnemyFire");
 			CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, random(-6,6));
 			CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, random(-3,3));
 			CALB G 2;
 			CALB G 4 A_FaceTarget();
-			CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire");
+			CALB G 0 A_PlayweaponSound("Mateba/EnemyFire");
 			CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, random(-6,6));
 			CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, random(-3,3));
 			CALB G 2;
 			CALB G 4 A_FaceTarget();
-			CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire");
+			CALB G 0 A_PlayweaponSound("Mateba/EnemyFire");
 			CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, random(-6,6));
 			CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, random(-3,3));
 			CALB G 2;
 			CALB G 4 A_FaceTarget();
-			CALB G 0 A_PlayWeaponSound("Mateba/EnemyFire");
+			CALB G 0 A_PlayweaponSound("Mateba/EnemyFire");
 			CALF A 0 A_CustomMissile("CalebPistolTracer", 42, -10, random(-6,6));
 			CALF A 2 BRIGHT A_CustomMissile("CalebPistolTracer", 42, 10, random(-3,3));
 			CALB G 2 A_MonsterRefire(108,"Laugh");
@@ -114,7 +114,7 @@ CLASS Caleb : ACTOR {
 	}
 }
 
-CLASS Caleb_F : Caleb 22219 { 
+class Caleb_F : Caleb 22219 { 
 	Default {
 		
 		+FRIENDLY;

@@ -1,11 +1,11 @@
 //*** Boss #1: GluttonyApostle ***//
 
-CLASS GluttonyApostleFlakToken : Inventory {inventory.maxamount 10} { 
+class GluttonyApostleFlakToken : Inventory {Inventory.MaxAmount 10} { 
 	Default {
 	}
-CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} { 
+class GluttonyApostleVomitToken : Inventory {Inventory.MaxAmount 20} { 
 	Default {
-	ACTOR GluttonyApostle 26358;
+	actor GluttonyApostle 26358;
 	
 	//$Category "BOSSES - Storymode"
 	health 16500;
@@ -32,11 +32,11 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 	damageFactor "GluttonyApostle",0.0;
 	Obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!";
 	}
-	states
+	States
 	{
 	Spawn:
 		INCB A 1 A_Look();
-		loop;
+		Loop;
 	See:
 		TNT1 A 0 ACS_ExecuteAlways(1337);
 	Idle:
@@ -46,7 +46,7 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 		INCB CCCDDD 6 A_Chase();
 		TNT1 A 0 Radius_Quake(5,10,0,30,0);
 		TNT1 A 0 A_PlaySound("apostle/step",8,1.0,0,0);
-		loop;
+		Loop;
 	Missile:
 		TNT1 A 0 A_Jump(100,"ParasiteBorn");
 		TNT1 A 0 A_JumpIfCloser(400,"FlakCannon");
@@ -86,7 +86,7 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 		TNT1 A 0 A_CustomMissile("GluttonyapostleMiniMissile",110,-155,-6);
 		INCB I 4 Bright A_FaceTarget();
 		INCB E 10;
-		goto Idle;
+		Goto Idle;
 	FlakCannon:
 		INCB EEEEE 1 A_FaceTarget();
 		TNT1 A 0 A_PlaySound("apostle/flak/fire",6);
@@ -99,32 +99,32 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 		TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile1",110,-155,random(-15,15),CMF_OFFSETPITCH,random(-15,15));
 		//TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile1",294,53,random(-15,15),CMF_OFFSETPITCH,random(-15,15))
 		//TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile1",294,-53,random(-15,15),CMF_OFFSETPITCH,random(-15,15))
-		goto FlakSpitting;
+		Goto FlakSpitting;
 	Flak2:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleFlakToken",1);
 		TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile2",110,155,random(-15,15),CMF_OFFSETPITCH,random(-15,15));
 		TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile2",110,-155,random(-15,15),CMF_OFFSETPITCH,random(-15,15));
 		//TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile2",294,53,random(-15,15),CMF_OFFSETPITCH,random(-15,15))
 		//TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile2",294,-53,random(-15,15),CMF_OFFSETPITCH,random(-15,15))
-		goto FlakSpitting;
+		Goto FlakSpitting;
 	Flak3:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleFlakToken",1);
 		TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile3",110,155,random(-15,15),CMF_OFFSETPITCH,random(-15,15));
 		TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile3",110,-155,random(-15,15),CMF_OFFSETPITCH,random(-15,15));
 		//TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile3",294,53,random(-15,15),CMF_OFFSETPITCH,random(-15,15))
 		//TNT1 A 0 A_CustomMissile("GluttonyApostleFlakProjectile3",294,-53,random(-15,15),CMF_OFFSETPITCH,random(-15,15))
-		goto FlakSpitting;
+		Goto FlakSpitting;
 	FlakSpittingStop:
 		TNT1 A 0 A_TakeInventory("GluttonyApostleFlakToken",10);
 		INCB I 4 Bright;
 		INCB E 15;
-		goto Idle;
+		Goto Idle;
 	Spike:
 		INCB EEEEE 1 A_FaceTarget();
 		TNT1 A 0 A_PlaySOund("apostle/spike/fire",6,1.0,0,0);
 		INCB H 4 Bright A_VileTarget("GluttonyApostleSpike");
 		INCB E 10;
-		goto Idle;
+		Goto Idle;
 	ToxicBombs:
 		TNT1 A 0 A_PlaySound("apostle/attack",7,1.0,0,0);
 		INCB EEEEEEEEEE 1 A_FaceTarget();
@@ -133,7 +133,7 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 		TNT1 A 0 A_PlaySound("apostle/toxic/fire",4,1.0,0,0);
 		INCB H 4 Bright;
 		INCB E 12;
-		goto Idle;
+		Goto Idle;
 	ParasiteBorn:
 		TNT1 A 0 A_PlaySound("apostle/pain",7,1.0,0,0);
 		INCB A 20;
@@ -144,49 +144,49 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib1",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit2:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib2",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit3:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib3",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit4:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib4",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit5:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib5",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit6:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib6",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit7:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib7",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	Vomit8:
 		TNT1 A 0 A_GiveInventory("GluttonyApostleVomitToken",1);
 		TNT1 A 0 A_SpawnItemEx("RedBloodTracer",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_SpawnItemEx("VomitedRedGib8",-108,0,54,random(-6,-17),random(-8,8),random(-3,8),0,SXF_NOCHECKPOSITION);
-		goto VomitCycle;
+		Goto VomitCycle;
 	VomitStop:
 		TNT1 A 0 A_TakeInventory("GluttonyApostleVomitToken",20);
 		INCB A 5;
 		TNT1 A 0 A_PlaySOund("apostle/born",6);
 		TNT1 A 0 A_SpawnItemEx("GluttonyApostleParasite",-178,0,54,random(-6,-17),0,0,0,SXF_NOCHECKPOSITION);
 		INCB A 10;
-		goto Idle;
+		Goto Idle;
 	Death:
 		TNT1 A 0 ACS_ExecuteAlways(1338);
 		INCB J 1();
@@ -198,10 +198,10 @@ CLASS GluttonyApostleVomitToken : Inventory {inventory.maxamount 20} {
 		TNT1 A 0 Radius_Quake(20,50,0,100,0);
 		INCB N 5;
 		INCB O -1;
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleMiniMissile : ACTOR { 
+class GluttonyApostleMiniMissile : actor { 
 	Default {
 	
 	obituary "%o was turned into a steamy flesh mass, and then devoured by the Gluttony Apostle!";
@@ -217,21 +217,21 @@ CLASS GluttonyApostleMiniMissile : ACTOR {
 	+RANDOMIZE;
 	Decal miniScorch;
 	}
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0 A_SpawnItemEX("GluttonyapostleMiniMissileTrail",-5,0,0,frandom(1,-1),frandom(1,-1),frandom(1,-1),0,SXF_NOCHECKPOSITION);
 		HMIS A 1 bright;
-		loop;
+		Loop;
 	Death:
 		TNT1 A 0 A_Explode(12,75);
 		HMIS B 5 bright;
 		HMIS C 5 bright;
 		HMIS D 4 bright;
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleMiniMissileTrail : ACTOR { 
+class GluttonyApostleMiniMissileTrail : actor { 
 	Default {
 	
 	+NOINTERACTION;
@@ -245,7 +245,7 @@ CLASS GluttonyApostleMiniMissileTrail : ACTOR {
 		Stop;
 }
 }
-CLASS GluttonyApostleFlakProjectile1 : ACTOR { 
+class GluttonyApostleFlakProjectile1 : actor { 
 	Default {
 	
 	radius 5;
@@ -261,49 +261,49 @@ CLASS GluttonyApostleFlakProjectile1 : ACTOR {
 	BounceFactor 0.7;
 	BounceCount 6;
 	}
-	states
+	States
 	{
 	Spawn:
 		FLAK A 1 Bright;
-		loop;
+		Loop;
 	Death:
 		FLAK A -1();
-		stop;
+		Stop;
 	XDeath:
 		TNT1 A 0 A_PlaySound("apostle/flak/hit");
 		TNT1 A 1;
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleFlakProjectile2 : GluttonyApostleFlakProjectile1 { 
+class GluttonyApostleFlakProjectile2 : GluttonyApostleFlakProjectile1 { 
 	Default {
 	
 	}
-	states
+	States
 	{
 	Spawn:
 		FLAK B 1 Bright;
-		loop;
+		Loop;
 	Death:
 		FLAK B -1();
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleFlakProjectile3 : GluttonyApostleFlakProjectile1 { 
+class GluttonyApostleFlakProjectile3 : GluttonyApostleFlakProjectile1 { 
 	Default {
 	
 	}
-	states
+	States
 	{
 	Spawn:
 		FLAK C 1 Bright;
-		loop;
+		Loop;
 	Death:
 		FLAK C -1();
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleSpike : ACTOR { 
+class GluttonyApostleSpike : actor { 
 	Default {
 	
 	radius 1;
@@ -318,22 +318,22 @@ CLASS GluttonyApostleSpike : ACTOR {
 	damage 0;
 	damagetype "GluttonyApostle";
 	}
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 10;
 		SPIK AB 1;
 		TNT1 A 0 Radius_Quake(3,7,0,10,0);
-		TNT1 AAAAAA 0 A_SPawnItemEx("GluttonyApostleSpikeChunk",0,0,0,random(-10,10),random(-10,10),random(10,20),0,SXF_NOCHECKPOSITION);
+		TNT1 AAAAAA 0 A_SpawnItemEx("GluttonyApostleSpikeChunk",0,0,0,random(-10,10),random(-10,10),random(10,20),0,SXF_NOCHECKPOSITION);
 		TNT1 A 0 A_PlaySound("apostle/spike/up",5);
 		TNT1 A 0 A_Explode(1000,35);//For 100% instakill (Unless you had a fuckload of HP)
 		SPIK CDEFG 1;
 		SPIK G 20;
 		SPIK GFDCBA 1;
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleSpikeChunk : ACTOR { 
+class GluttonyApostleSpikeChunk : actor { 
 	Default {
 	
 	radius 5;
@@ -350,11 +350,11 @@ CLASS GluttonyApostleSpikeChunk : ACTOR {
 	BounceFactor 0.7;
 	BounceCount 6;
 	}
-	states
+	States
 	{
 	Spawn:
 		CHNK ABCDEFGH 2;
-		loop;
+		Loop;
 	Death:
 		TNT1 A 0 A_Jump(256,"1","2","3","4","5","6","7","8");
 	XDeath:
@@ -362,31 +362,31 @@ CLASS GluttonyApostleSpikeChunk : ACTOR {
 		TNT1 A 0 A_Jump(256,"1","2","3","4","5","6","7","8");
 	1:
 		CHNK A -1;
-		stop;
+		Stop;
 	2:
 		CHNK B -1;
-		stop;
+		Stop;
 	3:
 		CHNK C -1;
-		stop;
+		Stop;
 	4:
 		CHNK D -1;
-		stop;
+		Stop;
 	5:
 		CHNK E -1;
-		stop;
+		Stop;
 	6:
 		CHNK F -1;
-		stop;
+		Stop;
 	7:
 		CHNK G -1;
-		stop;
+		Stop;
 	8:
 		CHNK H -1;
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleToxicBall : ACTOR { 
+class GluttonyApostleToxicBall : actor { 
 	Default {
 	
 	obituary "%o was turned into a steamy Bile mass, and then devoured by the Gluttony Apostle!";// OLD: flesh mass
@@ -403,18 +403,18 @@ CLASS GluttonyApostleToxicBall : ACTOR {
 	+RANDOMIZE;
 	Decal BigScorch;
 	}
-	states
+	States
 	{
 	Spawn:
 		PATF AB 3 bright;
-		loop;
+		Loop;
 	Death:
 		TNT1 A 0 A_PlaySound("apostle/toxic/smk",4);
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 A_CustomMissile("GluttonyApostleToxicFog",10,0,random(0,360));
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleToxicFog : ACTOR { 
+class GluttonyApostleToxicFog : actor { 
 	Default {
 	
 	radius 10;
@@ -434,17 +434,17 @@ CLASS GluttonyApostleToxicFog : ACTOR {
 	BounceFactor 1.0;
 	BounceCount 10;
 	}
-	states 
+	States 
 	{
 	Spawn:
 		FOGM ABCDEABCDEABCDEABCDEABCDEABCDE 3 Bright;
 		FOGM ABCDEABCDE 3 Bright A_FadeOut(0.1,1);
-		stop;
+		Stop;
 }
 }
-CLASS GluttonyApostleParasiteVomitToken : Inventory {inventory.maxamount 25} { 
+class GluttonyApostleParasiteVomitToken : Inventory {Inventory.MaxAmount 25} { 
 	Default {
-CLASS GluttonyApostleParasite : ACTOR { 
+class GluttonyApostleParasite : actor { 
 	Default {
 		
 		monster;
@@ -465,24 +465,24 @@ CLASS GluttonyApostleParasite : ACTOR {
 		meleedamage 15;
 		obituary "%o became worm food for one of the Gluttony Apostle's worms";// old: parasites
 	}
-	states
+	States
 	{
 		Spawn:
 			PARG A 1 A_Look();
-			loop;
+			Loop;
 		See:
 			PARG AABBCCDD 2 A_Chase();
-			loop;
+			Loop;
 		Melee:
 			TNT1 A 0 A_PlaySOund("apostle/parasite/attack",2);
 			PARG EEEEEE 1 A_FaceTarget();
 			PARG FFFFFF 1 A_FaceTarget();
 			TNT1 A 0 A_MeleeAttack();
 			PARG G 6;
-			goto See;
+			Goto See;
 		Missile:
 			TNT1 A 0 A_JumpIfCloser(200,"Vomit");
-			goto See;
+			Goto See;
 		Vomit:
 			TNT1 A 0 A_PlaySound("apostle/parasite/vomit",2);
 			PARG EEEE 1 A_FaceTarget();
@@ -496,58 +496,58 @@ CLASS GluttonyApostleParasite : ACTOR {
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib1",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit2:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib2",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit3:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib3",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit4:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib4",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit5:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib5",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit6:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib6",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit7:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib7",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		Vomit8:
 			TNT1 A 0 A_GiveInventory("GluttonyApostleParasiteVomitToken",1);
 			TNT1 A 0 A_SpawnItemEx("GreenBloodTracer",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_SpawnItemEx("VomitedGreenGib8",5,0,42,random(8,20),random(-5,5),random(-3,6),0,SXF_NOCHECKPOSITION);
 			PARG F 1;
-			goto VomitCycle;
+			Goto VomitCycle;
 		VomitStop:
 			TNT1 A 0 A_TakeInventory("GluttonyApostleParasiteVomitToken",25);
 			PARG G 5;
-			goto See;
+			Goto See;
 		Pain:
 			TNT1 A 0 A_TakeInventory("GluttonyApostleParasiteVomitToken",25);
 			PARG H 3;
 			PARG H 3 A_Pain();
-			goto See;
+			Goto See;
 		Death:
 			PARG I 5;
 			PARG J 5 A_Scream();
@@ -555,10 +555,10 @@ CLASS GluttonyApostleParasite : ACTOR {
 			PARG L 5 A_NoBlocking();
 			PARG M 5;
 			PARG N -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib1 : ACTOR { 
+class VomitedRedGib1 : actor { 
 	Default {
 		
 		radius 5;
@@ -576,239 +576,239 @@ CLASS VomitedRedGib1 : ACTOR {
 	{
 		Spawn:
 			GIB1 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB1 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib2 : VomitedRedGib1 { 
+class VomitedRedGib2 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB2 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB2 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib3 : VomitedRedGib1 { 
+class VomitedRedGib3 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB3 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB3 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib4 : VomitedRedGib1 { 
+class VomitedRedGib4 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB4 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB4 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib5 : VomitedRedGib1 { 
+class VomitedRedGib5 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB5 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB5 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib6 : VomitedRedGib1 { 
+class VomitedRedGib6 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB6 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB6 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib7 : VomitedRedGib1 { 
+class VomitedRedGib7 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB7 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB7 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedRedGib8 : VomitedRedGib1 { 
+class VomitedRedGib8 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB8 A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB8 A -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib1 : VomitedRedGib1 { 
+class VomitedGreenGib1 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB1 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB1 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib2 : VomitedRedGib1 { 
+class VomitedGreenGib2 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB2 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB2 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib3 : VomitedRedGib1 { 
+class VomitedGreenGib3 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB3 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB3 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib4 : VomitedRedGib1 { 
+class VomitedGreenGib4 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB4 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB4 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib5 : VomitedRedGib1 { 
+class VomitedGreenGib5 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB5 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB5 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib6 : VomitedRedGib1 { 
+class VomitedGreenGib6 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB6 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB6 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib7 : VomitedRedGib1 { 
+class VomitedGreenGib7 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB7 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB7 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS VomitedGreenGib8 : VomitedRedGib1 { 
+class VomitedGreenGib8 : VomitedRedGib1 { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			GIB8 C 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0 A_PlaYSound("apostle/gore/hit");
 			GIB8 C -1;
-			stop;
+			Stop;
 	}
 }
-CLASS RedBloodTracer : FastProjectile { 
+class RedBloodTracer : FastProjectile { 
 	Default {
 		
 		projectile;
@@ -820,23 +820,23 @@ CLASS RedBloodTracer : FastProjectile {
 		+BLOODLESSIMPACT;
 		-NOGRAVITY;
 		+MISSILE;
-		+THRUACTORS;
+		+THRUactorS;
 		speed 12;
 		decal "none";
 		missiletype "RedBloodTracerTrail";
 		missileheight 8;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 1 ThrustThingZ(0,-5,0,1);
-			loop;
+			Loop;
 		Death:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS RedBloodTracerTrail : ACTOR { 
+class RedBloodTracerTrail : actor { 
 	Default {
 		
 		scale 0.09;
@@ -848,59 +848,59 @@ CLASS RedBloodTracerTrail : ACTOR {
 		radius 0;
 		height 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0 A_Jump(256,"Spawn1","Spawn2","Spawn3","Spawn4");
 		Spawn1:
 			FBL1 AAAA 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Spawn2:
 			FBL1 BBBB 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Spawn3:
 			FBL1 CCCC 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Spawn4:
 			FBL1 DDDD 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Death:
 			TNT1 A 1();
-			stop;
+			Stop;
 	}
 }
-CLASS GreenBloodTracer : RedBloodTracer { 
+class GreenBloodTracer : RedBloodTracer { 
 	Default {
 		
 		missiletype "GreenBloodTracerTrail";
 	}
 }
-CLASS GreenBloodTracerTrail : RedBloodTracerTrail { 
+class GreenBloodTracerTrail : RedBloodTracerTrail { 
 	Default {
 		
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0 A_Jump(256,"Spawn1","Spawn2","Spawn3","Spawn4");
 		Spawn1:
 			FBL3 AAAA 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Spawn2:
 			FBL3 BBBB 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Spawn3:
 			FBL3 CCCC 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 		Spawn4:
 			FBL3 DDDD 1 A_FadeOut(0.2,1);
-			stop;
+			Stop;
 	}
 }
 
 //*** Boss #3: PatriarchFaithful ***//
 
-CLASS PatriarchFaithful : ACTOR { 
+class PatriarchFaithful : actor { 
 	Default {
 		
 		//$Category "BOSSES - Storymode"
@@ -930,16 +930,16 @@ CLASS PatriarchFaithful : ACTOR {
 		ActiveSound "monsters/patriarch/idle";
 		Obituary "The Patriarch Faithful completely shreded %o's soul into little pieces.";
 	}
-	states
+	States
 	{
 		Spawn:
 			BISH A 1 A_Look();
-			loop;
+			Loop;
 		See:
 			TNT1 A 0 ACS_ExecuteAlways(1228);
 		Idle:
 			BISH AAABBB 1 A_Chase();
-			loop;
+			Loop;
 		Missile:
 			TNT1 A 0 A_TakeInventory("PenragramCooldown",2);
 			TNT1 A 0 A_JumpIfCloser(350,"FlameNovaLoop");
@@ -952,12 +952,12 @@ CLASS PatriarchFaithful : ACTOR {
 			TNT1 A 0 A_JumpIfInventory("PatriarchBarrageToken",50,"BarrageEnd");
 			BISH E 1 Bright A_FaceTarget();
 			TNT1 A 0 A_CustomMissile("BarrageMissile",52);
-			TNT1 A 0 A_GiveINventory("PatriarchBarrageToken",1);
-			loop;
+			TNT1 A 0 A_GiveInventory("PatriarchBarrageToken",1);
+			Loop;
 		BarrageEnd:
-			TNT1 A 0 A_TakeINventory("PatriarchBarrageToken",50);
+			TNT1 A 0 A_TakeInventory("PatriarchBarrageToken",50);
 			BISH D 3 Bright;
-			goto See;
+			Goto See;
 		Flamethrower:
 			TNT1 A 0 A_ChangeFlag("NOPAIN",1);
 			BISH D 2 Bright A_FaceTarget();
@@ -969,7 +969,7 @@ CLASS PatriarchFaithful : ACTOR {
 		FlamethrowerEnd:
 			TNT1 A 0 A_ChangeFlag("NOPAIN",0);
 			BISH D 2 Bright;
-			goto See;
+			Goto See;
 		FlameNova:
 			TNT1 A 0 A_ChangeFlag("NOPAIN",1);
 			BISH D 2 Bright A_FaceTarget();
@@ -989,7 +989,7 @@ CLASS PatriarchFaithful : ACTOR {
 			TNT1 A 0 A_CustomMissile("NovaFlamethrowerProjectile",52,0,330);
 			TNT1 A 0 A_JumpIfCloser(350,"FlameNovaLoop");
 			TNT1 A 0 A_JumpIfCloser(450,"FlamethrowerLoop");
-			goto FlamethrowerEnd;
+			Goto FlamethrowerEnd;
 		SkullFire:
 			TNT1 A 0 A_ChangeFlag("NOPAIN",1);
 			BISH G 5 Bright;
@@ -1003,11 +1003,11 @@ CLASS PatriarchFaithful : ACTOR {
 			BISH H 3 Bright;
 			BISH G 3 Bright;
 			TNT1 A 0 A_ChangeFlag("NOPAIN",0);
-			goto See;
+			Goto See;
 		PentargamSummoning:
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIf((ceilingz-z>300),1);
-			goto Barrage;
+			Goto Barrage;
 			TNT1 A 0 A_JumpIfInventory("PenragramCooldown",1,"Barrage");
 			TNT1 A 0 A_ChangeFlag("NOPAIN",1);
 			TNT1 A 0 A_GiveInventory("PenragramCooldown",60);
@@ -1020,13 +1020,13 @@ CLASS PatriarchFaithful : ACTOR {
 			BISH E 8 Bright;
 			BISH D 6 Bright;
 			TNT1 A 0 A_ChangeFlag("NOPAIN",1);
-			goto See;
+			Goto See;
 		Pain:
 			TNT1 A 0 A_TakeInventory("PenragramCooldown",5);//Don't rage him, he-he
 			BISH C 2;
 			BISH C 2 A_Pain();
 			TNT1 A 0 A_Jump(200,"FogFade");
-			goto See;
+			Goto See;
 		FogFade:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("LustFog",0,0,52,random(-5,5),random(-5,5),random(-5,5),0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_UnSetShootable();
@@ -1040,7 +1040,7 @@ CLASS PatriarchFaithful : ACTOR {
 			TNT1 A 0 A_ChangeFlag("FRIGHTENED",0);
 			TNT1 A 0 A_SetShootable();
 			TNT1 A 0 A_UnSetInvulnerable();
-			goto See;
+			Goto See;
 		Death:
 			TNT1 A 0;
 			TNT1 A 0 ACS_ExecuteAlways(1229);
@@ -1060,17 +1060,17 @@ CLASS PatriarchFaithful : ACTOR {
 			TNT1 AA 0 A_SpawnItemEx("PentargamExplode",0,0,52,frandom(-6.0,6.0),frandom(-6.0,6.0),frandom(-6.0,6.0),0,SXF_NOCHECKPOSITION);
 			BISH H 1 Bright;
 			TNT1 A 0 A_GiveInventory("PatriarchDeathToken",1);
-			loop;
+			Loop;
 		DeathEnd:
 			TNT1 A 0 A_NoBlocking();
 			BISH IJKLMNO 2 Bright;
 			BISH P -1;
-			stop;
+			Stop;
 	}
 }
-CLASS PatriarchBarrageToken : Inventory { inventory.maxamount 50} { 
+class PatriarchBarrageToken : Inventory { Inventory.MaxAmount 50} { 
 	Default {
-	ACTOR BarrageMissile;
+	actor BarrageMissile;
 	
 	projectile;
 	damage 4;
@@ -1084,17 +1084,17 @@ CLASS PatriarchBarrageToken : Inventory { inventory.maxamount 50} {
 	damagetype "PatriarchFaithful";
 	alpha 0.7;
 	}
-	states
+	States
 	{
 	Spawn:
 		BPFX BC 2 Bright A_Weave(6,6,1.5,1.5);
-		loop;
+		Loop;
 	Death:
 		BPFX DEFGH 3 bright;
-		stop;
+		Stop;
 }
 }
-CLASS LustFog : ACTOR { 
+class LustFog : actor { 
 	Default {
 	
 	radius 20;
@@ -1114,15 +1114,15 @@ CLASS LustFog : ACTOR {
 	BounceFactor 1.0;
 	BounceCount 10;
 	}
-	states 
+	States 
 	{
 	Spawn:
 		FOGP ABCDEABCDEABCDEABCDE 3 Bright;
 		FOGP ABCDEABCDE 3 Bright A_FadeOut(0.1,1);
-		stop;
+		Stop;
 }
 }
-CLASS FlamethrowerProjectile  : ACTOR { 
+class FlamethrowerProjectile  : actor { 
 	Default {
 	
 	radius 5;
@@ -1137,37 +1137,37 @@ CLASS FlamethrowerProjectile  : ACTOR {
 	projectile;
 	damagetype "PatriarchFaithful";
 	}
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0 A_JumpIfInventory("PatriarchFlameFlyToken",15,"Death");
 		TNT1 A 0 A_SpawnItemEx("ArchvileFire",random(-4,4),random(-4,4),random(-4,4),frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION);
 		TNT1 A 1 A_Explode(10,50);
 		TNT1 A 0 A_GiveInventory("PatriarchFlameFlyToken",1);
-		loop;
+		Loop;
 	Death:
 		TNT1 A 0;
-		stop;
+		Stop;
 }
 }
-CLASS PatriarchFlameFlyToken : Inventory {inventory.maxamount 50} { 
+class PatriarchFlameFlyToken : Inventory {Inventory.MaxAmount 50} { 
 	Default {
-CLASS NovaFlamethrowerProjectile : FlamethrowerProjectile { 
+class NovaFlamethrowerProjectile : FlamethrowerProjectile { 
 	Default {
 		
 		damage 2;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIfInventory("PatriarchFlameFlyToken",10,"Death");
 			TNT1 A 0 A_SpawnItemEx("ArchvileFire",random(-4,4),random(-4,4),random(-4,4),frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION);
 			TNT1 A 1 A_Explode(5,50);
 			TNT1 A 0 A_GiveInventory("PatriarchFlameFlyToken",1);
-			loop;
+			Loop;
 	}
 }
-CLASS SkullFog : ACTOR { 
+class SkullFog : actor { 
 	Default {
 		
 		radius 0;
@@ -1176,14 +1176,14 @@ CLASS SkullFog : ACTOR {
 		+NOINTERACTION;
 		renderstyle "Add";
 	}
-	states
+	States
 	{
 		Spawn:
 			SRV3 ABCDEFGHI 3 Bright;
-			stop;
+			Stop;
 	}
 }
-CLASS SkullBall : ACTOR { 
+class SkullBall : actor { 
 	Default {
 		
 		projectile;
@@ -1198,17 +1198,17 @@ CLASS SkullBall : ACTOR {
 		+SEEKERMISSILE;
 		alpha 0.9;
 	}
-	states
+	States
 	{
 		Spawn:
 			SRV1 K 1 bright A_SeekerMissile(0, 2, SMF_LOOK|SMF_CURSPEED);
-			loop;
+			Loop;
 		Death:
 			SRV1 DEFHIJ 3 Bright;
-			stop;
+			Stop;
 	}
 }
-CLASS PatriarchPentagram : ACTOR { 
+class PatriarchPentagram : actor { 
 	Default {
 		
 		monster;
@@ -1228,31 +1228,31 @@ CLASS PatriarchPentagram : ACTOR {
 		damageFactor "PatriarchFaithful",0.0;
 		scale 2.0;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0();
-			TNT1 A 0 A_PlaySound("monsters/pentagram/spawn",6,1.0,0,0);
+			TNT1 A 0 A_PlaySound("monsters/pentagram/Spawn",6,1.0,0,0);
 			QPEI AAAAAAAAAAAAAAAAAA 1 Bright A_FadeIn(0.05);
 			TNT1 A 0 A_PlaySound("monsters/pentagram/loop",7,1.0,1,0);
 		Idle:
 			TNT1 AAAAA 0 A_SpawnItemEx("PatriarchServantSpawner",random(-3000,3000),0,0,0,0,0,0,SXF_NOCHECKPOSITION|SXF_SETMASTER);
 			QPEI ABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPABCDEFGHIJKLMNOPABCDEFGHIJKLMNOP 1 Bright;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("PentagramDeathToken",15,"DeathStop");
 			QPEI ABCDEFGHIJKLMNOP 1 Bright A_SpawnItemEx("PentargamExplode",random(-75,75),random(-75,75),random(0,150),0,0,0,0,SXF_NOCHECKPOSITION);
 			TNT1 A 0 A_GiveInventory("PentagramDeathToken",1);
-			loop;
+			Loop;
 		DeathStop:
 			TNT1 A 0();
 			TNT1 A 0 A_PlaySound("monsters/pentagram/death",7,1.5,0,0);
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("PentargamExplode",0,0,0,random(-15,15),random(-15,15),random(-15,15),0,SXF_NOCHECKPOSITION);
-			stop;
+			Stop;
 	}
 }
-CLASS PentargamExplode : ACTOR { 
+class PentargamExplode : actor { 
 	Default {
 		
 		radius 0;
@@ -1262,34 +1262,34 @@ CLASS PentargamExplode : ACTOR {
 		alpha 0.9;
 		scale 1.5;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0;
 			//TNT1 A 0 A_PlaySound("monsters/pentagram/explode")
 			EXP2 ABCDEFGHIJKLMN 1 Bright;
-			stop;
+			Stop;
 	}
 }
-CLASS PentagramDeathToken : Inventory {inventory.maxamount 50} { 
+class PentagramDeathToken : Inventory {Inventory.MaxAmount 50} { 
 	Default {
-	ACTOR PatriarchServantSpawner;
+	actor PatriarchServantSpawner;
 	
 	radius 0;
 	height 0;
 	+FLOORHUGGER;
 	+FLOORCLIP;
 	}
-	states
+	States
 	{
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_SpawnItemEx("TeleportFog",0,0,30);
 		TNT1 A 0 A_SpawnItemEx("PatriarchServant",0,0,0,0,0,0,0,SXF_SETMASTER);
-		stop;
+		Stop;
 }
 }
-CLASS PatriarchServant : ACTOR { 
+class PatriarchServant : actor { 
 	Default {
 	
 	height 84;
@@ -1309,14 +1309,14 @@ CLASS PatriarchServant : ACTOR {
 	obituary "%o is now charged with dark energy, thanks to Patriacrh Faithful's servants";
 	hitobituary "The Patriarch Fatithful's servants enjoyed eating %o's inners";
 	}
-	states
+	States
 	{
 	Spawn:
 		COUN A 1 A_Look();
-		loop;
+		Loop;
 	See:
 		COUN ABCD 5 A_Chase();
-		loop;
+		Loop;
 	Missile:
 		TNT1 A 0 A_PlaySound("monsters/servant/attack",4);
 		COUN E 3 A_FaceTarget();
@@ -1325,28 +1325,28 @@ CLASS PatriarchServant : ACTOR {
 		COUN G 4 Bright;
 		COUN F 5 Bright;
 		COUN E 3;
-		goto See;
+		Goto See;
 	Melee:
 		TNT1 A 0 A_PlaySound("monsters/servant/attack",4);
 		COUN I 4 A_FaceTarget();
 		TNT1 A 0 A_CustomMeleeAttack(7,"baron/melee");
 		COUN J 2;
 		COUN K 12;
-		goto See;
+		Goto See;
 	Pain:
 		COUN L 3;
 		COUN L 3 A_Pain();
-		goto See;
+		Goto See;
 	Death:
 		COUN M 4 A_Scream();
 		COUN N 4;
 		COUN O 4 A_NoBlocking();
 		COUN P 4;
 		COUN Q -1;
-		stop;
+		Stop;
 }
 }
-CLASS ServantLightning : ACTOR { 
+class ServantLightning : actor { 
 	Default {
 	
 	radius 6;
@@ -1361,18 +1361,18 @@ CLASS ServantLightning : ACTOR {
 	seesound "monsters/servant/lightning/fire";
 	deathsound "monsters/servant/lightning/hit";
 	}
-	states
+	States
 	{
 	Spawn:
 		HYD1 XYZ 3 bright;
-		loop;
+		Loop;
 	Death:
 		TNT1 A 1;
-		stop;
+		Stop;
 }
 }
-CLASS PenragramCooldown : Inventory {inventory.maxamount 100} { 
+class PenragramCooldown : Inventory {Inventory.MaxAmount 100} { 
 	Default {
 	}
-CLASS PatriarchDeathToken : Inventory {inventory.maxamount 325} { 
+class PatriarchDeathToken : Inventory {Inventory.MaxAmount 325} { 
 	Default {

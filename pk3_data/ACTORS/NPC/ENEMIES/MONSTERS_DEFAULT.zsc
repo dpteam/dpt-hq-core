@@ -1,4 +1,4 @@
-CLASS Striker_FlyingBlood : ACTOR { 
+class Striker_FlyingBlood : actor { 
 	Default {
 		
 		Scale 0.7;
@@ -26,7 +26,7 @@ CLASS Striker_FlyingBlood : ACTOR {
 			Stop;
 	}
 }
-CLASS Striker_FlyingBloodTrail : ACTOR { 
+class Striker_FlyingBloodTrail : actor { 
 	Default {
 		
 		Scale 0.7;
@@ -48,10 +48,10 @@ CLASS Striker_FlyingBloodTrail : ACTOR {
 		Crash:
 			BLUD E 550;
 			BLUD EEEE 1 A_FadeOut();
-			stop;
+			Stop;
 	}
 }
-CLASS Striker_BloodSpot : ACTOR { 
+class Striker_BloodSpot : actor { 
 	Default {
 		
 		Radius 1;
@@ -75,7 +75,7 @@ CLASS Striker_BloodSpot : ACTOR {
 			Stop;
 	}
 }
-CLASS BrutalizedZombieMan: Zombieman Replaces Zombieman { 
+class BrutalizedZombieMan: Zombieman Replaces Zombieman { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -100,7 +100,7 @@ CLASS BrutalizedZombieMan: Zombieman Replaces Zombieman {
 			POSZ CCCCCCCCCCCCCCCCCCCCCC 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0);
 			POL5 A 0 A_NoBlocking();
 			POL5 A -1;
-			stop;
+			Stop;
 		XDeath:
 			TNT1 AAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 90));
@@ -137,7 +137,7 @@ CLASS BrutalizedZombieMan: Zombieman Replaces Zombieman {
 			Stop;
 	}
 }
-CLASS BrutalizedShotgunGuy: Shotgunguy Replaces Shotgunguy { 
+class BrutalizedShotgunGuy: Shotgunguy Replaces Shotgunguy { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -162,7 +162,7 @@ CLASS BrutalizedShotgunGuy: Shotgunguy Replaces Shotgunguy {
 			SPOZ CCCCCCCCCCCCCCCCCCCCCC 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0);
 			POL5 A 0 A_NoBlocking();
 			POL5 A -1;
-			stop;
+			Stop;
 		XDeath:
 			TNT1 AAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 90));
@@ -203,7 +203,7 @@ CLASS BrutalizedShotgunGuy: Shotgunguy Replaces Shotgunguy {
 			Stop;
 	}
 }
-CLASS BrutalizedChaingunGuy: Chaingunguy Replaces Chaingunguy { 
+class BrutalizedChaingunGuy: Chaingunguy Replaces Chaingunguy { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -256,7 +256,7 @@ CLASS BrutalizedChaingunGuy: Chaingunguy Replaces Chaingunguy {
 			Stop;
 	}
 }
-CLASS BrutalizedWolfensteinSS: WolfensteinSS Replaces WolfensteinSS { 
+class BrutalizedWolfensteinSS: WolfensteinSS Replaces WolfensteinSS { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -307,7 +307,7 @@ CLASS BrutalizedWolfensteinSS: WolfensteinSS Replaces WolfensteinSS {
 			Stop;
 	}
 }
-CLASS BrutalizedImp: DoomImp Replaces DoomImp { 
+class BrutalizedImp: DoomImp Replaces DoomImp { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -332,7 +332,7 @@ CLASS BrutalizedImp: DoomImp Replaces DoomImp {
 			IMPB CCCCCCCCCCCCCCCCCCCCCC 0 A_SpawnItemEx ("Striker_FlyingBlood", 0, 0, 25, Random(5, 10), Random(5,10), Random(2, 20), Random(-255, 255), 128, 0);
 			POL5 A 0 A_NoBlocking();
 			POL5 A -1;
-			stop;
+			Stop;
 		XDeath:
 			TNT1 AAAAAA 0 A_CustomMissile ("CeilBloodLauncherLong", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_CustomMissile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 90));
@@ -369,7 +369,7 @@ CLASS BrutalizedImp: DoomImp Replaces DoomImp {
 			Stop;
 	}
 }
-CLASS BrutalizedDemon: Demon Replaces Demon { 
+class BrutalizedDemon: Demon Replaces Demon { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -421,7 +421,7 @@ CLASS BrutalizedDemon: Demon Replaces Demon {
 			Stop;
 	}
 }
-CLASS BrutalizedHellKnight: HelLKnight Replaces HellKnight { 
+class BrutalizedHellKnight: HelLKnight Replaces HellKnight { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -475,7 +475,7 @@ CLASS BrutalizedHellKnight: HelLKnight Replaces HellKnight {
 			Stop;
 	}
 }
-CLASS BrutalizedBaronOfHell: BaronOfHell Replaces BaronOfHell { 
+class BrutalizedBaronOfHell: BaronOfHell Replaces BaronOfHell { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -529,7 +529,7 @@ CLASS BrutalizedBaronOfHell: BaronOfHell Replaces BaronOfHell {
 			Stop;
 	}
 }
-CLASS BrutalizedCacodemon: Cacodemon Replaces Cacodemon { 
+class BrutalizedCacodemon: Cacodemon Replaces Cacodemon { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -581,7 +581,7 @@ CLASS BrutalizedCacodemon: Cacodemon Replaces Cacodemon {
 			Stop;
 	}
 }
-CLASS BrutalizedRevenant : Revenant Replaces Revenant { 
+class BrutalizedRevenant : Revenant Replaces Revenant { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -625,7 +625,7 @@ CLASS BrutalizedRevenant : Revenant Replaces Revenant {
 			Stop;
 	}
 }
-CLASS BrutalizedFatso: Fatso Replaces Fatso { 
+class BrutalizedFatso: Fatso Replaces Fatso { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -677,7 +677,7 @@ CLASS BrutalizedFatso: Fatso Replaces Fatso {
 			Stop;
 	}
 }
-CLASS BrutalizedArachnotron: Arachnotron Replaces Arachnotron { 
+class BrutalizedArachnotron: Arachnotron Replaces Arachnotron { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -734,7 +734,7 @@ CLASS BrutalizedArachnotron: Arachnotron Replaces Arachnotron {
 			Stop;
 	}
 }
-CLASS BrutalizedCyberdemon: Cyberdemon Replaces Cyberdemon { 
+class BrutalizedCyberdemon: Cyberdemon Replaces Cyberdemon { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -780,7 +780,7 @@ CLASS BrutalizedCyberdemon: Cyberdemon Replaces Cyberdemon {
 			Stop;
 	}
 }
-CLASS BrutalizedSpiderMastermind: SpiderMastermind Replaces SpiderMastermind { 
+class BrutalizedSpiderMastermind: SpiderMastermind Replaces SpiderMastermind { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"
@@ -824,7 +824,7 @@ CLASS BrutalizedSpiderMastermind: SpiderMastermind Replaces SpiderMastermind {
 			Stop;
 	}
 }
-CLASS BrutalizedArchvile: Archvile Replaces Archvile { 
+class BrutalizedArchvile: Archvile Replaces Archvile { 
 	Default {
 		
 		//$Category "Monsters - Brutalized"

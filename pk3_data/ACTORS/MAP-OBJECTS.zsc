@@ -1,4 +1,4 @@
-CLASS ShotSmoke22 : ACTOR { 
+class ShotSmoke22 : actor { 
 	Default {
 		
 		+NOTDMATCH;
@@ -8,38 +8,38 @@ CLASS ShotSmoke22 : ACTOR {
 		alpha 0.3;
 		scale 0.1;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 Thing_ChangeTID(0,390);
 			SMOK ABCDEFGHIJKLMNOPQ 1 A_SpawnItem("ShotSmokeTrail");//A_FadeOut(0.01)
-			stop;
+			Stop;
 	}
 }
 
-CLASS ShotSmokeTrail : ShotSmoke22 { 
+class ShotSmokeTrail : ShotSmoke22 { 
 	Default {
 		
 		vspeed 0;
 		alpha 0.15;
 	}
-	states
+	States
 	{
 		Spawn:
 			SMOK CDEFGHIJKLMNOPQ 1;
-			stop;
+			Stop;
 	}
 }
 
-CLASS SmokingPiece22 : DebrisGeneral { 
+class SmokingPiece22 : DebrisGeneral { 
 	Default {
 		
 		-NOGRAVITY;
 		speed 12;
 		gravity 0.7;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0;
@@ -49,7 +49,7 @@ CLASS SmokingPiece22 : DebrisGeneral {
 	}
 }
 
-CLASS SmokingPiece22Smoke : ShotSmokeTrail { 
+class SmokingPiece22Smoke : ShotSmokeTrail { 
 	Default {
 		
 		scale 0.06;
@@ -57,11 +57,11 @@ CLASS SmokingPiece22Smoke : ShotSmokeTrail {
 	}
 }
 
-CLASS BrutalExplosion : ACTOR { 
+class BrutalExplosion : actor { 
 	Default {
 		
 		+NOCLIP;
-		+THRUACTORS;
+		+THRUactorS;
 		+MISSILE;
 		//WORKER // Надо ли?
 		//RADIUS 16
@@ -76,10 +76,10 @@ CLASS BrutalExplosion : ACTOR {
 			MISL A 0 A_NOBLOCKING();
 			MISL A 0 A_FALL();
 			MISL A 0 A_ALERTMONSTERS();
-			MISL A 0 A_SPAWNITEMEX ("DETECTFLOORCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			MISL A 0 A_SPAWNITEMEX ("DETECTCEILCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			MISL A 0 A_SPAWNITEMEX ("EXPLOSIONFLARESPAWNER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			MISL A 0 A_SPAWNITEMEX ("BARRELKABOOM",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			MISL A 0 A_SpawnITEMEX ("DETECTFLOORCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			MISL A 0 A_SpawnITEMEX ("DETECTCEILCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			MISL A 0 A_SpawnITEMEX ("EXPLOSIONFLARESpawnER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			MISL A 0 A_SpawnITEMEX ("BARRELKABOOM",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			MISL AAAAAAA 0 A_CUSTOMMISSILE ("EXPLOSIONFLAMES", 0, 0, RANDOM (0, 360), 2, RANDOM (0, 360));
 			MISL AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CUSTOMMISSILE ("EXPLOSIONPARTICLEHEAVY", 0, 0, RANDOM (0, 360), 2, RANDOM (0, 180));
 			MISL AAAAAA 0 A_CUSTOMMISSILE ("EXPLOSIONPARTICLEHEAVY", 0, 0, RANDOM (0, 360), 2, RANDOM (0, 180));
@@ -89,33 +89,33 @@ CLASS BrutalExplosion : ACTOR {
 			MISL AA 0 A_CUSTOMMISSILE ("METALSHARD2", 5, 0, RANDOM (0, 360), 2, RANDOM (30, 160));
 			MISL AA 0 A_CUSTOMMISSILE ("METALSHARD3", 5, 0, RANDOM (0, 360), 2, RANDOM (30, 160));
 			MISL A 0 A_PLAYSOUND("FAREXPL", 3);
-			MISL A 0 A_SPAWNITEM("BARRELEXPLOSIONSMOKECOLUMN");
+			MISL A 0 A_SpawnITEM("BARRELEXPLOSIONSMOKECOLUMN");
 			MISL AAAAAAA 0 A_custommissile("SmokingPiece22",random(0,16),random(-8,8),random(-360,360),2,random(10,70));
 			MISL AAAAA 8 A_CUSTOMMISSILE ("EXPLOSIONSMOKE", 1, 0, RANDOM (0, 360), 2, RANDOM (50, 130));
 			Stop;
 	}
 }
 
-CLASS DPTHQ_ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel { 
+class DPTHQ_ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel { 
 	Default {
 		
 		//$Category Barrels
-		DAMAGEFACTOR "TRAMPLE", 0.0;
-		DAMAGEFACTOR "KICK", 0.1;
-		DAMAGEFACTOR "MELEE", 0.1;
-		DAMAGEFACTOR "FATALITY", 10.1;
-		DAMAGEFACTOR "SUPERPUNCH", 10.1;
-		DAMAGEFACTOR "EXPLOSIVEIMPACT", 0.4;
-		DAMAGEFACTOR "FIRE", 3.5;
-		DAMAGEFACTOR "BLOOD", 0.0;
-		DAMAGEFACTOR "GREENBLOOD", 0.0;
-		DAMAGEFACTOR "BLUEBLOOD", 0.0;
-		DAMAGEFACTOR "TAUNT", 0.0;
-		DAMAGEFACTOR "KILLME", 0.0;
-		DAMAGEFACTOR "AVOID", 0.0;
-		DAMAGEFACTOR "TAUNT", 0.0;
-		DAMAGEFACTOR "HEAD", 0.0;
-		DAMAGEFACTOR "MINORHEAD", 0.0;
+		DAMAGEFactor "TRAMPLE", 0.0;
+		DAMAGEFactor "KICK", 0.1;
+		DAMAGEFactor "MELEE", 0.1;
+		DAMAGEFactor "FATALITY", 10.1;
+		DAMAGEFactor "SUPERPUNCH", 10.1;
+		DAMAGEFactor "EXPLOSIVEIMPACT", 0.4;
+		DAMAGEFactor "FIRE", 3.5;
+		DAMAGEFactor "BLOOD", 0.0;
+		DAMAGEFactor "GREENBLOOD", 0.0;
+		DAMAGEFactor "BLUEBLOOD", 0.0;
+		DAMAGEFactor "TAUNT", 0.0;
+		DAMAGEFactor "KILLME", 0.0;
+		DAMAGEFactor "AVOID", 0.0;
+		DAMAGEFactor "TAUNT", 0.0;
+		DAMAGEFactor "HEAD", 0.0;
+		DAMAGEFactor "MINORHEAD", 0.0;
 		HEALTH 20;
 		RADIUS 10;
 		HEIGHT 34;
@@ -138,25 +138,25 @@ CLASS DPTHQ_ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel {
 	}
 	States
 	{
-		SPAWN:
-			TNT1 A 0 A_CHECKSIGHT("SPAWN2");
-			BAR1 A 4  A_SPAWNITEM("GREENLENSFLAREALTSMALL",0,32);
-			TNT1 A 0 A_CHECKSIGHT("SPAWN2");
-			BAR1 A 4  A_SPAWNITEM("GREENLENSFLAREALTSMALL",0,32);
-			TNT1 A 0 A_CHECKSIGHT("SPAWN2");
-			BAR1 B 4  A_SPAWNITEM("GREENLENSFLAREALTSMALL",0,32);
-			TNT1 A 0 A_CHECKSIGHT("SPAWN2");
-			BAR1 B 4  A_SPAWNITEM("GREENLENSFLAREALTSMALL",0,32);
-			LOOP;
-		SPAWN2:
+		Spawn:
+			TNT1 A 0 A_CHECKSIGHT("Spawn2");
+			BAR1 A 4  A_SpawnITEM("GREENLENSFLAREALTSMALL",0,32);
+			TNT1 A 0 A_CHECKSIGHT("Spawn2");
+			BAR1 A 4  A_SpawnITEM("GREENLENSFLAREALTSMALL",0,32);
+			TNT1 A 0 A_CHECKSIGHT("Spawn2");
+			BAR1 B 4  A_SpawnITEM("GREENLENSFLAREALTSMALL",0,32);
+			TNT1 A 0 A_CHECKSIGHT("Spawn2");
+			BAR1 B 4  A_SpawnITEM("GREENLENSFLAREALTSMALL",0,32);
+			Loop;
+		Spawn2:
 			BAR1 A 2;
-			GOTO SPAWN;
+			Goto Spawn;
 		PAIN.KICK:
 			BAR1 A 1 A_PAIN();
 			BAR1 A 1 A_FACETARGET();
 			TNT1 A 0 THRUSTTHING(ANGLE*256/360+128, 20, 0, 0);
 			TNT1 A 0 THRUSTTHINGZ(0,10,0,1);
-			GOTO SPAWN;
+			Goto Spawn;
 		Death:
 			BEXP AB 2 BRIGHT;
 			BEXP C 2 A_Scream();
@@ -164,10 +164,10 @@ CLASS DPTHQ_ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel {
 			BEXP A 0 A_NOBLOCKING();
 			BEXP A 0 A_FALL();
 			BEXP A 0 A_ALERTMONSTERS();
-			BEXP A 0 A_SPAWNITEMEX ("DETECTFLOORCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			BEXP A 0 A_SPAWNITEMEX ("DETECTCEILCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			BEXP A 0 A_SPAWNITEMEX ("EXPLOSIONFLARESPAWNER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			BEXP A 0 A_SPAWNITEMEX ("BARRELKABOOM",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			BEXP A 0 A_SpawnITEMEX ("DETECTFLOORCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			BEXP A 0 A_SpawnITEMEX ("DETECTCEILCRATER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			BEXP A 0 A_SpawnITEMEX ("EXPLOSIONFLARESpawnER",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			BEXP A 0 A_SpawnITEMEX ("BARRELKABOOM",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			BEXP AAAAAAA 0 A_CUSTOMMISSILE ("EXPLOSIONFLAMES", 0, 0, RANDOM (0, 360), 2, RANDOM (0, 360));
 			BEXP AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CUSTOMMISSILE ("EXPLOSIONPARTICLEHEAVY", 0, 0, RANDOM (0, 360), 2, RANDOM (0, 180));
 			BEXP AAAAAA 0 A_CUSTOMMISSILE ("EXPLOSIONPARTICLEHEAVY", 0, 0, RANDOM (0, 360), 2, RANDOM (0, 180));
@@ -178,19 +178,19 @@ CLASS DPTHQ_ExplosiveBarrel : ExplosiveBarrel replaces ExplosiveBarrel {
 			BEXP AA 0 A_CUSTOMMISSILE ("METALSHARD2", 5, 0, RANDOM (0, 360), 2, RANDOM (30, 160));
 			BEXP AA 0 A_CUSTOMMISSILE ("METALSHARD3", 5, 0, RANDOM (0, 360), 2, RANDOM (30, 160));
 			BEXP A 0 A_PLAYSOUND("FAREXPL", 3);
-			BEXP A 0 A_SPAWNITEM("BARRELEXPLOSIONSMOKECOLUMN");
+			BEXP A 0 A_SpawnITEM("BARRELEXPLOSIONSMOKECOLUMN");
 			BEXP AAAAAAA 0 A_custommissile("SmokingPiece22",random(0,16),random(-8,8),random(-360,360),2,random(10,70));
 			BEXP AAAAAA 0 A_custommissile("BarrelPart",20,random(-5,5),random(0,360),2,random(40,80));
 			BEXP A 0 A_SpawnItem("XBarrelChunk",0,0);
 			BEXP AAAAA 8 A_CUSTOMMISSILE ("EXPLOSIONSMOKE", 1, 0, RANDOM (0, 360), 2, RANDOM (50, 130));
 			BEXP EFGHIJKLMNOPQ 2;
 			BEXP Q 1050 A_BarrelDestroy();
-			BEXP Q 5 A_Respawn();
+			BEXP Q 5 A_ReSpawn();
 			Wait;
 	}
 }
 
-CLASS NuclearBarrel : DPTHQ_ExplosiveBarrel 16001 { 
+class NuclearBarrel : DPTHQ_ExplosiveBarrel 16001 { 
 	Default {
 		
 		//$Category Barrels
@@ -211,7 +211,6 @@ CLASS NuclearBarrel : DPTHQ_ExplosiveBarrel 16001 {
 		damagefactor "Taunt", 0.0;
 		damagefactor "Head", 0.0;
 		damagefactor "minorhead", 0.0;
-		SpawnID 125;
 		Health 3000;
 		Radius 10;
 		Height 34;
@@ -244,7 +243,7 @@ CLASS NuclearBarrel : DPTHQ_ExplosiveBarrel 16001 {
 			BEXP ABCD 2 BRIGHT;
 			TNT1 A 0 A_NoBlocking();
 			TNT1 A 0 A_Fall();
-			TNT1 DDDDDDDDDD 0 bright A_SpawnItemEx("explosionspawner",0+Random(-20,20),0+Random(-20,20),32+Random(-5,5),0,0,1,0,128);
+			TNT1 DDDDDDDDDD 0 bright A_SpawnItemEx("explosionSpawner",0+Random(-20,20),0+Random(-20,20),32+Random(-5,5),0,0,1,0,128);
 			TNT1 A 0;
 			TNT1 A 0 A_PlaySoundEx("Nuke/Boom", "Voice", 0, 2);
 			TNT1 A 0 Radius_Quake(54, 20, 70, 40, 0);
@@ -269,7 +268,7 @@ CLASS NuclearBarrel : DPTHQ_ExplosiveBarrel 16001 {
 	}
 }
 
-CLASS XBarrelChunk : ACTOR { 
+class XBarrelChunk : actor { 
 	Default {
 		
 	}
@@ -281,11 +280,11 @@ CLASS XBarrelChunk : ACTOR {
 			BEXP RSTRST 9 BRIGHT;
 			BEXP RSTRSTRSTRRSSTTRRSSTTRRRSSSTTTRRRRSSSSTTTT 10;
 			BEXP U -1;
-			stop;
+			Stop;
 	}
 }
 
-CLASS BarrelPart : SmokingPiece22 { 
+class BarrelPart : SmokingPiece22 { 
 	Default {
 		
 		-ROCKETTRAIL;
@@ -298,38 +297,38 @@ CLASS BarrelPart : SmokingPiece22 {
 		seesound "bounce";
 		mass 1;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 Thing_ChangeTID(0,390);
 			BPRT ABCDEFGH 2 A_SpawnItem("ShotSmoke");
-			loop;
+			Loop;
 		Death:
 			TNT1 A 0;
 			TNT1 A 0 A_jump(255,"death1","death2","death3","death4","death5","death6");
 		Death1:
 			BPRT A 1 A_Fadeout(0.001);
-			loop;
+			Loop;
 		Death2:
 			BPRT C 1 A_Fadeout(0.001);
-			loop;
+			Loop;
 		Death3:
 			BPRT E 1 A_Fadeout(0.001);
-			loop;
+			Loop;
 		Death4:
 			BPRT G 1 A_Fadeout(0.001);
-			loop;
+			Loop;
 		Death5:
 			BPRT B 1 A_Fadeout(0.001);
-			loop;
+			Loop;
 		Death6:
 			BPRT D 1 A_Fadeout(0.001);
-			loop;
+			Loop;
 	}
 }
 
-CLASS heliobj 29120 : ACTOR { 
+class heliobj 29120 : actor { 
 	Default {
 		
 		//$Category Military
@@ -375,7 +374,7 @@ CLASS heliobj 29120 : ACTOR {
 	}
 }
 
-CLASS merda 16163 : ACTOR { 
+class merda 16163 : actor { 
 	Default {
 		
 		//$Category Amoral
@@ -390,7 +389,7 @@ CLASS merda 16163 : ACTOR {
 	}
 }
 
-CLASS Bodiless_Swarm 22930 : ACTOR { 
+class Bodiless_Swarm 22930 : actor { 
 	Default {
 		
 		+Missile;
@@ -412,7 +411,7 @@ CLASS Bodiless_Swarm 22930 : ACTOR {
 	}
 }
 
-CLASS Body_Swarm : ACTOR { 
+class Body_Swarm : actor { 
 	Default {
 		
 		+Missile;
@@ -458,7 +457,7 @@ CLASS Body_Swarm : ACTOR {
 	}
 }
 
-CLASS SwarmFly : ACTOR { 
+class SwarmFly : actor { 
 	Default {
 		
 		Radius 1;
@@ -486,7 +485,7 @@ CLASS SwarmFly : ACTOR {
 	}
 }
 
-CLASS Mario64Tree 19202 : ACTOR { 
+class Mario64Tree 19202 : actor { 
 	Default {
 		
 		//$Category Special
@@ -511,14 +510,14 @@ CLASS Mario64Tree 19202 : ACTOR {
 }
 //**************** WEATHER ZONE BOUNDARY **********************
 //Boundary object for weather zones
-CLASS WeatherSpot 30000 : ACTOR { 
+class WeatherSpot 30000 : actor { 
 	Default {
 		
 		//$Category Weather
 		+NOBLOCKMAP;
 		gravity 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A -1;
@@ -526,8 +525,8 @@ CLASS WeatherSpot 30000 : ACTOR {
 	}
 }
 //**************** RAIN **********************
-//Basic rain spawner
-CLASS RainSpawner 26261 : ACTOR { 
+//Basic rain Spawner
+class RainSpawner 26261 : actor { 
 	Default {
 		
 		//$Category Weather
@@ -538,7 +537,7 @@ CLASS RainSpawner 26261 : ACTOR {
 		RenderStyle "Translucent";
 		Alpha 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			RAIN A 0 A_JumpIf(z >= ceilingz,1);
@@ -546,8 +545,8 @@ CLASS RainSpawner 26261 : ACTOR {
 			Stop;
 	}
 }
-//Heavy rain spawner
-CLASS HardRainSpawner 26262 : ACTOR { 
+//Heavy rain Spawner
+class HardRainSpawner 26262 : actor { 
 	Default {
 		
 		//$Category Weather
@@ -558,7 +557,7 @@ CLASS HardRainSpawner 26262 : ACTOR {
 		RenderStyle "Translucent";
 		Alpha 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			RAIN A 0 A_JumpIf(z >= ceilingz,1);
@@ -567,7 +566,7 @@ CLASS HardRainSpawner 26262 : ACTOR {
 	}
 }
 //Simple rain drop
-CLASS RainDrop : ACTOR { 
+class RainDrop : actor { 
 	Default {
 		
 		+NOBLOCKMAP;
@@ -579,7 +578,7 @@ CLASS RainDrop : ACTOR {
 		Alpha .5;
 		xscale 0.25;
 	}
-	states
+	States
 	{
 		Spawn:
 			RAIN A 1 A_JumpIf(waterlevel >= 1, "Death");
@@ -590,8 +589,8 @@ CLASS RainDrop : ACTOR {
 	}
 }
 //**************** SNOW **********************
-//Basic snow spawner
-CLASS SnowSpawner 26264 : ACTOR { 
+//Basic snow Spawner
+class SnowSpawner 26264 : actor { 
 	Default {
 		
 		//$Category Weather
@@ -602,7 +601,7 @@ CLASS SnowSpawner 26264 : ACTOR {
 		RenderStyle "Translucent";
 		Alpha 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			RAIN A 0 A_JumpIf(z >= ceilingz,1);
@@ -610,8 +609,8 @@ CLASS SnowSpawner 26264 : ACTOR {
 			Stop;
 	}
 }
-//Hard snow spawner
-CLASS HardSnowSpawner 26265 : ACTOR { 
+//Hard snow Spawner
+class HardSnowSpawner 26265 : actor { 
 	Default {
 		
 		//$Category Weather
@@ -622,7 +621,7 @@ CLASS HardSnowSpawner 26265 : ACTOR {
 		RenderStyle "Translucent";
 		Alpha 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			RAIN A 0 A_JumpIf(z >= ceilingz,1);
@@ -631,7 +630,7 @@ CLASS HardSnowSpawner 26265 : ACTOR {
 	}
 }
 //Light, drifting snow flake
-CLASS SnowFlake : ACTOR { 
+class SnowFlake : actor { 
 	Default {
 		
 		+NOBLOCKMAP;
@@ -644,7 +643,7 @@ CLASS SnowFlake : ACTOR {
 		gravity 0.02;
 		scale 0.5;
 	}
-	states
+	States
 	{
 		Spawn:
 			SNOW A 1 A_JumpIf(waterlevel >= 1, "Death");
@@ -655,7 +654,7 @@ CLASS SnowFlake : ACTOR {
 	}
 }
 //Heavy, wet snow flake
-CLASS HeavySnowFlake : ACTOR { 
+class HeavySnowFlake : actor { 
 	Default {
 		
 		+NOBLOCKMAP;
@@ -668,7 +667,7 @@ CLASS HeavySnowFlake : ACTOR {
 		gravity 0.1;
 		scale 0.5;
 	}
-	states
+	States
 	{
 		Spawn:
 			SNOW A 1 A_JumpIf(waterlevel >= 1, "Death");
@@ -680,7 +679,7 @@ CLASS HeavySnowFlake : ACTOR {
 }
 //**************** CONTROL OBJECTS **********************
 //Weather toggle effect
-CLASS Action_WeatherToggle : CustomInventory  { 
+class Action_WeatherToggle : CustomInventory  { 
 	Default {
 		
 		Inventory.Amount 1;
@@ -704,7 +703,7 @@ CLASS Action_WeatherToggle : CustomInventory  {
 			Fail;
 	} 
 }
-CLASS Flag_NoWeather : Inventory  { 
+class Flag_NoWeather : Inventory  { 
 	Default {
 		
 		Inventory.Amount 1;
@@ -713,9 +712,9 @@ CLASS Flag_NoWeather : Inventory  {
 	}
 }
 // Reviver
-CLASS Reviver 13377 : ACTOR {} : ACTOR { 
+class Reviver 13377 : actor {
 	Default {
-	/*Actor Reviver 13377
+	/*actor Reviver 13377
 	 
 		//$Category Special/
 		speed 7
@@ -724,7 +723,7 @@ CLASS Reviver 13377 : ACTOR {} : ACTOR {
 		+NOGRAVITY
 		+NOCLIP
 	}
-	states
+	States
 	{
 Spawn:
 		TNT1 A 1 A_VileChase
@@ -738,7 +737,7 @@ Heal:
 	}
 }*/
 // LOLNESS
-CLASS DANCE 10406 : ACTOR { 
+class DANCE 10406 : actor { 
 	Default {
 		
 		//$Category Dance
@@ -756,7 +755,7 @@ CLASS DANCE 10406 : ACTOR {
 			Loop;
 	}
 }
-CLASS RUSSIA 10410 : ACTOR { 
+class RUSSIA 10410 : actor { 
 	Default {
 		
 		//$Category Dance
@@ -774,7 +773,7 @@ CLASS RUSSIA 10410 : ACTOR {
 			Loop;
 	}
 }
-CLASS FLEXIT 26370 : ACTOR { 
+class FLEXIT 26370 : actor { 
 	Default {
 		
 		//$Category Dance
@@ -792,7 +791,7 @@ CLASS FLEXIT 26370 : ACTOR {
 			Loop;
 	}
 }
-CLASS REDC 21337 : ACTOR { 
+class REDC 21337 : actor { 
 	Default {
 		
 		//$Category Special
@@ -812,7 +811,7 @@ CLASS REDC 21337 : ACTOR {
 			Loop;
 	}
 }
-CLASS TankBF 30037 : ACTOR { 
+class TankBF 30037 : actor { 
 	Default {
 		
 		//$Category Military
@@ -865,7 +864,7 @@ CLASS TankBF 30037 : ACTOR {
 			Stop;
 	}
 }
-CLASS TankMissile : Rocket { 
+class TankMissile : Rocket { 
 	Default {
 		
 		Scale 0.35;
@@ -909,7 +908,7 @@ CLASS TankMissile : Rocket {
 			Stop;
 	}
 }
-CLASS Explosion : ACTOR { 
+class Explosion : actor { 
 	Default {
 		
 		Damage 255;
@@ -942,19 +941,19 @@ CLASS Explosion : ACTOR {
 			Stop;
 	}
 }
-CLASS DIExplosion : Explosion { 
+class DIExplosion : Explosion { 
 	Default {
 		
 		Scale 0.75;
 	}
 }
-CLASS DIExplosionLarge : Explosion { 
+class DIExplosionLarge : Explosion { 
 	Default {
 		
 		Scale 1.35;
 	}
 }
-CLASS Car1 21001 : ACTOR { 
+class Car1 21001 : actor { 
 	Default {
 		
 		//$Category Cars
@@ -1001,7 +1000,7 @@ CLASS Car1 21001 : ACTOR {
 			Stop;
 	}
 }
-CLASS Car2 21002 : ACTOR { 
+class Car2 21002 : actor { 
 	Default {
 		
 		//$Category Cars
@@ -1048,7 +1047,7 @@ CLASS Car2 21002 : ACTOR {
 			Stop;
 	}
 }
-CLASS Car3 21003 : ACTOR { 
+class Car3 21003 : actor { 
 	Default {
 		
 		//$Category Cars
@@ -1095,7 +1094,7 @@ CLASS Car3 21003 : ACTOR {
 			Stop;
 	}
 }
-CLASS Car4 21004 : ACTOR { 
+class Car4 21004 : actor { 
 	Default {
 		
 		//$Category Cars
@@ -1142,7 +1141,7 @@ CLASS Car4 21004 : ACTOR {
 			Stop;
 	}
 }
-CLASS Car5 21005 : ACTOR { 
+class Car5 21005 : actor { 
 	Default {
 		
 		//$Category Cars
@@ -1189,7 +1188,7 @@ CLASS Car5 21005 : ACTOR {
 			Stop;
 	}
 }
-CLASS Box1 12000 : ACTOR { 
+class Box1 12000 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -1204,7 +1203,7 @@ CLASS Box1 12000 : ACTOR {
 			Stop;
 	}
 }
-CLASS XboxOne 12001 : ACTOR { 
+class XboxOne 12001 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -1219,7 +1218,7 @@ CLASS XboxOne 12001 : ACTOR {
 			Stop;
 	}
 }
-CLASS PS4 12002 : ACTOR { 
+class PS4 12002 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -1234,7 +1233,7 @@ CLASS PS4 12002 : ACTOR {
 			Stop;
 	}
 }
-CLASS Mine 20135 : ACTOR { 
+class Mine 20135 : actor { 
 	Default {
 		
 		Damage 255;
@@ -1285,13 +1284,13 @@ CLASS Mine 20135 : ACTOR {
 			Stop;
 	}
 }
-CLASS DoomFlag : CustomInventory 14401  { 
+class DoomFlag : CustomInventory 14401  { 
 	Default {
 		
 		//$Category Zone
 		//-SOLID 
 		Inventory.PickupSound "misc/k_pkup";
-		inventory.pickupmessage "You got the Doom flag!";
+		Inventory.PickupMessage "You got the Doom flag!";
 		Radius 20;
 		Height 64;
 	}
@@ -1305,23 +1304,23 @@ CLASS DoomFlag : CustomInventory 14401  {
 			Stop;
 	} 
 } 
-CLASS DoomFlag1 : CustomInventory  { 
+class DoomFlag1 : CustomInventory  { 
 	Default {
 		
 		radius 0;
 		height 0;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 1;
-			loop;
+			Loop;
 		Use:
 			TNT1 A 1;
 			fail;
 	} 
 }
-CLASS flaskblueA 26266 : ACTOR { 
+class flaskblueA 26266 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1342,7 +1341,7 @@ CLASS flaskblueA 26266 : ACTOR {
 	{
 		Spawn:
 			FLKS A -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1360,7 +1359,7 @@ CLASS flaskblueA 26266 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskblueB 26267 : ACTOR { 
+class flaskblueB 26267 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1381,7 +1380,7 @@ CLASS flaskblueB 26267 : ACTOR {
 	{
 		Spawn:
 			FLKS G -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1399,7 +1398,7 @@ CLASS flaskblueB 26267 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskpurpleA 26268 : ACTOR { 
+class flaskpurpleA 26268 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1420,7 +1419,7 @@ CLASS flaskpurpleA 26268 : ACTOR {
 	{
 		Spawn:
 			FLKS B -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1438,7 +1437,7 @@ CLASS flaskpurpleA 26268 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskpurpleB 26269 : ACTOR { 
+class flaskpurpleB 26269 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1459,7 +1458,7 @@ CLASS flaskpurpleB 26269 : ACTOR {
 	{
 		Spawn:
 			FLKS H -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1477,7 +1476,7 @@ CLASS flaskpurpleB 26269 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskredA 26270 : ACTOR { 
+class flaskredA 26270 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1498,7 +1497,7 @@ CLASS flaskredA 26270 : ACTOR {
 	{
 		Spawn:
 			FLKS C -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1516,7 +1515,7 @@ CLASS flaskredA 26270 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskredB 26271 : ACTOR { 
+class flaskredB 26271 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1537,7 +1536,7 @@ CLASS flaskredB 26271 : ACTOR {
 	{
 		Spawn:
 			FLKS I -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1555,7 +1554,7 @@ CLASS flaskredB 26271 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskgreenA 26272 : ACTOR { 
+class flaskgreenA 26272 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1576,7 +1575,7 @@ CLASS flaskgreenA 26272 : ACTOR {
 	{
 		Spawn:
 			FLKS D -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1594,7 +1593,7 @@ CLASS flaskgreenA 26272 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskgreenB 26273 : ACTOR { 
+class flaskgreenB 26273 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1615,7 +1614,7 @@ CLASS flaskgreenB 26273 : ACTOR {
 	{
 		Spawn:
 			FLKS J -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1633,7 +1632,7 @@ CLASS flaskgreenB 26273 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskyellowA 26274 : ACTOR { 
+class flaskyellowA 26274 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1654,7 +1653,7 @@ CLASS flaskyellowA 26274 : ACTOR {
 	{
 		Spawn:
 			FLKS E -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1672,7 +1671,7 @@ CLASS flaskyellowA 26274 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskyellowB 26275 : ACTOR { 
+class flaskyellowB 26275 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1693,7 +1692,7 @@ CLASS flaskyellowB 26275 : ACTOR {
 	{
 		Spawn:
 			FLKS K -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1711,7 +1710,7 @@ CLASS flaskyellowB 26275 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskgreyA 26276 : ACTOR { 
+class flaskgreyA 26276 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1732,7 +1731,7 @@ CLASS flaskgreyA 26276 : ACTOR {
 	{
 		Spawn:
 			FLKS F -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1750,7 +1749,7 @@ CLASS flaskgreyA 26276 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskgreyB 26277 : ACTOR { 
+class flaskgreyB 26277 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1771,7 +1770,7 @@ CLASS flaskgreyB 26277 : ACTOR {
 	{
 		Spawn:
 			FLKS L -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1789,7 +1788,7 @@ CLASS flaskgreyB 26277 : ACTOR {
 			Stop;
 	}
 }
-CLASS glassblue 26278 : ACTOR { 
+class glassblue 26278 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1810,7 +1809,7 @@ CLASS glassblue 26278 : ACTOR {
 	{
 		Spawn:
 			BEAK A -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1823,7 +1822,7 @@ CLASS glassblue 26278 : ACTOR {
 			Stop;
 	}
 }
-CLASS glasspurple 26279 : ACTOR { 
+class glasspurple 26279 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1844,7 +1843,7 @@ CLASS glasspurple 26279 : ACTOR {
 	{
 		Spawn:
 			BEAK B -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1856,7 +1855,7 @@ CLASS glasspurple 26279 : ACTOR {
 			Stop;
 	}
 }
-CLASS glassred 26280 : ACTOR { 
+class glassred 26280 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1877,7 +1876,7 @@ CLASS glassred 26280 : ACTOR {
 	{
 		Spawn:
 			BEAK C -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1889,7 +1888,7 @@ CLASS glassred 26280 : ACTOR {
 			Stop;
 	}
 }
-CLASS glassgreen 26281 : ACTOR { 
+class glassgreen 26281 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1910,7 +1909,7 @@ CLASS glassgreen 26281 : ACTOR {
 	{
 		Spawn:
 			BEAK D -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1922,7 +1921,7 @@ CLASS glassgreen 26281 : ACTOR {
 			Stop;
 	}
 }
-CLASS glassyellow 26282 : ACTOR { 
+class glassyellow 26282 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1943,7 +1942,7 @@ CLASS glassyellow 26282 : ACTOR {
 	{
 		Spawn:
 			BEAK E -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1955,7 +1954,7 @@ CLASS glassyellow 26282 : ACTOR {
 			Stop;
 	}
 }
-CLASS glassgrey 26283 : ACTOR { 
+class glassgrey 26283 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -1976,7 +1975,7 @@ CLASS glassgrey 26283 : ACTOR {
 	{
 		Spawn:
 			BEAK F -1;
-			loop;
+			Loop;
 		Death:
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
 			NULL A 0 A_SpawnItemEx ("Flaskshard1", 0, 0, random (3, 5), random (-5, 5), random (-5, 5), random (1, 2), 0, 0, 30);
@@ -1988,7 +1987,7 @@ CLASS glassgrey 26283 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskshard1 26284 : ACTOR { 
+class flaskshard1 26284 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -2034,7 +2033,7 @@ CLASS flaskshard1 26284 : ACTOR {
 			Stop;
 	}
 }
-CLASS flaskshard2 26285 : ACTOR { 
+class flaskshard2 26285 : actor { 
 	Default {
 		
 		//$Category Flasks
@@ -2080,7 +2079,7 @@ CLASS flaskshard2 26285 : ACTOR {
 			Stop;
 	}
 }
-CLASS BlueKeyGizmo 6961 : ACTOR { 
+class BlueKeyGizmo 6961 : actor { 
 	Default {
 		
 		//$Category Special
@@ -2099,7 +2098,7 @@ CLASS BlueKeyGizmo 6961 : ACTOR {
 			Stop;
 	}
 }
-CLASS RedKeyGizmo 6962 : ACTOR { 
+class RedKeyGizmo 6962 : actor { 
 	Default {
 		
 		//$Category Special
@@ -2118,7 +2117,7 @@ CLASS RedKeyGizmo 6962 : ACTOR {
 			Stop;
 	}
 }
-CLASS YellowKeyGizmo 6963 : ACTOR { 
+class YellowKeyGizmo 6963 : actor { 
 	Default {
 		
 		//$Category Special
@@ -2137,7 +2136,7 @@ CLASS YellowKeyGizmo 6963 : ACTOR {
 			Stop;
 	}
 }
-CLASS GizmoCard : ACTOR { 
+class GizmoCard : actor { 
 	Default {
 		
 		Radius 16;
@@ -2155,7 +2154,7 @@ CLASS GizmoCard : ACTOR {
 			Stop;
 	}
 }
-CLASS BFS : ACTOR { 
+class BFS : actor { 
 	Default {
 		
 		+NOCLIP;
@@ -2187,7 +2186,7 @@ CLASS BFS : ACTOR {
 			Loop;
 	}
 }
-CLASS RFS : BFS { 
+class RFS : BFS { 
 	Default {
 		
 	}
@@ -2214,7 +2213,7 @@ CLASS RFS : BFS {
 			Loop;
 	}
 }
-CLASS YFS: BFS { 
+class YFS: BFS { 
 	Default {
 		
 	}
@@ -2241,7 +2240,7 @@ CLASS YFS: BFS {
 			Loop;
 	}
 }
-CLASS BSparker: BFS { 
+class BSparker: BFS { 
 	Default {
 		
 		+FLOATBOB;
@@ -2263,7 +2262,7 @@ CLASS BSparker: BFS {
 			Goto Spawn;
 	}
 }
-CLASS BSpark : ACTOR { 
+class BSpark : actor { 
 	Default {
 		
 		health 1;
@@ -2279,7 +2278,7 @@ CLASS BSpark : ACTOR {
 		renderstyle "Add";
 		alpha 0.3;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 0 A_Jump(256,"A","B","C","D");
@@ -2302,7 +2301,7 @@ CLASS BSpark : ACTOR {
 			Loop;
 	}
 }
-CLASS RSparker: BFS { 
+class RSparker: BFS { 
 	Default {
 		
 		+FLOATBOB;
@@ -2324,7 +2323,7 @@ CLASS RSparker: BFS {
 			Goto Spawn;
 	}
 }
-CLASS RSpark : BSpark { 
+class RSpark : BSpark { 
 	Default {
 		
 	}
@@ -2351,7 +2350,7 @@ CLASS RSpark : BSpark {
 			Loop;
 	}
 }
-CLASS YSparker: BFS { 
+class YSparker: BFS { 
 	Default {
 		
 		+FLOATBOB;
@@ -2373,7 +2372,7 @@ CLASS YSparker: BFS {
 			Goto Spawn;
 	}
 }
-CLASS YSpark : BSpark { 
+class YSpark : BSpark { 
 	Default {
 		
 	}
@@ -2400,11 +2399,10 @@ CLASS YSpark : BSpark {
 			Loop;
 	}
 }
-CLASS Toilet1 290 : ACTOR { 
+class Toilet1 290 : actor { 
 	Default {
 		
 		//$Category Objects
-		//SpawnID 125
 		Tag "Toilet";
 		Health 10;
 		Radius 10;
@@ -2452,7 +2450,7 @@ CLASS Toilet1 290 : ACTOR {
 			Loop;
 	}
 }
-CLASS OilDrum 26286 : ACTOR { 
+class OilDrum 26286 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -2482,11 +2480,11 @@ CLASS OilDrum 26286 : ACTOR {
 			OILC CCCCC 0 BRIGHT A_SpawnItemEx ("BarrelFlames", random (0, 40), random (0, 40), 0, 0, 0, 0, random (0, 360));
 			OILD D 10 BRIGHT;
 			OILD D 1050 BRIGHT A_BarrelDestroy();
-			OILD D 5 A_Respawn();
+			OILD D 5 A_ReSpawn();
 			Wait;
 	}
 }
-CLASS BarrelFlames : ACTOR { 
+class BarrelFlames : actor { 
 	Default {
 		
 		Radius 16;
@@ -2521,7 +2519,7 @@ CLASS BarrelFlames : ACTOR {
 			Stop;
 	}
 }
-CLASS TechBarrelGrey : ExplosiveBarrel 12711 { 
+class TechBarrelGrey : ExplosiveBarrel 12711 { 
 	Default {
 		
 		//$Category Objects
@@ -2540,11 +2538,11 @@ CLASS TechBarrelGrey : ExplosiveBarrel 12711 {
 			BARX C 4 bright;
 			BARX DEF 4 bright;
 			TNT1 A 1054 A_BarrelDestroy();
-			TNT1 A 5 A_Respawn();
+			TNT1 A 5 A_ReSpawn();
 			Wait;
 	}
 }
-CLASS TechBarrelTan : TechBarrelGrey 12712 { 
+class TechBarrelTan : TechBarrelGrey 12712 { 
 	Default {
 		
 		//$Category Objects
@@ -2556,7 +2554,7 @@ CLASS TechBarrelTan : TechBarrelGrey 12712 {
 			Loop;
 	}
 }
-CLASS TechBarrelGreen : TechBarrelGrey 12713 { 
+class TechBarrelGreen : TechBarrelGrey 12713 { 
 	Default {
 		
 		//$Category Objects
@@ -2568,7 +2566,7 @@ CLASS TechBarrelGreen : TechBarrelGrey 12713 {
 			Loop;
 	}
 }
-CLASS Zapper : SwitchableDecoration 26287 { 
+class Zapper : SwitchableDecoration 26287 { 
 	Default {
 		
 		//$Category Objects
@@ -2594,7 +2592,7 @@ CLASS Zapper : SwitchableDecoration 26287 {
 			Loop;
 	}
 }
-CLASS Gardentree1 26288 : ACTOR { 
+class Gardentree1 26288 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2609,7 +2607,7 @@ CLASS Gardentree1 26288 : ACTOR {
 			Stop;
 	}
 }
-CLASS Gardentree2 26289 : ACTOR { 
+class Gardentree2 26289 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2624,7 +2622,7 @@ CLASS Gardentree2 26289 : ACTOR {
 			Stop;
 	}
 }
-CLASS Gardenbush1 26290 : ACTOR { 
+class Gardenbush1 26290 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2639,7 +2637,7 @@ CLASS Gardenbush1 26290 : ACTOR {
 			Stop;
 	}
 }
-CLASS Gardenbush2 26291 : ACTOR { 
+class Gardenbush2 26291 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2654,7 +2652,7 @@ CLASS Gardenbush2 26291 : ACTOR {
 			Stop;
 	}
 }
-CLASS Gardenbush3 26292 : ACTOR { 
+class Gardenbush3 26292 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2669,7 +2667,7 @@ CLASS Gardenbush3 26292 : ACTOR {
 			Stop;
 	}
 }
-CLASS NTreeDead1 26293 : ACTOR { 
+class NTreeDead1 26293 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2684,7 +2682,7 @@ CLASS NTreeDead1 26293 : ACTOR {
 			Stop;
 	}
 }
-CLASS NTreeDead2 26294 : ACTOR { 
+class NTreeDead2 26294 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2699,7 +2697,7 @@ CLASS NTreeDead2 26294 : ACTOR {
 			Stop;
 	}
 }
-CLASS NTreeSwamp1 26295 : ACTOR { 
+class NTreeSwamp1 26295 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2714,7 +2712,7 @@ CLASS NTreeSwamp1 26295 : ACTOR {
 			Stop;
 	}
 }
-CLASS NTreeSwamp2 26296 : ACTOR { 
+class NTreeSwamp2 26296 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2729,7 +2727,7 @@ CLASS NTreeSwamp2 26296 : ACTOR {
 			Stop;
 	}
 }
-CLASS NSwampLog 26297 : ACTOR { 
+class NSwampLog 26297 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2744,7 +2742,7 @@ CLASS NSwampLog 26297 : ACTOR {
 			Stop;
 	}
 }
-CLASS NSwampStump 26298 : ACTOR { 
+class NSwampStump 26298 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2759,7 +2757,7 @@ CLASS NSwampStump 26298 : ACTOR {
 			Stop;
 	}
 }
-CLASS NSwampRoot 26299 : ACTOR { 
+class NSwampRoot 26299 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2775,7 +2773,7 @@ CLASS NSwampRoot 26299 : ACTOR {
 	}
 }
 ////////////Green Holograms
-CLASS UACHolo1 26300 : ACTOR { 
+class UACHolo1 26300 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -2790,7 +2788,7 @@ CLASS UACHolo1 26300 : ACTOR {
 			Loop;
 	}
 }
-CLASS UACHolo2 : UACHolo1 26301 { 
+class UACHolo2 : UACHolo1 26301 { 
 	Default {
 		
 		//$Category Objects
@@ -2803,7 +2801,7 @@ CLASS UACHolo2 : UACHolo1 26301 {
 	}
 }
 ////////////Cyan Holograms
-CLASS UACHolo3 : UACHolo1 26302 { 
+class UACHolo3 : UACHolo1 26302 { 
 	Default {
 		
 		//$Category Objects
@@ -2815,7 +2813,7 @@ CLASS UACHolo3 : UACHolo1 26302 {
 			Loop;
 	}
 }
-CLASS UACHolo4 : UACHolo1 26303 { 
+class UACHolo4 : UACHolo1 26303 { 
 	Default {
 		
 		//$Category Objects
@@ -2828,7 +2826,7 @@ CLASS UACHolo4 : UACHolo1 26303 {
 	}
 }
 ////////////Orange Holograms
-CLASS UACHolo5 : UACHolo1 26304 { 
+class UACHolo5 : UACHolo1 26304 { 
 	Default {
 		
 		//$Category Objects
@@ -2840,7 +2838,7 @@ CLASS UACHolo5 : UACHolo1 26304 {
 			Loop;
 	}
 }
-CLASS UACHolo6 : UACHolo1 26305 { 
+class UACHolo6 : UACHolo1 26305 { 
 	Default {
 		
 		//$Category Objects
@@ -2853,7 +2851,7 @@ CLASS UACHolo6 : UACHolo1 26305 {
 	}
 }
 ////////////Plasma Particle Spawner
-CLASS PlasmaSpawner : ACTOR { 
+class PlasmaSpawner : actor { 
 	Default {
 		
 		Alpha 0.75;
@@ -2868,13 +2866,13 @@ CLASS PlasmaSpawner : ACTOR {
 	{
 		Spawn:
 			PLEM AAAAAAAAAAAAAAAA 1 BRIGHT A_FadeOut(0.09);
-			stop;
+			Stop;
 		Death:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS PlasmaSpawner2 : plasmaspawne {r////Cyan
+class PlasmaSpawner2 : plasmaSpawne {r////Cyan
 	Default {
 		
 	}
@@ -2882,13 +2880,13 @@ CLASS PlasmaSpawner2 : plasmaspawne {r////Cyan
 	{
 		Spawn:
 			PLEM BBBBBBBBBBBBBBBB 1 BRIGHT A_FadeOut(0.09);
-			stop;
+			Stop;
 		Death:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS PlasmaSpawner3 : plasmaspawne {r////Orange
+class PlasmaSpawner3 : plasmaSpawne {r////Orange
 	Default {
 		
 	}
@@ -2896,13 +2894,13 @@ CLASS PlasmaSpawner3 : plasmaspawne {r////Orange
 	{
 		Spawn:
 			PLEM CCCCCCCCCCCCCCCC 1 BRIGHT A_FadeOut(0.09);
-			stop;
+			Stop;
 		Death:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS TankCreature 26306 : ACTOR { 
+class TankCreature 26306 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -2917,7 +2915,7 @@ CLASS TankCreature 26306 : ACTOR {
 			Loop;
 	}
 }
-CLASS TankNotCreature : TankCreature 26307 { 
+class TankNotCreature : TankCreature 26307 { 
 	Default {
 		
 		//$Category Objects
@@ -2929,7 +2927,7 @@ CLASS TankNotCreature : TankCreature 26307 {
 			Loop;
 	}
 }
-CLASS TankBroken : TankCreature 26327 { 
+class TankBroken : TankCreature 26327 { 
 	Default {
 		
 		//$Category Objects
@@ -2941,7 +2939,7 @@ CLASS TankBroken : TankCreature 26327 {
 			Loop;
 	}
 }
-CLASS SmallTree1 10700 : ACTOR { 
+class SmallTree1 10700 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2956,7 +2954,7 @@ CLASS SmallTree1 10700 : ACTOR {
 			Stop;
 	}
 }
-CLASS SmallTree2 10701 : ACTOR { 
+class SmallTree2 10701 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2971,7 +2969,7 @@ CLASS SmallTree2 10701 : ACTOR {
 			Stop;
 	}
 }
-CLASS SmallBush1 10702 : ACTOR { 
+class SmallBush1 10702 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -2986,7 +2984,7 @@ CLASS SmallBush1 10702 : ACTOR {
 			Stop;
 	}
 }
-CLASS SmallBush2 10703 : ACTOR { 
+class SmallBush2 10703 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -3001,7 +2999,7 @@ CLASS SmallBush2 10703 : ACTOR {
 			Stop;
 	}
 }
-CLASS SmallWinterTree1 10704 : ACTOR { 
+class SmallWinterTree1 10704 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -3016,7 +3014,7 @@ CLASS SmallWinterTree1 10704 : ACTOR {
 			Stop;
 	}
 }
-CLASS SmallWinterTree2 10705 : ACTOR { 
+class SmallWinterTree2 10705 : actor { 
 	Default {
 		
 		//$Category Vegetation
@@ -3031,7 +3029,7 @@ CLASS SmallWinterTree2 10705 : ACTOR {
 			Stop;
 	}
 }
-CLASS soundbarrel 168 : ACTOR { 
+class soundbarrel 168 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3039,12 +3037,12 @@ CLASS soundbarrel 168 : ACTOR {
 		height 29;
 		+solid;
 	}
-	states{
-		spawn:
+	States{
+		Spawn:
 			BARR ABCD 4;
 			TNT1 A 0 a_playsound("radioactivebarrel/detected",0,0.2,true,attn_static);
 loop}}
-CLASS emptybarrel 169 : ACTOR { 
+class emptybarrel 169 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3052,11 +3050,11 @@ CLASS emptybarrel 169 : ACTOR {
 		height 29;
 		+solid;
 	}
-	states{
-		spawn:
+	States{
+		Spawn:
 			BARR E -1;
 stop}}
-CLASS radioactivebarrel 170 : ACTOR { 
+class radioactivebarrel 170 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3064,11 +3062,11 @@ CLASS radioactivebarrel 170 : ACTOR {
 		height 29;
 		+solid;
 	}
-	states{
-		spawn:
+	States{
+		Spawn:
 			BARR ABCD 4;
 loop}}
-CLASS JunkPile1 26308 : ACTOR { 
+class JunkPile1 26308 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3083,7 +3081,7 @@ CLASS JunkPile1 26308 : ACTOR {
 			Stop;
 	}
 }
-CLASS JunkPile2 26309 : ACTOR { 
+class JunkPile2 26309 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3098,7 +3096,7 @@ CLASS JunkPile2 26309 : ACTOR {
 			Stop;
 	}
 }
-CLASS PlasmaGlobe 15500 : ACTOR { 
+class PlasmaGlobe 15500 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3113,7 +3111,7 @@ CLASS PlasmaGlobe 15500 : ACTOR {
 			Loop;
 	}
 }
-CLASS SeaMine 16004 : ACTOR { 
+class SeaMine 16004 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3150,7 +3148,7 @@ CLASS SeaMine 16004 : ACTOR {
 			Stop;
 	}
 }
-CLASS SeaMineBoomFX : ACTOR { 
+class SeaMineBoomFX : actor { 
 	Default {
 		
 		Radius 2;
@@ -3166,7 +3164,7 @@ CLASS SeaMineBoomFX : ACTOR {
 			Stop;
 	}
 }
-CLASS MineChain : ACTOR { 
+class MineChain : actor { 
 	Default {
 		
 		Radius 2;
@@ -3179,13 +3177,13 @@ CLASS MineChain : ACTOR {
 	{
 		Spawn:
 			TNT1 A 1 A_SpawnItem ("MineChainLink");
-			loop;
+			Loop;
 		Death:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS MineChainLink : ACTOR { 
+class MineChainLink : actor { 
 	Default {
 		
 		Radius 2;
@@ -3197,13 +3195,13 @@ CLASS MineChainLink : ACTOR {
 	{
 		Spawn:
 			SCHN A 1;
-			loop;
+			Loop;
 		Death:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS Chair 26329 : ACTOR { 
+class Chair 26329 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3219,7 +3217,7 @@ CLASS Chair 26329 : ACTOR {
 			Stop;
 	}
 }
-CLASS HPipe1 325 : ACTOR { 
+class HPipe1 325 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3235,7 +3233,7 @@ CLASS HPipe1 325 : ACTOR {
 			Stop;
 	}
 }
-CLASS HPipe2 326 : ACTOR { 
+class HPipe2 326 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3251,7 +3249,7 @@ CLASS HPipe2 326 : ACTOR {
 			Stop;
 	}
 }
-CLASS HPipe3 327 : ACTOR { 
+class HPipe3 327 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3267,7 +3265,7 @@ CLASS HPipe3 327 : ACTOR {
 			Stop;
 	}
 }
-CLASS HPipe4 328 : ACTOR { 
+class HPipe4 328 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3283,7 +3281,7 @@ CLASS HPipe4 328 : ACTOR {
 			Stop;
 	}
 }
-CLASS HPipe5 329 : ACTOR { 
+class HPipe5 329 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3301,7 +3299,7 @@ CLASS HPipe5 329 : ACTOR {
 }
 //definition for the Czech Hedgehog tank-trap obstacle
 //this object uses true-height, so the players and monsters CAN pass over it
-CLASS Hedgehog 26310 : ACTOR { 
+class Hedgehog 26310 : actor { 
 	Default {
 		
 		//$Title "Czech Hedgehog"
@@ -3317,7 +3315,7 @@ CLASS Hedgehog 26310 : ACTOR {
 			Stop;
 	}
 }
-CLASS WasteBin 26311 : ACTOR { 
+class WasteBin 26311 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3333,7 +3331,7 @@ CLASS WasteBin 26311 : ACTOR {
 			Stop;
 	}
 }
-CLASS WasteBinFilthy 26328 : ACTOR { 
+class WasteBinFilthy 26328 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3349,7 +3347,7 @@ CLASS WasteBinFilthy 26328 : ACTOR {
 			Stop;
 	}
 }
-CLASS NecroBioBarrel : ExplosiveBarrel 16000 { 
+class NecroBioBarrel : ExplosiveBarrel 16000 { 
 	Default {
 		
 		//$Category Objects
@@ -3371,11 +3369,11 @@ CLASS NecroBioBarrel : ExplosiveBarrel 16000 {
 			TNT1 A 9();
 			TNT1 A 5 A_Explode();
 			TNT1 A 1060 A_BarrelDestroy();
-			TNT1 A 5 A_Respawn();
+			TNT1 A 5 A_ReSpawn();
 			Wait;
 	}
 }
-CLASS NecroAtomicBarrel : ExplosiveBarrel 16001 { 
+class NecroAtomicBarrel : ExplosiveBarrel 16001 { 
 	Default {
 		
 		//$Category Objects
@@ -3397,25 +3395,25 @@ CLASS NecroAtomicBarrel : ExplosiveBarrel 16001 {
 			TNT1 A 9();
 			TNT1 A 5 A_Explode();
 			TNT1 A 1060 A_BarrelDestroy();
-			TNT1 A 5 A_Respawn();
+			TNT1 A 5 A_ReSpawn();
 			Wait;
 	}
 }
-CLASS NecroBioBarrelPushable : NecroBioBarrel 16002 { 
+class NecroBioBarrelPushable : NecroBioBarrel 16002 { 
 	Default {
 		
 		//$Category Objects
 		+PUSHABLE;
 	}
 }
-CLASS NecroAtomicBarrelPushable : NecroAtomicBarrel 16003 { 
+class NecroAtomicBarrelPushable : NecroAtomicBarrel 16003 { 
 	Default {
 		
 		//$Category Objects
 		+PUSHABLE;
 	}
 }
-CLASS NecroBarrelBoomFX : ACTOR { 
+class NecroBarrelBoomFX : actor { 
 	Default {
 		
 		Radius 2;
@@ -3431,7 +3429,7 @@ CLASS NecroBarrelBoomFX : ACTOR {
 			Stop;
 	}
 }
-CLASS HelmA 26312 : ACTOR { 
+class HelmA 26312 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3446,7 +3444,7 @@ CLASS HelmA 26312 : ACTOR {
 			Stop;
 	}
 }
-CLASS HelmB 26313 : ACTOR { 
+class HelmB 26313 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3461,7 +3459,7 @@ CLASS HelmB 26313 : ACTOR {
 			Stop;
 	}
 }
-CLASS HelmC 26314 : ACTOR { 
+class HelmC 26314 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3476,7 +3474,7 @@ CLASS HelmC 26314 : ACTOR {
 			Stop;
 	}
 }
-CLASS HelmD 26315 : ACTOR { 
+class HelmD 26315 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3491,7 +3489,7 @@ CLASS HelmD 26315 : ACTOR {
 			Stop;
 	}
 }
-CLASS Boots 26316 : ACTOR { 
+class Boots 26316 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3506,7 +3504,7 @@ CLASS Boots 26316 : ACTOR {
 			Stop;
 	}
 }
-CLASS UniformA 26317 : ACTOR { 
+class UniformA 26317 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3521,7 +3519,7 @@ CLASS UniformA 26317 : ACTOR {
 			Stop;
 	}
 }
-CLASS UniformB 26318 : ACTOR { 
+class UniformB 26318 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3539,7 +3537,7 @@ CLASS UniformB 26318 : ACTOR {
 //////////////////////////////
 //////UMBRELLA////////////////SPRITE//SHADOW WARRIOR
 //////////////////////////////
-CLASS Umbrella 26319 : ACTOR { 
+class Umbrella 26319 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3557,7 +3555,7 @@ CLASS Umbrella 26319 : ACTOR {
 //////////////////////////////
 /////TRASH CAN1///////////////SPRITE//DUKE NUKEM
 //////////////////////////////
-CLASS TrashCan22 26320 : ACTOR { 
+class TrashCan22 26320 : actor { 
 	Default {
 		
 		//$Category Objects
@@ -3572,7 +3570,7 @@ CLASS TrashCan22 26320 : ACTOR {
 			Stop;
 	}
 }
-CLASS TechLampOff : SwitchableDecoration 90 { 
+class TechLampOff : SwitchableDecoration 90 { 
 	Default {
 		
 		//$Category Light
@@ -3597,7 +3595,7 @@ CLASS TechLampOff : SwitchableDecoration 90 {
 			Stop;
 	}
 }
-CLASS TechLampOn : TechLampOff 91 { 
+class TechLampOn : TechLampOff 91 { 
 	Default {
 		
 		//$Category Light
@@ -3609,7 +3607,7 @@ CLASS TechLampOn : TechLampOff 91 {
 	Goto Super::Lit
 }
 }
-CLASS EmptyNukageBarrel 26321 : ACTOR { 
+class EmptyNukageBarrel 26321 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3625,7 +3623,7 @@ CLASS EmptyNukageBarrel 26321 : ACTOR {
 		Stop;
 }
 }
-CLASS GreyMetalBarrel 26322 : ACTOR { 
+class GreyMetalBarrel 26322 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3641,7 +3639,7 @@ CLASS GreyMetalBarrel 26322 : ACTOR {
 		Stop;
 }
 }
-CLASS BrownMetalBarrel 26323 : ACTOR { 
+class BrownMetalBarrel 26323 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3657,7 +3655,7 @@ CLASS BrownMetalBarrel 26323 : ACTOR {
 		Stop;
 }
 }
-CLASS DoomDoll 26324 : ACTOR { 
+class DoomDoll 26324 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3672,7 +3670,7 @@ CLASS DoomDoll 26324 : ACTOR {
 		Stop;
 }
 }
-CLASS BrokenLamp 26325 : ACTOR { 
+class BrokenLamp 26325 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3689,7 +3687,7 @@ CLASS BrokenLamp 26325 : ACTOR {
 }
 }
 
-CLASS TAMO 18668 : ACTOR { 
+class TAMO 18668 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3707,7 +3705,7 @@ CLASS TAMO 18668 : ACTOR {
 }
 }
 
-CLASS OHRANA 18669 : ACTOR { 
+class OHRANA 18669 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3725,7 +3723,7 @@ CLASS OHRANA 18669 : ACTOR {
 }
 }
 
-CLASS Bashkir 26403 : ACTOR { 
+class Bashkir 26403 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3743,7 +3741,7 @@ CLASS Bashkir 26403 : ACTOR {
 }
 }
 
-CLASS TR3FB0 : BigTree 26258 { 
+class TR3FB0 : BigTree 26258 { 
 	Default {
 	
 	//$Category Vegetation
@@ -3756,7 +3754,7 @@ CLASS TR3FB0 : BigTree 26258 {
 }
 }
 
-CLASS TR3FS0 : TorchTree 26259 { 
+class TR3FS0 : TorchTree 26259 { 
 	Default {
 	
 	//$Category Vegetation
@@ -3769,7 +3767,7 @@ CLASS TR3FS0 : TorchTree 26259 {
 }
 }
 
-CLASS RoadCone 26357 : ACTOR { 
+class RoadCone 26357 : actor { 
 	Default {
 	
 	Radius 8;
@@ -3785,7 +3783,7 @@ CLASS RoadCone 26357 : ACTOR {
 }
 }
 
-CLASS "ZBOM_0" 26359 : ACTOR { 
+class "ZBOM_0" 26359 : actor { 
 	Default {
 	
 	//$Category Objects
@@ -3817,7 +3815,7 @@ CLASS "ZBOM_0" 26359 : ACTOR {
 }
 }
 
-CLASS DickColumn 26363 : ACTOR { 
+class DickColumn 26363 : actor { 
 	Default {
 	
 	//$Category Objects

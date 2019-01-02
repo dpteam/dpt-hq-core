@@ -4,17 +4,16 @@
 //
 //=================================================================================================
 
-CLASS RedArmor : BasicArmorPickup 5040 { 
+class RedArmor : BasicArmorPickup 5040 { 
 	Default {
 		
-		//Game Doom
-		//SpawnID 168
+		
 		Radius 20;
 		Height 16;
 		Armor.Savepercent 66.66666;
-		Armor.Saveamount 200;
+		Armor.SaveAmount 200;
 		Inventory.Icon "ARM3A0";
-		Inventory.Pickupmessage "$PICKUP_REDARMOR";
+		Inventory.PickupMessage "$PICKUP_REDARMOR";
 		DamageFactor "Fire", 0.125;
 		DamageFactor "Rocket", 0.125;
 		DamageFactor "Grenade", 0.125;
@@ -24,6 +23,6 @@ CLASS RedArmor : BasicArmorPickup 5040 {
 		Spawn:
 			ARM3 A 6;
 			ARM3 B 6 bright;
-			goto Spawn;
+			Goto Spawn;
 	}
 }

@@ -4,10 +4,10 @@
 //
 //=================================================================================================
 
-CLASS Hissy 5057 : ACTOR { 
+class Hissy 5057 : actor { 
 	Default {
 		
-		//Game Doom
+		
 		Radius 20;
 		Height 26;
 		+SOLID;

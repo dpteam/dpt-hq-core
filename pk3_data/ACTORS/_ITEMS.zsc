@@ -1,127 +1,148 @@
-CLASS DefaultBlood : Blood {} { 
+class DefaultBlood : Blood { 
 	Default {
 	actor Mskull : Inventory
 		
-		inventory.amount 1;
-		inventory.maxamount 9999;
+		Inventory.Amount 1;
+		Inventory.MaxAmount 9999;
 	}
-	states
+	States
 	{
 	Spawn:
 		NULL A -1;
-		stop;
+		Stop;
 }
 }
-CLASS Flighter : PowerUpGiver { // WORKER
+class Flighter : PowerUpGiver { // WORKER
 	Default {
 	
 	Powerup.Type "Flight";
 	Powerup.Duration 0x7fffffff;
-	+INVENTORY.AUTOACTIVATE;
+	+Inventory.AUTOACTIVATE;
 	}
 }
-CLASS IsFemale : CustomInventory { 
+class IsFemale : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
 	Inventory.MaxAmount 1;
 	}
 }
-CLASS AK47Loaded : CustomInventory { 
+class AK47Loaded : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
 	Inventory.MaxAmount 1;
 	}
 }
-CLASS UZILoaded : CustomInventory { 
+class UZILoaded : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
 	Inventory.MaxAmount 1;
 	}
 }
-CLASS BerettaLoaded : CustomInventory { 
+class BerettaLoaded : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
 	Inventory.MaxAmount 1;
 	}
 }
-CLASS MatebaLoaded : CustomInventory { 
+class MatebaLoaded : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
 	Inventory.MaxAmount 1;
 	}
 }
-CLASS WeakBooze : ACTOR {} : ACTOR { 
+class WeakBooze : actor {
 	Default {
 	}
-CLASS PowerBooze : ACTOR {} : ACTOR { 
+}
+class PowerBooze : actor {
 	Default {
 	}
-CLASS IBEXUpgradeKit : ACTOR {} : ACTOR { 
+}
+class IBEXUpgradeKit : actor {
 	Default {
 	}
-CLASS StrongKoin : ACTOR {} : ACTOR { 
+}
+class StrongKoin : actor {
 	Default {
 	}
-CLASS SuperShieldItem : ACTOR {} : ACTOR { 
+}
+class SuperShieldItem : actor {
 	Default {
 	}
-CLASS SuperSuperShieldItem : ACTOR {} : ACTOR { 
+}
+class SuperSuperShieldItem : actor {
 	Default {
 	}
-CLASS WeakBluePrint : ACTOR {} : ACTOR { 
+}
+class WeakBluePrint : actor {
 	Default {
 	}
-CLASS StrongBluePrint : ACTOR {} : ACTOR { 
+}
+class StrongBluePrint : actor {
 	Default {
 	}
-CLASS HalpSign : ACTOR {} : ACTOR { 
+}
+class HalpSign : actor {
 	Default {
 	}
-CLASS BulletCasing : ACTOR {} : ACTOR { 
+}
+class BulletCasing : actor {
 	Default {
 	}
-CLASS RifleCasing : ACTOR {} : ACTOR { 
+}
+class RifleCasing : actor {
 	Default {
 	}
-CLASS MagnumCasing : ACTOR {} : ACTOR { 
+}
+class MagnumCasing : actor {
 	Default {
 	}
-CLASS BulletIneffectiveSpark : ACTOR {} : ACTOR { 
+}
+class BulletIneffectiveSpark : actor {
 	Default {
 	}
-CLASS RepelShock : ACTOR {} : ACTOR { 
+}
+class RepelShock : actor {
 	Default {
 	}
-//ACTOR Tracer : BulletPuff {}
-CLASS EnemySMGTracer : Tracer {} { 
+}
+//actor Tracer : BulletPuff {}
+class EnemySMGTracer : Tracer { 
 	Default {
 	}
-CLASS EnemyShotgunTracer : Tracer {} { 
+}
+class EnemyShotgunTracer : Tracer { 
 	Default {
 	}
-CLASS EnemyARTracer : Tracer {} { 
+}
+class EnemyARTracer : Tracer { 
 	Default {
 	}
-CLASS EnemyPistolTracer : Tracer {} { 
+}
+class EnemyPistolTracer : Tracer { 
 	Default {
 	}
-CLASS EnemyM60Tracer : Tracer {} { 
+}
+class EnemyM60Tracer : Tracer { 
 	Default {
 	}
-CLASS EnemyDualiesTracer : Tracer {} { 
+}
+class EnemyDualiesTracer : Tracer { 
 	Default {
 	}
-CLASS EnemyMagnumTracer : Tracer {} { 
+}
+class EnemyMagnumTracer : Tracer { 
 	Default {
 	}
-CLASS EnemyPipeBomb : ACTOR {} : ACTOR { 
+}
+class EnemyPipeBomb : actor {
 	Default {
-CLASS EnemyGrenade : ACTOR { 
+class EnemyGrenade : actor { 
 	Default {
 		
 		Radius 8;
@@ -152,20 +173,21 @@ CLASS EnemyGrenade : ACTOR {
 			Stop;
 	}
 }
-CLASS GrenadeEXP : EnemyGrenade {} { 
+class GrenadeEXP : EnemyGrenade { 
 	Default {
 	}
-CLASS EnemyLauncherGrenade : EnemyGrenade {} { 
+}
+class EnemyLauncherGrenade : EnemyGrenade { 
 	Default {
-	ACTOR Coin_pickup : CustomInventory 13003 
+	actor Coin_pickup : CustomInventory 13003 
 		
 		//$Category Collectables
 		//$Color 14
 		+COUNTITEM;
-		+INVENTORY.AUTOACTIVATE;
-		+INVENTORY.ALWAYSPICKUP;
-		+INVENTORY.FANCYPICKUPSOUND;
-		+Inventory.NeverRespawn;
+		+Inventory.AUTOACTIVATE;
+		+Inventory.ALWAYSPICKUP;
+		+Inventory.FANCYPICKUPSOUND;
+		+Inventory.NeverReSpawn;
 		Inventory.PickupSound "COINSND";
 		Inventory.PickupMessage "Picked up a coin"();
 		Inventory.MaxAmount 0;
@@ -181,19 +203,19 @@ CLASS EnemyLauncherGrenade : EnemyGrenade {} {
 		Stop;
 }
 }
-CLASS Big_Coin_pickup : CustomInventory 13004 { 
+class Big_Coin_pickup : CustomInventory 13004 { 
 	Default {
 	
 	//$Category Collectables
 	//$Color 6
 	+COUNTITEM;
-	+INVENTORY.AUTOACTIVATE;
+	+Inventory.AUTOACTIVATE;
 	+FLOAT;
 	+NOGRAVITY;
 	-FLOATBOB;
-	+INVENTORY.ALWAYSPICKUP;
-	+INVENTORY.FANCYPICKUPSOUND;
-	+Inventory.NeverRespawn;
+	+Inventory.ALWAYSPICKUP;
+	+Inventory.FANCYPICKUPSOUND;
+	+Inventory.NeverReSpawn;
 	Inventory.PickupSound "BCNSND";
 	Inventory.PickupMessage "Picked up a big coin,nice job!";
 	Inventory.MaxAmount 0;
@@ -205,12 +227,12 @@ CLASS Big_Coin_pickup : CustomInventory 13004 {
 		COI3 AB 1;
 		Loop;
 	Use:
-		TNT1 A 0 a_giveinventory("Cash",100);
+		TNT1 A 0 a_giveInventory("Cash",100);
 		TNT1 A 0();
 		Stop;
 }
 }
-CLASS Cash : Ammo 26409 { 
+class Cash : Ammo 26409 { 
 	Default {
 	
 	//$Category Collectables
@@ -228,18 +250,18 @@ CLASS Cash : Ammo 26409 {
 }
 }
 // Berserk
-CLASS StrongItem : CustomInventory { 
+class StrongItem : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
 	Inventory.MaxAmount 1;
 	}
 }
-CLASS NewBerserk : CustomInventory replaces Berserk { 
+class NewBerserk : CustomInventory replaces Berserk { 
 	Default {
 	
 	+COUNTITEM;
-	+INVENTORY.ALWAYSPICKUP;
+	+Inventory.ALWAYSPICKUP;
 	Inventory.PickupMessage "YOU FOUND A BUTTHURT ITEM!";
 	}
 	States
@@ -251,12 +273,12 @@ CLASS NewBerserk : CustomInventory replaces Berserk {
 		TNT1 A 0 A_GiveInventory("PowerStrength");
 		TNT1 A 0 A_GiveInventory("StrongItem");
 		TNT1 A 0 HealThing(100, 0);
-		TNT1 A 0 A_SelectWeapon("Unarmed");
+		TNT1 A 0 A_Selectweapon("Unarmed");
 		Stop;
 }
 }
 // test
-CLASS GlassItem : CustomInventory { 
+class GlassItem : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
@@ -264,14 +286,14 @@ CLASS GlassItem : CustomInventory {
 	}
 }
 // Drunk Level System
-CLASS DrunkLevel : Inventory { 
+class DrunkLevel : Inventory { 
 	Default {
 	
 	Inventory.Amount 1;
-	Inventory.MaxAmount 100;// You can drink more even if you're already drunk
+	Inventory.MaxAmount 100;// You can drink more even if you're alReady drunk
 	}
 }
-CLASS DrunkLevel2 : Ammo { 
+class DrunkLevel2 : Ammo { 
 	Default {
 	
 	Inventory.Amount 1;
@@ -279,7 +301,7 @@ CLASS DrunkLevel2 : Ammo {
 	}
 }
 // Toilet System
-CLASS PeeLevel : Inventory { 
+class PeeLevel : Inventory { 
 	Default {
 	
 	Inventory.Amount 1;
@@ -287,7 +309,7 @@ CLASS PeeLevel : Inventory {
 	}
 }
 // Stamina Level System
-CLASS Stamina : Ammo { 
+class Stamina : Ammo { 
 	Default {
 	
 	Inventory.Amount 0;
@@ -295,7 +317,7 @@ CLASS Stamina : Ammo {
 	}
 }
 // Hungry Level System
-CLASS HungryLevel : Ammo { 
+class HungryLevel : Ammo { 
 	Default {
 	
 	Inventory.Amount 0;
@@ -303,7 +325,7 @@ CLASS HungryLevel : Ammo {
 	}
 }
 //test
-CLASS WeakKickLevel : CustomInventory { 
+class WeakKickLevel : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
@@ -311,7 +333,7 @@ CLASS WeakKickLevel : CustomInventory {
 	}
 }
 //test
-CLASS StrongKickLevel : CustomInventory { 
+class StrongKickLevel : CustomInventory { 
 	Default {
 	
 	Inventory.Amount 0;
@@ -319,8 +341,8 @@ CLASS StrongKickLevel : CustomInventory {
 	}
 }
 // No Teleport Fog
-//ACTOR DPTHQ_NOTELEPORT replaces TeleportFog {}
-CLASS TrollSpawner : RandomSpawner { // TrollSpawner
+//actor DPTHQ_NOTELEPORT replaces TeleportFog {}
+class TrollSpawner : RandomSpawner { // TrollSpawner
 	Default {
 	
 	DropItem "MaxHealthBonus";
@@ -333,24 +355,24 @@ CLASS TrollSpawner : RandomSpawner { // TrollSpawner
 	DropItem "BFGBall";
 	}
 }
-CLASS QuarterDamage : PowerProtection { DamageFactor "normal", 0.25 } { 
+class QuarterDamage : PowerProtection { DamageFactor "normal", 0.25 } { 
 	Default {
-CLASS SuperStimDamage : PowerupGiver { 
+class SuperStimDamage : PowerupGiver { 
 	Default {
 		
 		powerup.duration -10;
 		powerup.type "QuarterDamage";
 		powerup.color "red", 0.1;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		+AUTOACTIVATE;
 	}
 }
-CLASS StimBerserk : CustomInventory 26371 { 
+class StimBerserk : CustomInventory 26371 { 
 	Default {
 		
 		//$Category Powerups
 		+COUNTITEM;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Super Stim!";
 		Inventory.PickupSound "misc/i_pkup";
 	}
@@ -365,7 +387,7 @@ CLASS StimBerserk : CustomInventory 26371 {
 			Stop;
 	}
 }
-CLASS PinkArmor : BasicArmorPickup 26372 { 
+class PinkArmor : BasicArmorPickup 26372 { 
 	Default {
 		
 		//$Category Armor
@@ -385,7 +407,7 @@ CLASS PinkArmor : BasicArmorPickup 26372 {
 			Loop;
 	}
 }
-CLASS PDA : CustomInventory 29876 { 
+class PDA : CustomInventory 29876 { 
 	Default {
 		
 		//$Category Special
@@ -403,7 +425,7 @@ CLASS PDA : CustomInventory 29876 {
 			Stop;
 	}
 }
-CLASS Q1Medkit : Health replaces Medikit { 
+class Q1Medkit : Health replaces Medikit { 
 	Default {
 		
 		//$Category Quake
@@ -419,7 +441,7 @@ CLASS Q1Medkit : Health replaces Medikit {
 			Stop;
 	}
 }
-CLASS Q1Stimpack : Health replaces Stimpack { 
+class Q1Stimpack : Health replaces Stimpack { 
 	Default {
 		
 		//$Category Quake
@@ -435,15 +457,15 @@ CLASS Q1Stimpack : Health replaces Stimpack {
 			Stop;
 	}
 }
-CLASS Q1MegaHealth : Health replaces Soulsphere { 
+class Q1MegaHealth : Health replaces Soulsphere { 
 	Default {
 		
 		//$Category Quake
 		Scale 0.9;
 		+COUNTITEM;
-		+INVENTORY.AUTOACTIVATE;
-		+INVENTORY.ALWAYSPICKUP;
-		+INVENTORY.FANCYPICKUPSOUND;
+		+Inventory.AUTOACTIVATE;
+		+Inventory.ALWAYSPICKUP;
+		+Inventory.FANCYPICKUPSOUND;
 		Inventory.Amount 100;
 		Inventory.MaxAmount 200;
 		Inventory.PickupMessage "You picked up a megahealth!";
@@ -456,16 +478,16 @@ CLASS Q1MegaHealth : Health replaces Soulsphere {
 			Stop;
 	}
 }
-CLASS Q1GreenArmor : BasicArmorPickup replaces GreenArmor { 
+class Q1GreenArmor : BasicArmorPickup replaces GreenArmor { 
 	Default {
 		
 		//$Category Quake
 		Radius 20;
 		Height 16;
-		Inventory.Pickupmessage "Picked up the green armor.";
+		Inventory.PickupMessage "Picked up the green armor.";
 		Inventory.Icon "QGARA0";
 		Armor.Savepercent 30.0;
-		Armor.Saveamount 100;
+		Armor.SaveAmount 100;
 		Inventory.PickupSound "Pickups/QuakeArmor";
 	}
 	States
@@ -475,16 +497,16 @@ CLASS Q1GreenArmor : BasicArmorPickup replaces GreenArmor {
 			Stop;
 	}
 }
-CLASS Q1YellowArmor : BasicArmorPickup replaces BlueArmor { 
+class Q1YellowArmor : BasicArmorPickup replaces BlueArmor { 
 	Default {
 		
 		//$Category Quake
 		Radius 20;
 		Height 16;
-		Inventory.Pickupmessage "Picked up the yellow armor.";
+		Inventory.PickupMessage "Picked up the yellow armor.";
 		Inventory.Icon "QYARA0";
 		Armor.Savepercent 60.0;
-		Armor.Saveamount 150;
+		Armor.SaveAmount 150;
 		Inventory.PickupSound "Pickups/QuakeArmor";
 	}
 	States
@@ -494,16 +516,16 @@ CLASS Q1YellowArmor : BasicArmorPickup replaces BlueArmor {
 			Stop;
 	}
 }
-CLASS Q1RedArmor : BasicArmorPickup replaces Megasphere { 
+class Q1RedArmor : BasicArmorPickup replaces Megasphere { 
 	Default {
 		
 		//$Category Quake
 		Radius 20;
 		Height 16;
-		Inventory.Pickupmessage "Picked up the red armor!";
+		Inventory.PickupMessage "Picked up the red armor!";
 		Inventory.Icon "QRARA0";
 		Armor.Savepercent 80.0;
-		Armor.Saveamount 200;
+		Armor.SaveAmount 200;
 		Inventory.PickupSound "Pickups/QuakeArmor";
 	}
 	States
@@ -513,11 +535,11 @@ CLASS Q1RedArmor : BasicArmorPickup replaces Megasphere {
 			Stop;
 	}
 }
-CLASS Beer : CustomInventory 26326 { 
+class Beer : CustomInventory 26326 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Got some beer.";
 		Scale 0.70;
 	}
@@ -543,10 +565,10 @@ CLASS Beer : CustomInventory 26326 {
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS Burger1 : HealthBonus 26240 { 
+class Burger1 : HealthBonus 26240 { 
 	Default {
 		
 		//$Category Food
@@ -557,10 +579,10 @@ CLASS Burger1 : HealthBonus 26240 {
 	{
 		Spawn:
 			BRGR A 2;
-			loop;
+			Loop;
 	}
 }
-CLASS burger2 : HealthBonus 26241 { 
+class burger2 : HealthBonus 26241 { 
 	Default {
 		
 		//$Category Food
@@ -571,10 +593,10 @@ CLASS burger2 : HealthBonus 26241 {
 	{
 		Spawn:
 			BRGR B 2;
-			loop;
+			Loop;
 	}
 }
-CLASS burger3 : HealthBonus 26242 { 
+class burger3 : HealthBonus 26242 { 
 	Default {
 		
 		//$Category Food
@@ -585,10 +607,10 @@ CLASS burger3 : HealthBonus 26242 {
 	{
 		Spawn:
 			BRGR C 2;
-			loop;
+			Loop;
 	}
 }
-CLASS burger4 : HealthBonus 26243 { 
+class burger4 : HealthBonus 26243 { 
 	Default {
 		
 		//$Category Food
@@ -599,10 +621,10 @@ CLASS burger4 : HealthBonus 26243 {
 	{
 		Spawn:
 			BRGR D 2;
-			loop;
+			Loop;
 	}
 }
-CLASS fries1 : HealthBonus 26244 { 
+class fries1 : HealthBonus 26244 { 
 	Default {
 		
 		//$Category Food
@@ -613,10 +635,10 @@ CLASS fries1 : HealthBonus 26244 {
 	{
 		Spawn:
 			FRES A 2;
-			loop;
+			Loop;
 	}
 }
-CLASS fries2 : HealthBonus 26245 { 
+class fries2 : HealthBonus 26245 { 
 	Default {
 		
 		//$Category Food
@@ -627,14 +649,14 @@ CLASS fries2 : HealthBonus 26245 {
 	{
 		Spawn:
 			FRES B 2;
-			loop;
+			Loop;
 	}
 }
-CLASS drink : HealthBonus 26246 { 
+class drink : HealthBonus 26246 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Got some beer.";
 		Inventory.PickupSound "Pickup/Food";
 	}
@@ -642,15 +664,15 @@ CLASS drink : HealthBonus 26246 {
 	{
 		Spawn:
 			DRNK A 2;
-			loop;
+			Loop;
 		Pickup:
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS bottle1 : HealthBonus 26247 { 
+class bottle1 : HealthBonus 26247 { 
 	Default {
 		
 		//$Category Alcohol
@@ -661,15 +683,15 @@ CLASS bottle1 : HealthBonus 26247 {
 	{
 		Spawn:
 			BTTL A 2;
-			loop;
+			Loop;
 		Pickup:
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS bottle2 : HealthBonus 26248 { 
+class bottle2 : HealthBonus 26248 { 
 	Default {
 		
 		//$Category Alcohol
@@ -680,15 +702,15 @@ CLASS bottle2 : HealthBonus 26248 {
 	{
 		Spawn:
 			BTTL B 2;
-			loop;
+			Loop;
 		Pickup:
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS glass : HealthBonus 26249 { 
+class glass : HealthBonus 26249 { 
 	Default {
 		
 		//$Category Food
@@ -699,10 +721,10 @@ CLASS glass : HealthBonus 26249 {
 	{
 		Spawn:
 			GLSS A 2;
-			loop;
+			Loop;
 	}
 }
-CLASS donuts : HealthBonus 26250 { 
+class donuts : HealthBonus 26250 { 
 	Default {
 		
 		//$Category Food
@@ -713,10 +735,10 @@ CLASS donuts : HealthBonus 26250 {
 	{
 		Spawn:
 			DNTS A 2;
-			loop;
+			Loop;
 	}
 }
-CLASS dbox : HealthBonus 26251 { 
+class dbox : HealthBonus 26251 { 
 	Default {
 		
 		//$Category Food
@@ -727,14 +749,14 @@ CLASS dbox : HealthBonus 26251 {
 	{
 		Spawn:
 			DBOX A 2;
-			loop;
+			Loop;
 	}
 }
-CLASS Buhlo : CustomInventory 26252 { 
+class Buhlo : CustomInventory 26252 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Picked up a Buhlo.";
 	}
 	States
@@ -746,14 +768,14 @@ CLASS Buhlo : CustomInventory 26252 {
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS Pivo1 : CustomInventory 26360 { 
+class Pivo1 : CustomInventory 26360 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Picked up a Pivasik.";
 	}
 	States
@@ -765,14 +787,14 @@ CLASS Pivo1 : CustomInventory 26360 {
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS Pivo2 : CustomInventory 26386 { 
+class Pivo2 : CustomInventory 26386 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Picked up a Pivasik.";
 	}
 	States
@@ -784,14 +806,14 @@ CLASS Pivo2 : CustomInventory 26386 {
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS DukePivo1 : CustomInventory 26387 { 
+class DukePivo1 : CustomInventory 26387 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Picked up a Pivasik.";
 	}
 	States
@@ -803,14 +825,14 @@ CLASS DukePivo1 : CustomInventory 26387 {
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS DukePivo2 : CustomInventory 26388 { 
+class DukePivo2 : CustomInventory 26388 { 
 	Default {
 		
 		//$Category Alcohol
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.PickupMessage "Picked up a Pivasik.";
 	}
 	States
@@ -822,10 +844,10 @@ CLASS DukePivo2 : CustomInventory 26388 {
 			TNT1 A 0 A_GiveInventory("DrunkLevel",1);
 			TNT1 A 0 A_GiveInventory("DrunkLevel2",1);
 			TNT1 A 0 ACS_ExecuteAlways(556,0,0,0,0);
-			stop;
+			Stop;
 	}
 }
-CLASS RandomPivo : RandomSpawner 26389 { 
+class RandomPivo : RandomSpawner 26389 { 
 	Default {
 		
 		//$Category Alcohol
@@ -833,7 +855,7 @@ CLASS RandomPivo : RandomSpawner 26389 {
 		Dropitem "Pivo2", 255;
 	}
 }
-CLASS RandomDukePivo : RandomSpawner 26390 { 
+class RandomDukePivo : RandomSpawner 26390 { 
 	Default {
 		
 		//$Category Alcohol
@@ -841,7 +863,7 @@ CLASS RandomDukePivo : RandomSpawner 26390 {
 		Dropitem "DukePivo2", 255;
 	}
 }
-CLASS RandomFood : RandomSpawner 26254 { 
+class RandomFood : RandomSpawner 26254 { 
 	Default {
 		
 		//$Category Food
@@ -875,7 +897,7 @@ CLASS RandomFood : RandomSpawner 26254 {
 		Dropitem "Sweets2", 255;
 	}
 }
-CLASS Cookie1 : HealthBonus 26410 { 
+class Cookie1 : HealthBonus 26410 { 
 	Default {
 		
 		//$Category Food
@@ -889,7 +911,7 @@ CLASS Cookie1 : HealthBonus 26410 {
 			Loop;
 	}
 }
-CLASS Cookie2 : HealthBonus 26411 { 
+class Cookie2 : HealthBonus 26411 { 
 	Default {
 		
 		//$Category Food
@@ -903,7 +925,7 @@ CLASS Cookie2 : HealthBonus 26411 {
 			Loop;
 	}
 }
-CLASS Doughnut1 : HealthBonus 26412 { 
+class Doughnut1 : HealthBonus 26412 { 
 	Default {
 		
 		//$Category Food
@@ -917,7 +939,7 @@ CLASS Doughnut1 : HealthBonus 26412 {
 			Loop;
 	}
 }
-CLASS Doughnut2 : HealthBonus 26413 { 
+class Doughnut2 : HealthBonus 26413 { 
 	Default {
 		
 		//$Category Food
@@ -931,7 +953,7 @@ CLASS Doughnut2 : HealthBonus 26413 {
 			Loop;
 	}
 }
-CLASS Candy : HealthBonus 26414 { 
+class Candy : HealthBonus 26414 { 
 	Default {
 		
 		//$Category Food
@@ -945,7 +967,7 @@ CLASS Candy : HealthBonus 26414 {
 			Loop;
 	}
 }
-CLASS Candy2 : HealthBonus 26415 { 
+class Candy2 : HealthBonus 26415 { 
 	Default {
 		
 		//$Category Food
@@ -959,7 +981,7 @@ CLASS Candy2 : HealthBonus 26415 {
 			Loop;
 	}
 }
-CLASS Chocolate : HealthBonus 26416 { 
+class Chocolate : HealthBonus 26416 { 
 	Default {
 		
 		//$Category Food
@@ -973,7 +995,7 @@ CLASS Chocolate : HealthBonus 26416 {
 			Loop;
 	}
 }
-CLASS Lolipop1 : HealthBonus 26417 { 
+class Lolipop1 : HealthBonus 26417 { 
 	Default {
 		
 		//$Category Food
@@ -987,7 +1009,7 @@ CLASS Lolipop1 : HealthBonus 26417 {
 			Loop;
 	}
 }
-CLASS Lolipop2 : HealthBonus 26418 { 
+class Lolipop2 : HealthBonus 26418 { 
 	Default {
 		
 		//$Category Food
@@ -1001,7 +1023,7 @@ CLASS Lolipop2 : HealthBonus 26418 {
 			Loop;
 	}
 }
-CLASS Muffin1 : HealthBonus 26419 { 
+class Muffin1 : HealthBonus 26419 { 
 	Default {
 		
 		//$Category Food
@@ -1015,7 +1037,7 @@ CLASS Muffin1 : HealthBonus 26419 {
 			Loop;
 	}
 }
-CLASS Muffin2 : HealthBonus 26420 { 
+class Muffin2 : HealthBonus 26420 { 
 	Default {
 		
 		//$Category Food
@@ -1029,7 +1051,7 @@ CLASS Muffin2 : HealthBonus 26420 {
 			Loop;
 	}
 }
-CLASS Icecream1 : HealthBonus 26421 { 
+class Icecream1 : HealthBonus 26421 { 
 	Default {
 		
 		//$Category Food
@@ -1043,7 +1065,7 @@ CLASS Icecream1 : HealthBonus 26421 {
 			Loop;
 	}
 }
-CLASS Icecream2 : HealthBonus 26422 { 
+class Icecream2 : HealthBonus 26422 { 
 	Default {
 		
 		//$Category Food
@@ -1057,7 +1079,7 @@ CLASS Icecream2 : HealthBonus 26422 {
 			Loop;
 	}
 }
-CLASS Icecream3 : HealthBonus 26423 { 
+class Icecream3 : HealthBonus 26423 { 
 	Default {
 		
 		//$Category Food
@@ -1071,7 +1093,7 @@ CLASS Icecream3 : HealthBonus 26423 {
 			Loop;
 	}
 }
-CLASS Icecream4 : HealthBonus 26424 { 
+class Icecream4 : HealthBonus 26424 { 
 	Default {
 		
 		//$Category Food
@@ -1085,7 +1107,7 @@ CLASS Icecream4 : HealthBonus 26424 {
 			Loop;
 	}
 }
-CLASS Icecream5 : HealthBonus 26425 { 
+class Icecream5 : HealthBonus 26425 { 
 	Default {
 		
 		//$Category Food
@@ -1099,7 +1121,7 @@ CLASS Icecream5 : HealthBonus 26425 {
 			Loop;
 	}
 }
-CLASS Icecream6 : HealthBonus 26426 { 
+class Icecream6 : HealthBonus 26426 { 
 	Default {
 		
 		//$Category Food
@@ -1113,7 +1135,7 @@ CLASS Icecream6 : HealthBonus 26426 {
 			Loop;
 	}
 }
-CLASS Pudding1 : HealthBonus 26427 { 
+class Pudding1 : HealthBonus 26427 { 
 	Default {
 		
 		//$Category Food
@@ -1127,7 +1149,7 @@ CLASS Pudding1 : HealthBonus 26427 {
 			Loop;
 	}
 }
-CLASS Pudding2 : HealthBonus 26428 { 
+class Pudding2 : HealthBonus 26428 { 
 	Default {
 		
 		//$Category Food
@@ -1141,7 +1163,7 @@ CLASS Pudding2 : HealthBonus 26428 {
 			Loop;
 	}
 }
-CLASS Burger : HealthBonus 26429 { 
+class Burger : HealthBonus 26429 { 
 	Default {
 		
 		//$Category Food
@@ -1155,7 +1177,7 @@ CLASS Burger : HealthBonus 26429 {
 			Loop;
 	}
 }
-CLASS Cake1 : HealthBonus 26430 { 
+class Cake1 : HealthBonus 26430 { 
 	Default {
 		
 		//$Category Food
@@ -1169,7 +1191,7 @@ CLASS Cake1 : HealthBonus 26430 {
 			Loop;
 	}
 }
-CLASS Cake2 : HealthBonus 26431 { 
+class Cake2 : HealthBonus 26431 { 
 	Default {
 		
 		//$Category Food
@@ -1183,7 +1205,7 @@ CLASS Cake2 : HealthBonus 26431 {
 			Loop;
 	}
 }
-CLASS Cake3 : HealthBonus 26432 { 
+class Cake3 : HealthBonus 26432 { 
 	Default {
 		
 		//$Category Food
@@ -1197,7 +1219,7 @@ CLASS Cake3 : HealthBonus 26432 {
 			Loop;
 	}
 }
-CLASS Cake4 : HealthBonus 26433 { 
+class Cake4 : HealthBonus 26433 { 
 	Default {
 		
 		//$Category Food
@@ -1211,7 +1233,7 @@ CLASS Cake4 : HealthBonus 26433 {
 			Loop;
 	}
 }
-CLASS Waffle1 : HealthBonus 26434 { 
+class Waffle1 : HealthBonus 26434 { 
 	Default {
 		
 		//$Category Food
@@ -1225,7 +1247,7 @@ CLASS Waffle1 : HealthBonus 26434 {
 			Loop;
 	}
 }
-CLASS Waffle2 : HealthBonus 26435 { 
+class Waffle2 : HealthBonus 26435 { 
 	Default {
 		
 		//$Category Food
@@ -1239,7 +1261,7 @@ CLASS Waffle2 : HealthBonus 26435 {
 			Loop;
 	}
 }
-CLASS Sweets1 : HealthBonus 26436 { 
+class Sweets1 : HealthBonus 26436 { 
 	Default {
 		
 		//$Category Food
@@ -1253,7 +1275,7 @@ CLASS Sweets1 : HealthBonus 26436 {
 			Loop;
 	}
 }
-CLASS Sweets2 : HealthBonus 26437 { 
+class Sweets2 : HealthBonus 26437 { 
 	Default {
 		
 		//$Category Food
@@ -1267,18 +1289,18 @@ CLASS Sweets2 : HealthBonus 26437 {
 			Loop;
 	}
 }
-CLASS MegaMap : CustomInventory 12765 { 
+class MegaMap : CustomInventory 12765 { 
 	Default {
 		
 		//$Category Powerups
 		+COUNTITEM;
-		+INVENTORY.FANCYPICKUPSOUND;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.FANCYPICKUPSOUND;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.MaxAmount 0;
 		Inventory.PickupSound "misc/p_pkup";
 		Inventory.PickupMessage "Mega Map!";
 	}
-	states
+	States
 	{
 		Spawn:
 			MMAP ABCDCB 6 Bright;
@@ -1286,23 +1308,23 @@ CLASS MegaMap : CustomInventory 12765 {
 		Pickup:
 			TNT1 A 1 A_GiveInventory ("Allmap");
 			TNT1 A 0 A_GiveInventory ("DoomScanner");
-			stop;
+			Stop;
 	}
 }
-CLASS DoomScanner : PowerupGiver { 
+class DoomScanner : PowerupGiver { 
 	Default {
 		
 		powerup.type "Scanner";
-		+INVENTORY.AUTOACTIVATE;
+		+Inventory.AUTOACTIVATE;
 	}
-	states
+	States
 	{
 		Spawn:
 			TNT1 A 1;
-			stop;
+			Stop;
 	}
 }
-CLASS BGTG_A : HealthBonus 26438 { 
+class BGTG_A : HealthBonus 26438 { 
 	Default {
 		
 		//$Category SurpriseItems
@@ -1316,7 +1338,7 @@ CLASS BGTG_A : HealthBonus 26438 {
 			Loop;
 	}
 }
-CLASS BGTG_B : HealthBonus 26439 { 
+class BGTG_B : HealthBonus 26439 { 
 	Default {
 		
 		//$Category SurpriseItems
@@ -1330,7 +1352,7 @@ CLASS BGTG_B : HealthBonus 26439 {
 			Loop;
 	}
 }
-CLASS BGTG_C : HealthBonus 26440 { 
+class BGTG_C : HealthBonus 26440 { 
 	Default {
 		
 		//$Category SurpriseItems
@@ -1344,7 +1366,7 @@ CLASS BGTG_C : HealthBonus 26440 {
 			Loop;
 	}
 }
-CLASS BGTG_D : HealthBonus 26441 { 
+class BGTG_D : HealthBonus 26441 { 
 	Default {
 		
 		//$Category SurpriseItems
@@ -1358,7 +1380,7 @@ CLASS BGTG_D : HealthBonus 26441 {
 			Loop;
 	}
 }
-CLASS BGTG_E : HealthBonus 26442 { 
+class BGTG_E : HealthBonus 26442 { 
 	Default {
 		
 		//$Category SurpriseItems

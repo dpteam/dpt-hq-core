@@ -1,179 +1,238 @@
 // PLACEHOLDER REPLACERS // WORKER
-CLASS Firing : Inventory {} { 
+class Firing : Inventory { 
 	Default {
 	}
-CLASS Tourettes_BulletPuff : BulletPuff {} { 
+}
+class Tourettes_BulletPuff : BulletPuff { 
 	Default {
 	}
-CLASS XDeathGibs : ACTOR {} : ACTOR { 
+}
+class XDeathGibs : actor {
 	Default {
 	}
-CLASS GrowingBloodPool : Blood {} { 
+}
+class GrowingBloodPool : Blood { 
 	Default {
 	}
-CLASS XDeathOrgan1 : ACTOR {} : ACTOR { 
+}
+class XDeathOrgan1 : actor {
 	Default {
 	}
-CLASS XDeathOrgan2 : ACTOR {} : ACTOR { 
+}
+class XDeathOrgan2 : actor {
 	Default {
 	}
-CLASS Bloodmist : ACTOR {} : ACTOR { 
+}
+class Bloodmist : actor {
 	Default {
 	}
-CLASS HeavyMachinegunHUD : Inventory {} { 
+}
+class HeavyMachinegunHUD : Inventory { 
 	Default {
 	}
-CLASS attackhelicopterBaseDirection : Inventory {} { 
+}
+class attackhelicopterBaseDirection : Inventory { 
 	Default {
 	}
-CLASS attackhelicopterReady : Inventory {} { 
+}
+class attackhelicopterReady : Inventory { 
 	Default {
 	}
-CLASS MechBaseDirection : Inventory {} { 
+}
+class MechBaseDirection : Inventory { 
 	Default {
 	}
-CLASS MachinegunFlash : ACTOR {} : ACTOR { 
+}
+class MachinegunFlash : actor {
 	Default {
 	}
-CLASS LeftBikeHit : ACTOR {} : ACTOR { 
+}
+class LeftBikeHit : actor {
 	Default {
 	}
-CLASS RightBikeHit : ACTOR {} : ACTOR { 
+}
+class RightBikeHit : actor {
 	Default {
 	}
-CLASS FiredLightTankMainGun : Inventory {} { 
+}
+class FiredLightTankMainGun : Inventory { 
 	Default {
 	}
-CLASS CrashLightTankIntotheGround1 : ACTOR {} : ACTOR { 
+}
+class CrashLightTankIntotheGround1 : actor {
 	Default {
 	}
-CLASS CrashLightTankIntotheGround2 : ACTOR {} : ACTOR { 
+}
+class CrashLightTankIntotheGround2 : actor {
 	Default {
 	}
-CLASS LightTankZoom : Inventory {} { 
+}
+class LightTankZoom : Inventory { 
 	Default {
 	}
-CLASS ShrinkEffect : ACTOR {} : ACTOR { 
+}
+class ShrinkEffect : actor {
 	Default {
 	}
-CLASS DukeGibs1 : ACTOR {} : ACTOR { 
+}
+class DukeGibs1 : actor {
 	Default {
 	}
-CLASS DukeGibs2 : ACTOR {} : ACTOR { 
+}
+class DukeGibs2 : actor {
 	Default {
 	}
-CLASS DukeGibs3 : ACTOR {} : ACTOR { 
+}
+class DukeGibs3 : actor {
 	Default {
 	}
-CLASS DukeGibs4 : ACTOR {} : ACTOR { 
+}
+class DukeGibs4 : actor {
 	Default {
 	}
-CLASS DukeGibs5 : ACTOR {} : ACTOR { 
+}
+class DukeGibs5 : actor {
 	Default {
 	}
-CLASS DukeGibs6 : ACTOR {} : ACTOR { 
+}
+class DukeGibs6 : actor {
 	Default {
 	}
-CLASS EnemySquishItem : Inventory {} { 
+}
+class EnemySquishItem : Inventory { 
 	Default {
 	}
-CLASS MuzzleFlashMedium : ACTOR {} : ACTOR { 
+}
+class MuzzleFlashMedium : actor {
 	Default {
 	}
-CLASS Rocket2 : ACTOR {} : ACTOR { 
+}
+class Rocket2 : actor {
 	Default {
 	}
-CLASS LavaSmoke1 : ACTOR {} : ACTOR { 
+}
+class LavaSmoke1 : actor {
 	Default {
 	}
-CLASS Doomcenter_JunkGenerator : ACTOR {} : ACTOR { 
+}
+class Doomcenter_JunkGenerator : actor {
 	Default {
 	}
-CLASS Tire2 : ACTOR {} : ACTOR { 
+}
+class Tire2 : actor {
 	Default {
 	}
-CLASS TankFire : ACTOR {} : ACTOR { 
+}
+class TankFire : actor {
 	Default {
 	}
-CLASS ShockPuff : BulletPuff {} { 
+}
+class ShockPuff : BulletPuff { 
 	Default {
 	}
-CLASS AuraON : Inventory {} { 
+}
+class AuraON : Inventory { 
 	Default {
 	}
-CLASS FBulletPuff : BulletPuff {} { 
+}
+class FBulletPuff : BulletPuff { 
 	Default {
 	}
-CLASS PM_AltFireX : Inventory {} { 
+}
+class PM_AltFireX : Inventory { 
 	Default {
 	}
-CLASS PM_AltFireY : Inventory {} { 
+}
+class PM_AltFireY : Inventory { 
 	Default {
 	}
-CLASS PCybRocket3 : ACTOR {} : ACTOR { 
+}
+class PCybRocket3 : actor {
 	Default {
 	}
-CLASS DUMP3GunSmokeSpawner : ACTOR {} : ACTOR { 
+}
+class DUMP3GunSmokeSpawner : actor {
 	Default {
 	}
-CLASS DUMP39mmCasingSpawner2 : ACTOR {} : ACTOR { 
+}
+class DUMP39mmCasingSpawner2 : actor {
 	Default {
 	}
-CLASS DUMP3BulletPuff : BulletPuff {} { 
+}
+class DUMP3BulletPuff : BulletPuff { 
 	Default {
 	}
-CLASS DUMP3ChaingunReroll : Inventory {} { 
+}
+class DUMP3ChaingunReroll : Inventory { 
 	Default {
 	}
-CLASS DUMP3ShellCasingSpawner3 : ACTOR {} : ACTOR { 
+}
+class DUMP3ShellCasingSpawner3 : actor {
 	Default {
 	}
-CLASS DUMP3ShotgunSlotFilled : Inventory {} { 
+}
+class DUMP3ShotgunSlotFilled : Inventory { 
 	Default {
 	}
-CLASS DUMP3ShotgunReroll : Inventory {} { 
+}
+class DUMP3ShotgunReroll : Inventory { 
 	Default {
 	}
-CLASS DUMP3SuperShotgunSlotFilled : Inventory {} { 
+}
+class DUMP3SuperShotgunSlotFilled : Inventory { 
 	Default {
 	}
-CLASS DUMP3SuperShotgunReroll : Inventory {} { 
+}
+class DUMP3SuperShotgunReroll : Inventory { 
 	Default {
 	}
-CLASS DUMP3RocketLauncherSlotFilled : Inventory {} { 
+}
+class DUMP3RocketLauncherSlotFilled : Inventory { 
 	Default {
 	}
-CLASS DUMP3RocketLauncherReroll : Inventory {} { 
+}
+class DUMP3RocketLauncherReroll : Inventory { 
 	Default {
 	}
-CLASS DUMP3PlasmaRifleSlotFilled : Inventory {} { 
+}
+class DUMP3PlasmaRifleSlotFilled : Inventory { 
 	Default {
 	}
-CLASS DUMP3PlasmaRifleReroll : Inventory {} { 
+}
+class DUMP3PlasmaRifleReroll : Inventory { 
 	Default {
 	}
-CLASS DUMP3556mmCasingSpawner : ACTOR {} : ACTOR { 
+}
+class DUMP3556mmCasingSpawner : actor {
 	Default {
 	}
-CLASS DUMP3556mmCasingSpawner2 : ACTOR {} : ACTOR { 
+}
+class DUMP3556mmCasingSpawner2 : actor {
 	Default {
 	}
-CLASS DUMP3BFG9000SlotFilled : Inventory {} { 
+}
+class DUMP3BFG9000SlotFilled : Inventory { 
 	Default {
 	}
-CLASS DUMP3BFG9000Reroll : Inventory {} { 
+}
+class DUMP3BFG9000Reroll : Inventory { 
 	Default {
 	}
-CLASS DUMP3ShellCasingSpawner : ACTOR {} : ACTOR { 
+}
+class DUMP3ShellCasingSpawner : actor {
 	Default {
 	}
-CLASS DUMP3ChaingunSlotFilled : Inventory {} { 
+}
+class DUMP3ChaingunSlotFilled : Inventory { 
 	Default {
 	}
-CLASS RocketSmoke : ACTOR {} : ACTOR { 
+}
+class RocketSmoke : actor {
 	Default {
-	
-	ACTOR CR 15116;
+	}
+}
+class "CR" : actor 15116 {
+	Default {
 	
 	//$Category 3D_Object
 	Height 1;
@@ -189,9 +248,9 @@ CLASS RocketSmoke : ACTOR {} : ACTOR {
 	Spawn:
 		3DDR A 1;
 		Loop;
+	}
 }
-}
-CLASS CI 15118 : ACTOR { 
+class "CI" : actor 15118 { 
 	Default {
 	
 	//$Category 3D_Object
@@ -208,7 +267,7 @@ CLASS CI 15118 : ACTOR {
 		Loop;
 }
 }
-CLASS ExplosionParticleHeavy2002 : ACTOR { 
+class ExplosionParticleHeavy2002 : actor { 
 	Default {
 	
 	speed 5;
@@ -227,7 +286,7 @@ CLASS ExplosionParticleHeavy2002 : ACTOR {
 	+CLIENTSIDEONLY;
 	+DOOMBOUNCE;
 	+DONTSPLASH;
-	+THRUACTORS;
+	+THRUactorS;
 	+THRUGHOST;
 	+GHOST;
 	Damage 0;
@@ -238,13 +297,13 @@ CLASS ExplosionParticleHeavy2002 : ACTOR {
 	Spawn:
 		SPRK SSSSS 1 BRIGHT;
 		SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02);
-		stop;
+		Stop;
 	Death:
 		Stop;
 }
 }
 
-CLASS BurningEmberParticlesFloating: ExplosionParticleHeavy2002 { 
+class BurningEmberParticlesFloating: ExplosionParticleHeavy2002 { 
 	Default {
 	
 	Scale 0.045;
@@ -265,7 +324,7 @@ CLASS BurningEmberParticlesFloating: ExplosionParticleHeavy2002 {
 }
 }
 
-CLASS BurningEmberParticlesSpawner : ACTOR { 
+class BurningEmberParticlesSpawner : actor { 
 	Default {
 	
 	}
@@ -279,7 +338,7 @@ CLASS BurningEmberParticlesSpawner : ACTOR {
 }
 }
 
-CLASS BlueExplosionParticleHeavy : ACTOR { 
+class BlueExplosionParticleHeavy : actor { 
 	Default {
 	
 	speed 5;
@@ -298,7 +357,7 @@ CLASS BlueExplosionParticleHeavy : ACTOR {
 	+CLIENTSIDEONLY;
 	+DOOMBOUNCE;
 	+DONTSPLASH;
-	+THRUACTORS;
+	+THRUactorS;
 	+THRUGHOST;
 	+GHOST;
 	Damage 0;
@@ -309,13 +368,13 @@ CLASS BlueExplosionParticleHeavy : ACTOR {
 	Spawn:
 		BLPK SSSSS 1 BRIGHT;
 		BLPK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02);
-		stop;
+		Stop;
 	Death:
 		Stop;
 }
 }
 
-CLASS BlueParticlesFloating: BlueExplosionParticleHeavy { 
+class BlueParticlesFloating: BlueExplosionParticleHeavy { 
 	Default {
 	
 	Scale 0.045;
@@ -336,7 +395,7 @@ CLASS BlueParticlesFloating: BlueExplosionParticleHeavy {
 }
 }
 
-CLASS BlueParticlesSpawner : ACTOR { 
+class BlueParticlesSpawner : actor { 
 	Default {
 	
 	}
@@ -350,66 +409,85 @@ CLASS BlueParticlesSpawner : ACTOR {
 }
 }
 
-CLASS EXPLOSIONBUBULZ : ACTOR {} : ACTOR { 
+class EXPLOSIONBUBULZ : actor {
 	Default {
 	}
-CLASS UNDERWATERHITPUFF : ACTOR {} : ACTOR { 
+}
+class UNDERWATERHITPUFF : actor {
 	Default {
 	}
-CLASS DETECTCEILBULLET : ACTOR {} : ACTOR { 
+}
+class DETECTCEILBULLET : actor {
 	Default {
 	}
-CLASS DETECTFLOORBULLET : ACTOR {} : ACTOR { 
+}
+class DETECTFLOORBULLET : actor {
 	Default {
 	}
-//ACTOR FISTREDUX {} // WORKER
-CLASS BUBULZ : ACTOR {} : ACTOR { 
+}
+//actor FISTREDUX {} // WORKER
+class BUBULZ : actor {
 	Default {
 	}
-CLASS UNDERBLOOD3 : ACTOR {} : ACTOR { 
+}
+class UNDERBLOOD3 : actor {
 	Default {
 	}
-CLASS DETECTCEILBRAIN : ACTOR {} : ACTOR { 
+}
+class DETECTCEILBRAIN : actor {
 	Default {
 	}
-CLASS UNDERBLOOD2 : ACTOR {} : ACTOR { 
+}
+class UNDERBLOOD2 : actor {
 	Default {
 	}
-CLASS UNDERBLOOD1 : ACTOR {} : ACTOR { 
+}
+class UNDERBLOOD1 : actor {
 	Default {
 	}
-CLASS DETECTCEILXDEATH4 : ACTOR {} : ACTOR { 
+}
+class DETECTCEILXDEATH4 : actor {
 	Default {
 	}
-CLASS DETECTCEILXDEATH3 : ACTOR {} : ACTOR { 
+}
+class DETECTCEILXDEATH3 : actor {
 	Default {
 	}
-CLASS DETECTCEILXDEATH2 : ACTOR {} : ACTOR { 
+}
+class DETECTCEILXDEATH2 : actor {
 	Default {
 	}
-CLASS DETECTCEILCRATER : ACTOR {} : ACTOR { 
+}
+class DETECTCEILCRATER : actor {
 	Default {
 	}
-CLASS DETECTFLOORCRATER : ACTOR {} : ACTOR { 
+}
+class DETECTFLOORCRATER : actor {
 	Default {
 	}
-CLASS ErasusCasing : Inventory {} { 
+}
+class ErasusCasing : Inventory { 
 	Default {
 	}
-CLASS MultiPuff : BulletPuff {} { 
+}
+class MultiPuff : BulletPuff { 
 	Default {
 	}
-CLASS QuadPuff : BulletPuff {} { 
+}
+class QuadPuff : BulletPuff { 
 	Default {
 	}
-CLASS QuadUpgrade : ACTOR {} : ACTOR { 
+}
+class QuadUpgrade : actor {
 	Default {
 	}
-CLASS RailDecalThing : ACTOR {} : ACTOR { 
+}
+class RailDecalThing : actor {
 	Default {
 	}
-//ACTOR ShockPuff {} // WORKER
-CLASS BasicParticle : ACTOR { 
+}
+//actor ShockPuff {} // WORKER
+class BasicParticle : actor { 
 	Default {
 	
 	Radius 0;
@@ -419,10 +497,10 @@ CLASS BasicParticle : ACTOR {
 	+MISSILE;
 	+FORCEXYBILLBOARD;
 	+CLIENTSIDEONLY;
-	+THRUACTORS;
+	+THRUactorS;
 	}
 }
-CLASS Flare_General : ACTOR { 
+class Flare_General : actor { 
 	Default {
 	
 	+NOINTERACTION;
@@ -435,7 +513,7 @@ CLASS Flare_General : ACTOR {
 	scale 0.4;
 	}
 }
-CLASS TRACER: FASTPROJECTILE { 
+class TRACER: FASTPROJECTILE { 
 	Default {
 	
 	PROJECTILE;
@@ -451,20 +529,20 @@ CLASS TRACER: FASTPROJECTILE {
 	ALPHA 0.9;
 	SCALE .15;
 	}
-	STATES
+	States
 	{
-	SPAWN:
+	Spawn:
 		TRAC A 1 BRIGHT;
-		LOOP;
+		Loop;
 	DEATH:
-		STOP;
+		Stop;
 	XDEATH:
 		TNT1 A 0;
-		STOP;
+		Stop;
 }
 }
 // GRASS
-CLASS GRASS 10128 : ACTOR { 
+class "GrassObject" : actor 10128 { 
 	Default {
 	
 	Radius 1;
@@ -493,7 +571,7 @@ CLASS GRASS 10128 : ACTOR {
 }
 }
 // SPLASHES
-CLASS WaterParticleX : ACTOR { 
+class WaterParticleX : actor { 
 	Default {
 	
 	Height 0;
@@ -531,7 +609,7 @@ CLASS WaterParticleX : ACTOR {
 		Stop;
 }
 }
-CLASS WaterParticleXFAster: WaterParticleX { 
+class WaterParticleXFAster: WaterParticleX { 
 	Default {
 	
 	Speed 4;
@@ -540,7 +618,7 @@ CLASS WaterParticleXFAster: WaterParticleX {
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 //********** Splashes **********
-CLASS WaterSplashBase2 : ACTOR { 
+class WaterSplashBase2 : actor { 
 	Default {
 	
 	Radius 1;
@@ -561,7 +639,7 @@ CLASS WaterSplashBase2 : ACTOR {
 		Stop;
 }
 }
-CLASS WaterSplashBaseSmall : ACTOR { 
+class WaterSplashBaseSmall : actor { 
 	Default {
 	
 	Radius 1;
@@ -583,7 +661,7 @@ CLASS WaterSplashBaseSmall : ACTOR {
 }
 }
 ////////////////////////Blood
-CLASS BloodParticleX : ACTOR { 
+class BloodParticleX : actor { 
 	Default {
 	
 	Height 0;
@@ -621,13 +699,13 @@ CLASS BloodParticleX : ACTOR {
 		Stop;
 }
 }
-CLASS BloodParticleXFAster: BloodParticleX { 
+class BloodParticleXFAster: BloodParticleX { 
 	Default {
 	
 	Speed 4;
 	}
 }
-CLASS BloodSplashBase2 : ACTOR { 
+class BloodSplashBase2 : actor { 
 	Default {
 	
 	Radius 1;
@@ -649,7 +727,7 @@ CLASS BloodSplashBase2 : ACTOR {
 		Stop;
 }
 }
-CLASS BloodSplashBaseSmall : BloodSplashBase2 { 
+class BloodSplashBaseSmall : BloodSplashBase2 { 
 	Default {
 	
 	Scale 0.5;
@@ -665,7 +743,7 @@ CLASS BloodSplashBaseSmall : BloodSplashBase2 {
 }
 }
 /////////////////// Nukage
-CLASS nukageParticleX : ACTOR { 
+class nukageParticleX : actor { 
 	Default {
 	
 	Height 0;
@@ -703,13 +781,13 @@ CLASS nukageParticleX : ACTOR {
 		Stop;
 }
 }
-CLASS nukageParticleXFAster: nukageParticleX { 
+class nukageParticleXFAster: nukageParticleX { 
 	Default {
 	
 	Speed 4;
 	}
 }
-CLASS nukageSplashBase : ACTOR { 
+class nukageSplashBase : actor { 
 	Default {
 	
 	Radius 1;
@@ -730,7 +808,7 @@ CLASS nukageSplashBase : ACTOR {
 		Stop;
 }
 }
-CLASS NukageSplashBaseSmall : nukageSplashBase { 
+class NukageSplashBaseSmall : nukageSplashBase { 
 	Default {
 	
 	Scale 0.5;
@@ -746,7 +824,7 @@ CLASS NukageSplashBaseSmall : nukageSplashBase {
 }
 }
 /////////////////// Slime
-CLASS slimeParticleX : ACTOR { 
+class slimeParticleX : actor { 
 	Default {
 	
 	Height 0;
@@ -784,13 +862,13 @@ CLASS slimeParticleX : ACTOR {
 		Stop;
 }
 }
-CLASS slimeParticleXFAster: slimeParticleX { 
+class slimeParticleXFAster: slimeParticleX { 
 	Default {
 	
 	Speed 4;
 	}
 }
-CLASS slimeSplashBase : ACTOR { 
+class slimeSplashBase : actor { 
 	Default {
 	
 	Radius 1;
@@ -811,7 +889,7 @@ CLASS slimeSplashBase : ACTOR {
 		Stop;
 }
 }
-CLASS slimeSplashBaseSmall : slimeSplashBase { 
+class slimeSplashBaseSmall : slimeSplashBase { 
 	Default {
 	
 	Scale 0.5;
@@ -825,7 +903,7 @@ CLASS slimeSplashBaseSmall : slimeSplashBase {
 		Stop;
 }
 }
-CLASS Footstep : ACTOR { 
+class Footstep : actor { 
 	Default {
 	
 	+NOTDMATCH;

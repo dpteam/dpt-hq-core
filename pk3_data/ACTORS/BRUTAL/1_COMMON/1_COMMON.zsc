@@ -1,12 +1,12 @@
-CLASS BRUTALCOUNTER : INVENTORY { 
+class BRUTALCOUNTER : Inventory { 
 	Default {
 		
-		INVENTORY.MAXAMOUNT 500;
+		Inventory.MaxAmount 500;
 	}
 }
-CLASS BRUTALCOUNTER2 : INVENTORY { 
+class BRUTALCOUNTER2 : Inventory { 
 	Default {
 		
-		INVENTORY.MAXAMOUNT 500;
+		Inventory.MaxAmount 500;
 	}
 }

@@ -4,7 +4,7 @@
 //██║  ██║██╔═══╝    ██║      ██╔══██║██║▄▄ ██║
 //██████╔╝██║        ██║   ██╗██║  ██║╚██████╔╝
 //╚═════╝ ╚═╝        ╚═╝   ╚═╝╚═╝  ╚═╝ ╚══▀▀═╝ 
-//CORE
+//*CORE*//version "2.5"
 #include "ACTORS/_0_UNSORTED.zsc"
 //SKULLTAG
 #include "ACTORS/SKULLTAG_ACTORS/skulltagarmor.zsc"

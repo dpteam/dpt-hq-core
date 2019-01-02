@@ -1,4 +1,4 @@
-CLASS SilentJ : ACTOR { 
+class SilentJ : actor { 
 	Default {
 		
 		Scale 0.35;
@@ -10,7 +10,7 @@ CLASS SilentJ : ACTOR {
 		SeeSound "Sights/Male01";
 		PainSound "Pains/Male01";
 		DeathSound "Deaths/Male01";
-		DropItem "9mmAmmoSmall";
+		DropItem "9mmammoSmall";
 		DamageFactor "EnemyBullet", 0.3;
 		DamageFactor "EnemyGrenade", 0.3;
 		DamageFactor "PlayerPistol", 0.5;
@@ -32,11 +32,11 @@ CLASS SilentJ : ACTOR {
 			Loop;
 		Missile:
 			ORAN F 10 A_FaceTarget();
-			ORAN G 0 A_PlayWeaponSound("Beretta/Silent");
+			ORAN G 0 A_PlayweaponSound("Beretta/Silent");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			ORAN G 2 BRIGHT A_CustomMissile("EnemyARTracer", 52, 0, random(-2,2));
 			ORAN F 6;
-			ORAN G 0 A_PlayWeaponSound("Beretta/Silent");
+			ORAN G 0 A_PlayweaponSound("Beretta/Silent");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(55,80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			ORAN G 2 BRIGHT A_CustomMissile("EnemyARTracer", 52, 0, random(-2,2));
 			ORAN F 2;
@@ -68,7 +68,7 @@ CLASS SilentJ : ACTOR {
 	}
 }
 
-CLASS SilentJ_F : SilentJ 22203 { 
+class SilentJ_F : SilentJ 22203 { 
 	Default {
 		
 		+FRIENDLY;

@@ -1,4 +1,4 @@
-CLASS WWTOfficeExec : ACTOR { 
+class WWTOfficeExec : actor { 
 	Default {
 		
 		MONSTER;
@@ -68,7 +68,7 @@ CLASS WWTOfficeExec : ACTOR {
 	}
 }
 
-CLASS WWTOfficeExec_F : WWTOfficeExec 22106 { 
+class WWTOfficeExec_F : WWTOfficeExec 22106 { 
 	Default {
 		
 		+FRIENDLY;

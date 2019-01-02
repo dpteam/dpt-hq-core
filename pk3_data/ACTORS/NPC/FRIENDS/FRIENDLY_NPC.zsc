@@ -1,4 +1,4 @@
-CLASS Thamara 11888 : ACTOR { 
+class Thamara 11888 : actor { 
 	Default {
 		
 		//$Category "NPC - Friendly"
@@ -45,7 +45,7 @@ CLASS Thamara 11888 : ACTOR {
 			Goto See;
 	}
 }
-CLASS Banana 23222 : ACTOR { 
+class Banana 23222 : actor { 
 	Default {
 		
 		//$Category "NPC - Friendly"

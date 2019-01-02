@@ -1,7 +1,7 @@
-CLASS D3BlueCard : DoomKey { 
+class D3BlueCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a blue keycard.";
+		Inventory.PickupMessage "Picked up a blue keycard.";
 		Inventory.Icon "HUDKYBLU";
 	}
 	States
@@ -13,10 +13,10 @@ CLASS D3BlueCard : DoomKey {
 	}
 }
 
-CLASS D3RedCard : DoomKey { 
+class D3RedCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a red keycard.";
+		Inventory.PickupMessage "Picked up a red keycard.";
 		Inventory.Icon "HUDKYRED";
 	}
 	States
@@ -28,10 +28,10 @@ CLASS D3RedCard : DoomKey {
 	}
 }
 
-CLASS D3YellowCard : DoomKey { 
+class D3YellowCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a yellow keycard.";
+		Inventory.PickupMessage "Picked up a yellow keycard.";
 		Inventory.Icon "HUDKYYLW";
 	}
 	States
@@ -43,10 +43,10 @@ CLASS D3YellowCard : DoomKey {
 	}
 }
 
-CLASS D3BlackCard : DoomKey { 
+class D3BlackCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a black keycard.";
+		Inventory.PickupMessage "Picked up a black keycard.";
 		Inventory.Icon "HUDKYBLK";
 	}
 	States
@@ -58,10 +58,10 @@ CLASS D3BlackCard : DoomKey {
 	}
 }
 
-CLASS D3GreenCard : DoomKey { 
+class D3GreenCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a green keycard.";
+		Inventory.PickupMessage "Picked up a green keycard.";
 		Inventory.Icon "HUDKYGRN";
 	}
 	States
@@ -73,10 +73,10 @@ CLASS D3GreenCard : DoomKey {
 	}
 }
 
-CLASS D3OrangeCard : DoomKey { 
+class D3OrangeCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up an orange keycard.";
+		Inventory.PickupMessage "Picked up an orange keycard.";
 		Inventory.Icon "HUDKYORN";
 	}
 	States
@@ -88,10 +88,10 @@ CLASS D3OrangeCard : DoomKey {
 	}
 }
 
-CLASS D3WhiteCard : DoomKey { 
+class D3WhiteCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a white keycard.";
+		Inventory.PickupMessage "Picked up a white keycard.";
 		Inventory.Icon "HUDKYWIT";
 	}
 	States
@@ -103,10 +103,10 @@ CLASS D3WhiteCard : DoomKey {
 	}
 }
 
-CLASS D3BrownCard : DoomKey { 
+class D3BrownCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a brown keycard.";
+		Inventory.PickupMessage "Picked up a brown keycard.";
 		Inventory.Icon "HUDKYBWN";
 	}
 	States
@@ -118,10 +118,10 @@ CLASS D3BrownCard : DoomKey {
 	}
 }
 
-CLASS D3VioletCard : DoomKey { 
+class D3VioletCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a violet keycard.";
+		Inventory.PickupMessage "Picked up a violet keycard.";
 		Inventory.Icon "HUDKYVLT";
 	}
 	States
@@ -133,10 +133,10 @@ CLASS D3VioletCard : DoomKey {
 	}
 }
 
-CLASS MilitaryBaseBunkerSpecialCard : DoomKey { 
+class MilitaryBaseBunkerSpecialCard : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a special access keycard.";
+		Inventory.PickupMessage "Picked up a special access keycard.";
 		Inventory.Icon "HUDKYWIT";
 	}
 	States
@@ -148,10 +148,10 @@ CLASS MilitaryBaseBunkerSpecialCard : DoomKey {
 	}
 }
 
-CLASS PrisonKey2 : DoomKey { 
+class PrisonKey2 : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a DPT Police's prison key.";
+		Inventory.PickupMessage "Picked up a DPT Police's prison key.";
 		Inventory.Icon "HUDKYPKY";
 	}
 	States
@@ -163,10 +163,10 @@ CLASS PrisonKey2 : DoomKey {
 	}
 }
 
-CLASS DPTKEYCARD : DoomKey { 
+class DPTKEYCARD : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a DPT KEY CARD.";
+		Inventory.PickupMessage "Picked up a DPT KEY CARD.";
 		Inventory.Icon "HUDKYDPT";
 	}
 	States
@@ -178,10 +178,10 @@ CLASS DPTKEYCARD : DoomKey {
 	}
 }
 
-CLASS DPTNICKBOCKKEYCARD : DoomKey { 
+class DPTNICKBOCKKEYCARD : DoomKey { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a GAY KEY CARD.";
+		Inventory.PickupMessage "Picked up a GAY KEY CARD.";
 		Inventory.Icon "HUDKYDPT";
 	}
 	States
@@ -193,10 +193,10 @@ CLASS DPTNICKBOCKKEYCARD : DoomKey {
 	}
 }
 
-CLASS SHITKEY : DoomKey 26253 { 
+class SHITKEY : DoomKey 26253 { 
 	Default {
 		
-		Inventory.Pickupmessage "Picked up a SHIT KEY CARD.";
+		Inventory.PickupMessage "Picked up a SHIT KEY CARD.";
 		Inventory.Icon "HUDKYGVN";
 	}
 	States

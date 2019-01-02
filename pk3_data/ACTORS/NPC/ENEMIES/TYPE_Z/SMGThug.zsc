@@ -1,4 +1,4 @@
-CLASS SMGThug : ACTOR { 
+class SMGThug : actor { 
 	Default {
 		
 		YScale 0.29;
@@ -12,7 +12,7 @@ CLASS SMGThug : ACTOR {
 		PainSound "Pains/Male04";
 		DeathSound "Deaths/Male04";
 		DropItem "WWTUzi";
-		DropItem "9mmAmmoLarge" 42;
+		DropItem "9mmammoLarge" 42;
 		DamageFactor "EnemyBullet", 0.3;
 		DamageFactor "EnemyGrenade", 0.3;
 		Obituary "%o has learned to appreciate Israeli weaponry.";
@@ -30,29 +30,29 @@ CLASS SMGThug : ACTOR {
 		Missile:
 			STHG FGG 3 A_FaceTarget();
 			STHG G 0();//A_JumpIf(CallACS("IsNightmare") >= 4, "MissileNightmare")
-			STHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			STHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			STHG G 2 BRIGHT A_CustomMissile("EnemySMGTracer", 32, 0, random(-2,2));
 			STHG G 1 A_FaceTarget();
-			STHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			STHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			STHG G 2 BRIGHT A_CustomMissile("EnemySMGTracer", 32, 0, random(-2,2));
 			STHG G 2 A_FaceTarget();
-			STHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			STHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			STHG G 2 BRIGHT A_CustomMissile("EnemySMGTracer", 32, 0, random(-2,2));
 			STHG G 2;
 			Goto See;
 		MissileNightmare:
-			STHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			STHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			STHG G 2 BRIGHT A_CustomMissile("EnemySMGTracer", 32, 0, random(-2,2));
 			STHG G 1 A_FaceTarget();
-			STHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			STHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			STHG G 2 BRIGHT A_CustomMissile("EnemySMGTracer", 32, 0, random(-2,2));
 			STHG G 2 A_FaceTarget();
-			STHG G 0 A_PlayWeaponSound("Uzi/EnemyFire");
+			STHG G 0 A_PlayweaponSound("Uzi/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			STHG G 2 BRIGHT A_CustomMissile("EnemySMGTracer", 32, 0, random(-2,2));
 			STHG G 2;
@@ -77,7 +77,7 @@ CLASS SMGThug : ACTOR {
 	}
 }
 
-CLASS SMGThug_F : SMGThug 22201 { 
+class SMGThug_F : SMGThug 22201 { 
 	Default {
 		
 		+FRIENDLY;

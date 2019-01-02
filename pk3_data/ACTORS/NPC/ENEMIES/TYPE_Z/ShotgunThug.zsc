@@ -1,4 +1,4 @@
-CLASS ShotgunThug : ACTOR { 
+class ShotgunThug : actor { 
 	Default {
 		
 		YScale 0.4;
@@ -11,7 +11,7 @@ CLASS ShotgunThug : ACTOR {
 		SeeSound "Sights/Male05";
 		PainSound "Pains/Male05";
 		DeathSound "Deaths/Male05";
-		DropItem "12gaAmmoSmall";
+		DropItem "12gaammoSmall";
 		DropItem "WWTStriker", 84;
 		DamageFactor "EnemyBullet", 0.3;
 		DamageFactor "EnemyGrenade", 0.3;
@@ -31,7 +31,7 @@ CLASS ShotgunThug : ACTOR {
 			GTHG F 3 A_PlaySound("Striker/Load");
 			GTHG GGG 3 A_FaceTarget();
 			GTHG G 0();//A_JumpIf(CallACS("IsNightmare") >= 4, "MissileNightmare")
-			GTHG G 0 A_PlayWeaponSound("Striker/EnemyFire");
+			GTHG G 0 A_PlayweaponSound("Striker/EnemyFire");
 			GTHG GGG 0 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, random(-3,3));
 			GTHG G 2 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, random(-3,3), 0, random(-3, 3));
 			GTHG G 10;
@@ -39,7 +39,7 @@ CLASS ShotgunThug : ACTOR {
 			GTHG G 10;
 			Goto See;
 		MissileNightmare:
-			GTHG G 0 A_PlayWeaponSound("Striker/EnemyFire");
+			GTHG G 0 A_PlayweaponSound("Striker/EnemyFire");
 			GTHG GGG 0 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, random(-3,3));
 			GTHG G 2 BRIGHT A_CustomMissile("EnemyShotgunTracer", 49, 0, random(-3,3), 0, random(-3, 3));
 			GTHG G 10;
@@ -65,7 +65,7 @@ CLASS ShotgunThug : ACTOR {
 	}
 }
 
-CLASS ShotgunThug_F : ShotgunThug 22204 { 
+class ShotgunThug_F : ShotgunThug 22204 { 
 	Default {
 		
 		+FRIENDLY;

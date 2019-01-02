@@ -1,4 +1,4 @@
-CLASS DeadHostage1 26380 : ACTOR { //replaces DeadZombieman
+class DeadHostage1 26380 : actor { //replaces DeadZombieman
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -13,7 +13,7 @@ CLASS DeadHostage1 26380 : ACTOR { //replaces DeadZombieman
 	}
 }
 
-CLASS DeadHostage2 26381 : ACTOR { //replaces DeadShotgunGuy
+class DeadHostage2 26381 : actor { //replaces DeadShotgunGuy
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -28,7 +28,7 @@ CLASS DeadHostage2 26381 : ACTOR { //replaces DeadShotgunGuy
 	}
 }
 
-CLASS DeadHostage3 26382 : ACTOR { //replaces DeadMarine
+class DeadHostage3 26382 : actor { //replaces DeadMarine
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -43,7 +43,7 @@ CLASS DeadHostage3 26382 : ACTOR { //replaces DeadMarine
 	}
 }
 
-CLASS DeadHostage4 26383 : ACTOR { //replaces DeadDoomImp
+class DeadHostage4 26383 : actor { //replaces DeadDoomImp
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -58,7 +58,7 @@ CLASS DeadHostage4 26383 : ACTOR { //replaces DeadDoomImp
 	}
 }
 
-CLASS DeadHostage5 26384 : ACTOR { //replaces DeadDemon
+class DeadHostage5 26384 : actor { //replaces DeadDemon
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -73,7 +73,7 @@ CLASS DeadHostage5 26384 : ACTOR { //replaces DeadDemon
 	}
 }
 
-CLASS DeadHostage6 26385 : ACTOR { //replaces DeadCacodemon
+class DeadHostage6 26385 : actor { //replaces DeadCacodemon
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -88,7 +88,7 @@ CLASS DeadHostage6 26385 : ACTOR { //replaces DeadCacodemon
 	}
 }
 
-CLASS DeadCop1 26401 : ACTOR { //replaces GibbedMarine
+class DeadCop1 26401 : actor { //replaces GibbedMarine
 	Default {
 		
 		//$Category "Dead NPCs"
@@ -103,7 +103,7 @@ CLASS DeadCop1 26401 : ACTOR { //replaces GibbedMarine
 	}
 }
 
-CLASS DeadCop2 26402 : ACTOR { //replaces GibbedMarineExtra
+class DeadCop2 26402 : actor { //replaces GibbedMarineExtra
 	Default {
 		
 		//$Category "Dead NPCs"

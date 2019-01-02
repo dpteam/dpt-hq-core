@@ -1,53 +1,53 @@
-CLASS ONELINER: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class ONELINER: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS ADVTAUNTING: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class ADVTAUNTING: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS FISTSSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class FISTSSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS SHOTGUNSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class SHOTGUNSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS MINIGUNSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class MINIGUNSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS SSGSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class SSGSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS ROCKETLAUNCHERSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class ROCKETLAUNCHERSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS GRENADELAUNCHERSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class GRENADELAUNCHERSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS PLASMAGUNSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class PLASMAGUNSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS RAILGUNSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class RAILGUNSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS BFGSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class BFGSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS BFG10KSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class BFG10KSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS SUBMACHINEGUNSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class SUBMACHINEGUNSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS FLAMECANNONSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class FLAMECANNONSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS REVENANTLAUNCHERSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class REVENANTLAUNCHERSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS FALLINGHEIGHT : INVENTORY { INVENTORY.MAXAMOUNT 100 } { 
+class FALLINGHEIGHT : Inventory { Inventory.MaxAmount 100 } { 
 	Default {
 	}
-CLASS LOSTSOULSELECTED: INVENTORY { INVENTORY.MAXAMOUNT 1 } { 
+class LOSTSOULSELECTED: Inventory { Inventory.MaxAmount 1 } { 
 	Default {
 	}
-CLASS DEATHTIMER1 : INVENTORY { INVENTORY.MAXAMOUNT 120 } { 
+class DEATHTIMER1 : Inventory { Inventory.MaxAmount 120 } { 
 	Default {

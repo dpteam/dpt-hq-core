@@ -1,4 +1,4 @@
-CLASS Punchy : ACTOR { 
+class Punchy : actor { 
 	Default {
 		
 		YScale 0.35;
@@ -51,7 +51,7 @@ CLASS Punchy : ACTOR {
 	}
 }
 
-CLASS Punchy_F : Punchy 22207 { 
+class Punchy_F : Punchy 22207 { 
 	Default {
 		
 		+FRIENDLY;

@@ -1,10 +1,10 @@
 // Common
-CLASS "Sandbox-AMMUNATION" : Inventory { 
+class "Sandbox-AMMUNATION" : Inventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.Amount 99;
 		Inventory.MaxAmount 99;
 		Inventory.Icon "RGHTICON";
@@ -16,18 +16,18 @@ CLASS "Sandbox-AMMUNATION" : Inventory {
 			Loop;
 	}
 }
-CLASS "Sandbox-WeaponGiverModule" : CustomInventory { 
+class "Sandbox-weaponGiverModule" : CustomInventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
 		Inventory.Amount 64;
 		Inventory.MaxAmount 64;
 		Inventory.Icon "DOOMZ0";
 	}
 }
 // Ammunation
-CLASS "Sandbox-BFG9000Giver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-BFG9000Giver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "BFUGICON";
@@ -42,7 +42,7 @@ CLASS "Sandbox-BFG9000Giver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ChaingunGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-ChaingunGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "MGUNICON";
@@ -57,7 +57,7 @@ CLASS "Sandbox-ChaingunGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ChainsawGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-ChainsawGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "CSAWICON";
@@ -72,7 +72,7 @@ CLASS "Sandbox-ChainsawGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-FistGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-FistGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "PUNGICON";
@@ -87,7 +87,7 @@ CLASS "Sandbox-FistGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-PistolGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-PistolGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "PISTICON";
@@ -102,7 +102,7 @@ CLASS "Sandbox-PistolGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-PlasmaRifleGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-PlasmaRifleGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "PLASICON";
@@ -117,7 +117,7 @@ CLASS "Sandbox-PlasmaRifleGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-RocketLauncherGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-RocketLauncherGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "LAUNICON";
@@ -132,7 +132,7 @@ CLASS "Sandbox-RocketLauncherGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ShotgunGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-ShotgunGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "SHOTICON";
@@ -147,7 +147,7 @@ CLASS "Sandbox-ShotgunGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-SuperShotgunGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-SuperShotgunGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "SGN2ICON";
@@ -162,7 +162,7 @@ CLASS "Sandbox-SuperShotgunGiver" : "Sandbox-WeaponGiverModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-BackpackGiver" : "Sandbox-WeaponGiverModule" { 
+class "Sandbox-BackpackGiver" : "Sandbox-weaponGiverModule" { 
 	Default {
 		
 		Inventory.Icon "BPAKICON";
@@ -178,12 +178,12 @@ CLASS "Sandbox-BackpackGiver" : "Sandbox-WeaponGiverModule" {
 	}
 }
 // Common
-CLASS "Sandbox-ENEMIES" : Inventory { 
+class "Sandbox-ENEMIES" : Inventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.Amount 99;
 		Inventory.MaxAmount 99;
 		Inventory.Icon "ENMYICON";
@@ -195,18 +195,18 @@ CLASS "Sandbox-ENEMIES" : Inventory {
 			Loop;
 	}
 }
-CLASS "Sandbox-EnemySpawnerModule" : CustomInventory { 
+class "Sandbox-EnemySpawnerModule" : CustomInventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
 		Inventory.Amount 64;
 		Inventory.MaxAmount 64;
 		Inventory.Icon "DOOMZ0";
 	}
 }
 // Arachnotron
-CLASS "Sandbox-ArachnotronEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-ArachnotronEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "BSPIICON";
@@ -224,7 +224,7 @@ CLASS "Sandbox-ArachnotronEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArachnotronEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-ArachnotronEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -240,7 +240,7 @@ CLASS "Sandbox-ArachnotronEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -254,14 +254,14 @@ CLASS "Sandbox-ArachnotronEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArachnotronEnemy" : Arachnotron { //replaces Arachnotron
+class "Sandbox-ArachnotronEnemy" : Arachnotron { //replaces Arachnotron
 	Default {
 		
 		-SOLID;
 	}
 }
 // Archvile
-CLASS "Sandbox-ArchvileEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-ArchvileEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "VILEICON";
@@ -279,7 +279,7 @@ CLASS "Sandbox-ArchvileEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArchvileEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-ArchvileEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -295,7 +295,7 @@ CLASS "Sandbox-ArchvileEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -309,14 +309,14 @@ CLASS "Sandbox-ArchvileEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArchvileEnemy" : Archvile { //replaces Archvile
+class "Sandbox-ArchvileEnemy" : Archvile { //replaces Archvile
 	Default {
 		
 		-SOLID;
 	}
 }
 // BaronOfHell
-CLASS "Sandbox-BaronOfHellEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-BaronOfHellEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "BOSSICON";
@@ -334,7 +334,7 @@ CLASS "Sandbox-BaronOfHellEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-BaronOfHellEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-BaronOfHellEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -350,7 +350,7 @@ CLASS "Sandbox-BaronOfHellEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -364,14 +364,14 @@ CLASS "Sandbox-BaronOfHellEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-BaronOfHellEnemy" : BaronOfHell { //replaces BaronOfHell
+class "Sandbox-BaronOfHellEnemy" : BaronOfHell { //replaces BaronOfHell
 	Default {
 		
 		-SOLID;
 	}
 }
 // HellKnight
-CLASS "Sandbox-HellKnightEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-HellKnightEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "BOS2ICON";
@@ -389,7 +389,7 @@ CLASS "Sandbox-HellKnightEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-HellKnightEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-HellKnightEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -405,7 +405,7 @@ CLASS "Sandbox-HellKnightEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -419,14 +419,14 @@ CLASS "Sandbox-HellKnightEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-HellKnightEnemy" : HellKnight { //replaces HellKnight
+class "Sandbox-HellKnightEnemy" : HellKnight { //replaces HellKnight
 	Default {
 		
 		-SOLID;
 	}
 }
 // Cacodemon
-CLASS "Sandbox-CacodemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-CacodemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "HEADICON";
@@ -444,7 +444,7 @@ CLASS "Sandbox-CacodemonEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-CacodemonEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-CacodemonEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -460,7 +460,7 @@ CLASS "Sandbox-CacodemonEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -474,14 +474,14 @@ CLASS "Sandbox-CacodemonEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-CacodemonEnemy" : Cacodemon { //replaces Cacodemon
+class "Sandbox-CacodemonEnemy" : Cacodemon { //replaces Cacodemon
 	Default {
 		
 		-SOLID;
 	}
 }
 // Cyberdemon
-CLASS "Sandbox-CyberdemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-CyberdemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "CYBRICON";
@@ -499,7 +499,7 @@ CLASS "Sandbox-CyberdemonEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-CyberdemonEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-CyberdemonEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -515,7 +515,7 @@ CLASS "Sandbox-CyberdemonEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -529,14 +529,14 @@ CLASS "Sandbox-CyberdemonEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-CyberdemonEnemy" : Cyberdemon { //replaces Cyberdemon
+class "Sandbox-CyberdemonEnemy" : Cyberdemon { //replaces Cyberdemon
 	Default {
 		
 		-SOLID;
 	}
 }
 // Demon
-CLASS "Sandbox-DemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-DemonEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SARGICON";
@@ -554,7 +554,7 @@ CLASS "Sandbox-DemonEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-DemonEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-DemonEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -570,7 +570,7 @@ CLASS "Sandbox-DemonEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -584,7 +584,7 @@ CLASS "Sandbox-DemonEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-DemonEnemy" : Demon { //replaces Demon
+class "Sandbox-DemonEnemy" : Demon { //replaces Demon
 	Default {
 		
 		-SOLID;
@@ -592,7 +592,7 @@ CLASS "Sandbox-DemonEnemy" : Demon { //replaces Demon
 	}
 }
 // Spectre
-CLASS "Sandbox-SpectreEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-SpectreEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SPCTICON";
@@ -610,7 +610,7 @@ CLASS "Sandbox-SpectreEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpectreEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-SpectreEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -626,7 +626,7 @@ CLASS "Sandbox-SpectreEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -640,7 +640,7 @@ CLASS "Sandbox-SpectreEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpectreEnemy" : Spectre { //replaces Spectre
+class "Sandbox-SpectreEnemy" : Spectre { //replaces Spectre
 	Default {
 		
 		-SOLID;
@@ -648,7 +648,7 @@ CLASS "Sandbox-SpectreEnemy" : Spectre { //replaces Spectre
 	}
 }
 // ChaingunGuy
-CLASS "Sandbox-ChaingunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-ChaingunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "CPOSICON";
@@ -666,7 +666,7 @@ CLASS "Sandbox-ChaingunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ChaingunGuyEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-ChaingunGuyEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -682,7 +682,7 @@ CLASS "Sandbox-ChaingunGuyEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -696,7 +696,7 @@ CLASS "Sandbox-ChaingunGuyEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ChaingunGuyEnemy" : ChaingunGuy { //replaces ChaingunGuy
+class "Sandbox-ChaingunGuyEnemy" : ChaingunGuy { //replaces ChaingunGuy
 	Default {
 		
 		-SOLID;
@@ -704,7 +704,7 @@ CLASS "Sandbox-ChaingunGuyEnemy" : ChaingunGuy { //replaces ChaingunGuy
 	}
 }
 // DoomImp
-CLASS "Sandbox-DoomImpEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-DoomImpEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "TROOICON";
@@ -722,7 +722,7 @@ CLASS "Sandbox-DoomImpEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-DoomImpEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-DoomImpEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -738,7 +738,7 @@ CLASS "Sandbox-DoomImpEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -752,7 +752,7 @@ CLASS "Sandbox-DoomImpEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-DoomImpEnemy" : DoomImp { //replaces DoomImp
+class "Sandbox-DoomImpEnemy" : DoomImp { //replaces DoomImp
 	Default {
 		
 		-SOLID;
@@ -760,7 +760,7 @@ CLASS "Sandbox-DoomImpEnemy" : DoomImp { //replaces DoomImp
 	}
 }
 // Fatso
-CLASS "Sandbox-FatsoEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-FatsoEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "FATTICON";
@@ -778,7 +778,7 @@ CLASS "Sandbox-FatsoEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-FatsoEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-FatsoEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -794,7 +794,7 @@ CLASS "Sandbox-FatsoEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -808,7 +808,7 @@ CLASS "Sandbox-FatsoEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-FatsoEnemy" : Fatso { //replaces Fatso
+class "Sandbox-FatsoEnemy" : Fatso { //replaces Fatso
 	Default {
 		
 		-SOLID;
@@ -816,7 +816,7 @@ CLASS "Sandbox-FatsoEnemy" : Fatso { //replaces Fatso
 	}
 }
 // LostSoul
-CLASS "Sandbox-LostSoulEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-LostSoulEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SKULICON";
@@ -834,7 +834,7 @@ CLASS "Sandbox-LostSoulEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-LostSoulEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-LostSoulEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -850,7 +850,7 @@ CLASS "Sandbox-LostSoulEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -864,7 +864,7 @@ CLASS "Sandbox-LostSoulEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-LostSoulEnemy" : LostSoul { //replaces LostSoul
+class "Sandbox-LostSoulEnemy" : LostSoul { //replaces LostSoul
 	Default {
 		
 		-SOLID;
@@ -872,7 +872,7 @@ CLASS "Sandbox-LostSoulEnemy" : LostSoul { //replaces LostSoul
 	}
 }
 // PainElemental
-CLASS "Sandbox-PainElementalEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-PainElementalEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "PAINICON";
@@ -890,7 +890,7 @@ CLASS "Sandbox-PainElementalEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-PainElementalEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-PainElementalEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -906,7 +906,7 @@ CLASS "Sandbox-PainElementalEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -920,7 +920,7 @@ CLASS "Sandbox-PainElementalEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-PainElementalEnemy" : PainElemental { //replaces PainElemental
+class "Sandbox-PainElementalEnemy" : PainElemental { //replaces PainElemental
 	Default {
 		
 		-SOLID;
@@ -928,7 +928,7 @@ CLASS "Sandbox-PainElementalEnemy" : PainElemental { //replaces PainElemental
 	}
 }
 // Revenant
-CLASS "Sandbox-RevenantEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-RevenantEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SKELICON";
@@ -946,7 +946,7 @@ CLASS "Sandbox-RevenantEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-RevenantEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-RevenantEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -962,7 +962,7 @@ CLASS "Sandbox-RevenantEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -976,7 +976,7 @@ CLASS "Sandbox-RevenantEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-RevenantEnemy" : Revenant { //replaces Revenant
+class "Sandbox-RevenantEnemy" : Revenant { //replaces Revenant
 	Default {
 		
 		-SOLID;
@@ -984,7 +984,7 @@ CLASS "Sandbox-RevenantEnemy" : Revenant { //replaces Revenant
 	}
 }
 // ShotgunGuy
-CLASS "Sandbox-ShotgunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-ShotgunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SPOSICON";
@@ -1002,7 +1002,7 @@ CLASS "Sandbox-ShotgunGuyEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ShotgunGuyEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-ShotgunGuyEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1018,7 +1018,7 @@ CLASS "Sandbox-ShotgunGuyEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1032,7 +1032,7 @@ CLASS "Sandbox-ShotgunGuyEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ShotgunGuyEnemy" : ShotgunGuy { //replaces ShotgunGuy
+class "Sandbox-ShotgunGuyEnemy" : ShotgunGuy { //replaces ShotgunGuy
 	Default {
 		
 		-SOLID;
@@ -1040,7 +1040,7 @@ CLASS "Sandbox-ShotgunGuyEnemy" : ShotgunGuy { //replaces ShotgunGuy
 	}
 }
 // SpiderMastermind
-CLASS "Sandbox-SpiderMastermindEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-SpiderMastermindEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SPIDICON";
@@ -1058,7 +1058,7 @@ CLASS "Sandbox-SpiderMastermindEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpiderMastermindEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-SpiderMastermindEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1074,7 +1074,7 @@ CLASS "Sandbox-SpiderMastermindEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1088,7 +1088,7 @@ CLASS "Sandbox-SpiderMastermindEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpiderMastermindEnemy" : SpiderMastermind { //replaces SpiderMastermind
+class "Sandbox-SpiderMastermindEnemy" : SpiderMastermind { //replaces SpiderMastermind
 	Default {
 		
 		-SOLID;
@@ -1096,7 +1096,7 @@ CLASS "Sandbox-SpiderMastermindEnemy" : SpiderMastermind { //replaces SpiderMast
 	}
 }
 // WolfensteinSS
-CLASS "Sandbox-WolfensteinSSEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-WolfensteinSSEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SSWVICON";
@@ -1114,7 +1114,7 @@ CLASS "Sandbox-WolfensteinSSEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-WolfensteinSSEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-WolfensteinSSEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1130,7 +1130,7 @@ CLASS "Sandbox-WolfensteinSSEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1144,7 +1144,7 @@ CLASS "Sandbox-WolfensteinSSEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-WolfensteinSSEnemy" : WolfensteinSS { //replaces WolfensteinSS
+class "Sandbox-WolfensteinSSEnemy" : WolfensteinSS { //replaces WolfensteinSS
 	Default {
 		
 		-SOLID;
@@ -1152,7 +1152,7 @@ CLASS "Sandbox-WolfensteinSSEnemy" : WolfensteinSS { //replaces WolfensteinSS
 	}
 }
 // ZombieMan
-CLASS "Sandbox-ZombieManEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
+class "Sandbox-ZombieManEnemySpawner" : "Sandbox-EnemySpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "POSSICON";
@@ -1170,7 +1170,7 @@ CLASS "Sandbox-ZombieManEnemySpawner" : "Sandbox-EnemySpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ZombieManEnemySpawner.Projectile" : ACTOR { 
+class "Sandbox-ZombieManEnemySpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1186,7 +1186,7 @@ CLASS "Sandbox-ZombieManEnemySpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1200,7 +1200,7 @@ CLASS "Sandbox-ZombieManEnemySpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ZombieManEnemy" : ZombieMan { //replaces ZombieMan
+class "Sandbox-ZombieManEnemy" : ZombieMan { //replaces ZombieMan
 	Default {
 		
 		-SOLID;
@@ -1208,12 +1208,12 @@ CLASS "Sandbox-ZombieManEnemy" : ZombieMan { //replaces ZombieMan
 	}
 }
 // Common
-CLASS "Sandbox-FRIENDS" : Inventory { 
+class "Sandbox-FRIENDS" : Inventory { 
 	Default {
 		
-		+INVENTORY.ALWAYSPICKUP;
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
+		+Inventory.ALWAYSPICKUP;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
 		Inventory.Amount 99;
 		Inventory.MaxAmount 99;
 		Inventory.Icon "FRNDICON";
@@ -1225,18 +1225,18 @@ CLASS "Sandbox-FRIENDS" : Inventory {
 			Loop;
 	}
 }
-CLASS "Sandbox-FriendSpawnerModule" : CustomInventory { 
+class "Sandbox-FriendSpawnerModule" : CustomInventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
 		Inventory.Amount 64;
 		Inventory.MaxAmount 64;
 		Inventory.Icon "DOOMZ0";
 	}
 }
 // Arachnotron
-CLASS "Sandbox-ArachnotronFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-ArachnotronFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "BSPIICON";
@@ -1254,7 +1254,7 @@ CLASS "Sandbox-ArachnotronFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArachnotronFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-ArachnotronFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1270,7 +1270,7 @@ CLASS "Sandbox-ArachnotronFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1284,7 +1284,7 @@ CLASS "Sandbox-ArachnotronFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArachnotronFriend" : Arachnotron { 
+class "Sandbox-ArachnotronFriend" : Arachnotron { 
 	Default {
 		
 		+FRIENDLY;
@@ -1292,7 +1292,7 @@ CLASS "Sandbox-ArachnotronFriend" : Arachnotron {
 	}
 }
 // Archvile
-CLASS "Sandbox-ArchvileFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-ArchvileFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "VILEICON";
@@ -1310,7 +1310,7 @@ CLASS "Sandbox-ArchvileFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArchvileFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-ArchvileFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1326,7 +1326,7 @@ CLASS "Sandbox-ArchvileFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1340,7 +1340,7 @@ CLASS "Sandbox-ArchvileFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ArchvileFriend" : Archvile { 
+class "Sandbox-ArchvileFriend" : Archvile { 
 	Default {
 		
 		+FRIENDLY;
@@ -1348,7 +1348,7 @@ CLASS "Sandbox-ArchvileFriend" : Archvile {
 	}
 }
 // BaronOfHell
-CLASS "Sandbox-BaronOfHellFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-BaronOfHellFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "BOSSICON";
@@ -1366,7 +1366,7 @@ CLASS "Sandbox-BaronOfHellFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-BaronOfHellFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-BaronOfHellFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1382,7 +1382,7 @@ CLASS "Sandbox-BaronOfHellFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1396,7 +1396,7 @@ CLASS "Sandbox-BaronOfHellFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-BaronOfHellFriend" : BaronOfHell { 
+class "Sandbox-BaronOfHellFriend" : BaronOfHell { 
 	Default {
 		
 		+FRIENDLY;
@@ -1404,7 +1404,7 @@ CLASS "Sandbox-BaronOfHellFriend" : BaronOfHell {
 	}
 }
 // HellKnight
-CLASS "Sandbox-HellKnightFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-HellKnightFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "BOS2ICON";
@@ -1422,7 +1422,7 @@ CLASS "Sandbox-HellKnightFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-HellKnightFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-HellKnightFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1438,7 +1438,7 @@ CLASS "Sandbox-HellKnightFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1452,7 +1452,7 @@ CLASS "Sandbox-HellKnightFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-HellKnightFriend" : HellKnight { 
+class "Sandbox-HellKnightFriend" : HellKnight { 
 	Default {
 		
 		+FRIENDLY;
@@ -1460,7 +1460,7 @@ CLASS "Sandbox-HellKnightFriend" : HellKnight {
 	}
 }
 // Cacodemon
-CLASS "Sandbox-CacodemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-CacodemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "HEADICON";
@@ -1478,7 +1478,7 @@ CLASS "Sandbox-CacodemonFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-CacodemonFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-CacodemonFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1494,7 +1494,7 @@ CLASS "Sandbox-CacodemonFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1508,7 +1508,7 @@ CLASS "Sandbox-CacodemonFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-CacodemonFriend" : Cacodemon { 
+class "Sandbox-CacodemonFriend" : Cacodemon { 
 	Default {
 		
 		+FRIENDLY;
@@ -1516,7 +1516,7 @@ CLASS "Sandbox-CacodemonFriend" : Cacodemon {
 	}
 }
 // Cyberdemon
-CLASS "Sandbox-CyberdemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-CyberdemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "CYBRICON";
@@ -1534,7 +1534,7 @@ CLASS "Sandbox-CyberdemonFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-CyberdemonFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-CyberdemonFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1550,7 +1550,7 @@ CLASS "Sandbox-CyberdemonFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1564,7 +1564,7 @@ CLASS "Sandbox-CyberdemonFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-CyberdemonFriend" : Cyberdemon { 
+class "Sandbox-CyberdemonFriend" : Cyberdemon { 
 	Default {
 		
 		+FRIENDLY;
@@ -1572,7 +1572,7 @@ CLASS "Sandbox-CyberdemonFriend" : Cyberdemon {
 	}
 }
 // Demon
-CLASS "Sandbox-DemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-DemonFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SARGICON";
@@ -1590,7 +1590,7 @@ CLASS "Sandbox-DemonFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-DemonFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-DemonFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1606,7 +1606,7 @@ CLASS "Sandbox-DemonFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1620,7 +1620,7 @@ CLASS "Sandbox-DemonFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-DemonFriend" : Demon { 
+class "Sandbox-DemonFriend" : Demon { 
 	Default {
 		
 		+FRIENDLY;
@@ -1628,7 +1628,7 @@ CLASS "Sandbox-DemonFriend" : Demon {
 	}
 }
 // Spectre
-CLASS "Sandbox-SpectreFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-SpectreFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SPCTICON";
@@ -1646,7 +1646,7 @@ CLASS "Sandbox-SpectreFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpectreFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-SpectreFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1662,7 +1662,7 @@ CLASS "Sandbox-SpectreFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1676,7 +1676,7 @@ CLASS "Sandbox-SpectreFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpectreFriend" : Spectre { 
+class "Sandbox-SpectreFriend" : Spectre { 
 	Default {
 		
 		+FRIENDLY;
@@ -1684,7 +1684,7 @@ CLASS "Sandbox-SpectreFriend" : Spectre {
 	}
 }
 // ChaingunGuy
-CLASS "Sandbox-ChaingunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-ChaingunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "CPOSICON";
@@ -1702,7 +1702,7 @@ CLASS "Sandbox-ChaingunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ChaingunGuyFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-ChaingunGuyFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1718,7 +1718,7 @@ CLASS "Sandbox-ChaingunGuyFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1732,7 +1732,7 @@ CLASS "Sandbox-ChaingunGuyFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ChaingunGuyFriend" : ChaingunGuy { 
+class "Sandbox-ChaingunGuyFriend" : ChaingunGuy { 
 	Default {
 		
 		+FRIENDLY;
@@ -1740,7 +1740,7 @@ CLASS "Sandbox-ChaingunGuyFriend" : ChaingunGuy {
 	}
 }
 // DoomImp
-CLASS "Sandbox-DoomImpFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-DoomImpFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "TROOICON";
@@ -1758,7 +1758,7 @@ CLASS "Sandbox-DoomImpFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-DoomImpFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-DoomImpFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1774,7 +1774,7 @@ CLASS "Sandbox-DoomImpFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1788,7 +1788,7 @@ CLASS "Sandbox-DoomImpFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-DoomImpFriend" : DoomImp { 
+class "Sandbox-DoomImpFriend" : DoomImp { 
 	Default {
 		
 		+FRIENDLY;
@@ -1796,7 +1796,7 @@ CLASS "Sandbox-DoomImpFriend" : DoomImp {
 	}
 }
 // Fatso
-CLASS "Sandbox-FatsoFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-FatsoFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "FATTICON";
@@ -1814,7 +1814,7 @@ CLASS "Sandbox-FatsoFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-FatsoFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-FatsoFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1830,7 +1830,7 @@ CLASS "Sandbox-FatsoFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1844,7 +1844,7 @@ CLASS "Sandbox-FatsoFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-FatsoFriend" : Fatso { 
+class "Sandbox-FatsoFriend" : Fatso { 
 	Default {
 		
 		+FRIENDLY;
@@ -1852,7 +1852,7 @@ CLASS "Sandbox-FatsoFriend" : Fatso {
 	}
 }
 // LostSoul
-CLASS "Sandbox-LostSoulFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-LostSoulFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SKULICON";
@@ -1870,7 +1870,7 @@ CLASS "Sandbox-LostSoulFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-LostSoulFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-LostSoulFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1886,7 +1886,7 @@ CLASS "Sandbox-LostSoulFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1900,7 +1900,7 @@ CLASS "Sandbox-LostSoulFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-LostSoulFriend" : LostSoul { 
+class "Sandbox-LostSoulFriend" : LostSoul { 
 	Default {
 		
 		+FRIENDLY;
@@ -1908,7 +1908,7 @@ CLASS "Sandbox-LostSoulFriend" : LostSoul {
 	}
 }
 // PainElemental
-CLASS "Sandbox-PainElementalFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-PainElementalFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "PAINICON";
@@ -1926,7 +1926,7 @@ CLASS "Sandbox-PainElementalFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-PainElementalFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-PainElementalFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1942,7 +1942,7 @@ CLASS "Sandbox-PainElementalFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -1956,7 +1956,7 @@ CLASS "Sandbox-PainElementalFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-PainElementalFriend" : PainElemental { 
+class "Sandbox-PainElementalFriend" : PainElemental { 
 	Default {
 		
 		+FRIENDLY;
@@ -1964,7 +1964,7 @@ CLASS "Sandbox-PainElementalFriend" : PainElemental {
 	}
 }
 // Revenant
-CLASS "Sandbox-RevenantFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-RevenantFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SKELICON";
@@ -1982,7 +1982,7 @@ CLASS "Sandbox-RevenantFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-RevenantFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-RevenantFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -1998,7 +1998,7 @@ CLASS "Sandbox-RevenantFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -2012,7 +2012,7 @@ CLASS "Sandbox-RevenantFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-RevenantFriend" : Revenant { 
+class "Sandbox-RevenantFriend" : Revenant { 
 	Default {
 		
 		+FRIENDLY;
@@ -2020,7 +2020,7 @@ CLASS "Sandbox-RevenantFriend" : Revenant {
 	}
 }
 // ShotgunGuy
-CLASS "Sandbox-ShotgunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-ShotgunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SPOSICON";
@@ -2038,7 +2038,7 @@ CLASS "Sandbox-ShotgunGuyFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ShotgunGuyFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-ShotgunGuyFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -2054,7 +2054,7 @@ CLASS "Sandbox-ShotgunGuyFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -2068,7 +2068,7 @@ CLASS "Sandbox-ShotgunGuyFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ShotgunGuyFriend" : ShotgunGuy { 
+class "Sandbox-ShotgunGuyFriend" : ShotgunGuy { 
 	Default {
 		
 		+FRIENDLY;
@@ -2076,7 +2076,7 @@ CLASS "Sandbox-ShotgunGuyFriend" : ShotgunGuy {
 	}
 }
 // SpiderMastermind
-CLASS "Sandbox-SpiderMastermindFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-SpiderMastermindFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SPIDICON";
@@ -2094,7 +2094,7 @@ CLASS "Sandbox-SpiderMastermindFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpiderMastermindFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-SpiderMastermindFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -2110,7 +2110,7 @@ CLASS "Sandbox-SpiderMastermindFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -2124,7 +2124,7 @@ CLASS "Sandbox-SpiderMastermindFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-SpiderMastermindFriend" : SpiderMastermind { 
+class "Sandbox-SpiderMastermindFriend" : SpiderMastermind { 
 	Default {
 		
 		+FRIENDLY;
@@ -2132,7 +2132,7 @@ CLASS "Sandbox-SpiderMastermindFriend" : SpiderMastermind {
 	}
 }
 // WolfensteinSS
-CLASS "Sandbox-WolfensteinSSFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-WolfensteinSSFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "SSWVICON";
@@ -2150,7 +2150,7 @@ CLASS "Sandbox-WolfensteinSSFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-WolfensteinSSFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-WolfensteinSSFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -2166,7 +2166,7 @@ CLASS "Sandbox-WolfensteinSSFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -2180,7 +2180,7 @@ CLASS "Sandbox-WolfensteinSSFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-WolfensteinSSFriend" : WolfensteinSS { 
+class "Sandbox-WolfensteinSSFriend" : WolfensteinSS { 
 	Default {
 		
 		+FRIENDLY;
@@ -2188,7 +2188,7 @@ CLASS "Sandbox-WolfensteinSSFriend" : WolfensteinSS {
 	}
 }
 // ZombieMan
-CLASS "Sandbox-ZombieManFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
+class "Sandbox-ZombieManFriendSpawner" : "Sandbox-FriendSpawnerModule" { 
 	Default {
 		
 		Inventory.Icon "POSSICON";
@@ -2206,7 +2206,7 @@ CLASS "Sandbox-ZombieManFriendSpawner" : "Sandbox-FriendSpawnerModule" {
 			Stop;
 	}
 }
-CLASS "Sandbox-ZombieManFriendSpawner.Projectile" : ACTOR { 
+class "Sandbox-ZombieManFriendSpawner.Projectile" : actor { 
 	Default {
 		
 		Radius 4;
@@ -2222,7 +2222,7 @@ CLASS "Sandbox-ZombieManFriendSpawner.Projectile" : ACTOR {
 		+DontFall;
 		+Missile;
 		+DOOMBOUNCE;
-		+BOUNCEONACTORS;
+		+BOUNCEONactorS;
 		DeathSound "misc/teleport";
 	}
 	States
@@ -2236,7 +2236,7 @@ CLASS "Sandbox-ZombieManFriendSpawner.Projectile" : ACTOR {
 			Stop;
 	}
 }
-CLASS "Sandbox-ZombieManFriend" : ZombieMan { 
+class "Sandbox-ZombieManFriend" : ZombieMan { 
 	Default {
 		
 		+FRIENDLY;
@@ -2244,12 +2244,12 @@ CLASS "Sandbox-ZombieManFriend" : ZombieMan {
 	}
 }
 // Common
-CLASS "Sandbox-KEYS" : Inventory { 
+class "Sandbox-KEYS" : Inventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.Amount 99;
 		Inventory.MaxAmount 99;
 		Inventory.Icon "KEYSICON";
@@ -2261,18 +2261,18 @@ CLASS "Sandbox-KEYS" : Inventory {
 			Loop;
 	}
 }
-CLASS "Sandbox-KeyGiverModule" : CustomInventory { 
+class "Sandbox-KeyGiverModule" : CustomInventory { 
 	Default {
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
 		Inventory.Amount 64;
 		Inventory.MaxAmount 64;
 		Inventory.Icon "DOOMZ0";
 	}
 }
 // Keys
-CLASS "Sandbox-BlueCardGiver" : "Sandbox-KeyGiverModule"  { 
+class "Sandbox-BlueCardGiver" : "Sandbox-KeyGiverModule"  { 
 	Default {
 		
 		Inventory.Icon "BKEYICON";
@@ -2287,7 +2287,7 @@ CLASS "Sandbox-BlueCardGiver" : "Sandbox-KeyGiverModule"  {
 			Stop;
 	}
 }
-CLASS "Sandbox-BlueSkullGiver" : "Sandbox-KeyGiverModule"  { 
+class "Sandbox-BlueSkullGiver" : "Sandbox-KeyGiverModule"  { 
 	Default {
 		
 		Inventory.Icon "BSKUICON";
@@ -2302,7 +2302,7 @@ CLASS "Sandbox-BlueSkullGiver" : "Sandbox-KeyGiverModule"  {
 			Stop;
 	}
 }
-CLASS "Sandbox-RedCardGiver" : "Sandbox-KeyGiverModule"  { 
+class "Sandbox-RedCardGiver" : "Sandbox-KeyGiverModule"  { 
 	Default {
 		
 		Inventory.Icon "RKEYICON";
@@ -2317,7 +2317,7 @@ CLASS "Sandbox-RedCardGiver" : "Sandbox-KeyGiverModule"  {
 			Stop;
 	}
 }
-CLASS "Sandbox-RedSkullGiver" : "Sandbox-KeyGiverModule"  { 
+class "Sandbox-RedSkullGiver" : "Sandbox-KeyGiverModule"  { 
 	Default {
 		
 		Inventory.Icon "RSKUICON";
@@ -2332,7 +2332,7 @@ CLASS "Sandbox-RedSkullGiver" : "Sandbox-KeyGiverModule"  {
 			Stop;
 	}
 }
-CLASS "Sandbox-YellowCardGiver" : "Sandbox-KeyGiverModule"  { 
+class "Sandbox-YellowCardGiver" : "Sandbox-KeyGiverModule"  { 
 	Default {
 		
 		Inventory.Icon "YKEYICON";
@@ -2347,7 +2347,7 @@ CLASS "Sandbox-YellowCardGiver" : "Sandbox-KeyGiverModule"  {
 			Stop;
 	}
 }
-CLASS "Sandbox-YellowSkullGiver" : "Sandbox-KeyGiverModule"  { 
+class "Sandbox-YellowSkullGiver" : "Sandbox-KeyGiverModule"  { 
 	Default {
 		
 		Inventory.Icon "YSKUICON";
@@ -2370,8 +2370,8 @@ const int scrGGunPuntRecoil = 1;
 const int scrGGunPunt = 2;
 const int scrGGunGrab = 3;
 const int scrRefire = 4;
-// Actors
-CLASS HeldByGGun : Inventory { 
+// actors
+class HeldByGGun : Inventory { 
 	Default {
 		
 		Inventory.MaxAmount 1;
@@ -2379,7 +2379,7 @@ CLASS HeldByGGun : Inventory {
 		+IGNORESKILL;
 	}
 }
-CLASS GGunIsGrabbing : Inventory { 
+class GGunIsGrabbing : Inventory { 
 	Default {
 		
 		Inventory.MaxAmount 1;
@@ -2387,7 +2387,7 @@ CLASS GGunIsGrabbing : Inventory {
 		+IGNORESKILL;
 	}
 }
-CLASS NoGGunPickup : Inventory { 
+class NoGGunPickup : Inventory { 
 	Default {
 		
 		Inventory.MaxAmount 1;
@@ -2395,62 +2395,14 @@ CLASS NoGGunPickup : Inventory {
 		+IGNORESKILL;
 	}
 }
-/*
-ACTOR SandBoxMatterManipulator : Fist
-{
-	States
-	{
-	Spawn:
-		GRAV A -1
-		Stop
-	Deselect:
-		GGUN A 1 A_Lower
-		Loop
-	Select:
-		GGUN A 1 A_Raise
-		Loop
-	Ready:
-		GGUN A 1 A_WeaponReady
-		Loop
-	AltFire:
-		GGUN BCD 2 A_JumpIfTargetInLOS("Grab", 1, 0)
-		TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(scrRefire), "AltHold")
-		Goto UnAltFire
-	AltHold:
-		GGUN D 1 A_JumpIfTargetInLOS("Grab", 1, 0)
-		TNT1 A 0 A_JumpIf(1 == ACS_ExecuteWithResult(scrRefire), "AltHold")
-		Goto UnAltFire
-	UnAltFire:
-		TNT1 A 0 A_StopSound(CHAN_WEAPON)
-		GGUN DCB 2
-		Goto Ready
-	Fire:
-		TNT1 A 0 A_JumpIfTargetInLOS("Punt", 1, 0)
-		Goto Ready
-	Punt:
-		GGUN A 18 ACS_ExecuteAlways(scrGGunPunt, 0)
-		Goto Ready
-	Grab:
-		TNT1 A 0 A_PlaySound("ggun/holdloop", CHAN_WEAPON, 1.0, 1)
-		TNT1 A 0 A_GiveInventory("GGunIsGrabbing", 1)
-		TNT1 A 0 ACS_ExecuteAlways(scrGGunGrab, 0)
-		Goto GrabHold+1
-	GrabHold:
-		GGUN D 1 A_JumpIfInventory("GGunIsGrabbing", 1, 1)
-		Goto UnAltFire
-		GGUN D 1
-		Loop
-	}
-}
-*/
-CLASS SandBoxMatterManipulator : Fist {} { 
+class SandBoxMatterManipulator : Fist { 
 	Default {
 	// Common
-	Actor "Sandbox-POWERUPS" : Inventory
+	actor "Sandbox-POWERUPS" : Inventory
 		
-		+INVENTORY.INVBAR;
-		+INVENTORY.PICKUPFLASH;
-		+INVENTORY.ALWAYSPICKUP;
+		+Inventory.INVBAR;
+		+Inventory.PICKUPFLASH;
+		+Inventory.ALWAYSPICKUP;
 		Inventory.Amount 99;
 		Inventory.MaxAmount 99;
 		Inventory.Icon "POWRICON";
@@ -2462,18 +2414,18 @@ CLASS SandBoxMatterManipulator : Fist {} {
 		Loop;
 }
 }
-CLASS "Sandbox-PowerupGiverModule" : CustomInventory { 
+class "Sandbox-PowerupGiverModule" : CustomInventory { 
 	Default {
 	
-	+INVENTORY.INVBAR;
-	+INVENTORY.PICKUPFLASH;
+	+Inventory.INVBAR;
+	+Inventory.PICKUPFLASH;
 	Inventory.Amount 64;
 	Inventory.MaxAmount 64;
 	Inventory.Icon "DOOMZ0";
 	}
 }
 // Powerups
-CLASS "Sandbox-AllmapGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-AllmapGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "PMAPICON";
@@ -2488,7 +2440,7 @@ CLASS "Sandbox-AllmapGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-BerserkGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-BerserkGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "PSTRICON";
@@ -2503,7 +2455,7 @@ CLASS "Sandbox-BerserkGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-BlueArmorGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-BlueArmorGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "ARM2ICON";
@@ -2518,7 +2470,7 @@ CLASS "Sandbox-BlueArmorGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-BlurSphereGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-BlurSphereGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "PINSICON";
@@ -2533,7 +2485,7 @@ CLASS "Sandbox-BlurSphereGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-GreenArmorGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-GreenArmorGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "ARM1ICON";
@@ -2548,7 +2500,7 @@ CLASS "Sandbox-GreenArmorGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-HealthBonusGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-HealthBonusGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "BON1ICON";
@@ -2563,7 +2515,7 @@ CLASS "Sandbox-HealthBonusGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-InfraredGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-InfraredGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "PVISICON";
@@ -2578,7 +2530,7 @@ CLASS "Sandbox-InfraredGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-InvulnerabilitySphereGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-InvulnerabilitySphereGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "PINVICON";
@@ -2593,7 +2545,7 @@ CLASS "Sandbox-InvulnerabilitySphereGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-MedikitGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-MedikitGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "MEDIICON";
@@ -2608,7 +2560,7 @@ CLASS "Sandbox-MedikitGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-MegasphereGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-MegasphereGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "MEGAICON";
@@ -2623,7 +2575,7 @@ CLASS "Sandbox-MegasphereGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-RadSuitGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-RadSuitGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "SUITICON";
@@ -2638,7 +2590,7 @@ CLASS "Sandbox-RadSuitGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-SoulsphereGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-SoulsphereGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "SOULICON";
@@ -2653,7 +2605,7 @@ CLASS "Sandbox-SoulsphereGiver" : "Sandbox-PowerupGiverModule" {
 		Stop;
 }
 }
-CLASS "Sandbox-StimpackGiver" : "Sandbox-PowerupGiverModule" { 
+class "Sandbox-StimpackGiver" : "Sandbox-PowerupGiverModule" { 
 	Default {
 	
 	Inventory.Icon "STIMICON";
@@ -2669,12 +2621,12 @@ CLASS "Sandbox-StimpackGiver" : "Sandbox-PowerupGiverModule" {
 }
 }
 // Common
-CLASS "Sandbox-PROPS" : Inventory { 
+class "Sandbox-PROPS" : Inventory { 
 	Default {
 	
-	+INVENTORY.ALWAYSPICKUP;
-	+INVENTORY.INVBAR;
-	+INVENTORY.PICKUPFLASH;
+	+Inventory.ALWAYSPICKUP;
+	+Inventory.INVBAR;
+	+Inventory.PICKUPFLASH;
 	Inventory.Amount 99;
 	Inventory.MaxAmount 99;
 	Inventory.Icon "PROPICON";
@@ -2686,18 +2638,18 @@ CLASS "Sandbox-PROPS" : Inventory {
 		Loop;
 }
 }
-CLASS "Sandbox-PropSpawnerModule" : CustomInventory { 
+class "Sandbox-PropSpawnerModule" : CustomInventory { 
 	Default {
 	
-	+INVENTORY.INVBAR;
-	+INVENTORY.PICKUPFLASH;
+	+Inventory.INVBAR;
+	+Inventory.PICKUPFLASH;
 	Inventory.Amount 64;
 	Inventory.MaxAmount 64;
 	Inventory.Icon "DOOMZ0";
 	}
 }
 // Column
-CLASS "Sandbox-ColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COLUICON";
@@ -2712,14 +2664,14 @@ CLASS "Sandbox-ColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Column" : Column replaces Column { 
+class "Sandbox-Column" : Column replaces Column { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // BurningBarrel
-CLASS "Sandbox-BurningBarrelSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-BurningBarrelSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "FCANICON";
@@ -2734,14 +2686,14 @@ CLASS "Sandbox-BurningBarrelSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-BurningBarrel" : BurningBarrel replaces BurningBarrel { 
+class "Sandbox-BurningBarrel" : BurningBarrel replaces BurningBarrel { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ExplosiveBarrel
-CLASS "Sandbox-ExplosiveBarrelSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ExplosiveBarrelSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "BAR1ICON";
@@ -2756,14 +2708,14 @@ CLASS "Sandbox-ExplosiveBarrelSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ExplosiveBarrel" : ExplosiveBarrel replaces ExplosiveBarrel { 
+class "Sandbox-ExplosiveBarrel" : ExplosiveBarrel replaces ExplosiveBarrel { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // TechLamp
-CLASS "Sandbox-TechLampSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-TechLampSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TLMPICON";
@@ -2778,14 +2730,14 @@ CLASS "Sandbox-TechLampSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-TechLamp" : TechLamp replaces TechLamp { 
+class "Sandbox-TechLamp" : TechLamp replaces TechLamp { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Column
-CLASS "Sandbox-TechLamp2Spawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-TechLamp2Spawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TLP2ICON";
@@ -2800,14 +2752,14 @@ CLASS "Sandbox-TechLamp2Spawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-TechLamp2" : TechLamp2 replaces TechLamp2 { 
+class "Sandbox-TechLamp2" : TechLamp2 replaces TechLamp2 { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // TechPillar
-CLASS "Sandbox-TechPillarSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-TechPillarSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "ELECICON";
@@ -2822,14 +2774,14 @@ CLASS "Sandbox-TechPillarSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-TechPillar" : TechPillar replaces TechPillar { 
+class "Sandbox-TechPillar" : TechPillar replaces TechPillar { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // BigTree
-CLASS "Sandbox-BigTreeSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-BigTreeSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TRE2ICON";
@@ -2844,14 +2796,14 @@ CLASS "Sandbox-BigTreeSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-BigTree" : BigTree replaces BigTree { 
+class "Sandbox-BigTree" : BigTree replaces BigTree { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // BlueTorch
-CLASS "Sandbox-BlueTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-BlueTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TBLUICON";
@@ -2866,14 +2818,14 @@ CLASS "Sandbox-BlueTorchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-BlueTorch" : BlueTorch replaces BlueTorch { 
+class "Sandbox-BlueTorch" : BlueTorch replaces BlueTorch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Candelabra
-CLASS "Sandbox-CandelabraSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-CandelabraSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "CBRAICON";
@@ -2888,14 +2840,14 @@ CLASS "Sandbox-CandelabraSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Candelabra" : Candelabra replaces Candelabra { 
+class "Sandbox-Candelabra" : Candelabra replaces Candelabra { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Candlestick
-CLASS "Sandbox-CandlestickSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-CandlestickSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "CANDICON";
@@ -2910,14 +2862,14 @@ CLASS "Sandbox-CandlestickSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Candlestick" : Candlestick replaces Candlestick { 
+class "Sandbox-Candlestick" : Candlestick replaces Candlestick { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // EvilEye
-CLASS "Sandbox-EvilEyeSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-EvilEyeSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "CEYEICON";
@@ -2932,14 +2884,14 @@ CLASS "Sandbox-EvilEyeSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-EvilEye" : EvilEye replaces EvilEye { 
+class "Sandbox-EvilEye" : EvilEye replaces EvilEye { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // FloatingSkull
-CLASS "Sandbox-FloatingSkullSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-FloatingSkullSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "FSKUICON";
@@ -2954,14 +2906,14 @@ CLASS "Sandbox-FloatingSkullSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-FloatingSkull" : FloatingSkull replaces FloatingSkull { 
+class "Sandbox-FloatingSkull" : FloatingSkull replaces FloatingSkull { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // GreenTorch
-CLASS "Sandbox-GreenTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-GreenTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TGRNICON";
@@ -2976,14 +2928,14 @@ CLASS "Sandbox-GreenTorchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-GreenTorch" : GreenTorch replaces GreenTorch { 
+class "Sandbox-GreenTorch" : GreenTorch replaces GreenTorch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HeadCandles
-CLASS "Sandbox-HeadCandlesSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HeadCandlesSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POL3ICON";
@@ -2998,14 +2950,14 @@ CLASS "Sandbox-HeadCandlesSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HeadCandles" : HeadCandles replaces HeadCandles { 
+class "Sandbox-HeadCandles" : HeadCandles replaces HeadCandles { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HeadOnAStick
-CLASS "Sandbox-HeadOnAStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HeadOnAStickSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POL4ICON";
@@ -3020,14 +2972,14 @@ CLASS "Sandbox-HeadOnAStickSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HeadOnAStick" : HeadOnAStick replaces HeadOnAStick { 
+class "Sandbox-HeadOnAStick" : HeadOnAStick replaces HeadOnAStick { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HeadsOnAStick
-CLASS "Sandbox-HeadsOnAStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HeadsOnAStickSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POL2ICON";
@@ -3042,14 +2994,14 @@ CLASS "Sandbox-HeadsOnAStickSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HeadsOnAStick" : HeadsOnAStick replaces HeadsOnAStick { 
+class "Sandbox-HeadsOnAStick" : HeadsOnAStick replaces HeadsOnAStick { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HeartColumn
-CLASS "Sandbox-HeartColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HeartColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COL5ICON";
@@ -3064,14 +3016,14 @@ CLASS "Sandbox-HeartColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HeartColumn" : HeartColumn replaces HeartColumn { 
+class "Sandbox-HeartColumn" : HeartColumn replaces HeartColumn { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // RedTorch
-CLASS "Sandbox-RedTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-RedTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TREDICON";
@@ -3086,14 +3038,14 @@ CLASS "Sandbox-RedTorchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-RedTorch" : RedTorch replaces RedTorch { 
+class "Sandbox-RedTorch" : RedTorch replaces RedTorch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ShortBlueTorch
-CLASS "Sandbox-ShortBlueTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ShortBlueTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "SMBTICON";
@@ -3108,14 +3060,14 @@ CLASS "Sandbox-ShortBlueTorchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ShortBlueTorch" : ShortBlueTorch replaces ShortBlueTorch { 
+class "Sandbox-ShortBlueTorch" : ShortBlueTorch replaces ShortBlueTorch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ShortGreenColumn
-CLASS "Sandbox-ShortGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ShortGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COL2ICON";
@@ -3130,14 +3082,14 @@ CLASS "Sandbox-ShortGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ShortGreenColumn" : ShortGreenColumn replaces ShortGreenColumn { 
+class "Sandbox-ShortGreenColumn" : ShortGreenColumn replaces ShortGreenColumn { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ShortGreenTorch
-CLASS "Sandbox-ShortGreenTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ShortGreenTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "SMGTICON";
@@ -3152,14 +3104,14 @@ CLASS "Sandbox-ShortGreenTorchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ShortGreenTorch" : ShortGreenTorch replaces ShortGreenTorch { 
+class "Sandbox-ShortGreenTorch" : ShortGreenTorch replaces ShortGreenTorch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ShortRedColumn
-CLASS "Sandbox-ShortRedColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ShortRedColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COL4ICON";
@@ -3174,14 +3126,14 @@ CLASS "Sandbox-ShortRedColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ShortRedColumn" : ShortRedColumn replaces ShortRedColumn { 
+class "Sandbox-ShortRedColumn" : ShortRedColumn replaces ShortRedColumn { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ShortRedTorch
-CLASS "Sandbox-ShortRedTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ShortRedTorchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "SMRTICON";
@@ -3196,14 +3148,14 @@ CLASS "Sandbox-ShortRedTorchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ShortRedTorch" : ShortRedTorch replaces ShortRedTorch { 
+class "Sandbox-ShortRedTorch" : ShortRedTorch replaces ShortRedTorch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // SkullColumn
-CLASS "Sandbox-SkullColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-SkullColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COL6ICON";
@@ -3218,14 +3170,14 @@ CLASS "Sandbox-SkullColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-SkullColumn" : SkullColumn replaces SkullColumn { 
+class "Sandbox-SkullColumn" : SkullColumn replaces SkullColumn { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Stalagtite
-CLASS "Sandbox-StalagtiteSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-StalagtiteSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "SMITICON";
@@ -3240,14 +3192,14 @@ CLASS "Sandbox-StalagtiteSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Stalagtite" : Stalagtite replaces Stalagtite { 
+class "Sandbox-Stalagtite" : Stalagtite replaces Stalagtite { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // TallGreenColumn
-CLASS "Sandbox-TallGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-TallGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COL1ICON";
@@ -3262,14 +3214,14 @@ CLASS "Sandbox-TallGreenColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-TallGreenColumn" : TallGreenColumn replaces TallGreenColumn { 
+class "Sandbox-TallGreenColumn" : TallGreenColumn replaces TallGreenColumn { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // TallRedColumn
-CLASS "Sandbox-TallRedColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-TallRedColumnSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "COL3ICON";
@@ -3284,14 +3236,14 @@ CLASS "Sandbox-TallRedColumnSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-TallRedColumn" : TallRedColumn replaces TallRedColumn { 
+class "Sandbox-TallRedColumn" : TallRedColumn replaces TallRedColumn { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // TorchTree
-CLASS "Sandbox-TorchTreeSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-TorchTreeSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "TRE1ICON";
@@ -3306,14 +3258,14 @@ CLASS "Sandbox-TorchTreeSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-TorchTree" : TorchTree replaces TorchTree { 
+class "Sandbox-TorchTree" : TorchTree replaces TorchTree { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadCacodemon
-CLASS "Sandbox-DeadCacodemonSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadCacodemonSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "CACOICON";// !!!
@@ -3328,14 +3280,14 @@ CLASS "Sandbox-DeadCacodemonSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadCacodemon" : DeadCacodemon replaces DeadCacodemon { 
+class "Sandbox-DeadCacodemon" : DeadCacodemon replaces DeadCacodemon { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadDemon
-CLASS "Sandbox-DeadDemonSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadDemonSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "DEMNICON";// !!!
@@ -3350,14 +3302,14 @@ CLASS "Sandbox-DeadDemonSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadDemon" : DeadDemon replaces DeadDemon { 
+class "Sandbox-DeadDemon" : DeadDemon replaces DeadDemon { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadDoomImp
-CLASS "Sandbox-DeadDoomImpSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadDoomImpSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "DIMPICON";// !!!
@@ -3372,14 +3324,14 @@ CLASS "Sandbox-DeadDoomImpSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadDoomImp" : DeadDoomImp replaces DeadDoomImp { 
+class "Sandbox-DeadDoomImp" : DeadDoomImp replaces DeadDoomImp { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadMarine
-CLASS "Sandbox-DeadMarineSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadMarineSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "MARNICON";// !!!
@@ -3394,14 +3346,14 @@ CLASS "Sandbox-DeadMarineSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadMarine" : DeadMarine replaces DeadMarine { 
+class "Sandbox-DeadMarine" : DeadMarine replaces DeadMarine { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadShotgunGuy
-CLASS "Sandbox-DeadShotgunGuySpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadShotgunGuySpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "SHGGICON";// !!!
@@ -3416,14 +3368,14 @@ CLASS "Sandbox-DeadShotgunGuySpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadShotgunGuy" : DeadShotgunGuy replaces DeadShotgunGuy { 
+class "Sandbox-DeadShotgunGuy" : DeadShotgunGuy replaces DeadShotgunGuy { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadZombieMan
-CLASS "Sandbox-DeadZombieManSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadZombieManSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "ZMBMICON";// !!!
@@ -3438,14 +3390,14 @@ CLASS "Sandbox-DeadZombieManSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadZombieMan" : DeadZombieMan replaces DeadZombieMan { 
+class "Sandbox-DeadZombieMan" : DeadZombieMan replaces DeadZombieMan { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // GibbedMarine
-CLASS "Sandbox-GibbedMarineSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-GibbedMarineSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "GBMRICON";// !!!
@@ -3460,14 +3412,14 @@ CLASS "Sandbox-GibbedMarineSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-GibbedMarine" : GibbedMarine replaces GibbedMarine { 
+class "Sandbox-GibbedMarine" : GibbedMarine replaces GibbedMarine { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // BloodyTwitch
-CLASS "Sandbox-BloodyTwitchSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-BloodyTwitchSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "GOR1ICON";
@@ -3482,14 +3434,14 @@ CLASS "Sandbox-BloodyTwitchSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-BloodyTwitch" : BloodyTwitch replaces BloodyTwitch { 
+class "Sandbox-BloodyTwitch" : BloodyTwitch replaces BloodyTwitch { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // BrainStem
-CLASS "Sandbox-BrainStemSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-BrainStemSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "BRS1ICON";
@@ -3504,14 +3456,14 @@ CLASS "Sandbox-BrainStemSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-BrainStem" : BrainStem replaces BrainStem { 
+class "Sandbox-BrainStem" : BrainStem replaces BrainStem { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // ColonGibs
-CLASS "Sandbox-ColonGibsSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-ColonGibsSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POB1ICON";
@@ -3526,14 +3478,14 @@ CLASS "Sandbox-ColonGibsSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-ColonGibs" : ColonGibs replaces ColonGibs { 
+class "Sandbox-ColonGibs" : ColonGibs replaces ColonGibs { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // DeadStick
-CLASS "Sandbox-DeadStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-DeadStickSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POL1ICON";
@@ -3548,14 +3500,14 @@ CLASS "Sandbox-DeadStickSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-DeadStick" : DeadStick replaces DeadStick { 
+class "Sandbox-DeadStick" : DeadStick replaces DeadStick { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HangBNoBrain
-CLASS "Sandbox-HangBNoBrainSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HangBNoBrainSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "HDB2ICON";
@@ -3570,14 +3522,14 @@ CLASS "Sandbox-HangBNoBrainSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HangBNoBrain" : HangBNoBrain replaces HangBNoBrain { 
+class "Sandbox-HangBNoBrain" : HangBNoBrain replaces HangBNoBrain { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HangNoGuts
-CLASS "Sandbox-HangNoGutsSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HangNoGutsSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "HDB1ICON";
@@ -3592,14 +3544,14 @@ CLASS "Sandbox-HangNoGutsSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HangNoGuts" : HangNoGuts replaces HangNoGuts { 
+class "Sandbox-HangNoGuts" : HangNoGuts replaces HangNoGuts { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HangTLookingDown
-CLASS "Sandbox-HangTLookingDownSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HangTLookingDownSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "HDB3ICON";
@@ -3614,14 +3566,14 @@ CLASS "Sandbox-HangTLookingDownSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HangTLookingDown" : HangTLookingDown replaces HangTLookingDown { 
+class "Sandbox-HangTLookingDown" : HangTLookingDown replaces HangTLookingDown { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HangTLookingUp
-CLASS "Sandbox-HangTLookingUpSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HangTLookingUpSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "HDB5ICON";
@@ -3636,14 +3588,14 @@ CLASS "Sandbox-HangTLookingUpSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HangTLookingUp" : HangTLookingUp replaces HangTLookingUp { 
+class "Sandbox-HangTLookingUp" : HangTLookingUp replaces HangTLookingUp { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HangTNoBrain
-CLASS "Sandbox-HangTNoBrainSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HangTNoBrainSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "HDB6ICON";
@@ -3658,14 +3610,14 @@ CLASS "Sandbox-HangTNoBrainSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HangTNoBrain" : HangTNoBrain replaces HangTNoBrain { 
+class "Sandbox-HangTNoBrain" : HangTNoBrain replaces HangTNoBrain { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // HangTSkull
-CLASS "Sandbox-HangTSkullSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-HangTSkullSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "HDB4ICON";
@@ -3680,14 +3632,14 @@ CLASS "Sandbox-HangTSkullSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-HangTSkull" : HangTSkull replaces HangTSkull { 
+class "Sandbox-HangTSkull" : HangTSkull replaces HangTSkull { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // LiveStick
-CLASS "Sandbox-LiveStickSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-LiveStickSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POL6ICON";
@@ -3702,14 +3654,14 @@ CLASS "Sandbox-LiveStickSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-LiveStick" : LiveStick replaces LiveStick { 
+class "Sandbox-LiveStick" : LiveStick replaces LiveStick { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Meat2
-CLASS "Sandbox-Meat2Spawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-Meat2Spawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "GOR2ICON";
@@ -3724,14 +3676,14 @@ CLASS "Sandbox-Meat2Spawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Meat2" : Meat2 replaces Meat2 { 
+class "Sandbox-Meat2" : Meat2 replaces Meat2 { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Meat3
-CLASS "Sandbox-Meat3Spawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-Meat3Spawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "GOR3ICON";
@@ -3746,14 +3698,14 @@ CLASS "Sandbox-Meat3Spawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Meat3" : Meat3 replaces Meat3 { 
+class "Sandbox-Meat3" : Meat3 replaces Meat3 { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Meat4
-CLASS "Sandbox-Meat4Spawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-Meat4Spawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "GOR4ICON";
@@ -3768,14 +3720,14 @@ CLASS "Sandbox-Meat4Spawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Meat4" : Meat4 replaces Meat4 { 
+class "Sandbox-Meat4" : Meat4 replaces Meat4 { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // Meat5
-CLASS "Sandbox-Meat5Spawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-Meat5Spawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "GOR5ICON";
@@ -3790,14 +3742,14 @@ CLASS "Sandbox-Meat5Spawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-Meat5" : Meat5 replaces Meat5 { 
+class "Sandbox-Meat5" : Meat5 replaces Meat5 { 
 	Default {
 	
 	-SOLID;
 	}
 }
 // SmallBloodPool
-CLASS "Sandbox-SmallBloodPoolSpawner" : "Sandbox-PropSpawnerModule"  { 
+class "Sandbox-SmallBloodPoolSpawner" : "Sandbox-PropSpawnerModule"  { 
 	Default {
 	
 	Inventory.Icon "POB2ICON";
@@ -3812,7 +3764,7 @@ CLASS "Sandbox-SmallBloodPoolSpawner" : "Sandbox-PropSpawnerModule"  {
 		Stop;
 }
 }
-CLASS "Sandbox-SmallBloodPool" : SmallBloodPool replaces SmallBloodPool { 
+class "Sandbox-SmallBloodPool" : SmallBloodPool replaces SmallBloodPool { 
 	Default {
 	
 	-SOLID;

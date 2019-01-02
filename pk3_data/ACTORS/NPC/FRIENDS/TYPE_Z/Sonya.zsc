@@ -1,4 +1,4 @@
-CLASS WWTSonyaHostage : ACTOR { 
+class WWTSonyaHostage : actor { 
 	Default {
 		
 		MONSTER;
@@ -52,7 +52,7 @@ CLASS WWTSonyaHostage : ACTOR {
 	}
 }
 
-CLASS WWTSonyaHostage_F : WWTSonyaHostage 22103 { 
+class WWTSonyaHostage_F : WWTSonyaHostage 22103 { 
 	Default {
 		
 		+FRIENDLY;

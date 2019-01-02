@@ -1,14 +1,13 @@
-CLASS MrFalconReload : Inventory { 
+class MrFalconReload : Inventory { 
 	Default {
 		
 		Inventory.MaxAmount 6;
 	}
 }
 
-CLASS MrFalcon : ACTOR { 
+class MrFalcon : actor { 
 	Default {
 		
-		//SpawnID 7
 		YScale 0.35;
 		XScale 0.4;
 		Radius 20;
@@ -68,26 +67,26 @@ CLASS MrFalcon : ACTOR {
 			Goto See;
 		Reload:
 			LTHG F 0 A_PlaySound("Reloading/MrFalcon", CHAN_VOICE);
-			LTHG F 10 A_PlayWeaponSound("MGL/Open");
+			LTHG F 10 A_PlayweaponSound("MGL/Open");
 			LTHG G 0 A_TakeInventory("MrFalconReload",1);
-			LTHG G 7 A_PlayWeaponSound("MGL/Load");
+			LTHG G 7 A_PlayweaponSound("MGL/Load");
 			LTHG F 5;
 			LTHG G 0 A_TakeInventory("MrFalconReload",1);
-			LTHG G 7 A_PlayWeaponSound("MGL/Load");
+			LTHG G 7 A_PlayweaponSound("MGL/Load");
 			LTHG F 5;
 			LTHG G 0 A_TakeInventory("MrFalconReload",1);
-			LTHG G 7 A_PlayWeaponSound("MGL/Load");
+			LTHG G 7 A_PlayweaponSound("MGL/Load");
 			LTHG F 5;
 			LTHG G 0 A_TakeInventory("MrFalconReload",1);
-			LTHG G 7 A_PlayWeaponSound("MGL/Load");
+			LTHG G 7 A_PlayweaponSound("MGL/Load");
 			LTHG F 5;
 			LTHG G 0 A_TakeInventory("MrFalconReload",1);
-			LTHG G 7 A_PlayWeaponSound("MGL/Load");
+			LTHG G 7 A_PlayweaponSound("MGL/Load");
 			LTHG F 5;
 			LTHG G 0 A_TakeInventory("MrFalconReload",1);
-			LTHG G 7 A_PlayWeaponSound("MGL/Load");
+			LTHG G 7 A_PlayweaponSound("MGL/Load");
 			LTHG F 5;
-			LTHG A 5 A_PlayWeaponSound("MGL/Close");
+			LTHG A 5 A_PlayweaponSound("MGL/Close");
 			Goto See;
 		Pain.PlayerElectricGrenade:
 		Pain.PlayerTaser:
@@ -114,7 +113,7 @@ CLASS MrFalcon : ACTOR {
 	}
 }
 
-CLASS MrFalcon_F : MrFalcon 22210 { 
+class MrFalcon_F : MrFalcon 22210 { 
 	Default {
 		
 		+FRIENDLY;

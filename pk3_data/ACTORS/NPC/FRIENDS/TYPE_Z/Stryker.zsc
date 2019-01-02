@@ -1,4 +1,4 @@
-CLASS WWTStrykerHostage : ACTOR { 
+class WWTStrykerHostage : actor { 
 	Default {
 		
 		MONSTER;
@@ -52,7 +52,7 @@ CLASS WWTStrykerHostage : ACTOR {
 	}
 }
 
-CLASS WWTStrykerHostage_F : WWTStrykerHostage 22102 { 
+class WWTStrykerHostage_F : WWTStrykerHostage 22102 { 
 	Default {
 		
 		+FRIENDLY;

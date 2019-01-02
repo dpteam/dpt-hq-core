@@ -4,11 +4,11 @@
 //
 //=================================================================================================
 
-CLASS DeadCyberdemon : Cyberdemon 5070 { 
+class DeadCyberdemon : Cyberdemon 5070 { 
 	Default {
 		
 		Skip_Super;
-		//Game Doom
+		
 		DropItem None;
 	}
 	States

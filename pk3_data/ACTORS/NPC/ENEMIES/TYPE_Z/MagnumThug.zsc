@@ -1,4 +1,4 @@
-CLASS MagnumThug : ACTOR { 
+class MagnumThug : actor { 
 	Default {
 		
 		YScale 0.35;
@@ -11,7 +11,7 @@ CLASS MagnumThug : ACTOR {
 		SeeSound "Sights/Male06";
 		PainSound "Pains/Male06";
 		DeathSound "Deaths/Male06";
-		DropItem "9mmAmmoLarge";
+		DropItem "9mmammoLarge";
 		DamageFactor "EnemyBullet", 0.3;
 		DamageFactor "EnemyGrenade", 0.3;
 		DamageFactor "PlayerPistol", 0.5;
@@ -32,11 +32,11 @@ CLASS MagnumThug : ACTOR {
 			Loop;
 		Missile:
 			MTHG F 10 A_FaceTarget();
-			MTHG G 0 A_PlayWeaponSound("Beretta/EnemyFire");
+			MTHG G 0 A_PlayweaponSound("Beretta/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			MTHG G 2 BRIGHT A_CustomMissile("EnemyPistolTracer", 48, 0, random(-1.0,1.0));
 			MTHG HF 5 A_FaceTarget();
-			MTHG G 0 A_PlayWeaponSound("Beretta/EnemyFire");
+			MTHG G 0 A_PlayweaponSound("Beretta/EnemyFire");
 			COP3 G 0 A_SpawnItemEx("BulletCasing",24,-24,40,8,2,4,random(-55,-80),SXF_NOCHECKPOSITION|SXF_TRANSFERPITCH);
 			MTHG G 2 BRIGHT A_CustomMissile("EnemyPistolTracer", 48, 0, random(-1.0,1.0));
 			MTHG H 5;
@@ -65,7 +65,7 @@ CLASS MagnumThug : ACTOR {
 	}
 }
 
-CLASS MagnumThug_F : MagnumThug 22211 { 
+class MagnumThug_F : MagnumThug 22211 { 
 	Default {
 		
 		+FRIENDLY;

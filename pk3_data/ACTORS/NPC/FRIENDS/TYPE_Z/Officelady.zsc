@@ -1,4 +1,4 @@
-CLASS WWTOfficelady : ACTOR { 
+class WWTOfficelady : actor { 
 	Default {
 		
 		MONSTER;
@@ -61,7 +61,7 @@ CLASS WWTOfficelady : ACTOR {
 	}
 }
 
-CLASS WWTOfficelady_F : WWTOfficelady 22105 { 
+class WWTOfficelady_F : WWTOfficelady 22105 { 
 	Default {
 		
 		+FRIENDLY;

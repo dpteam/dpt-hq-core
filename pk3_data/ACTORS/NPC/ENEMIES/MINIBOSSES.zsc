@@ -1,4 +1,4 @@
-CLASS CyberdemonLord 8758 : ACTOR { 
+class CyberdemonLord 8758 : actor { 
 	Default {
 		
 		//$Category "BOSSES - Mini"
@@ -86,7 +86,7 @@ CLASS CyberdemonLord 8758 : ACTOR {
 			Stop;
 	}
 }
-CLASS CyberdemonLordMP: CyberdemonLord 8759 { 
+class CyberdemonLordMP: CyberdemonLord 8759 { 
 	Default {
 		
 		//$Category "BOSSES - Mini"

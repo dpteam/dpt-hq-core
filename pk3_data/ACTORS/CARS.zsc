@@ -1,4 +1,4 @@
-CLASS CarPlayer : PlayerPawn { 
+class CarPlayer : PlayerPawn { 
 	Default {
 		
 		player.forwardmove 0;
@@ -15,9 +15,9 @@ CLASS CarPlayer : PlayerPawn {
 		Deathsound "weapons/rocklx";
 		Player.CrouchSprite "";
 		Player.DisplayName "Car";
-		Player.SpawnClass "Car";
-		Player.SoundClass "Car";
-		Player.MorphWeapon "CarGo";
+		Player.Spawnclass "Car";
+		Player.Soundclass "Car";
+		Player.Morphweapon "CarGo";
 		ActiveSound "DSCARGO";
 		+NOPAIN;
 		+NOBLOOD;
@@ -39,7 +39,7 @@ CLASS CarPlayer : PlayerPawn {
 			Loop;
 		Smoke:
 			GCAR A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-			goto Spawn+1;
+			Goto Spawn+1;
 		AltSkinDeath:
 		AltSkinXDeath:
 		Death:
@@ -57,19 +57,19 @@ CLASS CarPlayer : PlayerPawn {
 			Wait;
 	}
 }
-CLASS DarkGreenCarPlayer : CarPlayer { 
+class DarkGreenCarPlayer : CarPlayer { 
 	Default {
 		
 		Yscale .8;
 	}
 }
-CLASS LiteGreenCarPlayer : CarPlayer { 
+class LiteGreenCarPlayer : CarPlayer { 
 	Default {
 		
 		Player.DisplayName "LiteGreenCar";
-		Player.SpawnClass "LiteGreenCar";
-		Player.SoundClass "LiteGreenCar";
-		Player.MorphWeapon "LiteGreenCarGo";
+		Player.Spawnclass "LiteGreenCar";
+		Player.Soundclass "LiteGreenCar";
+		Player.Morphweapon "LiteGreenCarGo";
 		Yscale .8;
 		player.viewheight 40;
 	}
@@ -87,17 +87,17 @@ CLASS LiteGreenCarPlayer : CarPlayer {
 			Loop;
 		Smoke:
 			LGCR A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-			goto Spawn+1;
+			Goto Spawn+1;
 	}
 }
-CLASS TankPlayer : CarPlayer { 
+class TankPlayer : CarPlayer { 
 	Default {
 		
 		player.forwardmove 1;
 		Player.DisplayName "Tank";
-		Player.SpawnClass "Tank2";
-		Player.SoundClass "Tank";
-		Player.MorphWeapon "TankGo";
+		Player.Spawnclass "Tank2";
+		Player.Soundclass "Tank";
+		Player.Morphweapon "TankGo";
 		health 1000;
 		player.viewheight 47;
 		radius 92;
@@ -106,7 +106,7 @@ CLASS TankPlayer : CarPlayer {
 		activesound "DSTNKGO";
 		+NORADIUSDMG;
 	}
-	states
+	States
 	{
 		Pain:
 		Melee:
@@ -126,10 +126,10 @@ CLASS TankPlayer : CarPlayer {
 			Loop;
 		Smoke:
 			DTNK A 0 A_SpawnItemEx("LavaSmoke1",64+random(2,2),random(2,2),8+random(2,2),0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-			goto See;
+			Goto See;
 		Smoke2:
 			DTNK A 0 A_SpawnItemEx("LavaSmoke1",64+random(2,2),random(2,2),8+random(2,2),0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-			goto Spawn;
+			Goto Spawn;
 		AltSkinDeath:
 		AltSkinXDeath:
 		Death:
@@ -144,13 +144,13 @@ CLASS TankPlayer : CarPlayer {
 			Stop;
 	}
 }
-CLASS FerrariPlayer : CarPlayer { 
+class FerrariPlayer : CarPlayer { 
 	Default {
 		
 		Player.DisplayName "Ferrari";
-		Player.SpawnClass "Ferrari";
-		Player.SoundClass "Ferrari";
-		Player.MorphWeapon "FerrariGo";
+		Player.Spawnclass "Ferrari";
+		Player.Soundclass "Ferrari";
+		Player.Morphweapon "FerrariGo";
 		ActiveSound "DSFERGO";
 	}
 	States
@@ -167,16 +167,16 @@ CLASS FerrariPlayer : CarPlayer {
 			Loop;
 		Smoke:
 			FERB A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-			goto Spawn+1;
+			Goto Spawn+1;
 	}
 }
-CLASS CamaroPlayer : CarPlayer { 
+class CamaroPlayer : CarPlayer { 
 	Default {
 		
 		Player.DisplayName "Camaro";
-		Player.SpawnClass "Camaro";
-		Player.SoundClass "Ferrari";
-		Player.MorphWeapon "CamaroGo";
+		Player.Spawnclass "Camaro";
+		Player.Soundclass "Ferrari";
+		Player.Morphweapon "CamaroGo";
 		ActiveSound "DSMUSTGO";
 		xScale .6;
 		Yscale .5;
@@ -195,16 +195,16 @@ CLASS CamaroPlayer : CarPlayer {
 			Loop;
 		Smoke:
 			CAMA A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-			goto Spawn+1;
+			Goto Spawn+1;
 	}
 }
-CLASS KITTPlayer : CarPlayer { 
+class KITTPlayer : CarPlayer { 
 	Default {
 		
 		Player.DisplayName "KITT";
-		Player.SpawnClass "KITT";
-		Player.SoundClass "KITT";
-		Player.MorphWeapon "KITTGo";
+		Player.Spawnclass "KITT";
+		Player.Soundclass "KITT";
+		Player.Morphweapon "KITTGo";
 		player.jumpz 16;
 		Player.ColorRange 64, 79;
 	Translation "112:127=5:8"
@@ -224,23 +224,23 @@ CLASS KITTPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		KITT A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 	See:
 		KITT A 0 A_JumpIfHealthLower(100,"See1");
 		KITT ABCD 1 bright;
 		Loop;
 	See1:
 		KITT A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto See+1;
+		Goto See+1;
 }
 }
-CLASS BTTFPlayer : CarPlayer { 
+class BTTFPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Delorian";
-	Player.SpawnClass "BTTF";
-	Player.SoundClass "BTTF";
-	Player.MorphWeapon "BTTFGo";
+	Player.Spawnclass "BTTF";
+	Player.Soundclass "BTTF";
+	Player.Morphweapon "BTTFGo";
 	ActiveSound "DSDELGO";
 	XScale 1.8;
 	YScale 1.4;
@@ -259,16 +259,16 @@ CLASS BTTFPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		BTTF A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS TruckPlayer : CarPlayer { 
+class TruckPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Truck";
-	Player.SpawnClass "Truck";
-	Player.SoundClass "Truck";
-	Player.MorphWeapon "TruckGo";
+	Player.Spawnclass "Truck";
+	Player.Soundclass "Truck";
+	Player.Morphweapon "TruckGo";
 	ActiveSound "DSTRUCGO";
 	Player.ViewHeight 55;
 	}
@@ -286,16 +286,16 @@ CLASS TruckPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		TRUK A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS MotorcyclePlayer : CarPlayer { 
+class MotorcyclePlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Motorcycle";
-	Player.SpawnClass "Motorcycle";
-	Player.SoundClass "Motorcycle";
-	Player.MorphWeapon "MotorcycleGo";
+	Player.Spawnclass "Motorcycle";
+	Player.Soundclass "Motorcycle";
+	Player.Morphweapon "MotorcycleGo";
 	player.viewheight 35;
 	Radius 16;
 	ActiveSound "BIKEGO";
@@ -314,7 +314,7 @@ CLASS MotorcyclePlayer : CarPlayer {
 		Loop;
 	Smoke:
 		BIKE A 0 A_SpawnItemEx("LavaSmoke1",24,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 	Death:
 	XDeath:
 		TNT1 A 0 bright A_Playsound("weapons/rocklx");
@@ -330,13 +330,13 @@ CLASS MotorcyclePlayer : CarPlayer {
 		Wait;
 }
 }
-CLASS EctoPlayer : CarPlayer { 
+class EctoPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Ecto";
-	Player.SpawnClass "Ecto";
-	Player.SoundClass "Ecto";
-	Player.MorphWeapon "EctoGo";
+	Player.Spawnclass "Ecto";
+	Player.Soundclass "Ecto";
+	Player.Morphweapon "EctoGo";
 	Scale .8;
 	Yscale .6;
 	ActiveSound "DSECTOSI";
@@ -355,16 +355,16 @@ CLASS EctoPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		ECTO A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS DoomKartPlayer : CarPlayer { 
+class DoomKartPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Kart";
-	Player.SpawnClass "Kart";
-	Player.SoundClass "Kart";
-	Player.MorphWeapon "KartGo";
+	Player.Spawnclass "Kart";
+	Player.Soundclass "Kart";
+	Player.Morphweapon "KartGo";
 	ActiveSound "DSKARTGO";
 	Scale 2;
 	}
@@ -382,16 +382,16 @@ CLASS DoomKartPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		DKRT B 0 A_SpawnItemEx("LavaSmoke1",16,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS PorschePlayer : CarPlayer { 
+class PorschePlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Porsche";
-	Player.SpawnClass "Porsche";
-	Player.SoundClass "Ferrari";
-	Player.MorphWeapon "LiteGreenCarGo";
+	Player.Spawnclass "Porsche";
+	Player.Soundclass "Ferrari";
+	Player.Morphweapon "LiteGreenCarGo";
 	ActiveSound "DSFERGO";
 	}
 	States
@@ -408,16 +408,16 @@ CLASS PorschePlayer : CarPlayer {
 		Loop;
 	Smoke:
 		PORS A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS RaceCarPlayer : CarPlayer { 
+class RaceCarPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "Race";
-	Player.SpawnClass "Race";
-	Player.SoundClass "Race";
-	Player.MorphWeapon "RaceGo";
+	Player.Spawnclass "Race";
+	Player.Soundclass "Race";
+	Player.Morphweapon "RaceGo";
 	ActiveSound "DSRACAR";
 	}
 	States
@@ -434,15 +434,15 @@ CLASS RaceCarPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		RACE B 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS BensBikePlayer : MotorcyclePlayer { 
+class BensBikePlayer : MotorcyclePlayer { 
 	Default {
 	
 	Player.DisplayName "BensBike";
-	Player.SpawnClass "BensBike";
-	Player.MorphWeapon "BensBikeGo";
+	Player.Spawnclass "BensBike";
+	Player.Morphweapon "BensBikeGo";
 	ActiveSound "BIKEGO";
 	Radius 24;
 	}
@@ -460,16 +460,16 @@ CLASS BensBikePlayer : MotorcyclePlayer {
 		Loop;
 	Smoke:
 		BENC A 0 A_SpawnItemEx("LavaSmoke1",24,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS BlueFalconPlayer : CarPlayer { 
+class BlueFalconPlayer : CarPlayer { 
 	Default {
 	
 	Player.ColorRange 192, 207;
 	Player.DisplayName "Blue Falcon";
-	Player.MorphWeapon "BlueFalconGo";
-	Player.SoundClass "Ferrari";
+	Player.Morphweapon "BlueFalconGo";
+	Player.Soundclass "Ferrari";
 	Player.ViewHeight 25;
 	xScale 2;
 	Yscale 1.5;
@@ -487,11 +487,11 @@ CLASS BlueFalconPlayer : CarPlayer {
 		Loop;
 }
 }
-CLASS LimoCarPlayer : CarPlayer { 
+class LimoCarPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "HoverLimo";
-	Player.MorphWeapon "LimoGo";
+	Player.Morphweapon "LimoGo";
 	XScale 1.5;
 	+FLOATBOB;
 	ActiveSound "DSLIMOGO";
@@ -510,15 +510,15 @@ CLASS LimoCarPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		LIMO A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS HoverCarPlayer : CarPlayer { 
+class HoverCarPlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "HoverCar";
-	Player.SoundClass "Ferrari";
-	Player.MorphWeapon "LimoGo";
+	Player.Soundclass "Ferrari";
+	Player.Morphweapon "LimoGo";
 	+FLOATBOB;
 	ActiveSound "DSLIMOGO";
 	}
@@ -536,16 +536,16 @@ CLASS HoverCarPlayer : CarPlayer {
 		Loop;
 	Smoke:
 		HOVC A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS CopCarDrivePlayer : CarPlayer { 
+class CopCarDrivePlayer : CarPlayer { 
 	Default {
 	
 	Player.DisplayName "CopCar";
-	Player.SoundClass "CopCar";
-	Player.SpawnClass "CopCar";
-	Player.MorphWeapon "PoliceCarGo2";
+	Player.Soundclass "CopCar";
+	Player.Spawnclass "CopCar";
+	Player.Morphweapon "PoliceCarGo2";
 	YScale .9;
 	ActiveSound "DSSIREN";//DSSIREN0
 	}
@@ -566,13 +566,13 @@ CLASS CopCarDrivePlayer : CarPlayer {
 		Loop;
 	Smoke:
 		COPA A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS CopCarDrivePlayer2 : CopCarDrivePlayer { 
+class CopCarDrivePlayer2 : CopCarDrivePlayer { 
 	Default {
 	
-	Player.MorphWeapon "PoliceCarGo";
+	Player.Morphweapon "PoliceCarGo";
 	}
 	States
 	{
@@ -591,10 +591,10 @@ CLASS CopCarDrivePlayer2 : CopCarDrivePlayer {
 		Loop;
 	Smoke:
 		COPB A 0 A_SpawnItemEx("LavaSmoke1",64,0,8,0,0,2,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE);
-		goto Spawn+1;
+		Goto Spawn+1;
 }
 }
-CLASS ArwingPlayer : CarPlayer { 
+class ArwingPlayer : CarPlayer { 
 	Default {
 	
 	player.viewheight 32;
@@ -605,12 +605,12 @@ CLASS ArwingPlayer : CarPlayer {
 	Height 52;
 	Deathsound "weapons/rocklx";
 	Player.DisplayName "Arwing";
-	Player.SpawnClass "Arwing";
-	Player.SoundClass "Arwing";
-	Player.MorphWeapon "ArwingGo";
+	Player.Spawnclass "Arwing";
+	Player.Soundclass "Arwing";
+	Player.Morphweapon "ArwingGo";
 	ActiveSound "DSARGO";
 	}
-	states
+	States
 	{
 	Melee:
 		ARWI A 0;
@@ -644,7 +644,7 @@ CLASS ArwingPlayer : CarPlayer {
 		Wait;
 }
 }
-CLASS F14Player : CarPlayer { 
+class F14Player : CarPlayer { 
 	Default {
 	
 	player.viewheight 32;
@@ -653,12 +653,12 @@ CLASS F14Player : CarPlayer {
 	Height 52;
 	Deathsound "weapons/rocklx";
 	Player.DisplayName "F14";
-	Player.SpawnClass "F14";
-	Player.SoundClass "F14";
-	Player.MorphWeapon "F14Go";
+	Player.Spawnclass "F14";
+	Player.Soundclass "F14";
+	Player.Morphweapon "F14Go";
 	ActiveSound "DSJETFLY";
 	}
-	states
+	States
 	{
 	VehicleExit:
 		F14T A 0 SetPlayerProperty (0, 0, 3);
@@ -695,14 +695,14 @@ CLASS F14Player : CarPlayer {
 		Wait;
 }
 }
-CLASS Car : PowerupGiver { 
+class Car : PowerupGiver { 
 	Default {
 	
 	//$Category Cars
 	Powerup.Type PowerCarPlayer;
 	Powerup.Duration 0x7FFFFFFF;
 	Inventory.MaxAmount 0;
-	+INVENTORY.AUTOACTIVATE;
+	+Inventory.AUTOACTIVATE;
 	Radius 32;
 	Height 52;
 	Inventory.PickupSound "Car/Start";
@@ -716,137 +716,137 @@ CLASS Car : PowerupGiver {
 		Stop;
 }
 }
-CLASS PowerCarPlayer : PowerMorph { 
+class PowerCarPlayer : PowerMorph { 
 	Default {
 	
-	PowerMorph.PlayerClass "DarkGreenCarPlayer";
+	PowerMorph.Playerclass "DarkGreenCarPlayer";
 	PowerMorph.MorphStyle (MRF_FULLHEALTH|MRF_WHENINVULNERABLE);
 	//PowerMorph.MorphStyle (MRF_ADDSTAMINA|MRF_FULLHEALTH|MRF_WHENINVULNERABLE)
 	PowerMorph.MorphFlash "NoFlash";
 	PowerMorph.UnMorphFlash "NoFlash";
 	}
 }
-CLASS LiteGreenPowerCarPlayer : PowerCarPlayer { 
+class LiteGreenPowerCarPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "LiteGreenCarPlayer";
+	PowerMorph.Playerclass "LiteGreenCarPlayer";
 	}
 }
-CLASS PowerEctoPlayer : PowerCarPlayer { 
+class PowerEctoPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "EctoPlayer";
+	PowerMorph.Playerclass "EctoPlayer";
 	}
 }
-CLASS PowerMotorcyclePlayer : PowerCarPlayer { 
+class PowerMotorcyclePlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "MotorcyclePlayer";
+	PowerMorph.Playerclass "MotorcyclePlayer";
 	}
 }
-CLASS PowerFerrariPlayer : PowerCarPlayer { 
+class PowerFerrariPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "FerrariPlayer";
+	PowerMorph.Playerclass "FerrariPlayer";
 	}
 }
-CLASS PowerTruckPlayer : PowerCarPlayer { 
+class PowerTruckPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "TruckPlayer";
+	PowerMorph.Playerclass "TruckPlayer";
 	}
 }
-CLASS PowerKITTPlayer : PowerCarPlayer { 
+class PowerKITTPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "KITTPlayer";
+	PowerMorph.Playerclass "KITTPlayer";
 	}
 }
-CLASS PowerBTTFPlayer : PowerCarPlayer { 
+class PowerBTTFPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "BTTFPlayer";
+	PowerMorph.Playerclass "BTTFPlayer";
 	}
 }
-CLASS PowerBensBikePlayer : PowerCarPlayer { 
+class PowerBensBikePlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "BensBikePlayer";
+	PowerMorph.Playerclass "BensBikePlayer";
 	}
 }
-CLASS PowerFalconPlayer : PowerCarPlayer { 
+class PowerFalconPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "BlueFalconPlayer";
+	PowerMorph.Playerclass "BlueFalconPlayer";
 	}
 }
-CLASS PowerDoomKartPlayer : PowerCarPlayer { 
+class PowerDoomKartPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "DoomKartPlayer";
+	PowerMorph.Playerclass "DoomKartPlayer";
 	}
 }
-CLASS PowerPorschePlayer : PowerCarPlayer { 
+class PowerPorschePlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "PorschePlayer";
+	PowerMorph.Playerclass "PorschePlayer";
 	}
 }
-CLASS PowerRaceCarPlayer : PowerCarPlayer { 
+class PowerRaceCarPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "RaceCarPlayer";
+	PowerMorph.Playerclass "RaceCarPlayer";
 	}
 }
-CLASS PowerLimoCarPlayer : PowerCarPlayer { 
+class PowerLimoCarPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "LimoCarPlayer";
+	PowerMorph.Playerclass "LimoCarPlayer";
 	}
 }
-CLASS PowerHoverCarPlayer : PowerCarPlayer { 
+class PowerHoverCarPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "HoverCarPlayer";
+	PowerMorph.Playerclass "HoverCarPlayer";
 	}
 }
-CLASS PowerCopCarDrive : PowerCarPlayer { 
+class PowerCopCarDrive : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "CopCarDrivePlayer";
+	PowerMorph.Playerclass "CopCarDrivePlayer";
 	}
 }
-CLASS PowerCopCarDrive2 : PowerCarPlayer { 
+class PowerCopCarDrive2 : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "CopCarDrivePlayer2";
+	PowerMorph.Playerclass "CopCarDrivePlayer2";
 	}
 }
-CLASS PowerCamaroPlayer : PowerCarPlayer { 
+class PowerCamaroPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "CamaroPlayer";
+	PowerMorph.Playerclass "CamaroPlayer";
 	}
 }
-CLASS PowerArwingPlayer : PowerCarPlayer { 
+class PowerArwingPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "ArwingPlayer";
+	PowerMorph.Playerclass "ArwingPlayer";
 	}
 }
-CLASS PowerF14Player : PowerCarPlayer { 
+class PowerF14Player : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "F14Player";
+	PowerMorph.Playerclass "F14Player";
 	}
 }
-CLASS PowerTankPlayer : PowerCarPlayer { 
+class PowerTankPlayer : PowerCarPlayer { 
 	Default {
 	
-	PowerMorph.PlayerClass "TankPlayer";
+	PowerMorph.Playerclass "TankPlayer";
 	}
 }
-CLASS DarkGreenCar : Car 15814 { 
+class DarkGreenCar : Car 15814 { 
 	Default {
 	
 	//$Category Cars
@@ -860,7 +860,7 @@ CLASS DarkGreenCar : Car 15814 {
 		Stop;
 }
 }
-CLASS LimoCar : Car 11812 { 
+class LimoCar : Car 11812 { 
 	Default {
 	
 	//$Category Cars
@@ -874,7 +874,7 @@ CLASS LimoCar : Car 11812 {
 		Stop;
 }
 }
-CLASS HoverCar : Car 21421 { 
+class HoverCar : Car 21421 { 
 	Default {
 	
 	//$Category Cars
@@ -887,7 +887,7 @@ CLASS HoverCar : Car 21421 {
 		Stop;
 }
 }
-CLASS DoomKart : Car 26356 { 
+class DoomKart : Car 26356 { 
 	Default {
 	
 	//$Category Cars
@@ -906,7 +906,7 @@ CLASS DoomKart : Car 26356 {
 		Loop;
 }
 }
-CLASS LiteGreenCar : Car 1162 { 
+class LiteGreenCar : Car 1162 { 
 	Default {
 	
 	//$Category Cars
@@ -920,7 +920,7 @@ CLASS LiteGreenCar : Car 1162 {
 		Stop;
 }
 }
-CLASS Porsche : Car 15142 { 
+class Porsche : Car 15142 { 
 	Default {
 	
 	//$Category Cars
@@ -933,7 +933,7 @@ CLASS Porsche : Car 15142 {
 		Stop;
 }
 }
-CLASS RaceCar : Car 17024 { 
+class RaceCar : Car 17024 { 
 	Default {
 	
 	//$Category Cars
@@ -946,7 +946,7 @@ CLASS RaceCar : Car 17024 {
 		Stop;
 }
 }
-CLASS Motorcycle : Car 18101 { 
+class Motorcycle : Car 18101 { 
 	Default {
 	
 	//$Category Cars
@@ -961,7 +961,7 @@ CLASS Motorcycle : Car 18101 {
 		Stop;
 }
 }
-CLASS Ferrari : Car 5417 { 
+class Ferrari : Car 5417 { 
 	Default {
 	
 	//$Category Cars
@@ -974,7 +974,7 @@ CLASS Ferrari : Car 5417 {
 		Stop;
 }
 }
-CLASS Ecto1 : Car 4219 { 
+class Ecto1 : Car 4219 { 
 	Default {
 	
 	//$Category Cars
@@ -989,7 +989,7 @@ CLASS Ecto1 : Car 4219 {
 		Stop;
 }
 }
-CLASS Truck : Car 19171 { 
+class Truck : Car 19171 { 
 	Default {
 	
 	//$Category Cars
@@ -1002,7 +1002,7 @@ CLASS Truck : Car 19171 {
 		Stop;
 }
 }
-CLASS KITT : Car 10819 { 
+class KITT : Car 10819 { 
 	Default {
 	
 	//$Category Cars
@@ -1017,7 +1017,7 @@ CLASS KITT : Car 10819 {
 		Loop;
 }
 }
-CLASS BTTFCar : Car 10820 { 
+class BTTFCar : Car 10820 { 
 	Default {
 	
 	//$Category Cars
@@ -1033,13 +1033,13 @@ CLASS BTTFCar : Car 10820 {
 		Stop;
 }
 }
-CLASS Delorean : BTTFCar 26355 { 
+class Delorean : BTTFCar 26355 { 
 	Default {
 	
 	//$Category Cars
 	}
 }
-CLASS CopCarDrive : Car 26352 { 
+class CopCarDrive : Car 26352 { 
 	Default {
 	
 	//$Category Cars
@@ -1060,7 +1060,7 @@ CLASS CopCarDrive : Car 26352 {
 		Stop;
 }
 }
-CLASS CopCarDrive2 : Car 26353 { 
+class CopCarDrive2 : Car 26353 { 
 	Default {
 	
 	//$Category Cars
@@ -1075,13 +1075,13 @@ CLASS CopCarDrive2 : Car 26353 {
 		COPB BB 1;
 		COPB BB 1 bright;
 		COPB A 0 A_CheckSight("XDeathFade");
-		loop;
+		Loop;
 	XDeathFade:
 		COPB A 1;
 		Stop;
 }
 }
-CLASS BensBike : Motorcycle 14131 { 
+class BensBike : Motorcycle 14131 { 
 	Default {
 	
 	//$Category Cars
@@ -1095,7 +1095,7 @@ CLASS BensBike : Motorcycle 14131 {
 		Loop;
 }
 }
-CLASS BlueFalcon : Car 15011 { 
+class BlueFalcon : Car 15011 { 
 	Default {
 	
 	//$Category Cars
@@ -1110,7 +1110,7 @@ CLASS BlueFalcon : Car 15011 {
 		Stop;
 }
 }
-CLASS Camaro : Car 20120 { 
+class Camaro : Car 20120 { 
 	Default {
 	
 	//$Category Cars
@@ -1125,7 +1125,7 @@ CLASS Camaro : Car 20120 {
 		Stop;
 }
 }
-CLASS Arwing : Car 17228 { 
+class Arwing : Car 17228 { 
 	Default {
 	
 	//$Category Cars
@@ -1139,7 +1139,7 @@ CLASS Arwing : Car 17228 {
 		Stop;
 }
 }
-CLASS F14 : Car 21419 { 
+class F14 : Car 21419 { 
 	Default {
 	
 	//$Category Cars
@@ -1153,7 +1153,7 @@ CLASS F14 : Car 21419 {
 		Stop;
 }
 }
-CLASS Tank2002 : Car 26354 { 
+class Tank2002 : Car 26354 { 
 	Default {
 	
 	//$Category Cars
@@ -1167,7 +1167,7 @@ CLASS Tank2002 : Car 26354 {
 		Loop;
 }
 }
-CLASS RocketBom : ACTOR { 
+class RocketBom : actor { 
 	Default {
 	
 	+RANDOMIZE;
@@ -1192,10 +1192,10 @@ CLASS RocketBom : ACTOR {
 		MISL B 0 bright A_Explode(180,200);
 		MISL B 0 bright A_Playsound("weapons/rocklx");
 		MISL B 1 bright A_Burst("RocketBom1");
-		stop;
+		Stop;
 }
 }
-CLASS RocketBom1 : ACTOR { 
+class RocketBom1 : actor { 
 	Default {
 	
 	Radius 64;
@@ -1216,13 +1216,13 @@ CLASS RocketBom1 : ACTOR {
 		GMIL A 0 bright A_Scream();
 		GMIL A 0 A_Jump(128,"Death2");
 		GMIL ABCDEFGHIJKLMNOPQR 1 bright;
-		stop;
+		Stop;
 	Death2:
 		GMI2 ABCDEFGHIJKLMNOPQR 1 bright;
-		stop;
+		Stop;
 }
 }
-CLASS RocketBom2 : RocketBom1 { 
+class RocketBom2 : RocketBom1 { 
 	Default {
 	
 	Scale .5;
@@ -1240,7 +1240,7 @@ CLASS RocketBom2 : RocketBom1 {
 		NKE1 M 5 bright;
 		NKE2 ABC 5 bright;
 		NKE2 DDEEFFGGHH 6 bright A_Fadeout(.1);
-		stop;
+		Stop;
 	Death2:
 		NKE1 NOPQ 1 bright;
 		NKE1 RSTU 2 bright;
@@ -1248,10 +1248,10 @@ CLASS RocketBom2 : RocketBom1 {
 		NKE1 Z 5 bright;
 		NKE2 IJK 5 bright;
 		NKE2 LLMMNNOOPP 6 bright A_Fadeout(.1);
-		stop;
+		Stop;
 }
 }
-CLASS CarPuff : BulletPuff { 
+class CarPuff : BulletPuff { 
 	Default {
 	
 	+PAINLESS;
@@ -1260,12 +1260,12 @@ CLASS CarPuff : BulletPuff {
 	SeeSound "DSAUTOCR";
 	}
 }
-CLASS CarGo : Weapon { 
+class CarGo : weapon { 
 	Default {
 	
 	Weapon.SelectionOrder 2000;
 	+WEAPON.DONTBOB;
-	+WEAPON.MELEEWEAPON;
+	+WEAPON.MELEEweapon;
 	+WEAPON.NOALERT;
 	DamageType Car;
 	}
@@ -1276,7 +1276,7 @@ CLASS CarGo : Weapon {
 		TNT1 A 0 A_PlaySoundEx ("Car/Idle", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		CARH A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1285,13 +1285,13 @@ CLASS CarGo : Weapon {
 		TNT1 A 0 A_Recoil (-3);
 		CARH A 1 A_CustomPunch (3,0,0,"CarPuff");
 		TNT1 A 0 A_ReFire();
-		goto Ready;
-	Deselect:
+		Goto Ready;
+	DeSelect:
 		TNT1 A 0 A_StopSoundEx ("SoundSlot7");
 		TNT1 A 0 A_StopSound();
 		TNT1 AAAAAAAAAAAAAAAA 0 A_Lower();
 		TNT1 A 1 A_Lower();
-		loop;
+		Loop;
 	Select:
 		TNT1 A 0 A_StopSoundEx ("SoundSlot7");
 		TNT1 A 0 A_StopSound();
@@ -1305,7 +1305,7 @@ CLASS CarGo : Weapon {
 		Loop;
 }
 }
-CLASS LiteGreenCarGo : CarGo { 
+class LiteGreenCarGo : CarGo { 
 	Default {
 	
 	}
@@ -1316,7 +1316,7 @@ CLASS LiteGreenCarGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("Car/Idle", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		CARH B 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1325,10 +1325,10 @@ CLASS LiteGreenCarGo : CarGo {
 		CARH B 1 A_Recoil (-4);
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		TNT1 A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS PoliceCarGo : CarGo { 
+class PoliceCarGo : CarGo { 
 	Default {
 	
 	}
@@ -1337,12 +1337,12 @@ CLASS PoliceCarGo : CarGo {
 	AltFire:
 		TNT1 A 10 A_PlaySoundEx ("CARENTR", "SoundSlot7");
 		TNT1 A 10 A_PlaySoundEx ("CAREXIT", "SoundSlot7");
-		TNT1 A 0 A_Giveinventory("Shotgun");
+		TNT1 A 0 A_GiveInventory("Shotgun");
 		TNT1 A 10 ACS_ExecuteAlways(998,0);
 		Loop;
 }
 }
-CLASS PoliceCarGo2 : LiteGreenCarGo { 
+class PoliceCarGo2 : LiteGreenCarGo { 
 	Default {
 	
 	}
@@ -1351,12 +1351,12 @@ CLASS PoliceCarGo2 : LiteGreenCarGo {
 	AltFire:
 		TNT1 A 10 A_PlaySoundEx ("CARENTR", "SoundSlot7");
 		TNT1 A 10 A_PlaySoundEx ("CAREXIT", "SoundSlot7");
-		TNT1 A 0 A_Giveinventory("Shotgun");
+		TNT1 A 0 A_GiveInventory("Shotgun");
 		TNT1 A 10 ACS_ExecuteAlways(998,0);
 		Loop;
 }
 }
-CLASS LimoGo : CarGo { 
+class LimoGo : CarGo { 
 	Default {
 	
 	}
@@ -1367,7 +1367,7 @@ CLASS LimoGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSFZIDL", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		CARH G 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1376,10 +1376,10 @@ CLASS LimoGo : CarGo {
 		CARH G 1 A_Recoil (-4);
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		TNT1 A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS FerrariGo : CarGo { 
+class FerrariGo : CarGo { 
 	Default {
 	
 	}
@@ -1390,7 +1390,7 @@ CLASS FerrariGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSFERIDL", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		CARH E 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1399,10 +1399,10 @@ CLASS FerrariGo : CarGo {
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		CARH E 1 A_Recoil (-5);
 		CARH E 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS CamaroGo : CarGo { 
+class CamaroGo : CarGo { 
 	Default {
 	
 	}
@@ -1413,7 +1413,7 @@ CLASS CamaroGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSMUSTCA", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		CARH E 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1422,10 +1422,10 @@ CLASS CamaroGo : CarGo {
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		CARH E 1 A_Recoil (-5);
 		CARH E 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS RaceGo : CarGo { 
+class RaceGo : CarGo { 
 	Default {
 	
 	}
@@ -1436,7 +1436,7 @@ CLASS RaceGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSFERIDL", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		RACE C 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1445,10 +1445,10 @@ CLASS RaceGo : CarGo {
 		RACE C 1 A_Recoil (-5);
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		RACE C 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS BlueFalconGo : CarGo { 
+class BlueFalconGo : CarGo { 
 	Default {
 	
 	}
@@ -1459,7 +1459,7 @@ CLASS BlueFalconGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSFZIDL", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		FALB A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1468,10 +1468,10 @@ CLASS BlueFalconGo : CarGo {
 		FALB A 1 A_Recoil (-5);
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		FALB A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS KartGo : CarGo { 
+class KartGo : CarGo { 
 	Default {
 	
 	}
@@ -1482,7 +1482,7 @@ CLASS KartGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSKARTID", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		DKRT C 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1491,14 +1491,14 @@ CLASS KartGo : CarGo {
 		DKRT C 1 A_Recoil (-2);
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		DKRT C 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 	AltFire:
 		TNT1 A 10 A_StopSoundEx ("SoundSlot7");
 		TNT1 A 1 ACS_ExecuteAlways(998,0);
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS KITTGo : CarGo { 
+class KITTGo : CarGo { 
 	Default {
 	
 	}
@@ -1509,7 +1509,7 @@ CLASS KITTGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSKRIDLE", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		KITH A 1 bright A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1522,10 +1522,10 @@ CLASS KITTGo : CarGo {
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		KITH A 1 bright A_Recoil (-6);
 		KITH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS BTTFGo : CarGo { 
+class BTTFGo : CarGo { 
 	Default {
 	
 	Weapon.UpSound "DSDELST";
@@ -1537,7 +1537,7 @@ CLASS BTTFGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSDELIDL", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		DELH A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1546,7 +1546,7 @@ CLASS BTTFGo : CarGo {
 		DELH A 1 A_Recoil (-4);
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		DELH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 	AltFire:
 		DELH A 50 A_PlaySoundEx ("DSGULLOP", "SoundSlot7");
 		TNT1 A 10 A_PlaySoundEx ("DSGULLCL", "SoundSlot7");
@@ -1554,7 +1554,7 @@ CLASS BTTFGo : CarGo {
 		Loop;
 }
 }
-CLASS EctoGo : CarG {o//From GhostBusters Doom2
+class EctoGo : CarG {o//From GhostBusters Doom2
 	Default {
 	
 	}
@@ -1565,7 +1565,7 @@ CLASS EctoGo : CarG {o//From GhostBusters Doom2
 		TNT1 A 0 A_PlaySoundEx ("Car/Idle", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		ECTH C 1 bright A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1578,10 +1578,10 @@ CLASS EctoGo : CarG {o//From GhostBusters Doom2
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		ECTH DDD 1 bright A_Recoil (-3);
 		ECTH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS TruckGo : CarGo { 
+class TruckGo : CarGo { 
 	Default {
 	
 	}
@@ -1592,7 +1592,7 @@ CLASS TruckGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("DSTRUCID", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		CARH F 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1601,10 +1601,10 @@ CLASS TruckGo : CarGo {
 		TNT1 A 0 A_CustomPunch (3,0,0,"CarPuff");
 		CARH F 1 A_Recoil (-2);
 		CARH F 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS MotorcycleGo : CarGo { 
+class MotorcycleGo : CarGo { 
 	Default {
 	
 	}
@@ -1615,7 +1615,7 @@ CLASS MotorcycleGo : CarGo {
 		TNT1 A 0 A_PlaySoundEx ("BIKEIDLE", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		BIKH A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
 	Hold:
@@ -1625,35 +1625,35 @@ CLASS MotorcycleGo : CarGo {
 		BIKH A 0 A_Jump(224,3,5,7,9,11,13,15);
 		BIKH A 1 OFFSET (1, 33) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (-2, 35) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (-3, 35) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (2, 34) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (3, 34) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (1, 35) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (2, 33) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BIKH A 1 OFFSET (-3, 34) A_Recoil (-4);
 		BIKH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 	AltFire:
 		TNT1 A 10 A_PlaySoundEx ("BIKEIDLE", "SoundSlot7");
 		TNT1 A 10 ACS_ExecuteAlways(998,0);
 		Loop;
 }
 }
-CLASS BensBikeGo : MotorcycleGo { 
+class BensBikeGo : MotorcycleGo { 
 	Default {
 	
 	}
@@ -1664,7 +1664,7 @@ CLASS BensBikeGo : MotorcycleGo {
 		TNT1 A 0 A_PlaySoundEx ("BIKEIDLE", "SoundSlot7", 1);
 		TNT1 A 0 ACS_ExecuteAlways(997,0);
 		BENH A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 		//accelerate
 	Fire:
 		TNT1 A 0 A_LoopActiveSound();
@@ -1675,31 +1675,31 @@ CLASS BensBikeGo : MotorcycleGo {
 		BENH A 0 A_Jump(224,3,5,7,9,11,13,15);
 		BENH A 1 OFFSET (1, 33) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (1, 35) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (3, 35) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (-2, 34) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (3, 34) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (-1, 35) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (2, 33) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 		BENH A 1 OFFSET (-3, 34) A_Recoil (-4);
 		BENH A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 }
 }
-CLASS ArwingGo : CarGo { 
+class ArwingGo : CarGo { 
 	Default {
 	
 	}
@@ -1709,7 +1709,7 @@ CLASS ArwingGo : CarGo {
 		TNT1 A 0 A_StopSound();
 		TNT1 A 0 A_PlaySoundEx ("DSARHUM", "SoundSlot7", 1);
 		ARWC A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 SetPlayerProperty (0, 1, 3);
 		TNT1 A 0 A_LoopActiveSound();
@@ -1717,14 +1717,14 @@ CLASS ArwingGo : CarGo {
 		TNT1 A 0 A_StopSoundEx ("SoundSlot7");
 		ARWC A 1 A_Recoil (-5);
 		ARWC A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 	AltFire:
 		TNT1 A 0 SetPlayerProperty (0, 0, 3);
 		TNT1 A 10 ACS_ExecuteAlways(998,0);
 		Loop;
 }
 }
-CLASS TankGo : CarGo { 
+class TankGo : CarGo { 
 	Default {
 	
 	}
@@ -1734,7 +1734,7 @@ CLASS TankGo : CarGo {
 		TNKH A 0 A_StopSound();
 		TNKH A 0();//A_PlaySoundEx ("DSARHUM", "SoundSlot7", 1)
 		TNKH A 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 	Hold:
 		TNKH A 8 Bright;
@@ -1748,7 +1748,7 @@ CLASS TankGo : CarGo {
 		Loop;
 }
 }
-CLASS F14Go : CarGo { 
+class F14Go : CarGo { 
 	Default {
 	
 	}
@@ -1758,7 +1758,7 @@ CLASS F14Go : CarGo {
 		TNT1 A 0 A_StopSound();
 		TNT1 A 0 A_PlaySoundEx ("DSJETPAS", "SoundSlot7", 1);
 		F14H B 1 A_WeaponReady();
-		goto Ready+2;
+		Goto Ready+2;
 	Fire:
 		TNT1 A 0 SetPlayerProperty (0, 1, 3);
 		TNT1 A 0 A_LoopActiveSound();
@@ -1766,14 +1766,14 @@ CLASS F14Go : CarGo {
 		TNT1 A 0 A_StopSoundEx ("SoundSlot7");
 		F14H B 1 A_Recoil (-5);
 		F14H A 0 A_ReFire();
-		goto Ready;
+		Goto Ready;
 	AltFire:
 		TNT1 A 0 SetPlayerProperty (0, 0, 3);
 		TNT1 A 10 ACS_ExecuteAlways(998,0);
 		Loop;
 }
 }
-CLASS NoFlash : ACTOR { 
+class NoFlash : actor { 
 	Default {
 	
 	+NOINTERACTION;
