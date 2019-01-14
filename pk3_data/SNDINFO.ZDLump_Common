@@ -5102,3 +5102,6 @@ AMAK47FR AMAK47FR
 
 // BGTag Items Pickup
 BGTGPICK BGTGPICK
+
+// BlasterRifle
+weapons/blasterrifle DSBLASTR

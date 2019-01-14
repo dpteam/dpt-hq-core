@@ -41,3 +41,15 @@ SOUNDS:
 }
 
 MUSIC:
+
+OTHER:
+{
+	Blaster_Rifle:
+	{
+		Submitted: Xim
+		Decorate: Xim, LilWhiteMouse
+		Sprites: Lucas Arts
+		Sounds: Lucas Arts
+		Idea Base: Stormtrooper's Rifle from the Star Wars movies
+	}
+}

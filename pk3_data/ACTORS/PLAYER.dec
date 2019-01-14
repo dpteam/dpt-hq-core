@@ -172,16 +172,10 @@ ACTOR RebelClass : "DPT-HQ-Player"
 	PainChance 255
 	Player.DisplayName "WIP: Rebel"
 	Player.SoundClass "RebelClass"
-	Player.StartItem "RivetGun"
-	Player.StartItem "Unarmed"
-	Player.StartItem "Dick"
-	Player.StartItem "SatchelAmmo", 5
-	Player.StartItem "Satcheler"
-	Player.StartItem "BlueSprayPaint"
-	Player.StartItem "RedSprayPaint"
-	Player.StartItem "GreenSprayPaint"
-	Player.StartItem "SprayPaint"
-	Player.StartItem "Rivets", 225
+	Player.StartItem "Blaster_Rifle"
+	//Player.StartItem "Blaster_Fists"
+	//Player.StartItem "Blaster_Penis"
+	Player.StartItem "Cell", 228
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
