@@ -1283,3 +1283,30 @@ Death:
 }
 ACTOR PenragramCooldown : Inventory {inventory.maxamount 100}
 ACTOR PatriarchDeathToken : Inventory {inventory.maxamount 325}
+
+//*** Boss Spawners ***//
+
+ACTOR B1S : RandomSpawner
+{
+	DropItem "GluttonyApostle"
+}
+
+ACTOR B2S : RandomSpawner
+{
+	DropItem ""
+}
+
+ACTOR B3S : RandomSpawner
+{
+	DropItem "PatriarchFaithful"
+}
+
+ACTOR B4S : RandomSpawner
+{
+	DropItem ""
+}
+
+ACTOR B5S : RandomSpawner
+{
+	DropItem ""
+}
