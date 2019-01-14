@@ -1,11 +1,12 @@
 // PLACEHOLDER REPLACERS // WORKER
 ACTOR Firing : Inventory {}
 ACTOR Tourettes_BulletPuff : BulletPuff {}
-ACTOR XDeathGibs {}
+ACTOR XDeathGibs : Blood {}
 ACTOR GrowingBloodPool : Blood {}
-ACTOR XDeathOrgan1 {}
-ACTOR XDeathOrgan2 {}
-ACTOR Bloodmist {}
+ACTOR XDeathOrgan1 : Blood {}
+ACTOR XDeathOrgan2 : Blood {}
+ACTOR Bloodmist : Blood {}
+ACTOR DoomBlood : Blood {}
 ACTOR HeavyMachinegunHUD : Inventory {}
 ACTOR attackhelicopterBaseDirection : Inventory {}
 ACTOR attackhelicopterReady : Inventory {}
@@ -225,11 +226,16 @@ ACTOR UNDERWATERHITPUFF {}
 ACTOR DETECTCEILBULLET {}
 ACTOR DETECTFLOORBULLET {}
 //ACTOR FISTREDUX {} // WORKER
-ACTOR BUBULZ {}
-ACTOR UNDERBLOOD3 {}
+ACTOR BUBULZ : BulletPuff
+{
+	Translation Ice
+	RenderStyle Add
+	Scale 0.9876543
+}
+ACTOR UNDERBLOOD3 : BLOOD {}
 ACTOR DETECTCEILBRAIN {}
-ACTOR UNDERBLOOD2 {}
-ACTOR UNDERBLOOD1 {}
+ACTOR UNDERBLOOD2 : BLOOD {}
+ACTOR UNDERBLOOD1 : BLOOD {}
 ACTOR DETECTCEILXDEATH4 {}
 ACTOR DETECTCEILXDEATH3 {}
 ACTOR DETECTCEILXDEATH2 {}

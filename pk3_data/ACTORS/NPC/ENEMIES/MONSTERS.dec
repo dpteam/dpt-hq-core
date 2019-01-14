@@ -993,7 +993,7 @@ ACTOR PigCopExpand_8 : PigCopExpand_0
 actor CycloidEmperor 26379
 {
 	//$Category "Monsters - Duke Nukem 3D"
-	//Bloodtype "Brutal_Blood"
+	Bloodtype "DoomBlood"
 	obituary "%o was annihilated by the Cycloid Emperor."
 	DamageType "CycloidEmperor"
 	health 6000
