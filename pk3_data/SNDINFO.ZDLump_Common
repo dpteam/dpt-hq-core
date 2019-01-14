@@ -4538,7 +4538,7 @@ $alias wolfss/active wolfss/sight
 $alias wolfss/attack DSMP40AT
 $random wolfss/pain {DSSSOOF DSSSOW}
 $random wolfss/death {DSSSOOF DSSSOW DSSSGARG DSSSDTH DSSHEISS}
-//wolfss/attack dsshotgn
+wolfss/attack dsshotgn
 $random DSATSTW0 {DSATSTW1 DSATSTW2}
 $random DSATSTG0 {DSATSTG1 DSATSTG2}
 $random DSSTSEE0 {DSSTSEE1 DSSTSEE2 DSSTSEE3}
@@ -4789,6 +4789,8 @@ DSPISS DSPISS
 
 DPTSWON DPTSWON
 DPTSWOFF DPTSWOFF
+
+DSHOTDPT DSHOTDPT
 
 Healing HEALCAST
 GNTPOW GNTPOW

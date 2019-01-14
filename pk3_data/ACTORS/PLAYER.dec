@@ -2234,7 +2234,7 @@ ACTOR DartPower : "DPT-HQ-Player"
 	Player.SoundClass "DartPower"
 	Player.StartItem "Icegun"
 	Player.StartItem "UACM360"
-	Player.StartItem "Gothic_Shotgun"
+	Player.StartItem "DartPower_Shotgun"
 	Player.StartItem "Golden_Eagle"
 	Player.StartItem "DartPowerFists"
 	Player.StartItem "Cell", 600
