@@ -1,0 +1,630 @@
+// PLACEHOLDER REPLACERS // WORKER
+ACTOR Firing : Inventory {}
+ACTOR Tourettes_BulletPuff : BulletPuff {}
+ACTOR XDeathGibs {}
+ACTOR GrowingBloodPool : Blood {}
+ACTOR XDeathOrgan1 {}
+ACTOR XDeathOrgan2 {}
+ACTOR Bloodmist {}
+ACTOR HeavyMachinegunHUD : Inventory {}
+ACTOR attackhelicopterBaseDirection : Inventory {}
+ACTOR attackhelicopterReady : Inventory {}
+ACTOR MechBaseDirection : Inventory {}
+ACTOR MachinegunFlash {}
+ACTOR LeftBikeHit {}
+ACTOR RightBikeHit {}
+ACTOR FiredLightTankMainGun : Inventory {}
+ACTOR CrashLightTankIntotheGround1 {}
+ACTOR CrashLightTankIntotheGround2 {}
+ACTOR LightTankZoom : Inventory {}
+ACTOR ShrinkEffect {}
+ACTOR DukeGibs1 {}
+ACTOR DukeGibs2 {}
+ACTOR DukeGibs3 {}
+ACTOR DukeGibs4 {}
+ACTOR DukeGibs5 {}
+ACTOR DukeGibs6 {}
+ACTOR EnemySquishItem : Inventory {}
+ACTOR MuzzleFlashMedium {}
+ACTOR Rocket2 {}
+ACTOR LavaSmoke1 {}
+ACTOR Doomcenter_JunkGenerator {}
+ACTOR Tire2 {}
+ACTOR TankFire {}
+ACTOR ShockPuff : BulletPuff {}
+ACTOR AuraON : Inventory {}
+ACTOR FBulletPuff : BulletPuff {}
+ACTOR PM_AltFireX : Inventory {}
+ACTOR PM_AltFireY : Inventory {}
+ACTOR PCybRocket3 {}
+ACTOR DUMP3GunSmokeSpawner {}
+ACTOR DUMP39mmCasingSpawner2 {}
+ACTOR DUMP3BulletPuff : BulletPuff {}
+ACTOR DUMP3ChaingunReroll : Inventory {}
+ACTOR DUMP3ShellCasingSpawner3 {}
+ACTOR DUMP3ShotgunSlotFilled : Inventory {}
+ACTOR DUMP3ShotgunReroll : Inventory {}
+ACTOR DUMP3SuperShotgunSlotFilled : Inventory {}
+ACTOR DUMP3SuperShotgunReroll : Inventory {}
+ACTOR DUMP3RocketLauncherSlotFilled : Inventory {}
+ACTOR DUMP3RocketLauncherReroll : Inventory {}
+ACTOR DUMP3PlasmaRifleSlotFilled : Inventory {}
+ACTOR DUMP3PlasmaRifleReroll : Inventory {}
+ACTOR DUMP3556mmCasingSpawner {}
+ACTOR DUMP3556mmCasingSpawner2 {}
+ACTOR DUMP3BFG9000SlotFilled : Inventory {}
+ACTOR DUMP3BFG9000Reroll : Inventory {}
+ACTOR DUMP3ShellCasingSpawner {}
+ACTOR DUMP3ChaingunSlotFilled : Inventory {}
+ACTOR RocketSmoke {}
+
+ACTOR CR 15116
+{
+	//$Category 3D_Object
+	Height 1
+	Radius 1
+	+SOLID
+	-NOGRAVITY
+	+FLOAT
+	+FLOATBOB
+	+NOBLOCKMONST 
+	States
+	{
+	Spawn:
+		3DDR A 1
+		Loop
+	}
+}
+ACTOR CI 15118
+{
+	//$Category 3D_Object
+	Height 128
+	Radius 140  
+	+SOLID
+	+NOBLOCKMONST  
+	-NOGRAVITY
+	States
+	{
+	Spawn:
+		3DDR A 1
+		Loop
+	}
+}
+ACTOR ExplosionParticleHeavy2002
+{
+	speed 5
+	radius 1
+	height 1
+	Gravity 0.5
+	RenderStyle Add
+	Scale 0.2
+	+MISSILE
+	+CLIENTSIDEONLY
+	+NOTELEPORT
+	+NOBLOCKMAP
+	+BLOODLESSIMPACT 
+	+FORCEXYBILLBOARD
+	+FORCEXYBILLBOARD
+	+CLIENTSIDEONLY
+	+DOOMBOUNCE
+	+DONTSPLASH
+	+THRUACTORS
+	+THRUGHOST
+	+GHOST
+	Damage 0
+	BounceFactor 0.01
+	States
+	{
+	Spawn:
+		SPRK SSSSS 1 BRIGHT
+		SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02)
+		stop
+	Death:
+		Stop
+	}
+}
+
+ACTOR BurningEmberParticlesFloating: ExplosionParticleHeavy2002
+{
+	Scale 0.045
+	speed 1
+	fastspeed 1
+	+NOGRAVITY
+	+NOCLIP
+	+NOINTERACTION
+	States
+	{
+	Spawn:
+		SPRK A 0 //A_JumpIf(ScaleX <= 0, "NULL") //NoDelay
+		SPRK A 0 //A_SetScale(ScaleX-0.00075)
+		SPRK S 3 bright A_ChangeVelocity (frandom(-0.2, 0.03), frandom(-0.01, 0.04), frandom(-0.1, 0.12), 0)
+		SPRK S 1 bright A_FadeOut(0.001)
+		Loop
+	}
+}
+
+ACTOR BurningEmberParticlesSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAA 1 A_SpawnItemEx("BurningEmberParticlesFloating",frandom(1.5,-1.5),frandom(1.5,-1.5),31,0,0,frandom(0.1,0.2),0,SXF_CLIENTSIDE,0)
+		TNT1 A 11
+		Loop
+	}
+}
+
+ACTOR BlueExplosionParticleHeavy
+{
+	speed 5
+	radius 1
+	height 1
+	Gravity 0.5
+	RenderStyle Add
+	Scale 0.2
+	+MISSILE
+	+CLIENTSIDEONLY
+	+NOTELEPORT
+	+NOBLOCKMAP
+	+BLOODLESSIMPACT 
+	+FORCEXYBILLBOARD
+	+FORCEXYBILLBOARD
+	+CLIENTSIDEONLY
+	+DOOMBOUNCE
+	+DONTSPLASH
+	+THRUACTORS
+	+THRUGHOST
+	+GHOST
+	Damage 0
+	BounceFactor 0.01
+	States
+	{
+	Spawn:
+		BLPK SSSSS 1 BRIGHT
+		BLPK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02)
+		stop
+	Death:
+		Stop
+	}
+}
+
+ACTOR BlueParticlesFloating: BlueExplosionParticleHeavy
+{
+	Scale 0.045
+	speed 1
+	fastspeed 1
+	+NOGRAVITY
+	+NOCLIP
+	+NOINTERACTION
+	States
+	{
+	Spawn:
+		BLPK A 0 //A_JumpIf(ScaleX <= 0, "NULL") //NoDelay
+		BLPK A 0 //A_SetScale(ScaleX-0.00075)
+		BLPK S 3 bright A_ChangeVelocity (frandom(-0.2, 0.03), frandom(-0.01, 0.04), frandom(-0.1, 0.12), 0)
+		BLPK S 1 bright A_FadeOut(0.001)
+		Loop
+	}
+}
+
+ACTOR BlueParticlesSpawner
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAA 1 A_SpawnItemEx("BlueParticlesFloating",frandom(1.5,-1.5),frandom(1.5,-1.5),31,0,0,frandom(0.1,0.2),0,SXF_CLIENTSIDE,0)
+		TNT1 A 11
+		Loop
+	}
+}
+
+ACTOR EXPLOSIONBUBULZ {}
+ACTOR UNDERWATERHITPUFF {}
+ACTOR DETECTCEILBULLET {}
+ACTOR DETECTFLOORBULLET {}
+//ACTOR FISTREDUX {} // WORKER
+ACTOR BUBULZ {}
+ACTOR UNDERBLOOD3 {}
+ACTOR DETECTCEILBRAIN {}
+ACTOR UNDERBLOOD2 {}
+ACTOR UNDERBLOOD1 {}
+ACTOR DETECTCEILXDEATH4 {}
+ACTOR DETECTCEILXDEATH3 {}
+ACTOR DETECTCEILXDEATH2 {}
+ACTOR DETECTCEILCRATER {}
+ACTOR DETECTFLOORCRATER {}
+ACTOR ErasusCasing : Inventory {}
+ACTOR MultiPuff : BulletPuff {}
+ACTOR QuadPuff : BulletPuff {}
+ACTOR QuadUpgrade {}
+ACTOR RailDecalThing {}
+//ACTOR ShockPuff {} // WORKER
+ACTOR BasicParticle
+{
+	Radius 0
+	Height 0
+	+NOTELEPORT
+	+DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+	+CLIENTSIDEONLY
+	+THRUACTORS
+}
+ACTOR Flare_General
+{
+	+NOINTERACTION
+	+NOGRAVITY
+	+CLIENTSIDEONLY
+	renderstyle Add
+	radius 1
+	height 1
+	alpha 0.4
+	scale 0.4
+}
+ACTOR TRACER: FASTPROJECTILE
+{
+	PROJECTILE
+	+RANDOMIZE
+	+FORCEXYBILLBOARD
+	+DONTSPLASH
+	+NOEXTREMEDEATH
+	DAMAGE 0
+	RADIUS 2
+	HEIGHT 2
+	SPEED 140
+	RENDERSTYLE ADD
+	ALPHA 0.9
+	SCALE .15
+	STATES
+	{
+	SPAWN:
+		TRAC A 1 BRIGHT
+		LOOP
+	DEATH:
+		STOP
+	XDEATH:
+		TNT1 A 0
+		STOP
+	}
+}
+// GRASS
+ACTOR GRASS 10128
+{
+	Radius 1
+	Height 5
+	-SOLID
+	Scale .1
+	States
+	{
+	Spawn:
+		TNT1 A 1
+		TNT1 A 1 A_Jump (256, "GrassA", "GrassB", "GrassC", "GrassD")
+		Stop
+	GRASSA:
+		GRAS A -1
+		Stop
+	GRASSB:
+		GRAS B -1
+		Stop
+	GRASSC:
+		GRAS C -1
+		Stop
+	GRASSD:
+		GRAS D -1
+		Stop
+	}
+}
+// SPLASHES
+ACTOR WaterParticleX
+{
+	Height 0
+	Radius 0
+	Mass 0
+	+Missile
+	+NoBlockMap
+	-NoGravity
+	+DontSplash
+	+DoomBounce
+	+FORCEXYBILLBOARD
+	+NOCLIP
+	+CLIENTSIDEONLY
+	BounceFactor 0.1
+	Gravity 0.5
+	RenderStyle Add
+	Scale 1.0
+	Alpha 0.5
+	//Speed 2
+	Speed 2
+	States
+	{
+	Spawn:
+		TNT1 A 1 
+		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+		TNT1 A 1
+		Goto Stand
+	Stand:
+		WSPH ABCD 4
+		Stop
+	Death:
+		TNT1 A 1
+		TNT1 A 0
+		Stop
+	}
+}
+ACTOR WaterParticleXFAster: WaterParticleX
+{
+	Speed 4
+}
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+//********** Splashes **********
+ACTOR WaterSplashBase2
+{
+	Radius 1
+	Height 1
+	Mass 1
+	alpha .6
+	Scale 1.1
+	+DONTSPLASH
+	+NOGRAVITY
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 FFFFFF 0 A_CustomMissile ("WaterParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		TNT1 FFFFFF 0 A_CustomMissile ("WaterParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		SPSH EFGHIJKJKJK 6
+		Stop
+	}
+}
+ACTOR WaterSplashBaseSmall
+{
+	Radius 1
+	Height 1
+	Mass 1
+	alpha .6
+	Scale 0.7
+	+DONTSPLASH
+	+NOGRAVITY
+	+NOCLIP
+	States
+	{
+	Spawn:
+		TNT1 FFFFFF 0 A_CustomMissile ("WaterParticleX", 12, 0, random (0, 360), 2, random (50, 140))
+		TNT1 FFFFFF 0 A_CustomMissile ("WaterParticleXFaster", 12, 0, random (0, 360), 2, random (50, 140))
+		SPSH EFGHIJKJK 6
+		Stop
+	}
+}
+////////////////////////Blood
+ACTOR BloodParticleX
+{
+	Height 0
+	Radius 0
+	Mass 0
+	+Missile
+	+NoBlockMap
+	-NoGravity
+	+DontSplash
+	+DoomBounce
+	+FORCEXYBILLBOARD
+	+NOCLIP
+	+CLIENTSIDEONLY
+	BounceFactor 0.1
+	Gravity 0.5
+	RenderStyle Translucent
+	Scale 1.0
+	Alpha 0.8
+	//Speed 2
+	Speed 2
+	States
+	{
+	Spawn:
+		TNT1 A 1 
+		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+		TNT1 A 1
+		Goto Stand
+	Stand:
+		BSPH ABCD 4
+		Stop
+	Death:
+		TNT1 A 1
+		TNT1 A 0
+		Stop
+	}
+}
+ACTOR BloodParticleXFAster: BloodParticleX
+{
+	Speed 4
+}
+ACTOR BloodSplashBase2
+{
+	Radius 1
+	Height 1
+	Mass 1
+	alpha .6
+	Scale 1.0
+	+NOCLIP
+	+DONTSPLASH
+	+NOGRAVITY
+	+CLIENTSIDEONLY
+	States
+	{
+	Spawn:
+		TNT1 FFFFFF 0 A_CustomMissile ("BloodParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		TNT1 FFFFFF 0 A_CustomMissile ("BloodParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		BSPH EFGHIJKJKJK 6
+		Stop
+	}
+}
+ACTOR BloodSplashBaseSmall : BloodSplashBase2
+{
+	Scale 0.5
+	States
+	{
+	Spawn:
+		BSPH E 6
+		TNT1 FFFF 0 A_CustomMissile ("BloodParticleX", 2, 0, random (0, 360), 2, random (50, 140))
+		TNT1 FFFF 0 A_CustomMissile ("BloodParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
+		BSPH FGHIJKJKJK 6
+		Stop
+	}
+}
+/////////////////// Nukage
+ACTOR nukageParticleX
+{
+	Height 0
+	Radius 0
+	Mass 0
+	+Missile
+	+NoBlockMap
+	-NoGravity
+	+DontSplash
+	+DoomBounce
+	+FORCEXYBILLBOARD
+	+NOCLIP
+	+CLIENTSIDEONLY
+	BounceFactor 0.1
+	Gravity 0.5
+	RenderStyle Translucent
+	Scale 1.0
+	Alpha 0.8
+	//Speed 2
+	Speed 2
+	States
+	{
+	Spawn:
+		TNT1 A 1 
+		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+		TNT1 A 1
+		Goto Stand
+	Stand:
+		SLDG ABCD 4
+		Stop
+	Death:
+		TNT1 A 1
+		TNT1 A 0
+		Stop
+	}
+}
+ACTOR nukageParticleXFAster: nukageParticleX
+{
+	Speed 4
+}
+ACTOR nukageSplashBase
+{
+	Radius 1
+	Height 1
+	Mass 1
+	alpha .6
+	Scale 1.0
+	+NOCLIP
+	+DONTSPLASH
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 FFFFFF 0 A_CustomMissile ("nukageParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		TNT1 FFFFFF 0 A_CustomMissile ("nukageParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		SLDG EFGHIJKJKJK 6
+		Stop
+	}
+}
+ACTOR NukageSplashBaseSmall : nukageSplashBase
+{
+	Scale 0.5
+	States
+	{
+	Spawn:
+		SLDG E 6
+		TNT1 FFFF 0 A_CustomMissile ("nukageParticleX", 2, 0, random (0, 360), 2, random (50, 140))
+		TNT1 FFFF 0 A_CustomMissile ("nukageParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
+		SLDG FGHIJKJKJK 6
+		Stop
+	}
+}
+/////////////////// Slime
+ACTOR slimeParticleX
+{
+	Height 0
+	Radius 0
+	Mass 0
+	+Missile
+	+NoBlockMap
+	-NoGravity
+	+DontSplash
+	+DoomBounce
+	+FORCEXYBILLBOARD
+	+NOCLIP
+	+CLIENTSIDEONLY
+	BounceFactor 0.1
+	Gravity 0.5
+	RenderStyle Add
+	Scale 1.0
+	Alpha 0.8
+	//Speed 2
+	Speed 2
+	States
+	{
+	Spawn:
+		TNT1 A 1 
+		TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
+		TNT1 A 1
+		Goto Stand
+	Stand:
+		SLIM ABCD 4
+		Stop
+	Death:
+		TNT1 A 1
+		TNT1 A 0
+		Stop
+	}
+}
+ACTOR slimeParticleXFAster: slimeParticleX
+{
+	Speed 4
+}
+ACTOR slimeSplashBase
+{
+	Radius 1
+	Height 1
+	Mass 1
+	alpha .6
+	Scale 1.0
+	+NOCLIP
+	+DONTSPLASH
+	+NOGRAVITY
+	States
+	{
+	Spawn:
+		TNT1 FFFFFF 0 A_CustomMissile ("slimeParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		TNT1 FFFFFF 0 A_CustomMissile ("slimeParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+		SLIM EFGHIJKJKJK 6
+		Stop
+	}
+}
+ACTOR slimeSplashBaseSmall : slimeSplashBase
+{
+	Scale 0.5
+	States
+	{
+	Spawn:
+		TNT1 FFFF 0 A_CustomMissile ("slimeParticleX", 2, 0, random (0, 360), 2, random (50, 140))
+		TNT1 FFFF 0 A_CustomMissile ("slimeParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
+		SLIM EFGHIJKJKJK 6
+		Stop
+	}
+}
+ACTOR Footstep
+{
+   +NOTDMATCH
+   States
+   {
+   Spawn:
+   Death:
+      TNT1 A 3
+      Stop
+   }
+}
