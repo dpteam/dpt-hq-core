@@ -1268,7 +1268,7 @@ ACTOR SpawnerModule_OverheatExplosion
 	Speed 0
 	ExplosionDamage 255
 	ExplosionRadius 192
-	//SpawnID 201 // !!!
+	SpawnID 201 // WORKER
 	States
 	{
 	Spawn:
@@ -1286,7 +1286,7 @@ ACTOR SpawnerModule_SpawningProcess
 	Height 56
 	Speed 0
 	Scale 3.5
-	//SpawnID 202 // !!!
+	SpawnID 202 // WORKER
 	States
 	{
 	Spawn:
