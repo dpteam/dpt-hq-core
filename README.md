@@ -61,7 +61,7 @@ Development status:
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core)
 
 Social status:  
-[![Discord](https://img.shields.io/discord/188620980426375168.svg?style=for-the-badge)](http://discord.me/dpt)
+[![Discord](https://img.shields.io/discord/410763754624778240.svg?style=for-the-badge)](http://discord.me/dpt)
 [![GitHub issues](https://img.shields.io/github/issues/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/issues)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/pulls)
 [![GitHub contributors](https://img.shields.io/github/contributors/dpteam/dpt-hq-core.svg?style=for-the-badge)](https://github.com/dpteam/dpt-hq-core/graphs/contributors)  
