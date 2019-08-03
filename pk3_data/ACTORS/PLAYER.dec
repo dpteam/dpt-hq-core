@@ -2226,28 +2226,28 @@ ACTOR DartPower : "DPT-HQ-Player"
 	Health 100
 	Radius 16
 	Height 56
-	Mass 100
+	Mass 120 // Canon
 	PainChance 255
-	+NOSKIN
+	BloodType "Crisps"
 	Player.DamageScreenColor "00 88 FF"
 	Player.DisplayName "SIMPSON-NEKEK"
 	Player.SoundClass "DartPower"
-	Player.StartItem "Icegun"
-	Player.StartItem "UACM360"
-	Player.StartItem "DartPower_Shotgun"
+	Player.StartItem "DartPowerUnarmed"
 	Player.StartItem "Golden_Eagle"
-	Player.StartItem "DartPowerFists"
+	Player.StartItem "DartPower_Shotgun"
+	Player.StartItem "UACM360"
+	Player.StartItem "Icegun"
+	Player.StartItem "DartPowerDick"
+	Player.StartItem "BlueSprayPaint"
+	Player.StartItem "RedSprayPaint"
+	Player.StartItem "GreenSprayPaint"
+	Player.StartItem "SprayPaint"
 	Player.StartItem "Cell", 600
 	Player.StartItem "Clip", 400
 	Player.StartItem "Shell", 100
 	Player.StartItem "Stamina", 999
 	Player.StartItem "HungryLevel", 999
 	Player.StartItem "Cash", 999
-	Player.StartItem "BlueSprayPaint"
-	Player.StartItem "RedSprayPaint"
-	Player.StartItem "GreenSprayPaint"
-	Player.StartItem "SprayPaint"
-	Player.StartItem "DartPowerDick"
 	Player.StartItem "DPTKEYCARD", 1
 	Player.StartItem "Artipoisonbag", 25
 	Player.ColorRange 112, 127
@@ -2308,7 +2308,7 @@ ACTOR DartPower : "DPT-HQ-Player"
 		CHUB CD 4 A_SetPitch(0.50)
         CHUB AB 4 A_SetPitch(-0.20)
 		CHUB CD 4 A_SetPitch(0.25)
-		CHUB A 0 A_Jump(26, "Vomit")
+		CHUB A 0 A_Jump(126, "Vomit") // WORKER
         CHUB AB 4 A_SetPitch(-0.90)
 		CHUB CD 4 A_SetAngle(random(angle-5,angle+5))
 		Goto Spawn_Drunk
@@ -2317,7 +2317,7 @@ ACTOR DartPower : "DPT-HQ-Player"
 		CHUB G 0 A_PlaySound("player/vomit", 2)
 		CHUB GGGGGGGGGG 1 A_Stop
 		CHUB G 0 A_SetPitch(-0.85)
-		CHUB GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		CHUB GGGGGGGG 2 A_SpawnItemEx("Crisps", 6, random(-8, 8), 32, random(6, 18))
 		CHUB A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
 		CHUB GGGGGGGG 1 A_Stop
 		Goto Spawn_Drunk
@@ -2344,7 +2344,7 @@ ACTOR DartPower : "DPT-HQ-Player"
 		CHUB G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
 		Goto Spawn
 	Pain:
-		CHUB G 4 
+		CHUB GGGGGGGG 2 A_SpawnItemEx("Crisps", 6, random(-8, 8), 32, random(6, 18))
 		CHUB G 4 A_Pain
 		Goto Spawn
 	Pain_Drunk:
@@ -2889,19 +2889,19 @@ ACTOR Ovlab : "DPT-HQ-Player"
 	}
 }
 
-ACTOR LazyPanda : "DPT-HQ-Player"
+ACTOR Coolgirl : "DPT-HQ-Player"
 {
 	DamageFactor "PrisonPower", 100.0
-	Speed 2.0 // над спросить // 2.0 или 2? WTF?
+	Speed 2.0
 	Health 100
 	Radius 16
-	Height 56 //151 // полтарашка же // шучу // UPD 2017: Не шучу, лол
-	Mass 41 // ну как-бы ээээ
+	Height 56
+	Mass 100 // 41? LOL...
 	PainChance 255
 	+NOSKIN
 	Player.DamageScreenColor "FF 00 FF"
-	Player.DisplayName "LazyPanda"
-	Player.SoundClass "lazypanda"
+	Player.DisplayName "Coolgirl"
+	Player.SoundClass "Coolgirl"
 	Player.StartItem "Chainsaw"
 	Player.StartItem "DOOM42k16SSG"
 	Player.StartItem "BFG10K"
@@ -5907,6 +5907,363 @@ ACTOR PlayerVomit
 		PUKE I 3 A_FadeOut (0.10)
 		PUKE I 3 A_FadeOut (0.10)
 		TNT1 A -1
+		Stop
+	}
+}
+
+ACTOR Crisps : RandomSpawner
+{
+	DropItem Crisps1
+	DropItem Crisps2
+	DropItem Crisps3
+	DropItem Crisps4
+	DropItem Crisps5
+	DropItem Crisps6
+	DropItem Crisps7
+	DropItem Crisps8
+	DropItem Crisps9
+	DropItem Crisps10
+	DropItem Crisps11
+	DropItem Crisps12
+	DropItem Crisps13
+	DropItem Crisps14
+	DropItem Crisps15
+}
+
+ACTOR Crisps1
+{
+	Mass 5
+	Projectile
+	Speed 25
+	Vspeed 19
+	+LOWGRAVITY
+	+NOBLOCKMAP
+	+NOTELEPORT
+	-NOGRAVITY
+	States
+	{
+	Spawn:
+		CRSP A 15
+		Loop
+	Death:
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		CRSP A 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps2 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP B 15
+		Loop
+	Death:
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		CRSP B 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps3 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP C 15
+		Loop
+	Death:
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		CRSP C 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps4 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP D 15
+		Loop
+	Death:
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		CRSP D 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps5 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP E 15
+		Loop
+	Death:
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		CRSP E 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps6 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP F 15
+		Loop
+	Death:
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		CRSP F 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps7 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP G 15
+		Loop
+	Death:
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		CRSP G 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps8 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP H 15
+		Loop
+	Death:
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		CRSP H 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps9 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP I 15
+		Loop
+	Death:
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		CRSP I 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps10 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP J 15
+		Loop
+	Death:
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		CRSP J 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps11 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP K 15
+		Loop
+	Death:
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		CRSP K 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps12 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP L 15
+		Loop
+	Death:
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		CRSP L 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps13 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP M 15
+		Loop
+	Death:
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		CRSP M 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps14 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP N 15
+		Loop
+	Death:
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		CRSP N 3 A_FadeOut (0.10)
+		TNT1 A 1
+		Stop
+	}
+}
+
+ACTOR Crisps15 : Crisps1
+{
+	States
+	{
+	Spawn:
+		CRSP O 15
+		Loop
+	Death:
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		CRSP O 3 A_FadeOut (0.10)
+		TNT1 A 1
 		Stop
 	}
 }

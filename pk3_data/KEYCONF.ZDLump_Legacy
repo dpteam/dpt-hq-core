@@ -18,7 +18,7 @@ addplayerclass DartPower
 addplayerclass Ronikari
 addplayerclass NickBock
 addplayerclass Ovlab
-addplayerclass LazyPanda
+addplayerclass Coolgirl
 addplayerclass NighMare
 addplayerclass Velaron
 addplayerclass Benellus
@@ -66,6 +66,9 @@ Alias UseDick "use Pussy"
 DefaultBind O UsePussy
 
 alias HESOYAM "give money 250000; give health 200; give armor 200"
+alias PANZER "summon Tank"
+alias AEZAKMI "anubis"
+alias BIGBANG "kill monsters" // Temporary, needs a Cars numbers
 
 //
 //Список на покупку:

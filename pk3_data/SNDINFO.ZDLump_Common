@@ -711,17 +711,17 @@ DSCRNWAY DSCRNWAY
 DSCROOF DSCROOF
 DSCRPAIN DSCRPAIN
 DSCRTANT DSCRTANT
-$playeralias "lazypanda" female *death DSCRDETH
-$playeralias "lazypanda" female *xdeath DSCRDIHI
-$playeralias "lazypanda" female *pain25 DSCRPAIN
-$playeralias "lazypanda" female *pain50 DSCRPAIN
-$playeralias "lazypanda" female *pain75 DSCRPAIN
-$playeralias "lazypanda" female *pain100 DSCRPAIN
-$playeralias "lazypanda" female *grunt DSCROOF
-$playeralias "lazypanda" female *land DSCROOF
-$playeralias "lazypanda" female *jump DSCROOF
-$playeralias "lazypanda" female *usefail DSCRTANT
-$playeralias "lazypanda" female *taunt DSCRTANT
+$playeralias "Coolgirl" female *death DSCRDETH
+$playeralias "Coolgirl" female *xdeath DSCRDIHI
+$playeralias "Coolgirl" female *pain25 DSCRPAIN
+$playeralias "Coolgirl" female *pain50 DSCRPAIN
+$playeralias "Coolgirl" female *pain75 DSCRPAIN
+$playeralias "Coolgirl" female *pain100 DSCRPAIN
+$playeralias "Coolgirl" female *grunt DSCROOF
+$playeralias "Coolgirl" female *land DSCROOF
+$playeralias "Coolgirl" female *jump DSCROOF
+$playeralias "Coolgirl" female *usefail DSCRTANT
+$playeralias "Coolgirl" female *taunt DSCRTANT
 
 ralphdie ralphdie
 witrpain witrpain

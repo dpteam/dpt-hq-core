@@ -85,7 +85,10 @@ skill Hell_in_your_computer
 	ReplaceActor = "Demon", "Spectre"
 	ReplaceActor = "DoomImpBall", "CacodemonBall"
 	ReplaceActor = "CacodemonBall", "FatShot"
-	ReplaceActor = "ArachnotronPlasma", "Rocket"
+	ReplaceActor = "FatShot", "Rocket"
+	//ReplaceActor = "Rocket", "BFGBall" // Removed because this breaks a compatibility in walkthrough.
+	ReplaceActor = "ArachnotronPlasma", "PlasmaBall"
+	ReplaceActor = "DPTHQ_ExplosiveBarrel", "NuclearBarrel"
 	Key = "6"
 }
 skill survival
