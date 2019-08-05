@@ -4658,7 +4658,7 @@ ACTOR LXandro : "DPT-HQ-Player"
 	}
 }
 
-ACTOR GanGsteRinO999 : "DPT-HQ-Player"
+ACTOR 4el : "DPT-HQ-Player"
 {
 	DamageFactor "PrisonPower", 0.0
 	Speed 1
@@ -4667,7 +4667,7 @@ ACTOR GanGsteRinO999 : "DPT-HQ-Player"
 	Height 56
 	Mass 100
 	PainChance 255
-	Player.DisplayName "WIP: GanGsteRinO999"
+	Player.DisplayName "WIP: 4el"
 	Player.SoundClass "player"
 	Player.StartItem "Unarmed"
 	Player.StartItem "Dick"
