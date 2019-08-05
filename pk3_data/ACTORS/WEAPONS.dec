@@ -16118,7 +16118,7 @@ ACTOR AxeCharge : Inventory
 	Inventory.MaxAmount 30 // [Blue Shadow] A maximum of 3x the damage when fully charged
 }
 
-ACTOR Mag60 : "DPT.HQ-Weapon" 26455
+ACTOR MagSixty : "DPT.HQ-Weapon" 26455
 {
 	//$Category Weapons
 	Inventory.PickupMessage "You got the Mag .60 pistol!."
@@ -16203,7 +16203,7 @@ Spawn:
 	}
 }
 
-Actor KDiZDSuperShotgun : "DPT.HQ-Weapon" 26457
+Actor VadimSuperShotgun : "DPT.HQ-Weapon" 26457 // KDiZDSuperShotgun
 {
 	//$Category Weapons
 	Weapon.AmmoUse 2

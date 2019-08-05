@@ -17,6 +17,7 @@ addplayerclass Brutal_Player
 addplayerclass DartPower
 addplayerclass Ronikari
 addplayerclass NickBock
+addplayerclass VadimClass
 addplayerclass Ovlab
 addplayerclass Coolgirl
 addplayerclass NighMare
@@ -25,7 +26,7 @@ addplayerclass Benellus
 addplayerclass Zero775
 addplayerclass Oppressor1338
 addplayerclass Zendos
-addplayerclass Dean_Portman
+//addplayerclass CorpseSatan
 addplayerclass OVA
 addplayerclass IDHLEB
 addplayerclass LXandro
@@ -47,8 +48,8 @@ addplayerclass RevenantClass
 
 weaponsection "DPTHQ"
 setslot 1 Dick DartPowerDick Pussy Unarmed PocikUnarmed ArmymanUnarmed VodkaUnarmed LXandroUnarmed DartPowerUnarmed CacoBaller ImpBaller DemonMouth SpectreMouth MLostSoulWeap Axe Pillow Topor MWeapWand2 Chainsaw Katana NighMareKatana MurderKnife Magnetsaw DUMP3ShiningHeartHammer VadimKnife VadimAxe 
-setslot 2 Pistol ZombieRifle RivetGun Tazer JailPistol MWeapFists Golden_Eagle ScatterPistol ImpalerXBow DUMP3IA7 LXandroPistol LXandroPistols Auto9 Mag60 
-setslot 3 Shotgun SuperShotgun ZombieShotGun SSG EgoSmasher Coachgun SidebySide AlternativeDoom3SSG MWeapShotgun DartPower_Shotgun Doom3SSG Shredder Quadvolgue DOOM42k16SSG TrollSSD DUMP3Wingman DUMP3Tyrant Rifle LXandroShotgun PumpActionShotgun KDiZDSuperShotgun 
+setslot 2 Pistol ZombieRifle RivetGun Tazer JailPistol MWeapFists Golden_Eagle ScatterPistol ImpalerXBow DUMP3IA7 LXandroPistol LXandroPistols Auto9 MagSixty 
+setslot 3 Shotgun SuperShotgun ZombieShotGun SSG EgoSmasher Coachgun SidebySide AlternativeDoom3SSG MWeapShotgun DartPower_Shotgun Doom3SSG Shredder Quadvolgue DOOM42k16SSG TrollSSD DUMP3Wingman DUMP3Tyrant Rifle LXandroShotgun PumpActionShotgun VadimSuperShotgun 
 setslot 4 Chaingun Minigun SuperChaingun Machinegun UberMinigun AK1337 MWeapSufferStaff M16 UACM360 SMG DoubleSMG DUMP3DualModeRifle ArmymanAK47 ChainGuyGun LXandroChaingunCannon MicroUzi 
 setslot 5 NiceRocketLauncher DefaultRocketLauncher RocketLauncher GrenadeLauncher RevenantGun PainElementWeap Explosive1 MinesWeap MWeapBloodscourge2 Deviation DUMP3CactusPipe ArmymanRPG7 LXandroRPG 
 setslot 6 PlasmaRifle Railgun ArPlasmaGun FlameThrower2 NailGunMG MWeapLightning2 Icegun Karasawa PlasmaRiflePiano PlasmaRiflePiano2 Powercube DUMP3Fusion_Gun DUMP3SirusBusterCannon ArmymanRPD LXandroDevastator BlueRailgun Blaster_Rifle Toaster StunnerRifle 

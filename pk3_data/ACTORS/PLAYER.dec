@@ -4036,7 +4036,7 @@ ACTOR Zendos : "DPT-HQ-Player"
 	}
 }
 
-ACTOR Dean_Portman : "DPT-HQ-Player"
+ACTOR CorpseSatan : "DPT-HQ-Player"
 {
 	DamageFactor "PrisonPower", 100.0
 	Speed 1
@@ -4045,7 +4045,7 @@ ACTOR Dean_Portman : "DPT-HQ-Player"
 	Height 56
 	Mass 100
 	PainChance 255
-	Player.DisplayName "WIP: Dean_Portman"
+	Player.DisplayName "WIP: CorpseSatan"
 	Player.SoundClass "player"
 	Player.StartItem "Unarmed"
 	Player.StartItem "Dick"
@@ -5151,7 +5151,16 @@ ACTOR VadimClass : "DPT-HQ-Player"
 	PainChance 255
 	Player.DisplayName "Vadim Play"
 	Player.SoundClass "Vadim"
-	Player.StartItem "Unarmed"
+	Player.StartItem "VadimKnife"
+	Player.StartItem "VadimAxe"
+	Player.StartItem "MagSixty"
+	Player.StartItem "PumpActionShotgun"
+	Player.StartItem "VadimSuperShotgun"
+	Player.StartItem "MicroUzi"
+	Player.StartItem "Toaster"
+	Player.StartItem "StunnerRifle"
+	Player.StartItem "FireBlast"
+	Player.StartItem "PlasmaShotgun"
 	Player.StartItem "Dick"
 	Player.StartItem "SatchelAmmo", 5
 	Player.StartItem "Satcheler"
