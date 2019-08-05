@@ -1,6 +1,7 @@
 NULL NULL
 dsblank dsmt
 dsnull dsnull
+silent DSEMPTY //only in new Zdooms
 
 $limit KICKPIAN 0 // KINGDIAN XD
 $limit SNARE 0
@@ -2205,9 +2206,6 @@ $limit Monsters/BananaDie 1
 claymone/peep DSCLAYBP
 COINPICK COINPICK
 MINE001 MINE001
-weapons/axecut SPLICE
-weapons/axebang CLANG
-weapons/axeswing SWISH
 silent DSEMPTY
 tubes/break TSTTB
 HQ1 HQ1
@@ -4582,8 +4580,6 @@ weapons/missileload DSNMISLD
 DSBOWLP DSBOWLP
 DSBOWLS DSBOWLS
 DSBBALL DSBBALL
-//weapons/pistol DSGUN
-//weapons/chngun DSGUN
 Car/Start CARSTART
 Car/Idle CARIDLE
 Car/Speed DSCARGO
@@ -4592,7 +4588,6 @@ CAREXIT CAREXIT
 DSGRAB DSGRAB
 $pitchshift DSGRAB 0
 DSMPTANT DSMPTANT
-//world/barrelx DSBOWLP
 DSBOWLAC DSBOWLAC
 $random city {DSCITY1 DSCITY2}
 $random arcade {DSRCADE1 DSRCADE2 DSRCADE3 DSRCADE4 DSRCADE5 DSRCADE6}
@@ -5196,3 +5191,31 @@ $playeralias "Vadim" male *gasp Tentaclecommando/active
 KnifeHitThing		DSKNIFE
 KnifeHitWall		DSKNIFE3	
 KnifeMiss		DSKNIFE2
+
+weapons/axecut SPLICE
+weapons/axebang CLANG
+weapons/axeswing SWISH
+
+magsixty/fire magfire1
+
+weapons/Xshotgr		XMSGCOCK
+weapons/Xshotgf		XMSHOTGN
+
+Weapons/KDiZDSSGFire	DSKSSFIR
+Weapons/KDiZDSSGOpen	DSKSSOPN
+Weapons/KDiZDSSGLoad	DSKSSLOA
+Weapons/KDiZDSSGClose	DSKSSCLS
+
+MicroUzi/Fire1 UZI001
+MicroUzi/Fire2 UZI002
+MicroUzi/Fire3 UZI003
+MicroUzi/Fire { MicroUzi/Fire1 MicroUzi/Fire2 MicroUzi/Fire3 }
+$limit MicroUzi/Fire	0
+
+Toaster/Fire	DSFLAMFI
+Toaster/Loop	DSFLAMLO
+
+Weapons/StunnerFire	STNRFIRE
+Weapons/StunnerHit	STNRHIT
+
+MageShardsFire	cone3

@@ -2055,3 +2055,48 @@ Object DMBall
 	Frame VORXE { Light DMBALL_4 }
 	Frame VORXF { Light DMBALL_5 }
 }
+PointLight StunnerBallLight
+{
+	Color 0.4 0.0 0.4
+	Offset 0 16 0
+	Size 45
+}
+PointLight StunnerBallDeathA
+{
+	Color 0.3 0.0 0.3
+	Offset 0 16 0
+	Size 45
+}
+PointLight StunnerBallDeathB
+{
+	Color 0.2 0.0 0.2
+	Offset 0 16 0
+	Size 45
+}
+PointLight StunnerBallDeathC
+{
+	Color 0.1 0.0 0.1
+	Offset 0 16 0
+	Size 45
+}
+PointLight StunnerBallDeathD
+{
+	Color 0.05 0.0 0.05
+	Offset 0 16 0
+	Size 45
+}
+PointLight StunnerBallDeathE
+{
+	Color 0.0125 0.0 0.0125
+	Offset 0 16 0
+	Size 45
+}
+Object StunnerBall
+{
+	Frame STPR { Light StunnerBallLight }
+	Frame PLSEA { Light StunnerBallDeathA }
+	Frame PLSEB { Light StunnerBallDeathB }
+	Frame PLSEC { Light StunnerBallDeathC }
+	Frame PLSED { Light StunnerBallDeathD }
+	Frame PLSEE { Light StunnerBallDeathE }
+}

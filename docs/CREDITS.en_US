@@ -52,7 +52,7 @@ UNSORTED CREDITS:
 		Sounds: Lucas Arts
 		Idea Base: Stormtrooper's Rifle from the Star Wars movies
 	}
-	PulseRifle:
+	PulseRifle(CorpseSatan Class):
 	{
 		Submitted: scalliano
 		Decorate: scalliano
@@ -75,5 +75,81 @@ UNSORTED CREDITS:
 		Decorate: Xim
 		Sprites: ScubaSteve
 		Sounds: Unknown
+	}
+	Axe(Vadim Class):
+	{
+		Submitted: TheMightyHeracross
+		Decorate: TheMightyHeracross, Blue Shadow
+		ACS: Blue Shadow
+		Sounds: Rogue, 3D Realms
+		Sprites: Mike12, scalliano
+		Sprite Edit: idgamer
+		Idea Base: scalliano's axe zombie
+	}
+	Mag60:
+	{
+		Submitted: ProjectAngel
+		Decorate: ProjectAngel
+		Sprites: 3d Realms
+		Sprite Edit: Zero Prophet
+		Sounds: id Software, Epic Games
+		Idea Base: Mag .60 pistol from the Turok games
+	}
+	PumpActionShotgun:
+	{
+		Submitted: Xim
+		Decorate: Xim
+		Sprites: 3D Realms
+		Sprite Edit: Xim
+		Sounds: Unknown
+		Idea Base: Shotgun from Doom, Shotgun from Duke Nukem 64
+	}
+	SuperShotgun(KDiZD):
+	{
+		Submitted: Ghastly_dragon
+		Decorate: TheDarkArchon
+		Sprites: Nmn
+		Sounds: Freedoom
+	}
+	MicroUzi:
+	{
+		Submitted: Ghastly_dragon
+		Decorate: TheDarkArchon
+		Sprites: Nmn
+		Sounds: Freedoom
+	}
+	Toaster:
+	{
+		Submitted: Captain Toenail
+		Decorate: Captain Toenail
+		GLDEFs: None
+		Sprites: Explosion Generator, IPoG, Id Software
+		Sprite Edit: Captain Toenail
+		Sounds: FreeRadical, Croteam
+	}
+	StunnerRifle:
+	{
+		Submitted: Ghastly_dragon
+		Decorate: Tormentor667
+		GLDefs: Keksdose
+		Sprites: Eriance, Raven Software
+		Sounds: Raven Software
+	}
+	FireBlast:
+	{
+		Submitted: RockstarRaccoon
+		Decorate: RockstarRaccoon
+		Sounds: Raven Software
+		Sprites: Raven Software
+		Sprite Edit: RockstarRaccoon
+		Idea Base: Needed the Mage to deal fire damage
+	}
+	PlasmaShotgun:
+	{
+		Submitted: Unknown
+		Decorate: Unknown
+		Sprites: FreeDoom
+		Sounds: Unknown
+		Sprite Edit: Post
 	}
 }

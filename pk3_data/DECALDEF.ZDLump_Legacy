@@ -142,3 +142,13 @@ Decal BHoleDecal
 	X-Scale 0.75
 	Y-Scale 0.75
 }
+Decal StunnerScorch
+{
+	Pic STPRA0
+	Add 1.0
+	X-Scale 0.45
+	Y-Scale 0.45
+	FullBright
+	Animator GoAway
+	LowerDecal PlasmaScorchLower
+}
