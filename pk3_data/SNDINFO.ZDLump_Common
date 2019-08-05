@@ -5107,3 +5107,92 @@ BGTGPICK BGTGPICK
 
 // BlasterRifle
 weapons/blasterrifle DSBLASTR
+
+// Vadim Enemy
+
+$random Tentaclecommando/sight
+{ 
+	Tentaclecommando/sight7
+	Tentaclecommando/sight8
+	Tentaclecommando/sight9
+	Tentaclecommando/sight10
+	Tentaclecommando/sight11
+	Tentaclecommando/sight12
+	Tentaclecommando/sight13
+}
+
+Tentaclecommando/sight7 zomsit7
+Tentaclecommando/sight8 zomsit8
+Tentaclecommando/sight9 zomsit9
+Tentaclecommando/sight10 zomsit10
+Tentaclecommando/sight11 zomsit11
+Tentaclecommando/sight12 zomsit12
+Tentaclecommando/sight13 zomsit13
+
+$random Tentaclecommando/death
+{ 
+	Tentaclecommando/death4
+	Tentaclecommando/death5
+	Tentaclecommando/death6
+	Tentaclecommando/death7 
+}
+
+Tentaclecommando/death4	zomdth4
+Tentaclecommando/death5	zomdth5
+Tentaclecommando/death6	zomdth6
+Tentaclecommando/death7	zomdth7
+
+$random Tentaclecommando/pain
+{ 
+	Tentaclecommando/pain7
+	Tentaclecommando/pain8
+	Tentaclecommando/pain9
+	Tentaclecommando/pain10 
+}
+
+Tentaclecommando/pain7 zompn7
+Tentaclecommando/pain8 zompn8
+Tentaclecommando/pain9 zompn9
+Tentaclecommando/pain10 zompn10
+
+$random Tentaclecommando/active
+{ 
+	Tentaclecommando/active9
+	Tentaclecommando/active10
+	Tentaclecommando/active11
+	Tentaclecommando/active12
+	Tentaclecommando/active13
+}
+
+Tentaclecommando/active9 zomact9
+Tentaclecommando/active10 zomact10
+Tentaclecommando/active11 zomact11
+Tentaclecommando/active12 zomact12
+Tentaclecommando/active13 zomact13
+
+// Vadim Class
+
+$playeralias "Vadim" male *death Tentaclecommando/death
+$playeralias "Vadim" male *xdeath Tentaclecommando/death
+$playeralias "Vadim" male *gibbed Tentaclecommando/death
+$playeralias "Vadim" male *pain25 Tentaclecommando/pain
+$playeralias "Vadim" male *pain50 Tentaclecommando/pain
+$playeralias "Vadim" male *pain75 Tentaclecommando/pain
+$playeralias "Vadim" male *pain100 Tentaclecommando/pain
+$playeralias "Vadim" male *grunt Tentaclecommando/active
+$playeralias "Vadim" male *land Tentaclecommando/sight
+$playeralias "Vadim" male *jump Tentaclecommando/active
+$playeralias "Vadim" male *usefail Tentaclecommando/sight
+$playeralias "Vadim" male *taunt Tentaclecommando/active
+$playeralias "Vadim" male *falling Tentaclecommando/sight
+$playeralias "Vadim" male *fist Tentaclecommando/active
+$playeralias "Vadim" male *fistgrunt Tentaclecommando/sight
+$playeralias "Vadim" male *dive Tentaclecommando/active
+$playeralias "Vadim" male *surface Tentaclecommando/sight
+$playeralias "Vadim" male *gasp Tentaclecommando/active
+
+// Vadim Weapons
+
+KnifeHitThing		DSKNIFE
+KnifeHitWall		DSKNIFE3	
+KnifeMiss		DSKNIFE2

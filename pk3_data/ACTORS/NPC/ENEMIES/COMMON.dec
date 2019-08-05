@@ -1,4 +1,8 @@
-Actor ZoneDog : Thamara 11889 { -FRIENDLY }
+Actor ZoneDog : Thamara 11889
+{
+	-FRIENDLY
+	Health 666
+}
 ACTOR SpecOpsAK47X : Inventory
 {
 	Inventory.Amount 1
@@ -1239,4 +1243,66 @@ ACTOR IcePlasmaZombie : PlasmaZombie 26408
 	MissileType IcePlasmaBall
 	Translation Ice
 	DamageType Ice
+}
+
+ACTOR TentacledCommando : ChaingunGuy
+{
+	Health 100
+	Radius 25
+	Height 60
+	Mass 125
+	Speed 10
+	PainChance 150
+	Monster
+	+FLOORCLIP
+	SeeSound "Tentaclecommando/sight"
+	PainSound "Tentaclecommando/pain"
+	DeathSound "Tentaclecommando/death"
+	ActiveSound "Tentaclecommando/active"
+	AttackSound "chainguy/attack"
+	HitObituary "%o was smashed by a Commando."
+	Obituary "%o was ventilated by a Commando."
+	Dropitem "Chaingun"
+	States
+	{
+Spawn:
+		D3CG AB 10 A_Look
+		Loop
+See:
+		D3CG AABBCCDD 3 A_Chase
+		Loop
+Melee:
+		D3CG A 1 A_FaceTarget
+		D3CG A 6 A_SkelWhoosh
+		D3CG E 6 A_FaceTarget
+		D3CG V 6 A_CustomMeleeAttack(random(1, 5) * 10, "skeleton/melee")
+		Goto See
+Missile:
+		D3CG E 10 A_FaceTarget
+		D3CG FE 4 Bright A_CPosAttack
+		D3CG F 1 A_CPosRefire
+		Goto Missile+1
+Pain:
+		D3CG G 3
+		D3CG G 3 A_Pain
+		Goto See
+Death:
+		D3CG H 5
+		D3CG I 5 A_Scream
+		D3CG J 5 A_NoBlocking
+		D3CG KLM 5
+		D3CG N -1
+		Stop
+XDeath:
+		D3CG O 5 
+		D3CG P 5 A_XScream
+		D3CG Q 5 A_NoBlocking
+		D3CG RST 5
+		D3CG U -1
+		Stop
+Raise:
+		D3CG N 5
+		D3CG MLKJIH 5
+		Goto See
+	}
 }

@@ -15972,3 +15972,62 @@ Spawn:
 		Stop
 	}
 }
+
+// Vadim Weapons
+
+ACTOR Knife : "DPT.HQ-Weapon"
+{
+	Game Doom
+	Weapon.SelectionOrder 3700
+	Weapon.Kickback 100
+	+WEAPON.WIMPY_WEAPON
+	+WEAPON.MELEEWEAPON
+	+NOEXTREMEDEATH
+	Obituary "$OB_MPFIST" // "%o was cut up by %k's knife."
+	States
+	{
+Spawn:
+		KNFE A -1
+		loop
+Ready:
+		KNFG A 1 A_WeaponReady
+		loop
+Deselect:
+		KNFG A 1 A_Lower
+		loop
+Select: 
+		KNFG A 1 A_Raise
+		loop
+Fire:
+		KNFG B 2
+		KNFG C 4 A_CustomPunch (5,0,0,"KnifePuff")
+		KNFG D 2
+		KNFG E 2
+		KNFG F 2
+		KNFG E 2
+		KNFG D 2
+		KNFG A 2 A_ReFire
+		goto Ready
+	}
+}
+
+ACTOR KnifePuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	RenderStyle Translucent
+	Alpha 0.6
+	SeeSound "KnifeHitThing"
+	AttackSound "KnifeHitWall"
+	ActiveSound "KnifeMiss"
+	VSpeed 1
+	States
+	{
+Spawn:
+		PUFF ABCD 4
+		Stop
+	}
+}  
+

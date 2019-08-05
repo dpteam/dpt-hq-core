@@ -42,7 +42,7 @@ SOUNDS:
 
 MUSIC:
 
-OTHER:
+UNSORTED CREDITS:
 {
 	Blaster_Rifle:
 	{
@@ -51,5 +51,29 @@ OTHER:
 		Sprites: Lucas Arts
 		Sounds: Lucas Arts
 		Idea Base: Stormtrooper's Rifle from the Star Wars movies
+	}
+	PulseRifle:
+	{
+		Submitted: scalliano
+		Decorate: scalliano
+		GLDefs: N/A
+		Sprites: Justin Fisher
+		Sounds: Aliens TC, Quake III
+		Idea Base: Pulse Rifle from the Aliens TC
+	}
+	TentacledCommando:
+	{
+		Code: Karltroid51
+		Sounds: id Software
+		Sprites: id Software
+		Sprite Edit: Captain J, Untrustable, Damson
+		Idea Base: Doom 3's Tentacle and Chaingun Commandos
+	}
+	Knife(Vadim Class):
+	{
+		Submitted: Xim
+		Decorate: Xim
+		Sprites: ScubaSteve
+		Sounds: Unknown
 	}
 }
