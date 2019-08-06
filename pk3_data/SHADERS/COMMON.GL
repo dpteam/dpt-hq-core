@@ -2100,3 +2100,15 @@ Object StunnerBall
 	Frame PLSED { Light StunnerBallDeathD }
 	Frame PLSEE { Light StunnerBallDeathE }
 }
+PointLight DGrenade1
+{
+	Color 0.4 0.4 0.0
+	Size 32
+}
+Object DGrenade
+{
+	Frame DGRE { Light DGrenade1 }
+	Frame MISLB { Light ROCKET_X1 }
+	Frame MISLC { Light ROCKET_X2 }
+	Frame MISLD { Light ROCKET_X3 }
+}

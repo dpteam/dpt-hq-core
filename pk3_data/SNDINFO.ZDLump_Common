@@ -5252,3 +5252,52 @@ $playeralias "CorpseSatan" male *fistgrunt CS_LAND
 $playeralias "CorpseSatan" male *dive CS_DIVE
 $playeralias "CorpseSatan" male *surface CS_LAND
 $playeralias "CorpseSatan" male *gasp CS_GASP
+
+// CorpseSatan Weapons
+
+weapons/throwsawup		dstsawup
+weapons/throwsawready		dstsawrd
+weapons/throwsawcut		dstsawct
+weapons/throwsawlaunch		dstsawln
+weapons/throwsawhit		dstsawht
+weapons/throwsawdamage		dstsawdm
+
+$pitchshiftrange 4
+weapons/saw2up			dssa2up
+weapons/saw2idle		dssa2idl
+weapons/saw2full		dssa2ful
+weapons/saw2hit			dssa2hit
+
+SPRPSHOT SPRPSHOT
+$Limit SPRPSHOT 0
+
+SPRPIMPT SPRPIMPT
+$Limit SPRPIMPT	0
+
+NDLSHOT NDLSHOT
+$Limit NDLSHOT	0
+
+pshtgun/fire		dsblsfir
+pshtgun/cock		dsblscck
+pshtgun/shotx		dsblstht
+
+QuadShotgun/SingleFire	DSQGGATK
+QuadShotgun/QuadFire	DSQGAATK
+QuadShotgun/Open		QSGOPEN
+QuadShotgun/ReloadAll	QSGLOAD
+QuadShotgun/Close		QUADCLOS
+
+uzifire UZIFIR
+
+$Random DGL/Bounce	{ DGLGBNC1 DGLGBNC2 }
+DGLGBNC1		DGLGBNC1
+DGLGBNC2		DGLGBNC2
+DGL/Fire		DGLGFIRE
+
+weapons/pulsefire "PULSFIRE"
+weapons/pulsegren "PULSGREN"
+weapons/pgrnbounce "PGBOUNCE"
+
+weapons/unmaker			dsunmker
+weapons/unmakercharge		dsunchrg
+weapons/flash			dsunmkpo

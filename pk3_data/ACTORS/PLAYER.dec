@@ -4046,8 +4046,19 @@ ACTOR CorpseSatan : "DPT-HQ-Player"
 	Mass 100
 	PainChance 255
 	Player.DisplayName "WIP: CorpseSatan"
-	Player.SoundClass "player"
+	Player.SoundClass "CorpseSatan"
 	Player.StartItem "Unarmed"
+	Player.StartItem "SawThrower"
+	Player.StartItem "DoubleBladedChainsaw"
+	Player.StartItem "ScatterPistol"
+	Player.StartItem "PlasmaShotgun"
+	Player.StartItem "QuadShotgun"
+	Player.StartItem "Uzi"
+	Player.StartItem "DoubleGrenadeLauncher"
+	Player.StartItem "PulseRifle"
+	Player.StartItem "Railgun"
+	Player.StartItem "Unmaker"
+	Player.StartItem "BFG10K"
 	Player.StartItem "Dick"
 	Player.StartItem "SatchelAmmo", 5
 	Player.StartItem "Satcheler"
@@ -4064,119 +4075,119 @@ ACTOR CorpseSatan : "DPT-HQ-Player"
 	States
 	{
 	Spawn:
-		PLAY A 1
-		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
+		FBON A 1
+		FBON A 0 A_JumpIfInventory("DrunkLevel", 40, "Spawn_Drunk")
 		Loop
 	Spawn_Drunk:
-		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
-		PLAY A 20
-		PLAY A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
+		FBON A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FBON A 20
+		FBON A 0 A_Jump(255, "SpD_1", "SpD_2", "SpD_3")
 		Goto SpD_3
 	SpD_1:
-		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
-		PLAY A 1 A_SetPitch(-0.20)
-		PLAY A 1 A_SetPitch(0.20)
-		PLAY A 1 A_SetPitch(0.30)
-		PLAY A 1 A_SetPitch(-0.42)
+		FBON A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FBON A 1 A_SetPitch(-0.20)
+		FBON A 1 A_SetPitch(0.20)
+		FBON A 1 A_SetPitch(0.30)
+		FBON A 1 A_SetPitch(-0.42)
 		Goto Spawn_Drunk
 	SpD_2:
-		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
-		PLAY A 1 A_SetPitch(-0.30)
-		PLAY A 1 A_SetPitch(-0.30)
-		PLAY A 1 A_SetPitch(-0.30)
-		PLAY A 1 A_SetPitch(-0.30)
+		FBON A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FBON A 1 A_SetPitch(-0.30)
+		FBON A 1 A_SetPitch(-0.30)
+		FBON A 1 A_SetPitch(-0.30)
+		FBON A 1 A_SetPitch(-0.30)
 		Goto Spawn_Drunk
 	SpD_3:
-		PLAY A 0 A_JumpIf (momx > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy > 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momx < 0, "See_Drunk")
-		PLAY A 0 A_JumpIf (momy < 0, "See_Drunk")
-		PLAY A 1 A_SetPitch(0.30)
-		PLAY A 1 A_SetPitch(0.30)
-		PLAY A 1 A_SetPitch(0.30)
-		PLAY A 1 A_SetPitch(0.30)
-		PLAY A 1 A_SetAngle(random(-angle-15,angle+15))
+		FBON A 0 A_JumpIf (momx > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy > 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momx < 0, "See_Drunk")
+		FBON A 0 A_JumpIf (momy < 0, "See_Drunk")
+		FBON A 1 A_SetPitch(0.30)
+		FBON A 1 A_SetPitch(0.30)
+		FBON A 1 A_SetPitch(0.30)
+		FBON A 1 A_SetPitch(0.30)
+		FBON A 1 A_SetAngle(random(-angle-15,angle+15))
 		Goto Spawn_Drunk
 	See:
-        PLAY AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
-		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
-		PLAY CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
-		PLAY A 0 A_SpawnItem("Footstep",30,0.001)
+        FBON AB 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FBON A 0 A_SpawnItem("Footstep",30,0.001)
+		FBON CD 4 A_JumpIfInventory("DrunkLevel", 40, "See_Drunk")
+		FBON A 0 A_SpawnItem("Footstep",30,0.001)
 		Loop
 	See_Drunk:
-        PLAY AB 4 A_SetPitch(-0.30)
-		PLAY CD 4 A_SetPitch(0.50)
-        PLAY AB 4 A_SetPitch(-0.20)
-		PLAY CD 4 A_SetPitch(0.25)
-		PLAY A 0 A_Jump(26, "Vomit")
-        PLAY AB 4 A_SetPitch(-0.90)
-		PLAY CD 4 A_SetAngle(random(angle-5,angle+5))
+        FBON AB 4 A_SetPitch(-0.30)
+		FBON CD 4 A_SetPitch(0.50)
+        FBON AB 4 A_SetPitch(-0.20)
+		FBON CD 4 A_SetPitch(0.25)
+		FBON A 0 A_Jump(26, "Vomit")
+        FBON AB 4 A_SetPitch(-0.90)
+		FBON CD 4 A_SetAngle(random(angle-5,angle+5))
 		Goto Spawn_Drunk
 	Vomit:
-		PLAY GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
-		PLAY G 0 A_PlaySound("player/vomit", 2)
-		PLAY GGGGGGGGGG 1 A_Stop
-		PLAY G 0 A_SetPitch(-0.85)
-		PLAY GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
-		PLAY A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
-		PLAY GGGGGGGG 1 A_Stop
+		FBON GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 1 A_Stop
+		FBON G 0 A_PlaySound("player/vomit", 2)
+		FBON GGGGGGGGGG 1 A_Stop
+		FBON G 0 A_SetPitch(-0.85)
+		FBON GGGGGGGG 2 A_SpawnItemEx("PlayerVomit", 6, random(-8, 8), 32, random(6, 18))
+		FBON A 0 A_takeinventory("DrunkLevel",20)//Half of the drunk line are lost
+		FBON GGGGGGGG 1 A_Stop
 		Goto Spawn_Drunk
 	Missile:
-		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
-		PLAY E 12 
+		FBON A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
+		FBON E 12 
 		Goto Spawn
 	Missile_Drunk:
-		PLAY A 0 A_SetAngle(random(angle-12,angle+12))
-		PLAY EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
+		FBON A 0 A_SetAngle(random(angle-12,angle+12))
+		FBON EEEEEE 2 A_SetAngle(random(angle-4,angle+4))
 		Goto Spawn_Drunk
 	Melee:
-		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
-		PLAY F 6 BRIGHT
+		FBON A 0 A_JumpIfInventory("DrunkLevel", 40, "Melee_Drunk")
+		FBON F 6 BRIGHT
 		Goto Missile
 	Melee_Drunk:
-		PLAY FFFFFF 1 BRIGHT A_SetPitch(0.10)
+		FBON FFFFFF 1 BRIGHT A_SetPitch(0.10)
 		Goto Missile_Drunk
 	Pain.Jail:
-		PLAY A 0 ACS_ExecuteAlways(700, 0)
+		FBON A 0 ACS_ExecuteAlways(700, 0)
 		Goto Spawn
 	Pain.Fire:
-		PLAY G 4 
-		PLAY G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
+		FBON G 4 
+		FBON G 4 A_Playsound ("*burnpain")// A_Playsound("bodysplat")
 		Goto Spawn
 	Pain:
-		PLAY G 4 
-		PLAY G 4 A_Pain
+		FBON G 4 
+		FBON G 4 A_Pain
 		Goto Spawn
 	Pain_Drunk:
-		PLAY A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
-		PLAY G 4 A_SetPitch(0.75)
-		PLAY G 4 A_Pain
+		FBON A 0 A_JumpIfInventory("DrunkLevel", 40, "Pain_Drunk")
+		FBON G 4 A_SetPitch(0.75)
+		FBON G 4 A_Pain
 		Goto Spawn_Drunk
 	Death:
-		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
-		PLAY H 10
-		PLAY I 10 A_PlayerScream
-		PLAY J 10 A_NoBlocking
-		PLAY KLM 10
-		PLAY N -1
+		FBON A 0 A_TakeInventory("DrunkLevel", 100)
+		FBON H 10
+		FBON I 10 A_PlayerScream
+		FBON J 10 A_NoBlocking
+		FBON KLM 10
+		FBON N -1
 		Stop
 	XDeath:
-		PLAY A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
-		PLAY A 0 A_TakeInventory("DrunkLevel", 100)
-		PLAY O 5
-		PLAY P 5 A_XScream
-		PLAY Q 5 A_NoBlocking
-		PLAY RSTUV 5
-		PLAY W -1
+		FBON A 0 A_SpawnItemEx("MarineXDeath", 0, 0, 0, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+		FBON A 0 A_TakeInventory("DrunkLevel", 100)
+		FBON O 5
+		FBON P 5 A_XScream
+		FBON Q 5 A_NoBlocking
+		FBON RSTUV 5
+		FBON W -1
 		Stop
 	Burn:
 		BURN A 0 A_TakeInventory("DrunkLevel", 100)

@@ -52,15 +52,6 @@ UNSORTED CREDITS:
 		Sounds: Lucas Arts
 		Idea Base: Stormtrooper's Rifle from the Star Wars movies
 	}
-	PulseRifle(CorpseSatan Class):
-	{
-		Submitted: scalliano
-		Decorate: scalliano
-		GLDefs: N/A
-		Sprites: Justin Fisher
-		Sounds: Aliens TC, Quake III
-		Idea Base: Pulse Rifle from the Aliens TC
-	}
 	TentacledCommando:
 	{
 		Code: Karltroid51
@@ -151,5 +142,79 @@ UNSORTED CREDITS:
 		Sprites: FreeDoom
 		Sounds: Unknown
 		Sprite Edit: Post
+	}
+	SawThrower:
+	{
+		Submitted: Xim
+		Decorate: Daniel
+		Sprites: Xatrix (RR)
+		Sounds: Xatrix (RR)
+	}
+	DoubleBladedChainsaw:
+	{
+		Submitted: Xim
+		Decorate: Xim
+		Sprites: id Software
+		Sounds: id Software
+	}
+	ScatterPistol:
+	{
+		Submitted: Mor'ladim
+		Decorate: Mor'ladim
+		Sounds: Painkiller, Bulletstorm, Omega Boost
+		Sprites: Mor'ladim, id Software, Legend of the Monster Hunter
+		Idea Base: Borderlands 2 BUL Loader projectile.
+	}
+	QuadShotgun:
+	{
+		Submitted: DBJ87
+		Decorate: DBJ87
+		Sounds: Id Software (Doom 3 Fire & Reload), Bad Mojo (Quad Fire)
+		Sprites: Id Software, 1337spy, Bgraybr, Warhawk
+		Sprite Edit: 1337spy (Idle Sprites), Bgraybr, Warhawk
+		Idea Base: Based on the QuadShotgun Zombie's Weapon by Ghastly_dragon
+
+		Thanks to MagicWazard, Blue Shadow, Bad Mojo for your feedback and input.
+		Thank you to Yholl. For giving me the permission to use the sprite set now in
+		use. Quad Shotgun's sprites taken, with permission, from DRLA.
+
+		I only take credit for creating this variant's decorate as any sprites or sounds
+		I had created or edited in earlier (pre-December 2016) versions are now not
+		included or in use.
+	}
+	Uzi:
+	{
+		Submitted: Juan "JacKThERiPPeR
+		Decorate: Skulltag
+		Sprites: 3D Realms, Id Software
+		Sprites Edit: Cory Whittle
+		Sounds: Valve Corporation
+		Idea Base: Uzi from Shadow Warrior
+	}
+	DoubleGrenadeLauncher:
+	{
+		Submitted: Ghastly_dragon
+		Decorate: Ghastly_dragon
+		GLDEFs: Ghastly_dragon
+		Sprites: Eriance, Mechadon/KDiZD Team (projectile)
+		Sounds: Id Software, Ghastly_dragon
+	}
+	PulseRifle(CorpseSatan Class):
+	{
+		Submitted: scalliano
+		Decorate: scalliano
+		GLDefs: N/A
+		Sprites: Justin Fisher
+		Sounds: Aliens TC, Quake III
+		Idea Base: Pulse Rifle from the Aliens TC
+	}
+	Unmaker:
+	{
+		Submitted: Blue Shadow
+		Decorate: TheDarkArchon, Xim, Blue Shadow(Edit)
+		Sounds: Raven
+		Sprites: Scuba Steve
+		Idea Base: Unmaker from the Doom Bible
+		ACS: No
 	}
 }
