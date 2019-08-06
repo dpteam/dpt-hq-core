@@ -5219,3 +5219,36 @@ Weapons/StunnerFire	STNRFIRE
 Weapons/StunnerHit	STNRHIT
 
 MageShardsFire	cone3
+
+// CorpseSatan Class
+// WORKER: Mafio
+
+CS_DEAD CS_DEAD
+CS_DIVE CS_DIVE
+CS_GASP CS_GASP
+CS_GIBS CS_GIBS
+CS_JUMP CS_JUMP
+CS_LAND CS_LAND
+CS_PAIN CS_PAIN
+CS_TAUN CS_TAUN
+CS_USEF CS_USEF
+CS_XDED CS_XDED
+
+$playeralias "CorpseSatan" male *death CS_DEAD
+$playeralias "CorpseSatan" male *xdeath CS_XDED
+$playeralias "CorpseSatan" male *gibbed CS_GIBS
+$playeralias "CorpseSatan" male *pain25 CS_PAIN
+$playeralias "CorpseSatan" male *pain50 CS_PAIN
+$playeralias "CorpseSatan" male *pain75 CS_PAIN
+$playeralias "CorpseSatan" male *pain100 CS_PAIN
+$playeralias "CorpseSatan" male *grunt CS_LAND
+$playeralias "CorpseSatan" male *land CS_LAND
+$playeralias "CorpseSatan" male *jump CS_JUMP
+$playeralias "CorpseSatan" male *usefail CS_USEF
+$playeralias "CorpseSatan" male *taunt CS_TAUN
+$playeralias "CorpseSatan" male *falling CS_PAIN
+$playeralias "CorpseSatan" male *fist CS_USEF
+$playeralias "CorpseSatan" male *fistgrunt CS_LAND
+$playeralias "CorpseSatan" male *dive CS_DIVE
+$playeralias "CorpseSatan" male *surface CS_LAND
+$playeralias "CorpseSatan" male *gasp CS_GASP

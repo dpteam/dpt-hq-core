@@ -32,7 +32,7 @@ script 557 ENTER
 		TakeInventory("Icegun",1);
 		TakeInventory("UACM360",1);
 		TakeInventory("Gothic_Shotgun",1);
-		//LazyPanda
+		//COOLGIRL
 		TakeInventory("DOOM42k16SSG",1);
 		TakeInventory("BFG10K",1);
 		//NighMare
