@@ -5698,10 +5698,10 @@ ACTOR IceFlames
 	{
 Spawn:
 		PLSK ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 Bright
-		PLSZ A 1 Bright
-		Goto Death
+		Loop
 Death:
-		NULL A 0
+		PLSK ABCDEFGHIJKLMNOPQRSTUVWXYZ 1 Bright
+		PLSZ A 1 Bright
 		Stop
 	}
 }
