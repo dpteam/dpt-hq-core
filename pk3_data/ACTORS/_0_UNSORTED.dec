@@ -225,7 +225,6 @@ ACTOR EXPLOSIONBUBULZ {}
 ACTOR UNDERWATERHITPUFF {}
 ACTOR DETECTCEILBULLET {}
 ACTOR DETECTFLOORBULLET {}
-//ACTOR FISTREDUX {} // WORKER
 ACTOR BUBULZ : BulletPuff
 {
 	Translation Ice
@@ -246,7 +245,6 @@ ACTOR MultiPuff : BulletPuff {}
 ACTOR QuadPuff : BulletPuff {}
 ACTOR QuadUpgrade {}
 ACTOR RailDecalThing {}
-//ACTOR ShockPuff {} // WORKER
 ACTOR BasicParticle
 {
 	Radius 0
