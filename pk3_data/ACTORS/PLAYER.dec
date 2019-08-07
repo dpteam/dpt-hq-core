@@ -2308,7 +2308,7 @@ ACTOR DartPower : "DPT-HQ-Player"
 		CHUB CD 4 A_SetPitch(0.50)
         CHUB AB 4 A_SetPitch(-0.20)
 		CHUB CD 4 A_SetPitch(0.25)
-		CHUB A 0 A_Jump(126, "Vomit") // WORKER
+		CHUB A 0 A_Jump(126, "Vomit") // WORKER // Здесь вероятность выше, что блеванет от бухла
         CHUB AB 4 A_SetPitch(-0.90)
 		CHUB CD 4 A_SetAngle(random(angle-5,angle+5))
 		Goto Spawn_Drunk
@@ -4053,7 +4053,9 @@ ACTOR CorpseSatan : "DPT-HQ-Player"
 	Player.StartItem "ScatterPistol"
 	Player.StartItem "PlasmaShotgun"
 	Player.StartItem "QuadShotgun"
+	Player.StartItem "UberMinigun"
 	Player.StartItem "Uzi"
+	Player.StartItem "FlameThrower2"
 	Player.StartItem "DoubleGrenadeLauncher"
 	Player.StartItem "PulseRifle"
 	Player.StartItem "Railgun"
