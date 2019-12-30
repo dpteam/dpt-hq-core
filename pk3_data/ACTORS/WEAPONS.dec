@@ -1262,9 +1262,9 @@ ACTOR SuperCacoDemon
 		Loop
 	Melee:
 	Missile:
-		HEAD BC 1 A_FaceTarget
-		HEAD D 2 Bright A_HeadAttack
-		Goto Missile+1
+		HEAD BBCC 1 A_FaceTarget
+		HEAD DDDDDD 2 Bright A_HeadAttack
+		Goto Pain
 	Pain:
 		HEAD E 1
 		HEAD E 2 A_Pain
