@@ -1205,7 +1205,7 @@ Death:
 		NKXP C 3 Bright
 		NKXP D 3 Bright A_Explode
 		NKXP EFGHIJKLMNOPQRSTUV 3 Bright
-		GIZB A 3 Bright A_SpawnItem("Egg1337",1,8)
+		GIZB A 3 Bright A_SpawnItemEx("Egg1337", 0,0,0,0,0,SXF_NOCHECKPOSITION) //A_SpawnItem("Egg1337",1,8)
 		GIZB B 3 Bright
 		GIZB C 3 Bright
 		GIZB D 3 Bright
@@ -1222,10 +1222,65 @@ ACTOR Egg1337
 	{
 Spawn:
 		EEGG A 100
-		goto Death
-Death:
-		EEGG A 1 A_SpawnItemEx("KidCaco", 0,0,0,0,0,SXF_NOCHECKPOSITION)
+		EEGG A 1 A_Die
 		Stop
+Death:
+		EEGG A 1 A_SpawnItemEx("SuperCacoDemon", 0,0,0,0,0,SXF_NOCHECKPOSITION)
+		Stop
+	}
+}
+ACTOR SuperCacoDemon
+{
+	//$Category Special
+	Health 2400
+	Radius 31
+	Height 56
+	Mass 255 //0x7FFFFFFF
+	Speed 50
+	PainChance 128
+	Monster
+	+FLOAT
+	+NOGRAVITY
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	+LOOKALLAROUND
+	+FRIENDLY
+	-SOLID
+	SeeSound "caco/sight"
+	PainSound "caco/pain"
+	DeathSound "caco/death"
+	ActiveSound "caco/active"
+	Obituary "$OB_CACO"
+	HitObituary "$OB_CACOHIT"
+	States
+	{
+	Spawn:
+		HEAD A 1 A_Look
+		Loop
+	See:
+		HEAD A 1 A_Chase
+		Loop
+	Melee:
+	Missile:
+		HEAD BC 1 A_FaceTarget
+		HEAD D 2 Bright A_HeadAttack
+		Goto Missile+1
+	Pain:
+		HEAD E 1
+		HEAD E 2 A_Pain
+		HEAD F 1
+		Goto See
+	Death:
+		HEAD G 4
+		HEAD H 4 A_Scream
+		HEAD IJ 4
+		HEAD K 4 A_NoBlocking
+		HEAD L -1 A_SetFloorClip
+		Stop
+	Raise:
+		HEAD L 4 A_UnSetFloorClip
+		HEAD KJIHG 4
+		Goto See
 	}
 }
 ACTOR MOMCaco : Cacodemon
@@ -1234,7 +1289,7 @@ ACTOR MOMCaco : Cacodemon
 	+FRIENDLY
 	-SOLID
 }
-ACTOR KidCacoGrowth : Inventory
+ACTOR KeedCacoGrowth : Inventory
 {
 	Inventory.Amount 1
 	Inventory.MaxAmount 1000
@@ -1270,7 +1325,7 @@ Death:
 		Stop
 	}
 }
-ACTOR KidCaco 9655
+ACTOR KeedCaco 9655
 {
 	Translation "176:183=168:175"
 	Scale 0.25
@@ -1293,20 +1348,20 @@ ACTOR KidCaco 9655
 	{
 Spawn:
 		CACB A 0
-		CACB A 0 A_JumpIfInventory("KidCacoGrowth",1000,"Grow")
-		CACB A 0 A_GiveInventory("KidCacoGrowth",10)
+		CACB A 0 A_JumpIfInventory("KeedCacoGrowth",1000,"Grow")
+		CACB A 0 A_GiveInventory("KeedCacoGrowth",10)
 		CACB A 10 A_Look
 		loop
 See:
 		CACB A 0
-		CACB A 0 A_JumpIfInventory("KidCacoGrowth",1000,"Grow")
-		CACB A 0 A_GiveInventory("KidCacoGrowth",3)
+		CACB A 0 A_JumpIfInventory("KeedCacoGrowth",1000,"Grow")
+		CACB A 0 A_GiveInventory("KeedCacoGrowth",3)
 		CACB A 3 A_Chase
 		loop
 Missile:
 		CACB A 0
-		CACB A 0 A_JumpIfInventory("KidCacoGrowth",1000,"Grow")
-		CACB A 0 A_GiveInventory("KidCacoGrowth",10)
+		CACB A 0 A_JumpIfInventory("KeedCacoGrowth",1000,"Grow")
+		CACB A 0 A_GiveInventory("KeedCacoGrowth",10)
 		CACB A 10 A_Wander
 		goto See
 		CACB B 5 A_FaceTarget
@@ -1314,7 +1369,7 @@ Missile:
 		goto See
 Grow:
 		CACB A 0
-		CACB A 1 A_SpawnItemEx("KidCaco2", 0,0,0,0,0,SXF_NOCHECKPOSITION)
+		CACB A 1 A_SpawnItemEx("KeedCaco2", 0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 Pain:
 		CACB D 3
@@ -1336,7 +1391,7 @@ Raise:
 		Goto See
 	}
 }
-ACTOR KidCaco2 : KidCaco 
+ACTOR KeedCaco2 : KeedCaco 
 {
 	Translation "176:183=168:175"
 	Scale 0.4
@@ -1354,11 +1409,11 @@ ACTOR KidCaco2 : KidCaco
 	{
 Grow:
 		HEAD A 0
-		HEAD A 1  A_SpawnItemEx("KidCaco3", 0,0,0,0,0,SXF_NOCHECKPOSITION)
+		HEAD A 1  A_SpawnItemEx("KeedCaco3", 0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
-ACTOR KidCaco3 : KidCaco 
+ACTOR KeedCaco3 : KeedCaco 
 {
 	Translation "176:183=168:175"
 	Scale 0.6
@@ -1376,11 +1431,11 @@ ACTOR KidCaco3 : KidCaco
 	{
 Grow:
 		HEAD A 0
-		HEAD A 1  A_SpawnItemEx("KidCaco4", 0,0,0,0,0,SXF_NOCHECKPOSITION)
+		HEAD A 1  A_SpawnItemEx("KeedCaco4", 0,0,0,0,0,SXF_NOCHECKPOSITION)
 		Stop
 	}
 }
-ACTOR KidCaco4 : KidCaco3
+ACTOR KeedCaco4 : KeedCaco3
 {
 	Translation "176:183=168:175"
 	Scale 0.8
