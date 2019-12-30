@@ -4045,7 +4045,7 @@ ACTOR CorpseSatan : "DPT-HQ-Player"
 	Height 56
 	Mass 100
 	PainChance 255
-	Player.DisplayName "WIP: CorpseSatan"
+	Player.DisplayName "CorpseSatan"
 	Player.SoundClass "CorpseSatan"
 	Player.StartItem "Unarmed"
 	Player.StartItem "SawThrower"
