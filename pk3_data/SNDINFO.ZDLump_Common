@@ -5209,7 +5209,7 @@ Weapons/KDiZDSSGClose	DSKSSCLS
 MicroUzi/Fire1 UZI001
 MicroUzi/Fire2 UZI002
 MicroUzi/Fire3 UZI003
-MicroUzi/Fire { MicroUzi/Fire1 MicroUzi/Fire2 MicroUzi/Fire3 }
+MicroUzi/Fire UZIFIR // { MicroUzi/Fire1 MicroUzi/Fire2 MicroUzi/Fire3 }
 $limit MicroUzi/Fire	0
 
 Toaster/Fire	DSFLAMFI

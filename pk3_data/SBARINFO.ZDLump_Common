@@ -1,5 +1,5 @@
 base None;
-Height 32;
+Height 0;
 Resolution 320,200;
 InterpolateHealth True, 2;
 InterpolateArmor True, 2;
