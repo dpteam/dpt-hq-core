@@ -1803,10 +1803,13 @@ $Limit SFX/TorchDie 0
 
 world/drip dsempty
 world/watersplash dssplash
+water/splash dssplash
+water dssplash
 world/watersplashsmall dssplsml
 world/sludgegloop dsploosh
+//world/sludgegloop dsmuck
 world/sludgegloopsmall dsplosml
-world/lavasizzle dslvsiz
+world/lavasizzle dsburn //dslvsiz
 world/lavsiz2 dslvsiz2
 world/lavasizzlesmall dslavsml
 world/thunder dsthun
@@ -2161,9 +2164,6 @@ $random weapons/riflecasings
 	weapons/casing6
 }
 
-world/watersplash dssplash
-world/sludgegloop dsploosh
-world/lavasizzle dslvsiz
 world/drip dsdrip
 world/hotsiz dshtsiz
 
@@ -2338,7 +2338,6 @@ waterfall1 WFALL1
 waterfall2 WFALL2
 waterfall3 WFALL3
 drippingwater WDRIP
-water/splash dssplash
 water/drip dsdrip
 //fish sounds
 fish/pain FISHPAIN
@@ -4560,10 +4559,8 @@ $random DSTERMDN {DSSTOPET DSTERMHS DSRELAX DSDODAT DSCHILL DSKILLU DSPROBMO DSS
 Sounds/Wind Wind
 $pitchshift Sword/Pickup 0
 $pitchshift DSPHASER 0
-world/sludgegloop dsmuck
 world/drip dsdrip
 world/watersplash dsgloop
-world/lavasizzle dsburn
 dsdcgasp dsdcgasp
 $random Sound/StayPuft/Stomp {DSWALKR DSWALKL}
 DSWALKR DSWALKR
