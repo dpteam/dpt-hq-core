@@ -13021,7 +13021,7 @@ Death:
 		PLSE A 2 Bright A_PlaySound ("on/fire", 7, 1, 0, 1) //SUCH PUNS // setting volume above 1 doesn't do anything
 		PLSE A 0 A_Quake(2,6,0,200, "")
 		PLSE A 0 A_PlaySound ("fusion/hit", CHAN_WEAPON, 1, 0, 0.8)
-		PLSE B 2 Bright A_SpawnItemEx ("DUMP3Ash_cloud", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
+		PLSE B 2 Bright //A_SpawnItemEx ("DUMP3Ash_cloud", 1,0,8, 0,0,0, 0, SXF_NOCHECKPOSITION)
 		PLSE CDE 2 Bright
 		Stop
 	}
