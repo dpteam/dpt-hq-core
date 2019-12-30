@@ -4899,6 +4899,7 @@ SFX/Buzz DSBUZZ
 SprayMist/shoot DSSPRY
 Weapons/Zippo dszippo
 Weapons/ZippoClose dszipcls
+weapons/CottonLight DSLIGHT
 weapons/m3shtshell dsm3ins
 weapons/M500load dsm5load
 weapons/tazer DSTAZFUL
