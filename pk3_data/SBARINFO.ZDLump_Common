@@ -1,5 +1,6 @@
-base Doom;
+base None;
 Height 32;
+Resolution 320,200;
 InterpolateHealth True, 2;
 InterpolateArmor True, 2;
 MonospaceFonts True, "0";

@@ -5162,7 +5162,7 @@ ACTOR VadimClass : "DPT-HQ-Player"
 	Height 56
 	Mass 100
 	PainChance 255
-	Player.DisplayName "Vadim Play"
+	Player.DisplayName "Origami Network"
 	Player.SoundClass "Vadim"
 	Player.StartItem "VadimKnife"
 	Player.StartItem "VadimAxe"
