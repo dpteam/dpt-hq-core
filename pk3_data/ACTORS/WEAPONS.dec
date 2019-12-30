@@ -15900,7 +15900,7 @@ Spawn:
 
 // Rocket Launcher
 
-ACTOR BrutalRocket
+ACTOR BrutalRocket : Rocket
 {
 	Speed 25
 	-RANDOMIZE
