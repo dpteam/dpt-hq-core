@@ -130,7 +130,7 @@ skill arcade
 	ReplaceActor = "CacodemonBall", "DoomImpBall"
 	ReplaceActor = "FatShot", "CacodemonBall"
 	ReplaceActor = "Rocket", "ArachnotronPlasma"
-	MustConfirm = "Аркадный режим создан специально для детей, тестов и отдыха. (И аутистов)"
+	MustConfirm = "Аркадный режим создан специально для чилла."
 	Key = "9"
 }
 //CORE
