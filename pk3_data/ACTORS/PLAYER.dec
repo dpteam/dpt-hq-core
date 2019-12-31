@@ -736,7 +736,7 @@ ACTOR Cop : "DPT-HQ-Player"
 		Goto Spawn_Drunk
 	Missile:
 		FCOP A 0 A_JumpIfInventory("DrunkLevel", 40, "Missile_Drunk")
-		FCOP KLM 12 BRIGHT
+		FCOP K /*LM*/ 12 BRIGHT
 		Goto Spawn
 	Missile_Drunk:
 		FCOP A 0 A_SetAngle(random(angle-12,angle+12))

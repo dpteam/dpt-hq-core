@@ -3303,13 +3303,13 @@ Active:
 		TLMP A 0 A_PlaySound("switches/normbutn")
 		// Fall through
 Lit:
-		TLMP ABCD 4 Bright //Light(BIGLAMP)
+		TLMP A 4 Bright //Light(BIGLAMP)
 		Loop
 Inactive:
-		TLMP E 0 A_PlaySound("switches/exitbutn")
+		TLMP A 0 A_PlaySound("switches/exitbutn")
 		// Fall through
 Spawn:
-		TLMP E -1
+		TLMP A -1
 		Stop
 	}
 }
