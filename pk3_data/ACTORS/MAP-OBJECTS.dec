@@ -1,3 +1,19 @@
+Actor CeilingBrazier 26472 // Хуйня на потолке
+{
+	Radius 20
+	Height 82
+	+SOLID
+	+NOGRAVITY
+	+SPAWNCEILING
+	+BRIGHT
+	States
+	{
+	Spawn:
+		CBRA ABCDEFGH 3
+		Loop
+	}
+}
+
 ACTOR ShotSmoke22
 {
 	+NOTDMATCH

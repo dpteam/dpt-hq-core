@@ -1,3 +1,14 @@
+actor DangerLVLItem : Inventory
+{
+	inventory.amount 1
+	inventory.maxamount 5
+	states
+	{
+Spawn:
+		NULL A -1
+		stop
+	}
+}
 ACTOR DefaultBlood : Blood {}
 actor Mskull : Inventory
 {

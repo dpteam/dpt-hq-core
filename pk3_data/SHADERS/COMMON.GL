@@ -1,3 +1,15 @@
+flickerlight CEILINGBRAZIER
+{
+	color 0.8 0.6 0.0
+	size 68
+	secondarySize 76
+	chance 0.6
+	offset 0 32 0
+}
+Object CeilingBrazier
+{
+	frame CBRA { light CEILINGBRAZIER }
+}
 object RoffCandle
 {
 	frame CAN5 { light BIGREDTORCH }
