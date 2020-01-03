@@ -153,7 +153,7 @@ map CREDMAP "CREDITS"
 //HQ
 map HQ1 "DPT CITY"
 {
-	music = "HQ3" // "SPACEDEB" // "HQ1"
+	music = "MAP01"
 	SKY1 = "SKY1"
 	next = "HQ1"
 }
