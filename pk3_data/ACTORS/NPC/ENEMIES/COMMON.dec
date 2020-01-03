@@ -1397,7 +1397,7 @@ Death:
 		D3KY A 20 A_Scream
 		D3KY A 7 A_NoBlocking
 		D3KY A 7
-		D3KY A -1 A_BossDeath
+		TNT1 A -1 A_BossDeath
 		stop
 Raise:
 		D3KY A 5
@@ -1440,7 +1440,7 @@ Death:
 		KMST A 20 A_Scream
 		KMST A 7 A_NoBlocking
 		KMST A 7
-		KMST A -1 A_BossDeath
+		TNT1 A -1 A_Death
 		stop
 Raise:
 		KMST A 5
@@ -1483,7 +1483,7 @@ Death:
 		KMST B 20 A_Scream
 		KMST B 7 A_NoBlocking
 		KMST B 7
-		KMST B -1 A_BossDeath
+		TNT1 A -1 A_Death
 		stop
 Raise:
 		KMST B 5
@@ -1526,7 +1526,7 @@ Death:
 		KMST C 20 A_Scream
 		KMST C 7 A_NoBlocking
 		KMST C 7
-		KMST C -1 A_BossDeath
+		TNT1 A -1 A_Death
 		stop
 Raise:
 		KMST C 5
