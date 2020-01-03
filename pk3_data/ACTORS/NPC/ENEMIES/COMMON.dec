@@ -1247,6 +1247,7 @@ ACTOR IcePlasmaZombie : PlasmaZombie 26408
 
 ACTOR TentacledCommando : ChaingunGuy
 {
+	//$Category "Monsters - Humans"
 	Health 100
 	Radius 25
 	Height 60
@@ -1303,6 +1304,103 @@ XDeath:
 Raise:
 		D3CG N 5
 		D3CG MLKJIH 5
+		Goto See
+	}
+}
+
+ACTOR CGunSpider 26473
+{
+	//$Category "Monsters - Special"
+	obituary "%o was filled full of lead by an Arachnotron."
+	health 450
+	radius 64
+	height 64
+	mass 600
+	speed 12
+	painchance 128
+	seesound "CGunSpider/Sight"
+	painsound "baby/pain"
+	deathsound "CGunSpider/Death"
+	activesound "baby/active"
+	attacksound "CGunSpider/Attack"
+	dropitem "ClipBox" 64
+	decal "bulletchip"
+	MONSTER
+	+FLOORCLIP
+	states
+	{
+Spawn:
+		CSPI AB 10 A_Look
+		loop
+See:
+		CSPI A 20
+		CSPI A 3 A_BabyMetal
+		CSPI ABBCC 3 A_Chase
+		CSPI D 3 A_BabyMetal
+		CSPI DEEFF 3 A_Chase
+		goto See+1
+Missile:
+		CSPI A 20 bright A_FaceTarget
+		CSPI G 4 bright A_CPosAttack
+		CSPI G 0 bright A_CPosAttack
+		CSPI H 4 bright
+		CSPI H 1 bright A_SpidRefire
+		goto Missile+1
+Pain:
+		CSPI I 3
+		CSPI I 3 A_Pain
+		goto See+1
+Death:
+		CSPI J 20 A_Scream
+		CSPI K 7 A_NoBlocking
+		CSPI LMNO 7
+		CSPI P -1 A_BossDeath
+		stop
+Raise:
+		CSPI PONMLKJ 5
+		goto See+1
+	}
+}
+
+ACTOR SebastianKeyCard 26474
+{
+	//$Category "Monsters - Special"
+	obituary "Вот этого долбоеба -- %o жестоко наебали."
+	health 100
+	radius 26
+	height 13
+	mass 0x7fffffff
+	speed 12
+	painchance 255
+	MONSTER
+	+FLOORCLIP
+	+NOBLOOD
+	states
+	{
+Spawn:
+		D3KY A 5 A_Look
+		loop
+See:
+		D3KY A 5 A_ChangeFlag("FRIGHTENED", 1)
+		D3KY A 5 A_Chase
+		loop
+Melee:
+		D3KY A 1 bright A_FaceTarget
+		D3KY A 1 bright A_CPosAttack
+		D3KY A 25 bright
+		Goto See
+Pain:
+		D3KY A 3
+		D3KY A 3 A_Pain
+		Goto See
+Death:
+		D3KY A 20 A_Scream
+		D3KY A 7 A_NoBlocking
+		D3KY A 7
+		D3KY A -1 A_BossDeath
+		stop
+Raise:
+		D3KY A 5
 		Goto See
 	}
 }

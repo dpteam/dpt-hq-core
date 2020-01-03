@@ -1,3 +1,83 @@
+Object CGunSpider
+{
+	Frame CSPIG { Light ZOMBIEATK }
+	Frame CSPIH { Light ZOMBIEATK }
+}
+BrightMap Sprite CSPIA1D1
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIA2A8
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIA3A7
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIA4A6
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIA5D5
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIG1
+{
+	Map BMCSPIG1
+	DisableFullBright
+}
+BrightMap Sprite CSPIG2G8
+{
+	Map BMCSPIG2
+	DisableFullBright
+}
+BrightMap Sprite CSPIG3G7
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIG4G6
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIG5
+{
+	Map BMBLACK
+	DisableFullBright
+}
+BrightMap Sprite CSPIH1
+{
+	Map BMCSPIH1
+	DisableFullBright
+}
+BrightMap Sprite CSPIH2H8
+{
+	Map BMCSPIH2
+	DisableFullBright
+}
+BrightMap Sprite CSPIH3H7
+{
+	Map BMCSPIH3
+	DisableFullBright
+}
+BrightMap Sprite CSPIH4H6
+{
+	Map BMCSPIH4
+	DisableFullBright
+}
+BrightMap Sprite CSPIH5
+{
+	Map BMCSPIH5
+	DisableFullBright
+}
 flickerlight CEILINGBRAZIER
 {
 	color 0.8 0.6 0.0
