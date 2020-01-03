@@ -1440,7 +1440,7 @@ Death:
 		KMST A 20 A_Scream
 		KMST A 7 A_NoBlocking
 		KMST A 7
-		TNT1 A -1 A_Death
+		TNT1 A -1
 		stop
 Raise:
 		KMST A 5
@@ -1483,7 +1483,7 @@ Death:
 		KMST B 20 A_Scream
 		KMST B 7 A_NoBlocking
 		KMST B 7
-		TNT1 A -1 A_Death
+		TNT1 A -1
 		stop
 Raise:
 		KMST B 5
@@ -1526,7 +1526,7 @@ Death:
 		KMST C 20 A_Scream
 		KMST C 7 A_NoBlocking
 		KMST C 7
-		TNT1 A -1 A_Death
+		TNT1 A -1
 		stop
 Raise:
 		KMST C 5
