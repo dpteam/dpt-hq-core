@@ -1370,7 +1370,7 @@ ACTOR SebastianKeyCard 26474
 	radius 26
 	height 13
 	mass 0x7fffffff
-	speed 12
+	speed 25
 	painchance 255
 	MONSTER
 	+FLOORCLIP
@@ -1401,6 +1401,135 @@ Death:
 		stop
 Raise:
 		D3KY A 5
+		Goto See
+	}
+}
+
+ACTOR KMSTA0 26475
+{
+	//$Category "Monsters - Special"
+	obituary "%o укурился..."
+	health 100
+	radius 26
+	height 13
+	mass 0x7fffffff
+	speed 15
+	painchance 255
+	MONSTER
+	+FLOORCLIP
+	+NOBLOOD
+	states
+	{
+Spawn:
+		KMST A 5 A_Look
+		loop
+See:
+		KMST A 5 A_ChangeFlag("FRIGHTENED", 1)
+		KMST A 5 A_Chase
+		loop
+Melee:
+		KMST A 1 bright A_FaceTarget
+		KMST A 1 bright A_CPosAttack
+		KMST A 25 bright
+		Goto See
+Pain:
+		KMST A 3
+		KMST A 3 A_Pain
+		Goto See
+Death:
+		KMST A 20 A_Scream
+		KMST A 7 A_NoBlocking
+		KMST A 7
+		KMST A -1 A_BossDeath
+		stop
+Raise:
+		KMST A 5
+		Goto See
+	}
+}
+
+ACTOR KMSTB0 26476
+{
+	//$Category "Monsters - Special"
+	obituary "%o был затоптан досмерти."
+	health 100
+	radius 26
+	height 13
+	mass 0x7fffffff
+	speed 15
+	painchance 255
+	MONSTER
+	+FLOORCLIP
+	+NOBLOOD
+	states
+	{
+Spawn:
+		KMST B 5 A_Look
+		loop
+See:
+		KMST B 5 A_ChangeFlag("FRIGHTENED", 1)
+		KMST B 5 A_Chase
+		loop
+Melee:
+		KMST B 1 bright A_FaceTarget
+		KMST B 1 bright A_CPosAttack
+		KMST B 25 bright
+		Goto See
+Pain:
+		KMST B 3
+		KMST B 3 A_Pain
+		Goto See
+Death:
+		KMST B 20 A_Scream
+		KMST B 7 A_NoBlocking
+		KMST B 7
+		KMST B -1 A_BossDeath
+		stop
+Raise:
+		KMST B 5
+		Goto See
+	}
+}
+
+ACTOR KMSTC0 26477
+{
+	//$Category "Monsters - Special"
+	obituary "%o, хаха ты обдолбался!"
+	health 100
+	radius 26
+	height 13
+	mass 0x7fffffff
+	speed 15
+	painchance 255
+	MONSTER
+	+FLOORCLIP
+	+NOBLOOD
+	states
+	{
+Spawn:
+		KMST C 5 A_Look
+		loop
+See:
+		KMST C 5 A_ChangeFlag("FRIGHTENED", 1)
+		KMST C 5 A_Chase
+		loop
+Melee:
+		KMST C 1 bright A_FaceTarget
+		KMST C 1 bright A_CPosAttack
+		KMST C 25 bright
+		Goto See
+Pain:
+		KMST C 3
+		KMST C 3 A_Pain
+		Goto See
+Death:
+		KMST C 20 A_Scream
+		KMST C 7 A_NoBlocking
+		KMST C 7
+		KMST C -1 A_BossDeath
+		stop
+Raise:
+		KMST C 5
 		Goto See
 	}
 }
