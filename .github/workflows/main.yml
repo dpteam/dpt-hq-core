@@ -28,7 +28,7 @@ jobs:
         uses: DuckSoft/create-7z-action@v1.0
         with:
           # file/folder path to compress
-          pathSource: /pk3_data
+          pathSource: pk3_data
           # 7z archive path to write
           pathTarget: DPT-HQ-Core-SNAPSHOT.pk7
 
