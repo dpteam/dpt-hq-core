@@ -8,15 +8,59 @@ gameinfo
 }
 //EPISODES
 clearepisodes
+episode HQPARTED1
+{
+	name = "DPT.HQ Adventures"
+	key = "1"
+	optional
+}
 episode HQ1
 {
-	name = "DPT HQ"
-	key = "1"
+	name = "DPT.HQ Global Map"
+	key = "2"
+	optional
 }
 episode MAP01
 {
 	name = "MAP01 START"
-	key = "2"
+	key = "3"
+	optional
+}
+episode HQARENA
+{
+	name = "Arena"
+	key = "4"
+	optional
+}
+episode HQPIANO
+{
+	name = "Piano"
+	key = "5"
+	optional
+}
+episode HQSNDBX1
+{
+	name = "Sandbox Maps"
+	key = "6"
+	optional
+}
+episode COOP1
+{
+	name = "Cooperative Maps"
+	key = "7"
+	optional
+}
+episode HQ_2KC1
+{
+	name = "Deathmatch Maps"
+	key = "8"
+	optional
+}
+episode HQCTF1
+{
+	name = "CTF Maps"
+	key = "9"
+	optional
 }
 //COMMON SKILLS
 clearskills
