@@ -37,5 +37,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: dpt-hq-core
-          path: |
-            /*.pk7
+          path: DPT-HQ-Core-SNAPSHOT.pk7
