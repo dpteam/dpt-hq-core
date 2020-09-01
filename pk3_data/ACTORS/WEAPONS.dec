@@ -16136,14 +16136,14 @@ Fire:
 		TNT1 A 4
 		AXEG I 2 A_PlaySound("weapons/axeswing", CHAN_WEAPON)
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "ToughFire")
-		AXEG J 2 A_CustomPunch(20+random(4, 16), 1, 0, "AxeHitPuff")
+		AXEG J 2 A_CustomPunch(20+random(4, 16), 1, 0, "AxeHitPuff2")
 		AXEG K 2
 		TNT1 A 4
 		AXEG EDCBA 2
 		AXEG A 6
 		Goto Ready
 ToughFire:
-		AXEG J 2 A_CustomPunch(60+random(4, 16), 1, 0, "AxeHitPuff")
+		AXEG J 2 A_CustomPunch(60+random(4, 16), 1, 0, "AxeHitPuff2")
 		Goto Fire+9
 AltFire:
 		AXEG ABCDE 3
@@ -16156,10 +16156,10 @@ AltHold:
 		AXEG H 3 A_PlaySound("weapons/axeswing", CHAN_WEAPON)
 		AXEG I 2
 		AXEG A 0 A_JumpIfInventory("PowerStrength", 1, "AltFireHitBerserk")
-		AXEG J 2 A_CustomPunch(56 * CallACS("Axe charge") * 0.1 + random(4, 14), 1, 0, "AxeHitPuff")
+		AXEG J 2 A_CustomPunch(56 * CallACS("Axe charge") * 0.1 + random(4, 14), 1, 0, "AxeHitPuff2")
 		Goto AltFireEnd
 AltFireHitBerserk:
-		AXEG J 2 A_CustomPunch(112 * CallACS("Axe charge") * 0.1 + random(4, 20), 1, 0, "AxeHitPuff")
+		AXEG J 2 A_CustomPunch(112 * CallACS("Axe charge") * 0.1 + random(4, 20), 1, 0, "AxeHitPuff2")
 AltFireEnd:
 		AXEG K 2
 		TNT1 A 8
@@ -16168,7 +16168,7 @@ AltFireEnd:
 	}
 }
 
-ACTOR AxeHitPuff : BulletPuff
+ACTOR AxeHitPuff2 : BulletPuff
 {
 	+PUFFONACTORS
 	//+NOEXTREMEDEATH --Uncomment and remove this message to prevent gibs
@@ -16861,7 +16861,7 @@ ACTOR Saws : Ammo
 	Ammo.BackpackMaxAmount 100
 	Inventory.PickupMessage "Picked up some saws."
 	Inventory.PickupSound "weapons/ammo13"
-	Inventory.Icon SAWA
+	Inventory.Icon SAWAA0 // WORKER
 	States
 	{
 Spawn:

@@ -1069,7 +1069,7 @@ Death:
 		stop
 	}
 }
-ACTOR Toaster: TabbleLight 1441
+ACTOR Toaster_LECM: TabbleLight 1441
 {
 	Scale 0.7
 	States
