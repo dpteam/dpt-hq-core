@@ -2,16 +2,16 @@
 
 ## Core component
 
-Funny cooperative+deathmatch entertaining modification for DOOM II. Created for LZDoom port.
+Funny cooperative+deathmatch entertaining modification for DOOM II. Created for GZDoom port.
 
 Also have Delta-Touch compatibility
 
 ## How to compile (Windows)
 
 1. Download or clone repo
-2. Click on build.bat
+2. Click on build.cmd
 3. Wait
-4. Drag & Drop pk7 to lzdoom.exe
+4. Drag & Drop pk7 to gzdoom.exe
 5. Play
 
 ## How to compile (Linux)
@@ -20,7 +20,7 @@ Also have Delta-Touch compatibility
 2. git clone -b lzdoom_funcs git@github.com:dpteam/dpt-hq-core.git dpt-hq-core
 3. sh build.sh
 4. Wait
-5. "./lzdoom dpt-hq-core-current.pk7"
+5. "./gzdoom dpt-hq-core-current.pk7"
 6. Play
 
 ## Current important info

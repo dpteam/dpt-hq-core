@@ -13,3 +13,13 @@ $RECYCLE.BIN/
 *.dbs
 *.log
 logfile
+soundfonts/
+fm_banks/
+game_widescreen_gfx.pk3
+gzdoom.pk3
+game_support.pk3
+brightmaps.pk3
+lights.pk3
+licenses.zip
+*.exe
+*.dll
