@@ -12,7 +12,7 @@ LISTMENU "MainMenu"
 	IfGame(Doom)
 	{
 		PatchItem "M_NGAME", "n", "PlayerclassMenu"
-		PatchItem "M_MULTI", "m", "ZA_MultiplayerOptions"
+		//PatchItem "M_MULTI", "m", "ZA_MultiplayerOptions"
 		ifOption(SwapMenu)
 		{
 			PatchItem "M_LOADG", "l", "LoadGameMenu"
